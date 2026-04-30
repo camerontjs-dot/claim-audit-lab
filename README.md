@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a hand-authored AI research target report, and two fictional draft/evidence fixture families. The audit engine, rule checks, report renderer, and CLI workflow have not been built yet.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, a hand-authored AI research target report, a generated provisional slice report, and two fictional draft/evidence fixture families. Rule checks, support assessment hardening, full report rendering, and the CLI workflow have not been built yet.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -62,6 +62,22 @@ python -m coverage run --branch -m pytest
 python -m coverage report
 ```
 
+## Phase 4A demo
+
+After local setup, run the provisional vertical-slice demo:
+
+```bash
+python scripts/run_demo.py
+```
+
+The default command writes Markdown and JSON outputs under `build/reports/` so routine reviewer runs do not dirty the worktree. To refresh the checked-in slice fixtures intentionally, run:
+
+```bash
+python scripts/run_demo.py --update-fixture
+```
+
+The Phase 4A report is intentionally provisional. Candidate evidence scores are visible for inspection, but final support labels and rule checks are deferred to Phase 5.
+
 ## Next implementation step
 
-Build the Phase 4A runnable vertical slice: extraction, candidate matching, minimal audit orchestration, and a minimal Markdown report.
+Build Phase 5 rule checks and support assessment without turning candidate scores into truth or support labels by themselves.

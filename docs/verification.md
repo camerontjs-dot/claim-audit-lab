@@ -2,6 +2,61 @@
 
 Last updated: 2026-04-30
 
+## 2026-04-30: Phase 4A runnable vertical slice
+
+Implemented the provisional end-to-end slice: load draft/evidence, extract claims, match candidate evidence, return a typed `AuditReport`, and render Markdown/JSON outputs. The slice intentionally does not turn candidate scores into final support labels; Phase 5 owns rule checks and support assessment.
+
+Files updated:
+
+- `.gitignore`
+- `src/claim_audit_lab/auditor.py`
+- `src/claim_audit_lab/report.py`
+- `scripts/run_demo.py`
+- `tests/test_vertical_slice.py`
+- `examples/reports/ai-research-note.slice.md`
+- `examples/reports/ai-research-note.slice.json`
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python -m ruff format src/claim_audit_lab/auditor.py src/claim_audit_lab/report.py scripts/run_demo.py tests/test_vertical_slice.py
+.venv/bin/python scripts/run_demo.py --update-fixture
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+```
+
+Results:
+
+- Ruff format updated the new Phase 4A implementation and tests.
+- Demo fixture refresh wrote `examples/reports/ai-research-note.slice.md` and `.json`.
+- Virtualenv compile check passed.
+- `pytest`: 60 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed.
+- `mypy src`: passed.
+- Coverage run: 60 passed; total coverage 97%.
+- `audit_document(draft, evidence_bundle, config=None)` returns a typed `AuditReport`.
+- `AuditConfig.min_overlap_score` and `AuditConfig.max_candidate_evidence` are threaded into candidate matching.
+- Phase 4A labels are limited to `needs_source` and `not_audit_ready`.
+- Empty evidence bundles produce a useful report and warning instead of crashing.
+- Markdown and JSON renderers produce provisional slice outputs; JSON round-trips through `AuditReport`.
+- Demo defaults write to gitignored `build/reports/`; checked-in fixtures only refresh with `--update-fixture`.
+- The checked-in slice Markdown carries a Phase 4A provisional header and passes the forbidden capability-language gate.
+- `CAL-REQ-038` is verified; full rule, report, orchestration, and CLI rows remain planned.
+- Next step is Phase 5 rule checks and support assessment.
+
 ## 2026-04-30: Phase 4 deterministic evidence matching
 
 Implemented deterministic candidate-evidence matching and kept it separate from support labels, rule flags, audit orchestration, report rendering, and CLI behavior.

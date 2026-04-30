@@ -8,7 +8,7 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a reviewed hand-authored AI research target report, and two fictional draft/evidence fixture families. The audit engine, rule checks, report renderer, and CLI workflow have not been built yet.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, a reviewed hand-authored AI research target report, a generated provisional slice report, and two fictional draft/evidence fixture families. Rule checks, support assessment hardening, full report rendering, and the CLI workflow have not been built yet.
 
 Current durable files:
 
@@ -20,7 +20,7 @@ Current durable files:
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for the Phase 4A runnable vertical slice.
+- `docs/handoff-prompt.md`: next implementation prompt for Phase 5 rule checks and support assessment.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -31,16 +31,22 @@ Current durable files:
 - `src/claim_audit_lab/loader.py`: path-aware draft and evidence bundle loader.
 - `src/claim_audit_lab/claim_extraction.py`: conservative deterministic claim extraction.
 - `src/claim_audit_lab/evidence_matching.py`: deterministic candidate-evidence matching.
+- `src/claim_audit_lab/auditor.py`: Phase 4A audit orchestration returning typed `AuditReport` values with provisional labels.
+- `src/claim_audit_lab/report.py`: minimal Phase 4A Markdown and JSON report rendering.
+- `scripts/run_demo.py`: reviewer-friendly Phase 4A demo entry point.
+- `examples/reports/ai-research-note.slice.md`: generated provisional slice report.
+- `examples/reports/ai-research-note.slice.json`: generated provisional typed slice report data.
 - `tests/test_models.py`: first model validation tests.
 - `tests/test_loader.py`: loader behavior and malformed-input tests.
 - `tests/test_claim_extraction.py`: extraction behavior, classification, stable ID, and dedupe tests.
 - `tests/test_evidence_matching.py`: numeric, product-fixture, ordering, capping, metadata, and batch-matching tests.
+- `tests/test_vertical_slice.py`: Phase 4A auditor, report, demo, config-threading, and language-gate tests.
 
 Immediate next step:
 
-1. Build Phase 4A runnable vertical slice before Phase 5 rule hardening.
-2. Keep support labels and rule flags thin or deferred until Phase 5.
-3. Update `docs/verification.md`, `docs/validation-matrix-reference.md`, and `log/job-hunt-log.md` after the slice lands.
+1. Build Phase 5 rule checks and support assessment.
+2. Keep rule checks separate from deterministic candidate matching.
+3. Preserve the Phase 4A discipline that candidate scores are ranking signals, not support labels.
 
 ## Project Boundary
 
@@ -297,7 +303,7 @@ Exit gate:
 
 ### Phase 4A: Runnable Vertical Slice
 
-Status: planned before Phase 5.
+Status: complete.
 
 Primary files:
 
@@ -306,14 +312,24 @@ Primary files:
 - `scripts/run_demo.py` or equivalent reviewer-friendly entry point
 - `tests/test_vertical_slice.py` or focused auditor/report tests
 - `examples/reports/ai-research-note.slice.md`
+- `examples/reports/ai-research-note.slice.json`
 
 Build:
 
 - Wire a trivial-but-complete path: extraction -> naive candidate matching -> `audit_document()` -> minimal Markdown report.
 - Keep final rule quality deliberately thin; deeper rule checks still belong in Phase 5.
 - Let a reviewer run one documented local command and see a checked-in fixture produce report output before the CLI is complete.
-- Use conservative fallback labels such as `needs_source`, `partially_supported`, or `not_audit_ready` when final support logic is not ready.
+- Use only `needs_source` and `not_audit_ready` in Phase 4A so candidate scores do not harden into support semantics before Phase 5.
 - Keep the vertical slice deterministic and offline.
+
+Delivered:
+
+- `audit_document(draft, evidence_bundle, config=None) -> AuditReport` wires extraction, candidate matching, provisional assessments, summary counts, and limitations.
+- `AuditConfig` is threaded into candidate matching, including overlap threshold and candidate cap behavior.
+- Minimal Markdown and JSON renderers expose summary, claim register, candidate evidence links, and limitations.
+- `scripts/run_demo.py` writes default demo outputs to gitignored `build/reports/` and only refreshes checked-in slice fixtures with `--update-fixture`.
+- `examples/reports/ai-research-note.slice.md` and `.json` are checked-in provisional outputs with a visible Phase 4A caveat.
+- `tests/test_vertical_slice.py` gates provisional labels, config behavior, empty-evidence behavior, JSON round-trip, demo-script output, and forbidden capability language in the checked-in slice report.
 
 Exit gate:
 
@@ -681,14 +697,13 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Build Phase 4A runnable vertical slice: extraction -> candidate matching -> `audit_document()` -> minimal Markdown report.
-2. Build rule checks and support assessment.
-3. Harden audit orchestration.
-4. Harden Markdown and JSON report rendering.
-5. Build CLI.
-6. Run validation sweep.
-7. Replace README stub with public README and required social/GitHub-pin assets.
-8. Run the post-build validation package.
+1. Build rule checks and support assessment.
+2. Harden audit orchestration.
+3. Harden Markdown and JSON report rendering.
+4. Build CLI.
+5. Run validation sweep.
+6. Replace README stub with public README and required social/GitHub-pin assets.
+7. Run the post-build validation package.
 
 ## Open Decisions
 
@@ -696,7 +711,7 @@ At the end of each meaningful work session:
 | --- | --- | --- |
 | Constrain `source_type` | Resolved: constrained in Phase 1. | Done. |
 | Second fixture family | Resolved: Product README paragraph fixture is seeded. | Done. |
-| Runnable demo entry point | Use `scripts/run_demo.py` or equivalent until the CLI exists. | Phase 4A. |
+| Runnable demo entry point | Resolved: `scripts/run_demo.py` writes default outputs to `build/reports/`; checked-in fixtures refresh only with `--update-fixture`. | Done. |
 | Public repo name | Resolved for now: keep `claim-audit-lab`. | Revisit only if later report or packaging review makes the name misleading. |
 | Public product name | Resolved for now: keep `Claim Audit Lab`; use "claim stress test" and "evidence-support audit" as framing. | Revisit only if public packaging review finds clearer wording. |
 | Support score | Potentially useful if presented as evidence-support, not percent truth; requires explicit deterministic scoring rules and tests. | After labels, rules, and reports are implemented. |

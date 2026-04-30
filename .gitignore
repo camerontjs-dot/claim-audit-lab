@@ -11,4 +11,4 @@ build/
 *.egg-info/
 .DS_Store
 examples/reports/*.json
-
+!examples/reports/*.slice.json
