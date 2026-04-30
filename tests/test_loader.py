@@ -26,6 +26,17 @@ def test_load_markdown_draft_uses_file_stem_and_first_heading() -> None:
     assert "The intervention clearly eliminates unsupported claims" in draft.content
 
 
+def test_load_product_readme_draft() -> None:
+    """The second fictional Markdown draft loads for Phase 4 planning."""
+    draft_path = EXAMPLES_ROOT / "drafts" / "product-readme-note.md"
+
+    draft = load_draft(draft_path)
+
+    assert draft.id == "product-readme-note"
+    assert draft.title == "Meridian Notes README"
+    assert "Meridian Notes can generate traceable audit summaries" in draft.content
+
+
 def test_load_plain_text_draft_allows_explicit_metadata() -> None:
     """Plain text drafts can receive explicit ID and title metadata."""
     draft_path = FIXTURE_ROOT / "drafts" / "plain-note.txt"
@@ -45,6 +56,28 @@ def test_load_yaml_evidence_bundle() -> None:
 
     assert bundle.sources[0].id == "source-001"
     assert bundle.sources[0].excerpts[0].id == "excerpt-001"
+
+
+def test_load_product_readme_evidence_bundle() -> None:
+    """The second fictional evidence bundle loads with dated source metadata."""
+    bundle_path = EXAMPLES_ROOT / "evidence" / "product-readme-evidence.yml"
+
+    bundle = load_evidence_bundle(bundle_path)
+
+    assert [source.id for source in bundle.sources] == [
+        "source-product-001",
+        "source-product-002",
+    ]
+    assert bundle.sources[0].source_type == "test_output"
+    assert bundle.sources[0].reliability == "medium"
+    assert bundle.sources[0].date is not None
+    assert bundle.sources[0].date.isoformat() == "2024-02-15"
+    assert bundle.sources[1].source_type == "documentation"
+    assert bundle.sources[1].reliability == "high"
+    assert [excerpt.id for excerpt in bundle.sources[1].excerpts] == [
+        "excerpt-product-003",
+        "excerpt-product-004",
+    ]
 
 
 def test_load_json_evidence_bundle() -> None:

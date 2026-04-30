@@ -8,33 +8,39 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, and verified conservative claim extraction. Evidence matching and the audit engine itself have not been built yet.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a reviewed hand-authored AI research target report, and two fictional draft/evidence fixture families. The audit engine, rule checks, report renderer, and CLI workflow have not been built yet.
 
 Current durable files:
 
 - `README.md`: public-facing stub and project boundary.
 - `docs/validation-matrix-reference.md`: requirement matrix, fixture coverage, and acceptance rules.
+- `docs/target-report-prompt.md`: prompt for hand-writing the AI research memo target report before renderer implementation.
+- `docs/phase-4-evidence-matching-plan.md`: implemented Phase 4 design record for deterministic evidence matching.
+- `examples/reports/ai-research-note.target.md`: reviewed hand-authored target report and future golden-file reference for the AI research memo fixture.
+- `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for deterministic evidence matching.
+- `docs/handoff-prompt.md`: next implementation prompt for the Phase 4A runnable vertical slice.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
+- `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
+- `examples/evidence/product-readme-evidence.yml`: second fictional evidence fixture with dated test-output and limitation sources.
 - `tests/fixtures/`: loader-focused plain text, JSON, empty-evidence, malformed-evidence, and missing-field fixtures.
 - `src/claim_audit_lab/`: module skeleton.
 - `src/claim_audit_lab/models.py`: strict Pydantic contract layer.
 - `src/claim_audit_lab/loader.py`: path-aware draft and evidence bundle loader.
 - `src/claim_audit_lab/claim_extraction.py`: conservative deterministic claim extraction.
+- `src/claim_audit_lab/evidence_matching.py`: deterministic candidate-evidence matching.
 - `tests/test_models.py`: first model validation tests.
 - `tests/test_loader.py`: loader behavior and malformed-input tests.
 - `tests/test_claim_extraction.py`: extraction behavior, classification, stable ID, and dedupe tests.
+- `tests/test_evidence_matching.py`: numeric, product-fixture, ordering, capping, metadata, and batch-matching tests.
 
 Immediate next step:
 
-1. Implement `src/claim_audit_lab/evidence_matching.py`.
-2. Add `tests/test_evidence_matching.py`.
-3. Cover deterministic numeric matching, mismatched values, source/excerpt traceability, bounded candidate scores, and reliability-preserving candidate evidence.
-4. Verify with compile, pytest, ruff, mypy, and coverage.
-5. Update `docs/verification.md` and `log/job-hunt-log.md`.
+1. Build Phase 4A runnable vertical slice before Phase 5 rule hardening.
+2. Keep support labels and rule flags thin or deferred until Phase 5.
+3. Update `docs/verification.md`, `docs/validation-matrix-reference.md`, and `log/job-hunt-log.md` after the slice lands.
 
 ## Project Boundary
 
@@ -93,26 +99,13 @@ Current naming:
 
 - Working project name: `Claim Audit Lab`.
 - Public framing to preserve: "claim stress test" and "evidence-support audit".
-- Do not rename the repo until the first report experience is visible enough to judge the name against the artifact.
+- The reviewed target report did not force a naming change.
+- Keep the public product name as `Claim Audit Lab` for now.
+- Keep the repo/package name as `claim-audit-lab` for now.
 
-## Research Use Integrity
+## Research Use Adjunct
 
-Claim Audit Lab may be used as one measurement tool in the scaffold-evaluation research proposal, but it must not look or behave like a custom scoring machine built to prove that scaffolds work.
-
-Use these guardrails before using it on research outputs:
-
-- Validate the tool on its own fixture set before running it on scaffold-experiment outputs.
-- Include fixtures where scaffolds help, do nothing, and make outputs worse.
-- Include false-caution fixtures where a cautious answer should not be rewarded if it hides a well-supported conclusion.
-- Freeze the tool version, rule policy, config, and validation-matrix status before evaluating experiment outputs.
-- Record any later rule or code changes as bug fixes, validation changes, or exploratory post-hoc analysis.
-- Compare a sample of tool labels against human reviewer judgments and report disagreement patterns.
-- Treat Claim Audit Lab metrics as one measurement channel, not the sole basis for research conclusions.
-- Preserve outputs, configs, evidence bundles, and tool version metadata so the audit can be replayed.
-
-Good research positioning:
-
-> Claim Audit Lab is not designed to prove scaffolds work. It is designed to make claim-support failures visible and countable. Scaffold results should be interpreted through convergence among automated audit metrics, human review, usefulness ratings, false-caution checks, and transparent error analysis.
+Research-measurement rules live in `docs/research-use.md`. They should not block v1 portfolio shipping unless Claim Audit Lab is actually being used as a measurement instrument for a scaffold-evaluation study.
 
 ## Definition Of Done
 
@@ -130,7 +123,7 @@ The first public version is ready when:
 - Normal tests and examples require no API keys, network calls, or live LLM calls.
 - `docs/validation-matrix-reference.md` statuses reflect actual evidence, not intention.
 - `validation/README.md` is linked from the README, master plan, and validation matrix before the post-build qualification pass.
-- Research-use integrity rules explain version freeze, independent validation fixtures, human-review comparison, and no post-hoc tuning.
+- Social card and GitHub-pin assets are complete enough for the public repo.
 
 ## Phase Plan
 
@@ -240,12 +233,41 @@ Exit gate:
 - Every claim type has at least one test fixture before public release.
 - `CAL-REQ-004`, `CAL-REQ-023`, and extraction parts of `CAL-REQ-029` are covered.
 
-### Phase 4: Evidence Matching
+### Phase 3A: Target Report And Fixture Design
 
-Status: current.
+Status: complete.
 
 Primary files:
 
+- `docs/target-report-prompt.md`
+- `examples/reports/ai-research-note.target.md`
+- `examples/drafts/`
+- `examples/evidence/`
+- `docs/research-use.md`
+
+Build:
+
+- Hand-authored aspirational AI research memo Markdown report exists before report rendering is coded.
+- Target report is clearly marked as hand-authored target output, not generated output.
+- Added a second fictional Product README fixture family before evidence matching and rule design are tuned around the AI research memo.
+- Public-facing name/framing reviewed after the target report; keep `Claim Audit Lab` with "claim stress test" / "evidence-support audit" framing for now.
+- Keep research-measurement rules in `docs/research-use.md` rather than the v1 shipping path.
+- Add or confirm the stable ID design note before Phase 4 lands.
+
+Exit gate:
+
+- `examples/reports/ai-research-note.target.md` exists, has been reviewed, and is useful as a UX spec and future golden-file reference.
+- The second fixture family has at least a draft and evidence bundle.
+- The public-facing name/framing decision is recorded or deliberately deferred with a dated reason.
+- Research-use requirements are discoverable in `docs/research-use.md` but are not v1 shipping gates.
+
+### Phase 4: Evidence Matching
+
+Status: complete.
+
+Primary files:
+
+- `docs/phase-4-evidence-matching-plan.md`
 - `src/claim_audit_lab/evidence_matching.py`
 - `tests/test_evidence_matching.py`
 
@@ -256,13 +278,49 @@ Build:
 - Preserve source IDs, excerpt IDs, reliability labels, and scores.
 - Keep matching separate from support assessment.
 
+Delivered:
+
+- `match_evidence(...)` returns sorted, capped `EvidenceCandidate` links for one claim.
+- `match_claims_to_evidence(...)` returns a dictionary keyed by stable claim IDs.
+- Candidate scoring uses deterministic number, date, term, phrase, comparison, and limitation signals.
+- Candidate links preserve source reliability and source date metadata.
+- Numeric mismatch candidates are capped below high-score territory.
+
 Exit gate:
 
 - Matching numeric claims link to matching evidence.
 - Differing values do not appear fully supported.
 - Multiple candidate evidence sources preserve reliability and support differences.
 - Candidate scores remain bounded.
-- `CAL-REQ-005` and `CAL-REQ-024` are covered.
+- `CAL-REQ-005` is covered.
+- The evidence-matching portion of `CAL-REQ-024` is covered, but the row remains planned until rule/report portions are covered.
+
+### Phase 4A: Runnable Vertical Slice
+
+Status: planned before Phase 5.
+
+Primary files:
+
+- `src/claim_audit_lab/auditor.py`
+- `src/claim_audit_lab/report.py`
+- `scripts/run_demo.py` or equivalent reviewer-friendly entry point
+- `tests/test_vertical_slice.py` or focused auditor/report tests
+- `examples/reports/ai-research-note.slice.md`
+
+Build:
+
+- Wire a trivial-but-complete path: extraction -> naive candidate matching -> `audit_document()` -> minimal Markdown report.
+- Keep final rule quality deliberately thin; deeper rule checks still belong in Phase 5.
+- Let a reviewer run one documented local command and see a checked-in fixture produce report output before the CLI is complete.
+- Use conservative fallback labels such as `needs_source`, `partially_supported`, or `not_audit_ready` when final support logic is not ready.
+- Keep the vertical slice deterministic and offline.
+
+Exit gate:
+
+- A fresh local install can run the demo entry point against checked-in fixtures.
+- The report output includes at least a summary, claim register, candidate evidence links, and limitations.
+- The slice does not claim full rule coverage or external truth verification.
+- `audit_document()` exists early, even if later phases harden the internals.
 
 ### Phase 5: Rule Checks And Support Assessment
 
@@ -286,7 +344,7 @@ Exit gate:
 - Risk labels are constrained and tested.
 - `CAL-REQ-006` through `CAL-REQ-011`, `CAL-REQ-021`, `CAL-REQ-022`, and rule parts of `CAL-REQ-029` are covered.
 
-### Phase 6: Audit Orchestration
+### Phase 6: Audit Orchestration Hardening
 
 Status: planned.
 
@@ -297,7 +355,7 @@ Primary files:
 
 Build:
 
-- Implement `audit_document(draft, evidence_bundle, config=None) -> AuditReport`.
+- Harden `audit_document(draft, evidence_bundle, config=None) -> AuditReport` after the Phase 4A vertical slice.
 - Coordinate extraction, matching, rules, summary metrics, limitations, and evidence bundle warnings.
 - Treat high-risk findings as valid audit results, not runtime failures.
 - Empty evidence bundles return useful output rather than crashing.
@@ -309,7 +367,7 @@ Exit gate:
 - High-risk findings do not make the audit fail.
 - `CAL-REQ-012`, `CAL-REQ-016`, and `CAL-REQ-025` are covered.
 
-### Phase 7: Reports
+### Phase 7: Report Rendering Hardening
 
 Status: planned.
 
@@ -321,7 +379,7 @@ Primary files:
 
 Build:
 
-- Markdown report renderer for human review.
+- Full Markdown report renderer for human review, guided by `examples/reports/ai-research-note.target.md`.
 - JSON report export for inspection and tests.
 - Required sections: summary, claim register, evidence links, support labels, rule flags, limitations, and rewrite guidance where applicable.
 - Report language must preserve the boundary between supplied-evidence support and truth verification.
@@ -369,7 +427,7 @@ Primary folders:
 Build at least two complete fictional examples:
 
 - AI research memo: numeric, causal, scope, interpretive.
-- Application answer or product README paragraph: credential, capability, public-link, comparative, prediction, and stale-source behavior.
+- Product README paragraph: capability, scope, comparative, prediction, stale-source, and limitation behavior. The draft/evidence seed for this family belongs in Phase 3A; Phase 9 completes generated report artifacts.
 
 Additional fixture families:
 
@@ -401,7 +459,6 @@ Build:
 - Update matrix statuses from actual evidence.
 - Document known gaps instead of silently ignoring them.
 - Scan README, reports, and examples for overclaiming language.
-- Run the research-use integrity review before the tool is used as a measurement instrument.
 
 Exit gate:
 
@@ -412,7 +469,7 @@ Exit gate:
 - `python -m coverage run --branch -m pytest`
 - `python -m coverage report`
 - `docs/verification.md` records commands and outcomes.
-- Independent validation fixtures, false-caution checks, and human-review calibration plans are documented.
+- Public v1 validation gaps are documented or explicitly deferred.
 
 ### Phase 11: Public Packaging
 
@@ -424,7 +481,8 @@ Primary files:
 - `docs/verification.md`
 - `validation/`
 - `examples/reports/*`
-- optional assets such as screenshots or social card
+- screenshots
+- social card / GitHub-pin assets
 
 Build:
 
@@ -433,6 +491,7 @@ Build:
 - Link the first-class validation package without implying regulated compliance.
 - Regenerate example reports.
 - Run public-data and local-path sweep.
+- Create repo social card / GitHub-pin assets so this matches the existing portfolio bar.
 - Prepare GitHub/LinkedIn positioning.
 - If referenced in the scaffold proposal, describe it as a validated measurement aid rather than proof of the experiment.
 
@@ -442,6 +501,7 @@ Exit gate:
 - No placeholder links, local-only paths, secrets, or private data.
 - Public copy says "supported by supplied evidence", not "fact checked".
 - Qualification language is framed as validation-inspired portfolio control, not GxP, GMP, CSV, or FDA compliance.
+- Social card / GitHub-pin assets are present and match the README positioning.
 - `CAL-REQ-018` is verified.
 
 ### Phase 12: Validation Package Execution
@@ -475,7 +535,7 @@ Exit gate:
 - Every README capability claim maps to a validation matrix row.
 - Every core label and rule family is covered by a test, example report, or explicit deferred status.
 - Example reports include trace links, limitations, and no truth-verification language.
-- The qualification pass is visible in the repo but does not claim regulated compliance.
+- The validation pass is visible in the repo but does not claim regulated compliance.
 - `CAL-REQ-036` is covered.
 
 ### Phase 13: Later Extensions
@@ -515,6 +575,15 @@ Every claim assessment should be traceable:
 - limitation or warning where needed
 
 This is the core portfolio signal. The project should feel auditable.
+
+### Identifier Stability
+
+IDs should be deterministic across reruns for the same input content.
+
+- `Claim.id` is currently generated as `claim-` plus the first 12 characters of a SHA-256 digest over `document.id` and normalized claim text.
+- `RuleFlag.id` should be generated deterministically from the rule code, claim ID, and the specific triggering condition, not from list position.
+- Generated report anchors should use stable IDs so Markdown and JSON reports can be compared across runs.
+- If the ID strategy changes, record it in `docs/verification.md` and treat changed golden outputs as validation drift until reviewed.
 
 ### Label Discipline
 
@@ -597,14 +666,7 @@ Do not describe this as regulated validation. The useful signal is disciplined t
 
 ### Research Evaluation Use
 
-Before Claim Audit Lab is used on any scaffold-evaluation outputs:
-
-- Create or identify the exact tool version used for measurement.
-- Export the audit config and validation-matrix status with the results.
-- Keep experiment prompts, model outputs, evidence bundles, and audit reports separate.
-- Do not tune claim extraction, matching, or rules after seeing outcome differences unless the new run is clearly marked exploratory.
-- Include human review for at least a calibration sample, with disagreements preserved rather than hidden.
-- Report tool limitations and known failure modes alongside aggregate metrics.
+Research-measurement rules live in `docs/research-use.md`. Do not let those requirements expand v1 scope unless the tool is actively being used as a scaffold-evaluation measurement instrument.
 
 ## Update Protocol
 
@@ -619,31 +681,28 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Build deterministic claim extraction.
-2. Add claim-extraction tests for vague content, claim types, stable IDs, and duplicate handling.
-3. Add second fictional fixture family before rule logic gets too tuned to the AI research memo.
-4. Build evidence matching.
-5. Build rule checks.
-6. Build audit orchestration.
-7. Build Markdown and JSON reports.
-8. Build CLI.
-9. Add research-use integrity fixtures and calibration notes.
-10. Run validation sweep.
-11. Replace README stub with public README.
-12. Run the post-build qualification package.
+1. Build Phase 4A runnable vertical slice: extraction -> candidate matching -> `audit_document()` -> minimal Markdown report.
+2. Build rule checks and support assessment.
+3. Harden audit orchestration.
+4. Harden Markdown and JSON report rendering.
+5. Build CLI.
+6. Run validation sweep.
+7. Replace README stub with public README and required social/GitHub-pin assets.
+8. Run the post-build validation package.
 
 ## Open Decisions
 
 | Decision | Current leaning | When to decide |
 | --- | --- | --- |
 | Constrain `source_type` | Resolved: constrained in Phase 1. | Done. |
-| Second fixture family | Application answer or product README paragraph. | Before Phase 5. |
-| `demo` CLI command | Useful for public review, but not essential. | During Phase 8. |
-| Public repo name | Keep `claim-audit-lab` for now. | During Phase 11. |
-| Public product name | Keep `Claim Audit Lab` as the working name; test "claim stress test" as framing, not necessarily the title. | During README/public packaging. |
+| Second fixture family | Resolved: Product README paragraph fixture is seeded. | Done. |
+| Runnable demo entry point | Use `scripts/run_demo.py` or equivalent until the CLI exists. | Phase 4A. |
+| Public repo name | Resolved for now: keep `claim-audit-lab`. | Revisit only if later report or packaging review makes the name misleading. |
+| Public product name | Resolved for now: keep `Claim Audit Lab`; use "claim stress test" and "evidence-support audit" as framing. | Revisit only if public packaging review finds clearer wording. |
 | Support score | Potentially useful if presented as evidence-support, not percent truth; requires explicit deterministic scoring rules and tests. | After labels, rules, and reports are implemented. |
-| Research measurement freeze | Freeze tool version, config, rules, and validation status before evaluating scaffold-experiment outputs. | Before any research-output audit run. |
-| Human calibration sample | Compare tool labels to human reviewer judgments before relying on aggregate experiment metrics. | During validation sweep or research harness planning. |
+| Research measurement freeze | Tracked in `docs/research-use.md`, not a v1 shipping gate. | Before any research-output audit run. |
+| Human calibration sample | Tracked in `docs/research-use.md`, not a v1 shipping gate. | Before relying on aggregate research metrics. |
 | Post-build validation package | Use a lightweight IQ/OQ/PQ-inspired package as visible repo evidence after the first CLI-first version is made. | After public packaging, before relying on the tool as a research measurement channel. |
+| Social card / GitHub pin | Required public packaging checklist item. | Phase 11. |
 | Streamlit UI | Defer. | After v1 CLI is solid. |
 | Source lookup mode | Potentially useful as source-assisted audit, but keep it separate from the deterministic supplied-evidence audit path. | After v1 reports and CLI are strong. |

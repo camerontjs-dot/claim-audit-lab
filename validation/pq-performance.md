@@ -22,8 +22,8 @@ PQ covers complete runs through the public workflow:
 | Family | Claim types | Minimum evidence | Status |
 | --- | --- | --- | --- |
 | AI research memo | numeric, causal, scope, interpretive | `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, generated Markdown and JSON reports | planned |
-| Application answer or product README paragraph | credential, capability, public-link, comparative, prediction, stale-source behavior | fictional or sanitized draft/evidence/report family | planned |
-| Neutral/adverse scaffold case | no-change, worse-output, false-caution behavior | research-use fixture family | planned |
+| Product README paragraph | capability, scope, comparative, prediction, stale-source behavior | `examples/drafts/product-readme-note.md`, `examples/evidence/product-readme-evidence.yml`, generated Markdown and JSON reports | draft/evidence seeded; reports planned |
+| Neutral/adverse scaffold case | no-change, worse-output, false-caution behavior | research-use fixture family; see `../docs/research-use.md` | deferred outside v1 |
 
 ## Protocol
 

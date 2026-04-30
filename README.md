@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, and verified conservative claim extraction. Evidence matching and the audit engine have not been built yet.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a hand-authored AI research target report, and two fictional draft/evidence fixture families. The audit engine, rule checks, report renderer, and CLI workflow have not been built yet.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -39,7 +39,7 @@ The first version will not require live LLM calls, network access, private appli
 
 ## Research use
 
-Claim Audit Lab can be used as one measurement channel in research on scaffolded AI workflows, but it should not be treated as proof that a scaffold works. Research-use runs should freeze the tool version and config, validate against independent fixtures, compare a calibration sample against human review, and report disagreements or limitations.
+Claim Audit Lab can eventually be used as one measurement channel in research on scaffolded AI workflows, but that is an adjunct use case rather than the v1 shipping path. Research-use guardrails live in `docs/research-use.md`.
 
 ## Validation package
 
@@ -64,4 +64,4 @@ python -m coverage report
 
 ## Next implementation step
 
-Build `src/claim_audit_lab/evidence_matching.py`, then add matching tests for numeric overlap, mismatched values, source/excerpt traceability, bounded candidate scores, and reliability-preserving candidate evidence.
+Build the Phase 4A runnable vertical slice: extraction, candidate matching, minimal audit orchestration, and a minimal Markdown report.

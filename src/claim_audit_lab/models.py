@@ -125,6 +125,8 @@ class EvidenceCandidate(StrictBaseModel):
     excerpt_id: NonBlankStr
     score: float = Field(ge=0.0, le=1.0)
     rationale: NonBlankStr | None = None
+    source_reliability: SourceReliability = "unknown"
+    source_date: Date | None = None
 
 
 class RuleFlag(StrictBaseModel):

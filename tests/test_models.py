@@ -131,6 +131,21 @@ def test_evidence_candidate_score_is_bounded(score: float) -> None:
         EvidenceCandidate(source_id="source-001", excerpt_id="excerpt-001", score=score)
 
 
+def test_evidence_candidate_preserves_optional_source_metadata() -> None:
+    """Candidate links can carry source quality metadata for later rule/report layers."""
+    candidate = EvidenceCandidate(
+        source_id="source-001",
+        excerpt_id="excerpt-001",
+        score=0.72,
+        source_reliability="medium",
+        source_date="2026-04-01",
+    )
+
+    assert candidate.source_reliability == "medium"
+    assert candidate.source_date is not None
+    assert candidate.source_date.isoformat() == "2026-04-01"
+
+
 def test_audit_report_serializes_to_json_shaped_dict() -> None:
     """AuditReport serializes to a JSON-shaped dictionary."""
     flag = RuleFlag(

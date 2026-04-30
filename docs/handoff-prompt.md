@@ -1,11 +1,11 @@
 # Claim Audit Lab Handoff Prompt
 
-Use this prompt to start the next implementation slice in a fresh chat.
+Use this prompt to start Phase 4A in a fresh chat.
 
 ```text
 We are in `/Users/gammaquantum/My Drive/projects/job-hunt`.
 
-I want to continue Claim Audit Lab with Phase 4: deterministic evidence matching.
+I want to implement Claim Audit Lab Phase 4A: a runnable vertical slice.
 
 Before changing files, read these in order:
 
@@ -17,55 +17,50 @@ Before changing files, read these in order:
 6. `portfolio/live-asset/claim-audit-lab/README.md`
 7. `portfolio/live-asset/claim-audit-lab/docs/master-plan.md`
 8. `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
-9. `/Users/gammaquantum/My Drive/projects/coding-references/type-hints.md`
-10. `/Users/gammaquantum/My Drive/projects/coding-references/test-structure.md`
-11. `/Users/gammaquantum/My Drive/projects/coding-references/docstring-template.md`
+9. `portfolio/live-asset/claim-audit-lab/docs/phase-4-evidence-matching-plan.md`
+10. `portfolio/live-asset/claim-audit-lab/examples/reports/ai-research-note.target.md`
+11. `portfolio/live-asset/claim-audit-lab/docs/research-use.md`
+12. `/Users/gammaquantum/My Drive/projects/coding-references/type-hints.md`
+13. `/Users/gammaquantum/My Drive/projects/coding-references/test-structure.md`
+14. `/Users/gammaquantum/My Drive/projects/coding-references/docstring-template.md`
 
 Project boundary:
 
 - Claim Audit Lab audits whether draft claims are supported by supplied evidence.
-- It does not verify external truth.
-- Do not call it a fact checker.
+- Phase 4A should make the tool runnable for one checked-in example without pretending the final rule engine is complete.
+- Do not call the tool a fact checker.
 - Do not use private application materials in fixtures.
-- Do not add live LLM calls in v1.
-- Keep the first version CLI-first and deterministic.
-- If the tool is used for scaffold-evaluation research, treat it as one measurement channel and freeze version/config/rules before auditing experiment outputs.
+- Do not add live LLM calls or network calls in v1.
+- Keep the slice deterministic and inspectable.
+- Keep research-use measurement rules in `docs/research-use.md`; do not let them expand the v1 shipping path.
 
 Current workspace:
 
 - Live asset folder: `portfolio/live-asset/claim-audit-lab/`
-- `models.py` is complete and verified.
+- `models.py` is complete and verified for the current contracts.
 - `loader.py` is complete and verified for Markdown/plain text drafts plus YAML/JSON evidence bundles.
 - `claim_extraction.py` is complete and verified for conservative deterministic claim extraction.
-- Current tests: `tests/test_models.py`, `tests/test_loader.py`, and `tests/test_claim_extraction.py`, 38 passing.
-- First fixture draft: `examples/drafts/ai-research-note.md`
-- First fixture evidence bundle: `examples/evidence/ai-research-evidence.yml`
-- Loader fixtures: `tests/fixtures/`
-- Research-use integrity notes now require independent validation fixtures, human-review calibration, run metadata, and no post-outcome rule tuning.
+- `evidence_matching.py` is complete and verified for deterministic candidate evidence links.
+- Current tests: `tests/test_models.py`, `tests/test_loader.py`, `tests/test_claim_extraction.py`, and `tests/test_evidence_matching.py`, 53 passing as of the last implementation phase.
+- First fixture family: `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, and `examples/reports/ai-research-note.target.md`.
+- Second fixture family: `examples/drafts/product-readme-note.md` and `examples/evidence/product-readme-evidence.yml`.
 
-Next implementation task:
+Implementation task:
 
-Plan and implement `portfolio/live-asset/claim-audit-lab/src/claim_audit_lab/evidence_matching.py` with focused tests in `tests/test_evidence_matching.py`.
+1. Build a thin runnable path: load draft/evidence -> extract claims -> match candidate evidence -> return a minimal typed audit result.
+2. Implement or seed `audit_document(...)` in `src/claim_audit_lab/auditor.py`.
+3. Implement a minimal Markdown renderer in `src/claim_audit_lab/report.py` that exposes summary, claim register, candidate evidence links, and limitations.
+4. Add a reviewer-friendly demo entry point, likely `scripts/run_demo.py` or an equivalent documented command.
+5. Add focused tests for the vertical slice, using checked-in fictional fixtures.
+6. Keep final support labels conservative and clearly provisional until Phase 5 rule checks land.
 
-Keep `evidence_matching.py` focused on deterministic candidate-evidence matching only. Do not implement final support labels, rule flags, audit orchestration, report rendering, or CLI behavior inside it.
+Required behavior:
 
-Expected behavior:
-
-- Accept extracted `Claim` objects and an `EvidenceBundle`.
-- Return bounded `EvidenceCandidate` objects that preserve source IDs, excerpt IDs, scores, and short rationales.
-- Match numeric claims to excerpts with the same numbers.
-- Avoid making mismatched numeric values appear fully supported.
-- Use transparent deterministic scoring based on numbers, dates, key terms, quoted phrases, and text overlap.
-- Preserve multiple candidate sources when their scores differ, so later rule/report layers can see reliability and support differences.
-
-First tests to add:
-
-- Numeric claim with the same value as an evidence excerpt receives a candidate evidence link.
-- Numeric claim with a different value does not receive a high candidate score.
-- Candidate scores are bounded from `0.0` to `1.0`.
-- Candidate evidence preserves source ID and excerpt ID.
-- Multiple evidence candidates are sorted predictably and capped by `AuditConfig.max_candidate_evidence`.
-- Empty evidence bundles return no candidates without crashing.
+- A reviewer can run one local command against a checked-in fixture and see a Markdown report.
+- The report includes extracted claims, candidate evidence source/excerpt IDs, scores, rationales, and limitations.
+- The slice does not claim external truth verification or full rule coverage.
+- High-risk or weak claims are represented as audit findings, not runtime failures.
+- Empty or missing evidence behavior can stay minimal if covered later, but the code should not make future handling harder.
 
 After implementing, run:
 
@@ -84,7 +79,7 @@ When done, update:
 - `portfolio/live-asset/claim-audit-lab/docs/master-plan.md`
 - `portfolio/live-asset/claim-audit-lab/docs/verification.md`
 - `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
-- `portfolio/live-asset/claim-audit-lab/README.md` if behavior changed
+- `portfolio/live-asset/claim-audit-lab/README.md` if implemented status changed
 - `log/job-hunt-log.md`
 
 Keep the final response concise: changed files, checks run, and the next best step.

@@ -48,6 +48,32 @@ def test_extracts_expected_claims_from_ai_research_note() -> None:
     }
 
 
+def test_extracts_expected_claims_from_product_readme_note() -> None:
+    """The second fictional fixture covers product-copy claim patterns."""
+    draft = load_draft(EXAMPLES_ROOT / "drafts" / "product-readme-note.md")
+
+    claims = extract_claims(draft)
+
+    expected_claim_types = {
+        (
+            "Meridian Notes can generate traceable audit summaries from uploaded research notes."
+        ): "capability",
+        "The review screen is faster than a manual citation pass.": "comparative",
+        (
+            "Meridian Notes will always prevent teams from shipping unsupported release notes."
+        ): "prediction",
+        "Meridian Notes works across every regulated documentation workflow.": "scope",
+    }
+    claim_types_by_text = {claim.text: claim.claim_type for claim in claims}
+    assert claim_types_by_text == expected_claim_types
+    assert {claim.location for claim in claims} == {
+        "paragraph:1:sentence:1",
+        "paragraph:2:sentence:1",
+        "paragraph:3:sentence:1",
+        "paragraph:4:sentence:1",
+    }
+
+
 def test_claim_ids_are_stable_and_not_order_dependent() -> None:
     """Stable IDs are generated from document ID and normalized claim text."""
     first_document = _document(
