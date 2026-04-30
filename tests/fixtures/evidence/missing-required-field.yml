@@ -1,0 +1,7 @@
+sources:
+  - id: source-001
+    source_type: report
+    reliability: medium
+    excerpts:
+      - id: excerpt-001
+        text: "This source is missing its required title."

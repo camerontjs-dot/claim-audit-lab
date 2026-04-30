@@ -1,0 +1,19 @@
+{
+  "sources": [
+    {
+      "id": "source-json-001",
+      "title": "Fictional JSON provenance checklist evaluation",
+      "url": "https://example.com/fictional-json-provenance-checklist-evaluation",
+      "source_type": "report",
+      "date": "2026-04-01",
+      "reliability": "medium",
+      "excerpts": [
+        {
+          "id": "excerpt-json-001",
+          "text": "The intervention reduced unsupported claims in the test set from 18 to 11.",
+          "notes": "Fictional JSON demo evidence."
+        }
+      ]
+    }
+  ]
+}
