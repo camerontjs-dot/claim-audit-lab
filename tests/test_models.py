@@ -139,11 +139,13 @@ def test_evidence_candidate_preserves_optional_source_metadata() -> None:
         score=0.72,
         source_reliability="medium",
         source_date="2026-04-01",
+        source_url="https://example.com/source",
     )
 
     assert candidate.source_reliability == "medium"
     assert candidate.source_date is not None
     assert candidate.source_date.isoformat() == "2026-04-01"
+    assert candidate.source_url == "https://example.com/source"
 
 
 def test_audit_report_serializes_to_json_shaped_dict() -> None:

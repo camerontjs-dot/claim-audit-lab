@@ -53,6 +53,9 @@ def test_numeric_match_links_workflow_count_to_matching_excerpt() -> None:
     assert candidates[0].source_reliability == "medium"
     assert candidates[0].source_date is not None
     assert candidates[0].source_date.isoformat() == "2026-04-01"
+    assert (
+        candidates[0].source_url == "https://example.com/fictional-provenance-checklist-evaluation"
+    )
     assert candidates[0].rationale is not None
     assert "matched numbers: 52" in candidates[0].rationale
 

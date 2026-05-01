@@ -118,6 +118,7 @@ def match_evidence(
                     rationale=_build_rationale(signals, source.reliability),
                     source_reliability=source.reliability,
                     source_date=source.date,
+                    source_url=source.url,
                 )
             )
 

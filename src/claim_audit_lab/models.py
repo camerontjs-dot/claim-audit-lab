@@ -105,6 +105,7 @@ class AuditConfig(StrictBaseModel):
 
     strictness: Strictness = "standard"
     freshness_days: int = Field(default=365, gt=0)
+    reference_date: Date | None = None
     min_overlap_score: float = Field(default=0.2, ge=0.0, le=1.0)
     max_candidate_evidence: int = Field(default=3, ge=1)
 
@@ -127,6 +128,7 @@ class EvidenceCandidate(StrictBaseModel):
     rationale: NonBlankStr | None = None
     source_reliability: SourceReliability = "unknown"
     source_date: Date | None = None
+    source_url: NonBlankStr | None = None
 
 
 class RuleFlag(StrictBaseModel):

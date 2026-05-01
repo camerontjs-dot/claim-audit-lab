@@ -1,6 +1,100 @@
 # Verification notes
 
-Last updated: 2026-04-30
+Last updated: 2026-05-01
+
+## 2026-05-01: Phase 5 tie-off and Phase 6 plan
+
+Rechecked the current Phase 5 work and added a dedicated Phase 6 audit orchestration plan. No validation matrix statuses were advanced in this planning pass because Phase 6 implementation has not started.
+
+Files updated:
+
+- `README.md`
+- `docs/master-plan.md`
+- `docs/phase-6-audit-orchestration-plan.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+```
+
+Results:
+
+- Virtualenv compile check passed.
+- `pytest`: 74 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed; 16 files already formatted.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 74 passed; total coverage 95%.
+- Phase 5 remains complete and ready to hand off.
+- Phase 6 is now planned in `docs/phase-6-audit-orchestration-plan.md`.
+- Next step is implementing Phase 6 audit orchestration hardening with `tests/test_auditor.py`.
+
+## 2026-05-01: Phase 5 rule checks and support assessment
+
+Implemented deterministic rule checks and lightly integrated them into the audit slice. The Phase 5 slice now returns rule-assessed support labels, risks, rule flags, summary counts, and regenerated Markdown/JSON outputs while keeping full report rendering and CLI behavior planned for later phases.
+
+Files updated:
+
+- `src/claim_audit_lab/models.py`
+- `src/claim_audit_lab/evidence_matching.py`
+- `src/claim_audit_lab/rules.py`
+- `src/claim_audit_lab/auditor.py`
+- `src/claim_audit_lab/report.py`
+- `tests/test_models.py`
+- `tests/test_evidence_matching.py`
+- `tests/test_rules.py`
+- `tests/test_vertical_slice.py`
+- `examples/reports/ai-research-note.slice.md`
+- `examples/reports/ai-research-note.slice.json`
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python scripts/run_demo.py --update-fixture
+.venv/bin/python -m ruff format src/claim_audit_lab/models.py src/claim_audit_lab/evidence_matching.py src/claim_audit_lab/rules.py src/claim_audit_lab/auditor.py src/claim_audit_lab/report.py tests/test_models.py tests/test_evidence_matching.py tests/test_rules.py tests/test_vertical_slice.py
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+```
+
+Results:
+
+- Demo fixture refresh wrote `examples/reports/ai-research-note.slice.md` and `.json`.
+- Ruff format updated 4 Python files.
+- Virtualenv compile check passed.
+- `pytest`: 74 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed; 16 files already formatted.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 74 passed; total coverage 95%.
+- `AuditConfig.reference_date` makes freshness checks deterministic and opt-in.
+- `EvidenceCandidate.source_url` preserves source URL metadata for public-link rules.
+- `assess_claim_support(...)` covers numeric mismatch, causal overreach, missing comparison evidence, credential/source support, public-link URL support, overconfident wording, low-reliability-only support, stale sources, date/deadline support, future certainty, and scope overreach.
+- Empty evidence bundles preserve the existing behavior: all extracted claims are marked `needs_source` with an evidence-bundle warning.
+- AI research slice labels now match the target report: `overstated`, `supported`, `partially_supported`, and `overstated`.
+- `CAL-REQ-006` through `CAL-REQ-011`, `CAL-REQ-021`, and `CAL-REQ-022` are verified by Phase 5 tests.
+- `CAL-REQ-024`, `CAL-REQ-029`, and `CAL-REQ-039` remain planned for later rule/report/docs/anchor coverage.
+- Next step is Phase 6 audit orchestration hardening.
 
 ## 2026-04-30: Phase 4A runnable vertical slice
 

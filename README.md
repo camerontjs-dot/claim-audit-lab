@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, a hand-authored AI research target report, a generated provisional slice report, and two fictional draft/evidence fixture families. Rule checks, support assessment hardening, full report rendering, and the CLI workflow have not been built yet.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified initial deterministic rule checks and support assessment, a hand-authored AI research target report, a generated Phase 5 slice report, and two fictional draft/evidence fixture families. Full audit orchestration hardening, full report rendering, and the CLI workflow have not been built yet.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -16,11 +16,13 @@ Validation package: `validation/README.md`
 
 Master plan: `docs/master-plan.md`
 
+Phase 6 plan: `docs/phase-6-audit-orchestration-plan.md`
+
 Implementation handoff prompt: `docs/handoff-prompt.md`
 
 ## What it will do
 
-Claim Audit Lab will load a draft document and an evidence bundle, extract candidate claims, map claims to supplied evidence, apply rule checks, and produce Markdown and JSON reports.
+Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies initial deterministic rule checks, and produces minimal Markdown and JSON slice reports.
 
 The intended support labels are:
 
@@ -62,9 +64,9 @@ python -m coverage run --branch -m pytest
 python -m coverage report
 ```
 
-## Phase 4A demo
+## Phase 5 demo
 
-After local setup, run the provisional vertical-slice demo:
+After local setup, run the rule-assessed vertical-slice demo:
 
 ```bash
 python scripts/run_demo.py
@@ -76,8 +78,8 @@ The default command writes Markdown and JSON outputs under `build/reports/` so r
 python scripts/run_demo.py --update-fixture
 ```
 
-The Phase 4A report is intentionally provisional. Candidate evidence scores are visible for inspection, but final support labels and rule checks are deferred to Phase 5.
+The Phase 5 report is still a minimal slice. Candidate evidence scores are visible for inspection, deterministic rule checks produce initial support labels and flags, and full report rendering remains planned.
 
 ## Next implementation step
 
-Build Phase 5 rule checks and support assessment without turning candidate scores into truth or support labels by themselves.
+Implement the Phase 6 audit orchestration plan in `docs/phase-6-audit-orchestration-plan.md` without turning candidate scores into support labels by themselves.

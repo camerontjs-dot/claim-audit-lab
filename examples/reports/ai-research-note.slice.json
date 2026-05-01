@@ -2,13 +2,13 @@
   "document_id": "ai-research-note",
   "summary": {
     "total_claims": 4,
-    "supported_claims": 0,
-    "partially_supported_claims": 0,
+    "supported_claims": 1,
+    "partially_supported_claims": 1,
     "unsupported_claims": 0,
-    "overstated_claims": 0,
-    "needs_source_claims": 2,
-    "not_audit_ready_claims": 2,
-    "high_risk_claims": 0
+    "overstated_claims": 2,
+    "needs_source_claims": 0,
+    "not_audit_ready_claims": 0,
+    "high_risk_claims": 2
   },
   "claims": [
     {
@@ -18,14 +18,28 @@
         "claim_type": "scope",
         "location": "paragraph:1:sentence:1"
       },
-      "support_label": "needs_source",
-      "risk_label": "medium",
+      "support_label": "overstated",
+      "risk_label": "high",
       "candidate_evidence": [],
-      "rule_flags": [],
-      "explanation": "No candidate evidence was found in the supplied bundle.",
+      "rule_flags": [
+        {
+          "id": "flag-7c7eb17d9fb6",
+          "claim_id": "claim-a1968235acf3",
+          "code": "overconfident_wording",
+          "message": "The claim wording is stronger than the supplied evidence supports.",
+          "risk": "high"
+        },
+        {
+          "id": "flag-d53001ae0727",
+          "claim_id": "claim-a1968235acf3",
+          "code": "scope_overreach",
+          "message": "The claim generalizes beyond the supplied evidence.",
+          "risk": "high"
+        }
+      ],
+      "explanation": "The claim is stronger than the supplied evidence can support.",
       "limitations": [
-        "Rule checks are deferred to Phase 5.",
-        "No candidate evidence link is available for this claim."
+        "Initial Phase 5 rules are deterministic and use supplied evidence only."
       ]
     },
     {
@@ -35,8 +49,8 @@
         "claim_type": "numeric",
         "location": "paragraph:2:sentence:1"
       },
-      "support_label": "not_audit_ready",
-      "risk_label": "medium",
+      "support_label": "supported",
+      "risk_label": "low",
       "candidate_evidence": [
         {
           "source_id": "source-001",
@@ -44,7 +58,8 @@
           "score": 1.0,
           "rationale": "matched numbers: 52; overlapping terms: includ, output, set, test, workflow; source reliability: medium",
           "source_reliability": "medium",
-          "source_date": "2026-04-01"
+          "source_date": "2026-04-01",
+          "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
         },
         {
           "source_id": "source-001",
@@ -52,15 +67,13 @@
           "score": 0.2022,
           "rationale": "claim numbers not found in excerpt: 52; overlapping terms: set, test; source reliability: medium",
           "source_reliability": "medium",
-          "source_date": "2026-04-01"
+          "source_date": "2026-04-01",
+          "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
         }
       ],
       "rule_flags": [],
-      "explanation": "Candidate evidence was found, but Phase 4A does not evaluate whether it supports the claim.",
-      "limitations": [
-        "Rule checks are deferred to Phase 5.",
-        "Candidate scores are ranking signals only."
-      ]
+      "explanation": "The supplied evidence directly supports the claim.",
+      "limitations": []
     },
     {
       "claim": {
@@ -69,7 +82,7 @@
         "claim_type": "causal",
         "location": "paragraph:2:sentence:2"
       },
-      "support_label": "not_audit_ready",
+      "support_label": "partially_supported",
       "risk_label": "medium",
       "candidate_evidence": [
         {
@@ -78,14 +91,22 @@
           "score": 0.7242,
           "rationale": "matched numbers: 11, 18; overlapping terms: claim, unsupport; source reliability: medium",
           "source_reliability": "medium",
-          "source_date": "2026-04-01"
+          "source_date": "2026-04-01",
+          "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
         }
       ],
-      "rule_flags": [],
-      "explanation": "Candidate evidence was found, but Phase 4A does not evaluate whether it supports the claim.",
+      "rule_flags": [
+        {
+          "id": "flag-dd046361f9a9",
+          "claim_id": "claim-1e17db4b2188",
+          "code": "causal_overreach",
+          "message": "The evidence supports a change, but not the causal strength of the wording.",
+          "risk": "medium"
+        }
+      ],
+      "explanation": "The supplied evidence supports part of the claim, but rule checks found limits.",
       "limitations": [
-        "Rule checks are deferred to Phase 5.",
-        "Candidate scores are ranking signals only."
+        "Initial Phase 5 rules are deterministic and use supplied evidence only."
       ]
     },
     {
@@ -95,21 +116,71 @@
         "claim_type": "prediction",
         "location": "paragraph:3:sentence:1"
       },
-      "support_label": "needs_source",
-      "risk_label": "medium",
+      "support_label": "overstated",
+      "risk_label": "high",
       "candidate_evidence": [],
-      "rule_flags": [],
-      "explanation": "No candidate evidence was found in the supplied bundle.",
+      "rule_flags": [
+        {
+          "id": "flag-147843e7c663",
+          "claim_id": "claim-637e39806c48",
+          "code": "future_certainty",
+          "message": "The future-facing certainty claim needs a narrower caveat.",
+          "risk": "high"
+        },
+        {
+          "id": "flag-a7e73cf48708",
+          "claim_id": "claim-637e39806c48",
+          "code": "overconfident_wording",
+          "message": "The claim wording is stronger than the supplied evidence supports.",
+          "risk": "high"
+        }
+      ],
+      "explanation": "The claim is stronger than the supplied evidence can support.",
       "limitations": [
-        "Rule checks are deferred to Phase 5.",
-        "No candidate evidence link is available for this claim."
+        "Initial Phase 5 rules are deterministic and use supplied evidence only."
       ]
     }
   ],
-  "rule_flags": [],
+  "rule_flags": [
+    {
+      "id": "flag-7c7eb17d9fb6",
+      "claim_id": "claim-a1968235acf3",
+      "code": "overconfident_wording",
+      "message": "The claim wording is stronger than the supplied evidence supports.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-d53001ae0727",
+      "claim_id": "claim-a1968235acf3",
+      "code": "scope_overreach",
+      "message": "The claim generalizes beyond the supplied evidence.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-dd046361f9a9",
+      "claim_id": "claim-1e17db4b2188",
+      "code": "causal_overreach",
+      "message": "The evidence supports a change, but not the causal strength of the wording.",
+      "risk": "medium"
+    },
+    {
+      "id": "flag-147843e7c663",
+      "claim_id": "claim-637e39806c48",
+      "code": "future_certainty",
+      "message": "The future-facing certainty claim needs a narrower caveat.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-a7e73cf48708",
+      "claim_id": "claim-637e39806c48",
+      "code": "overconfident_wording",
+      "message": "The claim wording is stronger than the supplied evidence supports.",
+      "risk": "high"
+    }
+  ],
   "evidence_bundle_warnings": [],
   "limitations": [
-    "Generated by Phase 4A vertical slice; rule checks are deferred and support labels are provisional.",
+    "Generated by Phase 5 rule-assessment slice; initial deterministic rule checks are enabled, while full report rendering and CLI workflow remain planned.",
     "Candidate scores rank deterministic text and number overlap only; they are not support scores.",
     "This report only audits support from the supplied evidence bundle; it does not assess the outside world."
   ]
