@@ -8,7 +8,7 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified initial deterministic rule checks and support assessment, verified audit orchestration hardening, a reviewed hand-authored AI research target report, a generated Phase 5 slice report, and two fictional draft/evidence fixture families. Full report rendering and the CLI workflow have not been built yet.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a reviewed hand-authored AI research target report, a generated human-review AI research report, and two fictional draft/evidence fixture families. The CLI workflow has not been built yet.
 
 Current durable files:
 
@@ -21,7 +21,7 @@ Current durable files:
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for Phase 7 report rendering hardening.
+- `docs/handoff-prompt.md`: next implementation prompt for Phase 8 CLI.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -33,24 +33,25 @@ Current durable files:
 - `src/claim_audit_lab/claim_extraction.py`: conservative deterministic claim extraction.
 - `src/claim_audit_lab/evidence_matching.py`: deterministic candidate-evidence matching.
 - `src/claim_audit_lab/auditor.py`: Phase 6-hardened audit orchestration returning typed `AuditReport` values with rule-assessed labels.
-- `src/claim_audit_lab/report.py`: minimal Phase 5 Markdown and JSON report rendering.
+- `src/claim_audit_lab/report.py`: Phase 7 human-review Markdown and typed JSON report rendering.
 - `src/claim_audit_lab/rules.py`: deterministic rule checks and support assessment.
-- `scripts/run_demo.py`: reviewer-friendly Phase 5 demo entry point.
-- `examples/reports/ai-research-note.slice.md`: generated Phase 5 slice report.
-- `examples/reports/ai-research-note.slice.json`: generated Phase 5 typed slice report data.
+- `scripts/run_demo.py`: reviewer-friendly report demo entry point.
+- `examples/reports/ai-research-note.slice.md`: generated Phase 7 human-review report.
+- `examples/reports/ai-research-note.slice.json`: generated Phase 7 typed report data.
 - `tests/test_models.py`: first model validation tests.
 - `tests/test_loader.py`: loader behavior and malformed-input tests.
 - `tests/test_claim_extraction.py`: extraction behavior, classification, stable ID, and dedupe tests.
 - `tests/test_evidence_matching.py`: numeric, product-fixture, ordering, capping, metadata, and batch-matching tests.
 - `tests/test_rules.py`: deterministic rule checks, label mapping, freshness, and rule-ID tests.
 - `tests/test_auditor.py`: Phase 6 auditor contract, trace-link, summary, deterministic-output, and edge-case tests.
-- `tests/test_vertical_slice.py`: Phase 5 renderer, demo, JSON round-trip, and language-gate tests.
+- `tests/test_report.py`: Phase 7 report sections, label, evidence-link, JSON, fixture-sync, and language-gate tests.
+- `tests/test_vertical_slice.py`: reviewer demo, output path, JSON round-trip, and language-gate tests.
 
 Immediate next step:
 
-1. Harden Markdown and JSON report rendering.
-2. Keep rule checks separate from deterministic candidate matching.
-3. Preserve the discipline that candidate scores are ranking signals, not support labels.
+1. Build the CLI workflow.
+2. Keep high-risk audit findings as successful audit results, not process failures.
+3. Preserve local-only behavior: no network calls, API keys, or live LLM calls in normal tests or demo runs.
 
 ## Project Boundary
 
@@ -425,7 +426,7 @@ Tie-off verification:
 
 ### Phase 7: Report Rendering Hardening
 
-Status: planned.
+Status: complete.
 
 Primary files:
 
@@ -440,12 +441,25 @@ Build:
 - Required sections: summary, claim register, evidence links, support labels, rule flags, limitations, and rewrite guidance where applicable.
 - Report language must preserve the boundary between supplied-evidence support and truth verification.
 
+Delivered:
+
+- `render_markdown_report(...)` now emits a human-review report with metadata, executive summary, limitations, claim register, claim details, evidence links, and suggested rewrite guidance.
+- `render_json_report(...)` remains tied directly to the typed `AuditReport` contract.
+- `tests/test_report.py` verifies required report sections, labels, evidence links, rule flags, rewrite guidance, JSON round-trip, fixture synchronization, empty/warning reports, optional candidate fields, and language gates.
+- `examples/reports/ai-research-note.slice.md` and `.json` were regenerated from the Phase 7 renderer.
+- Candidate scores remain ranking signals and are not promoted into support labels or support scores.
+
 Exit gate:
 
 - Markdown reports contain required sections.
 - JSON output validates against `AuditReport`.
 - Reports contain no `None`, `nan`, empty placeholder sections, or forbidden capability language.
-- `CAL-REQ-001`, `CAL-REQ-013`, `CAL-REQ-014`, and report portions of `CAL-REQ-029` are covered.
+- `CAL-REQ-001`, `CAL-REQ-013`, `CAL-REQ-014`, and `CAL-REQ-029` are verified.
+
+Tie-off verification:
+
+- Rechecked on 2026-05-01 with compileall, pytest, ruff format, ruff check, ruff format check, mypy, and coverage.
+- Current result: 90 pytest tests passed and total coverage is 96%.
 
 ### Phase 8: CLI
 
@@ -737,11 +751,10 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Harden Markdown and JSON report rendering.
-2. Build CLI.
-3. Run validation sweep.
-4. Replace README stub with public README and required social/GitHub-pin assets.
-5. Run the post-build validation package.
+1. Build CLI.
+2. Run validation sweep.
+3. Replace README stub with public README and required social/GitHub-pin assets.
+4. Run the post-build validation package.
 
 ## Open Decisions
 

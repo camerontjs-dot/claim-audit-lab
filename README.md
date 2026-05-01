@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified initial deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, a generated Phase 5 slice report, and two fictional draft/evidence fixture families. Full report rendering and the CLI workflow have not been built yet.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, a generated Phase 7 human-review report for the AI research fixture, and two fictional draft/evidence fixture families. The CLI workflow has not been built yet.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -22,20 +22,26 @@ Implementation handoff prompt: `docs/handoff-prompt.md`
 
 ## What it will do
 
-Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies initial deterministic rule checks, returns a structured `AuditReport`, and produces minimal Markdown and JSON slice reports.
+Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies deterministic rule checks, returns a structured `AuditReport`, and produces human-review Markdown plus typed JSON reports.
 
-The intended support labels are:
+Current support labels:
 
-- `supported`
-- `partially_supported`
-- `unsupported`
-- `overstated`
-- `needs_source`
-- `not_audit_ready`
+- `supported`: supplied evidence directly supports the claim.
+- `partially_supported`: supplied evidence supports part of the claim, but limits remain.
+- `unsupported`: supplied evidence does not support the claim.
+- `overstated`: the claim is stronger than the supplied evidence can support.
+- `needs_source`: the claim needs a supplied source before it can be assessed.
+- `not_audit_ready`: the text is not structured enough for a useful claim assessment.
+
+Current risk labels:
+
+- `low`: no rule issue found for the current supplied evidence.
+- `medium`: support is incomplete, source quality is limited, or a source is missing.
+- `high`: the claim carries high-risk overstatement, mismatch, or certainty concerns.
 
 ## What it will not do
 
-This project will not verify whether the outside world is true. It will only check whether a draft's claims are supported by the evidence supplied to the tool.
+This project will not decide whether a claim matches the outside world. It only checks whether a draft's claims are supported by the evidence supplied to the tool.
 
 The first version will not require live LLM calls, network access, private application materials, or external fact checking.
 
@@ -64,9 +70,9 @@ python -m coverage run --branch -m pytest
 python -m coverage report
 ```
 
-## Phase 5 demo
+## Phase 7 demo
 
-After local setup, run the rule-assessed vertical-slice demo:
+After local setup, run the rule-assessed report demo:
 
 ```bash
 python scripts/run_demo.py
@@ -78,8 +84,8 @@ The default command writes Markdown and JSON outputs under `build/reports/` so r
 python scripts/run_demo.py --update-fixture
 ```
 
-The Phase 5 report is still a minimal slice. Candidate evidence scores are visible for inspection, deterministic rule checks produce initial support labels and flags, and full report rendering remains planned.
+The report includes metadata, executive summary, limitations, claim register, claim details, evidence links, rule flags, and suggested rewrite guidance. Candidate evidence scores are visible for inspection as ranking signals only, not support labels.
 
 ## Next implementation step
 
-Harden Markdown and JSON report rendering without turning candidate scores into support labels by themselves.
+Build the CLI workflow without turning audit findings into process failures and without requiring network access, API keys, or live LLM calls.

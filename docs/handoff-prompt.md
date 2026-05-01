@@ -1,11 +1,11 @@
 # Claim Audit Lab Handoff Prompt
 
-Use this prompt to start Phase 7 in a fresh chat.
+Use this prompt to start Phase 8 in a fresh chat.
 
 ```text
 We are in `/Users/gammaquantum/My Drive/projects/job-hunt`.
 
-I want to implement Claim Audit Lab Phase 7: report rendering hardening.
+I want to implement Claim Audit Lab Phase 8: CLI.
 
 Before changing files, read these in order:
 
@@ -16,8 +16,8 @@ Before changing files, read these in order:
 5. `portfolio/planning/claim-audit-lab-control-checklist.md`
 6. `portfolio/live-asset/claim-audit-lab/README.md`
 7. `portfolio/live-asset/claim-audit-lab/docs/master-plan.md`
-8. `portfolio/live-asset/claim-audit-lab/docs/phase-6-audit-orchestration-plan.md`
-9. `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
+8. `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
+9. `portfolio/live-asset/claim-audit-lab/docs/phase-6-audit-orchestration-plan.md`
 10. `portfolio/live-asset/claim-audit-lab/docs/phase-4-evidence-matching-plan.md`
 11. `portfolio/live-asset/claim-audit-lab/examples/reports/ai-research-note.target.md`
 12. `portfolio/live-asset/claim-audit-lab/examples/reports/ai-research-note.slice.md`
@@ -43,38 +43,36 @@ Current workspace:
 - `loader.py` is complete and verified for Markdown/plain text drafts plus YAML/JSON evidence bundles.
 - `claim_extraction.py` is complete and verified for conservative deterministic claim extraction.
 - `evidence_matching.py` is complete and verified for deterministic candidate evidence links.
-- Phase 4A is complete: the repo has a runnable vertical slice with checked-in Markdown/JSON output.
-- Phase 5 is complete: `rules.py` performs initial deterministic support assessment, `audit_document(...)` returns rule-assessed `AuditReport` values, `report.py` renders minimal Phase 5 Markdown/JSON, and `scripts/run_demo.py` produces demo outputs.
-- Phase 6 is complete: `audit_document(...)` has hardened orchestration helpers, auditor-contract tests, exact report-level rule-flag flattening, summary consistency checks, empty-evidence/no-claim/high-risk behavior, deterministic structured-output coverage, and neutral Phase 6 pipeline limitation wording.
-- Phase 6 tie-off was rechecked on 2026-05-01 with compileall, pytest, ruff, mypy, and coverage passing.
-- Current tests: model, loader, extraction, evidence matching, rules, auditor, and vertical-slice tests, 82 passing with 95% total coverage as of the Phase 6 tie-off.
-- First fixture family: `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, `examples/reports/ai-research-note.target.md`, and `examples/reports/ai-research-note.slice.md`.
+- `rules.py` is complete and verified for initial deterministic support assessment.
+- `audit_document(...)` is hardened through Phase 6 and returns typed `AuditReport` values with summary counts, flattened rule flags, warnings, and limitations.
+- Phase 7 is complete: `report.py` renders human-review Markdown and typed JSON; `tests/test_report.py` covers required sections, labels, evidence links, rule flags, rewrite guidance, JSON validation, fixture sync, and language gates.
+- Current tests: model, loader, extraction, evidence matching, rules, auditor, report, and vertical-slice tests, 90 passing with 96% total coverage as of the Phase 7 tie-off.
+- First fixture family: `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, `examples/reports/ai-research-note.target.md`, `examples/reports/ai-research-note.slice.md`, and `examples/reports/ai-research-note.slice.json`.
 - Second fixture family: `examples/drafts/product-readme-note.md` and `examples/evidence/product-readme-evidence.yml`.
 
 Implementation task:
 
-1. Follow the Phase 7 section of `docs/master-plan.md` and use `examples/reports/ai-research-note.target.md` as the report UX reference.
-2. Harden `src/claim_audit_lab/report.py` for human-review Markdown and typed JSON output without changing the audit model contract unless a real renderer gap requires it.
-3. Add `tests/test_report.py` for required sections, support labels, evidence links, rule flags, summary metrics, limitations, rewrite guidance where available, JSON validation, and report-quality language gates.
-4. Keep `audit_document(...)` orchestration and rule taxonomy stable unless a renderer test exposes a narrow bug.
+1. Follow the Phase 8 section of `docs/master-plan.md`.
+2. Implement the `claim-audit` CLI entry point in `src/claim_audit_lab/cli.py` using the existing loader, auditor, and report renderer.
+3. Add `tests/test_cli.py` for help output, successful Markdown/JSON report writes, malformed evidence failures, and high-risk audit findings that still exit successfully.
+4. Keep `audit_document(...)`, rule taxonomy, report rendering, source discovery, and research-use paired metrics stable unless a CLI test exposes a narrow integration bug.
 5. Preserve supplied-evidence boundary language and candidate-score discipline.
-6. Do not turn CLI behavior, source discovery, second fixture report generation, support scoring, or research-use paired metrics into Phase 7 work.
+6. Do not generate the second fixture report family unless the Phase 8 section is explicitly expanded.
 
 Required behavior:
 
-- Markdown reports contain summary, claim register, evidence links, support labels, rule flags, limitations, and rewrite guidance where applicable.
-- JSON output validates against `AuditReport`.
-- Reports contain no `None`, `nan`, empty placeholder sections, or forbidden capability language.
-- Candidate scores are displayed as ranking signals only, not support scores.
-- Report language says "supported by supplied evidence" rather than truth-verification language.
-- The AI research fixture remains the first renderer-quality target; broader example-family generation stays for later phases.
+- `claim-audit --help` works after editable install.
+- A normal fixture run writes Markdown and JSON reports to requested paths.
+- Malformed input fails clearly and exits nonzero.
+- Completed audits with high-risk findings exit successfully.
+- Normal CLI behavior requires no network access, API keys, or live LLM calls.
 
 After implementing, run:
 
 ```bash
 .venv/bin/python -m compileall -q src tests
 .venv/bin/python -m pytest
-.venv/bin/python -m ruff format src/claim_audit_lab/report.py tests/test_report.py tests/test_vertical_slice.py
+.venv/bin/python -m ruff format src/claim_audit_lab/cli.py tests/test_cli.py
 .venv/bin/python -m ruff check .
 .venv/bin/python -m ruff format --check .
 .venv/bin/python -m mypy src
@@ -87,7 +85,7 @@ When done, update:
 - `portfolio/live-asset/claim-audit-lab/docs/master-plan.md`
 - `portfolio/live-asset/claim-audit-lab/docs/verification.md`
 - `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
-- `portfolio/live-asset/claim-audit-lab/README.md` if implemented status changed
+- `portfolio/live-asset/claim-audit-lab/README.md` if implemented behavior or public instructions changed
 - `log/job-hunt-log.md`
 
 Keep the final response concise: changed files, checks run, and the next best step.

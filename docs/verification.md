@@ -2,6 +2,55 @@
 
 Last updated: 2026-05-01
 
+## 2026-05-01: Phase 7 report rendering hardening
+
+Implemented the Phase 7 report renderer without adding CLI behavior, source discovery, support scores, second-family report generation, or research-use paired metrics. The Markdown renderer now produces a human-review report with metadata, executive summary, limitations, claim register, claim details, evidence links, rule flags, and suggested rewrite guidance. JSON output remains a typed `AuditReport` export.
+
+Files updated:
+
+- `src/claim_audit_lab/auditor.py`
+- `src/claim_audit_lab/report.py`
+- `src/claim_audit_lab/rules.py`
+- `tests/test_report.py`
+- `tests/test_vertical_slice.py`
+- `examples/reports/ai-research-note.slice.md`
+- `examples/reports/ai-research-note.slice.json`
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python scripts/run_demo.py --update-fixture
+.venv/bin/python -m pytest tests/test_report.py tests/test_vertical_slice.py tests/test_auditor.py -q
+.venv/bin/python -m ruff format src/claim_audit_lab/auditor.py src/claim_audit_lab/report.py src/claim_audit_lab/rules.py tests/test_report.py tests/test_vertical_slice.py tests/test_auditor.py
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+```
+
+Results:
+
+- Focused report/vertical-slice/auditor tests: 23 passed.
+- Virtualenv compile check passed.
+- `pytest`: 90 passed.
+- Targeted Ruff format reformatted `src/claim_audit_lab/report.py` and `tests/test_report.py`; final format check passed.
+- `ruff check .`: passed.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 90 passed; total coverage 96%.
+- `report.py` reports 98% coverage and `tests/test_report.py` reports 100% coverage.
+- `CAL-REQ-001`, `CAL-REQ-013`, `CAL-REQ-014`, and `CAL-REQ-029` are verified.
+- Next step is Phase 8 CLI.
+
 ## 2026-05-01: Phase 6 audit orchestration hardening
 
 Implemented the Phase 6 auditor contract without expanding report rendering, CLI behavior, rule taxonomy, source discovery, or research-use metrics. The audit coordinator now has explicit private helpers for assessments, flattened rule flags, summary counts, evidence-bundle warnings, and report limitations.

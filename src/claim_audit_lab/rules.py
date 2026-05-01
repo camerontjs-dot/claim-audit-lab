@@ -645,7 +645,7 @@ def _explanation(
 def _limitations(flags: list[RuleFlag]) -> list[str]:
     if not flags:
         return []
-    return ["Initial Phase 5 rules are deterministic and use supplied evidence only."]
+    return ["Deterministic rule checks use supplied evidence only."]
 
 
 __all__ = ["assess_claim_support"]
