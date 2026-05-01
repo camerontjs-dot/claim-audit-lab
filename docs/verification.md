@@ -2,6 +2,56 @@
 
 Last updated: 2026-05-01
 
+## 2026-05-01: Phase 9 example families
+
+Completed the Phase 9 example-family gate without changing audit semantics, adding support scores, adding source discovery, adding network calls, adding live LLM calls, or adding extra fixture families. The Product README fixture now has checked-in Markdown and JSON reports generated through `scripts/run_demo.py`, and public examples have persistent pytest coverage for renderer sync, report-level behavior, forbidden capability language, and private-data or secret markers.
+
+Files updated:
+
+- `scripts/run_demo.py`
+- `tests/test_report.py`
+- `tests/test_vertical_slice.py`
+- `examples/reports/README.md`
+- `examples/reports/product-readme-note.slice.md`
+- `examples/reports/product-readme-note.slice.json`
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python scripts/run_demo.py --draft examples/drafts/product-readme-note.md --evidence examples/evidence/product-readme-evidence.yml --update-fixture
+.venv/bin/python -m pytest tests/test_report.py tests/test_vertical_slice.py -q
+.venv/bin/python -m ruff format scripts/run_demo.py tests/test_report.py tests/test_vertical_slice.py
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+```
+
+Results:
+
+- Product README fixture generation wrote `examples/reports/product-readme-note.slice.md` and `.json`.
+- Product README generated report summary: 4 claims, 2 supported, 2 overstated, and 2 high-risk findings.
+- Focused report/vertical-slice regression tests: 16 passed.
+- Virtualenv compile check passed.
+- `pytest`: 108 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 108 passed; total coverage 96%.
+- `CAL-REQ-017` and `CAL-REQ-028` are verified.
+- Manual review plus pytest scan found no private application materials, personal names, local-only paths, tokens, API-key markers, or common secret markers in `examples/drafts/`, `examples/evidence/`, or `examples/reports/`.
+- Next step is Phase 10 validation sweep.
+
 ## 2026-05-01: Phase 8 CLI workflow
 
 Implemented the Phase 8 `claim-audit` CLI without changing audit semantics, adding source discovery, adding support scores, generating second-family reports, or adding research-use paired metrics. The CLI now exposes `audit` and `demo` subcommands, writes Markdown and optional JSON reports, treats high-risk findings as completed audit results, and routes loader failures to clear nonzero input errors.

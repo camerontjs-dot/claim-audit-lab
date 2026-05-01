@@ -1,29 +1,30 @@
 # Claim Audit Lab Handoff Prompt
 
-Use this prompt to start Phase 9 in a fresh chat.
+Use this prompt to start Phase 10 in a fresh chat.
 
 ```text
 We are in `/Users/gammaquantum/My Drive/projects/job-hunt`.
 
-I want to implement Claim Audit Lab Phase 9: example families.
+I want to implement Claim Audit Lab Phase 10: validation sweep.
 
 Before changing files, read these in order:
 
 1. `AGENTS.md`
 2. `log/job-hunt-log.md`
-3. `portfolio/AGENTS.md`
-4. `portfolio/planning/claim-audit-lab-plan.md`
-5. `portfolio/planning/claim-audit-lab-control-checklist.md`
-6. `portfolio/live-asset/claim-audit-lab/README.md`
-7. `portfolio/live-asset/claim-audit-lab/docs/master-plan.md`
-8. `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
-9. `portfolio/live-asset/claim-audit-lab/docs/phase-8-cli-plan.md`
-10. `portfolio/live-asset/claim-audit-lab/examples/reports/ai-research-note.target.md`
+3. `pipeline.md`
+4. `portfolio/AGENTS.md`
+5. `portfolio/planning/claim-audit-lab-plan.md`
+6. `portfolio/planning/claim-audit-lab-control-checklist.md`
+7. `portfolio/live-asset/claim-audit-lab/README.md`
+8. `portfolio/live-asset/claim-audit-lab/docs/master-plan.md`
+9. `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
+10. `portfolio/live-asset/claim-audit-lab/docs/verification.md`
 11. `portfolio/live-asset/claim-audit-lab/examples/reports/ai-research-note.slice.md`
-12. `portfolio/live-asset/claim-audit-lab/docs/research-use.md`
-13. `/Users/gammaquantum/My Drive/projects/coding-references/type-hints.md`
-14. `/Users/gammaquantum/My Drive/projects/coding-references/test-structure.md`
-15. `/Users/gammaquantum/My Drive/projects/coding-references/docstring-template.md`
+12. `portfolio/live-asset/claim-audit-lab/examples/reports/product-readme-note.slice.md`
+13. `portfolio/live-asset/claim-audit-lab/docs/research-use.md`
+14. `/Users/gammaquantum/My Drive/projects/coding-references/type-hints.md`
+15. `/Users/gammaquantum/My Drive/projects/coding-references/test-structure.md`
+16. `/Users/gammaquantum/My Drive/projects/coding-references/docstring-template.md`
 
 Project boundary:
 
@@ -31,8 +32,8 @@ Project boundary:
 - Do not call the tool a fact checker.
 - Do not use private application materials in fixtures.
 - Do not add live LLM calls or network calls in v1.
-- Keep deterministic candidate matching separate from rule checks.
 - Candidate scores are ranking signals, not final support labels.
+- Do not add support-score or assessment-confidence scoring in Phase 10.
 - Keep research-use measurement rules in `docs/research-use.md`; do not let them expand the v1 shipping path.
 
 Current workspace:
@@ -44,47 +45,42 @@ Current workspace:
 - `evidence_matching.py` is complete and verified for deterministic candidate evidence links.
 - `rules.py` is complete and verified for deterministic support assessment.
 - `audit_document(...)` is hardened through Phase 6 and returns typed `AuditReport` values with summary counts, flattened rule flags, warnings, and limitations.
-- Phase 7 is complete: `report.py` renders human-review Markdown and typed JSON; `tests/test_report.py` covers required sections, labels, evidence links, rule flags, rewrite guidance, JSON validation, fixture sync, and language gates.
-- Phase 8 is complete: `claim-audit audit` and `claim-audit demo` work after editable install; `tests/test_cli.py` covers help, output paths, malformed input, high-risk exit success, demo behavior, checked-in fixture protection, and language gates.
-- Current tests: model, loader, extraction, evidence matching, rules, auditor, report, vertical-slice, and CLI tests; 104 passing with 96% total coverage as of the Phase 8 tie-off.
-- First fixture family: `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, `examples/reports/ai-research-note.target.md`, `examples/reports/ai-research-note.slice.md`, and `examples/reports/ai-research-note.slice.json`.
-- Second fixture family seed: `examples/drafts/product-readme-note.md` and `examples/evidence/product-readme-evidence.yml`.
+- Phase 7 is complete: `report.py` renders human-review Markdown and typed JSON.
+- Phase 8 is complete: `claim-audit audit` and `claim-audit demo` work after editable install.
+- Phase 9 is complete: AI research and Product README both have draft, evidence, Markdown report, and JSON report artifacts; `tests/test_report.py` locks both generated families to current renderer output and scans public examples for private-data or secret markers.
+- Current tests: model, loader, extraction, evidence matching, rules, auditor, report, vertical-slice, and CLI tests; 108 passing with 96% total coverage as of the Phase 9 tie-off.
 
 Implementation task:
 
-1. Follow the Phase 9 section of `docs/master-plan.md`.
-2. Generate Markdown and JSON report artifacts for the Product README fixture family.
-3. Add or update focused tests so the second-family reports are generated, round-trip through `AuditReport`, and preserve supplied-evidence boundary language.
-4. Review public example data for fictional/sanitized content, no tokens, no private application material, and no local-only paths.
-5. Update `docs/validation-matrix-reference.md` only from actual evidence. Phase 9 should target `CAL-REQ-017` and `CAL-REQ-028`; do not advance unrelated rows unless new evidence exists.
-6. Keep audit semantics stable unless the second fixture exposes a narrow bug.
+1. Follow the Phase 10 section of `docs/master-plan.md`.
+2. Run the full validation sweep: compileall, pytest, ruff check, ruff format check, mypy, coverage run, and coverage report.
+3. Inspect README, generated reports, example drafts/evidence, and validation docs for overclaiming language, stale phase wording, local-only paths, placeholder links, private data, or hidden network/API-key assumptions.
+4. Update `docs/validation-matrix-reference.md` only from actual evidence. Phase 10 should document current public v1 gaps instead of marking planned rows verified by intention.
+5. Keep audit semantics stable unless the sweep exposes a narrow bug.
 
 Required behavior:
 
-- At least two complete fictional example families have draft, evidence, Markdown report, and JSON report artifacts.
-- Generated reports require no network access, API keys, or live LLM calls.
+- Normal tests and demo/example runs require no network access, API keys, or live LLM calls.
+- Markdown and JSON reports remain stable and inspectable.
+- Public copy uses supplied-evidence support language, not truth-verification language.
 - Candidate scores remain ranking signals, not support scores.
-- No support-score or assessment-confidence score is added in Phase 9.
 
 After implementing, run:
 
-```bash
 .venv/bin/python -m compileall -q src tests
 .venv/bin/python -m pytest
-.venv/bin/python -m ruff format <changed python files>
 .venv/bin/python -m ruff check .
 .venv/bin/python -m ruff format --check .
 .venv/bin/python -m mypy src
 .venv/bin/python -m coverage run --branch -m pytest
 .venv/bin/python -m coverage report
-```
 
 When done, update:
 
 - `portfolio/live-asset/claim-audit-lab/docs/master-plan.md`
 - `portfolio/live-asset/claim-audit-lab/docs/verification.md`
 - `portfolio/live-asset/claim-audit-lab/docs/validation-matrix-reference.md`
-- `portfolio/live-asset/claim-audit-lab/README.md` if public example instructions changed
+- `portfolio/live-asset/claim-audit-lab/README.md` if public instructions or status changed
 - `log/job-hunt-log.md`
 - `pipeline.md`
 

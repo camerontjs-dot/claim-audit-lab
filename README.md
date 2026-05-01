@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, a generated human-review report for the AI research fixture, two fictional draft/evidence fixture families, and a working `claim-audit` CLI.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, generated human-review and JSON reports for two fictional fixture families, and a working `claim-audit` CLI.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -107,4 +107,4 @@ The report includes metadata, executive summary, limitations, claim register, cl
 
 ## Next Implementation Step
 
-Complete Phase 9 example families by generating Markdown and JSON outputs for the Product README fixture and checking the public examples for fictional, sanitized data.
+Complete Phase 10 validation sweep by re-running the full verification chain, checking public docs and examples for overclaiming language, and documenting any remaining public v1 validation gaps.

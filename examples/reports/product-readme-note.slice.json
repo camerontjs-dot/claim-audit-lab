@@ -1,0 +1,179 @@
+{
+  "document_id": "product-readme-note",
+  "summary": {
+    "total_claims": 4,
+    "supported_claims": 2,
+    "partially_supported_claims": 0,
+    "unsupported_claims": 0,
+    "overstated_claims": 2,
+    "needs_source_claims": 0,
+    "not_audit_ready_claims": 0,
+    "high_risk_claims": 2
+  },
+  "claims": [
+    {
+      "claim": {
+        "id": "claim-f64ffc66f51b",
+        "text": "Meridian Notes can generate traceable audit summaries from uploaded research notes.",
+        "claim_type": "capability",
+        "location": "paragraph:1:sentence:1"
+      },
+      "support_label": "supported",
+      "risk_label": "low",
+      "candidate_evidence": [
+        {
+          "source_id": "source-product-001",
+          "excerpt_id": "excerpt-product-001",
+          "score": 0.3804,
+          "rationale": "overlapping terms: audit, note, research, summary, traceable; source reliability: medium",
+          "source_reliability": "medium",
+          "source_date": "2024-02-15"
+        }
+      ],
+      "rule_flags": [],
+      "explanation": "The supplied evidence directly supports the claim.",
+      "limitations": []
+    },
+    {
+      "claim": {
+        "id": "claim-d3288742f8f5",
+        "text": "The review screen is faster than a manual citation pass.",
+        "claim_type": "comparative",
+        "location": "paragraph:2:sentence:1"
+      },
+      "support_label": "supported",
+      "risk_label": "low",
+      "candidate_evidence": [
+        {
+          "source_id": "source-product-001",
+          "excerpt_id": "excerpt-product-002",
+          "score": 0.4433,
+          "rationale": "overlapping terms: citation, manual, pass, review, screen; source reliability: medium",
+          "source_reliability": "medium",
+          "source_date": "2024-02-15"
+        }
+      ],
+      "rule_flags": [],
+      "explanation": "The supplied evidence directly supports the claim.",
+      "limitations": []
+    },
+    {
+      "claim": {
+        "id": "claim-877123aa1c8d",
+        "text": "Meridian Notes will always prevent teams from shipping unsupported release notes.",
+        "claim_type": "prediction",
+        "location": "paragraph:3:sentence:1"
+      },
+      "support_label": "overstated",
+      "risk_label": "high",
+      "candidate_evidence": [
+        {
+          "source_id": "source-product-002",
+          "excerpt_id": "excerpt-product-004",
+          "score": 0.3895,
+          "rationale": "overlapping terms: note, unsupport; limitation wording overlaps with broad or future-facing claim; source reliability: high",
+          "source_reliability": "high",
+          "source_date": "2024-03-01"
+        },
+        {
+          "source_id": "source-product-002",
+          "excerpt_id": "excerpt-product-003",
+          "score": 0.3078,
+          "rationale": "overlapping terms: note, release; limitation wording overlaps with broad or future-facing claim; source reliability: high",
+          "source_reliability": "high",
+          "source_date": "2024-03-01"
+        }
+      ],
+      "rule_flags": [
+        {
+          "id": "flag-d84f803fe741",
+          "claim_id": "claim-877123aa1c8d",
+          "code": "future_certainty",
+          "message": "The future-facing certainty claim needs a narrower caveat.",
+          "risk": "high"
+        },
+        {
+          "id": "flag-41a1919df0c5",
+          "claim_id": "claim-877123aa1c8d",
+          "code": "overconfident_wording",
+          "message": "The claim wording is stronger than the supplied evidence supports.",
+          "risk": "high"
+        }
+      ],
+      "explanation": "The claim is stronger than the supplied evidence can support.",
+      "limitations": [
+        "Deterministic rule checks use supplied evidence only."
+      ]
+    },
+    {
+      "claim": {
+        "id": "claim-cfd0455c03f8",
+        "text": "Meridian Notes works across every regulated documentation workflow.",
+        "claim_type": "scope",
+        "location": "paragraph:4:sentence:1"
+      },
+      "support_label": "overstated",
+      "risk_label": "high",
+      "candidate_evidence": [
+        {
+          "source_id": "source-product-002",
+          "excerpt_id": "excerpt-product-003",
+          "score": 0.5785,
+          "rationale": "overlapping terms: documentation, note, regulat, workflow; limitation wording overlaps with broad or future-facing claim; source reliability: high",
+          "source_reliability": "high",
+          "source_date": "2024-03-01"
+        },
+        {
+          "source_id": "source-product-002",
+          "excerpt_id": "excerpt-product-004",
+          "score": 0.2296,
+          "rationale": "overlapping terms: note; limitation wording overlaps with broad or future-facing claim; source reliability: high",
+          "source_reliability": "high",
+          "source_date": "2024-03-01"
+        }
+      ],
+      "rule_flags": [
+        {
+          "id": "flag-079d1a4fd60a",
+          "claim_id": "claim-cfd0455c03f8",
+          "code": "scope_overreach",
+          "message": "The claim generalizes beyond the supplied evidence.",
+          "risk": "high"
+        }
+      ],
+      "explanation": "The claim is stronger than the supplied evidence can support.",
+      "limitations": [
+        "Deterministic rule checks use supplied evidence only."
+      ]
+    }
+  ],
+  "rule_flags": [
+    {
+      "id": "flag-d84f803fe741",
+      "claim_id": "claim-877123aa1c8d",
+      "code": "future_certainty",
+      "message": "The future-facing certainty claim needs a narrower caveat.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-41a1919df0c5",
+      "claim_id": "claim-877123aa1c8d",
+      "code": "overconfident_wording",
+      "message": "The claim wording is stronger than the supplied evidence supports.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-079d1a4fd60a",
+      "claim_id": "claim-cfd0455c03f8",
+      "code": "scope_overreach",
+      "message": "The claim generalizes beyond the supplied evidence.",
+      "risk": "high"
+    }
+  ],
+  "evidence_bundle_warnings": [],
+  "limitations": [
+    "Audit orchestration has been hardened through Phase 6; deterministic rule checks and Phase 7 report rendering are enabled; Phase 8 CLI workflow is available.",
+    "Candidate scores rank deterministic text and number overlap only; they are not support scores.",
+    "This report only audits support from the supplied evidence bundle; it does not assess the outside world."
+  ]
+}

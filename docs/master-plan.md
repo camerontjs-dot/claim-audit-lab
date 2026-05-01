@@ -8,7 +8,7 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, a generated human-review AI research report, and two fictional draft/evidence fixture families. The next implementation slice is completing generated report artifacts for the second fixture family.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, and two complete fictional draft/evidence/report fixture families. The next implementation slice is the Phase 10 validation sweep.
 
 Current durable files:
 
@@ -21,7 +21,7 @@ Current durable files:
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for Phase 9 example families.
+- `docs/handoff-prompt.md`: next implementation prompt for Phase 10 validation sweep.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -37,8 +37,10 @@ Current durable files:
 - `src/claim_audit_lab/rules.py`: deterministic rule checks and support assessment.
 - `src/claim_audit_lab/cli.py`: Phase 8 `claim-audit` CLI with `audit` and `demo` subcommands.
 - `scripts/run_demo.py`: reviewer-friendly report demo entry point.
-- `examples/reports/ai-research-note.slice.md`: generated Phase 7 human-review report.
-- `examples/reports/ai-research-note.slice.json`: generated Phase 7 typed report data.
+- `examples/reports/ai-research-note.slice.md`: generated human-review report for the AI research fixture.
+- `examples/reports/ai-research-note.slice.json`: generated typed report data for the AI research fixture.
+- `examples/reports/product-readme-note.slice.md`: generated human-review report for the Product README fixture.
+- `examples/reports/product-readme-note.slice.json`: generated typed report data for the Product README fixture.
 - `tests/test_models.py`: first model validation tests.
 - `tests/test_loader.py`: loader behavior and malformed-input tests.
 - `tests/test_claim_extraction.py`: extraction behavior, classification, stable ID, and dedupe tests.
@@ -51,9 +53,9 @@ Current durable files:
 
 Immediate next step:
 
-1. Complete Phase 9 example families.
-2. Generate Markdown and JSON reports for the Product README fixture without changing audit semantics.
-3. Preserve local-only behavior: no network calls, API keys, or live LLM calls in normal tests or demo runs.
+1. Complete Phase 10 validation sweep.
+2. Re-run the full verification chain and scan README, reports, and examples for overclaiming language.
+3. Document any public v1 validation gaps before public packaging.
 
 ## Project Boundary
 
@@ -500,7 +502,7 @@ Tie-off verification:
 
 ### Phase 9: Example Families
 
-Status: planned.
+Status: complete.
 
 Primary folders:
 
@@ -513,7 +515,7 @@ Build at least two complete fictional examples:
 - AI research memo: numeric, causal, scope, interpretive.
 - Product README paragraph: capability, scope, comparative, prediction, stale-source, and limitation behavior. The draft/evidence seed for this family belongs in Phase 3A; Phase 9 completes generated report artifacts.
 
-Additional fixture families:
+Additional fixture families deferred unless Phase 10 or Phase 12 needs them:
 
 - malformed evidence
 - empty evidence bundle
@@ -521,11 +523,24 @@ Additional fixture families:
 - date or deadline note
 - duplicate claim draft
 
+Delivered:
+
+- `scripts/run_demo.py` now derives default checked-in report stems from the draft filename, so `--update-fixture` can refresh either `ai-research-note.slice.*` or `product-readme-note.slice.*` without overwriting the wrong family.
+- `examples/reports/product-readme-note.slice.md` and `examples/reports/product-readme-note.slice.json` were generated from the Product README draft/evidence fixture.
+- `tests/test_report.py` locks both generated report families to the current renderer output, validates Product README output behavior at the report level, and scans public example drafts, evidence, and reports for private-data or secret markers.
+- `tests/test_vertical_slice.py` gates forbidden capability language across both generated slice reports.
+- `examples/reports/README.md` now reflects current generated report artifacts.
+
 Exit gate:
 
 - At least two full example runs have Markdown and JSON outputs.
 - Example data review confirms no private application materials, tokens, or local-only paths.
 - `CAL-REQ-017` and `CAL-REQ-028` are covered.
+
+Tie-off verification:
+
+- Rechecked on 2026-05-01 with Product README fixture generation, compileall, pytest, ruff format, ruff check, ruff format check, mypy, and coverage.
+- Current result: 108 pytest tests passed and total coverage is 96%.
 
 ### Phase 10: Validation Sweep
 
@@ -765,10 +780,9 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Build CLI.
-2. Run validation sweep.
-3. Replace README stub with public README and required social/GitHub-pin assets.
-4. Run the post-build validation package.
+1. Run validation sweep.
+2. Replace README stub with public README and required social/GitHub-pin assets.
+3. Run the post-build validation package.
 
 ## Open Decisions
 

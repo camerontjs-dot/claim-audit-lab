@@ -14,15 +14,15 @@ DEFAULT_DRAFT = PROJECT_ROOT / "examples" / "drafts" / "ai-research-note.md"
 DEFAULT_EVIDENCE = PROJECT_ROOT / "examples" / "evidence" / "ai-research-evidence.yml"
 BUILD_REPORT_DIR = PROJECT_ROOT / "build" / "reports"
 FIXTURE_REPORT_DIR = PROJECT_ROOT / "examples" / "reports"
-SLICE_STEM = "ai-research-note.slice"
 
 
 def main() -> None:
     """Run the demo entry point."""
     args = _parse_args()
     report_dir = FIXTURE_REPORT_DIR if args.update_fixture else BUILD_REPORT_DIR
-    markdown_out = args.out or report_dir / f"{SLICE_STEM}.md"
-    json_out = args.json_out or report_dir / f"{SLICE_STEM}.json"
+    slice_stem = f"{args.draft.stem}.slice"
+    markdown_out = args.out or report_dir / f"{slice_stem}.md"
+    json_out = args.json_out or report_dir / f"{slice_stem}.json"
 
     draft = load_draft(args.draft)
     evidence_bundle = load_evidence_bundle(args.evidence)
