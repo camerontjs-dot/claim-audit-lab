@@ -406,7 +406,9 @@ Exit gate:
 - No-claim drafts produce valid zero-claim reports.
 - Report-level rule flags exactly flatten claim-level rule flags.
 - Summary counts are derived from `ClaimAssessment` values and tested for consistency.
-- `CAL-REQ-012`, `CAL-REQ-016`, and `CAL-REQ-025` are covered.
+- `CAL-REQ-025` is covered if trace-link and limitation tests pass.
+- `CAL-REQ-012` remains planned unless report coverage exists too, or the matrix row is split to isolate the auditor-level empty-evidence behavior.
+- `CAL-REQ-016` remains planned for CLI coverage unless the row is split to isolate auditor-level high-risk behavior.
 
 ### Phase 7: Report Rendering Hardening
 
