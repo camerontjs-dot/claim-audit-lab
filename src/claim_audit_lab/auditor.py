@@ -19,7 +19,7 @@ from claim_audit_lab.rules import assess_claim_support
 
 _PIPELINE_STATUS_LIMITATION = (
     "Audit orchestration has been hardened through Phase 6; deterministic rule checks "
-    "and Phase 7 report rendering are enabled, while CLI workflow remains planned."
+    "and Phase 7 report rendering are enabled; Phase 8 CLI workflow is available."
 )
 _CANDIDATE_SCORE_LIMITATION = (
     "Candidate scores rank deterministic text and number overlap only; they are not support scores."

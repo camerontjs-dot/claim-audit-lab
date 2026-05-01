@@ -180,7 +180,7 @@
   ],
   "evidence_bundle_warnings": [],
   "limitations": [
-    "Audit orchestration has been hardened through Phase 6; deterministic rule checks and Phase 7 report rendering are enabled, while CLI workflow remains planned.",
+    "Audit orchestration has been hardened through Phase 6; deterministic rule checks and Phase 7 report rendering are enabled; Phase 8 CLI workflow is available.",
     "Candidate scores rank deterministic text and number overlap only; they are not support scores.",
     "This report only audits support from the supplied evidence bundle; it does not assess the outside world."
   ]

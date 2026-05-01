@@ -8,7 +8,7 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a reviewed hand-authored AI research target report, a generated human-review AI research report, and two fictional draft/evidence fixture families. The CLI workflow has not been built yet.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, a generated human-review AI research report, and two fictional draft/evidence fixture families. The next implementation slice is completing generated report artifacts for the second fixture family.
 
 Current durable files:
 
@@ -21,7 +21,7 @@ Current durable files:
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for Phase 8 CLI.
+- `docs/handoff-prompt.md`: next implementation prompt for Phase 9 example families.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -35,6 +35,7 @@ Current durable files:
 - `src/claim_audit_lab/auditor.py`: Phase 6-hardened audit orchestration returning typed `AuditReport` values with rule-assessed labels.
 - `src/claim_audit_lab/report.py`: Phase 7 human-review Markdown and typed JSON report rendering.
 - `src/claim_audit_lab/rules.py`: deterministic rule checks and support assessment.
+- `src/claim_audit_lab/cli.py`: Phase 8 `claim-audit` CLI with `audit` and `demo` subcommands.
 - `scripts/run_demo.py`: reviewer-friendly report demo entry point.
 - `examples/reports/ai-research-note.slice.md`: generated Phase 7 human-review report.
 - `examples/reports/ai-research-note.slice.json`: generated Phase 7 typed report data.
@@ -45,12 +46,13 @@ Current durable files:
 - `tests/test_rules.py`: deterministic rule checks, label mapping, freshness, and rule-ID tests.
 - `tests/test_auditor.py`: Phase 6 auditor contract, trace-link, summary, deterministic-output, and edge-case tests.
 - `tests/test_report.py`: Phase 7 report sections, label, evidence-link, JSON, fixture-sync, and language-gate tests.
+- `tests/test_cli.py`: Phase 8 CLI help, output, malformed-input, high-risk-success, demo, and language-gate tests.
 - `tests/test_vertical_slice.py`: reviewer demo, output path, JSON round-trip, and language-gate tests.
 
 Immediate next step:
 
-1. Build the CLI workflow.
-2. Keep high-risk audit findings as successful audit results, not process failures.
+1. Complete Phase 9 example families.
+2. Generate Markdown and JSON reports for the Product README fixture without changing audit semantics.
 3. Preserve local-only behavior: no network calls, API keys, or live LLM calls in normal tests or demo runs.
 
 ## Project Boundary
@@ -463,7 +465,7 @@ Tie-off verification:
 
 ### Phase 8: CLI
 
-Status: planned.
+Status: complete.
 
 Primary files:
 
@@ -477,12 +479,24 @@ Build:
 - `claim-audit demo` if useful for public reviewers.
 - Clear success and failure semantics.
 
+Delivered:
+
+- `claim-audit audit` loads a Markdown/plain-text draft plus YAML/JSON evidence bundle, runs `audit_document(...)`, writes Markdown output, optionally writes JSON output, and reports claim/risk counts without using candidate scores as support indicators.
+- `claim-audit demo --out-dir <dir>` runs the AI research fixture and writes Markdown plus JSON reports to a requested directory, defaulting to `build/reports/`.
+- Loader failures print clear path-aware errors and exit 1; Typer argument errors remain parser failures; completed audits with high-risk findings exit 0.
+- `tests/test_cli.py` covers help output, happy path, Markdown-only output, output-directory creation, missing files, unsupported draft types, malformed YAML, schema validation failure, high-risk findings, demo behavior, checked-in fixture protection, and forbidden capability language.
+
 Exit gate:
 
 - `claim-audit --help` works after editable install.
 - Malformed inputs exit nonzero and explain the problem.
 - Completed audits exit successfully even when high-risk claims are found.
 - `CAL-REQ-015`, `CAL-REQ-016`, and `CAL-REQ-026` are covered.
+
+Tie-off verification:
+
+- Rechecked on 2026-05-01 with editable install, activated `claim-audit --help`, CLI demo, compileall, pytest, ruff format, ruff check, ruff format check, mypy, and coverage.
+- Current result: 104 pytest tests passed and total coverage is 96%.
 
 ### Phase 9: Example Families
 

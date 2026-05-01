@@ -2,6 +2,64 @@
 
 Last updated: 2026-05-01
 
+## 2026-05-01: Phase 8 CLI workflow
+
+Implemented the Phase 8 `claim-audit` CLI without changing audit semantics, adding source discovery, adding support scores, generating second-family reports, or adding research-use paired metrics. The CLI now exposes `audit` and `demo` subcommands, writes Markdown and optional JSON reports, treats high-risk findings as completed audit results, and routes loader failures to clear nonzero input errors.
+
+Files updated:
+
+- `src/claim_audit_lab/cli.py`
+- `src/claim_audit_lab/auditor.py`
+- `src/claim_audit_lab/report.py`
+- `tests/test_cli.py`
+- `tests/test_report.py`
+- `tests/test_vertical_slice.py`
+- `examples/reports/ai-research-note.slice.md`
+- `examples/reports/ai-research-note.slice.json`
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/phase-8-cli-plan.md`
+- `docs/verification.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python -m ruff format src/claim_audit_lab/cli.py tests/test_cli.py
+.venv/bin/python -m pytest tests/test_cli.py
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m mypy src
+.venv/bin/python -m pip install -e ".[dev]"
+. .venv/bin/activate && claim-audit --help
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/cli-demo
+.venv/bin/python scripts/run_demo.py --update-fixture
+.venv/bin/python -m pytest tests/test_report.py tests/test_vertical_slice.py tests/test_cli.py -q
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+```
+
+Results:
+
+- Focused CLI tests: 14 passed.
+- Focused report/vertical-slice/CLI regression tests after stale header refresh: 26 passed.
+- Virtualenv compile check passed.
+- `pytest`: 104 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed.
+- `mypy src`: passed across 9 source files.
+- Editable install succeeded in the project virtualenv.
+- Activated `claim-audit --help` showed `audit` and `demo` subcommands.
+- Activated `claim-audit demo --out-dir build/reports/cli-demo` wrote ignored Markdown and JSON outputs and exited 0 with 2 high-risk findings.
+- Coverage run: 104 passed; total coverage 96%.
+- `CAL-REQ-015`, `CAL-REQ-016`, and `CAL-REQ-026` are verified.
+- Next step is Phase 9 example families.
+
 ## 2026-05-01: Phase 7 report rendering hardening
 
 Implemented the Phase 7 report renderer without adding CLI behavior, source discovery, support scores, second-family report generation, or research-use paired metrics. The Markdown renderer now produces a human-review report with metadata, executive summary, limitations, claim register, claim details, evidence links, rule flags, and suggested rewrite guidance. JSON output remains a typed `AuditReport` export.

@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, a generated Phase 7 human-review report for the AI research fixture, and two fictional draft/evidence fixture families. The CLI workflow has not been built yet.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, a generated human-review report for the AI research fixture, two fictional draft/evidence fixture families, and a working `claim-audit` CLI.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -20,9 +20,9 @@ Phase 6 implementation record: `docs/phase-6-audit-orchestration-plan.md`
 
 Implementation handoff prompt: `docs/handoff-prompt.md`
 
-## What it will do
+## What It Does
 
-Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies deterministic rule checks, returns a structured `AuditReport`, and produces human-review Markdown plus typed JSON reports.
+Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies deterministic rule checks, returns a structured `AuditReport`, and produces human-review Markdown plus typed JSON reports through Python functions, the demo script, or the `claim-audit` CLI.
 
 Current support labels:
 
@@ -39,7 +39,7 @@ Current risk labels:
 - `medium`: support is incomplete, source quality is limited, or a source is missing.
 - `high`: the claim carries high-risk overstatement, mismatch, or certainty concerns.
 
-## What it will not do
+## What It Will Not Do
 
 This project will not decide whether a claim matches the outside world. It only checks whether a draft's claims are supported by the evidence supplied to the tool.
 
@@ -70,7 +70,26 @@ python -m coverage run --branch -m pytest
 python -m coverage report
 ```
 
-## Phase 7 demo
+## Quick Start
+
+After local setup, run the built-in CLI demo:
+
+```bash
+claim-audit demo --out-dir build/reports/cli-demo
+```
+
+To audit the AI research fixture directly:
+
+```bash
+claim-audit audit examples/drafts/ai-research-note.md \
+  --evidence examples/evidence/ai-research-evidence.yml \
+  --out build/reports/ai-research-note.md \
+  --json-out build/reports/ai-research-note.json
+```
+
+Both commands write local Markdown and JSON outputs and require no network access, API keys, or live LLM calls.
+
+## Demo Script
 
 After local setup, run the rule-assessed report demo:
 
@@ -86,6 +105,6 @@ python scripts/run_demo.py --update-fixture
 
 The report includes metadata, executive summary, limitations, claim register, claim details, evidence links, rule flags, and suggested rewrite guidance. Candidate evidence scores are visible for inspection as ranking signals only, not support labels.
 
-## Next implementation step
+## Next Implementation Step
 
-Build the CLI workflow without turning audit findings into process failures and without requiring network access, API keys, or live LLM calls.
+Complete Phase 9 example families by generating Markdown and JSON outputs for the Product README fixture and checking the public examples for fictional, sanitized data.
