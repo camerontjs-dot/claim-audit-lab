@@ -8,7 +8,7 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, and two complete fictional draft/evidence/report fixture families. The next implementation slice is the Phase 10 validation sweep.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, two complete fictional draft/evidence/report fixture families, and a verified Phase 10 validation sweep. The next implementation slice is Phase 11 public packaging.
 
 Current durable files:
 
@@ -17,11 +17,12 @@ Current durable files:
 - `docs/target-report-prompt.md`: prompt for hand-writing the AI research memo target report before renderer implementation.
 - `docs/phase-4-evidence-matching-plan.md`: implemented Phase 4 design record for deterministic evidence matching.
 - `docs/phase-6-audit-orchestration-plan.md`: implemented Phase 6 contract for hardening `audit_document(...)`.
+- `docs/phase-11-public-packaging-plan.md`: planned Phase 11 contract for README, public assets, public-copy sweeps, and packaging verification.
 - `examples/reports/ai-research-note.target.md`: reviewed hand-authored target report and future golden-file reference for the AI research memo fixture.
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for Phase 10 validation sweep.
+- `docs/handoff-prompt.md`: next implementation prompt for Phase 11 public packaging.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -53,9 +54,9 @@ Current durable files:
 
 Immediate next step:
 
-1. Complete Phase 10 validation sweep.
-2. Re-run the full verification chain and scan README, reports, and examples for overclaiming language.
-3. Document any public v1 validation gaps before public packaging.
+1. Complete Phase 11 public packaging from `docs/phase-11-public-packaging-plan.md` without changing audit semantics.
+2. Replace the README stub with a public-facing README and prepare social/GitHub-pin assets.
+3. Keep the validation package execution in Phase 12.
 
 ## Project Boundary
 
@@ -337,8 +338,8 @@ Delivered:
 - `AuditConfig` is threaded into candidate matching, including overlap threshold and candidate cap behavior.
 - Minimal Markdown and JSON renderers expose summary, claim register, candidate evidence links, and limitations.
 - `scripts/run_demo.py` writes default demo outputs to gitignored `build/reports/` and only refreshes checked-in slice fixtures with `--update-fixture`.
-- `examples/reports/ai-research-note.slice.md` and `.json` are checked-in provisional outputs with a visible Phase 4A caveat.
-- `tests/test_vertical_slice.py` gates provisional labels, config behavior, empty-evidence behavior, JSON round-trip, demo-script output, and forbidden capability language in the checked-in slice report.
+- `examples/reports/ai-research-note.slice.md` and `.json` began as checked-in provisional outputs and have since been refreshed by the Phase 7/8 renderer and CLI workflow.
+- `tests/test_vertical_slice.py` gates config behavior, empty-evidence behavior, JSON round-trip, demo-script output, and forbidden capability language in the checked-in slice reports.
 
 Exit gate:
 
@@ -544,7 +545,7 @@ Tie-off verification:
 
 ### Phase 10: Validation Sweep
 
-Status: planned.
+Status: complete.
 
 Primary files:
 
@@ -558,15 +559,27 @@ Build:
 - Update matrix statuses from actual evidence.
 - Document known gaps instead of silently ignoring them.
 - Scan README, reports, and examples for overclaiming language.
+- Run editable-install and `claim-audit --help` smoke checks before packaging.
+
+Delivered:
+
+- Re-ran the full verification chain and packaging smoke test.
+- Scanned README, generated reports, examples, validation docs, source, tests, and scripts for overclaiming language, stale phase wording, local-only paths, private data, secrets, and hidden network/API-key/LLM assumptions.
+- Corrected stale Phase 4A wording in the demo script help text.
+- Updated validation protocol notes so OQ/PQ readiness reflects current implemented behavior while keeping full IQ/OQ/PQ execution in Phase 12.
+- Marked `CAL-REQ-012` and `CAL-REQ-027` verified from current evidence.
+- Left `CAL-REQ-018`, `CAL-REQ-024`, `CAL-REQ-036`, `CAL-REQ-039`, and `CAL-REQ-040` planned with explicit gap rationale.
 
 Exit gate:
 
 - `python -m pytest`
 - `python -m ruff check .`
-- `python -m ruff format .`
+- `python -m ruff format --check .`
 - `python -m mypy src`
 - `python -m coverage run --branch -m pytest`
 - `python -m coverage report`
+- `python -m pip install -e ".[dev]"`
+- `claim-audit --help`
 - `docs/verification.md` records commands and outcomes.
 - Public v1 validation gaps are documented or explicitly deferred.
 
@@ -577,6 +590,7 @@ Status: planned.
 Primary files:
 
 - `README.md`
+- `docs/phase-11-public-packaging-plan.md`
 - `docs/verification.md`
 - `validation/`
 - `examples/reports/*`
@@ -585,6 +599,7 @@ Primary files:
 
 Build:
 
+- Follow the dedicated Phase 11 plan before editing packaging copy.
 - Replace README stub with public-facing README.
 - Add quick start, example output, system design, data model, rule checks, validation, limitations, and next steps.
 - Link the first-class validation package without implying regulated compliance.
@@ -780,8 +795,8 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Run validation sweep.
-2. Replace README stub with public README and required social/GitHub-pin assets.
+1. Follow `docs/phase-11-public-packaging-plan.md` to replace the README stub with public README and required social/GitHub-pin assets.
+2. Run public packaging checks and regenerate example reports if packaging copy changes.
 3. Run the post-build validation package.
 
 ## Open Decisions

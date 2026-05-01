@@ -1,7 +1,7 @@
 # Validation Package
 
 status: planned
-last_updated: 2026-04-30
+last_updated: 2026-05-01
 
 Purpose: make Claim Audit Lab's validation approach visible as part of the project, not only as planning notes. This package adapts pharma equipment qualification habits for a deterministic software portfolio asset without claiming GxP, GMP, CSV, FDA, or regulated validation status.
 
@@ -17,8 +17,8 @@ It does not validate whether outside-world claims are true. A passing validation
 | --- | --- | --- |
 | `qualification-plan.md` | Overall qualification strategy, acceptance rules, deviations, and revalidation triggers. | planned |
 | `iq-installation.md` | Installation qualification protocol and future record. | planned |
-| `oq-operational.md` | Operational qualification protocol and future record for edge cases and operating ranges. | planned |
-| `pq-performance.md` | Performance qualification protocol and future record for full example runs. | planned |
+| `oq-operational.md` | Operational qualification protocol and future record for edge cases and operating ranges. | protocol planned; current test evidence noted |
+| `pq-performance.md` | Performance qualification protocol and future record for full example runs. | protocol planned; two report families ready |
 | `deviation-log.md` | Visible log for validation failures, accepted limitations, and follow-up actions. | open |
 | `../docs/validation-matrix-reference.md` | Requirement traceability matrix and status source of truth. | active |
 | `../docs/verification.md` | Session-level verification notes and command results. | active |
@@ -27,7 +27,7 @@ It does not validate whether outside-world claims are true. A passing validation
 
 During implementation, add or update validation matrix rows before adding public capability claims.
 
-After the first CLI-first version is built:
+After public packaging:
 
 1. Run the IQ protocol.
 2. Run the OQ protocol.

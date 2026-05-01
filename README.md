@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, generated human-review and JSON reports for two fictional fixture families, and a working `claim-audit` CLI.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, generated human-review and JSON reports for two fictional fixture families, a working `claim-audit` CLI, and a completed Phase 10 validation sweep.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -51,7 +51,7 @@ Claim Audit Lab can eventually be used as one measurement channel in research on
 
 ## Validation package
 
-The repo keeps validation as a first-class project surface in `validation/`. After the first CLI-first public version is built, that package will hold the IQ/OQ/PQ-inspired protocols, run records, deviation log, and acceptance evidence. This is a validation-inspired portfolio control, not a regulated compliance claim.
+The repo keeps validation as a first-class project surface in `validation/`. After public packaging, that package will hold the IQ/OQ/PQ-inspired protocol execution records, deviation log, and acceptance evidence. This is a validation-inspired portfolio control, not a regulated compliance claim.
 
 ## Local setup
 
@@ -107,4 +107,4 @@ The report includes metadata, executive summary, limitations, claim register, cl
 
 ## Next Implementation Step
 
-Complete Phase 10 validation sweep by re-running the full verification chain, checking public docs and examples for overclaiming language, and documenting any remaining public v1 validation gaps.
+Begin Phase 11 public packaging from `docs/phase-11-public-packaging-plan.md`: replace this stub with a public-facing README, prepare the social/GitHub-pin assets, keep supplied-evidence boundary language, and leave IQ/OQ/PQ execution for Phase 12.

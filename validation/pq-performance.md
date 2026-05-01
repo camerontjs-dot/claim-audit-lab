@@ -1,7 +1,7 @@
 # PQ: Performance Qualification
 
 status: planned
-last_updated: 2026-04-30
+last_updated: 2026-05-01
 
 Purpose: verify that Claim Audit Lab performs consistently in representative full audit runs using checked-in fictional or sanitized data.
 
@@ -21,8 +21,8 @@ PQ covers complete runs through the public workflow:
 
 | Family | Claim types | Minimum evidence | Status |
 | --- | --- | --- | --- |
-| AI research memo | numeric, causal, scope, interpretive | `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, generated Markdown and JSON reports | planned |
-| Product README paragraph | capability, scope, comparative, prediction, stale-source behavior | `examples/drafts/product-readme-note.md`, `examples/evidence/product-readme-evidence.yml`, generated Markdown and JSON reports | draft/evidence seeded; reports planned |
+| AI research memo | numeric, causal, scope, interpretive | `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, generated Markdown and JSON reports | report family ready; protocol execution planned |
+| Product README paragraph | capability, scope, comparative, prediction, stale-source behavior | `examples/drafts/product-readme-note.md`, `examples/evidence/product-readme-evidence.yml`, generated Markdown and JSON reports | report family ready; protocol execution planned |
 | Neutral/adverse scaffold case | no-change, worse-output, false-caution behavior | research-use fixture family; see `../docs/research-use.md` | deferred outside v1 |
 
 ## Protocol
@@ -42,4 +42,4 @@ PQ passes when at least two complete example families can be run from checked-in
 
 ## Record
 
-Do not mark this protocol `verified` until full audit reports exist.
+Full audit reports now exist for two fictional families. Do not mark this protocol `verified` until Phase 12 executes the protocol steps and records evidence.

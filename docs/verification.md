@@ -2,6 +2,85 @@
 
 Last updated: 2026-05-01
 
+## 2026-05-01: Phase 10 tie-off and Phase 11 plan
+
+Confirmed the Phase 10 validation sweep is tied off in the README, master plan, validation matrix, verification notes, validation package notes, handoff prompt, pipeline, and job-hunt log. Added `docs/phase-11-public-packaging-plan.md` so the next session can start public packaging from a dedicated plan instead of reconstructing scope from the phase tracker.
+
+Phase 11 remains unimplemented. The saved plan defines README rewrite scope, public asset expectations, public-copy sweeps, verification commands, matrix status rules, non-goals, and the pickup prompt. It keeps audit semantics, source discovery, live LLM/network calls, and IQ/OQ/PQ execution out of Phase 11.
+
+Fresh verification after saving the Phase 11 plan:
+
+```bash
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+.venv/bin/python -m pip install -e ".[dev]"
+. .venv/bin/activate && claim-audit --help
+```
+
+Results: 108 tests passed; Ruff, format check, and MyPy passed; coverage remains 96%; editable install passed; `claim-audit --help` showed `audit` and `demo`.
+
+## 2026-05-01: Phase 10 validation sweep
+
+Completed the Phase 10 validation sweep without changing audit semantics, adding support scores, adding source discovery, adding network calls, adding live LLM calls, rewriting the public README, or executing the IQ/OQ/PQ validation package. The sweep rechecked the full deterministic CLI-first tool, corrected stale demo wording, refreshed validation-package readiness notes, and updated matrix statuses only where current evidence supports them.
+
+Files updated:
+
+- `scripts/run_demo.py`
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `validation/README.md`
+- `validation/oq-operational.md`
+- `validation/pq-performance.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+.venv/bin/python -m pip install -e ".[dev]"
+. .venv/bin/activate && claim-audit --help
+rg -n "Phase 4A|Phase 5 rule-assessment slice|CLI workflow is planned|provisional|not implemented|planned in Phase 7" README.md docs examples/reports validation src tests scripts
+rg -n "requests|httpx|urllib|socket|openai|anthropic|os\.environ|dotenv|network|live LLM|API keys" src tests scripts pyproject.toml README.md docs validation examples
+```
+
+Results:
+
+- Virtualenv compile check passed.
+- `pytest`: 108 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed; 19 files already formatted.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 108 passed; total coverage 96%.
+- Editable install with dev dependencies passed.
+- Activated `claim-audit --help` showed `audit` and `demo` subcommands.
+- Generated AI research and Product README slice reports both use the current Phase 7/8 header wording.
+- Stale Phase 4A wording was found only in historical docs/tests and the demo script help text; the demo script wording was updated.
+- Network/API/LLM scan found no source dependency on network clients, provider SDKs, environment secrets, or API keys; hits were boundary-language documentation and tokenization helpers.
+- Validation-language scan found no GxP/GMP/CSV/FDA compliance claims. The remaining matches are guardrails, source-pattern references, or explicit avoid-list wording.
+- Public example private-data/secret scanning remains covered by `tests/test_report.py`.
+- `CAL-REQ-012` and `CAL-REQ-027` are verified.
+- `CAL-REQ-018` remains planned for Phase 11 because the README is still a stub.
+- `CAL-REQ-024` remains planned because support-quality warning/report polish is still a later gap.
+- `CAL-REQ-036` remains planned for Phase 12 validation-package execution.
+- `CAL-REQ-039` remains planned because stable claim IDs, deterministic rule-flag IDs, and generated report comparisons are covered, but explicit Markdown anchor policy is not fully documented.
+- `CAL-REQ-040` remains planned for Phase 11 social/GitHub-pin assets.
+- Next step is Phase 11 public packaging.
+
 ## 2026-05-01: Phase 9 example families
 
 Completed the Phase 9 example-family gate without changing audit semantics, adding support scores, adding source discovery, adding network calls, adding live LLM calls, or adding extra fixture families. The Product README fixture now has checked-in Markdown and JSON reports generated through `scripts/run_demo.py`, and public examples have persistent pytest coverage for renderer sync, report-level behavior, forbidden capability language, and private-data or secret markers.

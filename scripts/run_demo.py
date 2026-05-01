@@ -1,4 +1,4 @@
-"""Run the Phase 4A Claim Audit Lab demo."""
+"""Run the Claim Audit Lab report demo."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ def main() -> None:
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run the Claim Audit Lab Phase 4A vertical-slice demo.",
+        description="Run the Claim Audit Lab deterministic report demo.",
     )
     parser.add_argument("--draft", type=Path, default=DEFAULT_DRAFT)
     parser.add_argument("--evidence", type=Path, default=DEFAULT_EVIDENCE)
