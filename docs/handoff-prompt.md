@@ -1,11 +1,11 @@
 # Claim Audit Lab Handoff Prompt
 
-Use this prompt to start Phase 6 in a fresh chat.
+Use this prompt to start Phase 7 in a fresh chat.
 
 ```text
 We are in `/Users/gammaquantum/My Drive/projects/job-hunt`.
 
-I want to implement Claim Audit Lab Phase 6: audit orchestration hardening.
+I want to implement Claim Audit Lab Phase 7: report rendering hardening.
 
 Before changing files, read these in order:
 
@@ -45,35 +45,36 @@ Current workspace:
 - `evidence_matching.py` is complete and verified for deterministic candidate evidence links.
 - Phase 4A is complete: the repo has a runnable vertical slice with checked-in Markdown/JSON output.
 - Phase 5 is complete: `rules.py` performs initial deterministic support assessment, `audit_document(...)` returns rule-assessed `AuditReport` values, `report.py` renders minimal Phase 5 Markdown/JSON, and `scripts/run_demo.py` produces demo outputs.
-- Phase 5 tie-off was rechecked on 2026-05-01 with compileall, pytest, ruff, mypy, and coverage passing.
-- Current tests: model, loader, extraction, evidence matching, rules, and vertical-slice tests, 74 passing with 95% total coverage as of the Phase 5 tie-off.
+- Phase 6 is complete: `audit_document(...)` has hardened orchestration helpers, auditor-contract tests, exact report-level rule-flag flattening, summary consistency checks, empty-evidence/no-claim/high-risk behavior, deterministic structured-output coverage, and neutral Phase 6 pipeline limitation wording.
+- Phase 6 tie-off was rechecked on 2026-05-01 with compileall, pytest, ruff, mypy, and coverage passing.
+- Current tests: model, loader, extraction, evidence matching, rules, auditor, and vertical-slice tests, 82 passing with 95% total coverage as of the Phase 6 tie-off.
 - First fixture family: `examples/drafts/ai-research-note.md`, `examples/evidence/ai-research-evidence.yml`, `examples/reports/ai-research-note.target.md`, and `examples/reports/ai-research-note.slice.md`.
 - Second fixture family: `examples/drafts/product-readme-note.md` and `examples/evidence/product-readme-evidence.yml`.
 
 Implementation task:
 
-1. Follow `docs/phase-6-audit-orchestration-plan.md`.
-2. Harden `audit_document(draft, evidence_bundle, config=None) -> AuditReport` around the Phase 5 rule layer.
-3. Add `tests/test_auditor.py` for structured trace links, empty evidence behavior, high-risk findings as valid audit results, no-claim drafts, bundle warnings, deterministic output, and summary consistency.
-4. Keep rule checks in `rules.py`; Phase 6 should coordinate existing extraction, matching, rules, summaries, limitations, and warnings rather than expanding the rule taxonomy.
-5. Preserve deterministic rule-flag IDs and candidate-score discipline.
-6. Do not turn CLI behavior or full report rendering into Phase 6 work.
+1. Follow the Phase 7 section of `docs/master-plan.md` and use `examples/reports/ai-research-note.target.md` as the report UX reference.
+2. Harden `src/claim_audit_lab/report.py` for human-review Markdown and typed JSON output without changing the audit model contract unless a real renderer gap requires it.
+3. Add `tests/test_report.py` for required sections, support labels, evidence links, rule flags, summary metrics, limitations, rewrite guidance where available, JSON validation, and report-quality language gates.
+4. Keep `audit_document(...)` orchestration and rule taxonomy stable unless a renderer test exposes a narrow bug.
+5. Preserve supplied-evidence boundary language and candidate-score discipline.
+6. Do not turn CLI behavior, source discovery, second fixture report generation, support scoring, or research-use paired metrics into Phase 7 work.
 
 Required behavior:
 
-- Structured `AuditReport` links claims, candidate evidence, rule flags, summary counts, evidence warnings, and limitations coherently.
-- Empty evidence bundles produce `needs_source` assessments and a useful evidence-bundle warning.
-- High-risk findings are audit results, not runtime failures.
-- Summary counts stay consistent with the claim assessments.
-- Report-level rule flags exactly flatten claim-level rule flags and point to assessed claim IDs.
-- No-claim drafts return valid zero-claim reports.
-- The AI research fixture keeps the Phase 5 target labels: `overstated`, `supported`, `partially_supported`, `overstated`.
+- Markdown reports contain summary, claim register, evidence links, support labels, rule flags, limitations, and rewrite guidance where applicable.
+- JSON output validates against `AuditReport`.
+- Reports contain no `None`, `nan`, empty placeholder sections, or forbidden capability language.
+- Candidate scores are displayed as ranking signals only, not support scores.
+- Report language says "supported by supplied evidence" rather than truth-verification language.
+- The AI research fixture remains the first renderer-quality target; broader example-family generation stays for later phases.
 
 After implementing, run:
 
 ```bash
 .venv/bin/python -m compileall -q src tests
 .venv/bin/python -m pytest
+.venv/bin/python -m ruff format src/claim_audit_lab/report.py tests/test_report.py tests/test_vertical_slice.py
 .venv/bin/python -m ruff check .
 .venv/bin/python -m ruff format --check .
 .venv/bin/python -m mypy src

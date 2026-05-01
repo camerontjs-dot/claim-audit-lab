@@ -1,6 +1,6 @@
 # Phase 6 Audit Orchestration Plan
 
-status: planned
+status: complete
 last_updated: 2026-05-01
 phase: Phase 6
 
@@ -52,6 +52,8 @@ Do not move report rendering, CLI behavior, or new rule taxonomy into Phase 6.
 
 ## Orchestration Contract
 
+The Phase 5 `audit_document(...)` already implements most of this contract. Phase 6 is primarily about adding `tests/test_auditor.py` coverage and lightly extracting private helpers where that makes assertions cleaner. Do not rewrite working code; treat the contract below as the behavior the tests must pin down.
+
 `audit_document(...)` should coordinate existing layers:
 
 1. Extract deterministic claims from a draft.
@@ -75,7 +77,7 @@ Keep helper names private unless a public API is clearly needed.
 ## Required Behavior
 
 - Claims, candidate evidence, rule flags, summary counts, warnings, and limitations remain traceable from the returned `AuditReport`.
-- Report-level `rule_flags` exactly flatten claim-level rule flags in deterministic order.
+- Report-level `rule_flags` exactly flatten claim-level rule flags. Order follows `report.claims` (claim-extraction order), and each claim's flags preserve their per-claim order. The test should assert this exact sequence rather than a sorted permutation.
 - Every report-level rule flag points to an assessed claim ID.
 - Summary counts are derived from assessments, not maintained separately by hand.
 - High-risk claims increase `summary.high_risk_claims` and do not cause runtime failure.
@@ -83,6 +85,7 @@ Keep helper names private unless a public API is clearly needed.
 - Drafts with no extractable claims return a valid zero-claim report.
 - Config-driven candidate thresholding and capping continue to flow through the audit layer.
 - Report limitations include the supplied-evidence boundary and candidate-score boundary.
+- Update the `_PHASE_5_LIMITATION` constant in `auditor.py` so it no longer says "Phase 5 rule-assessment slice." Rename it to something neutral (for example `_PIPELINE_STATUS_LIMITATION`) and rewrite the message to reflect that orchestration is hardened while full report rendering and CLI workflow remain planned. Preserve the supplied-evidence and candidate-score limitation wording verbatim.
 - Normal tests and demo runs remain local-only: no network calls, no API keys, no live LLM calls.
 
 ## Required Tests
@@ -128,6 +131,17 @@ Phase 6 is complete when:
 - `CAL-REQ-012` remains `planned` unless report coverage exists too, or the matrix row is split to isolate the auditor-level empty-evidence behavior.
 - `CAL-REQ-016` is either left `planned` for CLI coverage or split so the auditor-level behavior can be marked separately.
 - The next best step is Phase 7 report rendering hardening.
+
+## Implementation Result
+
+Completed on 2026-05-01.
+
+- `audit_document(...)` now uses private orchestration helpers for assessments, flattened rule flags, summary counts, evidence-bundle warnings, and report limitations.
+- `tests/test_auditor.py` covers typed reports, trace links, exact report-level rule-flag ordering, summary consistency, empty evidence bundles, high-risk findings, no-claim drafts, config-threaded matching, deterministic structured output, and report limitation wording.
+- The pipeline status limitation no longer describes the report as a Phase 5 rule-assessment slice.
+- `CAL-REQ-025` is verified by auditor contract tests.
+- `CAL-REQ-012` and `CAL-REQ-016` remain planned because their full matrix rows still include report and CLI coverage.
+- Phase 7 report rendering hardening is the next implementation slice.
 
 ## Verification Commands
 

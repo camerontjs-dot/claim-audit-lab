@@ -8,7 +8,7 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified initial deterministic rule checks and support assessment, a reviewed hand-authored AI research target report, a generated Phase 5 slice report, and two fictional draft/evidence fixture families. Full audit orchestration hardening, full report rendering, and the CLI workflow have not been built yet.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified initial deterministic rule checks and support assessment, verified audit orchestration hardening, a reviewed hand-authored AI research target report, a generated Phase 5 slice report, and two fictional draft/evidence fixture families. Full report rendering and the CLI workflow have not been built yet.
 
 Current durable files:
 
@@ -16,12 +16,12 @@ Current durable files:
 - `docs/validation-matrix-reference.md`: requirement matrix, fixture coverage, and acceptance rules.
 - `docs/target-report-prompt.md`: prompt for hand-writing the AI research memo target report before renderer implementation.
 - `docs/phase-4-evidence-matching-plan.md`: implemented Phase 4 design record for deterministic evidence matching.
-- `docs/phase-6-audit-orchestration-plan.md`: planned Phase 6 contract for hardening `audit_document(...)`.
+- `docs/phase-6-audit-orchestration-plan.md`: implemented Phase 6 contract for hardening `audit_document(...)`.
 - `examples/reports/ai-research-note.target.md`: reviewed hand-authored target report and future golden-file reference for the AI research memo fixture.
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for Phase 6 audit orchestration hardening.
+- `docs/handoff-prompt.md`: next implementation prompt for Phase 7 report rendering hardening.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -32,7 +32,7 @@ Current durable files:
 - `src/claim_audit_lab/loader.py`: path-aware draft and evidence bundle loader.
 - `src/claim_audit_lab/claim_extraction.py`: conservative deterministic claim extraction.
 - `src/claim_audit_lab/evidence_matching.py`: deterministic candidate-evidence matching.
-- `src/claim_audit_lab/auditor.py`: Phase 5 audit orchestration returning typed `AuditReport` values with rule-assessed labels.
+- `src/claim_audit_lab/auditor.py`: Phase 6-hardened audit orchestration returning typed `AuditReport` values with rule-assessed labels.
 - `src/claim_audit_lab/report.py`: minimal Phase 5 Markdown and JSON report rendering.
 - `src/claim_audit_lab/rules.py`: deterministic rule checks and support assessment.
 - `scripts/run_demo.py`: reviewer-friendly Phase 5 demo entry point.
@@ -43,11 +43,12 @@ Current durable files:
 - `tests/test_claim_extraction.py`: extraction behavior, classification, stable ID, and dedupe tests.
 - `tests/test_evidence_matching.py`: numeric, product-fixture, ordering, capping, metadata, and batch-matching tests.
 - `tests/test_rules.py`: deterministic rule checks, label mapping, freshness, and rule-ID tests.
-- `tests/test_vertical_slice.py`: Phase 5 auditor, report, demo, config-threading, and language-gate tests.
+- `tests/test_auditor.py`: Phase 6 auditor contract, trace-link, summary, deterministic-output, and edge-case tests.
+- `tests/test_vertical_slice.py`: Phase 5 renderer, demo, JSON round-trip, and language-gate tests.
 
 Immediate next step:
 
-1. Implement `docs/phase-6-audit-orchestration-plan.md`.
+1. Harden Markdown and JSON report rendering.
 2. Keep rule checks separate from deterministic candidate matching.
 3. Preserve the discipline that candidate scores are ranking signals, not support labels.
 
@@ -382,7 +383,7 @@ Tie-off verification:
 
 ### Phase 6: Audit Orchestration Hardening
 
-Status: planned.
+Status: complete.
 
 Primary files:
 
@@ -398,6 +399,13 @@ Build:
 - Empty evidence bundles return useful output rather than crashing.
 - Keep Phase 6 focused on orchestration. Do not add new rule taxonomy, full report rendering, CLI behavior, source discovery, or research-use paired-output metrics.
 
+Delivered:
+
+- `audit_document(...)` now uses private helpers for assessments, flattened rule flags, summary counts, evidence-bundle warnings, and report limitations.
+- `tests/test_auditor.py` verifies typed report output, trace links, exact rule-flag flattening order, summary consistency, empty evidence behavior, high-risk findings as valid audit results, no-claim drafts, config-threaded matching, deterministic output, and limitation wording.
+- Report-level limitations now use neutral Phase 6 pipeline wording while preserving the supplied-evidence and candidate-score boundaries.
+- Pure auditor-contract assertions moved out of `tests/test_vertical_slice.py`, which now stays focused on renderer/demo behavior.
+
 Exit gate:
 
 - Structured `AuditReport` includes trace links among claims, evidence, rule flags, summary metrics, and limitations.
@@ -406,9 +414,14 @@ Exit gate:
 - No-claim drafts produce valid zero-claim reports.
 - Report-level rule flags exactly flatten claim-level rule flags.
 - Summary counts are derived from `ClaimAssessment` values and tested for consistency.
-- `CAL-REQ-025` is covered if trace-link and limitation tests pass.
+- `CAL-REQ-025` is verified by trace-link and limitation tests.
 - `CAL-REQ-012` remains planned unless report coverage exists too, or the matrix row is split to isolate the auditor-level empty-evidence behavior.
 - `CAL-REQ-016` remains planned for CLI coverage unless the row is split to isolate auditor-level high-risk behavior.
+
+Tie-off verification:
+
+- Rechecked on 2026-05-01 with compileall, pytest, ruff format, ruff check, ruff format check, mypy, and coverage.
+- Current result: 82 pytest tests passed and total coverage is 95%.
 
 ### Phase 7: Report Rendering Hardening
 
@@ -724,12 +737,11 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Implement Phase 6 from `docs/phase-6-audit-orchestration-plan.md`.
-2. Harden Markdown and JSON report rendering.
-3. Build CLI.
-4. Run validation sweep.
-5. Replace README stub with public README and required social/GitHub-pin assets.
-6. Run the post-build validation package.
+1. Harden Markdown and JSON report rendering.
+2. Build CLI.
+3. Run validation sweep.
+4. Replace README stub with public README and required social/GitHub-pin assets.
+5. Run the post-build validation package.
 
 ## Open Decisions
 

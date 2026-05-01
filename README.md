@@ -4,7 +4,7 @@ Python workspace for auditing whether draft claims are supported by supplied evi
 
 ## Status
 
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified initial deterministic rule checks and support assessment, a hand-authored AI research target report, a generated Phase 5 slice report, and two fictional draft/evidence fixture families. Full audit orchestration hardening, full report rendering, and the CLI workflow have not been built yet.
+This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified initial deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, a generated Phase 5 slice report, and two fictional draft/evidence fixture families. Full report rendering and the CLI workflow have not been built yet.
 
 Source plan: `../../planning/claim-audit-lab-plan.md`
 
@@ -16,13 +16,13 @@ Validation package: `validation/README.md`
 
 Master plan: `docs/master-plan.md`
 
-Phase 6 plan: `docs/phase-6-audit-orchestration-plan.md`
+Phase 6 implementation record: `docs/phase-6-audit-orchestration-plan.md`
 
 Implementation handoff prompt: `docs/handoff-prompt.md`
 
 ## What it will do
 
-Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies initial deterministic rule checks, and produces minimal Markdown and JSON slice reports.
+Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies initial deterministic rule checks, returns a structured `AuditReport`, and produces minimal Markdown and JSON slice reports.
 
 The intended support labels are:
 
@@ -82,4 +82,4 @@ The Phase 5 report is still a minimal slice. Candidate evidence scores are visib
 
 ## Next implementation step
 
-Implement the Phase 6 audit orchestration plan in `docs/phase-6-audit-orchestration-plan.md` without turning candidate scores into support labels by themselves.
+Harden Markdown and JSON report rendering without turning candidate scores into support labels by themselves.
