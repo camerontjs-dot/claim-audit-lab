@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628" role="img" aria-labelledby="title desc">
+  <title id="title">Claim Audit Lab social card</title>
+  <desc id="desc">A public portfolio card for Claim Audit Lab, a supplied-evidence claim audit tool.</desc>
+  <rect width="1200" height="628" fill="#f7f4ec"/>
+  <rect x="72" y="72" width="1056" height="484" rx="18" fill="#ffffff" stroke="#1f2937" stroke-width="3"/>
+  <rect x="72" y="72" width="1056" height="72" rx="18" fill="#1f2937"/>
+  <rect x="72" y="120" width="1056" height="24" fill="#1f2937"/>
+  <circle cx="116" cy="108" r="10" fill="#e85d75"/>
+  <circle cx="150" cy="108" r="10" fill="#f2b84b"/>
+  <circle cx="184" cy="108" r="10" fill="#38a169"/>
+  <text x="96" y="228" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="72" font-weight="800" letter-spacing="0">Claim Audit Lab</text>
+  <text x="100" y="286" fill="#2f5d62" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0">supplied-evidence claim audit</text>
+  <line x1="100" y1="326" x2="1100" y2="326" stroke="#d6d3ca" stroke-width="3"/>
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" fill="#111827">
+    <text x="140" y="392">Deterministic checks</text>
+    <text x="140" y="452">Traceable claim support</text>
+    <text x="140" y="512">Inspectable Markdown + JSON reports</text>
+  </g>
+  <g fill="none" stroke="#2f5d62" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M104 382 l16 16 l28 -34"/>
+    <path d="M104 442 l16 16 l28 -34"/>
+    <path d="M104 502 l16 16 l28 -34"/>
+  </g>
+  <g transform="translate(770 364)">
+    <rect x="0" y="0" width="280" height="104" rx="14" fill="#f0f7f7" stroke="#2f5d62" stroke-width="3"/>
+    <text x="140" y="43" text-anchor="middle" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="0">No network</text>
+    <text x="140" y="76" text-anchor="middle" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="0">No API key</text>
+  </g>
+</svg>

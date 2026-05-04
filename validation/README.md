@@ -1,7 +1,7 @@
 # Validation Package
 
 status: planned
-last_updated: 2026-05-01
+last_updated: 2026-05-04
 
 Purpose: make Claim Audit Lab's validation approach visible as part of the project, not only as planning notes. This package adapts pharma equipment qualification habits for a deterministic software portfolio asset without claiming GxP, GMP, CSV, FDA, or regulated validation status.
 
@@ -27,7 +27,7 @@ It does not validate whether outside-world claims are true. A passing validation
 
 During implementation, add or update validation matrix rows before adding public capability claims.
 
-After public packaging:
+After Phase 11 public packaging:
 
 1. Run the IQ protocol.
 2. Run the OQ protocol.

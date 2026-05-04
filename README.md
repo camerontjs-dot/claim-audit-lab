@@ -1,84 +1,55 @@
 # Claim Audit Lab
 
-Python workspace for auditing whether draft claims are supported by supplied evidence.
+Claim Audit Lab is a deterministic Python CLI for auditing whether draft claims are supported by supplied evidence.
 
-## Status
-
-This live-asset workspace has a package scaffold, demo fixture folders, implementation boundaries, a verified typed model layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, a hand-authored AI research target report, generated human-review and JSON reports for two fictional fixture families, a working `claim-audit` CLI, and a completed Phase 10 validation sweep.
-
-Source plan: `../../planning/claim-audit-lab-plan.md`
-
-Control checklist: `../../planning/claim-audit-lab-control-checklist.md`
-
-Validation matrix reference: `docs/validation-matrix-reference.md`
-
-Validation package: `validation/README.md`
-
-Master plan: `docs/master-plan.md`
-
-Phase 6 implementation record: `docs/phase-6-audit-orchestration-plan.md`
-
-Implementation handoff prompt: `docs/handoff-prompt.md`
+It is built for reviewers who need to see where a draft is supported, where it is too strong, where a source is missing, and what limitations should stay visible before a claim is reused.
 
 ## What It Does
 
-Claim Audit Lab loads a draft document and an evidence bundle, extracts candidate claims, maps claims to supplied evidence, applies deterministic rule checks, returns a structured `AuditReport`, and produces human-review Markdown plus typed JSON reports through Python functions, the demo script, or the `claim-audit` CLI.
+Claim Audit Lab:
 
-Current support labels:
+- loads a draft document from Markdown or plain text
+- loads a supplied evidence bundle from YAML or JSON
+- extracts candidate claims conservatively
+- ranks supplied evidence candidates for each claim
+- applies deterministic rule checks for support, overstatement, missing sources, and evidence limitations
+- writes a human-review Markdown report
+- optionally writes typed JSON report data
 
-- `supported`: supplied evidence directly supports the claim.
-- `partially_supported`: supplied evidence supports part of the claim, but limits remain.
-- `unsupported`: supplied evidence does not support the claim.
-- `overstated`: the claim is stronger than the supplied evidence can support.
-- `needs_source`: the claim needs a supplied source before it can be assessed.
-- `not_audit_ready`: the text is not structured enough for a useful claim assessment.
+The current CLI is intentionally local and reproducible. Normal tests, examples, and demo runs require no network access, API keys, provider SDKs, or live LLM calls.
 
-Current risk labels:
+## What It Does Not Do
 
-- `low`: no rule issue found for the current supplied evidence.
-- `medium`: support is incomplete, source quality is limited, or a source is missing.
-- `high`: the claim carries high-risk overstatement, mismatch, or certainty concerns.
+Claim Audit Lab does not decide whether a statement matches the outside world. It checks whether the claim is supported by the evidence bundle you supply.
 
-## What It Will Not Do
+It also does not:
 
-This project will not decide whether a claim matches the outside world. It only checks whether a draft's claims are supported by the evidence supplied to the tool.
+- search the web or discover sources
+- replace human source review
+- score research quality as a single certainty number
+- use support scores as final labels
+- certify that a workflow, scaffold, or intervention works
+- act as a regulated quality system
 
-The first version will not require live LLM calls, network access, private application materials, or external fact checking.
+Candidate evidence scores are ranking signals only. Final support labels come from deterministic rule assessment.
 
-## Research use
+## Quick Start
 
-Claim Audit Lab can eventually be used as one measurement channel in research on scaffolded AI workflows, but that is an adjunct use case rather than the v1 shipping path. Research-use guardrails live in `docs/research-use.md`.
-
-## Validation package
-
-The repo keeps validation as a first-class project surface in `validation/`. After public packaging, that package will hold the IQ/OQ/PQ-inspired protocol execution records, deviation log, and acceptance evidence. This is a validation-inspired portfolio control, not a regulated compliance claim.
-
-## Local setup
-
-Local verification commands:
+Use Python 3.11 or newer.
 
 ```bash
 python3.11 -m venv .venv
 . .venv/bin/activate
 python -m pip install -e ".[dev]"
-python -m compileall -q src tests
-python -m pytest
-python -m ruff check .
-python -m ruff format --check .
-python -m mypy src
-python -m coverage run --branch -m pytest
-python -m coverage report
 ```
 
-## Quick Start
-
-After local setup, run the built-in CLI demo:
+Run the built-in demo:
 
 ```bash
 claim-audit demo --out-dir build/reports/cli-demo
 ```
 
-To audit the AI research fixture directly:
+Audit the AI research fixture directly:
 
 ```bash
 claim-audit audit examples/drafts/ai-research-note.md \
@@ -87,24 +58,142 @@ claim-audit audit examples/drafts/ai-research-note.md \
   --json-out build/reports/ai-research-note.json
 ```
 
-Both commands write local Markdown and JSON outputs and require no network access, API keys, or live LLM calls.
+Both commands write local report files under `build/reports/` and leave checked-in example reports untouched.
 
-## Demo Script
+## Example Reports
 
-After local setup, run the rule-assessed report demo:
+The repo includes two fictional draft/evidence/report families:
+
+| Fixture | Draft | Evidence | Markdown report | JSON report |
+| --- | --- | --- | --- | --- |
+| AI research memo | `examples/drafts/ai-research-note.md` | `examples/evidence/ai-research-evidence.yml` | `examples/reports/ai-research-note.slice.md` | `examples/reports/ai-research-note.slice.json` |
+| Product README paragraph | `examples/drafts/product-readme-note.md` | `examples/evidence/product-readme-evidence.yml` | `examples/reports/product-readme-note.slice.md` | `examples/reports/product-readme-note.slice.json` |
+
+Current generated report summaries:
+
+- AI research memo: 4 claims, 1 supported, 1 partially supported, 2 overstated, and 2 high-risk findings.
+- Product README paragraph: 4 claims, 2 supported, 2 overstated, and 2 high-risk findings.
+
+See `examples/reports/README.md` for the report-artifact map.
+
+## Labels
+
+Support labels:
+
+- `supported`: supplied evidence directly supports the claim.
+- `partially_supported`: supplied evidence supports part of the claim, but limits remain.
+- `unsupported`: supplied evidence does not support the claim.
+- `overstated`: the claim is stronger than the supplied evidence can support.
+- `needs_source`: the claim needs a supplied source before it can be assessed.
+- `not_audit_ready`: the text is not structured enough for a useful claim assessment.
+
+Risk labels:
+
+- `low`: no rule issue found for the current supplied evidence.
+- `medium`: support is incomplete, source quality is limited, or a source is missing.
+- `high`: the claim carries high-risk overstatement, mismatch, or certainty concerns.
+
+## Report Contents
+
+Markdown reports include:
+
+- metadata and audit boundary
+- executive summary
+- limitations
+- claim register
+- claim-by-claim details
+- candidate evidence links
+- deterministic rule flags
+- explanation and rewrite guidance where useful
+
+JSON reports follow the typed `AuditReport` model and are intended for regression checks, validation evidence, and downstream inspection.
+
+## How The Audit Works
+
+The pipeline is deliberately simple and inspectable:
+
+1. `loader.py` reads draft and evidence files into strict Pydantic models.
+2. `claim_extraction.py` extracts explicit claim candidates and stable claim IDs.
+3. `evidence_matching.py` ranks supplied evidence excerpts for each claim.
+4. `rules.py` assigns deterministic support labels, risk labels, and rule flags.
+5. `auditor.py` assembles the typed audit report.
+6. `report.py` renders Markdown and JSON outputs.
+7. `cli.py` exposes `claim-audit audit` and `claim-audit demo`.
+
+The implementation favors traceability over cleverness. Every public behavior should be backed by tests, checked-in examples, or an explicit validation-matrix status.
+
+## Validation Approach
+
+Claim Audit Lab keeps validation visible in the repo:
+
+- `docs/validation-matrix-reference.md` maps public promises to `CAL-REQ-*` rows.
+- `docs/verification.md` records verification commands and outcomes.
+- `validation/README.md` describes the IQ/OQ/PQ-inspired validation package.
+- `validation/deviation-log.md` is reserved for visible deviations and accepted limitations.
+
+This is validation-inspired portfolio control. It is not a regulated compliance claim.
+
+## Public Packaging
+
+Phase 11 added:
+
+- MIT license
+- package metadata for public review
+- `assets/social-card.svg`
+- `assets/github-pin.md`
+- public README positioning aligned to supplied-evidence support
+
+Public repository and homepage URLs are intentionally omitted from package metadata until a real public remote exists.
+
+## Development Checks
+
+Run the normal verification chain from the repo root:
 
 ```bash
-python scripts/run_demo.py
+.venv/bin/python -m pip install -e ".[dev]"
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+. .venv/bin/activate && claim-audit --help
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-11-smoke
 ```
 
-The default command writes Markdown and JSON outputs under `build/reports/` so routine reviewer runs do not dirty the worktree. To refresh the checked-in slice fixtures intentionally, run:
+## Repository Map
 
-```bash
-python scripts/run_demo.py --update-fixture
-```
+| Path | Purpose |
+| --- | --- |
+| `src/claim_audit_lab/` | Python package implementation |
+| `tests/` | Unit, integration, CLI, report, and language-gate tests |
+| `examples/drafts/` | Fictional draft inputs |
+| `examples/evidence/` | Fictional supplied evidence bundles |
+| `examples/reports/` | Checked-in generated and target report artifacts |
+| `docs/` | Master plan, validation matrix, verification notes, phase records, research-use adjunct |
+| `validation/` | Validation-inspired package for Phase 12 execution |
+| `assets/` | Public social and repo-pin assets |
+| `scripts/run_demo.py` | Reviewer-friendly report generation helper |
 
-The report includes metadata, executive summary, limitations, claim register, claim details, evidence links, rule flags, and suggested rewrite guidance. Candidate evidence scores are visible for inspection as ranking signals only, not support labels.
+## Current Status
 
-## Next Implementation Step
+Implemented and verified through Phase 11 public packaging:
 
-Begin Phase 11 public packaging from `docs/phase-11-public-packaging-plan.md`: replace this stub with a public-facing README, prepare the social/GitHub-pin assets, keep supplied-evidence boundary language, and leave IQ/OQ/PQ execution for Phase 12.
+- typed model layer
+- draft and evidence loaders
+- conservative claim extraction
+- deterministic evidence matching
+- deterministic rule checks and support assessment
+- audit orchestration
+- Markdown and JSON report rendering
+- `claim-audit` CLI
+- two complete fictional example families
+- Phase 10 validation sweep
+- Phase 11 public README, license, metadata, and social/GitHub-pin assets
+
+Next step: Phase 12 validation package execution from `validation/README.md` and `docs/master-plan.md`.
+
+## License
+
+MIT. See `LICENSE`.

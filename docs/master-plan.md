@@ -1,28 +1,30 @@
 # Claim Audit Lab Master Plan
 
 status: active
-last_updated: 2026-05-01
+last_updated: 2026-05-04
 asset: portfolio/live-asset/claim-audit-lab
 
 Purpose: keep one living plan for Claim Audit Lab from first implementation through public packaging. Update this file as the build moves, and use it as the first planning read after `README.md`.
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, two complete fictional draft/evidence/report fixture families, and a verified Phase 10 validation sweep. The next implementation slice is Phase 11 public packaging.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, two complete fictional draft/evidence/report fixture families, a verified Phase 10 validation sweep, and completed Phase 11 public packaging. The next implementation slice is Phase 12 validation package execution.
 
 Current durable files:
 
-- `README.md`: public-facing stub and project boundary.
+- `README.md`: public-facing entry point, quick start, boundary, validation links, and public packaging status.
 - `docs/validation-matrix-reference.md`: requirement matrix, fixture coverage, and acceptance rules.
 - `docs/target-report-prompt.md`: prompt for hand-writing the AI research memo target report before renderer implementation.
 - `docs/phase-4-evidence-matching-plan.md`: implemented Phase 4 design record for deterministic evidence matching.
 - `docs/phase-6-audit-orchestration-plan.md`: implemented Phase 6 contract for hardening `audit_document(...)`.
-- `docs/phase-11-public-packaging-plan.md`: planned Phase 11 contract for README, public assets, public-copy sweeps, and packaging verification.
+- `docs/phase-11-public-packaging-plan.md`: implemented Phase 11 record for README, public assets, public-copy sweeps, and packaging verification.
 - `examples/reports/ai-research-note.target.md`: reviewed hand-authored target report and future golden-file reference for the AI research memo fixture.
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
+- `LICENSE`: MIT license for public review and reuse.
+- `assets/`: social card source and GitHub-pin copy for public packaging.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for Phase 11 public packaging.
+- `docs/handoff-prompt.md`: next implementation prompt for Phase 12 validation package execution.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -54,9 +56,9 @@ Current durable files:
 
 Immediate next step:
 
-1. Complete Phase 11 public packaging from `docs/phase-11-public-packaging-plan.md` without changing audit semantics.
-2. Replace the README stub with a public-facing README and prepare social/GitHub-pin assets.
-3. Keep the validation package execution in Phase 12.
+1. Execute Phase 12 validation package records from `validation/README.md` without changing audit semantics.
+2. Run IQ/OQ/PQ-inspired checks against the completed CLI-first public package.
+3. Update validation records, deviation log, matrix statuses, verification notes, pipeline, and job-hunt log from current evidence.
 
 ## Project Boundary
 
@@ -585,22 +587,25 @@ Exit gate:
 
 ### Phase 11: Public Packaging
 
-Status: planned.
+Status: complete.
 
 Primary files:
 
 - `README.md`
+- `LICENSE`
+- `pyproject.toml`
+- `assets/social-card.svg`
+- `assets/github-pin.md`
 - `docs/phase-11-public-packaging-plan.md`
 - `docs/verification.md`
 - `validation/`
 - `examples/reports/*`
-- screenshots
 - social card / GitHub-pin assets
 
 Build:
 
 - Follow the dedicated Phase 11 plan before editing packaging copy.
-- Replace README stub with public-facing README.
+- Tighten README into a public-facing entry point.
 - Add quick start, example output, system design, data model, rule checks, validation, limitations, and next steps.
 - Link the first-class validation package without implying regulated compliance.
 - Regenerate example reports.
@@ -608,6 +613,15 @@ Build:
 - Create repo social card / GitHub-pin assets so this matches the existing portfolio bar.
 - Prepare GitHub/LinkedIn positioning.
 - If referenced in the scaffold proposal, describe it as a validated measurement aid rather than proof of the experiment.
+
+Delivered:
+
+- Rewrote the README as the public review front door while keeping deeper details linked to existing docs.
+- Added MIT license and conservative public package metadata with Cameron Sanderson as author.
+- Added `assets/social-card.svg` and `assets/github-pin.md`; PNG export remains optional.
+- Regenerated AI research and Product README generated report families from current renderer output.
+- Ran refined public-copy and network/dependency scans, reviewed expected source-pattern and boundary-language hits manually, and kept audit semantics unchanged.
+- Verified `CAL-REQ-018` and `CAL-REQ-040` from current Phase 11 evidence.
 
 Exit gate:
 
@@ -617,6 +631,7 @@ Exit gate:
 - Qualification language is framed as validation-inspired portfolio control, not GxP, GMP, CSV, or FDA compliance.
 - Social card / GitHub-pin assets are present and match the README positioning.
 - `CAL-REQ-018` is verified.
+- `CAL-REQ-040` is verified.
 
 ### Phase 12: Validation Package Execution
 
@@ -795,9 +810,9 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Follow `docs/phase-11-public-packaging-plan.md` to replace the README stub with public README and required social/GitHub-pin assets.
-2. Run public packaging checks and regenerate example reports if packaging copy changes.
-3. Run the post-build validation package.
+1. Execute the Phase 12 validation package from `validation/README.md`.
+2. Populate IQ/OQ/PQ-inspired records from current install, test, CLI, report, and inspection evidence.
+3. Record deviations or accepted limitations visibly, then update matrix statuses only from current evidence.
 
 ## Open Decisions
 
@@ -812,6 +827,6 @@ At the end of each meaningful work session:
 | Research measurement freeze | Tracked in `docs/research-use.md`, not a v1 shipping gate. | Before any research-output audit run. |
 | Human calibration sample | Tracked in `docs/research-use.md`, not a v1 shipping gate. | Before relying on aggregate research metrics. |
 | Post-build validation package | Use a lightweight IQ/OQ/PQ-inspired package as visible repo evidence after the first CLI-first version is made. | After public packaging, before relying on the tool as a research measurement channel. |
-| Social card / GitHub pin | Required public packaging checklist item. | Phase 11. |
+| Social card / GitHub pin | Resolved: `assets/social-card.svg` and `assets/github-pin.md` created in Phase 11. | Done. |
 | Streamlit UI | Defer. | After v1 CLI is solid. |
 | Source lookup mode | Potentially useful as source-assisted audit, but keep it separate from the deterministic supplied-evidence audit path. | After v1 reports and CLI are strong. |

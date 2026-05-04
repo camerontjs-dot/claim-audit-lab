@@ -1,6 +1,69 @@
 # Verification notes
 
-Last updated: 2026-05-01
+Last updated: 2026-05-04
+
+## 2026-05-04: Phase 11 public packaging
+
+Completed Phase 11 public packaging without changing audit semantics, adding support scores, adding source discovery, adding network calls, adding live LLM calls, or executing the IQ/OQ/PQ validation package. The README is now the public front door, the repo has MIT licensing and public package metadata, and the public asset surface includes a social-card SVG plus GitHub-pin copy.
+
+Files updated:
+
+- `README.md`
+- `LICENSE`
+- `pyproject.toml`
+- `assets/social-card.svg`
+- `assets/github-pin.md`
+- `docs/phase-11-public-packaging-plan.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `validation/README.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python -m pip install -e ".[dev]"
+.venv/bin/python scripts/run_demo.py --draft examples/drafts/ai-research-note.md --evidence examples/evidence/ai-research-evidence.yml --update-fixture
+.venv/bin/python scripts/run_demo.py --draft examples/drafts/product-readme-note.md --evidence examples/evidence/product-readme-evidence.yml --update-fixture
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+. .venv/bin/activate && claim-audit --help
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-11-smoke
+rg -n "fact check|fact-check|truth verifier|verify external truth|proven true|guaranteed true|verified externally|FDA|GxP|GMP|Computer System Validation|CSV validation|regulated compliance" README.md docs validation examples assets
+rg -n "TODO|TBD|placeholder|localhost|/Users/|api[_-]?key|secret|token|password" README.md docs validation examples assets
+rg -n "openai|anthropic|requests|httpx|urllib|socket|dotenv|os\.environ" pyproject.toml src tests scripts
+rg -n "width=\"1200\" height=\"628\"|Claim Audit Lab|supplied-evidence claim audit" assets/social-card.svg assets/github-pin.md
+```
+
+Results:
+
+- Editable install with dev dependencies passed after package metadata changes.
+- Both checked-in report families were regenerated from the current renderer; generated report files were already in sync with no content diff.
+- Virtualenv compile check passed.
+- `pytest`: 108 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed; 19 files already formatted.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 108 passed; total coverage 96%.
+- Activated `claim-audit --help` showed `audit` and `demo` subcommands.
+- Activated `claim-audit demo --out-dir build/reports/phase-11-smoke` wrote Markdown and JSON reports and completed with 4 claims assessed.
+- Social-card SVG inspection confirmed 1200 x 628 dimensions and intended headline/descriptor text.
+- Overclaim and regulated-language scan produced expected historical, source-reference, avoid-list, and boundary-language matches; README and assets do not claim source discovery, outside-world assessment, regulated compliance, or research-result proof.
+- Placeholder/private-data/local-path scan produced expected planned-protocol `TBD` entries, historical absolute-path handoff references, target-report placeholder language, and scan-pattern self-matches; public README and assets had no placeholder links, private data, secrets, or local-only paths.
+- Network/provider scan across package/source/test/script surfaces produced no matches.
+- `CAL-REQ-018` and `CAL-REQ-040` are verified.
+- `CAL-REQ-024` remains planned because support-quality warning/report polish is still a later gap.
+- `CAL-REQ-036` remains planned for Phase 12 validation-package execution.
+- `CAL-REQ-039` remains planned because stable claim IDs, deterministic rule-flag IDs, and generated report comparisons are covered, but explicit Markdown anchor policy is not fully documented.
+- Next step is Phase 12 validation package execution.
 
 ## 2026-05-01: Phase 10 tie-off and Phase 11 plan
 

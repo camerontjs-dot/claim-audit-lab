@@ -8,6 +8,18 @@ version = "0.1.0"
 description = "Audit whether draft claims are supported by supplied evidence."
 readme = "README.md"
 requires-python = ">=3.11"
+authors = [
+    { name = "Cameron Sanderson" },
+]
+license = { file = "LICENSE" }
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Text Processing",
+]
 dependencies = [
     "pydantic>=2.6",
     "PyYAML>=6.0",
