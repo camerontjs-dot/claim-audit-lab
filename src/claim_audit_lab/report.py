@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from claim_audit_lab.models import AuditReport, ClaimAssessment, EvidenceCandidate, RuleFlag
 
 _REPORT_HEADER = (
@@ -13,6 +15,8 @@ _REPORT_HEADER = (
 def render_markdown_report(report: AuditReport) -> str:
     """Render a human-review Markdown report from a typed audit report."""
     lines: list[str] = [
+        _anchor("report", report.document_id),
+        "",
         f"# Claim Audit Lab report: `{_escape_inline(report.document_id)}`",
         "",
         f"*{_REPORT_HEADER}*",
@@ -105,6 +109,8 @@ def _summary_sentence(report: AuditReport) -> str:
 def _claim_detail_lines(assessment: ClaimAssessment) -> list[str]:
     claim = assessment.claim
     lines = [
+        _anchor("claim", claim.id),
+        "",
         f"### `{_escape_inline(claim.id)}` ({_escape_text(assessment.support_label)})",
         "",
         f"> {_escape_text(claim.text)}",
@@ -128,6 +134,11 @@ def _claim_detail_lines(assessment: ClaimAssessment) -> list[str]:
         lines.extend(_rule_flag_lines(assessment.rule_flags))
     else:
         lines.append("No rule flags.")
+
+    support_quality_notes = _support_quality_notes(assessment)
+    if support_quality_notes:
+        lines.extend(["", "**Support quality notes**", ""])
+        lines.extend(_bullets(support_quality_notes))
 
     lines.extend(["", "**Explanation**", ""])
     if assessment.explanation:
@@ -172,7 +183,8 @@ def _candidate_table_lines(candidates: list[EvidenceCandidate]) -> list[str]:
 
 def _rule_flag_lines(flags: list[RuleFlag]) -> list[str]:
     return [
-        f"- `{_escape_inline(flag.code)}` ({flag.risk} risk): {_escape_text(flag.message)}"
+        f"- {_anchor('rule', flag.id)} `{_escape_inline(flag.id)}` / "
+        f"`{_escape_inline(flag.code)}` ({flag.risk} risk): {_escape_text(flag.message)}"
         for flag in flags
     ]
 
@@ -212,7 +224,7 @@ def _evidence_link_lines(report: AuditReport) -> list[str]:
         url = candidate.source_url or "not supplied"
         lines.append(
             "| "
-            f"`{_escape_table(source_id)}` | "
+            f"{_anchor('evidence', source_id, excerpt_id)} `{_escape_table(source_id)}` | "
             f"`{_escape_table(excerpt_id)}` | "
             f"{_escape_table(', '.join(f'`{claim_id}`' for claim_id in claim_ids))} | "
             f"{candidate.score:.4f} | "
@@ -240,6 +252,40 @@ def _suggested_rewrite_lines(report: AuditReport) -> list[str]:
         lines.extend(_bullets(guidance))
         lines.append("")
     return lines
+
+
+def _support_quality_notes(assessment: ClaimAssessment) -> list[str]:
+    notes: list[str] = []
+    candidates = assessment.candidate_evidence
+    reliabilities = {candidate.source_reliability for candidate in candidates}
+    codes = {flag.code for flag in assessment.rule_flags}
+
+    if candidates and reliabilities.intersection({"low", "unknown"}):
+        notes.append(
+            "Linked candidate evidence includes low or unknown source reliability metadata."
+        )
+    if "low_reliability_only" in codes:
+        notes.append("Direct support is flagged for weak source reliability.")
+    if "stale_source" in codes:
+        notes.append("Direct support is flagged as stale under the configured freshness policy.")
+    if len(reliabilities) > 1 or _has_mixed_date_metadata(candidates):
+        notes.append("Candidate evidence mixes reliability or date metadata; review the table.")
+    if candidates and assessment.support_label in {
+        "unsupported",
+        "needs_source",
+        "not_audit_ready",
+    }:
+        notes.append(
+            "Candidate evidence is linked, but direct supplied-evidence support is not recorded."
+        )
+
+    return _unique(notes)
+
+
+def _has_mixed_date_metadata(candidates: list[EvidenceCandidate]) -> bool:
+    if len(candidates) < 2:
+        return False
+    return len({candidate.source_date for candidate in candidates}) > 1
 
 
 def _rewrite_guidance(assessment: ClaimAssessment) -> list[str]:
@@ -306,6 +352,18 @@ def _main_issue(assessment: ClaimAssessment) -> str:
 
 def _bullets(items: list[str]) -> list[str]:
     return [f"- {_escape_text(item)}" for item in items]
+
+
+def _anchor(prefix: str, *parts: str) -> str:
+    anchor_id = _anchor_id(prefix, *parts)
+    return f'<a id="{anchor_id}"></a>'
+
+
+def _anchor_id(prefix: str, *parts: str) -> str:
+    raw = "-".join((prefix, *parts))
+    slug = re.sub(r"[^a-z0-9-]+", "-", raw.lower())
+    slug = re.sub(r"-+", "-", slug).strip("-")
+    return slug or prefix
 
 
 def _escape_table(value: str) -> str:

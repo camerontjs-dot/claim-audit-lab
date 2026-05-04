@@ -102,8 +102,10 @@ Markdown reports include:
 - limitations
 - claim register
 - claim-by-claim details
-- candidate evidence links
-- deterministic rule flags
+- stable report, claim, rule-flag, and evidence-link anchors
+- candidate evidence links with reliability/date metadata
+- deterministic rule flags with visible rule-flag IDs
+- support-quality notes where candidate evidence caveats are useful
 - explanation and rewrite guidance where useful
 
 JSON reports follow the typed `AuditReport` model and are intended for regression checks, validation evidence, and downstream inspection.
@@ -159,7 +161,7 @@ Run the normal verification chain from the repo root:
 .venv/bin/python -m coverage run --branch -m pytest
 .venv/bin/python -m coverage report
 . .venv/bin/activate && claim-audit --help
-. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-11-smoke
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-13-smoke
 ```
 
 ## Repository Map
@@ -172,13 +174,13 @@ Run the normal verification chain from the repo root:
 | `examples/evidence/` | Fictional supplied evidence bundles |
 | `examples/reports/` | Checked-in generated and target report artifacts |
 | `docs/` | Master plan, validation matrix, verification notes, phase records, research-use adjunct |
-| `validation/` | Validation-inspired package for Phase 12 execution |
+| `validation/` | Validation-inspired IQ/OQ/PQ records and deviation log |
 | `assets/` | Public social and repo-pin assets |
 | `scripts/run_demo.py` | Reviewer-friendly report generation helper |
 
 ## Current Status
 
-Implemented and verified through Phase 11 public packaging:
+Implemented and verified through Phase 13 traceability/report polish:
 
 - typed model layer
 - draft and evidence loaders
@@ -191,8 +193,10 @@ Implemented and verified through Phase 11 public packaging:
 - two complete fictional example families
 - Phase 10 validation sweep
 - Phase 11 public README, license, metadata, and social/GitHub-pin assets
+- Phase 12 IQ/OQ/PQ-inspired validation records
+- Phase 13 stable Markdown anchors, visible rule-flag IDs, and support-quality notes
 
-Next step: Phase 12 validation package execution from `validation/README.md` and `docs/master-plan.md`.
+Next step: treat the CLI-first artifact as a release candidate unless a separate Phase 14 UI plan is explicitly promoted.
 
 ## License
 

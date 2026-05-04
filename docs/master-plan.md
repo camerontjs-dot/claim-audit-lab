@@ -8,7 +8,7 @@ Purpose: keep one living plan for Claim Audit Lab from first implementation thro
 
 ## Current State
 
-Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, two complete fictional draft/evidence/report fixture families, a verified Phase 10 validation sweep, and completed Phase 11 public packaging. The next implementation slice is Phase 12 validation package execution.
+Claim Audit Lab has a scaffold, a verified typed contract layer, verified draft/evidence loaders, verified conservative claim extraction, verified deterministic evidence matching, a verified Phase 4A runnable vertical slice, verified deterministic rule checks and support assessment, verified audit orchestration hardening, verified Phase 7 report rendering, a verified Phase 8 CLI workflow, a reviewed hand-authored AI research target report, two complete fictional draft/evidence/report fixture families, a verified Phase 10 validation sweep, completed Phase 11 public packaging, completed Phase 12 validation package execution, and completed Phase 13 traceability/report polish. The next move is to treat the CLI-first artifact as a release candidate unless a separate Phase 14 UI plan is explicitly promoted.
 
 Current durable files:
 
@@ -18,13 +18,14 @@ Current durable files:
 - `docs/phase-4-evidence-matching-plan.md`: implemented Phase 4 design record for deterministic evidence matching.
 - `docs/phase-6-audit-orchestration-plan.md`: implemented Phase 6 contract for hardening `audit_document(...)`.
 - `docs/phase-11-public-packaging-plan.md`: implemented Phase 11 record for README, public assets, public-copy sweeps, and packaging verification.
+- `docs/phase-13-traceability-report-polish-plan.md`: implemented Phase 13 record for explicit Markdown anchors and support-quality report polish.
 - `examples/reports/ai-research-note.target.md`: reviewed hand-authored target report and future golden-file reference for the AI research memo fixture.
 - `docs/research-use.md`: adjunct for scaffold-evaluation measurement rules, outside the v1 shipping path.
 - `validation/`: first-class validation package with IQ/OQ/PQ-inspired protocols, run records, and deviation log.
 - `LICENSE`: MIT license for public review and reuse.
 - `assets/`: social card source and GitHub-pin copy for public packaging.
 - `docs/verification.md`: checks run and verification notes.
-- `docs/handoff-prompt.md`: next implementation prompt for Phase 12 validation package execution.
+- `docs/handoff-prompt.md`: current handoff prompt for post-Phase-13 release-candidate review or Phase 14 planning.
 - `examples/drafts/ai-research-note.md`: first fictional draft fixture.
 - `examples/evidence/ai-research-evidence.yml`: first fictional evidence fixture.
 - `examples/drafts/product-readme-note.md`: second fictional draft fixture for product-copy claims.
@@ -36,7 +37,7 @@ Current durable files:
 - `src/claim_audit_lab/claim_extraction.py`: conservative deterministic claim extraction.
 - `src/claim_audit_lab/evidence_matching.py`: deterministic candidate-evidence matching.
 - `src/claim_audit_lab/auditor.py`: Phase 6-hardened audit orchestration returning typed `AuditReport` values with rule-assessed labels.
-- `src/claim_audit_lab/report.py`: Phase 7 human-review Markdown and typed JSON report rendering.
+- `src/claim_audit_lab/report.py`: Phase 13 human-review Markdown and typed JSON report rendering with stable Markdown anchors.
 - `src/claim_audit_lab/rules.py`: deterministic rule checks and support assessment.
 - `src/claim_audit_lab/cli.py`: Phase 8 `claim-audit` CLI with `audit` and `demo` subcommands.
 - `scripts/run_demo.py`: reviewer-friendly report demo entry point.
@@ -50,15 +51,15 @@ Current durable files:
 - `tests/test_evidence_matching.py`: numeric, product-fixture, ordering, capping, metadata, and batch-matching tests.
 - `tests/test_rules.py`: deterministic rule checks, label mapping, freshness, and rule-ID tests.
 - `tests/test_auditor.py`: Phase 6 auditor contract, trace-link, summary, deterministic-output, and edge-case tests.
-- `tests/test_report.py`: Phase 7 report sections, label, evidence-link, JSON, fixture-sync, and language-gate tests.
+- `tests/test_report.py`: report sections, labels, anchors, rule-flag IDs, support-quality notes, evidence-link, JSON, fixture-sync, and language-gate tests.
 - `tests/test_cli.py`: Phase 8 CLI help, output, malformed-input, high-risk-success, demo, and language-gate tests.
 - `tests/test_vertical_slice.py`: reviewer demo, output path, JSON round-trip, and language-gate tests.
 
 Immediate next step:
 
-1. Execute Phase 12 validation package records from `validation/README.md` without changing audit semantics.
-2. Run IQ/OQ/PQ-inspired checks against the completed CLI-first public package.
-3. Update validation records, deviation log, matrix statuses, verification notes, pipeline, and job-hunt log from current evidence.
+1. Treat the CLI-first artifact as a release candidate.
+2. Decide whether Phase 14 UI work is worth promoting, or keep the next work to public-release polish only.
+3. Preserve the Phase 13 boundary unless a new plan explicitly expands scope: no source discovery, live LLM/network calls, support scores, research-use calibration, or regulated-compliance claims.
 
 ## Project Boundary
 
@@ -635,7 +636,7 @@ Exit gate:
 
 ### Phase 12: Validation Package Execution
 
-Status: planned.
+Status: complete.
 
 Primary files:
 
@@ -659,6 +660,15 @@ Build:
 - Run PQ-style checks: at least two complete fictional or sanitized full audit examples with stable Markdown and JSON reports.
 - Record deviations, accepted limitations, and revalidation triggers in `validation/deviation-log.md`, `docs/verification.md`, and the validation matrix.
 
+Delivered:
+
+- Added non-regulated-context disclaimers to IQ/OQ/PQ records.
+- Executed IQ checks for clean local venv creation, editable install, CLI availability, ignored artifacts, and README setup alignment.
+- Executed OQ from the current automated suite, CLI smoke checks, generated reports, JSON validation, and public-copy/network scans.
+- Executed PQ against the AI research and Product README fictional example families using ignored `build/reports/phase-12-validation/` outputs.
+- Recorded research-use calibration and production-data qualification as accepted v1 limitations in `validation/deviation-log.md`.
+- Verified `CAL-REQ-036` from current evidence while leaving `CAL-REQ-024` and `CAL-REQ-039` planned.
+
 Exit gate:
 
 - Every README capability claim maps to a validation matrix row.
@@ -667,11 +677,42 @@ Exit gate:
 - The validation pass is visible in the repo but does not claim regulated compliance.
 - `CAL-REQ-036` is covered.
 
-### Phase 13: Later Extensions
+### Phase 13: Traceability And Report Polish
+
+Status: verified.
+
+Primary files:
+
+- `docs/phase-13-traceability-report-polish-plan.md`
+- `src/claim_audit_lab/report.py`
+- `tests/test_report.py`
+- checked-in generated reports under `examples/reports/`
+- `docs/validation-matrix-reference.md`
+- `docs/verification.md`
+- `docs/handoff-prompt.md`
+
+Build:
+
+Delivered:
+
+- Added explicit deterministic Markdown anchors for report, claim detail, evidence-link, and rule-flag surfaces.
+- Made rule flag IDs visible in Markdown, not only JSON.
+- Added support-quality notes for weak, unknown, stale, mixed, or indirect candidate evidence where useful.
+- Refreshed checked-in generated Markdown reports after tests defined the intended output.
+- Kept candidate scores as ranking signals, not final support labels.
+
+Exit gate:
+
+- Anchor behavior is covered by tests and current fixture reports.
+- Support-quality notes are covered by tests and remain absent when they would be filler.
+- `CAL-REQ-024` and `CAL-REQ-039` are verified from current evidence.
+- Full verification chain passed.
+
+### Phase 14: Later Extensions
 
 Status: deferred.
 
-Only consider after the CLI-first deterministic version is solid:
+Only consider after the CLI-first deterministic report experience is solid:
 
 - Streamlit interface for upload and report browsing.
 - FastAPI wrapper.
@@ -789,7 +830,7 @@ Allowed statuses:
 
 ### Post-Build Qualification
 
-After Phase 11, use the first-class `validation/` package to run a lightweight IQ/OQ/PQ-inspired pass over the finished CLI-first tool. The validation package should make installation behavior, operating range behavior, representative full-run behavior, deviations, and revalidation triggers visible in the repo.
+Phase 12 used the first-class `validation/` package to run a lightweight IQ/OQ/PQ-inspired pass over the finished CLI-first tool. The validation package now makes installation behavior, operating range behavior, representative full-run behavior, deviations, and revalidation triggers visible in the repo.
 
 Do not describe this as regulated validation. The useful signal is disciplined traceability and reproducibility, not a compliance claim.
 
@@ -810,9 +851,9 @@ At the end of each meaningful work session:
 
 ## Next Work Queue
 
-1. Execute the Phase 12 validation package from `validation/README.md`.
-2. Populate IQ/OQ/PQ-inspired records from current install, test, CLI, report, and inspection evidence.
-3. Record deviations or accepted limitations visibly, then update matrix statuses only from current evidence.
+1. Treat Claim Audit Lab as a CLI-first release candidate.
+2. Decide whether Phase 14 UI work should be promoted from deferred to planned.
+3. Keep source discovery, live LLM/network calls, support scores, and research-use calibration outside the release candidate unless explicitly promoted.
 
 ## Open Decisions
 

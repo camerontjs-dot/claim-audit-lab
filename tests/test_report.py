@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import date as Date
 from pathlib import Path
 
 import pytest
@@ -133,10 +134,8 @@ def test_markdown_report_surfaces_labels_flags_and_rewrite_guidance() -> None:
     assert "`causal_overreach`" in markdown
     assert "`future_certainty`" in markdown
     assert "`source-001` | `excerpt-001`" in markdown
-    assert (
-        "`source-001` | `excerpt-001` | `claim-61e15c02b15c`, `claim-1e17db4b2188` | 0.7242"
-        in markdown
-    )
+    assert '<a id="evidence-source-001-excerpt-001"></a> `source-001` | `excerpt-001`' in markdown
+    assert "`claim-61e15c02b15c`, `claim-1e17db4b2188` | 0.7242" in markdown
     assert "No candidate evidence linked from the supplied bundle." in markdown
     assert "Replace absolute wording with bounded supplied-evidence language." in markdown
     assert "Narrow the scope to the observed source, fixture, sample, or setting." in markdown
@@ -276,6 +275,146 @@ def test_markdown_report_handles_optional_candidate_and_explanation_fields() -> 
     assert "not dated" in markdown
     assert "not supplied" in markdown
     assert "No rationale recorded." in markdown
+
+
+def test_markdown_report_includes_explicit_stable_anchors() -> None:
+    """Markdown output uses explicit stable anchors for traceability surfaces."""
+    report = AuditReport(
+        document_id="Manual Note/One",
+        summary=AuditSummary(total_claims=1, unsupported_claims=1),
+        claims=[
+            ClaimAssessment(
+                claim=Claim(
+                    id="claim-Manual_001",
+                    text="The tool reduces every review queue.",
+                    claim_type="scope",
+                ),
+                support_label="unsupported",
+                risk_label="high",
+                candidate_evidence=[
+                    EvidenceCandidate(
+                        source_id="Source Manual",
+                        excerpt_id="Excerpt_One",
+                        score=0.56,
+                        source_reliability="medium",
+                    )
+                ],
+                rule_flags=[
+                    RuleFlag(
+                        id="flag:Mixed/One",
+                        claim_id="claim-Manual_001",
+                        code="scope_overreach",
+                        message="Scope is broader than the supplied evidence.",
+                        risk="high",
+                    )
+                ],
+            )
+        ],
+    )
+    markdown = render_markdown_report(report)
+
+    assert '<a id="report-manual-note-one"></a>' in markdown
+    assert '<a id="claim-claim-manual-001"></a>' in markdown
+    assert '<a id="rule-flag-mixed-one"></a>' in markdown
+    assert '<a id="evidence-source-manual-excerpt-one"></a>' in markdown
+
+
+def test_markdown_report_anchor_ids_are_deterministic_across_renders() -> None:
+    """Stable input IDs produce identical Markdown anchor output across renders."""
+    report = _ai_research_report()
+
+    assert render_markdown_report(report) == render_markdown_report(report)
+
+
+def test_markdown_report_surfaces_rule_flag_ids() -> None:
+    """Rule flag IDs appear in human-review Markdown alongside rule codes."""
+    markdown = _ai_research_markdown()
+
+    assert re.search(
+        r'<a id="rule-flag-[a-z0-9-]+"></a> `flag-[a-z0-9-]+` / `overconfident_wording`',
+        markdown,
+    )
+
+
+def test_markdown_report_support_quality_notes_appear_only_when_useful() -> None:
+    """Support-quality notes surface candidate caveats without adding filler."""
+    report = AuditReport(
+        document_id="support-quality-note",
+        summary=AuditSummary(total_claims=2, supported_claims=1, unsupported_claims=1),
+        claims=[
+            ClaimAssessment(
+                claim=Claim(
+                    id="claim-quality",
+                    text="The metric covers every queue.",
+                    claim_type="scope",
+                ),
+                support_label="unsupported",
+                risk_label="medium",
+                candidate_evidence=[
+                    EvidenceCandidate(
+                        source_id="source-quality-low",
+                        excerpt_id="excerpt-quality-low",
+                        score=0.44,
+                        source_reliability="low",
+                        source_date=Date(2024, 1, 1),
+                    ),
+                    EvidenceCandidate(
+                        source_id="source-quality-high",
+                        excerpt_id="excerpt-quality-high",
+                        score=0.31,
+                        source_reliability="high",
+                    ),
+                ],
+                rule_flags=[
+                    RuleFlag(
+                        id="flag-low-quality",
+                        claim_id="claim-quality",
+                        code="low_reliability_only",
+                        message="Direct support has weak reliability.",
+                        risk="medium",
+                    ),
+                    RuleFlag(
+                        id="flag-stale-quality",
+                        claim_id="claim-quality",
+                        code="stale_source",
+                        message="Direct support is stale.",
+                        risk="medium",
+                    ),
+                ],
+            ),
+            ClaimAssessment(
+                claim=Claim(
+                    id="claim-clean",
+                    text="The tool renders reports.",
+                    claim_type="capability",
+                ),
+                support_label="supported",
+                risk_label="low",
+                candidate_evidence=[
+                    EvidenceCandidate(
+                        source_id="source-clean",
+                        excerpt_id="excerpt-clean",
+                        score=0.82,
+                        source_reliability="high",
+                        source_date=Date(2026, 1, 1),
+                    )
+                ],
+            ),
+        ],
+    )
+    markdown = render_markdown_report(report)
+
+    assert markdown.count("**Support quality notes**") == 1
+    assert (
+        "Linked candidate evidence includes low or unknown source reliability metadata." in markdown
+    )
+    assert "Direct support is flagged for weak source reliability." in markdown
+    assert "Direct support is flagged as stale under the configured freshness policy." in markdown
+    assert "Candidate evidence mixes reliability or date metadata; review the table." in markdown
+    assert (
+        "Candidate evidence is linked, but direct supplied-evidence support is not recorded."
+        in markdown
+    )
 
 
 def test_markdown_report_renders_explicit_and_fallback_rewrite_guidance() -> None:

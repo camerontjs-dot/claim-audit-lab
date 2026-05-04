@@ -1,7 +1,7 @@
 # Claim Audit Lab Qualification Plan
 
-status: planned
-last_updated: 2026-04-30
+status: verified
+last_updated: 2026-05-04
 applies_after: first CLI-first public version
 
 Purpose: define the validation package for Claim Audit Lab as a visible project artifact. This document adapts pharma equipment qualification patterns for a software portfolio project. It is not a regulated validation package and should not be described as GxP, GMP, CSV, or FDA-compliant software.
@@ -79,4 +79,4 @@ Keep this validation package linked from:
 - `../docs/master-plan.md`
 - `../docs/validation-matrix-reference.md`
 
-The repo should make the validation approach visible before public packaging, even if the full IQ/OQ/PQ pass remains planned until after the first working version is built.
+The repo made the validation approach visible before public packaging, then Phase 12 executed the IQ/OQ/PQ-inspired pass after the CLI-first version was built.

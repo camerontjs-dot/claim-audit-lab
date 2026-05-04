@@ -2,6 +2,208 @@
 
 Last updated: 2026-05-04
 
+## 2026-05-04: Phase 13 traceability/report polish implementation
+
+Implemented Phase 13 without changing audit semantics, JSON schema, source discovery, live LLM/network behavior, support scores, assessment-confidence scoring, UI behavior, or research-use calibration. Markdown reports now include explicit deterministic anchors, visible rule-flag IDs, and constrained support-quality notes derived from existing assessment data.
+
+Files updated:
+
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/phase-13-traceability-report-polish-plan.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `src/claim_audit_lab/report.py`
+- `tests/test_report.py`
+- `examples/reports/ai-research-note.slice.md`
+- `examples/reports/product-readme-note.slice.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python -m pip install -e ".[dev]"
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+. .venv/bin/activate && claim-audit --help
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-13-smoke
+rg -n "fact check|fact-check|truth verifier|verify external truth|proven true|guaranteed true|verified externally|FDA|GxP|GMP|Computer System Validation|CSV validation|regulated compliance" README.md docs validation examples assets
+rg -n "TODO|TBD|placeholder|localhost|/Users/|api[_-]?key|secret|token|password" README.md docs validation examples assets
+```
+
+Results:
+
+- Editable install passed.
+- Virtualenv compile check passed.
+- `pytest`: 112 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed; 19 files already formatted.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 112 passed; total coverage 96%.
+- Activated `claim-audit --help` showed `audit` and `demo` subcommands.
+- Activated `claim-audit demo --out-dir build/reports/phase-13-smoke` wrote ignored Markdown and JSON outputs and completed with 4 claims assessed.
+- Overclaim and regulated-language scan produced expected historical, source-reference, avoid-list, boundary-language, validation disclaimer, and scan-command self-matches; no new public README or asset overclaim was introduced.
+- Placeholder/private-data/local-path scan produced expected historical absolute-path handoff references, target-report placeholder language, closed placeholder-row wording, support-quality empty-section test wording, and scan-pattern self-matches; public README and assets had no placeholder links, private data, secrets, or local-only paths.
+
+Phase outcome:
+
+- Added explicit Markdown anchors for report, claim detail, rule-flag, and evidence-link surfaces.
+- Made rule-flag IDs visible in Markdown.
+- Added support-quality notes for weak, unknown, stale, mixed, or indirect candidate evidence where useful, with tests proving the section stays absent when it would be filler.
+- Refreshed checked-in generated Markdown reports for both fictional report families.
+- Moved `CAL-REQ-024` and `CAL-REQ-039` to `verified`.
+
+## 2026-05-04: Phase 12 tie-off and Phase 13 planning
+
+Confirmed Phase 12 validation package execution is tied off across the current repo-visible status files, then added the Phase 13 traceability/report-polish plan as the next implementation move.
+
+Files updated:
+
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `docs/phase-13-traceability-report-polish-plan.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+. .venv/bin/activate && claim-audit --help
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-13-plan-smoke
+rg -n "fact check|fact-check|truth verifier|verify external truth|proven true|guaranteed true|verified externally|FDA|GxP|GMP|Computer System Validation|CSV validation|regulated compliance" README.md docs validation examples assets
+rg -n "TODO|TBD|placeholder|localhost|/Users/|api[_-]?key|secret|token|password" README.md docs validation examples assets
+```
+
+Results:
+
+- Virtualenv compile check passed.
+- `pytest`: 108 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed; 19 files already formatted.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 108 passed; total coverage 96%.
+- Activated `claim-audit --help` showed `audit` and `demo` subcommands.
+- Activated `claim-audit demo --out-dir build/reports/phase-13-plan-smoke` wrote ignored Markdown and JSON outputs and completed with 4 claims assessed.
+- Overclaim and regulated-language scan produced expected source-reference, avoid-list, boundary-language, and scan-command self-matches; no new public README or asset overclaim was introduced.
+- Placeholder/private-data/local-path scan produced expected historical absolute-path handoff references, target-report placeholder language, scan-command self-matches, and the new Phase 13 handoff path; no public README or asset placeholder link, private data, secret, or local-only path was introduced.
+
+Plan outcome:
+
+- Added `docs/phase-13-traceability-report-polish-plan.md`.
+- Phase 13 is scoped as a narrow code-and-docs polish slice: explicit Markdown anchors, visible rule-flag IDs, and support-quality notes.
+- `CAL-REQ-024` and `CAL-REQ-039` remain `planned` until implementation and tests provide current evidence.
+
+## 2026-05-04: Phase 12 validation package execution
+
+Completed Phase 12 validation package execution without changing audit semantics, public claims, CLI behavior, report schema, source discovery, live LLM/network behavior, support scores, or assessment-confidence scoring. Phase 12 generated IQ/OQ/PQ-inspired records from current evidence and kept command/output evidence in the protocol tables rather than adding a separate evidence folder.
+
+Files updated:
+
+- `README.md`
+- `docs/master-plan.md`
+- `docs/validation-matrix-reference.md`
+- `docs/handoff-prompt.md`
+- `docs/verification.md`
+- `validation/README.md`
+- `validation/qualification-plan.md`
+- `validation/iq-installation.md`
+- `validation/oq-operational.md`
+- `validation/pq-performance.md`
+- `validation/deviation-log.md`
+- `../../../pipeline.md`
+- `../../../log/job-hunt-log.md`
+
+Checks run from `portfolio/live-asset/claim-audit-lab/`:
+
+```bash
+python3.11 -m venv build/phase-12-iq-venv
+build/phase-12-iq-venv/bin/python -m pip install -e ".[dev]"
+build/phase-12-iq-venv/bin/claim-audit --help
+.venv/bin/python -m pip install -e ".[dev]"
+.venv/bin/python -m compileall -q src tests
+.venv/bin/python -m pytest
+.venv/bin/python -m ruff check .
+.venv/bin/python -m ruff format --check .
+.venv/bin/python -m mypy src
+.venv/bin/python -m coverage run --branch -m pytest
+.venv/bin/python -m coverage report
+. .venv/bin/activate && claim-audit --help
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-12-validation/demo
+mkdir -p build/reports/phase-12-validation/ai-research build/reports/phase-12-validation/product-readme
+. .venv/bin/activate && claim-audit audit examples/drafts/ai-research-note.md --evidence examples/evidence/ai-research-evidence.yml --out build/reports/phase-12-validation/ai-research/ai-research-note.md --json-out build/reports/phase-12-validation/ai-research/ai-research-note.json
+. .venv/bin/activate && claim-audit audit examples/drafts/product-readme-note.md --evidence examples/evidence/product-readme-evidence.yml --out build/reports/phase-12-validation/product-readme/product-readme-note.md --json-out build/reports/phase-12-validation/product-readme/product-readme-note.json
+.venv/bin/python - <<'PY'
+from pathlib import Path
+from claim_audit_lab.models import AuditReport
+
+paths = [
+    Path("build/reports/phase-12-validation/ai-research/ai-research-note.json"),
+    Path("build/reports/phase-12-validation/product-readme/product-readme-note.json"),
+    Path("build/reports/phase-12-validation/demo/ai-research-note.cli.json"),
+]
+for path in paths:
+    report = AuditReport.model_validate_json(path.read_text())
+    print(f"{path}: ok ({len(report.claims)} claims)")
+PY
+rg -n "Trace|Limitations|Support Label|Rule Flags|Rewrite Guidance|supported by supplied evidence|partially supported|overstated|High-risk|Evidence Links|Claim Register" build/reports/phase-12-validation/**/*.md
+rg -n "fact check|fact-check|truth verifier|verify external truth|proven true|guaranteed true|verified externally|FDA|GxP|GMP|Computer System Validation|CSV validation|regulated compliance" README.md docs validation examples assets
+rg -n "TODO|TBD|placeholder|localhost|/Users/|api[_-]?key|secret|token|password" README.md docs validation examples assets
+rg -n "openai|anthropic|requests|httpx|urllib|socket|dotenv|os\.environ" pyproject.toml src tests scripts
+git status --ignored --short
+```
+
+Results:
+
+- Clean IQ venv was created under ignored `build/phase-12-iq-venv/`.
+- Clean IQ editable install with dev dependencies succeeded and exposed `claim-audit --help`.
+- Repo-local editable reinstall passed.
+- Virtualenv compile check passed.
+- `pytest`: 108 passed.
+- `ruff check .`: passed.
+- `ruff format --check .`: passed; 19 files already formatted.
+- `mypy src`: passed across 9 source files.
+- Coverage run: 108 passed; total coverage 96%.
+- Activated `claim-audit --help` showed `audit` and `demo` subcommands.
+- Activated `claim-audit demo --out-dir build/reports/phase-12-validation/demo` wrote Markdown and JSON reports and completed with 4 claims assessed.
+- AI research `claim-audit audit` wrote Markdown and JSON reports with 4 claims assessed: 1 supported, 1 partially supported, 2 overstated, and 2 high-risk findings.
+- Product README `claim-audit audit` wrote Markdown and JSON reports with 4 claims assessed: 2 supported, 2 overstated, and 2 high-risk findings.
+- Demo, AI research, and Product README JSON reports validated through `AuditReport.model_validate_json(...)`.
+- Generated Markdown report inspection confirmed audit boundary, limitations, claim register, candidate evidence, support labels, risk labels, rule flags, and rewrite guidance where applicable.
+- Overclaim and regulated-language scan produced expected historical, source-reference, avoid-list, and boundary-language matches; README and assets do not claim source discovery, outside-world assessment, regulated compliance, or research-result proof.
+- Placeholder/private-data/local-path scan produced expected historical absolute-path handoff references, target-report placeholder language, closed placeholder-row wording, and scan-pattern self-matches; public README and assets had no placeholder links, private data, secrets, or local-only paths.
+- Network/provider scan across package/source/test/script surfaces produced no matches.
+- `git status --ignored --short` confirmed Phase 12 generated outputs, clean IQ venv, coverage, caches, egg-info, bytecode, and build artifacts are ignored.
+
+Validation matrix status effects:
+
+- `CAL-REQ-036` moved to `verified` because IQ/OQ/PQ-inspired records are complete, deviations/limitations are visible, and the validation package is linked from public docs without regulated-compliance claims.
+- `CAL-REQ-024` remains `planned` because candidate reliability/support differences are visible in metadata and reports, but warning/report polish for support-quality differences is still a later gap.
+- `CAL-REQ-039` remains `planned` because stable claim IDs, deterministic rule-flag IDs, and generated report comparisons are covered, but explicit Markdown anchor policy is still not fully documented.
+
+Accepted limitations recorded:
+
+- Research-use human calibration remains deferred outside v1 and belongs in `docs/research-use.md`.
+- Real-world production-data qualification is out of scope for the public portfolio release; v1 uses fictional fixtures to avoid private or sensitive material.
+
+Next step is Phase 13 planning for traceability/report-polish work around `CAL-REQ-024` and `CAL-REQ-039`.
+
 ## 2026-05-04: Phase 11 public packaging
 
 Completed Phase 11 public packaging without changing audit semantics, adding support scores, adding source discovery, adding network calls, adding live LLM calls, or executing the IQ/OQ/PQ validation package. The README is now the public front door, the repo has MIT licensing and public package metadata, and the public asset surface includes a social-card SVG plus GitHub-pin copy.
