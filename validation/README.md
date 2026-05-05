@@ -21,13 +21,13 @@ It does not validate whether outside-world claims are true. A passing validation
 | `pq-performance.md` | Performance qualification protocol and record for representative full example runs. | verified with v1 limitations |
 | `deviation-log.md` | Visible log for validation failures, accepted limitations, and follow-up actions. | open; accepted v1 limitations recorded |
 | `../docs/validation-matrix-reference.md` | Requirement traceability matrix and status source of truth. | active |
-| `../docs/verification.md` | Session-level verification notes and command results. | active |
+| `../docs/verification.md` | Public release verification summary and command results. | active |
 
 ## How This Should Be Used
 
 During implementation, add or update validation matrix rows before adding public capability claims.
 
-Phase 12 executed the validation package on 2026-05-04:
+The validation package was executed on 2026-05-04:
 
 1. IQ verified clean local installation, editable install, CLI availability, ignored artifacts, and README setup alignment.
 2. OQ verified the deterministic operating range through the current automated suite, generated reports, and CLI checks.
@@ -47,7 +47,7 @@ The validation package is acceptable for a public portfolio release when:
 - outputs include trace links, limitations, and no truth-verification language
 - deviations and accepted limitations are visible
 
-Phase 12 meets this pass standard for the v1 portfolio release. Research-use calibration and production-data qualification remain outside v1.
+The validation package meets this pass standard for the v1 portfolio release. Research-use calibration and production-data qualification remain outside v1.
 
 ## Compliance Language Guardrail
 

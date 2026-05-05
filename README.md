@@ -137,15 +137,17 @@ This is validation-inspired portfolio control. It is not a regulated compliance 
 
 ## Public Packaging
 
-Phase 11 added:
+This repository includes the public-facing assets needed for a GitHub portfolio release:
 
 - MIT license
+- changelog for the initial release candidate
+- source-distribution manifest for repo-level docs, examples, validation records, assets, and demo script
 - package metadata for public review
 - `assets/social-card.svg`
 - `assets/github-pin.md`
 - public README positioning aligned to supplied-evidence support
 
-Public repository and homepage URLs are intentionally omitted from package metadata until a real public remote exists.
+Repository and homepage URLs are intentionally omitted from package metadata until the real public remote exists.
 
 ## Development Checks
 
@@ -161,7 +163,7 @@ Run the normal verification chain from the repo root:
 .venv/bin/python -m coverage run --branch -m pytest
 .venv/bin/python -m coverage report
 . .venv/bin/activate && claim-audit --help
-. .venv/bin/activate && claim-audit demo --out-dir build/reports/phase-13-smoke
+. .venv/bin/activate && claim-audit demo --out-dir build/reports/release-candidate-smoke
 ```
 
 ## Repository Map
@@ -172,31 +174,38 @@ Run the normal verification chain from the repo root:
 | `tests/` | Unit, integration, CLI, report, and language-gate tests |
 | `examples/drafts/` | Fictional draft inputs |
 | `examples/evidence/` | Fictional supplied evidence bundles |
-| `examples/reports/` | Checked-in generated and target report artifacts |
-| `docs/` | Master plan, validation matrix, verification notes, phase records, research-use adjunct |
+| `examples/reports/` | Checked-in generated report artifacts |
+| `docs/` | Public validation matrix and release verification summary |
 | `validation/` | Validation-inspired IQ/OQ/PQ records and deviation log |
 | `assets/` | Public social and repo-pin assets |
 | `scripts/run_demo.py` | Reviewer-friendly report generation helper |
+| `CHANGELOG.md` | Initial release notes and known v1 limits |
+| `MANIFEST.in` | Source-distribution include list for repo-level release artifacts |
 
-## Current Status
+## Release Readiness
 
-Implemented and verified through Phase 13 traceability/report polish:
+Claim Audit Lab is a CLI-first release candidate.
 
-- typed model layer
-- draft and evidence loaders
-- conservative claim extraction
-- deterministic evidence matching
-- deterministic rule checks and support assessment
-- audit orchestration
-- Markdown and JSON report rendering
-- `claim-audit` CLI
-- two complete fictional example families
-- Phase 10 validation sweep
-- Phase 11 public README, license, metadata, and social/GitHub-pin assets
-- Phase 12 IQ/OQ/PQ-inspired validation records
-- Phase 13 stable Markdown anchors, visible rule-flag IDs, and support-quality notes
+Ready surfaces:
 
-Next step: treat the CLI-first artifact as a release candidate unless a separate Phase 14 UI plan is explicitly promoted.
+- local editable install and `claim-audit` CLI
+- two checked-in fictional draft/evidence/report families
+- deterministic Markdown and JSON report outputs
+- validation-inspired IQ/OQ/PQ records
+- MIT license and package metadata
+- initial changelog
+- source-distribution manifest
+- GitHub pin copy and social-card source
+
+Deferred surfaces:
+
+- web UI
+- source discovery
+- live LLM assistance
+- support scores and assessment-confidence scores
+- research-use calibration
+
+The next public step is to create the public GitHub remote, add the remote URL to package metadata if desired, upload or convert the social card for GitHub's preview settings, and publish the repo.
 
 ## License
 

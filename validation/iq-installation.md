@@ -28,10 +28,10 @@ This protocol covers:
 
 | Step | Command or inspection | Expected result | Date run | Result | Evidence reference | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| IQ-001 | Inspect `pyproject.toml` | Package metadata and dependencies are present. | 2026-05-04 | Metadata, Python requirement, dependencies, dev extras, package discovery, and `claim-audit` script entry point are present. | `pyproject.toml`; `docs/verification.md` Phase 12 entry | verified |
-| IQ-002 | `python3.11 -m venv build/phase-12-iq-venv` | Clean virtual environment can be created. | 2026-05-04 | Clean local venv created under ignored `build/`. | command result; `git status --ignored --short` showing `build/` ignored | verified |
-| IQ-003 | `build/phase-12-iq-venv/bin/python -m pip install -e ".[dev]"` and `.venv/bin/python -m pip install -e ".[dev]"` | Editable install succeeds with dev dependencies. | 2026-05-04 | Clean venv install and repo-local editable reinstall both completed successfully. | command results; `docs/verification.md` Phase 12 entry | verified |
-| IQ-004 | `build/phase-12-iq-venv/bin/claim-audit --help` and activated `claim-audit --help` | CLI command is available and displays help. | 2026-05-04 | Help output displayed `audit` and `demo` subcommands. | command results; `docs/verification.md` Phase 12 entry | verified |
+| IQ-001 | Inspect `pyproject.toml` | Package metadata and dependencies are present. | 2026-05-04 | Metadata, Python requirement, dependencies, dev extras, package discovery, and `claim-audit` script entry point are present. | `pyproject.toml`; `docs/verification.md` | verified |
+| IQ-002 | Create a clean local virtual environment under ignored `build/`. | Clean virtual environment can be created. | 2026-05-04 | Clean local venv created under ignored `build/`. | command result; `git status --ignored --short` showing `build/` ignored | verified |
+| IQ-003 | Install with `python -m pip install -e ".[dev]"`. | Editable install succeeds with dev dependencies. | 2026-05-04 | Clean venv install and repo-local editable reinstall both completed successfully. | command results; `docs/verification.md` | verified |
+| IQ-004 | Run `claim-audit --help`. | CLI command is available and displays help. | 2026-05-04 | Help output displayed `audit` and `demo` subcommands. | command results; `docs/verification.md` | verified |
 | IQ-005 | Inspect `.gitignore` and `git status --ignored --short` | Caches, virtualenv, coverage, and build artifacts are ignored. | 2026-05-04 | `.venv/`, `.coverage`, caches, `build/`, egg-info, and bytecode artifacts are ignored; no tracked changes from generated output. | `.gitignore`; `git status --ignored --short` | verified |
 | IQ-006 | Inspect README setup instructions | Instructions match the current install path and commands. | 2026-05-04 | README quick start uses Python 3.11+, editable install, `claim-audit demo`, and current `claim-audit audit DRAFT --evidence --out --json-out` syntax. | `README.md` Quick Start | verified |
 
@@ -41,4 +41,4 @@ IQ passes when all listed install, setup, CLI, ignored-artifact, and README-alig
 
 ## Record
 
-Phase 12 IQ passed on 2026-05-04 against the completed CLI-first version. No IQ-blocking deviations were recorded.
+IQ passed on 2026-05-04 against the completed CLI-first version. No IQ-blocking deviations were recorded.

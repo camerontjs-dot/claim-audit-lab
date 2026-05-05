@@ -68,7 +68,7 @@ Re-run the affected qualification checks when changing:
 - report rendering language
 - CLI behavior or exit semantics
 - fixture families used for public examples
-- research-use measurement rules
+- research-use measurement rules, if Claim Audit Lab is later used as a measurement instrument
 - dependency versions that affect parsing, validation, or report output
 
 ## Visibility Requirements
@@ -76,7 +76,6 @@ Re-run the affected qualification checks when changing:
 Keep this validation package linked from:
 
 - `../README.md`
-- `../docs/master-plan.md`
 - `../docs/validation-matrix-reference.md`
 
-The repo made the validation approach visible before public packaging, then Phase 12 executed the IQ/OQ/PQ-inspired pass after the CLI-first version was built.
+The repo made the validation approach visible before public packaging, then executed the IQ/OQ/PQ-inspired pass after the CLI-first version was built.
