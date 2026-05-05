@@ -131,9 +131,14 @@ Claim Audit Lab keeps validation visible in the repo:
 - `docs/validation-matrix-reference.md` maps public promises to `CAL-REQ-*` rows.
 - `docs/verification.md` records verification commands and outcomes.
 - `validation/README.md` describes the IQ/OQ/PQ-inspired validation package.
+- `validation/` includes IQ/OQ/PQ documentation as a demonstration of GxP-aligned validation practices.
 - `validation/deviation-log.md` is reserved for visible deviations and accepted limitations.
 
 This is validation-inspired portfolio control. It is not a regulated compliance claim.
+
+The validation package and matrix are included as demonstration artifacts. They show how public claims, tests, example outputs, and known limitations can be traced in an IQ/OQ/PQ-inspired workflow, but they are not a substitute for validating the tool against your own data, intended use, quality system, or regulatory context.
+
+The v1 validation package is complete for the checked-in fictional-fixture CLI workflow. Real-data fixture qualification and human-review calibration are future validation gates before using the tool on real cases, sensitive materials, production-like drafts, or research measurement outputs.
 
 ## Public Packaging
 
@@ -144,7 +149,6 @@ This repository includes the public-facing assets needed for a GitHub portfolio 
 - source-distribution manifest for repo-level docs, examples, validation records, assets, and demo script
 - package metadata for public review
 - `assets/social-card.svg`
-- `assets/github-pin.md`
 - public README positioning aligned to supplied-evidence support
 
 Repository and homepage URLs are intentionally omitted from package metadata until the real public remote exists.
@@ -177,7 +181,7 @@ Run the normal verification chain from the repo root:
 | `examples/reports/` | Checked-in generated report artifacts |
 | `docs/` | Public validation matrix and release verification summary |
 | `validation/` | Validation-inspired IQ/OQ/PQ records and deviation log |
-| `assets/` | Public social and repo-pin assets |
+| `assets/` | Public social-card asset |
 | `scripts/run_demo.py` | Reviewer-friendly report generation helper |
 | `CHANGELOG.md` | Initial release notes and known v1 limits |
 | `MANIFEST.in` | Source-distribution include list for repo-level release artifacts |
@@ -195,7 +199,7 @@ Ready surfaces:
 - MIT license and package metadata
 - initial changelog
 - source-distribution manifest
-- GitHub pin copy and social-card source
+- social-card source
 
 Deferred surfaces:
 

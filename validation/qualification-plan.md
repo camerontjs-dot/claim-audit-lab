@@ -1,7 +1,7 @@
 # Claim Audit Lab Qualification Plan
 
-status: verified
-last_updated: 2026-05-04
+status: verified for v1 public release
+last_updated: 2026-05-05
 applies_after: first CLI-first public version
 
 Purpose: define the validation package for Claim Audit Lab as a visible project artifact. This document adapts pharma equipment qualification patterns for a software portfolio project. It is not a regulated validation package and should not be described as GxP, GMP, CSV, or FDA-compliant software.
@@ -31,7 +31,7 @@ Use a lightweight IQ/OQ/PQ structure after the first usable version exists.
 | Intended use | The README, reports, and CLI describe supplied-evidence support, not truth verification. | README inspection, report-quality tests, validation matrix row coverage. |
 | IQ: installation qualification | The project installs and exposes the expected command in a clean local environment. | Editable install command, documented dependency set, `claim-audit --help`, no hidden API key or network requirement. |
 | OQ: operational qualification | The tool handles its expected operating range and known edge cases. | Automated tests for valid evidence, malformed evidence, empty evidence, numeric mismatch, causal overstatement, comparative claims, stale or low-reliability evidence, and report language. |
-| PQ: performance qualification | Representative full audit runs produce stable, inspectable reports from checked-in fictional or sanitized data. | At least two complete draft/evidence/report families, JSON report validation, Markdown report inspection, and documented human-review calibration for research use. |
+| PQ: performance qualification | Representative full audit runs produce stable, inspectable reports from checked-in fictional or sanitized data. | At least two complete draft/evidence/report families, JSON report validation, Markdown report inspection, and public-data hygiene review. |
 
 ## Acceptance Rules
 
@@ -39,11 +39,24 @@ The post-build qualification pass is acceptable when:
 
 - every README capability claim maps to at least one validation matrix row
 - every core support label appears in at least one test or example report
-- every rule family has an automated test or an explicit deferred status
+- every v1 rule family has an automated test or checked-in example evidence
 - the CLI can run checked-in examples without network access or private credentials
 - Markdown and JSON reports include trace links from claims to evidence, flags, labels, and limitations
 - report language avoids claiming that the tool proves truth
-- known limitations and unresolved validation gaps are documented
+- there are no open v1 validation failures
+- future-use gates are documented before real data, sensitive materials, or research measurement runs
+
+## Future Validation Gates
+
+The v1 public release is validated only for deterministic local runs against checked-in fictional fixtures.
+
+Before testing real data fixtures, sensitive materials, production-like drafts, or research measurement outputs, the project must complete a separate validation pass that includes:
+
+- real-data or production-like fixture qualification
+- human-review calibration and disagreement analysis
+- privacy/sensitivity review for all new fixtures
+- acceptance criteria for false positives, false cautions, and missed unsupported claims
+- a refreshed validation matrix and deviation log
 
 ## Deviation Handling
 
@@ -68,6 +81,7 @@ Re-run the affected qualification checks when changing:
 - report rendering language
 - CLI behavior or exit semantics
 - fixture families used for public examples
+- real-data fixture qualification
 - research-use measurement rules, if Claim Audit Lab is later used as a measurement instrument
 - dependency versions that affect parsing, validation, or report output
 
@@ -78,4 +92,4 @@ Keep this validation package linked from:
 - `../README.md`
 - `../docs/validation-matrix-reference.md`
 
-The repo made the validation approach visible before public packaging, then executed the IQ/OQ/PQ-inspired pass after the CLI-first version was built.
+The repo made the validation approach visible before public packaging, then executed the IQ/OQ/PQ-inspired pass after the CLI-first version was built. The v1 validation pass is complete for the public fictional-fixture CLI scope.

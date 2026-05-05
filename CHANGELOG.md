@@ -13,6 +13,7 @@ Initial CLI-first release candidate.
 - Added `claim-audit audit` and `claim-audit demo` commands.
 - Added two checked-in fictional draft/evidence/report fixture families.
 - Added validation-inspired IQ/OQ/PQ records under `validation/`.
+- Closed v1 validation for the public fictional-fixture CLI scope, with future gates recorded for real-data and research-use validation.
 - Added MIT license, package metadata, GitHub pin copy, and social-card source.
 
 Known v1 limits:
@@ -22,4 +23,5 @@ Known v1 limits:
 - No web UI.
 - No support-score or assessment-confidence scoring.
 - No research-use calibration claim.
+- No real-data fixture qualification claim.
 - No regulated-compliance claim.

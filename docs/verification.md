@@ -10,6 +10,8 @@ Claim Audit Lab `0.1.0` is verified as a deterministic CLI-first portfolio artif
 
 This verification does not claim that the tool checks outside-world truth, performs source discovery, provides regulated validation, or is calibrated as a research measurement instrument.
 
+The v1 validation package is complete for the public fictional-fixture CLI scope. Real-data fixture qualification and human-review calibration are future validation gates before real-case, sensitive-material, production-like, or research-measurement use.
+
 ## Checks Run
 
 Commands run from the repository root:
@@ -49,6 +51,7 @@ git status --short --ignored
 - Public-language scans produced only expected validation disclaimers, guardrails, source-reference matches, or scan-command self-matches.
 - Placeholder/private-data/local-path scans produced only expected validation-history wording or scan-command self-matches.
 - Network/API/LLM scan produced no package, source, test, script, README, or changelog dependency on network clients, provider SDKs, environment secrets, or API keys.
+- Validation package review found no open v1 validation failures; future real-data and research-use validation gates are recorded in `validation/deviation-log.md`.
 
 ## Public Repo Contents
 

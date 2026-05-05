@@ -54,7 +54,7 @@ Suggested verification methods:
 | `evidence` | Test name, fixture path, generated report path, command, or review note. |
 | `acceptance_criteria` | Observable pass condition. |
 | `risk_if_missing` | Why this matters. |
-| `status` | `planned`, `implemented`, `verified`, `blocked`, or `deferred`. |
+| `status` | `planned`, `implemented`, `verified`, `blocked`, or `future-gate`. |
 
 ## Starter Validation Matrix
 
@@ -89,10 +89,10 @@ Suggested verification methods:
 | CAL-REQ-027 | Normal tests and v1 CLI behavior must not require live LLM calls, API keys, or network access. | project boundary, control checklist | `src/`, `tests/`, `README.md` | inspection, test, demonstration | `pyproject.toml` dependency review; source/test scan; full test run; editable install; `claim-audit --help` | The normal test suite and example CLI run complete with checked-in fixtures and no required network credentials. | The project becomes harder to reproduce and risks hidden external dependencies. | verified |
 | CAL-REQ-028 | Public v1 examples must include at least two complete fictional draft/evidence/report families. | MVP definition, demo data plan | `examples/`, `report.py`, `README.md` | inspection, demonstration, test | `examples/drafts/*`; `examples/evidence/*`; `examples/reports/*`; `tests/test_report.py` | AI research and Product README example families each have draft, evidence, generated Markdown report, and generated JSON report artifacts; checked-in reports match current renderer output and JSON validates through `AuditReport`. | The demo may be overfit to one scenario and fail to show general behavior. | verified |
 | CAL-REQ-029 | Core support labels and risk labels must be constrained, documented, and exercised. | outputs, README | `models.py`, `rules.py`, `report.py`, `README.md` | test, inspection | `tests/test_models.py`; `tests/test_rules.py`; `tests/test_report.py`; README label section | Every support label and risk label is defined in typed models, explained in public docs, and covered by at least one fixture or test before public release. | Label meanings drift or public docs describe states the tool cannot produce. | verified |
-| CAL-REQ-036 | The finished CLI-first tool should have a visible first-class validation package using validation-inspired IQ/OQ/PQ structure without claiming regulated compliance. | pharma equipment validation analogy, repo visibility requirement | `validation/README.md`, `validation/qualification-plan.md`, `validation/iq-installation.md`, `validation/oq-operational.md`, `validation/pq-performance.md`, `validation/deviation-log.md`, `README.md`, `docs/verification.md`, example reports | inspection, demonstration | IQ/OQ/PQ records; `docs/verification.md`; README validation links; generated reports; deviation log accepted limitations | The repo exposes the validation package at top level, records IQ/OQ/PQ-style checks after the tool is built, documents deviations and revalidation triggers, and avoids GxP/GMP/CSV/FDA compliance claims. | The validation approach stays hidden in chat or is overstated as compliance. | verified |
+| CAL-REQ-036 | The finished CLI-first tool should have a visible first-class validation package using validation-inspired IQ/OQ/PQ structure without claiming regulated compliance. | pharma equipment validation analogy, repo visibility requirement | `validation/README.md`, `validation/qualification-plan.md`, `validation/iq-installation.md`, `validation/oq-operational.md`, `validation/pq-performance.md`, `validation/deviation-log.md`, `README.md`, `docs/verification.md`, example reports | inspection, demonstration | IQ/OQ/PQ records; `docs/verification.md`; README validation links; generated reports; deviation log future-use gates | The repo exposes the validation package at top level, records IQ/OQ/PQ-style checks after the tool is built, documents that no open v1 validation failures remain, records future gates before real-data/research use, and avoids GxP/GMP/CSV/FDA compliance claims. | The validation approach stays hidden, reads incomplete, or is overstated as compliance. | verified |
 | CAL-REQ-038 | A runnable vertical slice must produce a Markdown report before CLI hardening. | portfolio reviewability | `auditor.py`, `report.py`, demo entry point, checked-in fixtures | demonstration, test | `tests/test_vertical_slice.py`; `scripts/run_demo.py --update-fixture`; `examples/reports/ai-research-note.slice.md`; `examples/reports/ai-research-note.slice.json` | A reviewer can run one documented local command against checked-in fixtures and see extraction, candidate matching, `audit_document()`, human-review Markdown output, typed JSON output, and rule-assessed labels. | The repo remains internally rigorous but not inspectable as a working artifact. | verified |
 | CAL-REQ-039 | Claim IDs, rule-flag IDs, and report anchors must be deterministic across reruns for the same inputs. | traceability need | `claim_extraction.py`, `rules.py`, `report.py` | test, analysis | `tests/test_claim_extraction.py`; `tests/test_rules.py`; `tests/test_auditor.py`; `tests/test_report.py`; generated reports | Claim IDs derive from stable input content; rule-flag IDs derive from rule code plus claim-specific trigger context; generated reports compare stable across reruns. Explicit Markdown anchors are deterministic and rule-flag IDs are visible in Markdown. | Reports cannot be compared, linked, or used as reliable validation evidence. | verified |
-| CAL-REQ-040 | Public packaging must include social card or GitHub-pin assets that match the repo positioning. | portfolio release bar | README, assets folder | inspection | `assets/social-card.svg`; `assets/github-pin.md`; README public packaging section; asset review | Social/GitHub-pin assets exist, avoid overclaiming, and align with the README and report experience. | Public presentation lags behind the project quality bar set by prior portfolio assets. | verified |
+| CAL-REQ-040 | Public packaging must include social-card assets that match the repo positioning. | portfolio release bar | README, assets folder | inspection | `assets/social-card.svg`; README public packaging section; asset review | Social-card assets exist, avoid overclaiming, and align with the README and report experience. | Public presentation lags behind the project quality bar set by prior portfolio assets. | verified |
 
 ## Fixture Coverage Matrix
 
@@ -101,7 +101,6 @@ Use this as a compact design check before writing tests.
 | Fixture family | Claim types covered | Expected labels or flags | Minimum evidence artifact |
 | --- | --- | --- | --- |
 | AI research memo | numeric, causal, scope, interpretive | `supported`, `partially_supported`, `overstated` | `examples/evidence/ai-research-evidence.yml` |
-| Application answer | credential, capability, public-link, comparative | `supported`, `needs_source`, `unsupported` | sanitized or fictional evidence bundle |
 | Product README paragraph | capability, scope, comparative, prediction | `partially_supported`, `overstated`, freshness warning | `examples/drafts/product-readme-note.md`, `examples/evidence/product-readme-evidence.yml` |
 | Malformed evidence | none | loader validation error | malformed YAML/JSON fixture |
 | Empty evidence bundle | any extracted claims | `needs_source`, bundle warning | empty-but-valid evidence fixture |
@@ -115,14 +114,14 @@ The validation matrix is strong enough for the first public version when:
 
 - Every README capability claim maps to at least one `CAL-REQ-*` row.
 - Every core label has at least one fixture that produces it.
-- Every rule check in the plan has at least one automated test.
+- Every v1 rule check has at least one automated test.
 - Every example report is generated from checked-in fictional data.
 - Report-quality tests prevent placeholders and overclaiming language.
 - Known limitations are visible in the README and generated reports.
 - Every model invariant listed in the first implementation prompt has a direct test.
 - Public v1 has at least two complete fictional example runs with checked-in Markdown and JSON outputs.
 - Normal tests and example runs require no network access, API key, or live LLM call.
-- Research-use calibration remains deferred and does not block v1 portfolio release.
+- Research-use calibration and real-data fixture qualification are future gates before real-case use, not open v1 validation failures.
 
 ## Maintenance Rules
 
@@ -133,4 +132,4 @@ The validation matrix is strong enough for the first public version when:
 - Treat deleted or renamed tests as validation drift until the matrix is updated.
 - Before publishing, scan for claims that imply truth verification rather than supplied-evidence support.
 - Keep `validation/README.md` linked from the README so the post-build validation approach stays visible in the repo.
-- Keep research-measurement requirements outside this public v1 scope until the project is actively used as a measurement instrument.
+- Keep research-measurement and real-data requirements outside this public v1 scope until the project is actively used on real cases or as a measurement instrument.

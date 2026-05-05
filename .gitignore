@@ -10,5 +10,6 @@ dist/
 build/
 *.egg-info/
 .DS_Store
+assets/github-pin.md
 examples/reports/*.json
 !examples/reports/*.slice.json

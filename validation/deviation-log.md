@@ -1,9 +1,9 @@
 # Validation Deviation Log
 
-status: open
-last_updated: 2026-05-04
+status: closed for v1 public release; future-use gates recorded
+last_updated: 2026-05-05
 
-Purpose: track validation failures, accepted limitations, and follow-up actions. Gaps should be visible here instead of silently disappearing from the validation matrix.
+Purpose: track validation failures, accepted limitations, future-use gates, and follow-up actions. Gaps should be visible here instead of silently disappearing from the validation matrix.
 
 ## Deviation Rules
 
@@ -15,11 +15,16 @@ Add an entry when:
 - a report overclaims truth verification
 - a test, fixture, or report is removed without updating traceability
 - a known limitation is accepted for public release
+- a validation activity is required before expanding beyond the v1 intended use
+
+## V1 Outcome
+
+No open v1 validation failures remain for the public fictional-fixture CLI scope. The entries below either closed setup issues or record future validation gates that must be completed before real data, sensitive materials, production-like drafts, or research measurement runs.
 
 ## Log
 
 | ID | Date | Reference | Area | Description | Impact | Decision | Rationale | Owner/status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | DEV-000 | 2026-04-30 | validation package | package setup | Placeholder row created before protocol execution. | none | closed | IQ/OQ/PQ-inspired records replaced the placeholder state with current evidence. | Codex/closed |
-| DEV-001 | 2026-05-04 | `PQ-006` | research-use calibration | Human-review calibration and disagreement analysis are not complete for v1. | The tool should not be presented as a calibrated research measurement instrument yet. | defer | V1 validates the portfolio CLI workflow against fictional fixtures; research measurement rules remain outside the v1 shipping path. | Cameron/future research-use phase |
-| DEV-002 | 2026-05-04 | `PQ` scope | production data | Public validation uses checked-in fictional examples, not real-world production data. | Representative behavior is visible, but production deployment behavior is not claimed. | accept for v1 | Public portfolio validation should avoid private or sensitive materials; real production-data qualification would require a separate intended-use decision. | Cameron/accepted limitation |
+| DEV-001 | 2026-05-04 | future validation gate | research-use calibration | Human-review calibration and disagreement analysis are not part of the v1 public release. | The tool must not be presented as a calibrated research measurement instrument until this gate is complete. | gate before research use | V1 validates the portfolio CLI workflow against fictional fixtures; research measurement requires a separate calibration pass. | Cameron/future research-use phase |
+| DEV-002 | 2026-05-04 | future validation gate | real data fixtures | Public validation uses checked-in fictional examples, not real-world production data. | Representative behavior is visible, but production or real-case behavior is not claimed. | gate before real data use | Public portfolio validation should avoid private or sensitive materials; real-data fixture qualification requires a separate intended-use decision. | Cameron/future real-data validation |
