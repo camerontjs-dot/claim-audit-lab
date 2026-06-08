@@ -88,8 +88,8 @@ def _build_summary(assessments: list[ClaimAssessment]) -> AuditSummary:
         needs_source_claims=sum(
             assessment.support_label == "needs_source" for assessment in assessments
         ),
-        not_audit_ready_claims=sum(
-            assessment.support_label == "not_audit_ready" for assessment in assessments
+        not_checkable_claims=sum(
+            assessment.support_label == "not_checkable" for assessment in assessments
         ),
         high_risk_claims=sum(assessment.risk_label == "high" for assessment in assessments),
     )
@@ -109,4 +109,4 @@ def _build_report_limitations() -> list[str]:
     ]
 
 
-__all__ = ["audit_document"]
+__all__ = ["audit_document", "_build_assessments"]

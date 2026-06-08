@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from datetime import date as Date
-from typing import Annotated, Literal, Self, TypeAlias
+from typing import Annotated, Literal, Self, TypeAlias, cast
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -15,8 +15,45 @@ SupportLabel: TypeAlias = Literal[
     "unsupported",
     "overstated",
     "needs_source",
-    "not_audit_ready",
+    "not_checkable",
 ]
+
+# ---------------------------------------------------------------------------
+# One-minor compatibility alias: accept not_audit_ready on input, normalize
+# to not_checkable. Fixtures and CLI users that still emit "not_audit_ready"
+# should pass raw values through normalize_support_label() before
+# assigning to SupportLabel-typed fields.
+# ---------------------------------------------------------------------------
+SupportLabelInput: TypeAlias = Literal[
+    "supported",
+    "partially_supported",
+    "unsupported",
+    "overstated",
+    "needs_source",
+    "not_checkable",
+    "not_audit_ready",  # deprecated alias
+]
+
+_LABEL_ALIAS: dict[str, str] = {"not_audit_ready": "not_checkable"}
+_SUPPORT_LABELS = frozenset(
+    {
+        "supported",
+        "partially_supported",
+        "unsupported",
+        "overstated",
+        "needs_source",
+        "not_checkable",
+    }
+)
+
+
+def normalize_support_label(raw: str) -> SupportLabel:
+    """Normalize a raw support label string, resolving one-minor aliases."""
+    normalized = _LABEL_ALIAS.get(raw, raw)
+    if normalized not in _SUPPORT_LABELS:
+        raise ValueError(f"Unknown support label: {raw!r}")
+    return cast(SupportLabel, normalized)
+
 RiskLabel: TypeAlias = Literal["low", "medium", "high"]
 ClaimType: TypeAlias = Literal[
     "numeric",
@@ -163,7 +200,7 @@ class AuditSummary(StrictBaseModel):
     unsupported_claims: int = Field(default=0, ge=0)
     overstated_claims: int = Field(default=0, ge=0)
     needs_source_claims: int = Field(default=0, ge=0)
-    not_audit_ready_claims: int = Field(default=0, ge=0)
+    not_checkable_claims: int = Field(default=0, ge=0)
     high_risk_claims: int = Field(default=0, ge=0)
 
 
@@ -197,4 +234,6 @@ __all__ = [
     "StrictBaseModel",
     "Strictness",
     "SupportLabel",
+    "SupportLabelInput",
+    "normalize_support_label",
 ]

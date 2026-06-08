@@ -1,0 +1,21 @@
+passage_id: pass-001
+source_id: src-001
+bundle_id: 41973898-948c-58b4-8982-61d62ec81500
+schema_version: 1.0.0
+passage_text: For accelerated approval applications, sponsors should include 30-day
+  accelerated stability data in the submission package.
+section: Synthetic Guidance
+paragraph_index: 2
+char_start: 127
+char_end: 250
+passage_hash: sha256:60d369c3c3befaef9a16bbf1f642ce3f5200256816f09fd91bdd277b1d5b8f55
+cited_by_claims:
+- clm-001
+extraction_method: scaffold_cited
+provenance:
+  source_url: https://example.test/synthetic-regulatory-guidance
+  source_access_date_utc: '2026-05-08T14:28:01Z'
+  source_content_hash: sha256:ee9cd6276a1a8a3338175c62b37d27fdb5ed2cb20448c4453da8e69938d5f9f0
+  scaffold_run_id: 550e8400-e29b-41d4-a716-446655440000
+  evidence_builder_version: 0.1.0
+  bundle_created_at_utc: '2026-05-10T16:35:22Z'

@@ -7,3 +7,6 @@ recursive-include docs *.md
 recursive-include examples *.json *.md *.yml
 recursive-include scripts *.py
 recursive-include validation *.md
+
+include schema/vocabulary.yaml
+include schema/.contract-version

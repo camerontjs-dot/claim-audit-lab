@@ -2,14 +2,20 @@
 
 from __future__ import annotations
 
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Annotated
+from uuid import uuid4
 
 import typer
 
-from claim_audit_lab.auditor import audit_document
+from claim_audit_lab.auditor import _build_assessments, audit_document
+from claim_audit_lab.contracts.adapter import adapt_bundle_to_pipeline
+from claim_audit_lab.contracts.bundle_loader import BundleIntegrityError, load_bundle
+from claim_audit_lab.contracts.output_writer import write_audited_bundle
+from claim_audit_lab.evidence_matching import match_claims_to_evidence
 from claim_audit_lab.loader import LoaderError, load_draft, load_evidence_bundle
-from claim_audit_lab.models import AuditReport
+from claim_audit_lab.models import AuditReport, ClaimAssessment
 from claim_audit_lab.report import render_json_report, render_markdown_report
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -97,10 +103,74 @@ def demo(
     typer.echo(_format_summary(report))
 
 
+@app.command()
+def audit_bundle(
+    bundle_dir: Annotated[
+        Path,
+        typer.Argument(help="C-B evidence-bundle directory to audit."),
+    ],
+    out_dir: Annotated[
+        Path,
+        typer.Option(
+            "--out-dir",
+            help="Directory where the audited C-B bundle copy and deviations are written.",
+        ),
+    ],
+) -> None:
+    """Audit a locked C-B evidence bundle and write an audited copy."""
+    deviations_dir = out_dir / "deviations"
+    try:
+        contents = load_bundle(bundle_dir, deviations_dir=deviations_dir)
+    except BundleIntegrityError as exc:
+        typer.echo(f"C-B intake failed: {exc}", err=True)
+        typer.echo(f"Deviation records: {deviations_dir}", err=True)
+        raise typer.Exit(code=1) from exc
+
+    cal_claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(contents)
+    candidate_map = match_claims_to_evidence(cal_claims, evidence_bundle, audit_config)
+    assessments = _build_assessments(cal_claims, evidence_bundle, candidate_map, audit_config)
+    assessments_by_claim_id = _assessments_by_claim_id(assessments)
+    output_bundle_dir = out_dir / f"{bundle_dir.name}-audited"
+
+    write_audited_bundle(
+        bundle_dir,
+        output_bundle_dir,
+        contents.claims,
+        assessments_by_claim_id,
+        audit_run_id=_new_audit_run_id(),
+        audited_at_utc=_utc_now(),
+        audit_config=contents.audit_config,
+    )
+
+    skipped_retrieval_seeds = sum(
+        claim.claim_type == "retrieval_seed" for claim in contents.claims
+    )
+    typer.echo(f"Wrote audited C-B bundle: {output_bundle_dir}")
+    typer.echo(
+        f"{len(assessments)} claims audited; "
+        f"{skipped_retrieval_seeds} retrieval seeds skipped; "
+        f"output location: {output_bundle_dir}."
+    )
+
+
 def _run_audit(draft_path: Path, evidence_path: Path) -> AuditReport:
     draft = load_draft(draft_path)
     evidence_bundle = load_evidence_bundle(evidence_path)
     return audit_document(draft, evidence_bundle)
+
+
+def _assessments_by_claim_id(
+    assessments: list[ClaimAssessment],
+) -> dict[str, ClaimAssessment]:
+    return {assessment.claim.id: assessment for assessment in assessments}
+
+
+def _new_audit_run_id() -> str:
+    return f"cal-audit-{uuid4()}"
+
+
+def _utc_now() -> str:
+    return datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
 def _write_text(path: Path, content: str) -> None:
@@ -118,7 +188,7 @@ def _format_summary(report: AuditReport) -> str:
         f"{summary.unsupported_claims} unsupported",
         f"{summary.overstated_claims} overstated",
         f"{summary.needs_source_claims} needing supplied source",
-        f"{summary.not_audit_ready_claims} not audit-ready",
+        f"{summary.not_checkable_claims} not checkable",
     ]
     if report.evidence_bundle_warnings:
         parts.append(f"{len(report.evidence_bundle_warnings)} evidence bundle warnings")

@@ -13,7 +13,7 @@
 
 ## Executive summary
 
-4 claims extracted. Findings: 2 supported, 0 partially supported, 0 unsupported, 2 overstated, 0 needs-source, 0 not-audit-ready. High-risk claims: 2.
+4 claims extracted. Findings: 2 supported, 0 partially supported, 0 unsupported, 2 overstated, 0 needs-source, 0 not-checkable. High-risk claims: 2.
 
 - Total claims: 4
 - Supported: 2
@@ -21,7 +21,7 @@
 - Unsupported: 0
 - Overstated: 2
 - Needs source: 0
-- Not audit ready: 0
+- Not checkable: 0
 - High-risk claims: 2
 
 ## Limitations

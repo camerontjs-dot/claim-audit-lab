@@ -5,15 +5,18 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from shutil import copytree
 
 from typer.testing import CliRunner
 
 from claim_audit_lab.cli import app
+from claim_audit_lab.contracts.bundle_loader import load_bundle
 from claim_audit_lab.models import AuditReport
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 EXAMPLES_ROOT = PROJECT_ROOT / "examples"
 FIXTURE_ROOT = Path(__file__).resolve().parent / "fixtures"
+CB_FIXTURE_BUNDLE = FIXTURE_ROOT / "cb" / "evidence-bundle-minimal"
 SLICE_MARKDOWN = EXAMPLES_ROOT / "reports" / "ai-research-note.slice.md"
 FORBIDDEN_CAPABILITY_PATTERNS = (
     r"\bfact checked\b",
@@ -32,18 +35,22 @@ def test_help_lists_audit_and_demo_subcommands() -> None:
 
     assert result.exit_code == 0
     assert "audit" in result.output
+    assert "audit-bundle" in result.output
     assert "demo" in result.output
 
 
 def test_command_help_documents_options() -> None:
     """Subcommand help documents the planned input and output options."""
     audit_result = runner.invoke(app, ["audit", "--help"])
+    audit_bundle_result = runner.invoke(app, ["audit-bundle", "--help"])
     demo_result = runner.invoke(app, ["demo", "--help"])
 
     assert audit_result.exit_code == 0
     assert "--evidence" in audit_result.output
     assert "--out" in audit_result.output
     assert "--json-out" in audit_result.output
+    assert audit_bundle_result.exit_code == 0
+    assert "--out-dir" in audit_bundle_result.output
     assert demo_result.exit_code == 0
     assert "--out-dir" in demo_result.output
 
@@ -194,6 +201,45 @@ def test_audit_high_risk_findings_exit_success(tmp_path: Path) -> None:
     assert re.search(r"\b[1-9]\d* high-risk\b", result.stdout)
 
 
+def test_audit_bundle_writes_audited_copy_and_summary(tmp_path: Path) -> None:
+    """The C-B CLI path audits extracted claims and writes a reloadable copy."""
+    bundle_dir = _copy_cb_fixture(tmp_path)
+    out_dir = tmp_path / "cb-output"
+
+    result = runner.invoke(app, ["audit-bundle", str(bundle_dir), "--out-dir", str(out_dir)])
+
+    audited_bundle = out_dir / f"{bundle_dir.name}-audited"
+    assert result.exit_code == 0
+    assert audited_bundle.exists()
+    assert "1 claims audited" in result.stdout
+    assert "0 retrieval seeds skipped" in result.stdout
+    assert f"Wrote audited C-B bundle: {audited_bundle}" in result.stdout
+
+    original = load_bundle(bundle_dir, deviations_dir=tmp_path / "original-deviations")
+    reloaded = load_bundle(audited_bundle, deviations_dir=tmp_path / "audited-deviations")
+    assert original.claims[0].audit.audit_run_id is None
+    assert reloaded.claims[0].audit.audit_run_id is not None
+    assert reloaded.claims[0].audit.audit_support_verdict == "supported"
+
+
+def test_audit_bundle_intake_failure_exits_nonzero_and_writes_deviation(
+    tmp_path: Path,
+) -> None:
+    """C-B intake failures are process failures and leave a typed deviation record."""
+    bundle_dir = _copy_cb_fixture(tmp_path)
+    (bundle_dir / "CONTRACT_VERSION").unlink()
+    out_dir = tmp_path / "cb-output"
+
+    result = runner.invoke(app, ["audit-bundle", str(bundle_dir), "--out-dir", str(out_dir)])
+
+    assert result.exit_code == 1
+    assert "C-B intake failed" in _error_output(result)
+    deviations = sorted((out_dir / "deviations").glob("*.yaml"))
+    assert len(deviations) == 1
+    assert "missing_required_field" in deviations[0].read_text(encoding="utf-8")
+    assert not (out_dir / f"{bundle_dir.name}-audited").exists()
+
+
 def test_demo_writes_reports_to_requested_dir(tmp_path: Path) -> None:
     """The demo subcommand gives reviewers a one-command report path."""
     result = runner.invoke(app, ["demo", "--out-dir", str(tmp_path)])
@@ -238,6 +284,12 @@ def _run_ai_research_audit(markdown_out: Path, json_out: Path | None = None):
     if json_out is not None:
         args.extend(["--json-out", str(json_out)])
     return runner.invoke(app, args)
+
+
+def _copy_cb_fixture(tmp_path: Path) -> Path:
+    destination = tmp_path / "evidence-bundle-minimal"
+    copytree(CB_FIXTURE_BUNDLE, destination)
+    return destination
 
 
 def _assert_no_forbidden_capability_language(text: str) -> None:

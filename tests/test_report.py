@@ -18,6 +18,7 @@ from claim_audit_lab.models import (
     ClaimAssessment,
     EvidenceCandidate,
     RuleFlag,
+    normalize_support_label,
 )
 from claim_audit_lab.report import render_json_report, render_markdown_report
 
@@ -503,7 +504,7 @@ def test_markdown_report_renders_explicit_and_fallback_rewrite_guidance() -> Non
                 text="Background note without enough audit structure.",
                 claim_type="interpretive",
             ),
-            support_label="not_audit_ready",
+            support_label=normalize_support_label("not_audit_ready"),
             risk_label="medium",
         ),
     ]
@@ -515,7 +516,7 @@ def test_markdown_report_renders_explicit_and_fallback_rewrite_guidance() -> Non
             unsupported_claims=1,
             overstated_claims=1,
             needs_source_claims=1,
-            not_audit_ready_claims=1,
+            not_checkable_claims=1,
             high_risk_claims=2,
         ),
         claims=assessments,
@@ -534,4 +535,4 @@ def test_markdown_report_renders_explicit_and_fallback_rewrite_guidance() -> Non
     assert "Add a supplied source before presenting this claim." in markdown
     assert "Narrow the claim until it matches the supplied evidence." in markdown
     assert "Keep the supported part and caveat the unsupported part." in markdown
-    assert "Support: `not_audit_ready`" in markdown
+    assert "Support: `not_checkable`" in markdown

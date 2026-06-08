@@ -7,7 +7,7 @@
     "unsupported_claims": 0,
     "overstated_claims": 2,
     "needs_source_claims": 0,
-    "not_audit_ready_claims": 0,
+    "not_checkable_claims": 0,
     "high_risk_claims": 2
   },
   "claims": [

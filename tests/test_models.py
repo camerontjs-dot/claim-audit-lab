@@ -20,6 +20,7 @@ from claim_audit_lab.models import (
     EvidenceExcerpt,
     EvidenceSource,
     RuleFlag,
+    normalize_support_label,
 )
 
 FIXTURE_ROOT = Path(__file__).resolve().parents[1] / "examples" / "evidence"
@@ -192,3 +193,27 @@ def test_audit_report_serializes_to_json_shaped_dict() -> None:
     assert data["summary"]["total_claims"] == 1
     assert data["claims"][0]["support_label"] == "overstated"
     assert data["claims"][0]["candidate_evidence"][0]["score"] == 0.82
+
+
+def test_legacy_not_audit_ready_label_requires_explicit_normalization() -> None:
+    """The deprecated label is accepted only through the compatibility normalizer."""
+    claim = Claim(
+        id="claim-legacy",
+        text="Background note without enough audit structure.",
+        claim_type="interpretive",
+    )
+
+    assessment = ClaimAssessment(
+        claim=claim,
+        support_label=normalize_support_label("not_audit_ready"),
+        risk_label="medium",
+    )
+
+    assert assessment.support_label == "not_checkable"
+
+    with pytest.raises(ValidationError):
+        ClaimAssessment(
+            claim=claim,
+            support_label="not_audit_ready",
+            risk_label="medium",
+        )

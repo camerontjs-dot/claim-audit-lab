@@ -39,7 +39,7 @@ def render_markdown_report(report: AuditReport) -> str:
         f"- Unsupported: {report.summary.unsupported_claims}",
         f"- Overstated: {report.summary.overstated_claims}",
         f"- Needs source: {report.summary.needs_source_claims}",
-        f"- Not audit ready: {report.summary.not_audit_ready_claims}",
+        f"- Not checkable: {report.summary.not_checkable_claims}",
         f"- High-risk claims: {report.summary.high_risk_claims}",
         "",
         "## Limitations",
@@ -101,7 +101,7 @@ def _summary_sentence(report: AuditReport) -> str:
         f"{summary.unsupported_claims} unsupported, "
         f"{summary.overstated_claims} overstated, "
         f"{summary.needs_source_claims} needs-source, "
-        f"{summary.not_audit_ready_claims} not-audit-ready. "
+        f"{summary.not_checkable_claims} not-checkable. "
         f"High-risk claims: {summary.high_risk_claims}."
     )
 
@@ -273,7 +273,7 @@ def _support_quality_notes(assessment: ClaimAssessment) -> list[str]:
     if candidates and assessment.support_label in {
         "unsupported",
         "needs_source",
-        "not_audit_ready",
+        "not_checkable",
     }:
         notes.append(
             "Candidate evidence is linked, but direct supplied-evidence support is not recorded."

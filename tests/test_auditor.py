@@ -47,7 +47,7 @@ def _summary_counts(report: AuditReport) -> dict[str, int]:
         "unsupported": report.summary.unsupported_claims,
         "overstated": report.summary.overstated_claims,
         "needs_source": report.summary.needs_source_claims,
-        "not_audit_ready": report.summary.not_audit_ready_claims,
+        "not_checkable": report.summary.not_checkable_claims,
         "high_risk": report.summary.high_risk_claims,
     }
 
@@ -100,7 +100,7 @@ def test_summary_counts_match_claim_assessments() -> None:
         "unsupported": labels.count("unsupported"),
         "overstated": labels.count("overstated"),
         "needs_source": labels.count("needs_source"),
-        "not_audit_ready": labels.count("not_audit_ready"),
+        "not_checkable": labels.count("not_checkable"),
         "high_risk": risks.count("high"),
     }
 
@@ -131,7 +131,7 @@ def test_empty_evidence_bundle_returns_needs_source_assessments_and_warning() ->
 
     assert report.summary.total_claims == 4
     assert report.summary.needs_source_claims == 4
-    assert report.summary.not_audit_ready_claims == 0
+    assert report.summary.not_checkable_claims == 0
     assert report.evidence_bundle_warnings == [
         "No evidence sources were supplied; extracted claims are marked needs_source."
     ]
@@ -174,7 +174,7 @@ def test_no_claim_draft_returns_valid_zero_claim_report() -> None:
         "unsupported": 0,
         "overstated": 0,
         "needs_source": 0,
-        "not_audit_ready": 0,
+        "not_checkable": 0,
         "high_risk": 0,
     }
 

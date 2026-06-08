@@ -1,0 +1,40 @@
+bundle_id: 41973898-948c-58b4-8982-61d62ec81500
+schema_version: 1.0.0
+generated_at_utc: '2026-05-10T16:35:22Z'
+source_run_id: 550e8400-e29b-41d4-a716-446655440000
+source_contract_version: 1.0.0
+source_corpus_hash: sha256:50b1fbfcb89cb75b9e2588dace35394531be5dc62a222043130ccbc3d6fde263
+evidence_builder:
+  version: 0.1.0
+  config_hash: sha256:f320cab0d69238d6cb5b5c31473b05ee9a43d474c4954c0dc6b82551d89a2ebc
+  operator: cameron
+  build_timestamp_utc: '2026-05-10T16:35:22Z'
+bundle:
+  total_claims_in_source: 2
+  claims_included: 1
+  claims_excluded: 1
+  exclusion_rationale: 1 retrieval_seed claim(s) excluded; Phase 0 fixture output
+    includes extracted_claim instances only.
+  total_evidence_passages: 1
+  bundle_hash: sha256:e0419a18573a325da2f53ec028328210a8b18598ea5a166864ad8bf3b8b555fb
+transformations:
+- type: fixture_pass_through
+  description: Synthetic Phase 0 fixture copied scaffold-cited passages into C-B without
+    retrieval or support-verdict assignment.
+  claims_affected:
+  - seed-001
+  - clm-001
+quality_gates:
+  every_claim_has_at_least_one_passage: true
+  every_passage_links_to_source_profile: true
+  source_hashes_verified: true
+  bundle_integrity_verified: true
+audit_config_version: cal-rules-v1.2.0
+audit_config_hash: sha256:f2af506e479cea88fe559511149650463dde6d64b75e97d2cfeb8af53322a670
+validation_set_version: valset-phase-0-fixture
+validation_set_hash: sha256:f7dc6219e2a89071535b8c57a3e89e96040b5947283b202a315f8202a27f16d3
+reviewer_sign_off:
+  required: false
+  signed_by: null
+  signature_timestamp_utc: null
+  signature_notes: null

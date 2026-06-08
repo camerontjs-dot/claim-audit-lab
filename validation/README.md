@@ -1,7 +1,7 @@
 # Validation Package
 
-status: verified for v1 public release
-last_updated: 2026-05-05
+status: verified for v1 public release; C-B accommodation addendum verified
+last_updated: 2026-05-11
 
 Purpose: make Claim Audit Lab's validation approach visible as part of the project, not only as planning notes. This package adapts pharma equipment qualification habits for a deterministic software portfolio asset without claiming GxP, GMP, CSV, FDA, or regulated validation status.
 
@@ -49,6 +49,19 @@ The validation package is acceptable for a public portfolio release when:
 - future validation gates are visible before real data or research-use runs
 
 The validation package meets this pass standard for the v1 portfolio release. Human-review calibration and real-data fixture qualification must be completed before Claim Audit Lab is used on real cases, sensitive materials, or research measurement runs.
+
+## C-B Accommodation Addendum
+
+On 2026-05-11, the validation package was extended for the Apparatus Contracts C-B path. The addendum covers:
+
+- local contract-version and vocabulary pinning
+- fail-closed C-B intake with typed deviations
+- adapter behavior from locked C-B records into CAL-native claims and evidence
+- audited output-copy writing without mutating the sealed input bundle
+- `claim-audit audit-bundle` CLI success and failure semantics
+- a synthetic C-A -> Evidence Bundler C-B -> CAL audited-output command sequence
+
+This addendum verifies the engineering handoff path against synthetic fixtures. It does not validate Evidence Bundler retrieval quality, external truth, or Claim Audit Lab as a calibrated research measurement instrument.
 
 ## Compliance Language Guardrail
 

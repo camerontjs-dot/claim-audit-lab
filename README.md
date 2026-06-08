@@ -10,11 +10,13 @@ Claim Audit Lab:
 
 - loads a draft document from Markdown or plain text
 - loads a supplied evidence bundle from YAML or JSON
+- loads locked C-B evidence-bundle directories from the research apparatus contract path
 - extracts candidate claims conservatively
 - ranks supplied evidence candidates for each claim
 - applies deterministic rule checks for support, overstatement, missing sources, and evidence limitations
 - writes a human-review Markdown report
 - optionally writes typed JSON report data
+- writes audited copies of C-B bundles without mutating the sealed input bundle
 
 The current CLI is intentionally local and reproducible. Normal tests, examples, and demo runs require no network access, API keys, provider SDKs, or live LLM calls.
 
@@ -60,6 +62,15 @@ claim-audit audit examples/drafts/ai-research-note.md \
 
 Both commands write local report files under `build/reports/` and leave checked-in example reports untouched.
 
+Audit a locked C-B evidence bundle:
+
+```bash
+claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal \
+  --out-dir build/reports/cb-demo
+```
+
+This command writes an audited copy under `build/reports/cb-demo/`, populates the bundle's `audit.*` fields for adapted `extracted_claim` records, and leaves the sealed input bundle unchanged. Intake failures halt before audit and write typed deviation records under the output directory.
+
 ## Example Reports
 
 The repo includes two fictional draft/evidence/report families:
@@ -85,7 +96,7 @@ Support labels:
 - `unsupported`: supplied evidence does not support the claim.
 - `overstated`: the claim is stronger than the supplied evidence can support.
 - `needs_source`: the claim needs a supplied source before it can be assessed.
-- `not_audit_ready`: the text is not structured enough for a useful claim assessment.
+- `not_checkable`: the text is not structured enough for a useful claim assessment.
 
 Risk labels:
 
@@ -114,13 +125,16 @@ JSON reports follow the typed `AuditReport` model and are intended for regressio
 
 The pipeline is deliberately simple and inspectable:
 
-1. `loader.py` reads draft and evidence files into strict Pydantic models.
-2. `claim_extraction.py` extracts explicit claim candidates and stable claim IDs.
-3. `evidence_matching.py` ranks supplied evidence excerpts for each claim.
-4. `rules.py` assigns deterministic support labels, risk labels, and rule flags.
-5. `auditor.py` assembles the typed audit report.
-6. `report.py` renders Markdown and JSON outputs.
-7. `cli.py` exposes `claim-audit audit` and `claim-audit demo`.
+1. `loader.py` reads draft and evidence files into strict Pydantic models for the native report path.
+2. `contracts/bundle_loader.py` verifies locked C-B directories before the contract path proceeds.
+3. `contracts/adapter.py` adapts only C-B `extracted_claim` records into CAL's native audit pipeline.
+4. `claim_extraction.py` extracts explicit claim candidates and stable claim IDs for native draft inputs.
+5. `evidence_matching.py` ranks supplied evidence excerpts for each claim.
+6. `rules.py` assigns deterministic support labels, risk labels, and rule flags.
+7. `auditor.py` assembles the typed audit report.
+8. `report.py` renders Markdown and JSON outputs.
+9. `contracts/output_writer.py` writes audited C-B output copies.
+10. `cli.py` exposes `claim-audit audit`, `claim-audit demo`, and `claim-audit audit-bundle`.
 
 The implementation favors traceability over cleverness. Every public behavior should be backed by tests, checked-in examples, or an explicit validation-matrix status.
 
@@ -139,6 +153,8 @@ This is validation-inspired portfolio control. It is not a regulated compliance 
 The validation package and matrix are included as demonstration artifacts. They show how public claims, tests, example outputs, and known limitations can be traced in an IQ/OQ/PQ-inspired workflow, but they are not a substitute for validating the tool against your own data, intended use, quality system, or regulatory context.
 
 The v1 validation package is complete for the checked-in fictional-fixture CLI workflow. Real-data fixture qualification and human-review calibration are future validation gates before using the tool on real cases, sensitive materials, production-like drafts, or research measurement outputs.
+
+The C-B accommodation is verified against a synthetic contract fixture and a synthetic Evidence Bundler round trip. That verifies the engineering handoff shape, fail-closed intake, adapter boundary, and audited output copy behavior; it does not validate real retrieval quality or Claim Audit Lab as a calibrated research measurement instrument.
 
 ## Public Packaging
 
@@ -168,6 +184,7 @@ Run the normal verification chain from the repo root:
 .venv/bin/python -m coverage report
 . .venv/bin/activate && claim-audit --help
 . .venv/bin/activate && claim-audit demo --out-dir build/reports/release-candidate-smoke
+.venv/bin/claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal --out-dir build/reports/cb-smoke
 ```
 
 ## Repository Map
@@ -179,6 +196,7 @@ Run the normal verification chain from the repo root:
 | `examples/drafts/` | Fictional draft inputs |
 | `examples/evidence/` | Fictional supplied evidence bundles |
 | `examples/reports/` | Checked-in generated report artifacts |
+| `schema/` | Embedded C-B vocabulary and contract-version pin |
 | `docs/` | Public validation matrix and release verification summary |
 | `validation/` | Validation-inspired IQ/OQ/PQ records and deviation log |
 | `assets/` | Public social-card asset |
@@ -195,6 +213,7 @@ Ready surfaces:
 - local editable install and `claim-audit` CLI
 - two checked-in fictional draft/evidence/report families
 - deterministic Markdown and JSON report outputs
+- locked C-B bundle intake, audit adaptation, and audited output-copy writing for synthetic fixtures
 - validation-inspired IQ/OQ/PQ records
 - MIT license and package metadata
 - initial changelog
@@ -206,7 +225,7 @@ Deferred surfaces:
 - web UI
 - source discovery
 - live LLM assistance
-- support scores and assessment-confidence scores
+- calibrated support scores or truth-probability confidence scores
 - research-use calibration
 
 The next public step is to create the public GitHub remote, add the remote URL to package metadata if desired, upload or convert the social card for GitHub's preview settings, and publish the repo.

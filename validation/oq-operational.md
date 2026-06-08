@@ -1,7 +1,7 @@
 # OQ: Operational Qualification
 
 status: verified
-last_updated: 2026-05-04
+last_updated: 2026-05-11
 
 Purpose: verify that Claim Audit Lab behaves as expected across its defined operating range and known edge cases.
 
@@ -19,6 +19,7 @@ This protocol covers the deterministic audit path:
 - audit orchestration
 - report rendering
 - CLI success and failure semantics
+- C-B fail-closed intake, adapter boundary, audited output-copy writing, and `audit-bundle` CLI semantics
 
 ## Protocol
 
@@ -34,6 +35,11 @@ This protocol covers the deterministic audit path:
 | OQ-008 | Produce useful output for empty evidence bundles. | `tests/test_auditor.py`, `tests/test_report.py` | Claims receive `needs_source` or similar non-supported outcomes with a clear warning. | 2026-05-04 | Covered in `pytest`: 112 passed. | verified |
 | OQ-009 | Render Markdown and JSON reports. | `tests/test_report.py`, `examples/reports/`, ignored `build/reports/` outputs | Reports include required sections, trace links, limitations, and no placeholder values. | 2026-05-04 | Markdown reports generated for demo, AI research, and Product README; JSON outputs validated through `AuditReport`. | verified |
 | OQ-010 | Preserve CLI error semantics. | `tests/test_cli.py`, `claim-audit --help`, `claim-audit demo` | Bad inputs exit nonzero; completed audits with findings exit successfully. | 2026-05-04 | CLI help displayed `audit` and `demo`; demo generated Markdown/JSON and completed with expected summary. | verified |
+| OQ-011 | Verify locked C-B read models and vocabulary boundaries. | `tests/test_cb_models.py` | Locked C-B v1.0.0 tree loads and stale draft shapes / legacy labels are rejected. | 2026-05-11 | Covered in C-B model tests: 5 passed. | verified |
+| OQ-012 | Fail closed on invalid C-B intake. | `tests/test_cb_bundle_loader.py` | Missing required files, schema errors, hash mismatches, audit-config hash mismatch, and vocabulary drift halt with typed deviations. | 2026-05-11 | Covered in C-B bundle-loader tests: 7 passed. | verified |
+| OQ-013 | Adapt only auditable C-B claims into CAL pipeline inputs. | `tests/test_cb_adapter.py` | `retrieval_seed` records are skipped and C-B `claim_type` never becomes CAL semantic `Claim.claim_type`. | 2026-05-11 | Covered in C-B adapter tests: 5 passed. | verified |
+| OQ-014 | Write audited C-B results to a copied, resealed bundle. | `tests/test_cb_output_writer.py` | Input bundle remains byte-stable; output copy receives `audit.*`, reseals hashes, reloads through fail-closed loader, and leaves unassessed retrieval seeds untouched. | 2026-05-11 | Covered in C-B output-writer tests: 4 passed. | verified |
+| OQ-015 | Preserve C-B CLI success and failure semantics. | `tests/test_cli.py`; `claim-audit audit-bundle` smoke command | Valid C-B fixture writes audited output; invalid intake exits nonzero and writes a deviation record. | 2026-05-11 | CLI tests: 16 passed; `audit-bundle` smoke command wrote an audited copy. | verified |
 
 ## Acceptance Criteria
 
@@ -41,4 +47,4 @@ OQ passes when current tests and inspections prove operation across the defined 
 
 ## Record
 
-OQ passed on 2026-05-04. Evidence came from the current automated test suite, generated reports, JSON model validation, CLI smoke checks, and public-copy/network scans recorded in `../docs/verification.md`.
+OQ passed on 2026-05-04 for the public fictional-fixture report workflow. The C-B accommodation addendum passed on 2026-05-11 for contract intake, adapter, output-copy, and CLI behavior. Evidence came from the current automated test suite, generated reports, JSON model validation, CLI smoke checks, and public-copy/network scans recorded in `../docs/verification.md`.
