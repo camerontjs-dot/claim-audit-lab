@@ -1,7 +1,7 @@
 # Claim Audit Lab Qualification Plan
 
-status: verified for v1 public release
-last_updated: 2026-05-11
+status: verified for v0.2 engineering release; research qualification pending
+last_updated: 2026-06-13
 applies_after: first CLI-first public version
 
 Purpose: define the validation package for Claim Audit Lab as a visible project artifact. This document adapts pharma equipment qualification patterns for a software portfolio project. It is not a regulated validation package and should not be described as GxP, GMP, CSV, or FDA-compliant software.
@@ -32,7 +32,7 @@ Use a lightweight IQ/OQ/PQ structure after the first usable version exists.
 | IQ: installation qualification | The project installs and exposes the expected command in a clean local environment. | Editable install command, documented dependency set, `claim-audit --help`, no hidden API key or network requirement. |
 | OQ: operational qualification | The tool handles its expected operating range and known edge cases. | Automated tests for valid evidence, malformed evidence, empty evidence, numeric mismatch, causal overstatement, comparative claims, stale or low-reliability evidence, and report language. |
 | PQ: performance qualification | Representative full audit runs produce stable, inspectable reports from checked-in fictional or sanitized data. | At least two complete draft/evidence/report families, JSON report validation, Markdown report inspection, and public-data hygiene review. |
-| C-B accommodation addendum | CAL consumes a locked synthetic C-B bundle, audits extracted claims, and writes an audited copy without mutating the sealed input. | C-B model/loader/adapter/writer/CLI tests, synthetic Evidence Bundler round trip, audited output reload check, and validation-matrix rows. |
+| C-B accommodation addendum | CAL consumes a locked C-B bundle under the exact frozen policy, audits claim-scoped evidence, and writes an audited copy without mutating the sealed input. | C-B model/loader/adapter/writer/CLI tests, clean-wheel verification, synthetic Evidence Bundler round trip, audited output reload check, and validation-matrix rows. |
 
 ## Acceptance Rules
 
@@ -49,16 +49,24 @@ The post-build qualification pass is acceptable when:
 
 ## Future Validation Gates
 
-The v1 public release is validated only for deterministic local runs against checked-in fictional fixtures.
+The v0.2 engineering release is qualified only for deterministic local runs against
+checked-in fixtures and supplied C-B evidence bundles.
 
 Before testing real data fixtures, sensitive materials, production-like drafts, or research measurement outputs, the project must complete a separate validation pass that includes:
 
 - real-data or production-like fixture qualification
-- full Evidence Bundler retrieval/review fixture qualification beyond the Phase 0 synthetic writer
+- representative Evidence Bundler retrieval/review qualification beyond synthetic fixtures
 - human-review calibration and disagreement analysis
 - privacy/sensitivity review for all new fixtures
 - acceptance criteria for false positives, false cautions, and missed unsupported claims
 - a refreshed validation matrix and deviation log
+
+Research qualification additionally requires:
+
+- coarse-label agreement at least 80%
+- Cohen's kappa at least 0.60
+- adverse-claim recall at least 85%
+- per-condition adverse-rate error within 10 percentage points
 
 ## Deviation Handling
 
@@ -95,4 +103,7 @@ Keep this validation package linked from:
 - `../README.md`
 - `../docs/validation-matrix-reference.md`
 
-The repo made the validation approach visible before public packaging, then executed the IQ/OQ/PQ-inspired pass after the CLI-first version was built. The v1 validation pass is complete for the public fictional-fixture CLI scope. The C-B accommodation addendum is complete for synthetic contract fixtures and remains gated before real-data, full retrieval/review, or research-measurement use.
+The repo made the validation approach visible before public packaging, then executed the
+IQ/OQ/PQ-inspired pass after the CLI-first version was built. The v0.2 engineering pass
+is complete. Real-data, full retrieval/review, and research-measurement use remain
+gated.

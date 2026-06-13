@@ -1,7 +1,7 @@
 # Validation Package
 
-status: verified for v1 public release; C-B accommodation addendum verified
-last_updated: 2026-05-11
+status: verified for v0.2 engineering release; research qualification pending
+last_updated: 2026-06-13
 
 Purpose: make Claim Audit Lab's validation approach visible as part of the project, not only as planning notes. This package adapts pharma equipment qualification habits for a deterministic software portfolio asset without claiming GxP, GMP, CSV, FDA, or regulated validation status.
 
@@ -48,7 +48,10 @@ The validation package is acceptable for a public portfolio release when:
 - there are no open v1 validation failures
 - future validation gates are visible before real data or research-use runs
 
-The validation package meets this pass standard for the v1 portfolio release. Human-review calibration and real-data fixture qualification must be completed before Claim Audit Lab is used on real cases, sensitive materials, or research measurement runs.
+The validation package meets this pass standard for the v0.2 engineering release.
+Human-review calibration and real-data fixture qualification must be completed before
+Claim Audit Lab is used on real cases, sensitive materials, or research measurement
+runs.
 
 ## C-B Accommodation Addendum
 
@@ -62,6 +65,29 @@ On 2026-05-11, the validation package was extended for the Apparatus Contracts C
 - a synthetic C-A -> Evidence Bundler C-B -> CAL audited-output command sequence
 
 This addendum verifies the engineering handoff path against synthetic fixtures. It does not validate Evidence Bundler retrieval quality, external truth, or Claim Audit Lab as a calibrated research measurement instrument.
+
+## v0.2 Stabilization Addendum
+
+On 2026-06-13, the package was requalified after the v0.2 classifier, scoring, policy,
+API, CLI, resource-packaging, and report changes.
+
+The pass evidence includes:
+
+- 213 passing tests
+- Ruff lint and formatting, strict mypy, and compileall
+- 96% source branch coverage
+- clean-wheel `--help`, `demo`, and `audit-bundle` execution
+- exact `cal-rules-v1.2.0` policy enforcement
+- boundary tests at `0.40`, `0.55`, `0.80`, and `0.85`
+- claim-scoped evidence, separate counterevidence, and reproducibility checks
+- byte-identical checked-in examples
+- the synthetic apparatus round trip
+- a pinned, byte-identical replay of the sealed 98-claim pilot
+
+The pilot replay is engineering evidence only. Blind human calibration remains `0/98`.
+Research qualification requires coarse-label agreement >=80%, Cohen's kappa >=0.60,
+adverse-claim recall >=85%, and per-condition adverse-rate error <=10 percentage
+points.
 
 ## Compliance Language Guardrail
 

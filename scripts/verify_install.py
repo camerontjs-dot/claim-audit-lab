@@ -54,6 +54,7 @@ def main() -> None:
 
         _require(temp_dir / "demo" / "ai-research-note.cli.md")
         _require(temp_dir / "bundle" / f"{CB_FIXTURE.name}-audited" / "bundle_manifest.yaml")
+        _require(temp_dir / "bundle" / f"{CB_FIXTURE.name}-audit-report.md")
         print(f"Installed wheel verified: {wheel.name}")
 
 

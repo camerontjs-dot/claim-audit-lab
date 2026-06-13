@@ -1,39 +1,45 @@
 # Claim Audit Lab
 
-Claim Audit Lab is a deterministic Python CLI for auditing whether draft claims are supported by supplied evidence.
+Claim Audit Lab is a deterministic Python package and CLI for auditing whether draft
+claims are supported by supplied evidence.
 
-It is built for reviewers who need to see where a draft is supported, where it is too strong, where a source is missing, and what limitations should stay visible before a claim is reused.
+It is designed for reviewers who need to see which claims are supported, which are too
+strong, which need sources, and which cannot be usefully assessed. It does not search
+for evidence or decide whether a statement matches the outside world.
 
-## What It Does
+## What v0.2 Does
 
-Claim Audit Lab:
+- loads Markdown or plain-text drafts and YAML or JSON evidence bundles
+- extracts conservative, typed claim candidates
+- audits supplied claim lists through the public `audit_claims(...)` API
+- ranks evidence and calculates deterministic supplied-evidence support signals
+- flags numeric mismatch, causal overreach, unsupported comparisons, strong wording,
+  missing sources, stale evidence, and other visible limitations
+- writes typed JSON and human-review Markdown reports
+- consumes locked C-B evidence bundles under the frozen `cal-rules-v1.2.0` policy
+- keeps each C-B claim bound to its own evidence and counterevidence passages
+- writes a resealed audited bundle copy without mutating the sealed input
+- produces byte-identical C-B outputs when run ID and timestamp are pinned
 
-- loads a draft document from Markdown or plain text
-- loads a supplied evidence bundle from YAML or JSON
-- loads locked C-B evidence-bundle directories from the research apparatus contract path
-- extracts candidate claims conservatively
-- ranks supplied evidence candidates for each claim
-- applies deterministic rule checks for support, overstatement, missing sources, and evidence limitations
-- writes a human-review Markdown report
-- optionally writes typed JSON report data
-- writes audited copies of C-B bundles without mutating the sealed input bundle
+Normal tests, examples, and demo runs are local. They require no network access, API
+keys, provider SDKs, or live model calls.
 
-The current CLI is intentionally local and reproducible. Normal tests, examples, and demo runs require no network access, API keys, provider SDKs, or live LLM calls.
+## Boundary
 
-## What It Does Not Do
+Claim Audit Lab audits support from the evidence you supply. Match scores and support
+signals are deterministic measures, not truth probabilities.
 
-Claim Audit Lab does not decide whether a statement matches the outside world. It checks whether the claim is supported by the evidence bundle you supply.
+It does not:
 
-It also does not:
-
-- search the web or discover sources
+- discover or independently verify sources
 - replace human source review
-- score research quality as a single certainty number
-- use support scores as final labels
-- certify that a workflow, scaffold, or intervention works
+- certify research findings, workflows, or interventions
 - act as a regulated quality system
+- claim calibrated accuracy on real work
 
-Candidate evidence scores are ranking signals only. Final support labels come from deterministic rule assessment.
+The public v0.2 engineering gate is complete. Research qualification is not: blind human
+calibration remains `0/98`. Human verdicts remain primary until the documented
+agreement, kappa, recall, and condition-error gates are met.
 
 ## Quick Start
 
@@ -45,13 +51,13 @@ python3.11 -m venv .venv
 python -m pip install -e ".[dev]"
 ```
 
-Run the built-in demo:
+Run the packaged demo:
 
 ```bash
 claim-audit demo --out-dir build/reports/cli-demo
 ```
 
-Audit the AI research fixture directly:
+Audit a native draft and evidence bundle:
 
 ```bash
 claim-audit audit examples/drafts/ai-research-note.md \
@@ -60,175 +66,134 @@ claim-audit audit examples/drafts/ai-research-note.md \
   --json-out build/reports/ai-research-note.json
 ```
 
-Both commands write local report files under `build/reports/` and leave checked-in example reports untouched.
-
-Audit a locked C-B evidence bundle:
+Audit a locked C-B bundle:
 
 ```bash
 claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal \
   --out-dir build/reports/cb-demo
 ```
 
-This command writes an audited copy under `build/reports/cb-demo/`, populates the bundle's `audit.*` fields for adapted `extracted_claim` records, and leaves the sealed input bundle unchanged. Intake failures halt before audit and write typed deviation records under the output directory.
+`audit-bundle` writes both a human-readable report and an audited bundle copy. For
+reproducible output, provide both metadata options:
 
-## Example Reports
+```bash
+claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal \
+  --out-dir build/reports/cb-reproducible \
+  --audit-run-id cal-example-run \
+  --audited-at 2026-06-13T12:00:00Z
+```
 
-The repo includes two fictional draft/evidence/report families:
+Supplying only one reproducibility option is an error.
 
-| Fixture | Draft | Evidence | Markdown report | JSON report |
-| --- | --- | --- | --- | --- |
-| AI research memo | `examples/drafts/ai-research-note.md` | `examples/evidence/ai-research-evidence.yml` | `examples/reports/ai-research-note.slice.md` | `examples/reports/ai-research-note.slice.json` |
-| Product README paragraph | `examples/drafts/product-readme-note.md` | `examples/evidence/product-readme-evidence.yml` | `examples/reports/product-readme-note.slice.md` | `examples/reports/product-readme-note.slice.json` |
+## Public Python API
 
-Current generated report summaries:
+The supported orchestration entry points are:
 
-- AI research memo: 4 claims, 1 supported, 1 partially supported, 2 overstated, and 2 high-risk findings.
-- Product README paragraph: 4 claims, 2 supported, 2 overstated, and 2 high-risk findings.
+```python
+from claim_audit_lab import audit_claims, audit_document, classify_claim_text
+```
 
-See `examples/reports/README.md` for the report-artifact map.
+- `classify_claim_text(text)` applies the sole governed classifier.
+- `audit_claims(claims, evidence_bundle, config=None)` audits an existing claim list.
+- `audit_document(draft, evidence_bundle, config=None)` extracts and audits native draft
+  claims, then returns an `AuditReport`.
+
+`ClaimType` includes `unclassified`. Native extraction skips unclassified text; C-B
+inputs preserve it and return `not_checkable`.
+
+## Audit Semantics
+
+The C-B path accepts only the exact frozen `cal-rules-v1.2.0` policy. Changed policy
+IDs, thresholds, weights, or switches fail closed.
+
+The deterministic support signal is:
+
+```text
+max_support - (0.3 * max_counterevidence)
+```
+
+The result is clamped to `[0, 1]`. Frozen boundaries are:
+
+| Boundary | Value |
+| --- | ---: |
+| Candidate admission | `0.40` |
+| Partial support | `0.55` |
+| Sourced support | `0.80` |
+| False-caution review | `0.85` |
+
+Counterevidence is never eligible as support. Linked counterevidence emits
+`counterevidence_present` and prevents a clean `supported` verdict. Absolute wording is
+suppressed only when direct evidence contains the same trigger and no linked
+counterevidence conflicts.
 
 ## Labels
 
 Support labels:
 
-- `supported`: supplied evidence directly supports the claim.
-- `partially_supported`: supplied evidence supports part of the claim, but limits remain.
-- `unsupported`: supplied evidence does not support the claim.
-- `overstated`: the claim is stronger than the supplied evidence can support.
-- `needs_source`: the claim needs a supplied source before it can be assessed.
-- `not_checkable`: the text is not structured enough for a useful claim assessment.
+- `supported`: direct supplied evidence clears the sourced-support boundary.
+- `partially_supported`: some supplied-evidence support exists, but limits remain.
+- `unsupported`: the admitted evidence signal does not clear the partial boundary.
+- `overstated`: wording is stronger than the supplied evidence permits.
+- `needs_source`: the claim needs supplied evidence before useful assessment.
+- `not_checkable`: the claim is preserved but the classifier cannot assign an auditable
+  semantic type.
 
-Risk labels:
+Risk labels are `low`, `medium`, and `high`. Assessments also expose
+`rewrite_guidance: list[str]`.
 
-- `low`: no rule issue found for the current supplied evidence.
-- `medium`: support is incomplete, source quality is limited, or a source is missing.
-- `high`: the claim carries high-risk overstatement, mismatch, or certainty concerns.
+## Example Reports
 
-## Report Contents
+The repo contains two fictional draft/evidence/report families:
 
-Markdown reports include:
+| Fixture | Current v0.2 result |
+| --- | --- |
+| AI research memo | 4 claims: 1 supported, 1 partially supported, 2 overstated |
+| Product README paragraph | 4 claims: 2 unsupported, 2 overstated |
 
-- metadata and audit boundary
-- executive summary
-- limitations
-- claim register
-- claim-by-claim details
-- stable report, claim, rule-flag, and evidence-link anchors
-- candidate evidence links with reliability/date metadata
-- deterministic rule flags with visible rule-flag IDs
-- support-quality notes where candidate evidence caveats are useful
-- explanation and rewrite guidance where useful
+See `examples/reports/README.md` for the artifact map.
 
-JSON reports follow the typed `AuditReport` model and are intended for regression checks, validation evidence, and downstream inspection.
+## Validation
 
-## How The Audit Works
-
-The pipeline is deliberately simple and inspectable:
-
-1. `loader.py` reads draft and evidence files into strict Pydantic models for the native report path.
-2. `contracts/bundle_loader.py` verifies locked C-B directories before the contract path proceeds.
-3. `contracts/adapter.py` adapts only C-B `extracted_claim` records into CAL's native audit pipeline.
-4. `claim_extraction.py` extracts explicit claim candidates and stable claim IDs for native draft inputs.
-5. `evidence_matching.py` ranks supplied evidence excerpts for each claim.
-6. `rules.py` assigns deterministic support labels, risk labels, and rule flags.
-7. `auditor.py` assembles the typed audit report.
-8. `report.py` renders Markdown and JSON outputs.
-9. `contracts/output_writer.py` writes audited C-B output copies.
-10. `cli.py` exposes `claim-audit audit`, `claim-audit demo`, and `claim-audit audit-bundle`.
-
-The implementation favors traceability over cleverness. Every public behavior should be backed by tests, checked-in examples, or an explicit validation-matrix status.
-
-## Validation Approach
-
-Claim Audit Lab keeps validation visible in the repo:
+The repository keeps validation-inspired records visible:
 
 - `docs/validation-matrix-reference.md` maps public promises to `CAL-REQ-*` rows.
-- `docs/verification.md` records verification commands and outcomes.
-- `validation/README.md` describes the IQ/OQ/PQ-inspired validation package.
-- `validation/` includes IQ/OQ/PQ documentation as a demonstration of GxP-aligned validation practices.
-- `validation/deviation-log.md` is reserved for visible deviations and accepted limitations.
+- `docs/verification.md` records the v0.2 verification chain and results.
+- `validation/` contains IQ/OQ/PQ-style records and the deviation log.
 
-This is validation-inspired portfolio control. It is not a regulated compliance claim.
+The engineering gate covers 213 tests, Ruff lint and formatting, strict mypy,
+compileall, 96% source branch coverage, clean-wheel execution, deterministic examples,
+and the Harness to Evidence Bundler to Claim Audit Lab round trip.
 
-The validation package and matrix are included as demonstration artifacts. They show how public claims, tests, example outputs, and known limitations can be traced in an IQ/OQ/PQ-inspired workflow, but they are not a substitute for validating the tool against your own data, intended use, quality system, or regulatory context.
-
-The v1 validation package is complete for the checked-in fictional-fixture CLI workflow. Real-data fixture qualification and human-review calibration are future validation gates before using the tool on real cases, sensitive materials, production-like drafts, or research measurement outputs.
-
-The C-B accommodation is verified against a synthetic contract fixture and a synthetic Evidence Bundler round trip. That verifies the engineering handoff shape, fail-closed intake, adapter boundary, and audited output copy behavior; it does not validate real retrieval quality or Claim Audit Lab as a calibrated research measurement instrument.
-
-## Public Packaging
-
-This repository includes the public-facing assets needed for a GitHub portfolio release:
-
-- MIT license
-- changelog for the initial release candidate
-- source-distribution manifest for repo-level docs, examples, validation records, assets, and demo script
-- package metadata for public review
-- `assets/social-card.svg`
-- public README positioning aligned to supplied-evidence support
-
-Repository and homepage URLs are intentionally omitted from package metadata until the real public remote exists.
+The sealed 98-claim pilot was replayed with pinned metadata. A second replay was
+byte-identical, and every changed verdict is recorded in the MainFrame project outputs.
+That replay is engineering evidence only. It is not human calibration.
 
 ## Development Checks
 
-Run the normal verification chain from the repo root:
-
 ```bash
-.venv/bin/python -m pip install -e ".[dev]"
-.venv/bin/python -m compileall -q src tests
 .venv/bin/python -m pytest
 .venv/bin/python -m ruff check .
 .venv/bin/python -m ruff format --check .
 .venv/bin/python -m mypy src
+.venv/bin/python -m compileall -q src tests
 .venv/bin/python -m coverage run --branch -m pytest
-.venv/bin/python -m coverage report
-. .venv/bin/activate && claim-audit --help
-. .venv/bin/activate && claim-audit demo --out-dir build/reports/release-candidate-smoke
-.venv/bin/claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal --out-dir build/reports/cb-smoke
+.venv/bin/python -m coverage report --include='src/*' --fail-under=95
+.venv/bin/python -m build --wheel
+.venv/bin/python scripts/verify_install.py
 ```
 
 ## Repository Map
 
 | Path | Purpose |
 | --- | --- |
-| `src/claim_audit_lab/` | Python package implementation |
-| `tests/` | Unit, integration, CLI, report, and language-gate tests |
-| `examples/drafts/` | Fictional draft inputs |
-| `examples/evidence/` | Fictional supplied evidence bundles |
-| `examples/reports/` | Checked-in generated report artifacts |
-| `schema/` | Embedded C-B vocabulary and contract-version pin |
-| `docs/` | Public validation matrix and release verification summary |
-| `validation/` | Validation-inspired IQ/OQ/PQ records and deviation log |
-| `assets/` | Public social-card asset |
-| `scripts/run_demo.py` | Reviewer-friendly report generation helper |
-| `CHANGELOG.md` | Initial release notes and known v1 limits |
-| `MANIFEST.in` | Source-distribution include list for repo-level release artifacts |
-
-## Release Readiness
-
-Claim Audit Lab is a CLI-first release candidate.
-
-Ready surfaces:
-
-- local editable install and `claim-audit` CLI
-- two checked-in fictional draft/evidence/report families
-- deterministic Markdown and JSON report outputs
-- locked C-B bundle intake, audit adaptation, and audited output-copy writing for synthetic fixtures
-- validation-inspired IQ/OQ/PQ records
-- MIT license and package metadata
-- initial changelog
-- source-distribution manifest
-- social-card source
-
-Deferred surfaces:
-
-- web UI
-- source discovery
-- live LLM assistance
-- calibrated support scores or truth-probability confidence scores
-- research-use calibration
-
-The next public step is to create the public GitHub remote, add the remote URL to package metadata if desired, upload or convert the social card for GitHub's preview settings, and publish the repo.
+| `src/claim_audit_lab/` | Package implementation and packaged runtime resources |
+| `tests/` | Unit, boundary, integration, CLI, report, and contract tests |
+| `examples/` | Fictional native inputs and generated reports |
+| `schema/` | Repository copies of the locked C-B contract resources |
+| `docs/` | Validation matrix and release verification |
+| `validation/` | Qualification-style records and deviations |
+| `scripts/verify_install.py` | Clean-wheel verifier |
+| `CHANGELOG.md` | Release history and known limits |
 
 ## License
 

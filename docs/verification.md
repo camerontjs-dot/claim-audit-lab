@@ -1,126 +1,122 @@
 # Verification Summary
 
-last_updated: 2026-05-11
+last_updated: 2026-06-13
+release: 0.2.0
+engineering_status: passed
+research_qualification: pending
 
-Purpose: record the current public release verification for Claim Audit Lab.
+## Boundary
 
-## Release Candidate
+This record verifies Claim Audit Lab as a deterministic supplied-evidence package. It
+does not show outside-world truth checking, calibrated accuracy, regulated validation,
+or production fitness.
 
-Claim Audit Lab `0.1.0` is verified as a deterministic CLI-first portfolio artifact.
+Support scores are deterministic supplied-evidence signals, not truth probabilities.
+Blind human calibration remains `0/98`.
 
-This verification does not claim that the tool checks outside-world truth, performs source discovery, provides regulated validation, or is calibrated as a research measurement instrument.
-
-The v1 validation package is complete for the public fictional-fixture CLI scope. Real-data fixture qualification and human-review calibration are future validation gates before real-case, sensitive-material, production-like, or research-measurement use.
-
-## C-B Accommodation Addendum
-
-On 2026-05-11, Claim Audit Lab's C-B accommodation was verified against locked Apparatus Contracts v1.0.0 and a synthetic Evidence Bundler fixture round trip. This verifies the engineering handoff path only: C-B schema intake, hash checking, adapter behavior, audited output-copy writing, CLI exposure, and documentation. It does not claim real retrieval quality, human-review calibration, or research-measurement validity.
-
-Commands run from `live-asset/claim-audit-lab/`:
-
-```bash
-.venv/bin/python -m pytest tests/test_cb_models.py
-.venv/bin/python -m pytest tests/test_cb_bundle_loader.py
-.venv/bin/python -m pytest tests/test_cb_adapter.py
-.venv/bin/python -m pytest tests/test_cb_output_writer.py
-.venv/bin/python -m pytest tests/test_cli.py
-.venv/bin/python -m pytest
-.venv/bin/ruff check .
-.venv/bin/python -m compileall src
-.venv/bin/claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal --out-dir build/unit6-cli-smoke
-```
-
-Synthetic cross-component round trip:
-
-```bash
-cd ../evidence-bundler
-.venv/bin/evidence-bundler verify-intake tests/fixtures/scaffold-run-minimal
-.venv/bin/evidence-bundler build-fixture-bundle tests/fixtures/scaffold-run-minimal --output build/unit7-roundtrip/evidence-bundle-minimal
-
-cd ../claim-audit-lab
-.venv/bin/claim-audit audit-bundle ../evidence-bundler/build/unit7-roundtrip/evidence-bundle-minimal --out-dir build/unit7-roundtrip
-.venv/bin/python - <<'PY'
-from pathlib import Path
-from claim_audit_lab.contracts.bundle_loader import load_bundle
-
-contents = load_bundle(
-    Path("build/unit7-roundtrip/evidence-bundle-minimal-audited"),
-    deviations_dir=Path("build/unit7-roundtrip/deviations-check"),
-)
-claim = contents.claims[0]
-print(claim.claim_id)
-print(claim.audit.audit_support_verdict)
-print(claim.audit.false_caution_flag)
-print(claim.audit.deviation_flag)
-PY
-```
-
-Results:
-
-- C-B model tests: 5 passed.
-- C-B bundle-loader tests: 7 passed.
-- C-B adapter tests: 5 passed.
-- C-B output-writer tests: 4 passed.
-- CLI tests: 16 passed.
-- Full CAL test suite: 136 passed.
-- `ruff check .`: passed.
-- `compileall src`: passed.
-- `claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal --out-dir build/unit6-cli-smoke`: wrote `build/unit6-cli-smoke/evidence-bundle-minimal-audited`; 1 claim audited; 0 retrieval seeds skipped.
-- Evidence Bundler C-A intake: `Intake verified: tests/fixtures/scaffold-run-minimal`.
-- Evidence Bundler C-B fixture writer: wrote `build/unit7-roundtrip/evidence-bundle-minimal`; bundle id `41973898-948c-58b4-8982-61d62ec81500`.
-- CAL round-trip audit: wrote `build/unit7-roundtrip/evidence-bundle-minimal-audited`; 1 claim audited; 0 retrieval seeds skipped.
-- Reload check for audited output: `clm-001`, `supported`, `False` false-caution flag, `False` deviation flag.
-
-## Checks Run
+## Required Chain
 
 Commands run from the repository root:
 
 ```bash
-.venv/bin/python -m pip install -e ".[dev]"
-.venv/bin/python -m compileall -q src tests
 .venv/bin/python -m pytest
 .venv/bin/python -m ruff check .
 .venv/bin/python -m ruff format --check .
 .venv/bin/python -m mypy src
+.venv/bin/python -m compileall -q src tests
 .venv/bin/python -m coverage run --branch -m pytest
-.venv/bin/python -m coverage report
-. .venv/bin/activate && claim-audit --help
-. .venv/bin/activate && claim-audit demo --out-dir build/reports/release-candidate-smoke
-.venv/bin/python -m build --sdist --wheel
-tar -tzf dist/claim_audit_lab-0.1.0.tar.gz | rg "(CHANGELOG.md|MANIFEST.in|examples/drafts/ai-research-note.md|validation/README.md|assets/social-card.svg|scripts/run_demo.py)"
-rg -n "fact check|fact-check|truth verifier|verify external truth|proven true|guaranteed true|verified externally|FDA|GxP|GMP|Computer System Validation|CSV validation|regulated compliance" README.md CHANGELOG.md docs validation examples assets
-rg -n "TODO|TBD|placeholder|localhost|/Users/|api[_-]?key|secret|token|password|INSERT|your-|coming soon" README.md CHANGELOG.md docs validation examples assets
-rg -n "openai|anthropic|requests|httpx|urllib|socket|dotenv|os\.environ" pyproject.toml src tests scripts README.md CHANGELOG.md
-git status --short --ignored
+.venv/bin/python -m coverage report --include='src/*' --show-missing --fail-under=95
+.venv/bin/python -m build --wheel
+.venv/bin/python scripts/verify_install.py
 ```
 
 ## Results
 
-- Editable install passed with dev dependencies.
-- Virtualenv compile check passed.
-- `pytest`: 112 passed.
-- `ruff check .`: passed.
-- `ruff format --check .`: passed; 19 files already formatted.
-- `mypy src`: passed across 9 source files.
-- Coverage run: 112 passed; total coverage 96%.
-- Activated `claim-audit --help` showed `audit` and `demo` subcommands.
-- Activated `claim-audit demo --out-dir build/reports/release-candidate-smoke` wrote ignored Markdown and JSON outputs and completed with 4 claims assessed.
-- `python -m build --sdist --wheel` built `claim_audit_lab-0.1.0.tar.gz` and `claim_audit_lab-0.1.0-py3-none-any.whl`.
-- Source distribution inspection confirmed release-facing docs, example data, validation records, assets, and the demo script are included.
-- Public-language scans produced only expected validation disclaimers, guardrails, source-reference matches, or scan-command self-matches.
-- Placeholder/private-data/local-path scans produced only expected validation-history wording or scan-command self-matches.
-- Network/API/LLM scan produced no package, source, test, script, README, or changelog dependency on network clients, provider SDKs, environment secrets, or API keys.
-- Validation package review found no open v1 validation failures; future real-data and research-use validation gates are recorded in `validation/deviation-log.md`.
+- `pytest`: 213 passed.
+- Ruff lint: passed.
+- Ruff format check: passed.
+- Strict mypy: passed.
+- Compileall: passed.
+- Source branch coverage: 96%, above the 95% gate.
+- Clean-wheel verifier: passed for `claim-audit --help`, `demo`, and `audit-bundle`.
+- Runtime contract schema and demo fixtures were present in the installed wheel.
+- Missing packaged resources produced typed failures in tests.
+- Checked-in example Markdown and JSON reports regenerated twice with byte identity.
 
-## Public Repo Contents
+## Frozen Policy Checks
 
-The public repository contains the release-facing project surface:
+Automated tests cover:
 
-- package metadata and license files
-- implementation under `src/`
-- tests and test fixtures under `tests/`
-- C-B contract pins and vocabulary under `schema/`
-- fictional draft/evidence/report examples under `examples/`
-- public validation docs under `docs/` and `validation/`
-- public assets under `assets/`
-- reviewer demo script under `scripts/`
+- exact `cal-rules-v1.2.0` policy acceptance and config-drift rejection
+- classifier priority and native/C-B unclassified behavior
+- candidate admission at `0.40`
+- partial support at `0.55`
+- sourced support at `0.80`
+- false-caution review at `0.85`
+- claim-level evidence scoping
+- separate counterevidence and its `0.3` penalty
+- linked counterevidence preventing `supported`
+- direct-evidence strong-wording suppression and conflicting-counterevidence restoration
+- `overstated` and `needs_source` policy switches
+- paired reproducibility options and byte-identical C-B output
+- public `audit_claims(...)` orchestration
+
+## Apparatus Round Trip
+
+The established synthetic workflow passed on 2026-06-13:
+
+```text
+Harness fixture
+  -> Evidence Bundler intake, retrieval, review, refinement, and finalize
+  -> Claim Audit Lab audit-bundle
+  -> resealed audited bundle plus Markdown report
+```
+
+The run audited 3 claims, skipped 0 retrieval seeds, and wrote both the audited C-B copy
+and the report. The Evidence Bundler source worktree had pre-existing local changes;
+the verification run did not modify or revert them.
+
+This proves the engineering handoff. It does not qualify retrieval quality or research
+measurement accuracy.
+
+## Sealed Pilot Replay
+
+The preserved PILOT-001 v2 set was replayed without overwriting its v0.1 outputs:
+
+- bundles: 15
+- claims: 98
+- run ID: `cal-v0.2-pilot-001-v2-replay`
+- timestamp: `2026-06-13T12:00:00Z`
+- second replay: byte-identical
+- changed verdicts: 68, each recorded in the claim-level review artifact
+
+Overall comparison:
+
+| version | supported | partially supported | needs source | overstated | unsupported | not checkable |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| v0.1 | 2 | 30 | 2 | 1 | 63 | 0 |
+| v0.2 | 0 | 12 | 2 | 2 | 26 | 56 |
+
+The large `not_checkable` count is expected from the v0.2 boundary: C-B claims that the
+sole classifier cannot assign to an auditable semantic type are preserved instead of
+being forced into a support verdict.
+
+Replay artifacts live in the MainFrame project output folder, outside this public
+package history:
+
+```text
+30_projects/claim-audit-lab/outputs/v0.2-pilot-replay/
+```
+
+## Qualification Gate
+
+Public v0.2 may ship on the engineering evidence above. Research or real-work
+qualification remains blocked until blind calibration reaches:
+
+- coarse-label agreement at least 80%
+- Cohen's kappa at least 0.60
+- adverse-claim recall at least 85%
+- per-condition adverse-rate error within 10 percentage points
+
+If those bars are missed, human verdicts remain primary and Claim Audit Lab stays an
+exploratory measurement channel.
