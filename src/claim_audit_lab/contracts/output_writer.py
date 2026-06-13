@@ -10,6 +10,7 @@ the source bundle at ``source_bundle_dir`` is never touched.
 If in-place mutation is ever desired (e.g. for downstream tooling), it must
 be an explicit, documented, separately invoked operation — never a default.
 """
+
 from __future__ import annotations
 
 import shutil

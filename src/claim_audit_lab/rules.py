@@ -19,54 +19,39 @@ from claim_audit_lab.models import (
     RuleFlag,
     SupportLabel,
 )
+from claim_audit_lab.scoring import (
+    DIRECT_DATE_SCORE,
+    DIRECT_NUMERIC_SCORE,
+    DIRECT_TERM_COVERAGE,
+    DIRECT_TEXT_SCORE,
+)
+from claim_audit_lab.text import (
+    dates,
+    normalize_text,
+    normalize_vocabulary,
+    number_sort_key,
+    numbers,
+    term_set,
+)
 
-_NUMBER_RE = re.compile(r"\b\d+(?:\.\d+)?%?\b")
-_DATE_RE = re.compile(r"\b(?:\d{4}-\d{2}-\d{2}|\d{4})\b")
-_TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z0-9]+)?")
-
-_STOPWORDS = {
-    "a",
-    "an",
-    "and",
-    "are",
-    "as",
-    "at",
-    "be",
-    "by",
-    "from",
-    "for",
-    "has",
-    "in",
-    "is",
-    "it",
-    "of",
-    "on",
-    "or",
-    "that",
-    "the",
-    "this",
-    "to",
-    "was",
-    "were",
-    "when",
-    "with",
-}
-
-_DIRECT_SUPPORT_TRIGGER_WORDS = {
-    "all",
-    "always",
-    "any",
-    "can",
-    "clearly",
-    "eliminate",
-    "eliminates",
-    "entire",
-    "every",
-    "guarantee",
-    "guarantees",
-    "never",
-    "will",
-}
+_DIRECT_SUPPORT_TRIGGER_WORDS = normalize_vocabulary(
+    {
+        "all",
+        "always",
+        "any",
+        "can",
+        "clearly",
+        "eliminate",
+        "eliminates",
+        "entire",
+        "every",
+        "guarantee",
+        "guarantees",
+        "never",
+        "will",
+    },
+    drop_stopwords=False,
+)
 
 _ADVERSE_LIMITATION_PATTERNS = (
     re.compile(r"\bnot tested\b"),
@@ -76,35 +61,39 @@ _ADVERSE_LIMITATION_PATTERNS = (
     re.compile(r"\bambiguous\b"),
 )
 
-_COMPARISON_TERMS = {
-    "better",
-    "compared",
-    "faster",
-    "higher",
-    "lower",
-    "manual",
-    "more",
-    "reduced",
-    "slower",
-    "than",
-    "worse",
-}
+_COMPARISON_TERMS = normalize_vocabulary(
+    {
+        "better",
+        "compared",
+        "faster",
+        "higher",
+        "lower",
+        "manual",
+        "more",
+        "reduced",
+        "slower",
+        "than",
+        "worse",
+    }
+)
 
-_PUBLIC_LINK_TERMS = {
-    "available",
-    "github",
-    "link",
-    "linkedin",
-    "portfolio",
-    "public",
-    "published",
-    "repo",
-    "repository",
-    "url",
-    "website",
-}
+_PUBLIC_LINK_TERMS = normalize_vocabulary(
+    {
+        "available",
+        "github",
+        "link",
+        "linkedin",
+        "portfolio",
+        "public",
+        "published",
+        "repo",
+        "repository",
+        "url",
+        "website",
+    }
+)
 
-_DATE_SOURCE_TERMS = {"by", "deadline", "due", "expires", "from", "on", "since", "until"}
+_DATE_SOURCE_TERMS = normalize_vocabulary({"deadline", "due", "expires", "since", "until"})
 
 _OVERCONFIDENT_PATTERNS = (
     (re.compile(r"\bclearly\s+eliminates?\b"), "clearly eliminates"),
@@ -131,11 +120,6 @@ _SCOPE_PATTERNS = (
     (re.compile(r"\bworkflow(?:s)?\b"), "workflows"),
 )
 
-_DIRECT_NUMERIC_SCORE = 0.70
-_DIRECT_DATE_SCORE = 0.35
-_DIRECT_TEXT_SCORE = 0.35
-_DIRECT_TERM_COVERAGE = 0.50
-
 
 @dataclass(frozen=True)
 class _EvidenceContext:
@@ -152,6 +136,15 @@ def assess_claim_support(
 ) -> ClaimAssessment:
     """Assess one claim against supplied evidence candidates and deterministic rules."""
     active_config = config or AuditConfig()
+    if claim.claim_type == "unclassified":
+        return ClaimAssessment(
+            claim=claim,
+            support_label="not_checkable",
+            risk_label="low",
+            candidate_evidence=candidate_evidence,
+            explanation="The claim does not match a governed semantic claim type.",
+            limitations=["No deterministic rule family applies to this claim."],
+        )
     if not evidence_bundle.sources:
         return ClaimAssessment(
             claim=claim,
@@ -208,13 +201,13 @@ def _build_rule_flags(
     config: AuditConfig,
 ) -> list[RuleFlag]:
     flags: list[RuleFlag] = []
-    claim_numbers = _numbers(claim.text)
+    claim_numbers = numbers(claim.text)
     if claim_numbers and not _has_numeric_direct_support(claim, contexts):
         flags.append(
             _flag(
                 claim,
                 "numeric_mismatch",
-                ",".join(sorted(claim_numbers, key=_number_sort_key)),
+                ",".join(sorted(claim_numbers, key=number_sort_key)),
                 "The claim's numeric value was not found in the supplied evidence.",
                 "high",
             )
@@ -382,7 +375,7 @@ def _risk_label(support_label: SupportLabel, flags: list[RuleFlag]) -> RiskLabel
 def _is_direct_support(claim: Claim, context: _EvidenceContext) -> bool:
     if context.excerpt is None:
         return False
-    if _numbers(claim.text):
+    if numbers(claim.text):
         return _numeric_direct_support(claim, context)
     if _has_date_or_deadline_claim(claim):
         return _date_direct_support(claim, context)
@@ -394,12 +387,12 @@ def _has_numeric_direct_support(claim: Claim, contexts: list[_EvidenceContext]) 
 
 
 def _numeric_direct_support(claim: Claim, context: _EvidenceContext) -> bool:
-    if context.excerpt is None or context.candidate.score < _DIRECT_NUMERIC_SCORE:
+    if context.excerpt is None or context.candidate.score < DIRECT_NUMERIC_SCORE:
         return False
-    claim_numbers = _numbers(claim.text)
+    claim_numbers = numbers(claim.text)
     if not claim_numbers:
         return False
-    excerpt_numbers = _numbers(_evidence_text(context))
+    excerpt_numbers = numbers(_evidence_text(context))
     return claim_numbers <= excerpt_numbers
 
 
@@ -408,20 +401,20 @@ def _has_date_direct_support(claim: Claim, contexts: list[_EvidenceContext]) -> 
 
 
 def _date_direct_support(claim: Claim, context: _EvidenceContext) -> bool:
-    if context.excerpt is None or context.candidate.score < _DIRECT_DATE_SCORE:
+    if context.excerpt is None or context.candidate.score < DIRECT_DATE_SCORE:
         return False
-    claim_dates = _dates(claim.text)
+    claim_dates = dates(claim.text)
     if not claim_dates:
         return False
-    return claim_dates <= _dates(_evidence_text(context))
+    return claim_dates <= dates(_evidence_text(context))
 
 
 def _text_direct_support(claim: Claim, context: _EvidenceContext) -> bool:
-    if context.excerpt is None or context.candidate.score < _DIRECT_TEXT_SCORE:
+    if context.excerpt is None or context.candidate.score < DIRECT_TEXT_SCORE:
         return False
     if _has_adverse_limitation(_evidence_text(context)):
         return False
-    return _core_term_coverage(claim.text, _evidence_text(context)) >= _DIRECT_TERM_COVERAGE
+    return _core_term_coverage(claim.text, _evidence_text(context)) >= DIRECT_TERM_COVERAGE
 
 
 def _is_causal_overreach(claim: Claim, direct_contexts: list[_EvidenceContext]) -> bool:
@@ -433,7 +426,7 @@ def _is_causal_overreach(claim: Claim, direct_contexts: list[_EvidenceContext]) 
 
 
 def _has_strong_causal_evidence(text: str) -> bool:
-    normalized = _normalize_text(text)
+    normalized = normalize_text(text)
     return any(
         phrase in normalized
         for phrase in (
@@ -448,7 +441,7 @@ def _has_strong_causal_evidence(text: str) -> bool:
 
 
 def _first_causal_trigger(text: str) -> str:
-    normalized = _normalize_text(text)
+    normalized = normalize_text(text)
     for trigger in ("because", "after", "prevents", "reduced", "fell from", "due to"):
         if trigger in normalized:
             return trigger
@@ -462,12 +455,12 @@ def _is_comparison_missing(claim: Claim, contexts: list[_EvidenceContext]) -> bo
 
 
 def _has_comparison_evidence(context: _EvidenceContext) -> bool:
-    return bool(_terms(_evidence_text(context)) & _COMPARISON_TERMS)
+    return bool(term_set(_evidence_text(context)) & _COMPARISON_TERMS)
 
 
 def _is_public_link_claim(claim: Claim) -> bool:
-    terms = _terms(claim.text)
-    return bool(terms & _PUBLIC_LINK_TERMS)
+    claim_terms = term_set(claim.text)
+    return bool(claim_terms & _PUBLIC_LINK_TERMS)
 
 
 def _has_candidate_url(contexts: list[_EvidenceContext]) -> bool:
@@ -504,8 +497,8 @@ def _age_days(source_date: Date, reference_date: Date) -> int:
 
 
 def _has_date_or_deadline_claim(claim: Claim) -> bool:
-    terms = _terms(claim.text)
-    return bool(_dates(claim.text)) or bool(terms & _DATE_SOURCE_TERMS)
+    claim_terms = term_set(claim.text)
+    return bool(dates(claim.text)) or bool(claim_terms & _DATE_SOURCE_TERMS)
 
 
 def _scope_trigger(claim: Claim) -> str | None:
@@ -534,7 +527,7 @@ def _flag(
     message: str,
     risk: RiskLabel,
 ) -> RuleFlag:
-    normalized_trigger = _normalize_text(trigger_context)
+    normalized_trigger = normalize_text(trigger_context)
     digest = hashlib.sha256(f"{claim.id}:{code}:{normalized_trigger}".encode()).hexdigest()
     return RuleFlag(
         id=f"flag-{digest[:12]}",
@@ -549,7 +542,7 @@ def _matching_triggers(
     text: str,
     patterns: tuple[tuple[re.Pattern[str], str], ...],
 ) -> tuple[str, ...]:
-    normalized = _normalize_text(text)
+    normalized = normalize_text(text)
     return tuple(trigger for pattern, trigger in patterns if pattern.search(normalized))
 
 
@@ -561,7 +554,7 @@ def _evidence_text(context: _EvidenceContext) -> str:
 
 
 def _has_adverse_limitation(text: str) -> bool:
-    normalized = _normalize_text(text)
+    normalized = normalize_text(text)
     return any(pattern.search(normalized) for pattern in _ADVERSE_LIMITATION_PATTERNS)
 
 
@@ -569,57 +562,12 @@ def _core_term_coverage(claim_text: str, evidence_text: str) -> float:
     claim_terms = _core_terms(claim_text)
     if not claim_terms:
         return 0.0
-    evidence_terms = _terms(evidence_text)
+    evidence_terms = term_set(evidence_text)
     return len(claim_terms & evidence_terms) / len(claim_terms)
 
 
 def _core_terms(text: str) -> set[str]:
-    return _terms(text) - _DIRECT_SUPPORT_TRIGGER_WORDS
-
-
-def _terms(text: str) -> set[str]:
-    return {
-        _light_stem(token)
-        for token in _TOKEN_RE.findall(text.lower())
-        if token not in _STOPWORDS
-        and not _NUMBER_RE.fullmatch(token)
-        and not _DATE_RE.fullmatch(token)
-    }
-
-
-def _numbers(text: str) -> set[str]:
-    return {_normalize_number(match) for match in _NUMBER_RE.findall(text.lower())}
-
-
-def _dates(text: str) -> set[str]:
-    return set(_DATE_RE.findall(text.lower()))
-
-
-def _normalize_number(number: str) -> str:
-    return number.rstrip("%")
-
-
-def _number_sort_key(number: str) -> tuple[int, float | str]:
-    try:
-        return (0, float(number))
-    except ValueError:
-        return (1, number)
-
-
-def _normalize_text(text: str) -> str:
-    return " ".join(_TOKEN_RE.findall(text.lower()))
-
-
-def _light_stem(token: str) -> str:
-    if token.endswith("ies") and len(token) > 4:
-        return f"{token[:-3]}y"
-    if token.endswith("ing") and len(token) > 5:
-        return token[:-3]
-    if token.endswith("ed") and len(token) > 4:
-        return token[:-2]
-    if token.endswith("s") and not token.endswith("ss") and len(token) > 3:
-        return token[:-1]
-    return token
+    return term_set(text) - _DIRECT_SUPPORT_TRIGGER_WORDS
 
 
 def _explanation(

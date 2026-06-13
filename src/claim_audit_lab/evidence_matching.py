@@ -2,87 +2,42 @@
 
 from __future__ import annotations
 
-import re
 from dataclasses import dataclass
 
 from claim_audit_lab.models import AuditConfig, Claim, EvidenceBundle, EvidenceCandidate
+from claim_audit_lab.scoring import MISMATCHED_NUMERIC_SCORE_CAP
+from claim_audit_lab.text import (
+    dates,
+    normalize_vocabulary,
+    number_sort_key,
+    numbers,
+    terms,
+)
 
-_TOKEN_RE = re.compile(r"[a-z0-9]+(?:'[a-z0-9]+)?")
-_NUMBER_RE = re.compile(r"\b\d+(?:\.\d+)?%?\b")
-_DATE_RE = re.compile(r"\b(?:\d{4}-\d{2}-\d{2}|\d{4})\b")
-
-_STOPWORDS = {
-    "a",
-    "an",
-    "and",
-    "are",
-    "as",
-    "at",
-    "be",
-    "by",
-    "can",
-    "from",
-    "for",
-    "has",
-    "in",
-    "is",
-    "it",
-    "of",
-    "on",
-    "or",
-    "that",
-    "the",
-    "this",
-    "to",
-    "was",
-    "were",
-    "when",
-    "with",
-}
-
-_LIMITATION_TERMS = {
-    "ambiguous",
-    "incomplete",
-    "known",
-    "limitation",
-    "miss",
-    "not",
-    "tested",
-}
-
-_SCOPE_TERMS = {
-    "across",
-    "all",
-    "any",
-    "entire",
-    "every",
-    "throughout",
-    "universal",
-}
-
-_PREDICTION_TERMS = {
-    "always",
-    "ensures",
-    "guarantees",
-    "never",
-    "prevent",
-    "should",
-    "will",
-}
-
-_COMPARISON_TERMS = {
-    "better",
-    "compared",
-    "faster",
-    "higher",
-    "lower",
-    "manual",
-    "more",
-    "reduced",
-    "slower",
-    "than",
-    "worse",
-}
+_LIMITATION_TERMS = normalize_vocabulary(
+    {"ambiguous", "incomplete", "known", "limitation", "miss", "not", "tested"}
+)
+_SCOPE_TERMS = normalize_vocabulary(
+    {"across", "all", "any", "entire", "every", "throughout", "universal"}
+)
+_PREDICTION_TERMS = normalize_vocabulary(
+    {"always", "ensures", "guarantees", "never", "prevent", "should", "will"}
+)
+_COMPARISON_TERMS = normalize_vocabulary(
+    {
+        "better",
+        "compared",
+        "faster",
+        "higher",
+        "lower",
+        "manual",
+        "more",
+        "reduced",
+        "slower",
+        "than",
+        "worse",
+    }
+)
 
 
 @dataclass(frozen=True)
@@ -138,17 +93,17 @@ def match_claims_to_evidence(
 
 
 def _score_pair(claim_text: str, excerpt_text: str) -> _ScoreSignals:
-    claim_numbers = _numbers(claim_text)
-    excerpt_numbers = _numbers(excerpt_text)
-    matched_numbers = tuple(sorted(claim_numbers & excerpt_numbers, key=_number_sort_key))
-    missing_claim_numbers = tuple(sorted(claim_numbers - excerpt_numbers, key=_number_sort_key))
+    claim_numbers = numbers(claim_text)
+    excerpt_numbers = numbers(excerpt_text)
+    matched_numbers = tuple(sorted(claim_numbers & excerpt_numbers, key=number_sort_key))
+    missing_claim_numbers = tuple(sorted(claim_numbers - excerpt_numbers, key=number_sort_key))
 
-    claim_dates = _dates(claim_text)
-    excerpt_dates = _dates(excerpt_text)
+    claim_dates = dates(claim_text)
+    excerpt_dates = dates(excerpt_text)
     matched_dates = tuple(sorted(claim_dates & excerpt_dates))
 
-    claim_terms = _terms(claim_text)
-    excerpt_terms = _terms(excerpt_text)
+    claim_terms = terms(claim_text)
+    excerpt_terms = terms(excerpt_text)
     claim_term_set = set(claim_terms)
     excerpt_term_set = set(excerpt_terms)
     overlapping_terms = tuple(sorted(claim_term_set & excerpt_term_set))
@@ -165,7 +120,7 @@ def _score_pair(claim_text: str, excerpt_text: str) -> _ScoreSignals:
     score += comparison_score
 
     if claim_numbers and not matched_numbers and overlapping_terms:
-        score = min(score, 0.69)
+        score = min(score, MISMATCHED_NUMERIC_SCORE_CAP)
 
     return _ScoreSignals(
         score=round(min(max(score, 0.0), 1.0), 4),
@@ -175,34 +130,6 @@ def _score_pair(claim_text: str, excerpt_text: str) -> _ScoreSignals:
         overlapping_terms=overlapping_terms,
         limitation_signal=limitation_signal,
     )
-
-
-def _terms(text: str) -> tuple[str, ...]:
-    terms: list[str] = []
-    for token in _TOKEN_RE.findall(text.lower()):
-        if token in _STOPWORDS or _NUMBER_RE.fullmatch(token):
-            continue
-        terms.append(_light_stem(token))
-    return tuple(terms)
-
-
-def _numbers(text: str) -> set[str]:
-    return {_normalize_number(match) for match in _NUMBER_RE.findall(text.lower())}
-
-
-def _dates(text: str) -> set[str]:
-    return set(_DATE_RE.findall(text.lower()))
-
-
-def _normalize_number(number: str) -> str:
-    return number.rstrip("%")
-
-
-def _number_sort_key(number: str) -> tuple[int, float | str]:
-    try:
-        return (0, float(number))
-    except ValueError:
-        return (1, number)
 
 
 def _term_score(
@@ -296,18 +223,6 @@ def _build_rationale(signals: _ScoreSignals, source_reliability: str) -> str:
         parts.append("limitation wording overlaps with broad or future-facing claim")
     parts.append(f"source reliability: {source_reliability}")
     return "; ".join(parts)
-
-
-def _light_stem(token: str) -> str:
-    if token.endswith("ies") and len(token) > 4:
-        return f"{token[:-3]}y"
-    if token.endswith("ing") and len(token) > 5:
-        return token[:-3]
-    if token.endswith("ed") and len(token) > 4:
-        return token[:-2]
-    if token.endswith("s") and not token.endswith("ss") and len(token) > 3:
-        return token[:-1]
-    return token
 
 
 __all__ = ["match_claims_to_evidence", "match_evidence"]

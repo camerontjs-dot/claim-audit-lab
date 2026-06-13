@@ -53,7 +53,7 @@ def test_adapter_derives_cal_semantic_claim_type_from_text(tmp_path: Path) -> No
 
     claims, _evidence_bundle, _audit_config = adapt_bundle_to_pipeline(contents)
 
-    assert claims[0].claim_type == "numeric"
+    assert claims[0].claim_type == "prediction"
     assert claims[0].claim_type not in {"retrieval_seed", "extracted_claim"}
     assert claims[0].location is not None
     assert "workflow_condition=full_scaffold" in claims[0].location

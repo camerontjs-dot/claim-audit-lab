@@ -54,6 +54,7 @@ def normalize_support_label(raw: str) -> SupportLabel:
         raise ValueError(f"Unknown support label: {raw!r}")
     return cast(SupportLabel, normalized)
 
+
 RiskLabel: TypeAlias = Literal["low", "medium", "high"]
 ClaimType: TypeAlias = Literal[
     "numeric",
@@ -64,6 +65,7 @@ ClaimType: TypeAlias = Literal[
     "capability",
     "scope",
     "interpretive",
+    "unclassified",
 ]
 SourceReliability: TypeAlias = Literal["low", "medium", "high", "unknown"]
 SourceType: TypeAlias = Literal[

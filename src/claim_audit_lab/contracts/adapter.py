@@ -12,6 +12,7 @@ they are silently skipped.
 CAL semantic claim_type is always derived from claim_text via
 classify_claim_text(); the C-B claim_type field is never copied into this slot.
 """
+
 from __future__ import annotations
 
 from datetime import date as Date
@@ -62,11 +63,7 @@ def adapt_bundle_to_pipeline(
 
     Only ``extracted_claim`` records are adapted as auditable CAL Claims.
     """
-    cal_claims = [
-        _adapt_claim(cb)
-        for cb in contents.claims
-        if cb.claim_type == "extracted_claim"
-    ]
+    cal_claims = [_adapt_claim(cb) for cb in contents.claims if cb.claim_type == "extracted_claim"]
 
     cal_sources = [
         _adapt_source(src_id, profile, contents.passages.get(src_id, []))

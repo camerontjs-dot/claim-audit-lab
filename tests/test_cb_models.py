@@ -123,4 +123,3 @@ def test_cb_vocabularies_do_not_accept_cal_or_legacy_label_values() -> None:
     claim_data["audit"]["audit_support_verdict"] = "not_audit_ready"
     with pytest.raises(ValidationError):
         CBClaim.model_validate(claim_data)
-

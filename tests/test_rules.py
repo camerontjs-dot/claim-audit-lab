@@ -81,6 +81,17 @@ def test_numeric_direct_support_is_supported() -> None:
     assert assessment.rule_flags == []
 
 
+def test_unclassified_claim_is_not_checkable() -> None:
+    """C-B claims outside governed rule families remain visible but not checkable."""
+    claim = _claim("The report describes the pilot.", "unclassified")
+
+    assessment = assess_claim_support(claim, EvidenceBundle(), [])
+
+    assert assessment.support_label == "not_checkable"
+    assert assessment.risk_label == "low"
+    assert assessment.rule_flags == []
+
+
 def test_numeric_mismatch_is_unsupported_and_high_risk() -> None:
     """Related evidence with different numbers gets a numeric mismatch flag."""
     claim = _claim("The test set included 99 workflow outputs.", "numeric")

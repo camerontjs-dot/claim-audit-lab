@@ -18,6 +18,7 @@ audit_confidence
     mean score of the top candidate evidence links.  This is NOT a truth
     probability or a claim quality score.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -113,10 +114,7 @@ def _deviation_notes(
     false_caution: bool,
     deviation: bool,
 ) -> str:
-    context = (
-        f"scaffold_support_status={scaffold_status}; "
-        f"audit_support_verdict={cal_verdict}"
-    )
+    context = f"scaffold_support_status={scaffold_status}; audit_support_verdict={cal_verdict}"
     if false_caution:
         return (
             f"Material disagreement: {context}; false_caution_flag=true because the "
