@@ -17,6 +17,7 @@ from claim_audit_lab.contracts.bundle_loader import (
     _yaml_to_string,
     load_bundle,
 )
+from claim_audit_lab.resources import read_package_bytes, read_package_text
 
 FIXTURE_BUNDLE = Path(__file__).parent / "fixtures" / "cb" / "evidence-bundle-minimal"
 BAD_HASH = "sha256:0000000000000000000000000000000000000000000000000000000000000000"
@@ -44,6 +45,19 @@ def test_load_bundle_accepts_valid_cb_fixture(bundle_tmp: Path, tmp_path: Path) 
     assert contents.audit_config.config_id == "cal-rules-v1.2.0"
     assert contents.validation_set_ref.validation_set_version == "valset-phase-0-fixture"
     assert not deviations_dir.exists()
+
+
+def test_packaged_contract_resources_match_repository_pins() -> None:
+    """The wheel's runtime copies stay byte-identical to governed root resources."""
+    project_root = Path(__file__).resolve().parents[1]
+
+    assert read_package_text("schema/.contract-version") == (
+        project_root / "schema" / ".contract-version"
+    ).read_text(encoding="utf-8")
+    assert (
+        read_package_bytes("schema/vocabulary.yaml")
+        == (project_root / "schema" / "vocabulary.yaml").read_bytes()
+    )
 
 
 def test_missing_contract_version_fails_closed_with_typed_deviation(

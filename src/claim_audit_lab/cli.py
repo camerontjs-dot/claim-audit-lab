@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from contextlib import ExitStack
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Annotated
@@ -17,11 +18,11 @@ from claim_audit_lab.evidence_matching import match_claims_to_evidence
 from claim_audit_lab.loader import LoaderError, load_draft, load_evidence_bundle
 from claim_audit_lab.models import AuditReport, ClaimAssessment
 from claim_audit_lab.report import render_json_report, render_markdown_report
+from claim_audit_lab.resources import PackageResourceError, package_file
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_DEMO_DRAFT = PROJECT_ROOT / "examples" / "drafts" / "ai-research-note.md"
-DEFAULT_DEMO_EVIDENCE = PROJECT_ROOT / "examples" / "evidence" / "ai-research-evidence.yml"
-DEFAULT_DEMO_OUT_DIR = PROJECT_ROOT / "build" / "reports"
+DEFAULT_DEMO_DRAFT = "examples/drafts/ai-research-note.md"
+DEFAULT_DEMO_EVIDENCE = "examples/evidence/ai-research-evidence.yml"
+DEFAULT_DEMO_OUT_DIR = Path("build") / "reports"
 DEMO_STEM = "ai-research-note.cli"
 
 app = typer.Typer(
@@ -88,8 +89,11 @@ def demo(
 ) -> None:
     """Run the built-in AI research fixture demo."""
     try:
-        report = _run_audit(DEFAULT_DEMO_DRAFT, DEFAULT_DEMO_EVIDENCE)
-    except LoaderError as exc:
+        with ExitStack() as stack:
+            draft_path = stack.enter_context(package_file(DEFAULT_DEMO_DRAFT))
+            evidence_path = stack.enter_context(package_file(DEFAULT_DEMO_EVIDENCE))
+            report = _run_audit(draft_path, evidence_path)
+    except (LoaderError, PackageResourceError) as exc:
         _exit_with_loader_error(exc)
 
     markdown_out = out_dir / f"{DEMO_STEM}.md"
@@ -142,9 +146,7 @@ def audit_bundle(
         audit_config=contents.audit_config,
     )
 
-    skipped_retrieval_seeds = sum(
-        claim.claim_type == "retrieval_seed" for claim in contents.claims
-    )
+    skipped_retrieval_seeds = sum(claim.claim_type == "retrieval_seed" for claim in contents.claims)
     typer.echo(f"Wrote audited C-B bundle: {output_bundle_dir}")
     typer.echo(
         f"{len(assessments)} claims audited; "
@@ -195,7 +197,7 @@ def _format_summary(report: AuditReport) -> str:
     return "; ".join(parts) + "."
 
 
-def _exit_with_loader_error(error: LoaderError) -> None:
+def _exit_with_loader_error(error: LoaderError | PackageResourceError) -> None:
     typer.echo(f"Error: {error}", err=True)
     raise typer.Exit(code=1)
 

@@ -20,6 +20,11 @@ from claim_audit_lab.contracts.cb_models import (
     CBSourceProfile,
     CBValidationSetRef,
 )
+from claim_audit_lab.resources import (
+    PackageResourceError,
+    read_package_bytes,
+    read_package_text,
+)
 
 CONTRACT_VERSION = "1.1.0"
 SUPPORTED_CONTRACT_VERSIONS: frozenset[str] = frozenset({"1.0.0", "1.1.0"})
@@ -37,10 +42,8 @@ DeviationType = Literal[
 
 TModel = TypeVar("TModel", bound=BaseModel)
 
-# contracts/ -> claim_audit_lab/ -> src/ -> project root -> schema/
-_SCHEMA_DIR = Path(__file__).resolve().parents[3] / "schema"
-_CONTRACT_VERSION_FILE = _SCHEMA_DIR / ".contract-version"
-_VOCAB_FILE = _SCHEMA_DIR / "vocabulary.yaml"
+_CONTRACT_VERSION_RESOURCE = "schema/.contract-version"
+_VOCAB_RESOURCE = "schema/vocabulary.yaml"
 
 _YAML_DUMP_KWARGS: dict[str, Any] = {
     "allow_unicode": True,
@@ -190,7 +193,10 @@ def _verify_contract_version(
     if not contract_path.exists():
         fail("missing_required_field", "CONTRACT_VERSION file missing")
     bundle_version = contract_path.read_text(encoding="utf-8").strip()
-    consumer_version = _CONTRACT_VERSION_FILE.read_text(encoding="utf-8").strip()
+    try:
+        consumer_version = read_package_text(_CONTRACT_VERSION_RESOURCE).strip()
+    except PackageResourceError as exc:
+        fail("missing_required_field", str(exc))
     if bundle_version not in SUPPORTED_CONTRACT_VERSIONS:
         fail(
             "vocabulary_drift",
@@ -322,7 +328,11 @@ def _verify_optional_vocabulary(
     bundle_vocab = bundle_dir / "schema" / "vocabulary.yaml"
     if not bundle_vocab.exists():
         return
-    if bundle_vocab.read_bytes() != _VOCAB_FILE.read_bytes():
+    try:
+        pinned_vocabulary = read_package_bytes(_VOCAB_RESOURCE)
+    except PackageResourceError as exc:
+        fail("missing_required_field", str(exc))
+    if bundle_vocab.read_bytes() != pinned_vocabulary:
         fail(
             "vocabulary_drift",
             "schema/vocabulary.yaml in bundle is not byte-identical to CAL's pinned copy",

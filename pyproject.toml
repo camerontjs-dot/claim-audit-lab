@@ -44,6 +44,14 @@ claim-audit = "claim_audit_lab.cli:app"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+claim_audit_lab = [
+    "schema/.contract-version",
+    "schema/vocabulary.yaml",
+    "examples/drafts/*.md",
+    "examples/evidence/*.yml",
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
