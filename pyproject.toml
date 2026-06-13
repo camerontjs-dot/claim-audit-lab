@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "claim-audit-lab"
-version = "0.1.0"
+version = "0.2.0"
 description = "Audit whether draft claims are supported by supplied evidence."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -24,7 +24,6 @@ classifiers = [
 dependencies = [
     "pydantic>=2.6",
     "PyYAML>=6.0",
-    "rich>=13.7",
     "typer>=0.12",
 ]
 

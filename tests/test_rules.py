@@ -2,7 +2,10 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from datetime import date as Date
+
+import pytest
 
 from claim_audit_lab.models import (
     AuditConfig,
@@ -13,6 +16,7 @@ from claim_audit_lab.models import (
     EvidenceExcerpt,
     EvidenceSource,
 )
+from claim_audit_lab.policy import CAL_RULES_V1_2_0
 from claim_audit_lab.rules import assess_claim_support
 
 
@@ -92,7 +96,7 @@ def test_unclassified_claim_is_not_checkable() -> None:
     assert assessment.rule_flags == []
 
 
-def test_numeric_mismatch_is_unsupported_and_high_risk() -> None:
+def test_numeric_mismatch_is_partially_supported_and_high_risk() -> None:
     """Related evidence with different numbers gets a numeric mismatch flag."""
     claim = _claim("The test set included 99 workflow outputs.", "numeric")
     assessment = assess_claim_support(
@@ -101,9 +105,99 @@ def test_numeric_mismatch_is_unsupported_and_high_risk() -> None:
         [_candidate(score=0.69)],
     )
 
-    assert assessment.support_label == "unsupported"
+    assert assessment.support_label == "partially_supported"
     assert assessment.risk_label == "high"
     assert _codes(assessment) == {"numeric_mismatch"}
+
+
+@pytest.mark.parametrize(
+    ("score", "expected"),
+    [
+        pytest.param(0.40, "unsupported", id="candidate-admission"),
+        pytest.param(0.5499, "unsupported", id="below-partial"),
+        pytest.param(0.55, "partially_supported", id="partial"),
+        pytest.param(0.7999, "partially_supported", id="below-sourced"),
+        pytest.param(0.80, "supported", id="sourced"),
+    ],
+)
+def test_frozen_support_threshold_boundaries(score: float, expected: str) -> None:
+    claim = _claim("The tool can generate audit summaries.", "capability")
+    assessment = assess_claim_support(
+        claim,
+        _bundle("The tool can generate audit summaries."),
+        [_candidate(score=score)],
+    )
+
+    assert assessment.support_label == expected
+    assert assessment.support_signal == score
+
+
+def test_counterevidence_reduces_signal_and_prevents_supported_verdict() -> None:
+    claim = _claim("The tool can generate audit summaries.", "capability")
+    bundle = _bundle("The tool can generate audit summaries.")
+    support = _candidate(score=1.0)
+    counter = _candidate(score=1.0)
+
+    assessment = assess_claim_support(
+        claim,
+        bundle,
+        [support],
+        counterevidence=[counter],
+    )
+
+    assert assessment.support_signal == 0.7
+    assert assessment.support_label == "partially_supported"
+    assert _codes(assessment) == {"counterevidence_present"}
+
+
+def test_absolute_wording_is_allowed_only_when_direct_evidence_repeats_it() -> None:
+    claim = _claim("The tool guarantees audit summaries.", "prediction")
+    assessment = assess_claim_support(
+        claim,
+        _bundle("The tool guarantees audit summaries."),
+        [_candidate(score=0.9)],
+    )
+
+    assert assessment.support_label == "supported"
+    assert "overconfident_wording" not in _codes(assessment)
+    assert "future_certainty" not in _codes(assessment)
+
+
+def test_linked_counterevidence_restores_absolute_wording_flags() -> None:
+    claim = _claim("The tool guarantees audit summaries.", "prediction")
+    assessment = assess_claim_support(
+        claim,
+        _bundle("The tool guarantees audit summaries."),
+        [_candidate(score=1.0)],
+        counterevidence=[_candidate(score=0.5)],
+    )
+
+    assert assessment.support_label == "overstated"
+    assert assessment.support_signal == 0.85
+    assert _codes(assessment) == {
+        "counterevidence_present",
+        "future_certainty",
+        "overconfident_wording",
+    }
+
+
+def test_frozen_policy_switches_gate_overstated_and_needs_source_families() -> None:
+    policy = replace(
+        CAL_RULES_V1_2_0,
+        overstated_detection=False,
+        needs_source_detection=False,
+    )
+    claim = _claim("The reviewer guarantees licensed support.", "credential")
+
+    assessment = assess_claim_support(
+        claim,
+        _bundle("The reviewer maintains audit notes."),
+        [],
+        policy=policy,
+    )
+
+    assert assessment.support_label == "unsupported"
+    assert assessment.rule_flags == []
 
 
 def test_causal_overreach_is_partially_supported() -> None:

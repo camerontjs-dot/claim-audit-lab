@@ -77,7 +77,6 @@ SourceType: TypeAlias = Literal[
     "public_profile",
     "unknown",
 ]
-Strictness: TypeAlias = Literal["low", "standard", "high"]
 
 
 class StrictBaseModel(BaseModel):
@@ -142,10 +141,9 @@ class DraftDocument(StrictBaseModel):
 class AuditConfig(StrictBaseModel):
     """Configuration for deterministic audit behavior."""
 
-    strictness: Strictness = "standard"
     freshness_days: int = Field(default=365, gt=0)
     reference_date: Date | None = None
-    min_overlap_score: float = Field(default=0.2, ge=0.0, le=1.0)
+    min_overlap_score: float = Field(default=0.4, ge=0.0, le=1.0)
     max_candidate_evidence: int = Field(default=3, ge=1)
 
 
@@ -187,9 +185,11 @@ class ClaimAssessment(StrictBaseModel):
     support_label: SupportLabel
     risk_label: RiskLabel
     candidate_evidence: list[EvidenceCandidate] = Field(default_factory=list)
+    counterevidence: list[EvidenceCandidate] = Field(default_factory=list)
+    support_signal: float | None = Field(default=None, ge=0.0, le=1.0)
     rule_flags: list[RuleFlag] = Field(default_factory=list)
     explanation: NonBlankStr | None = None
-    suggested_rewrite: NonBlankStr | None = None
+    rewrite_guidance: list[NonBlankStr] = Field(default_factory=list)
     limitations: list[NonBlankStr] = Field(default_factory=list)
 
 
@@ -234,7 +234,6 @@ __all__ = [
     "SourceReliability",
     "SourceType",
     "StrictBaseModel",
-    "Strictness",
     "SupportLabel",
     "SupportLabelInput",
     "normalize_support_label",

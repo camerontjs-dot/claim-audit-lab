@@ -7,11 +7,13 @@ from datetime import date as Date
 from pathlib import Path
 from typing import Any
 
-from claim_audit_lab.auditor import _build_assessments
-from claim_audit_lab.contracts.adapter import adapt_bundle_to_pipeline
+from claim_audit_lab.auditor import audit_claims
+from claim_audit_lab.contracts.adapter import (
+    adapt_bundle_to_pipeline,
+    build_claim_evidence_scopes,
+)
 from claim_audit_lab.contracts.bundle_loader import BundleContents, load_bundle
 from claim_audit_lab.contracts.cb_models import CBClaim
-from claim_audit_lab.evidence_matching import match_claims_to_evidence
 
 FIXTURE_BUNDLE = Path(__file__).parent / "fixtures" / "cb" / "evidence-bundle-minimal"
 
@@ -95,7 +97,6 @@ def test_adapter_maps_locked_cb_audit_config_to_current_cal_config(tmp_path: Pat
 
     _claims, _evidence_bundle, audit_config = adapt_bundle_to_pipeline(contents)
 
-    assert audit_config.strictness == "standard"
     assert audit_config.min_overlap_score == 0.4
     assert audit_config.max_candidate_evidence == 1
     assert audit_config.reference_date == Date(2026, 5, 10)
@@ -107,10 +108,64 @@ def test_adapted_cb_fixture_runs_through_current_cal_assessment_path(tmp_path: P
     contents = _loaded_contents(tmp_path)
     claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(contents)
 
-    candidate_map = match_claims_to_evidence(claims, evidence_bundle, audit_config)
-    assessments = _build_assessments(claims, evidence_bundle, candidate_map, audit_config)
+    assessments = audit_claims(
+        claims,
+        evidence_bundle,
+        audit_config,
+        evidence_scopes=build_claim_evidence_scopes(contents),
+    )
 
     assert [assessment.claim.id for assessment in assessments] == ["clm-001"]
     assert assessments[0].support_label == "supported"
     assert assessments[0].candidate_evidence[0].source_id == "src-001"
     assert assessments[0].candidate_evidence[0].excerpt_id == "src-001/pass-001"
+
+
+def test_cb_claim_cannot_rematch_when_its_support_scope_is_empty(tmp_path: Path) -> None:
+    """Unrelated bundle passages are never eligible for a C-B claim."""
+    contents = _loaded_contents(tmp_path)
+    raw = contents.claims[0].model_dump(mode="python")
+    raw["evidence_passages"] = []
+    unlinked_claim = CBClaim.model_validate(raw)
+    scoped_contents = replace(contents, claims=[unlinked_claim])
+    claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(scoped_contents)
+
+    assessments = audit_claims(
+        claims,
+        evidence_bundle,
+        audit_config,
+        evidence_scopes=build_claim_evidence_scopes(scoped_contents),
+    )
+
+    assert assessments[0].candidate_evidence == []
+    assert assessments[0].support_signal == 0.0
+    assert assessments[0].support_label == "unsupported"
+
+
+def test_cb_counterevidence_is_separate_from_support_and_penalizes_signal(
+    tmp_path: Path,
+) -> None:
+    contents = _loaded_contents(tmp_path)
+    raw = contents.claims[0].model_dump(mode="python")
+    raw["counterevidence_passages"] = raw["evidence_passages"]
+    claim_with_counterevidence = CBClaim.model_validate(raw)
+    scoped_contents = replace(contents, claims=[claim_with_counterevidence])
+    claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(scoped_contents)
+
+    assessments = audit_claims(
+        claims,
+        evidence_bundle,
+        audit_config,
+        evidence_scopes=build_claim_evidence_scopes(scoped_contents),
+    )
+
+    assessment = assessments[0]
+    assert [candidate.excerpt_id for candidate in assessment.candidate_evidence] == [
+        "src-001/pass-001"
+    ]
+    assert [candidate.excerpt_id for candidate in assessment.counterevidence] == [
+        "src-001/pass-001"
+    ]
+    assert assessment.support_signal == 0.7
+    assert assessment.support_label == "partially_supported"
+    assert {flag.code for flag in assessment.rule_flags} == {"counterevidence_present"}

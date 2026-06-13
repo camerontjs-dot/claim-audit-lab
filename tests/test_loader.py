@@ -153,3 +153,53 @@ def test_missing_file_raises_loader_error_with_path(tmp_path: Path) -> None:
 
     assert "missing.yml" in str(exc_info.value)
     assert "File does not exist" in str(exc_info.value)
+
+
+def test_directory_input_is_rejected_as_not_a_file(tmp_path: Path) -> None:
+    path = tmp_path / "evidence.yml"
+    path.mkdir()
+
+    with pytest.raises(LoaderError, match="Path is not a file"):
+        load_evidence_bundle(path)
+
+
+def test_invalid_utf8_input_is_rejected(tmp_path: Path) -> None:
+    path = tmp_path / "draft.txt"
+    path.write_bytes(b"\xff\xfe")
+
+    with pytest.raises(LoaderError, match="Could not read UTF-8 text"):
+        load_draft(path)
+
+
+def test_invalid_json_is_rejected(tmp_path: Path) -> None:
+    path = tmp_path / "evidence.json"
+    path.write_text("{", encoding="utf-8")
+
+    with pytest.raises(LoaderError, match="Could not parse JSON"):
+        load_evidence_bundle(path)
+
+
+def test_blank_draft_fails_typed_validation(tmp_path: Path) -> None:
+    path = tmp_path / "blank.md"
+    path.write_text(" ", encoding="utf-8")
+
+    with pytest.raises(LoaderError, match="Validation failed for draft"):
+        load_draft(path)
+
+
+@pytest.mark.parametrize(
+    ("content", "expected"),
+    [
+        pytest.param("Plain prose only.", None, id="no-heading"),
+        pytest.param("#   \nPlain prose.", None, id="blank-heading"),
+    ],
+)
+def test_markdown_title_inference_can_return_none(
+    tmp_path: Path,
+    content: str,
+    expected: None,
+) -> None:
+    path = tmp_path / "draft.md"
+    path.write_text(content, encoding="utf-8")
+
+    assert load_draft(path).title is expected

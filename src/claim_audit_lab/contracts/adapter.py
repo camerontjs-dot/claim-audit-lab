@@ -27,6 +27,7 @@ from claim_audit_lab.contracts.cb_models import (
     CBSourceType,
     TrustLevel,
 )
+from claim_audit_lab.evidence_matching import ClaimEvidenceScope
 from claim_audit_lab.models import (
     AuditConfig,
     Claim,
@@ -75,6 +76,26 @@ def adapt_bundle_to_pipeline(
         EvidenceBundle(sources=cal_sources),
         _adapt_audit_config(contents),
     )
+
+
+def build_claim_evidence_scopes(
+    contents: BundleContents,
+) -> dict[str, ClaimEvidenceScope]:
+    """Return explicit support and counterevidence passage scopes by claim ID."""
+    return {
+        claim.claim_id: ClaimEvidenceScope(
+            support_excerpt_ids=frozenset(
+                _excerpt_id(passage.source_id, passage.passage_id)
+                for passage in claim.evidence_passages
+            ),
+            counter_excerpt_ids=frozenset(
+                _excerpt_id(passage.source_id, passage.passage_id)
+                for passage in claim.counterevidence_passages
+            ),
+        )
+        for claim in contents.claims
+        if claim.claim_type == "extracted_claim"
+    }
 
 
 def _adapt_claim(cb: CBClaim) -> Claim:
@@ -163,4 +184,4 @@ def _parse_date(value: str | None) -> Date | None:
         return None
 
 
-__all__ = ["adapt_bundle_to_pipeline"]
+__all__ = ["adapt_bundle_to_pipeline", "build_claim_evidence_scopes"]

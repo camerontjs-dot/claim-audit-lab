@@ -14,9 +14,9 @@ deviation_flag
     Not every disagreement is material; minor gradations are not flagged.
 
 audit_confidence
-    A value in [0.0, 1.0] reflecting deterministic method certainty — the
-    mean score of the top candidate evidence links.  This is NOT a truth
-    probability or a claim quality score.
+    CAL's deterministic support signal in [0.0, 1.0]: maximum linked support
+    score minus the configured counterevidence penalty. It is not a truth
+    probability or a claim-quality score.
 """
 
 from __future__ import annotations
@@ -46,7 +46,6 @@ _MATERIAL_DISAGREE: frozenset[tuple[str, str]] = frozenset(
     }
 )
 
-_CONFIDENCE_FLOOR = 0.10
 _DEFAULT_FALSE_CAUTION_THRESHOLD = 0.85
 
 
@@ -103,8 +102,12 @@ def compute_flags(
 
 
 def _audit_confidence(assessment: ClaimAssessment) -> float:
-    scores = [c.score for c in assessment.candidate_evidence]
-    return round(sum(scores) / len(scores), 3) if scores else _CONFIDENCE_FLOOR
+    if assessment.support_signal is not None:
+        return assessment.support_signal
+    return max(
+        (candidate.score for candidate in assessment.candidate_evidence),
+        default=0.0,
+    )
 
 
 def _deviation_notes(

@@ -8,15 +8,18 @@ from pathlib import Path
 from shutil import copytree
 from typing import Any
 
+import pytest
 import yaml
 
-from claim_audit_lab.auditor import _build_assessments
-from claim_audit_lab.contracts.adapter import adapt_bundle_to_pipeline
+from claim_audit_lab.auditor import audit_claims
+from claim_audit_lab.contracts.adapter import (
+    adapt_bundle_to_pipeline,
+    build_claim_evidence_scopes,
+)
 from claim_audit_lab.contracts.audit_flags import compute_flags
 from claim_audit_lab.contracts.bundle_loader import BundleContents, load_bundle
 from claim_audit_lab.contracts.cb_models import CBClaim
 from claim_audit_lab.contracts.output_writer import write_audited_bundle
-from claim_audit_lab.evidence_matching import match_claims_to_evidence
 from claim_audit_lab.models import Claim, ClaimAssessment, EvidenceCandidate
 
 FIXTURE_BUNDLE = Path(__file__).parent / "fixtures" / "cb" / "evidence-bundle-minimal"
@@ -98,6 +101,113 @@ def test_write_audited_bundle_leaves_unassessed_retrieval_seed_untouched(
     assert (out_dir / "claims" / "seed-001.yaml").read_text(encoding="utf-8") == seed_before
 
 
+@pytest.mark.parametrize(
+    ("field", "audit_run_id", "audited_at"),
+    [
+        pytest.param("audit_run_id", " ", AUDITED_AT_UTC, id="blank-run-id"),
+        pytest.param("audited_at_utc", AUDIT_RUN_ID, " ", id="blank-timestamp"),
+    ],
+)
+def test_write_audited_bundle_rejects_blank_run_metadata(
+    tmp_path: Path,
+    field: str,
+    audit_run_id: str,
+    audited_at: str,
+) -> None:
+    source_dir = _copy_fixture(tmp_path)
+    contents = load_bundle(source_dir, deviations_dir=tmp_path / "deviations")
+
+    with pytest.raises(ValueError, match=field):
+        write_audited_bundle(
+            source_dir,
+            tmp_path / "out",
+            contents.claims,
+            _fixture_assessments(contents),
+            audit_run_id=audit_run_id,
+            audited_at_utc=audited_at,
+        )
+
+
+@pytest.mark.parametrize("relative_out", [".", "nested"])
+def test_write_audited_bundle_rejects_source_or_child_output(
+    tmp_path: Path,
+    relative_out: str,
+) -> None:
+    source_dir = _copy_fixture(tmp_path)
+    contents = load_bundle(source_dir, deviations_dir=tmp_path / "deviations")
+    out_dir = source_dir if relative_out == "." else source_dir / relative_out
+
+    with pytest.raises(ValueError, match="must not be the source bundle"):
+        write_audited_bundle(
+            source_dir,
+            out_dir,
+            contents.claims,
+            _fixture_assessments(contents),
+            audit_run_id=AUDIT_RUN_ID,
+            audited_at_utc=AUDITED_AT_UTC,
+        )
+
+
+def test_write_audited_bundle_replaces_existing_output(tmp_path: Path) -> None:
+    source_dir = _copy_fixture(tmp_path)
+    contents = load_bundle(source_dir, deviations_dir=tmp_path / "deviations")
+    out_dir = tmp_path / "out"
+    out_dir.mkdir()
+    (out_dir / "stale.txt").write_text("stale", encoding="utf-8")
+
+    write_audited_bundle(
+        source_dir,
+        out_dir,
+        contents.claims,
+        _fixture_assessments(contents),
+        audit_run_id=AUDIT_RUN_ID,
+        audited_at_utc=AUDITED_AT_UTC,
+        audit_config=None,
+    )
+
+    assert not (out_dir / "stale.txt").exists()
+
+
+def test_write_audited_bundle_fails_when_claim_file_is_missing(tmp_path: Path) -> None:
+    source_dir = _copy_fixture(tmp_path)
+    contents = load_bundle(source_dir, deviations_dir=tmp_path / "deviations")
+    raw = contents.claims[0].model_dump(mode="python")
+    raw["claim_id"] = "clm-missing"
+    missing_claim = CBClaim.model_validate(raw)
+    assessment = _assessment(missing_claim, support_label="supported", score=1.0)
+
+    with pytest.raises(FileNotFoundError, match="clm-missing"):
+        write_audited_bundle(
+            source_dir,
+            tmp_path / "out",
+            [missing_claim],
+            {"clm-missing": assessment},
+            audit_run_id=AUDIT_RUN_ID,
+            audited_at_utc=AUDITED_AT_UTC,
+        )
+
+
+def test_write_audited_bundle_rejects_manifest_without_bundle_mapping(
+    tmp_path: Path,
+) -> None:
+    source_dir = _copy_fixture(tmp_path)
+    contents = load_bundle(source_dir, deviations_dir=tmp_path / "deviations")
+    manifest_path = source_dir / "bundle_manifest.yaml"
+    manifest = _load_yaml(manifest_path)
+    manifest["bundle"] = []
+    _write_yaml(manifest_path, manifest)
+
+    with pytest.raises(ValueError, match="missing bundle mapping"):
+        write_audited_bundle(
+            source_dir,
+            tmp_path / "out",
+            contents.claims,
+            _fixture_assessments(contents),
+            audit_run_id=AUDIT_RUN_ID,
+            audited_at_utc=AUDITED_AT_UTC,
+        )
+
+
 def test_compute_flags_marks_false_caution_when_cautious_scaffold_is_later_supported(
     tmp_path: Path,
 ) -> None:
@@ -119,6 +229,25 @@ def test_compute_flags_marks_false_caution_when_cautious_scaffold_is_later_suppo
     assert "false_caution_flag=true" in flags.deviation_notes
 
 
+def test_false_caution_threshold_is_inclusive_at_point_eighty_five(
+    tmp_path: Path,
+) -> None:
+    contents = load_bundle(FIXTURE_BUNDLE, deviations_dir=tmp_path / "deviations")
+    cautious_claim = _claim_with_scaffold_status(contents.claims[0], "uncertain")
+
+    at_boundary = compute_flags(
+        cautious_claim,
+        _assessment(cautious_claim, support_label="supported", score=0.85),
+    )
+    below_boundary = compute_flags(
+        cautious_claim,
+        _assessment(cautious_claim, support_label="supported", score=0.8499),
+    )
+
+    assert at_boundary.false_caution_flag is True
+    assert below_boundary.false_caution_flag is False
+
+
 def test_compute_flags_marks_material_scaffold_audit_disagreement(tmp_path: Path) -> None:
     """A scaffold-sourced claim later judged unsupported is a formal disagreement."""
     contents = load_bundle(FIXTURE_BUNDLE, deviations_dir=tmp_path / "deviations")
@@ -128,7 +257,7 @@ def test_compute_flags_marks_material_scaffold_audit_disagreement(tmp_path: Path
 
     assert flags.false_caution_flag is False
     assert flags.deviation_flag is True
-    assert flags.audit_confidence == 0.1
+    assert flags.audit_confidence == 0.0
     assert "scaffold_support_status=sourced" in flags.deviation_notes
     assert "audit_support_verdict=unsupported" in flags.deviation_notes
 
@@ -141,8 +270,12 @@ def _copy_fixture(tmp_path: Path) -> Path:
 
 def _fixture_assessments(contents: BundleContents) -> dict[str, ClaimAssessment]:
     claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(contents)
-    candidate_map = match_claims_to_evidence(claims, evidence_bundle, audit_config)
-    assessments = _build_assessments(claims, evidence_bundle, candidate_map, audit_config)
+    assessments = audit_claims(
+        claims,
+        evidence_bundle,
+        audit_config,
+        evidence_scopes=build_claim_evidence_scopes(contents),
+    )
     return {assessment.claim.id: assessment for assessment in assessments}
 
 

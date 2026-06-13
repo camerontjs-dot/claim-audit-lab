@@ -9,6 +9,7 @@ from claim_audit_lab.scoring import (
 from claim_audit_lab.text import (
     light_stem,
     normalize_vocabulary,
+    number_sort_key,
     term_set,
 )
 
@@ -26,3 +27,11 @@ def test_normalized_trigger_vocabulary_is_reachable_from_text_terms() -> None:
 def test_numeric_mismatch_cap_stays_below_direct_support_boundary() -> None:
     assert MISMATCHED_NUMERIC_SCORE_CAP == DIRECT_NUMERIC_SCORE - 0.01
     assert MISMATCHED_NUMERIC_SCORE_CAP < DIRECT_NUMERIC_SCORE
+
+
+def test_number_sort_key_places_non_numeric_fallback_after_numbers() -> None:
+    assert sorted(["other", "10", "2"], key=number_sort_key) == ["2", "10", "other"]
+
+
+def test_normalize_vocabulary_drops_stopwords_by_default() -> None:
+    assert normalize_vocabulary({"the published report"}) == frozenset({"publish", "report"})

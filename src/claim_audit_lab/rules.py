@@ -7,6 +7,7 @@ import re
 from dataclasses import dataclass
 from datetime import date as Date
 
+from claim_audit_lab.guidance import build_rewrite_guidance
 from claim_audit_lab.models import (
     AuditConfig,
     Claim,
@@ -19,6 +20,7 @@ from claim_audit_lab.models import (
     RuleFlag,
     SupportLabel,
 )
+from claim_audit_lab.policy import CAL_RULES_V1_2_0, AuditPolicy
 from claim_audit_lab.scoring import (
     DIRECT_DATE_SCORE,
     DIRECT_NUMERIC_SCORE,
@@ -133,32 +135,61 @@ def assess_claim_support(
     evidence_bundle: EvidenceBundle,
     candidate_evidence: list[EvidenceCandidate],
     config: AuditConfig | None = None,
+    *,
+    counterevidence: list[EvidenceCandidate] | None = None,
+    policy: AuditPolicy = CAL_RULES_V1_2_0,
 ) -> ClaimAssessment:
     """Assess one claim against supplied evidence candidates and deterministic rules."""
     active_config = config or AuditConfig()
+    active_counterevidence = counterevidence or []
     if claim.claim_type == "unclassified":
         return ClaimAssessment(
             claim=claim,
             support_label="not_checkable",
             risk_label="low",
             candidate_evidence=candidate_evidence,
+            counterevidence=active_counterevidence,
+            support_signal=0.0,
             explanation="The claim does not match a governed semantic claim type.",
+            rewrite_guidance=[],
             limitations=["No deterministic rule family applies to this claim."],
         )
     if not evidence_bundle.sources:
+        support_label: SupportLabel = (
+            "needs_source" if policy.needs_source_detection else "unsupported"
+        )
         return ClaimAssessment(
             claim=claim,
-            support_label="needs_source",
+            support_label=support_label,
             risk_label="medium",
             candidate_evidence=candidate_evidence,
+            counterevidence=active_counterevidence,
+            support_signal=0.0,
             explanation="No evidence sources were supplied, so the claim still needs a source.",
+            rewrite_guidance=build_rewrite_guidance(support_label, []),
             limitations=["No supplied evidence was available for rule assessment."],
         )
 
     contexts = _build_contexts(candidate_evidence, evidence_bundle)
+    counter_contexts = _build_contexts(active_counterevidence, evidence_bundle)
     direct_contexts = [context for context in contexts if _is_direct_support(claim, context)]
-    flags = _build_rule_flags(claim, contexts, direct_contexts, evidence_bundle, active_config)
-    support_label = _support_label(claim, contexts, direct_contexts, flags)
+    support_signal = _support_signal(contexts, counter_contexts, policy)
+    flags = _build_rule_flags(
+        claim,
+        contexts,
+        counter_contexts,
+        direct_contexts,
+        evidence_bundle,
+        active_config,
+        policy,
+    )
+    support_label = _support_label(
+        contexts,
+        counter_contexts,
+        flags,
+        support_signal,
+        policy,
+    )
     risk_label = _risk_label(support_label, flags)
 
     return ClaimAssessment(
@@ -166,8 +197,11 @@ def assess_claim_support(
         support_label=support_label,
         risk_label=risk_label,
         candidate_evidence=candidate_evidence,
+        counterevidence=active_counterevidence,
+        support_signal=support_signal,
         rule_flags=flags,
         explanation=_explanation(support_label, flags, bool(direct_contexts)),
+        rewrite_guidance=build_rewrite_guidance(support_label, flags),
         limitations=_limitations(flags),
     )
 
@@ -196,9 +230,11 @@ def _build_contexts(
 def _build_rule_flags(
     claim: Claim,
     contexts: list[_EvidenceContext],
+    counter_contexts: list[_EvidenceContext],
     direct_contexts: list[_EvidenceContext],
     evidence_bundle: EvidenceBundle,
     config: AuditConfig,
+    policy: AuditPolicy,
 ) -> list[RuleFlag]:
     flags: list[RuleFlag] = []
     claim_numbers = numbers(claim.text)
@@ -224,7 +260,7 @@ def _build_rule_flags(
             )
         )
 
-    if _is_comparison_missing(claim, contexts):
+    if policy.needs_source_detection and _is_comparison_missing(claim, contexts):
         flags.append(
             _flag(
                 claim,
@@ -235,7 +271,7 @@ def _build_rule_flags(
             )
         )
 
-    if claim.claim_type == "credential" and not direct_contexts:
+    if policy.needs_source_detection and claim.claim_type == "credential" and not direct_contexts:
         flags.append(
             _flag(
                 claim,
@@ -246,7 +282,11 @@ def _build_rule_flags(
             )
         )
 
-    if _is_public_link_claim(claim) and not _has_candidate_url(contexts):
+    if (
+        policy.needs_source_detection
+        and _is_public_link_claim(claim)
+        and not _has_candidate_url(contexts)
+    ):
         flags.append(
             _flag(
                 claim,
@@ -258,7 +298,11 @@ def _build_rule_flags(
         )
 
     for trigger in _matching_triggers(claim.text, _OVERCONFIDENT_PATTERNS):
-        if _overconfidence_needs_flag(claim, contexts, direct_contexts):
+        if policy.overstated_detection and _absolute_wording_needs_flag(
+            trigger,
+            direct_contexts,
+            counter_contexts,
+        ):
             flags.append(
                 _flag(
                     claim,
@@ -300,7 +344,11 @@ def _build_rule_flags(
             )
         )
 
-    if _has_date_or_deadline_claim(claim) and not _has_date_direct_support(claim, contexts):
+    if (
+        policy.needs_source_detection
+        and _has_date_or_deadline_claim(claim)
+        and not _has_date_direct_support(claim, contexts)
+    ):
         flags.append(
             _flag(
                 claim,
@@ -312,19 +360,28 @@ def _build_rule_flags(
         )
 
     for trigger in _matching_triggers(claim.text, _FUTURE_CERTAINTY_PATTERNS):
-        flags.append(
-            _flag(
-                claim,
-                "future_certainty",
-                trigger,
-                "The future-facing certainty claim needs a narrower caveat.",
-                "high",
+        if policy.overstated_detection and _absolute_wording_needs_flag(
+            trigger,
+            direct_contexts,
+            counter_contexts,
+        ):
+            flags.append(
+                _flag(
+                    claim,
+                    "future_certainty",
+                    trigger,
+                    "The future-facing certainty claim needs a narrower caveat.",
+                    "high",
+                )
             )
-        )
-        break
+            break
 
     scope_trigger = _scope_trigger(claim)
-    if scope_trigger and _scope_needs_flag(claim, contexts, direct_contexts, evidence_bundle):
+    if (
+        policy.overstated_detection
+        and scope_trigger
+        and _scope_needs_flag(claim, contexts, direct_contexts, evidence_bundle)
+    ):
         flags.append(
             _flag(
                 claim,
@@ -335,33 +392,59 @@ def _build_rule_flags(
             )
         )
 
+    if counter_contexts:
+        flags.append(
+            _flag(
+                claim,
+                "counterevidence_present",
+                ",".join(
+                    sorted(
+                        f"{context.candidate.source_id}:{context.candidate.excerpt_id}"
+                        for context in counter_contexts
+                    )
+                ),
+                "Linked counterevidence limits the strongest available support verdict.",
+                "medium",
+            )
+        )
+
     return sorted(flags, key=lambda flag: (flag.code, flag.id))
 
 
 def _support_label(
-    claim: Claim,
     contexts: list[_EvidenceContext],
-    direct_contexts: list[_EvidenceContext],
+    counter_contexts: list[_EvidenceContext],
     flags: list[RuleFlag],
+    support_signal: float,
+    policy: AuditPolicy,
 ) -> SupportLabel:
     codes = {flag.code for flag in flags}
-    if "credential_missing_source" in codes or "public_link_missing_source" in codes:
+    needs_source_codes = {
+        "credential_missing_source",
+        "public_link_missing_source",
+        "date_missing_support",
+    }
+    if policy.needs_source_detection and needs_source_codes & codes:
         return "needs_source"
-    if "date_missing_support" in codes:
+    if policy.needs_source_detection and "comparison_missing" in codes and not contexts:
         return "needs_source"
-    if "comparison_missing" in codes and not contexts:
-        return "needs_source"
-    if "numeric_mismatch" in codes:
-        return "unsupported"
-    if {"future_certainty", "overconfident_wording", "scope_overreach"} & codes:
+    if (
+        policy.overstated_detection
+        and {
+            "future_certainty",
+            "overconfident_wording",
+            "scope_overreach",
+        }
+        & codes
+    ):
         return "overstated"
-    if direct_contexts and codes:
+    if support_signal < policy.partial_support:
+        return "unsupported"
+    if support_signal < policy.sourced_support:
         return "partially_supported"
-    if direct_contexts:
-        return "supported"
-    if contexts:
-        return "partially_supported" if claim.claim_type == "comparative" else "unsupported"
-    return "unsupported"
+    if counter_contexts or codes:
+        return "partially_supported"
+    return "supported"
 
 
 def _risk_label(support_label: SupportLabel, flags: list[RuleFlag]) -> RiskLabel:
@@ -470,12 +553,17 @@ def _has_candidate_url(contexts: list[_EvidenceContext]) -> bool:
     )
 
 
-def _overconfidence_needs_flag(
-    claim: Claim,
-    contexts: list[_EvidenceContext],
+def _absolute_wording_needs_flag(
+    trigger: str,
     direct_contexts: list[_EvidenceContext],
+    counter_contexts: list[_EvidenceContext],
 ) -> bool:
-    return True
+    if counter_contexts:
+        return True
+    normalized_trigger = normalize_text(trigger)
+    return not any(
+        normalized_trigger in normalize_text(_evidence_text(context)) for context in direct_contexts
+    )
 
 
 def _stale_contexts(
@@ -518,6 +606,23 @@ def _scope_needs_flag(
     if not contexts or not direct_contexts:
         return True
     return any(_has_adverse_limitation(_evidence_text(context)) for context in contexts)
+
+
+def _support_signal(
+    support_contexts: list[_EvidenceContext],
+    counter_contexts: list[_EvidenceContext],
+    policy: AuditPolicy,
+) -> float:
+    max_support = max(
+        (context.candidate.score for context in support_contexts),
+        default=0.0,
+    )
+    max_counterevidence = max(
+        (context.candidate.score for context in counter_contexts),
+        default=0.0,
+    )
+    signal = max_support - (policy.counterevidence_weight * max_counterevidence)
+    return round(min(max(signal, 0.0), 1.0), 4)
 
 
 def _flag(

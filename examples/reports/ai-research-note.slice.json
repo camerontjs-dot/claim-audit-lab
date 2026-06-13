@@ -21,6 +21,8 @@
       "support_label": "overstated",
       "risk_label": "high",
       "candidate_evidence": [],
+      "counterevidence": [],
+      "support_signal": 0.0,
       "rule_flags": [
         {
           "id": "flag-7c7eb17d9fb6",
@@ -38,6 +40,10 @@
         }
       ],
       "explanation": "The claim is stronger than the supplied evidence can support.",
+      "rewrite_guidance": [
+        "Replace absolute wording with bounded supplied-evidence language.",
+        "Narrow the scope to the observed source, fixture, sample, or setting."
+      ],
       "limitations": [
         "Deterministic rule checks use supplied evidence only."
       ]
@@ -60,19 +66,13 @@
           "source_reliability": "medium",
           "source_date": "2026-04-01",
           "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
-        },
-        {
-          "source_id": "source-001",
-          "excerpt_id": "excerpt-001",
-          "score": 0.2022,
-          "rationale": "claim numbers not found in excerpt: 52; overlapping terms: set, test; source reliability: medium",
-          "source_reliability": "medium",
-          "source_date": "2026-04-01",
-          "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
         }
       ],
+      "counterevidence": [],
+      "support_signal": 1.0,
       "rule_flags": [],
       "explanation": "The supplied evidence directly supports the claim.",
+      "rewrite_guidance": [],
       "limitations": []
     },
     {
@@ -95,6 +95,8 @@
           "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
         }
       ],
+      "counterevidence": [],
+      "support_signal": 0.7242,
       "rule_flags": [
         {
           "id": "flag-dd046361f9a9",
@@ -105,6 +107,9 @@
         }
       ],
       "explanation": "The supplied evidence supports part of the claim, but rule checks found limits.",
+      "rewrite_guidance": [
+        "Use weaker causal wording unless the supplied evidence directly supports causality."
+      ],
       "limitations": [
         "Deterministic rule checks use supplied evidence only."
       ]
@@ -119,6 +124,8 @@
       "support_label": "overstated",
       "risk_label": "high",
       "candidate_evidence": [],
+      "counterevidence": [],
+      "support_signal": 0.0,
       "rule_flags": [
         {
           "id": "flag-147843e7c663",
@@ -136,6 +143,10 @@
         }
       ],
       "explanation": "The claim is stronger than the supplied evidence can support.",
+      "rewrite_guidance": [
+        "Replace absolute wording with bounded supplied-evidence language.",
+        "Avoid universal future wording; state only what the supplied evidence covers."
+      ],
       "limitations": [
         "Deterministic rule checks use supplied evidence only."
       ]
@@ -180,8 +191,7 @@
   ],
   "evidence_bundle_warnings": [],
   "limitations": [
-    "Audit orchestration has been hardened through Phase 6; deterministic rule checks and Phase 7 report rendering are enabled; Phase 8 CLI workflow is available.",
-    "Candidate scores rank deterministic text and number overlap only; they are not support scores.",
+    "Match scores and support signals are deterministic supplied-evidence measures, not truth probabilities.",
     "This report only audits support from the supplied evidence bundle; it does not assess the outside world."
   ]
 }

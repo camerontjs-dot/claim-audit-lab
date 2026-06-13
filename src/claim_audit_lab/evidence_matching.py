@@ -50,19 +50,43 @@ class _ScoreSignals:
     limitation_signal: bool
 
 
+@dataclass(frozen=True)
+class ClaimEvidenceScope:
+    """Passage IDs explicitly linked to one claim by the supplied contract."""
+
+    support_excerpt_ids: frozenset[str] = frozenset()
+    counter_excerpt_ids: frozenset[str] = frozenset()
+
+
+@dataclass(frozen=True)
+class EvidenceMatches:
+    """Separated support and counterevidence candidates for one claim."""
+
+    support: tuple[EvidenceCandidate, ...] = ()
+    counterevidence: tuple[EvidenceCandidate, ...] = ()
+
+
 def match_evidence(
     claim: Claim,
     evidence_bundle: EvidenceBundle,
     config: AuditConfig | None = None,
+    *,
+    allowed_excerpt_ids: frozenset[str] | None = None,
+    min_overlap_score: float | None = None,
 ) -> list[EvidenceCandidate]:
     """Return deterministic candidate evidence links for one claim."""
     active_config = config or AuditConfig()
+    admission_threshold = (
+        active_config.min_overlap_score if min_overlap_score is None else min_overlap_score
+    )
     candidates: list[EvidenceCandidate] = []
 
     for source in evidence_bundle.sources:
         for excerpt in source.excerpts:
+            if allowed_excerpt_ids is not None and excerpt.id not in allowed_excerpt_ids:
+                continue
             signals = _score_pair(claim.text, excerpt.text)
-            if signals.score < active_config.min_overlap_score:
+            if signals.score < admission_threshold:
                 continue
 
             candidates.append(
@@ -81,6 +105,32 @@ def match_evidence(
         candidates,
         key=lambda candidate: (-candidate.score, candidate.source_id, candidate.excerpt_id),
     )[: active_config.max_candidate_evidence]
+
+
+def match_scoped_evidence(
+    claim: Claim,
+    evidence_bundle: EvidenceBundle,
+    scope: ClaimEvidenceScope,
+    config: AuditConfig | None = None,
+) -> EvidenceMatches:
+    """Match only the passages explicitly linked to a supplied claim."""
+    support = match_evidence(
+        claim,
+        evidence_bundle,
+        config,
+        allowed_excerpt_ids=scope.support_excerpt_ids,
+    )
+    counterevidence = match_evidence(
+        claim,
+        evidence_bundle,
+        config,
+        allowed_excerpt_ids=scope.counter_excerpt_ids,
+        min_overlap_score=0.0,
+    )
+    return EvidenceMatches(
+        support=tuple(support),
+        counterevidence=tuple(counterevidence),
+    )
 
 
 def match_claims_to_evidence(
@@ -225,4 +275,10 @@ def _build_rationale(signals: _ScoreSignals, source_reliability: str) -> str:
     return "; ".join(parts)
 
 
-__all__ = ["match_claims_to_evidence", "match_evidence"]
+__all__ = [
+    "ClaimEvidenceScope",
+    "EvidenceMatches",
+    "match_claims_to_evidence",
+    "match_evidence",
+    "match_scoped_evidence",
+]

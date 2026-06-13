@@ -20,14 +20,14 @@ from typing import Any
 import yaml
 
 from claim_audit_lab.contracts.audit_flags import compute_flags
-from claim_audit_lab.contracts.bundle_loader import (
-    PENDING_HASH,
-    _compute_bundle_tree_hash,
-    _hash_file_hex,
-    _iter_handoff_files,
-    _yaml_to_string,
-)
 from claim_audit_lab.contracts.cb_models import CBAuditConfig, CBClaim
+from claim_audit_lab.contracts.serialization import (
+    PENDING_HASH,
+    compute_bundle_tree_hash,
+    hash_file_hex,
+    iter_handoff_files,
+    yaml_to_string,
+)
 from claim_audit_lab.models import ClaimAssessment
 
 
@@ -103,7 +103,7 @@ def write_audited_bundle(
         raw["audit"]["deviation_flag"] = flags.deviation_flag
         raw["audit"]["deviation_notes"] = flags.deviation_notes
 
-        claim_path.write_text(_yaml_to_string(raw), encoding="utf-8")
+        claim_path.write_text(yaml_to_string(raw), encoding="utf-8")
 
     _reseal_output_bundle(out_dir)
     return out_dir
@@ -146,17 +146,17 @@ def _reseal_output_bundle(out_dir: Path) -> None:
         raise ValueError("bundle_manifest.yaml missing bundle mapping")
 
     bundle["bundle_hash"] = PENDING_HASH
-    manifest_path.write_text(_yaml_to_string(manifest), encoding="utf-8")
+    manifest_path.write_text(yaml_to_string(manifest), encoding="utf-8")
 
-    bundle["bundle_hash"] = _compute_bundle_tree_hash(out_dir)
-    manifest_path.write_text(_yaml_to_string(manifest), encoding="utf-8")
+    bundle["bundle_hash"] = compute_bundle_tree_hash(out_dir)
+    manifest_path.write_text(yaml_to_string(manifest), encoding="utf-8")
     _write_sha256sums(out_dir)
 
 
 def _write_sha256sums(out_dir: Path) -> None:
     lines = [
-        f"{_hash_file_hex(path)}  {path.relative_to(out_dir).as_posix()}"
-        for path in _iter_handoff_files(out_dir)
+        f"{hash_file_hex(path)}  {path.relative_to(out_dir).as_posix()}"
+        for path in iter_handoff_files(out_dir)
     ]
     (out_dir / "SHA256SUMS").write_text("\n".join(lines) + "\n", encoding="utf-8")
 

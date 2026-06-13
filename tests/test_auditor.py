@@ -105,8 +105,8 @@ def test_summary_counts_match_claim_assessments() -> None:
     }
 
 
-def test_ai_research_fixture_keeps_phase_5_target_labels_and_high_risk_count() -> None:
-    """Phase 6 hardening does not change the rule-assessed fixture labels."""
+def test_ai_research_fixture_keeps_expected_labels_and_high_risk_count() -> None:
+    """The governed rules produce the expected fixture labels."""
     report = _ai_research_report()
 
     assert [assessment.support_label for assessment in report.claims] == [
@@ -210,10 +210,9 @@ def test_report_limitations_preserve_boundaries_without_forbidden_language() -> 
         "assess the outside world."
     ) in limitations
     assert (
-        "Candidate scores rank deterministic text and number overlap only; they are not support "
-        "scores."
+        "Match scores and support signals are deterministic supplied-evidence measures, "
+        "not truth probabilities."
     ) in limitations
-    assert any("Phase 6" in limitation for limitation in limitations)
-    assert "Phase 5 rule-assessment slice" not in text
+    assert "Phase " not in text
     for pattern in FORBIDDEN_CAPABILITY_PATTERNS:
         assert re.search(pattern, text.lower()) is None

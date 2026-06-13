@@ -10,11 +10,13 @@ from uuid import uuid4
 
 import typer
 
-from claim_audit_lab.auditor import _build_assessments, audit_document
-from claim_audit_lab.contracts.adapter import adapt_bundle_to_pipeline
+from claim_audit_lab.auditor import audit_claims, audit_document, build_audit_report
+from claim_audit_lab.contracts.adapter import (
+    adapt_bundle_to_pipeline,
+    build_claim_evidence_scopes,
+)
 from claim_audit_lab.contracts.bundle_loader import BundleIntegrityError, load_bundle
 from claim_audit_lab.contracts.output_writer import write_audited_bundle
-from claim_audit_lab.evidence_matching import match_claims_to_evidence
 from claim_audit_lab.loader import LoaderError, load_draft, load_evidence_bundle
 from claim_audit_lab.models import AuditReport, ClaimAssessment
 from claim_audit_lab.report import render_json_report, render_markdown_report
@@ -120,8 +122,29 @@ def audit_bundle(
             help="Directory where the audited C-B bundle copy and deviations are written.",
         ),
     ],
+    audit_run_id: Annotated[
+        str | None,
+        typer.Option(
+            "--audit-run-id",
+            help="Stable audit run ID; must be supplied with --audited-at.",
+        ),
+    ] = None,
+    audited_at: Annotated[
+        str | None,
+        typer.Option(
+            "--audited-at",
+            help="Pinned UTC audit timestamp; must be supplied with --audit-run-id.",
+        ),
+    ] = None,
 ) -> None:
     """Audit a locked C-B evidence bundle and write an audited copy."""
+    if (audit_run_id is None) != (audited_at is None):
+        typer.echo(
+            "--audit-run-id and --audited-at must be supplied together.",
+            err=True,
+        )
+        raise typer.Exit(code=2)
+
     deviations_dir = out_dir / "deviations"
     try:
         contents = load_bundle(bundle_dir, deviations_dir=deviations_dir)
@@ -131,23 +154,31 @@ def audit_bundle(
         raise typer.Exit(code=1) from exc
 
     cal_claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(contents)
-    candidate_map = match_claims_to_evidence(cal_claims, evidence_bundle, audit_config)
-    assessments = _build_assessments(cal_claims, evidence_bundle, candidate_map, audit_config)
+    assessments = audit_claims(
+        cal_claims,
+        evidence_bundle,
+        audit_config,
+        evidence_scopes=build_claim_evidence_scopes(contents),
+    )
     assessments_by_claim_id = _assessments_by_claim_id(assessments)
     output_bundle_dir = out_dir / f"{bundle_dir.name}-audited"
+    report = build_audit_report(contents.manifest.bundle_id, assessments, evidence_bundle)
+    report_path = out_dir / f"{bundle_dir.name}-audit-report.md"
 
     write_audited_bundle(
         bundle_dir,
         output_bundle_dir,
         contents.claims,
         assessments_by_claim_id,
-        audit_run_id=_new_audit_run_id(),
-        audited_at_utc=_utc_now(),
+        audit_run_id=audit_run_id or _new_audit_run_id(),
+        audited_at_utc=audited_at or _utc_now(),
         audit_config=contents.audit_config,
     )
+    _write_text(report_path, render_markdown_report(report))
 
     skipped_retrieval_seeds = sum(claim.claim_type == "retrieval_seed" for claim in contents.claims)
     typer.echo(f"Wrote audited C-B bundle: {output_bundle_dir}")
+    typer.echo(f"Wrote Markdown report: {report_path}")
     typer.echo(
         f"{len(assessments)} claims audited; "
         f"{skipped_retrieval_seeds} retrieval seeds skipped; "
