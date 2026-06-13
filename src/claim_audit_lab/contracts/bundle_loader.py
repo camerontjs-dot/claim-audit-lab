@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from hashlib import sha256
 from pathlib import Path
-from typing import Any, Literal, TypeVar
+from typing import Any, Literal, TypeVar, cast
 
 import yaml
 from pydantic import BaseModel, ValidationError
@@ -490,7 +490,7 @@ def _strip_hash_prefix(value: str) -> str:
 
 
 def _yaml_to_string(data: dict[str, Any]) -> str:
-    return yaml.safe_dump(data, **_YAML_DUMP_KWARGS)
+    return cast(str, yaml.safe_dump(data, **_YAML_DUMP_KWARGS))
 
 
 def _write_deviation(deviations_dir: Path, deviation: DeviationRecord) -> Path:
