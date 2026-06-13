@@ -176,7 +176,7 @@ def test_audit_report_serializes_to_json_shaped_dict() -> None:
         ],
         rule_flags=[flag],
         explanation="The evidence supports reduction, not elimination.",
-        suggested_rewrite="The checklist reduced unsupported claims in the test set.",
+        rewrite_guidance=["The checklist reduced unsupported claims in the test set."],
         limitations=["The tool cannot verify the source itself."],
     )
     report = AuditReport(

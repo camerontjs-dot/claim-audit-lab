@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+from hashlib import sha256
 from pathlib import Path
 from shutil import copytree
 
@@ -51,6 +52,8 @@ def test_command_help_documents_options() -> None:
     assert "--json-out" in audit_result.output
     assert audit_bundle_result.exit_code == 0
     assert "--out-dir" in audit_bundle_result.output
+    assert "--audit-run-id" in audit_bundle_result.output
+    assert "--audited-at" in audit_bundle_result.output
     assert demo_result.exit_code == 0
     assert "--out-dir" in demo_result.output
 
@@ -209,17 +212,66 @@ def test_audit_bundle_writes_audited_copy_and_summary(tmp_path: Path) -> None:
     result = runner.invoke(app, ["audit-bundle", str(bundle_dir), "--out-dir", str(out_dir)])
 
     audited_bundle = out_dir / f"{bundle_dir.name}-audited"
+    report_path = out_dir / f"{bundle_dir.name}-audit-report.md"
     assert result.exit_code == 0
     assert audited_bundle.exists()
+    assert report_path.exists()
     assert "1 claims audited" in result.stdout
     assert "0 retrieval seeds skipped" in result.stdout
     assert f"Wrote audited C-B bundle: {audited_bundle}" in result.stdout
+    assert f"Wrote Markdown report: {report_path}" in result.stdout
 
     original = load_bundle(bundle_dir, deviations_dir=tmp_path / "original-deviations")
     reloaded = load_bundle(audited_bundle, deviations_dir=tmp_path / "audited-deviations")
     assert original.claims[0].audit.audit_run_id is None
     assert reloaded.claims[0].audit.audit_run_id is not None
     assert reloaded.claims[0].audit.audit_support_verdict == "supported"
+
+
+def test_audit_bundle_requires_reproducibility_options_together(tmp_path: Path) -> None:
+    bundle_dir = _copy_cb_fixture(tmp_path)
+
+    result = runner.invoke(
+        app,
+        [
+            "audit-bundle",
+            str(bundle_dir),
+            "--out-dir",
+            str(tmp_path / "cb-output"),
+            "--audit-run-id",
+            "cal-run-pinned",
+        ],
+    )
+
+    assert result.exit_code == 2
+    assert "--audit-run-id and --audited-at must be supplied together" in _error_output(result)
+
+
+def test_audit_bundle_is_byte_identical_with_pinned_run_metadata(tmp_path: Path) -> None:
+    bundle_dir = _copy_cb_fixture(tmp_path)
+    audit_run_id = "cal-run-pinned"
+    audited_at = "2026-06-12T18:00:00Z"
+    output_roots = [tmp_path / "first", tmp_path / "second"]
+
+    for out_dir in output_roots:
+        result = runner.invoke(
+            app,
+            [
+                "audit-bundle",
+                str(bundle_dir),
+                "--out-dir",
+                str(out_dir),
+                "--audit-run-id",
+                audit_run_id,
+                "--audited-at",
+                audited_at,
+            ],
+        )
+        assert result.exit_code == 0
+
+    first = output_roots[0] / f"{bundle_dir.name}-audited"
+    second = output_roots[1] / f"{bundle_dir.name}-audited"
+    assert _tree_snapshot(first) == _tree_snapshot(second)
 
 
 def test_audit_bundle_intake_failure_exits_nonzero_and_writes_deviation(
@@ -290,6 +342,14 @@ def _copy_cb_fixture(tmp_path: Path) -> Path:
     destination = tmp_path / "evidence-bundle-minimal"
     copytree(CB_FIXTURE_BUNDLE, destination)
     return destination
+
+
+def _tree_snapshot(root: Path) -> dict[str, str]:
+    return {
+        path.relative_to(root).as_posix(): sha256(path.read_bytes()).hexdigest()
+        for path in sorted(root.rglob("*"))
+        if path.is_file()
+    }
 
 
 def _assert_no_forbidden_capability_language(text: str) -> None:

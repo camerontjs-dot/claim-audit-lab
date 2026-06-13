@@ -44,7 +44,7 @@ def test_numeric_match_links_workflow_count_to_matching_excerpt() -> None:
     )
     bundle = load_evidence_bundle(EXAMPLES_ROOT / "evidence" / "ai-research-evidence.yml")
 
-    candidates = match_evidence(claim, bundle)
+    candidates = match_evidence(claim, bundle, AuditConfig(min_overlap_score=0.2))
 
     assert candidates[0].source_id == "source-001"
     assert candidates[0].excerpt_id == "excerpt-002"
@@ -69,7 +69,7 @@ def test_numeric_mismatch_does_not_receive_high_score() -> None:
     )
     bundle = load_evidence_bundle(EXAMPLES_ROOT / "evidence" / "ai-research-evidence.yml")
 
-    candidates = match_evidence(claim, bundle)
+    candidates = match_evidence(claim, bundle, AuditConfig(min_overlap_score=0.2))
 
     assert candidates[0].source_id == "source-001"
     assert candidates[0].excerpt_id == "excerpt-002"
@@ -106,7 +106,7 @@ def test_product_capability_claim_links_to_capability_excerpt() -> None:
     )
     bundle = load_evidence_bundle(EXAMPLES_ROOT / "evidence" / "product-readme-evidence.yml")
 
-    candidates = match_evidence(claim, bundle)
+    candidates = match_evidence(claim, bundle, AuditConfig(min_overlap_score=0.2))
 
     assert candidates[0].source_id == "source-product-001"
     assert candidates[0].excerpt_id == "excerpt-product-001"
@@ -151,7 +151,7 @@ def test_prediction_limitation_claim_can_find_limitation_candidate() -> None:
     )
     bundle = load_evidence_bundle(EXAMPLES_ROOT / "evidence" / "product-readme-evidence.yml")
 
-    candidates = match_evidence(claim, bundle)
+    candidates = match_evidence(claim, bundle, AuditConfig(min_overlap_score=0.2))
 
     assert candidates[0].source_id == "source-product-002"
     assert candidates[0].excerpt_id == "excerpt-product-004"

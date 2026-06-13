@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from contextlib import ExitStack
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Annotated
@@ -9,19 +10,21 @@ from uuid import uuid4
 
 import typer
 
-from claim_audit_lab.auditor import _build_assessments, audit_document
-from claim_audit_lab.contracts.adapter import adapt_bundle_to_pipeline
+from claim_audit_lab.auditor import audit_claims, audit_document, build_audit_report
+from claim_audit_lab.contracts.adapter import (
+    adapt_bundle_to_pipeline,
+    build_claim_evidence_scopes,
+)
 from claim_audit_lab.contracts.bundle_loader import BundleIntegrityError, load_bundle
 from claim_audit_lab.contracts.output_writer import write_audited_bundle
-from claim_audit_lab.evidence_matching import match_claims_to_evidence
 from claim_audit_lab.loader import LoaderError, load_draft, load_evidence_bundle
 from claim_audit_lab.models import AuditReport, ClaimAssessment
 from claim_audit_lab.report import render_json_report, render_markdown_report
+from claim_audit_lab.resources import PackageResourceError, package_file
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_DEMO_DRAFT = PROJECT_ROOT / "examples" / "drafts" / "ai-research-note.md"
-DEFAULT_DEMO_EVIDENCE = PROJECT_ROOT / "examples" / "evidence" / "ai-research-evidence.yml"
-DEFAULT_DEMO_OUT_DIR = PROJECT_ROOT / "build" / "reports"
+DEFAULT_DEMO_DRAFT = "examples/drafts/ai-research-note.md"
+DEFAULT_DEMO_EVIDENCE = "examples/evidence/ai-research-evidence.yml"
+DEFAULT_DEMO_OUT_DIR = Path("build") / "reports"
 DEMO_STEM = "ai-research-note.cli"
 
 app = typer.Typer(
@@ -88,8 +91,11 @@ def demo(
 ) -> None:
     """Run the built-in AI research fixture demo."""
     try:
-        report = _run_audit(DEFAULT_DEMO_DRAFT, DEFAULT_DEMO_EVIDENCE)
-    except LoaderError as exc:
+        with ExitStack() as stack:
+            draft_path = stack.enter_context(package_file(DEFAULT_DEMO_DRAFT))
+            evidence_path = stack.enter_context(package_file(DEFAULT_DEMO_EVIDENCE))
+            report = _run_audit(draft_path, evidence_path)
+    except (LoaderError, PackageResourceError) as exc:
         _exit_with_loader_error(exc)
 
     markdown_out = out_dir / f"{DEMO_STEM}.md"
@@ -116,8 +122,29 @@ def audit_bundle(
             help="Directory where the audited C-B bundle copy and deviations are written.",
         ),
     ],
+    audit_run_id: Annotated[
+        str | None,
+        typer.Option(
+            "--audit-run-id",
+            help="Stable audit run ID; must be supplied with --audited-at.",
+        ),
+    ] = None,
+    audited_at: Annotated[
+        str | None,
+        typer.Option(
+            "--audited-at",
+            help="Pinned UTC audit timestamp; must be supplied with --audit-run-id.",
+        ),
+    ] = None,
 ) -> None:
     """Audit a locked C-B evidence bundle and write an audited copy."""
+    if (audit_run_id is None) != (audited_at is None):
+        typer.echo(
+            "--audit-run-id and --audited-at must be supplied together.",
+            err=True,
+        )
+        raise typer.Exit(code=2)
+
     deviations_dir = out_dir / "deviations"
     try:
         contents = load_bundle(bundle_dir, deviations_dir=deviations_dir)
@@ -127,25 +154,31 @@ def audit_bundle(
         raise typer.Exit(code=1) from exc
 
     cal_claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(contents)
-    candidate_map = match_claims_to_evidence(cal_claims, evidence_bundle, audit_config)
-    assessments = _build_assessments(cal_claims, evidence_bundle, candidate_map, audit_config)
+    assessments = audit_claims(
+        cal_claims,
+        evidence_bundle,
+        audit_config,
+        evidence_scopes=build_claim_evidence_scopes(contents),
+    )
     assessments_by_claim_id = _assessments_by_claim_id(assessments)
     output_bundle_dir = out_dir / f"{bundle_dir.name}-audited"
+    report = build_audit_report(contents.manifest.bundle_id, assessments, evidence_bundle)
+    report_path = out_dir / f"{bundle_dir.name}-audit-report.md"
 
     write_audited_bundle(
         bundle_dir,
         output_bundle_dir,
         contents.claims,
         assessments_by_claim_id,
-        audit_run_id=_new_audit_run_id(),
-        audited_at_utc=_utc_now(),
+        audit_run_id=audit_run_id or _new_audit_run_id(),
+        audited_at_utc=audited_at or _utc_now(),
         audit_config=contents.audit_config,
     )
+    _write_text(report_path, render_markdown_report(report))
 
-    skipped_retrieval_seeds = sum(
-        claim.claim_type == "retrieval_seed" for claim in contents.claims
-    )
+    skipped_retrieval_seeds = sum(claim.claim_type == "retrieval_seed" for claim in contents.claims)
     typer.echo(f"Wrote audited C-B bundle: {output_bundle_dir}")
+    typer.echo(f"Wrote Markdown report: {report_path}")
     typer.echo(
         f"{len(assessments)} claims audited; "
         f"{skipped_retrieval_seeds} retrieval seeds skipped; "
@@ -195,7 +228,7 @@ def _format_summary(report: AuditReport) -> str:
     return "; ".join(parts) + "."
 
 
-def _exit_with_loader_error(error: LoaderError) -> None:
+def _exit_with_loader_error(error: LoaderError | PackageResourceError) -> None:
     typer.echo(f"Error: {error}", err=True)
     raise typer.Exit(code=1)
 

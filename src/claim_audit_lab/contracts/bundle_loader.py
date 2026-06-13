@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from collections.abc import Callable, Iterable
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from hashlib import sha256
 from pathlib import Path
-from typing import Any, Literal, TypeVar
+from typing import Literal, TypeVar
 
 import yaml
 from pydantic import BaseModel, ValidationError
@@ -20,11 +20,23 @@ from claim_audit_lab.contracts.cb_models import (
     CBSourceProfile,
     CBValidationSetRef,
 )
+from claim_audit_lab.contracts.serialization import (
+    compute_bundle_tree_hash,
+    hash_audit_config_file,
+    hash_file_hex,
+    iter_handoff_files,
+    load_yaml_mapping,
+    yaml_to_string,
+)
+from claim_audit_lab.policy import CAL_RULES_V1_2_0, audit_policy_drift
+from claim_audit_lab.resources import (
+    PackageResourceError,
+    read_package_bytes,
+    read_package_text,
+)
 
 CONTRACT_VERSION = "1.1.0"
 SUPPORTED_CONTRACT_VERSIONS: frozenset[str] = frozenset({"1.0.0", "1.1.0"})
-PENDING_HASH = "sha256:pending"
-SHA256_PREFIX = "sha256:"
 DETECTED_BY = "claim_audit_lab"
 
 DeviationType = Literal[
@@ -37,17 +49,8 @@ DeviationType = Literal[
 
 TModel = TypeVar("TModel", bound=BaseModel)
 
-# contracts/ -> claim_audit_lab/ -> src/ -> project root -> schema/
-_SCHEMA_DIR = Path(__file__).resolve().parents[3] / "schema"
-_CONTRACT_VERSION_FILE = _SCHEMA_DIR / ".contract-version"
-_VOCAB_FILE = _SCHEMA_DIR / "vocabulary.yaml"
-
-_YAML_DUMP_KWARGS: dict[str, Any] = {
-    "allow_unicode": True,
-    "default_flow_style": False,
-    "indent": 2,
-    "sort_keys": False,
-}
+_CONTRACT_VERSION_RESOURCE = "schema/.contract-version"
+_VOCAB_RESOURCE = "schema/vocabulary.yaml"
 
 
 class BundleIntegrityError(Exception):
@@ -164,6 +167,7 @@ def load_bundle(
     )
 
     _verify_audit_config_hash(bundle_dir, manifest, audit_config, fail)
+    _verify_supported_audit_policy(manifest, audit_config, fail)
     _verify_sha256sums(bundle_dir, fail)
     _verify_bundle_hash(bundle_dir, manifest, fail)
     _verify_optional_vocabulary(bundle_dir, fail)
@@ -190,7 +194,10 @@ def _verify_contract_version(
     if not contract_path.exists():
         fail("missing_required_field", "CONTRACT_VERSION file missing")
     bundle_version = contract_path.read_text(encoding="utf-8").strip()
-    consumer_version = _CONTRACT_VERSION_FILE.read_text(encoding="utf-8").strip()
+    try:
+        consumer_version = read_package_text(_CONTRACT_VERSION_RESOURCE).strip()
+    except PackageResourceError as exc:
+        fail("missing_required_field", str(exc))
     if bundle_version not in SUPPORTED_CONTRACT_VERSIONS:
         fail(
             "vocabulary_drift",
@@ -210,7 +217,7 @@ def _load_model(
     if not path.exists():
         fail("missing_required_field", f"{rel_path} missing")
     try:
-        raw = _load_yaml(path)
+        raw = load_yaml_mapping(path)
         return model_type.model_validate(raw)
     except yaml.YAMLError as exc:
         fail("schema_validation_failure", f"{rel_path} is malformed YAML: {exc}")
@@ -219,20 +226,13 @@ def _load_model(
     raise AssertionError("unreachable")
 
 
-def _load_yaml(path: Path) -> dict[str, Any]:
-    data = yaml.safe_load(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict):
-        raise ValueError("expected YAML mapping")
-    return data
-
-
 def _verify_audit_config_hash(
     bundle_dir: Path,
     manifest: CBBundleManifest,
     audit_config: CBAuditConfig,
     fail: Callable[[DeviationType, str], None],
 ) -> None:
-    actual_hash = _hash_audit_config_file(bundle_dir / "audit_config.yaml")
+    actual_hash = hash_audit_config_file(bundle_dir / "audit_config.yaml")
     if audit_config.config_hash != actual_hash:
         fail(
             "intake_hash_mismatch",
@@ -245,6 +245,27 @@ def _verify_audit_config_hash(
         fail(
             "intake_hash_mismatch",
             "bundle_manifest.audit_config_hash does not match audit_config.config_hash",
+        )
+
+
+def _verify_supported_audit_policy(
+    manifest: CBBundleManifest,
+    audit_config: CBAuditConfig,
+    fail: Callable[[DeviationType, str], None],
+) -> None:
+    drift = audit_policy_drift(audit_config)
+    if manifest.audit_config_version != CAL_RULES_V1_2_0.config_id:
+        drift.insert(
+            0,
+            (
+                "bundle_manifest.audit_config_version: expected "
+                f"{CAL_RULES_V1_2_0.config_id!r}, got {manifest.audit_config_version!r}"
+            ),
+        )
+    if drift:
+        fail(
+            "vocabulary_drift",
+            "Unsupported C-B audit policy; " + "; ".join(drift),
         )
 
 
@@ -271,12 +292,12 @@ def _verify_sha256sums(
         target = _resolve_handoff_path(bundle_dir, rel_path, fail)
         if not target.exists():
             fail("intake_hash_mismatch", f"SHA256SUMS references missing file: {rel_path}")
-        actual_hash = _hash_file_hex(target)
+        actual_hash = hash_file_hex(target)
         if actual_hash != expected_hash:
             fail("intake_hash_mismatch", f"SHA256SUMS mismatch for {rel_path}")
 
     actual_paths = {
-        path.relative_to(bundle_dir).as_posix() for path in _iter_handoff_files(bundle_dir)
+        path.relative_to(bundle_dir).as_posix() for path in iter_handoff_files(bundle_dir)
     }
     missing_from_sums = sorted(actual_paths - expected_paths)
     if missing_from_sums:
@@ -304,7 +325,7 @@ def _verify_bundle_hash(
     manifest: CBBundleManifest,
     fail: Callable[[DeviationType, str], None],
 ) -> None:
-    actual_hash = _compute_bundle_tree_hash(bundle_dir)
+    actual_hash = compute_bundle_tree_hash(bundle_dir)
     if manifest.bundle.bundle_hash != actual_hash:
         fail(
             "intake_hash_mismatch",
@@ -322,7 +343,11 @@ def _verify_optional_vocabulary(
     bundle_vocab = bundle_dir / "schema" / "vocabulary.yaml"
     if not bundle_vocab.exists():
         return
-    if bundle_vocab.read_bytes() != _VOCAB_FILE.read_bytes():
+    try:
+        pinned_vocabulary = read_package_bytes(_VOCAB_RESOURCE)
+    except PackageResourceError as exc:
+        fail("missing_required_field", str(exc))
+    if bundle_vocab.read_bytes() != pinned_vocabulary:
         fail(
             "vocabulary_drift",
             "schema/vocabulary.yaml in bundle is not byte-identical to CAL's pinned copy",
@@ -428,75 +453,10 @@ def _verify_loaded_consistency(
         )
 
 
-def _compute_bundle_tree_hash(bundle_dir: Path) -> str:
-    hasher = sha256()
-    for path in _iter_handoff_files(bundle_dir):
-        rel_path = path.relative_to(bundle_dir).as_posix()
-        if rel_path == "audit_config.yaml":
-            digest = _strip_hash_prefix(_hash_audit_config_file(path))
-        elif rel_path == "bundle_manifest.yaml":
-            digest = _strip_hash_prefix(_hash_bundle_manifest_file(path))
-        else:
-            digest = _hash_file_hex(path)
-        hasher.update(f"{rel_path}\0{digest}\n".encode())
-    return f"{SHA256_PREFIX}{hasher.hexdigest()}"
-
-
-def _hash_audit_config_file(path: Path) -> str:
-    return _normalized_yaml_hash(path, lambda data: data.__setitem__("config_hash", PENDING_HASH))
-
-
-def _hash_bundle_manifest_file(path: Path) -> str:
-    def normalize(data: dict[str, Any]) -> None:
-        bundle = data.get("bundle")
-        if not isinstance(bundle, dict):
-            raise ValueError("bundle_manifest.yaml missing bundle mapping")
-        bundle["bundle_hash"] = PENDING_HASH
-
-    return _normalized_yaml_hash(path, normalize)
-
-
-def _normalized_yaml_hash(path: Path, normalizer: Callable[[dict[str, Any]], None]) -> str:
-    data = _load_yaml(path)
-    normalizer(data)
-    return _hash_text(_yaml_to_string(data))
-
-
-def _iter_handoff_files(
-    root: Path,
-    *,
-    exclude_names: Iterable[str] = ("SHA256SUMS",),
-) -> list[Path]:
-    excluded = set(exclude_names)
-    return sorted(
-        path
-        for path in root.rglob("*")
-        if path.is_file() and path.name not in excluded and "deviations" not in path.parts
-    )
-
-
-def _hash_file_hex(path: Path) -> str:
-    return sha256(path.read_bytes()).hexdigest()
-
-
-def _hash_text(text: str) -> str:
-    return f"{SHA256_PREFIX}{sha256(text.encode('utf-8')).hexdigest()}"
-
-
-def _strip_hash_prefix(value: str) -> str:
-    if not value.startswith(SHA256_PREFIX):
-        raise ValueError(f"Expected sha256: hash value, got {value!r}")
-    return value.removeprefix(SHA256_PREFIX)
-
-
-def _yaml_to_string(data: dict[str, Any]) -> str:
-    return yaml.safe_dump(data, **_YAML_DUMP_KWARGS)
-
-
 def _write_deviation(deviations_dir: Path, deviation: DeviationRecord) -> Path:
     deviations_dir.mkdir(parents=True, exist_ok=True)
     out_path = deviations_dir / f"intake-{_safe_filename(deviation.artifact_id)}.yaml"
-    out_path.write_text(_yaml_to_string(deviation.to_dict()), encoding="utf-8")
+    out_path.write_text(yaml_to_string(deviation.to_dict()), encoding="utf-8")
     return out_path
 
 

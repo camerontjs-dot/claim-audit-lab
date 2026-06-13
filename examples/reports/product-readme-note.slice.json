@@ -2,9 +2,9 @@
   "document_id": "product-readme-note",
   "summary": {
     "total_claims": 4,
-    "supported_claims": 2,
+    "supported_claims": 0,
     "partially_supported_claims": 0,
-    "unsupported_claims": 0,
+    "unsupported_claims": 2,
     "overstated_claims": 2,
     "needs_source_claims": 0,
     "not_checkable_claims": 0,
@@ -18,20 +18,16 @@
         "claim_type": "capability",
         "location": "paragraph:1:sentence:1"
       },
-      "support_label": "supported",
-      "risk_label": "low",
-      "candidate_evidence": [
-        {
-          "source_id": "source-product-001",
-          "excerpt_id": "excerpt-product-001",
-          "score": 0.3804,
-          "rationale": "overlapping terms: audit, note, research, summary, traceable; source reliability: medium",
-          "source_reliability": "medium",
-          "source_date": "2024-02-15"
-        }
-      ],
+      "support_label": "unsupported",
+      "risk_label": "medium",
+      "candidate_evidence": [],
+      "counterevidence": [],
+      "support_signal": 0.0,
       "rule_flags": [],
-      "explanation": "The supplied evidence directly supports the claim.",
+      "explanation": "The supplied evidence does not support the claim as written.",
+      "rewrite_guidance": [
+        "Remove the claim or add supplied evidence that directly supports it."
+      ],
       "limitations": []
     },
     {
@@ -41,8 +37,8 @@
         "claim_type": "comparative",
         "location": "paragraph:2:sentence:1"
       },
-      "support_label": "supported",
-      "risk_label": "low",
+      "support_label": "unsupported",
+      "risk_label": "medium",
       "candidate_evidence": [
         {
           "source_id": "source-product-001",
@@ -53,8 +49,13 @@
           "source_date": "2024-02-15"
         }
       ],
+      "counterevidence": [],
+      "support_signal": 0.4433,
       "rule_flags": [],
-      "explanation": "The supplied evidence directly supports the claim.",
+      "explanation": "The supplied evidence does not support the claim as written.",
+      "rewrite_guidance": [
+        "Remove the claim or add supplied evidence that directly supports it."
+      ],
       "limitations": []
     },
     {
@@ -66,24 +67,9 @@
       },
       "support_label": "overstated",
       "risk_label": "high",
-      "candidate_evidence": [
-        {
-          "source_id": "source-product-002",
-          "excerpt_id": "excerpt-product-004",
-          "score": 0.3895,
-          "rationale": "overlapping terms: note, unsupport; limitation wording overlaps with broad or future-facing claim; source reliability: high",
-          "source_reliability": "high",
-          "source_date": "2024-03-01"
-        },
-        {
-          "source_id": "source-product-002",
-          "excerpt_id": "excerpt-product-003",
-          "score": 0.3078,
-          "rationale": "overlapping terms: note, release; limitation wording overlaps with broad or future-facing claim; source reliability: high",
-          "source_reliability": "high",
-          "source_date": "2024-03-01"
-        }
-      ],
+      "candidate_evidence": [],
+      "counterevidence": [],
+      "support_signal": 0.0,
       "rule_flags": [
         {
           "id": "flag-d84f803fe741",
@@ -101,6 +87,10 @@
         }
       ],
       "explanation": "The claim is stronger than the supplied evidence can support.",
+      "rewrite_guidance": [
+        "Replace absolute wording with bounded supplied-evidence language.",
+        "Avoid universal future wording; state only what the supplied evidence covers."
+      ],
       "limitations": [
         "Deterministic rule checks use supplied evidence only."
       ]
@@ -122,16 +112,10 @@
           "rationale": "overlapping terms: documentation, note, regulat, workflow; limitation wording overlaps with broad or future-facing claim; source reliability: high",
           "source_reliability": "high",
           "source_date": "2024-03-01"
-        },
-        {
-          "source_id": "source-product-002",
-          "excerpt_id": "excerpt-product-004",
-          "score": 0.2296,
-          "rationale": "overlapping terms: note; limitation wording overlaps with broad or future-facing claim; source reliability: high",
-          "source_reliability": "high",
-          "source_date": "2024-03-01"
         }
       ],
+      "counterevidence": [],
+      "support_signal": 0.5785,
       "rule_flags": [
         {
           "id": "flag-079d1a4fd60a",
@@ -142,6 +126,9 @@
         }
       ],
       "explanation": "The claim is stronger than the supplied evidence can support.",
+      "rewrite_guidance": [
+        "Narrow the scope to the observed source, fixture, sample, or setting."
+      ],
       "limitations": [
         "Deterministic rule checks use supplied evidence only."
       ]
@@ -172,8 +159,7 @@
   ],
   "evidence_bundle_warnings": [],
   "limitations": [
-    "Audit orchestration has been hardened through Phase 6; deterministic rule checks and Phase 7 report rendering are enabled; Phase 8 CLI workflow is available.",
-    "Candidate scores rank deterministic text and number overlap only; they are not support scores.",
+    "Match scores and support signals are deterministic supplied-evidence measures, not truth probabilities.",
     "This report only audits support from the supplied evidence bundle; it does not assess the outside world."
   ]
 }

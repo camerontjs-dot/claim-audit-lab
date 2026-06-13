@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from claim_audit_lab.claim_extraction import extract_claims
+from claim_audit_lab.classifiers import classify_claim_text
 from claim_audit_lab.loader import load_draft
 from claim_audit_lab.models import ClaimType, DraftDocument
 
@@ -138,6 +139,7 @@ def test_classifies_each_claim_type(sentence: str, expected_type: ClaimType) -> 
     claims = extract_claims(_document(sentence))
 
     assert [claim.claim_type for claim in claims] == [expected_type]
+    assert classify_claim_text(sentence) == expected_type
 
 
 def test_skips_vague_questions_headings_and_short_fragments() -> None:
@@ -156,6 +158,13 @@ This section discusses things.
 """
 
     assert extract_claims(_document(content)) == []
+
+
+def test_native_extraction_skips_unclassified_sentences() -> None:
+    sentence = "The report describes the pilot in detail."
+
+    assert classify_claim_text(sentence) == "unclassified"
+    assert extract_claims(_document(sentence)) == []
 
 
 def test_duplicate_and_near_duplicate_claims_do_not_inflate_count() -> None:
