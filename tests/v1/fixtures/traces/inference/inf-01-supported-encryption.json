@@ -1,0 +1,59 @@
+{
+  "claim_id": "inf-01",
+  "claim_text": "Customer data is encrypted at rest.",
+  "retrieval": [
+    {
+      "passage_id": "p1",
+      "score": 0.8035396933555603
+    },
+    {
+      "passage_id": "p2",
+      "score": 0.17583313584327698
+    },
+    {
+      "passage_id": "p3",
+      "score": 0.01615586131811142
+    }
+  ],
+  "entailment": [
+    {
+      "passage_id": "p1",
+      "label": "entail",
+      "score": 0.99462890625,
+      "raw_logits": [
+        4.33984375,
+        -1.0537109375,
+        -3.0625
+      ]
+    }
+  ],
+  "features": {
+    "numerical_values": [],
+    "has_explicit_negation": false,
+    "has_universal_quantifier": false,
+    "modal_strength": "asserts",
+    "claim_token_count": 7,
+    "compound_claim": false,
+    "sentence_type": "declarative"
+  },
+  "support_signal": {
+    "label": "entail",
+    "max_entailment_score": 0.99462890625,
+    "contributing_passage_id": "p1"
+  },
+  "rules_fired": [
+    {
+      "rule_id": "B5_degree",
+      "reason": "entail 0.99 >= supported_threshold=0.7"
+    }
+  ],
+  "verdict": {
+    "support_verdict": "supported",
+    "support_verdict_reason": null,
+    "audit_flags": [],
+    "citation_status": "not_applicable",
+    "audit_confidence": "medium"
+  },
+  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
+  "library_version": "0.2.0"
+}

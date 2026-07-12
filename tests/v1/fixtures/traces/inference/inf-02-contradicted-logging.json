@@ -1,0 +1,69 @@
+{
+  "claim_id": "inf-02",
+  "claim_text": "The platform does not log administrator actions.",
+  "retrieval": [
+    {
+      "passage_id": "p2",
+      "score": 0.7858104109764099
+    },
+    {
+      "passage_id": "p1",
+      "score": 0.6771330833435059
+    },
+    {
+      "passage_id": "p3",
+      "score": -0.1284605860710144
+    }
+  ],
+  "entailment": [
+    {
+      "passage_id": "p2",
+      "label": "contradict",
+      "score": 0.99951171875,
+      "raw_logits": [
+        -3.05859375,
+        -2.8984375,
+        5.8046875
+      ]
+    },
+    {
+      "passage_id": "p1",
+      "label": "contradict",
+      "score": 0.99951171875,
+      "raw_logits": [
+        -3.578125,
+        -2.404296875,
+        5.9609375
+      ]
+    }
+  ],
+  "features": {
+    "numerical_values": [],
+    "has_explicit_negation": true,
+    "has_universal_quantifier": false,
+    "modal_strength": "asserts",
+    "claim_token_count": 8,
+    "compound_claim": false,
+    "sentence_type": "declarative"
+  },
+  "support_signal": {
+    "label": "contradict",
+    "max_entailment_score": 0.99951171875,
+    "contributing_passage_id": "p2"
+  },
+  "rules_fired": [
+    {
+      "rule_id": "A4_hard_contradiction",
+      "reason": "NLI contradiction at 1.00 >= contradicted_threshold=0.7"
+    }
+  ],
+  "verdict": {
+    "support_verdict": "contradicted",
+    "support_verdict_reason": null,
+    "audit_flags": [],
+    "citation_status": "not_applicable",
+    "audit_confidence": "high"
+  },
+  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
+  "library_version": "0.2.0"
+}

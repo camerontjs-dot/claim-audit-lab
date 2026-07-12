@@ -1,0 +1,25 @@
+sources:
+  - id: source-product-001
+    title: Fictional Meridian Notes prototype test log
+    source_type: test_output
+    date: 2024-02-15
+    reliability: medium
+    excerpts:
+      - id: excerpt-product-001
+        text: "The prototype generated traceable audit summaries for three fictional research notes."
+        notes: "Fictional demo evidence. Supports a narrow capability claim for research notes only."
+      - id: excerpt-product-002
+        text: "In one timed walkthrough, the review screen reduced citation-check time from 12 minutes to 9 minutes compared with one manual pass."
+        notes: "Fictional demo evidence. Supports a narrow comparison, not broad speed superiority."
+  - id: source-product-002
+    title: Fictional Meridian Notes limitation note
+    source_type: documentation
+    date: 2024-03-01
+    reliability: high
+    excerpts:
+      - id: excerpt-product-003
+        text: "The prototype was not tested on regulated documentation workflows, PDF uploads, release-note approvals, or production deployments."
+        notes: "Fictional demo evidence for scope and limitation checks."
+      - id: excerpt-product-004
+        text: "Known limitation: the prototype can miss unsupported claims when source notes are incomplete or ambiguous."
+        notes: "Fictional demo evidence that future-certainty claims should be caveated."

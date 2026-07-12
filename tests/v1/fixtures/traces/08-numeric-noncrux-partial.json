@@ -1,0 +1,66 @@
+{
+  "claim_id": "e2e-08",
+  "claim_text": "The service meets 95 percent uptime and 40 percent capacity.",
+  "retrieval": [
+    {
+      "passage_id": "p-1",
+      "score": 0.9
+    }
+  ],
+  "entailment": [
+    {
+      "passage_id": "p-1",
+      "label": "entail",
+      "score": 0.9,
+      "raw_logits": [
+        2.0,
+        -1.0,
+        -1.0
+      ]
+    }
+  ],
+  "features": {
+    "numerical_values": [
+      {
+        "value": 95.0,
+        "unit": "percentage",
+        "surface_text": "95 percent"
+      },
+      {
+        "value": 40.0,
+        "unit": "percentage",
+        "surface_text": "40 percent"
+      }
+    ],
+    "has_explicit_negation": false,
+    "has_universal_quantifier": false,
+    "modal_strength": "asserts",
+    "claim_token_count": 11,
+    "compound_claim": true,
+    "sentence_type": "declarative"
+  },
+  "support_signal": {
+    "label": "entail",
+    "max_entailment_score": 0.9,
+    "contributing_passage_id": "p-1"
+  },
+  "rules_fired": [
+    {
+      "rule_id": "B5_degree",
+      "reason": "entail 0.90 >= supported_threshold=0.7"
+    },
+    {
+      "rule_id": "C6a_numeric",
+      "reason": "1 claim quantity(ies) unmatched by comparable passage quantities → partial"
+    }
+  ],
+  "verdict": {
+    "support_verdict": "partially_supported",
+    "support_verdict_reason": null,
+    "audit_flags": [],
+    "citation_status": "not_applicable",
+    "audit_confidence": "medium"
+  },
+  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
+  "library_version": "0.2.0"
+}

@@ -1,0 +1,197 @@
+{
+  "document_id": "ai-research-note",
+  "summary": {
+    "total_claims": 4,
+    "supported_claims": 1,
+    "partially_supported_claims": 1,
+    "unsupported_claims": 0,
+    "overstated_claims": 2,
+    "needs_source_claims": 0,
+    "not_checkable_claims": 0,
+    "high_risk_claims": 2
+  },
+  "claims": [
+    {
+      "claim": {
+        "id": "claim-a1968235acf3",
+        "text": "The intervention clearly eliminates unsupported claims in multi-step AI research workflows.",
+        "claim_type": "scope",
+        "location": "paragraph:1:sentence:1"
+      },
+      "support_label": "overstated",
+      "risk_label": "high",
+      "candidate_evidence": [],
+      "counterevidence": [],
+      "support_signal": 0.0,
+      "rule_flags": [
+        {
+          "id": "flag-7c7eb17d9fb6",
+          "claim_id": "claim-a1968235acf3",
+          "code": "overconfident_wording",
+          "message": "The claim wording is stronger than the supplied evidence supports.",
+          "risk": "high"
+        },
+        {
+          "id": "flag-d53001ae0727",
+          "claim_id": "claim-a1968235acf3",
+          "code": "scope_overreach",
+          "message": "The claim generalizes beyond the supplied evidence.",
+          "risk": "high"
+        }
+      ],
+      "explanation": "The claim is stronger than the supplied evidence can support.",
+      "rewrite_guidance": [
+        "Replace absolute wording with bounded supplied-evidence language.",
+        "Narrow the scope to the observed source, fixture, sample, or setting."
+      ],
+      "limitations": [
+        "Deterministic rule checks use supplied evidence only."
+      ]
+    },
+    {
+      "claim": {
+        "id": "claim-61e15c02b15c",
+        "text": "The test set included 52 workflow outputs.",
+        "claim_type": "numeric",
+        "location": "paragraph:2:sentence:1"
+      },
+      "support_label": "supported",
+      "risk_label": "low",
+      "candidate_evidence": [
+        {
+          "source_id": "source-001",
+          "excerpt_id": "excerpt-002",
+          "score": 1.0,
+          "rationale": "matched numbers: 52; overlapping terms: includ, output, set, test, workflow; source reliability: medium",
+          "source_reliability": "medium",
+          "source_date": "2026-04-01",
+          "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
+        }
+      ],
+      "counterevidence": [],
+      "support_signal": 1.0,
+      "rule_flags": [],
+      "explanation": "The supplied evidence directly supports the claim.",
+      "rewrite_guidance": [],
+      "limitations": []
+    },
+    {
+      "claim": {
+        "id": "claim-1e17db4b2188",
+        "text": "Unsupported claims fell from 18 outputs to 11 outputs after the provenance checklist was added.",
+        "claim_type": "causal",
+        "location": "paragraph:2:sentence:2"
+      },
+      "support_label": "partially_supported",
+      "risk_label": "medium",
+      "candidate_evidence": [
+        {
+          "source_id": "source-001",
+          "excerpt_id": "excerpt-001",
+          "score": 0.7242,
+          "rationale": "matched numbers: 11, 18; overlapping terms: claim, unsupport; source reliability: medium",
+          "source_reliability": "medium",
+          "source_date": "2026-04-01",
+          "source_url": "https://example.com/fictional-provenance-checklist-evaluation"
+        }
+      ],
+      "counterevidence": [],
+      "support_signal": 0.7242,
+      "rule_flags": [
+        {
+          "id": "flag-dd046361f9a9",
+          "claim_id": "claim-1e17db4b2188",
+          "code": "causal_overreach",
+          "message": "The evidence supports a change, but not the causal strength of the wording.",
+          "risk": "medium"
+        }
+      ],
+      "explanation": "The supplied evidence supports part of the claim, but rule checks found limits.",
+      "rewrite_guidance": [
+        "Use weaker causal wording unless the supplied evidence directly supports causality."
+      ],
+      "limitations": [
+        "Deterministic rule checks use supplied evidence only."
+      ]
+    },
+    {
+      "claim": {
+        "id": "claim-637e39806c48",
+        "text": "The checklist will always prevent researchers from relying on weak evidence.",
+        "claim_type": "prediction",
+        "location": "paragraph:3:sentence:1"
+      },
+      "support_label": "overstated",
+      "risk_label": "high",
+      "candidate_evidence": [],
+      "counterevidence": [],
+      "support_signal": 0.0,
+      "rule_flags": [
+        {
+          "id": "flag-147843e7c663",
+          "claim_id": "claim-637e39806c48",
+          "code": "future_certainty",
+          "message": "The future-facing certainty claim needs a narrower caveat.",
+          "risk": "high"
+        },
+        {
+          "id": "flag-a7e73cf48708",
+          "claim_id": "claim-637e39806c48",
+          "code": "overconfident_wording",
+          "message": "The claim wording is stronger than the supplied evidence supports.",
+          "risk": "high"
+        }
+      ],
+      "explanation": "The claim is stronger than the supplied evidence can support.",
+      "rewrite_guidance": [
+        "Replace absolute wording with bounded supplied-evidence language.",
+        "Avoid universal future wording; state only what the supplied evidence covers."
+      ],
+      "limitations": [
+        "Deterministic rule checks use supplied evidence only."
+      ]
+    }
+  ],
+  "rule_flags": [
+    {
+      "id": "flag-7c7eb17d9fb6",
+      "claim_id": "claim-a1968235acf3",
+      "code": "overconfident_wording",
+      "message": "The claim wording is stronger than the supplied evidence supports.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-d53001ae0727",
+      "claim_id": "claim-a1968235acf3",
+      "code": "scope_overreach",
+      "message": "The claim generalizes beyond the supplied evidence.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-dd046361f9a9",
+      "claim_id": "claim-1e17db4b2188",
+      "code": "causal_overreach",
+      "message": "The evidence supports a change, but not the causal strength of the wording.",
+      "risk": "medium"
+    },
+    {
+      "id": "flag-147843e7c663",
+      "claim_id": "claim-637e39806c48",
+      "code": "future_certainty",
+      "message": "The future-facing certainty claim needs a narrower caveat.",
+      "risk": "high"
+    },
+    {
+      "id": "flag-a7e73cf48708",
+      "claim_id": "claim-637e39806c48",
+      "code": "overconfident_wording",
+      "message": "The claim wording is stronger than the supplied evidence supports.",
+      "risk": "high"
+    }
+  ],
+  "evidence_bundle_warnings": [],
+  "limitations": [
+    "Match scores and support signals are deterministic supplied-evidence measures, not truth probabilities.",
+    "This report only audits support from the supplied evidence bundle; it does not assess the outside world."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "claim_id": "e2e-22",
+  "claim_text": "The platform validates submitted input records.",
+  "retrieval": [
+    {
+      "passage_id": "p-1",
+      "score": 0.9
+    },
+    {
+      "passage_id": "p-2",
+      "score": 0.3
+    }
+  ],
+  "entailment": [
+    {
+      "passage_id": "p-1",
+      "label": "neutral",
+      "score": 0.95,
+      "raw_logits": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "features": {
+    "numerical_values": [],
+    "has_explicit_negation": false,
+    "has_universal_quantifier": false,
+    "modal_strength": "asserts",
+    "claim_token_count": 7,
+    "compound_claim": false,
+    "sentence_type": "declarative"
+  },
+  "support_signal": {
+    "label": "neutral",
+    "max_entailment_score": 0.95,
+    "contributing_passage_id": "p-1"
+  },
+  "rules_fired": [
+    {
+      "rule_id": "B5_degree",
+      "reason": "neutral support signal — no entailment"
+    }
+  ],
+  "verdict": {
+    "support_verdict": "not_checkable",
+    "support_verdict_reason": "no_entail_signal",
+    "audit_flags": [],
+    "citation_status": "not_applicable",
+    "audit_confidence": "low"
+  },
+  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
+  "library_version": "0.2.0"
+}

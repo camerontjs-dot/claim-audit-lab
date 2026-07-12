@@ -1,0 +1,3 @@
+The test set included 52 workflow outputs.
+
+Unsupported claims fell from 18 outputs to 11 outputs after the checklist was added.

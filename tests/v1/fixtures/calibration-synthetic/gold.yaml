@@ -1,0 +1,95 @@
+# Synthetic calibration gold for the 12-claim packet built by
+# tests.v1.testing.bundles.build_calibration_packet (Phase 4 Unit 2 dry run).
+#
+# The packet reuses the five committed-golden contents under twelve claim_ids, so
+# CAL's real verdicts are fixed and known (encryption→supported, logging→
+# contradicted, uptime→contradicted, opinion→not_checkable, no_evidence→
+# not_checkable). CAL therefore only ever emits {supported, contradicted,
+# not_checkable}; this gold is hand-authored across all five degrees so the 5x5
+# confusion and the on-scale weighted/AC2 path are still fully exercised.
+#
+# Hand-checked aggregates (gold rows x CAL columns, see DECISIONS.md § 2026-06-30):
+#   exact agreement     10/12  (misses: syn-03 unsupported→contradicted,
+#                                        syn-10 partially_supported→not_checkable)
+#   Cohen's kappa       13/17 ≈ 0.7647   (po=10/12, pe=42/144)
+#   on-scale n          9      weighted-kappa ≈ 0.9854, Gwet AC2 ≈ 0.9860
+#   overall adverse     CAL 5/9, gold 5/10
+#   per-condition (CAL/gold)  A 2/3·2/3  B 0/1·0/1  C 2/3·2/3  D 1/2·1/3
+#   per-model (CAL/gold)      model-x 2/5·2/5   model-y 3/4·3/5
+#   recall floor (3 starved)  supported 2 (syn-01, syn-04), adverse 1 (syn-09)
+#   gold flags (CAL all 0)    overstated 1, inferred 1, source_scope_error 1,
+#                             false_caution 1
+gold_version: synthetic-2
+starved_claim_ids:
+  - syn-01
+  - syn-04
+  - syn-09
+claims:
+  # condition A -- adverse shape 2/3 on both sides
+  - claim_id: syn-01
+    condition: cond-A
+    model: model-x
+    gold_verdict: supported
+    gold_flags:
+      - overconfident   # -> crosswalks to the CAL 'overstated' flag
+  - claim_id: syn-02
+    condition: cond-A
+    model: model-y
+    gold_verdict: contradicted
+    gold_flags: []
+  - claim_id: syn-03
+    condition: cond-A
+    model: model-x
+    gold_verdict: unsupported    # CAL says contradicted -> ordinally-adjacent miss
+    gold_flags: []
+  # condition B -- mostly not_checkable; adverse shape 0/1
+  - claim_id: syn-04
+    condition: cond-B
+    model: model-y
+    gold_verdict: supported
+    gold_flags: []
+  - claim_id: syn-05
+    condition: cond-B
+    model: model-x
+    gold_verdict: not_checkable
+    gold_flags: []
+  - claim_id: syn-06
+    condition: cond-B
+    model: model-y
+    gold_verdict: not_checkable
+    gold_flags:
+      - missing_needed   # -> crosswalks to citation_status, not an audit_flag
+  # condition C -- exercises reasonable_inference + source_scope_error
+  - claim_id: syn-07
+    condition: cond-C
+    model: model-x
+    gold_verdict: reasonable_inference   # -> supported + 'inferred' flag
+    gold_flags: []
+  - claim_id: syn-08
+    condition: cond-C
+    model: model-y
+    gold_verdict: contradicted
+    gold_flags:
+      - source_scope_error   # -> passes through to the CAL 'source_scope_error' flag
+  - claim_id: syn-09
+    condition: cond-C
+    model: model-x
+    gold_verdict: contradicted
+    gold_flags: []
+  # condition D -- exercises partially_supported (off-scale miss) + false_caution
+  - claim_id: syn-10
+    condition: cond-D
+    model: model-y
+    gold_verdict: partially_supported    # CAL says not_checkable -> off-scale miss
+    gold_flags:
+      - false_caution   # -> passes through to the CAL 'false_caution' flag
+  - claim_id: syn-11
+    condition: cond-D
+    model: model-x
+    gold_verdict: supported
+    gold_flags: []
+  - claim_id: syn-12
+    condition: cond-D
+    model: model-y
+    gold_verdict: contradicted
+    gold_flags: []

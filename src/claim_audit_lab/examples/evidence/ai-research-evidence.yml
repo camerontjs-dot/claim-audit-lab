@@ -1,0 +1,14 @@
+sources:
+  - id: source-001
+    title: Fictional provenance checklist evaluation
+    url: https://example.com/fictional-provenance-checklist-evaluation
+    source_type: report
+    date: 2026-04-01
+    reliability: medium
+    excerpts:
+      - id: excerpt-001
+        text: "The intervention reduced unsupported claims in the test set from 18 to 11."
+        notes: "Fictional demo evidence. Supports reduction, not elimination."
+      - id: excerpt-002
+        text: "The test set included 52 workflow outputs reviewed against the same claim-audit rubric."
+        notes: "Fictional demo evidence for sample size."

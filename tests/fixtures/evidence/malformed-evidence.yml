@@ -1,0 +1,6 @@
+sources:
+  - id: source-001
+    title: Broken YAML
+    excerpts:
+      - id: excerpt-001
+        text: "This quote never closes

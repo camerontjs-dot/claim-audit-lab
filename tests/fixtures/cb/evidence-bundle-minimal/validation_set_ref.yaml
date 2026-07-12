@@ -1,0 +1,6 @@
+schema_version: 1.0.0
+validation_set_version: valset-phase-0-fixture
+validation_set_hash: sha256:f7dc6219e2a89071535b8c57a3e89e96040b5947283b202a315f8202a27f16d3
+frozen_at_utc: '2026-05-10T16:35:22Z'
+description: Phase 0 synthetic fixture validation-set pointer.
+notes: Local C-B shape validation only; Claim Audit Lab C-B ingestion remains blocked.

@@ -1,0 +1,14 @@
+include CHANGELOG.md
+include LICENSE
+include README.md
+include pyproject.toml
+recursive-include assets *.svg
+recursive-include docs *.md
+recursive-include examples *.json *.md *.yml
+recursive-include scripts *.py
+recursive-include src/claim_audit_lab/examples *.md *.yml
+recursive-include src/claim_audit_lab/schema .contract-version *.yaml
+recursive-include validation *.md
+
+include schema/vocabulary.yaml
+include schema/.contract-version

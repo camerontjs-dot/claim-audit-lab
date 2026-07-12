@@ -1,0 +1,65 @@
+{
+  "claim_id": "inf-03",
+  "claim_text": "The service meets 99 percent uptime.",
+  "retrieval": [
+    {
+      "passage_id": "p1",
+      "score": 0.7948725819587708
+    },
+    {
+      "passage_id": "p2",
+      "score": 0.36460503935813904
+    },
+    {
+      "passage_id": "p3",
+      "score": -0.01284530758857727
+    }
+  ],
+  "entailment": [
+    {
+      "passage_id": "p1",
+      "label": "contradict",
+      "score": 0.99609375,
+      "raw_logits": [
+        -3.294921875,
+        -1.091796875,
+        4.5625
+      ]
+    }
+  ],
+  "features": {
+    "numerical_values": [
+      {
+        "value": 99.0,
+        "unit": "percentage",
+        "surface_text": "99 percent"
+      }
+    ],
+    "has_explicit_negation": false,
+    "has_universal_quantifier": false,
+    "modal_strength": "asserts",
+    "claim_token_count": 7,
+    "compound_claim": false,
+    "sentence_type": "declarative"
+  },
+  "support_signal": {
+    "label": "contradict",
+    "max_entailment_score": 0.99609375,
+    "contributing_passage_id": "p1"
+  },
+  "rules_fired": [
+    {
+      "rule_id": "A4_hard_contradiction",
+      "reason": "NLI contradiction at 1.00 >= contradicted_threshold=0.7"
+    }
+  ],
+  "verdict": {
+    "support_verdict": "contradicted",
+    "support_verdict_reason": null,
+    "audit_flags": [],
+    "citation_status": "not_applicable",
+    "audit_confidence": "high"
+  },
+  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
+  "library_version": "0.2.0"
+}

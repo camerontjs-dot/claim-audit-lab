@@ -1,0 +1,19 @@
+# CAL v1 operational audit_config defaults.
+#
+# Pinned HF revision SHAs are load-bearing for trace reproducibility
+# (DECISIONS.md § 2026-06-21 § 9). Resolved 2026-06-22 via the HF API.
+#
+# The verdict thresholds (retrieval_floor, supported_threshold,
+# contradicted_threshold, numeric_tolerance) are NOT authored here — they are
+# the single source of truth in cal-rules-v1.5.0.yaml, materialized into
+# AuditConfig by claim_audit_lab.v1.config.load_default_audit_config, which also
+# pins that file's SHA as rules_file_sha. See plans/adr-v1-rule-order.md.
+
+top_k: 5
+aggregation: max_entailment
+retriever:
+  model_id: "sentence-transformers/all-MiniLM-L6-v2"
+  hf_revision_sha: "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+entailer:
+  model_id: "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+  hf_revision_sha: "6f5cf0a2b59cabb106aca4c287eed12e357e90eb"

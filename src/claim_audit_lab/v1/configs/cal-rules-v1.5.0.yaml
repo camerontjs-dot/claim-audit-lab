@@ -1,0 +1,35 @@
+# CAL v1 verdict rules — cal-rules-v1.5.0
+#
+# Frozen, versioned, calibratable source of truth for the verdict-layer
+# thresholds. The config loader (claim_audit_lab.v1.config) materializes
+# these values into AuditConfig and pins this file's SHA-256 as
+# `rules_file_sha`; `verify_rules_consistency` fails loudly if a config's
+# thresholds ever diverge from this file. Changing any value here changes the
+# file SHA — bump `rules_version` and record the new SHA in DECISIONS.md.
+#
+# v1.5.0 (Decision H, plans/adr-v1-absence-route.md): rule LOGIC changed, not
+# thresholds. Stage 1 lands the absence-route eligibility layer as a suppression
+# loop around signal selection — the intake `trust_level` join (D1), the P1
+# eligibility precondition (a non-`primary` source may not solo-drive a terminal
+# adverse degree), the P2 A3-negation mirror, and the emergent
+# `not_checkable/no_entail_signal` landing. 6d now receives real `trust_level`
+# values (D1) and begins flagging background-contributing positive verdicts.
+# Stage 2 (the bundle-relative absence route) was measured on the run-03 dev set
+# and HELD — it is not part of this version. ALL THRESHOLDS ARE UNCHANGED from
+# v1.4.0.
+#
+# v1.4.0 (Decision F, plans/adr-v1-rules-v1.4.0-semantic-fixes.md): rule
+# SEMANTICS changed — A3 asymmetric negation detectors, 6b passage-relative
+# strength comparison, 6a comparability partition + approximation awareness,
+# floor-filtered entailment, lemma-based verbatim, flag-coherence guard.
+#
+# Tolerances (Decision C): exact match for dimensionless counts / percentages /
+# dates; `numeric_tolerance` is the relative tolerance for measured quantities —
+# 0.0 (exact), provisional until dev calibration shows it is too strict.
+
+rules_version: cal-rules-v1.5.0
+retrieval_floor: 0.40
+supported_threshold: 0.70
+contradicted_threshold: 0.70
+numeric_tolerance: 0.0
+approx_numeric_tolerance: 0.05

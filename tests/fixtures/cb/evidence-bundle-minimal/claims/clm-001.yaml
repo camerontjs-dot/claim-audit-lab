@@ -1,0 +1,33 @@
+claim_id: clm-001
+bundle_id: 41973898-948c-58b4-8982-61d62ec81500
+schema_version: 1.0.0
+claim_text: Accelerated approval applications should include 30-day accelerated stability
+  data in the submission package.
+claim_type: extracted_claim
+workflow_condition: full_scaffold
+task_id: pharma-reg-submission-task-03
+scaffold_support_status: sourced
+scaffold_claim_strength: 0.86
+scaffold_extraction_fidelity: 0.92
+scaffold_counterevidence_found: false
+scaffold_downgraded: false
+evidence_passages:
+- passage_id: pass-001
+  source_id: src-001
+  passage_text: For accelerated approval applications, sponsors should include 30-day
+    accelerated stability data in the submission package.
+  section: Synthetic Guidance
+  char_start: 127
+  char_end: 250
+  source_trust_level: primary
+  passage_hash: sha256:60d369c3c3befaef9a16bbf1f642ce3f5200256816f09fd91bdd277b1d5b8f55
+counterevidence_passages: []
+audit:
+  audit_run_id: null
+  audited_at_utc: null
+  audit_support_verdict: null
+  audit_confidence: null
+  audit_notes: null
+  false_caution_flag: null
+  deviation_flag: null
+  deviation_notes: null

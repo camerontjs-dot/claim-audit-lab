@@ -1,0 +1,24 @@
+config_id: cal-rules-v1.2.0
+config_hash: sha256:f2af506e479cea88fe559511149650463dde6d64b75e97d2cfeb8af53322a670
+schema_version: 1.0.0
+frozen_at_utc: '2026-05-10T16:35:22Z'
+scoring:
+  support_threshold_sourced: 0.8
+  support_threshold_partial: 0.55
+  counterevidence_weight: 0.3
+rule_policies:
+  require_passage_level_match: true
+  flag_unsupported_threshold: 0.4
+  false_caution_detection: true
+  false_caution_threshold: 0.85
+  overstated_detection: true
+  needs_source_detection: true
+known_limitations:
+- Phase 0 does not run Claim Audit Lab.
+- Phase 0 does not assign support verdicts or retrieval scores.
+change_log:
+- version: 1.2.0
+  date: '2026-05-01'
+  changes: Added false_caution_detection, overstated_detection, and needs_source_detection
+    rules.
+  rationale: Fixture mirrors the locked C-B v1.0.0 audit-config shape.

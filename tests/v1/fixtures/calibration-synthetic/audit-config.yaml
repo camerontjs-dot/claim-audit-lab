@@ -1,0 +1,12 @@
+# Operational audit_config for the synthetic calibration run (the calibrate
+# --config file). Mirrors the packaged v1-default.yaml: only operational knobs
+# live here; the verdict thresholds + rules_file_sha are materialized from the
+# pinned cal-rules-v1.5.0.yaml by claim_audit_lab.v1.config.load_audit_config.
+top_k: 5
+aggregation: max_entailment
+retriever:
+  model_id: "sentence-transformers/all-MiniLM-L6-v2"
+  hf_revision_sha: "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
+entailer:
+  model_id: "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli"
+  hf_revision_sha: "6f5cf0a2b59cabb106aca4c287eed12e357e90eb"
