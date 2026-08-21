@@ -1,4 +1,4 @@
-"""End-to-end canonical decision receipts over REAL inference (Phase 2 Unit 3 / B13).
+"""End-to-end real-inference receipt contracts (Phase 2 Unit 3 / B13).
 
 This is the Phase-2 crux: the same ``run_audit`` orchestrator proven
 byte-reproducible with stubs (``test_pipeline_e2e.py``) must produce a stable
@@ -7,14 +7,20 @@ injected. The orchestrator is unchanged; only the two injected layers differ
 from the stub harness.
 
 Each fixture is 5 claims × 3 passages, run through real retriever + real entailer
-+ real aggregator + real rules. Real model runtimes can differ by tiny floating
-point amounts across supported CPU environments, so this test compares a
-six-decimal canonical receipt rather than claiming raw-trace byte identity across
-hosts. The full raw scores remain in every ``AuditTrace`` for inspection, and
-the test separately requires them to be finite. Verdicts, rules, and ranked
-passage order remain exact assertions. Goldens under ``fixtures/traces/inference/``
-are legacy raw traces; they are canonicalized at comparison time and must not be
-blindly regenerated.
++ real aggregator + real rules. It asserts two deliberately separate contracts:
+
+* Within one locked environment, the complete raw ``AuditTrace`` is byte-identical
+  on consecutive runs.
+* Across supported CPU environments, a portable decision receipt must match the
+  committed trace. It contains the pinned model/rule provenance, claim features,
+  retrieval rank, NLI labels, support-signal passage identities, rule IDs, and
+  verdict. It intentionally excludes score telemetry and score-formatted rule
+  prose, because the pinned model runtime produces materially different but
+  decision-equivalent float values on macOS and Linux.
+
+The full raw scores remain in every ``AuditTrace`` and are required to be finite.
+Goldens under ``fixtures/traces/inference/`` are historical raw diagnostics; this
+test projects them into the portable receipt and does not regenerate them.
 """
 
 from __future__ import annotations
@@ -142,20 +148,62 @@ def _run(case: Case, layers: tuple[BiEncoderRetriever, DeBERTaEntailer]) -> Audi
     )
 
 
-def _canonicalize(value: object) -> object:
-    """Round receipt scores while leaving raw model telemetry out of the receipt."""
-    if isinstance(value, float):
-        return round(value, 6)
-    if isinstance(value, list):
-        return [_canonicalize(item) for item in value]
-    if isinstance(value, dict):
-        return {key: _canonicalize(item) for key, item in value.items() if key != "raw_logits"}
-    return value
+def _raw_trace(trace: AuditTrace) -> str:
+    """Serialize the complete, environment-local trace without normalization."""
+    return trace.model_dump_json(indent=2) + "\n"
 
 
-def _receipt(trace: AuditTrace) -> str:
-    """Serialize the portable decision receipt used for real-inference regression."""
-    return json.dumps(_canonicalize(trace.model_dump(mode="json")), indent=2, sort_keys=True) + "\n"
+def _portable_receipt(trace: AuditTrace) -> str:
+    """Serialize the cross-host decision contract, excluding float telemetry.
+
+    Model scores stay in the raw trace for inspection, but are not a portable
+    receipt field: the pinned inference stack has different floating-point
+    kernels on macOS and Linux. Every retained field can affect (or explain) a
+    decision: provenance, features, retrieval/entailment ordering and labels,
+    aggregation identities, fired rules, and final verdict.
+    """
+    probe = trace.negation_probe
+    receipt = {
+        "receipt_schema": "cal-real-inference-decision-v1",
+        "audit_config_hash": trace.audit_config_hash,
+        "library_version": trace.library_version,
+        "model_revisions": {
+            "retriever": _CONFIG.retriever.model_dump(mode="json"),
+            "entailer": _CONFIG.entailer.model_dump(mode="json"),
+            "rules_file_sha": _CONFIG.rules_file_sha,
+        },
+        "claim": {
+            "claim_id": trace.claim_id,
+            "claim_text": trace.claim_text,
+            "features": trace.features.model_dump(mode="json"),
+        },
+        "retrieval_rank": [result.passage_id for result in trace.retrieval],
+        "entailment": [
+            {"passage_id": result.passage_id, "label": result.label} for result in trace.entailment
+        ],
+        "support_signal": {
+            "label": trace.support_signal.label,
+            "contributing_passage_id": trace.support_signal.contributing_passage_id,
+            "best_entail_passage_id": trace.support_signal.best_entail_passage_id,
+            "best_contradict_passage_id": trace.support_signal.best_contradict_passage_id,
+        },
+        "rules_fired": [rule.rule_id for rule in trace.rules_fired],
+        "verdict": trace.verdict.model_dump(mode="json"),
+        "negation_probe": (
+            None
+            if probe is None
+            else {
+                "negated_claim": probe.negated_claim,
+                "abstained": probe.abstained,
+                "result": (
+                    None
+                    if probe.result is None
+                    else {"passage_id": probe.result.passage_id, "label": probe.result.label}
+                ),
+            }
+        ),
+    }
+    return json.dumps(receipt, indent=2, sort_keys=True) + "\n"
 
 
 def _assert_raw_scores_are_finite(trace: AuditTrace) -> None:
@@ -182,16 +230,18 @@ def test_e2e_real_inference_receipt_matches_golden(
 ) -> None:
     first_trace = _run(case, layers)
     second_trace = _run(case, layers)
-    first = _receipt(first_trace)
-    second = _receipt(second_trace)
-    assert first == second, f"{case.name}: two real-inference receipts diverged"
+    assert _raw_trace(first_trace) == _raw_trace(second_trace), (
+        f"{case.name}: same-environment real-inference traces diverged"
+    )
     _assert_raw_scores_are_finite(first_trace)
     _assert_raw_scores_are_finite(second_trace)
 
     golden = _TRACES_DIR / f"{case.name}.json"
     assert golden.is_file(), f"missing golden trace: {golden}"
     golden_trace = AuditTrace.model_validate_json(golden.read_text(encoding="utf-8"))
-    assert _receipt(golden_trace) == first, f"{case.name}: receipt drifted from golden"
+    assert _portable_receipt(golden_trace) == _portable_receipt(first_trace), (
+        f"{case.name}: portable decision receipt drifted from golden"
+    )
 
 
 @pytest.mark.parametrize("case", CASES, ids=lambda case: case.name)

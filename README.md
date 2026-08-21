@@ -351,8 +351,10 @@ Public-release verification, 2026-08-21, Python 3.11.15:
 | `mypy --strict` | **0 errors**, 49 source files |
 | `ruff check` + `format --check` | **0 errors**, `src/` fully formatted |
 
-The real-inference golden tests compare a six-decimal canonical decision receipt (verdicts,
-rules, and passage ranking remain exact). Raw model scores are retained and required to be
+The real-inference golden tests assert an exact raw trace on repeated runs in one locked
+environment, then compare a cross-host portable decision receipt. That receipt preserves the
+pinned model/rule provenance, features, retrieval ranking, NLI labels, support-signal passage
+identities, fired rule IDs, and verdict. Raw model scores are retained and required to be
 finite, but are not claimed to be byte-identical across supported CPU environments. These
 receipts describe current `main`, a post-`v0.4.0` public-polish snapshot; the immutable
 `v0.4.0` tag remains at its original release commit.
