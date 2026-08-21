@@ -58,6 +58,10 @@ _ENGINE_OPTION_HELP = (
 app = typer.Typer(
     help="Audit whether draft claims are supported by supplied evidence.",
     no_args_is_help=True,
+    # Keep CLI help on Click's plain formatter. Rich's optional formatter has
+    # changed help rendering across Click releases, while this public CLI's
+    # help text is itself a tested compatibility surface.
+    rich_markup_mode=None,
 )
 
 

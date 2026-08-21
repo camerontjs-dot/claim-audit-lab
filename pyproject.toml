@@ -33,7 +33,7 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/camerontjs-dot/claim-audit-lab"
-Documentation = "https://camerontjs-dot.github.io/claim-audit-lab/"
+Documentation = "https://github.com/camerontjs-dot/claim-audit-lab/tree/main/docs"
 Repository = "https://github.com/camerontjs-dot/claim-audit-lab"
 Changelog = "https://github.com/camerontjs-dot/claim-audit-lab/blob/main/CHANGELOG.md"
 Issues = "https://github.com/camerontjs-dot/claim-audit-lab/issues"

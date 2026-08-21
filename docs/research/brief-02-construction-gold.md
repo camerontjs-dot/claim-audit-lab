@@ -10,9 +10,10 @@
 
 > **Note added 2026-08-20.** This brief reports the corpus as measured on `cal-rules-v1.8.0`
 > with the fix landing in `v1.9.0`; its figures are historical and are not the current result.
-> The corpus was re-run on the shipped `cal-rules-v1.12.0` and stands at **26/33**, adverse
+> The corpus was re-run on the shipped `cal-rules-v1.13.0` and stands at **26/33**, adverse
 > precision **7/7** and recall **7/7**, sealed at
-> `outputs/2026-08-20-construction-gold-v1.12.0/`.
+> `outputs/2026-08-20-construction-gold-v1.12.0/` (a historical local receipt; it is not
+> part of the public distribution).
 >
 > The source directory named above has since had its own seal broken: it was re-run in place
 > on 2026-08-20, overwriting `audit_results.json` and its traces. Its `corpus.json` and

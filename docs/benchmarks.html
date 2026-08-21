@@ -30,7 +30,9 @@
   <p class="muted" style="max-width:72ch">
     Two different things get measured on this page, and conflating them is the failure mode
     this project most wants to avoid. <strong>Engineering integrity</strong> is verified and
-    green: the tests pass, it installs, it reproduces byte for byte.
+    green: the tests pass, it installs, and deterministic bundle/report paths reproduce byte
+    for byte when their run metadata is pinned. Real-inference regression uses a canonical
+    decision receipt rather than claiming raw floating-point telemetry is cross-host identical.
     <strong>Measurement accuracy</strong> is not established. Whether CAL reaches the verdict
     a human reviewer would is the open question, and the numbers below say so.
   </p>
@@ -459,7 +461,7 @@
       exact agreement 27/50). <strong>The two agreement coefficients are computed over 22 of
       the 50 items</strong>: <code>not_checkable</code> is off-scale, so CAL's most
       common outcome drops out of any complete-case statistic; 27/50 is the only headline
-      figure over the whole set. The tree has since moved to <code>v1.12.0</code> and six
+      figure over the whole set. The tree has since moved to <code>v1.13.0</code> and six
       defects were found after it, so that clearance does not transfer unexamined,       and the v1.9.0 landing costs <strong>2 of the 98</strong> PILOT-001 agreements when the
       pipeline is run end to end, a cost that a rules-only replay reported as zero
       because the gate's input fields postdate the baseline it replays (D15).</li>

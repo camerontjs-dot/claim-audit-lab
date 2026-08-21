@@ -45,8 +45,9 @@
   <p>
     So the model's output is treated as a <strong>signal</strong>, never a verdict. The signal
     enters a rule layer that is versioned, frozen, and SHA-pinned. That layer decides. The
-    practical consequence: you can read the rule that produced any verdict, and re-running the
-    same inputs under the same config reproduces it byte for byte.
+    practical consequence: you can read the rule that produced any verdict. Pinned
+    bundle/report paths reproduce byte for byte; the real-inference regression contract is a
+    canonical decision receipt because raw floating-point telemetry can vary slightly by host.
   </p>
 
   <div class="status-banner">

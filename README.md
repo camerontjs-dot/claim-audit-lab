@@ -10,8 +10,9 @@
 
 Claim Audit Lab retrieves candidate passages, asks an NLI model whether they entail the
 claim, and then decides under a frozen, versioned rule set. A language model contributes a
-signal; deterministic code makes the decision. Same inputs, same config, same output. Byte
-for byte.
+signal; deterministic code makes the decision. Deterministic bundle/report paths reproduce
+byte-for-byte when their run metadata is pinned; real inference uses a canonical decision
+receipt so tiny supported-platform score differences do not change the regression contract.
 
 It does not search the open web, and it does not decide whether a statement is true of the
 world. It answers a narrower question: **does the evidence you handed me support the claim
@@ -56,7 +57,7 @@ Four qualifications travel with any public number:
 
 1. **AC2 / weighted κ are computed over the on-scale minority, not 50.** `not_checkable`
    sits off the ordinal scale. Exact 27/50 is the only headline on the whole human set.
-2. The human-gold gate ran on `cal-rules-v1.7.0`; the tree is now `v1.12.0`.
+2. The human-gold gate ran on `cal-rules-v1.7.0`; the shipped tree is now `v1.13.0`.
 3. D6 is held. D7 must not land without D6. Numeric comparison is a different operator
    family, deferred.
 4. Exact agreement at 54% against a person is not a solved problem. Abstention with a
@@ -194,7 +195,7 @@ Abstentions: 26/98 (26.5%)
 
 Every abstention carries a named reason and a reviewer next step, so `not_checkable` stops
 being one undifferentiated bucket. See
-[Benchmarks](https://camerontjs-dot.github.io/claim-audit-lab/benchmarks.html) for what
+[Benchmarks](docs/benchmarks.html) for what
 those reasons look like across two corpora.
 
 Programmatic use:
@@ -217,13 +218,13 @@ fix substitutes for the other.
 |---|---|---|---|---|
 | 1 | **Retrieve** | bi-encoder, probabilistic | which evidence is in the room | `retrieval_floor` 0.40, `top_k` 5 |
 | 2 | **Entail** | DeBERTa-v3 NLI, probabilistic | whether a passage entails the claim | `supported_threshold` 0.70, `contradicted_threshold` 0.70 |
-| 3 | **Rules** | frozen, deterministic | **the verdict** | `cal-rules-v1.10.0`, SHA-pinned |
+| 3 | **Rules** | frozen, deterministic | **the verdict** | `cal-rules-v1.13.0`, SHA-pinned |
 
 Rule families `A1–A4` (gating and adverse), `B5` (degree), `C6a–f` (overreach), `P1–P2`
 (eligibility). Every rule that fires is recorded by id in the trace, alongside
 `audit_config_hash` and `library_version`.
 
-Full detail: [Architecture](https://camerontjs-dot.github.io/claim-audit-lab/architecture.html).
+Full detail: [Architecture](docs/architecture.html).
 
 ## Research
 
@@ -349,6 +350,12 @@ Public-release verification, 2026-08-21, Python 3.11.15:
 | Sealed research outputs | historical local receipt: **39/40 verify**. One is intentionally failing; see [DEV-005](validation/deviation-log.md) |
 | `mypy --strict` | **0 errors**, 49 source files |
 | `ruff check` + `format --check` | **0 errors**, `src/` fully formatted |
+
+The real-inference golden tests compare a six-decimal canonical decision receipt (verdicts,
+rules, and passage ranking remain exact). Raw model scores are retained and required to be
+finite, but are not claimed to be byte-identical across supported CPU environments. These
+receipts describe current `main`, a post-`v0.4.0` public-polish snapshot; the immutable
+`v0.4.0` tag remains at its original release commit.
 
 Installing the UI surface additionally requires the `[ui]` extra, which pulls `fastapi`,
 `uvicorn`, and the `[v1]` inference stack:
