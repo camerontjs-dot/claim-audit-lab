@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture: Claim Audit Lab</title>
+<meta name="description" content="How CAL bounds a probabilistic model inside a deterministic rule layer: retrieve, entail, then decide under a frozen, SHA-pinned rule set.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cal.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">claim<span class="dim">-audit-</span>lab</a>
+    <nav class="site">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html" aria-current="page">Architecture</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 style="margin-top:40px">Architecture</h1>
+  <p class="muted" style="max-width:70ch">
+    CAL's central design commitment is narrow and load-bearing: <strong>a language model
+    contributes evidence, and deterministic code makes the decision.</strong> Everything
+    below follows from refusing to let those two roles merge.
+  </p>
+
+  <h2>Why the verdict cannot come from the model</h2>
+  <p>
+    A neural entailment model produces a distribution over three labels. It is well suited to
+    the question <em>does this passage entail this sentence?</em> and badly suited to the
+    question <em>what should a reviewer be told?</em>, because the second question involves
+    commitments the model has no way to hold: consistency across runs, a stable meaning for
+    each verdict, an audit trail, and behaviour that does not change when a dependency is
+    upgraded.
+  </p>
+  <p>
+    So the model's output is treated as a <strong>signal</strong>, never a verdict. The signal
+    enters a rule layer that is versioned, frozen, and SHA-pinned. That layer decides. The
+    practical consequence: you can read the rule that produced any verdict, and re-running the
+    same inputs under the same config reproduces it byte for byte.
+  </p>
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>This bounds the model; it does not make the model correct.</strong>
+      Determinism guarantees the same answer every time, including the same wrong answer.
+      What the rule layer buys is that errors are <em>inspectable and fixable at a specific
+      line</em>, not that they are absent. The
+      <a href="benchmarks.html">open defect register</a> lists the ones currently known.</p>
+    </div>
+  </div>
+
+  <h2>The pipeline</h2>
+
+  <div class="layers">
+    <div class="layer probabilistic">
+      <div class="lhead">
+        <span class="lnum">1</span><h3>Retrieve</h3>
+        <span class="kind">bi-encoder &middot; probabilistic</span>
+      </div>
+      <p>The claim and every supplied passage are embedded; passages are ranked by cosine
+      similarity. Anything below <code>retrieval_floor</code> is discarded before it can
+      influence anything downstream, and at most <code>top_k</code> survive.</p>
+      <div class="params">
+        <span><b>retrieval_floor</b> 0.40</span>
+        <span><b>top_k</b> 5</span>
+        <span><b>decides</b> which evidence is in the room</span>
+      </div>
+    </div>
+    <div class="arrow">&darr;</div>
+    <div class="layer probabilistic">
+      <div class="lhead">
+        <span class="lnum">2</span><h3>Entail</h3>
+        <span class="kind">DeBERTa-v3 NLI &middot; probabilistic</span>
+      </div>
+      <p>Each admitted passage is scored as premise against the claim as hypothesis, giving
+      <code>entail</code> / <code>neutral</code> / <code>contradict</code> with probabilities.
+      An aggregator selects the contributing passage and produces one support signal.</p>
+      <div class="params">
+        <span><b>supported_threshold</b> 0.70</span>
+        <span><b>contradicted_threshold</b> 0.70</span>
+        <span><b>emits</b> a signal, never a verdict</span>
+      </div>
+    </div>
+    <div class="arrow">&darr;</div>
+    <div class="layer deterministic">
+      <div class="lhead">
+        <span class="lnum">3</span><h3>Rule engine</h3>
+        <span class="kind">frozen &middot; deterministic</span>
+      </div>
+      <p>Rules combine the support signal with <em>structural features of the claim</em>:
+      negation, quantities, compound structure, modal strength, scope, sentence type. This
+      layer emits the verdict. Every rule that fires is recorded by id in the trace.</p>
+      <div class="params">
+        <span><b>rules_version</b> cal-rules-v1.13.0</span>
+        <span><b>pinned by</b> rules_file_sha</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>The rule families</h2>
+  <p>
+    Rule ids are stable and appear verbatim in every trace, so a verdict can always be traced
+    to the rule that produced it.
+  </p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Family</th><th>Rule ids</th><th>Concern</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A: gating &amp; adverse</strong></td>
+        <td><code>A1_scope</code>, <code>A2_retrieval_empty</code>,
+            <code>A3_negation_backstop</code>, <code>A3_bound_instantiation_suppressed</code>,
+            <code>A3_conjunct_negation_suppressed</code>, <code>A4_hard_contradiction</code>,
+            <code>A4_negation_consistency</code></td>
+        <td>Is this claim in scope at all; did any evidence arrive; is the evidence actually
+            against the claim rather than merely silent</td>
+      </tr>
+      <tr>
+        <td><strong>B: degree</strong></td>
+        <td><code>B5_degree</code></td>
+        <td>Does the entailment signal clear the supported threshold</td>
+      </tr>
+      <tr>
+        <td><strong>C: overreach</strong></td>
+        <td><code>C6a_numeric</code>, <code>C6b_strength_scope</code>,
+            <code>C6c_inferred</code>, <code>C6d_source_scope</code>,
+            <code>C6f_false_caution</code></td>
+        <td>Is the claim stronger, broader, more numerically precise, or more causal than the
+            passage licenses</td>
+      </tr>
+      <tr>
+        <td><strong>P: eligibility</strong></td>
+        <td><code>P1_eligibility_suppressed</code>, <code>P2_absence_mirror_suppressed</code></td>
+        <td>Is this source trusted enough to solo-drive a terminal adverse verdict</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>What "deterministic" actually means here</h2>
+  <p>Four separate guarantees, worth distinguishing because they fail differently:</p>
+
+  <div class="grid c2">
+    <div class="card">
+      <h3>Frozen thresholds</h3>
+      <p class="muted">Every threshold lives in a versioned YAML file, not in code. The loader
+      pins that file's SHA-256 as <code>rules_file_sha</code> and
+      <code>verify_rules_consistency</code> fails loudly if a materialized config ever diverges
+      from it.</p>
+    </div>
+    <div class="card">
+      <h3>Recorded provenance</h3>
+      <p class="muted">Each trace carries <code>audit_config_hash</code> and
+      <code>library_version</code>. A verdict from six months ago can be attributed to the exact
+      rule surface that produced it.</p>
+    </div>
+    <div class="card">
+      <h3>Pinned numerics</h3>
+      <p class="muted">The inference stack is CPU-only by design. Reproducibility is chosen over
+      throughput, so results do not shift with accelerator availability or non-deterministic
+      kernels.</p>
+    </div>
+    <div class="card">
+      <h3>Non-mutating I/O</h3>
+      <p class="muted">Auditing a sealed evidence bundle writes a resealed <em>copy</em>. The
+      input is never modified. With run id and timestamp pinned, outputs are byte-identical.</p>
+    </div>
+  </div>
+
+  <h2>Structural features, and why they are not the model's job</h2>
+  <p>
+    Several decisions turn on properties of the claim's <em>form</em> rather than its
+    similarity to a passage. Whether a claim is compound (<code>P &and; Q</code>), whether it
+    carries explicit negation, whether it asserts or hedges, whether it contains a quantity and
+    what kind. These are extracted deterministically (dependency parse, quantity extraction)     and passed to the rules alongside the model signal.
+  </p>
+  <p>
+    Putting them in the rule layer rather than the prompt means they are inspectable, testable
+    in isolation, and fixable without retraining. It is also where the sharpest known defects
+    live, which is the honest cost of the choice: <code>A3</code> currently has no valid
+    operator over a compound claim, and that produces a false <code>contradicted</code> on
+    human gold. A model would have hidden that failure; the rule layer makes it a specific,
+    addressable line of code.
+  </p>
+
+  <h2>The layer-separation result</h2>
+  <p>
+    A natural question about this design is whether the split is real or merely tidy, whether
+    layers 1 and 2 are two views of one problem. That was measured, and they are not.
+  </p>
+  <p>
+    Changing only the retrieval passage unit rescued <strong>2 of 2</strong> retrieval-floor
+    failures and <strong>0 of 10</strong> entailment failures. The intervention was total on
+    one population and inert on the other. Because a claim that never clears the floor is never
+    scored by the entailer, the two populations are disjoint by construction. So theso the size of
+    each problem is unchanged by fixing the other.
+  </p>
+  <p>
+    <a href="https://github.com/camerontjs-dot/claim-audit-lab/blob/HEAD/docs/research/brief-01-chunk-granularity-disjointness.md">Research Brief 01</a> has the
+    full method, the per-claim numbers, and the boundaries. The
+    <a href="index.html#top">sealed-trace replay</a> on the overview page lets you step through
+    all twelve cases.
+  </p>
+
+  <h2>What CAL is not</h2>
+  <ul>
+    <li><strong>Not a fact checker.</strong> It has no view on whether a claim is true of the
+      world, only on whether the supplied evidence carries it.</li>
+    <li><strong>Not a retriever over the open web.</strong> Evidence is supplied by the caller.</li>
+    <li><strong>Not validated software.</strong> An exploratory blind gate cleared in July
+      2026 on an earlier rule surface; that qualified CAL as a research instrument, not as a
+      validated product. The v1 route is not the shipped default.</li>
+    <li><strong>Not a GxP capability.</strong> The vocabulary here is deliberately
+      engineering vocabulary.</li>
+  </ul>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Claim Audit Lab &middot; MIT licensed &middot;
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">github.com/camerontjs-dot/claim-audit-lab</a></p>
+    <p>Engineering build. Not validated software. Not a GxP capability claim.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -47,15 +47,22 @@ class StubEntailer:
     """Return canned NLI results keyed by ``passage_id``.
 
     ``responses`` maps ``passage_id -> (label, score, raw_logits)``; a passage
-    not listed falls back to ``default`` (neutral, ``0.0``). Deterministic by
-    construction — the same fixture yields the same entailment on every run.
+    not listed falls back to ``default`` (neutral, ``0.0``). ``claim_responses``
+    is consulted first, keyed by the exact claim text — the pipeline's A4
+    negation-consistency probe entails the *negated* claim against the same
+    passage, so probe outcomes are canned per negated-claim text without
+    disturbing the passage-keyed fixtures. Deterministic by construction — the
+    same fixture yields the same entailment on every run.
     """
 
     responses: Mapping[str, EntailSpec] = field(default_factory=dict)
+    claim_responses: Mapping[str, EntailSpec] = field(default_factory=dict)
     default: EntailSpec = _NEUTRAL
 
     def entail(self, claim: str, premise: str, passage_id: str) -> EntailResult:
-        label, score, logits = self.responses.get(passage_id, self.default)
+        label, score, logits = self.claim_responses.get(
+            claim, self.responses.get(passage_id, self.default)
+        )
         return EntailResult(passage_id=passage_id, label=label, score=score, raw_logits=logits)
 
 

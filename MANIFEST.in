@@ -6,7 +6,14 @@ recursive-include assets *.svg
 recursive-include docs *.md
 recursive-include examples *.json *.md *.yml
 recursive-include scripts *.py
+# The sdist ships the complete test tree so it can verify itself. setuptools'
+# default heuristic picks up tests/*.py only, which shipped 17 of 121 files and a
+# suite that could not run.
+recursive-include tests *.py *.json *.yaml *.yml *.txt *.md
+include tests/fixtures/cb/evidence-bundle-minimal/SHA256SUMS
+include tests/fixtures/cb/evidence-bundle-minimal/CONTRACT_VERSION
 recursive-include src/claim_audit_lab/examples *.md *.yml
+recursive-include src/claim_audit_lab/assets *.css
 recursive-include src/claim_audit_lab/schema .contract-version *.yaml
 recursive-include validation *.md
 

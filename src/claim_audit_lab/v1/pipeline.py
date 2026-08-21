@@ -21,11 +21,12 @@ from __future__ import annotations
 
 from claim_audit_lab import __version__
 from claim_audit_lab.v1.config import hash_audit_config
-from claim_audit_lab.v1.features import FeatureExtractor
+from claim_audit_lab.v1.features import FeatureExtractor, negate_claim, source_coverage_claim
 from claim_audit_lab.v1.models import (
     AuditRequest,
     AuditTrace,
     EntailResult,
+    NegationProbe,
     RetrievalResult,
 )
 from claim_audit_lab.v1.protocols import Aggregator, Entailer, Retriever, Rules
@@ -73,6 +74,50 @@ def run_audit(
 
     support_signal = aggregator.aggregate(entailment)
 
+    # A4 negation-consistency probe (adr-v1-slg09-negation-consistency.md,
+    # cal-rules-v1.7.0): when the aggregated signal is a hard-contradiction
+    # candidate, entail the structurally negated claim against the same
+    # contributing premise and record the outcome. The rules layer applies the
+    # confirmation deterministically from this record; an abstention (negator
+    # declined) or an absent probe never demotes.
+    negation_probe: NegationProbe | None = None
+    if (
+        support_signal.label == "contradict"
+        and support_signal.max_entailment_score >= request.audit_config.contradicted_threshold
+    ):
+        negated = negate_claim(request.claim_text)
+        contributing_id = support_signal.contributing_passage_id
+        contributing = passages_by_id.get(contributing_id) if contributing_id else None
+        if negated is None or contributing is None:
+            negation_probe = NegationProbe(negated_claim=negated, abstained=True, result=None)
+        else:
+            negation_probe = NegationProbe(
+                negated_claim=negated,
+                abstained=False,
+                result=entailer.entail(negated, contributing.text, contributing.passage_id),
+            )
+
+    absence_complement_entailed = False
+    if (
+        request.source_boundary == "exhaustive"
+        and features.has_explicit_negation
+        and source_coverage_claim(request.claim_text) is not None
+    ):
+        complement = negate_claim(request.claim_text)
+        if complement is not None:
+            for result in admitted:
+                probed = entailer.entail(
+                    complement,
+                    passages_by_id[result.passage_id].text,
+                    result.passage_id,
+                )
+                if (
+                    probed.label == "entail"
+                    and probed.score >= request.audit_config.supported_threshold
+                ):
+                    absence_complement_entailed = True
+                    break
+
     verdict, rules_fired = rules.apply(
         claim=request.claim_text,
         features=features,
@@ -81,6 +126,10 @@ def run_audit(
         entailment=entailment,
         support_signal=support_signal,
         audit_config=request.audit_config,
+        negation_probe=negation_probe,
+        source_boundary=request.source_boundary,
+        claimed_material_is_a_named_gap=request.claimed_material_is_a_named_gap,
+        absence_complement_entailed=absence_complement_entailed,
     )
 
     return AuditTrace(
@@ -94,6 +143,7 @@ def run_audit(
         verdict=verdict,
         audit_config_hash=hash_audit_config(request.audit_config),
         library_version=__version__,
+        negation_probe=negation_probe,
     )
 
 

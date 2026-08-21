@@ -1,6 +1,6 @@
 """Tests for the v1 ``AuditConfig`` loader + rules-file materialization.
 
-The verdict thresholds are the single source of truth in ``cal-rules-v1.5.0.yaml``
+The verdict thresholds are the single source of truth in ``cal-rules-v1.13.0.yaml``
 and are materialized into ``AuditConfig`` at load; ``v1-default.yaml`` carries
 only operational settings. These tests pin that wiring and the consistency guard
 so any drift between the rules file, the operational config, and the model is

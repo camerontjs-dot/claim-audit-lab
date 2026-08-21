@@ -86,11 +86,17 @@ class DeBERTaEntailer:
         probabilities = torch.softmax(logits, dim=-1)
         predicted = int(torch.argmax(logits))
         raw = tuple(float(value) for value in logits)
+        # `label_order` comes from the model's own `config.id2label`, so this is
+        # the only place in the pipeline that knows which slot is which. Record
+        # the support and contradiction probabilities here rather than leaving
+        # every downstream reader to re-derive them from the class order.
         return EntailResult(
             passage_id=passage_id,
             label=label_order[predicted],
             score=float(probabilities[predicted]),
             raw_logits=(raw[0], raw[1], raw[2]),
+            p_entail=float(probabilities[label_order.index("entail")]),
+            p_contradict=float(probabilities[label_order.index("contradict")]),
         )
 
 

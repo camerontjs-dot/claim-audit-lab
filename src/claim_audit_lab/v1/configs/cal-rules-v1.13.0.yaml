@@ -1,0 +1,147 @@
+# CAL v1 verdict rules — cal-rules-v1.13.0
+#
+# Frozen, versioned, calibratable source of truth for the verdict-layer
+# thresholds. The config loader (claim_audit_lab.v1.config) materializes
+# these values into AuditConfig and pins this file's SHA-256 as
+# `rules_file_sha`; `verify_rules_consistency` fails loudly if a config's
+# thresholds ever diverge from this file. Changing any value here changes the
+# file SHA — bump `rules_version` and record the new SHA in DECISIONS.md.
+#
+# v1.13.0 (D14 — identifiers are not numbers): rule LOGIC changed, not
+# thresholds. A7's scope operator could not see an entity whose identifier
+# contains a numeral. spaCy tags `CH-07` / `SOP-014` / `STB-2291` as NUMBERS, so
+# they attach as modifiers instead of heading the subject; with an ambiguous
+# following verb the sentence is left with no nominal subject at all, scope
+# extraction returns nothing, and A7 reads "no location named" — standing down
+# so A4 emits the false adverse verdict A7 exists to withhold. Measured at 14 of
+# 66 identifier/verb combinations; 3 of 66 remain (bare digits and multi-token
+# forms, deliberately out of scope because catching them would mean treating
+# quantities as identifiers). Identifier tokens are now normalised to letter-only
+# placeholders before parsing and mapped back afterwards, scoped to scope
+# extraction so every other feature keeps the parse it had. Forcing the POS tag
+# does not work — the parser reads tok2vec vectors, not tags. NOT the numeric
+# comparison family (D1/D4/D12): quantities are ruled out as the trigger by
+# measurement, and letter-initial is the guard that keeps them out.
+# ALL THRESHOLDS UNCHANGED from v1.4.0. No verdict moves on either corpus:
+# construction gold 26/33 before and after with zero verdict changes, and A7
+# fires on 0 of 98 PILOT-001 claims both before and after.
+#
+# v1.12.0 (A7 scope mismatch): rule LOGIC changed, not thresholds. New gate
+# `A7_scope_mismatch`, after A5 and before A4. When the aggregated label is
+# `contradict` above threshold but the contributing passage names a *disjoint
+# location phrase* from the claim (closed LOCATION_HEADS + dependency
+# attachment, Decision F), CAL withholds the adverse verdict and asks which
+# site the claim is about. A5 still covers two-passage disagreement; A7 covers
+# the one-passage false-adverse (packaging-sites vs Building 4). Same-site
+# contradictions still fire A4. ALL THRESHOLDS UNCHANGED from v1.4.0.
+#
+# v1.11.0 (source_boundary reader): rule LOGIC changed, not thresholds. A6 now
+# *reads* `source_boundary`. Undeclared / bounded still withhold an adverse
+# verdict on a source-coverage claim (D11). Exhaustive decides the absence:
+# the bundle is the source, so silence is a fact about the source (`supported`)
+# unless a recorded complement-entailment shows the source does address the
+# denied material (`contradicted`). `named_missing_material` plus a caller-
+# declared `claimed_material_is_a_named_gap` is contradicted — the source is
+# stipulated to address it. ALL THRESHOLDS UNCHANGED from v1.4.0.
+#
+# v1.10.0 (D11, outputs/2026-08-19-construction-gold/): rule LOGIC changed, not
+# thresholds. New gate `A6_absence_not_decidable`: a claim that a *document* does
+# not say something is not refutable from passages excerpted out of that
+# document. Silence in the bundle is exactly what such a claim asserts, and a
+# passage on the adjacent topic neither confirms nor refutes it — the entailer
+# calls that a contradiction at 0.978 with no warning. Deciding it needs
+# `source_boundary`, declared on the request and read by no rule; until one does,
+# CAL withholds the adverse verdict and says so.
+#
+# The trigger is a claim-side structural feature, `features.source_coverage_claim`:
+# clause-level negation scoping a coverage predicate (address/cover/specify/...)
+# whose subject is a document noun (guidance/procedure/section/...). Both
+# conditions are required — the subject alone would catch "the guidance does not
+# apply to biologics", which evidence can refute; the verb alone would catch "the
+# formulation does not contain latex", which is not about a text.
+#
+# NOTE the design constraint this obeys. The obvious discriminator is lexical —
+# is the denied material mentioned in the evidence at all — and it separates the
+# cases perfectly. It is also what Decision F forbids: "no deterministic rule may
+# flip or downgrade a degree on a lexical-overlap signal — overlap may flag, never
+# decide", an invariant that exists because the v0.2 lexical matcher was falsified
+# and the same error was then re-imported into 6b. The structural feature gets the
+# same result on both corpora without a third import. Gating an adverse decision
+# on eligibility is the sanctioned pattern (Decision H).
+#
+# Effect: construction gold 20/33 -> 22/33, adverse-verdict precision 6/9 -> 6/6.
+# PILOT-001: 0 of 98 verdicts change. ALL THRESHOLDS UNCHANGED from v1.4.0.
+#
+# v1.9.0 (D9 + D10, outputs/2026-08-19-construction-gold/): rule LOGIC changed,
+# not thresholds. Two defects that had to move together, because the first was
+# masking the second.
+#
+# D10 — A4's negation-consistency demotion now requires the probe to be at least
+# as confident as the contradiction it demotes. The probe is a second reading by
+# the same model on a machine-negated sentence, so it is systematically less
+# reliable than the primary measurement; on the construction corpus it demoted
+# 7 of 7 correctly-detected contradictions on readings of 0.43-0.93 against
+# primaries of 0.975-0.996. The precondition removes all seven and preserves the
+# only PILOT-001 case where the rule does real work (c009: primary 0.766, probe
+# neutral 0.996 — still demotes). A disregarded probe is now recorded as
+# `A4_negation_probe_uninformative` rather than vanishing from the trace.
+#
+# D9 — new gate `A5_conflicting_evidence`, ahead of A4 and B5. When one passage
+# entails above `supported_threshold` and a different one contradicts above
+# `contradicted_threshold`, the aggregator's single label is whichever scored
+# higher, by a margin that can be thousandths and that carries no information
+# about which passage governs. Measured: an out-of-scope passage contradicting
+# at 0.964 outranked the in-scope passage entailing at 0.948 and silently drove
+# the verdict. Both channels were already on the signal; nothing read them. CAL
+# now abstains with `conflicting_evidence` and cites both passages rather than
+# resolving a disagreement it has no feature to resolve. Fires on 0 of 98
+# PILOT-001 claims. ALL THRESHOLDS ARE UNCHANGED from v1.4.0 — the gate reuses
+# `supported_threshold` and `contradicted_threshold` rather than adding a knob.
+#
+# v1.7.0 (SLG-09 negation-consistency, plans/adr-v1-slg09-negation-consistency.md):
+# rule LOGIC changed, not thresholds. A4 retains a hard contradiction only when
+# the recorded pipeline probe shows the contributing premise also entails the
+# structurally negated claim; an unconfirmed contradiction safe-lands
+# not_checkable/no_entail_signal (never support). The structural negator
+# (compound abstain, neg-removal, "Not every..." universal prefixing,
+# copular/auxiliary insertion, do-support) abstains rather than guess, and an
+# abstention or absent/premise-mismatched probe never demotes. A3 structural
+# negation contradictions are untouched. ALL THRESHOLDS ARE UNCHANGED from
+# v1.4.0.
+#
+# v1.6.0 (A1 combined structural guard, plans/adr-v1-a1-imperative-hardening.md):
+# FEATURE logic changed, not thresholds or rule semantics. `sentence_type` now
+# calls a subject-less verbal root imperative only when (1) no non-root
+# VERB/AUX carries its own subject (`nsubj`/`nsubjpass`/`expl`) and (2) every
+# non-space, non-punctuation pre-root token has dependency `intj`, `advmod`,
+# `neg`, or `aux`. This recovers noun-initial declaratives the parser mis-roots
+# (two known PILOT-001 false A1 `out_of_scope` stops and both E3 valve-subject
+# instances) while retaining clean, discourse-prefixed, negative, and auxiliary
+# imperatives. The guard changes A1 verdict outcomes, so the frozen rules
+# surface bumps even though ALL THRESHOLDS ARE UNCHANGED from v1.4.0.
+#
+# v1.5.0 (Decision H, plans/adr-v1-absence-route.md): rule LOGIC changed, not
+# thresholds. Stage 1 lands the absence-route eligibility layer as a suppression
+# loop around signal selection — the intake `trust_level` join (D1), the P1
+# eligibility precondition (a non-`primary` source may not solo-drive a terminal
+# adverse degree), the P2 A3-negation mirror, and the emergent
+# `not_checkable/no_entail_signal` landing. 6d now receives real `trust_level`
+# values (D1) and begins flagging background-contributing positive verdicts.
+# Stage 2 (the bundle-relative absence route) was measured on the run-03 dev set
+# and HELD — it is not part of this version.
+#
+# v1.4.0 (Decision F, plans/adr-v1-rules-v1.4.0-semantic-fixes.md): rule
+# SEMANTICS changed — A3 asymmetric negation detectors, 6b passage-relative
+# strength comparison, 6a comparability partition + approximation awareness,
+# floor-filtered entailment, lemma-based verbatim, flag-coherence guard.
+#
+# Tolerances (Decision C): exact match for dimensionless counts / percentages /
+# dates; `numeric_tolerance` is the relative tolerance for measured quantities —
+# 0.0 (exact), provisional until dev calibration shows it is too strict.
+
+rules_version: cal-rules-v1.13.0
+retrieval_floor: 0.40
+supported_threshold: 0.70
+contradicted_threshold: 0.70
+numeric_tolerance: 0.0
+approx_numeric_tolerance: 0.05

@@ -1,230 +1,377 @@
 # Claim Audit Lab
 
-Claim Audit Lab is a deterministic Python package and CLI for auditing whether draft
-claims are supported by supplied evidence.
+[![tests](https://img.shields.io/badge/tests-1010%20passing-3fb950)](#verification)
+[![coverage](https://img.shields.io/badge/branch%20coverage-95%25-3fb950)](#verification)
+[![python](https://img.shields.io/badge/python-3.11%2B-4da3ff)](pyproject.toml)
+[![license](https://img.shields.io/badge/license-MIT-4da3ff)](LICENSE)
+[![status](https://img.shields.io/badge/status-engineering%20build-d29922)](#status)
 
-It is designed for reviewers who need to see which claims are supported, which are too
-strong, which need sources, and which cannot be usefully assessed. It does not search
-for evidence or decide whether a statement matches the outside world.
+**Audit whether draft claims are actually carried by the evidence supplied with them.**
 
-## What v0.2 Does
+Claim Audit Lab retrieves candidate passages, asks an NLI model whether they entail the
+claim, and then decides under a frozen, versioned rule set. A language model contributes a
+signal; deterministic code makes the decision. Same inputs, same config, same output. Byte
+for byte.
 
-- loads Markdown or plain-text drafts and YAML or JSON evidence bundles
-- extracts conservative, typed claim candidates
-- audits supplied claim lists through the public `audit_claims(...)` API
-- ranks evidence and calculates deterministic supplied-evidence support signals
-- flags numeric mismatch, causal overreach, unsupported comparisons, strong wording,
-  missing sources, stale evidence, and other visible limitations
-- writes typed JSON and human-review Markdown reports
-- consumes locked C-B evidence bundles under the frozen `cal-rules-v1.2.0` policy
-- keeps each C-B claim bound to its own evidence and counterevidence passages
-- writes a resealed audited bundle copy without mutating the sealed input
-- produces byte-identical C-B outputs when run ID and timestamp are pinned
+It does not search the open web, and it does not decide whether a statement is true of the
+world. It answers a narrower question: **does the evidence you handed me support the claim
+you wrote?**
 
-Normal tests, examples, and demo runs are local. They require no network access, API
-keys, provider SDKs, or live model calls.
+📖 **Documentation: [camerontjs-dot.github.io/claim-audit-lab](https://camerontjs-dot.github.io/claim-audit-lab/)**
+: architecture, research briefs, benchmarks, and an interactive replay of real sealed audit
+traces.
 
-## v1 in progress
+---
 
-The v0.2 lexical matcher was falsified as a measurement instrument by the 2026-06-18
-blind PILOT-001 calibration (4/98 exact agreement, Cohen's κ ≈ -0.006). v1 redesigns
-the inference core: bi-encoder retrieve → DeBERTa-v3-base NLI entailment → deterministic
-rules. The design lock lives in [`DECISIONS.md`](DECISIONS.md) § 2026-06-21; the build
-runs on branch `cal-v1-skeleton`. The shipped v0.2 surface is unchanged while v1 builds.
+## Status
 
-The v1 subpackage at `src/claim_audit_lab/v1/` carries the protocols, models, default
-config, and skeleton implementations. Inference bodies are
-`NotImplementedError` until Phase 1 (deterministic core) and Phase 2 (real retriever +
-entailer); see the project's `plans/claim-audit-lab-v1-build-plan.md` for the sequence.
+**Engineering build. Mechanisms verified, accuracy not validated.**
 
-Install the v1 dependency stack:
+| | |
+|---|---|
+| Distribution | `0.4.0`, the first public tag. `0.3.0` was declared but never released |
+| Default engine | `v1-retrieve-entail`, retrieve → entail → rules on `audit` and `demo` |
+| Selectable | `v0.2-lexical` via `--engine` (falsified; kept for apparatus pins) |
+| Frozen rules | `cal-rules-v1.13.0`, governs the v1 engine only |
+| Blind acceptance gate | Exploratory 2026-07-24 on `cal-rules-v1.7.0`, n=50 vs **human** gold. Re-scored 2026-08-20: exact **27/50**, AC2 0.7901, weighted κ 0.6876. Unchanged. Not a confirmatory packet. |
+| Constructed twin | Same 25+25 shape, **derived** keys: **47/50** on `cal-rules-v1.11.0`. Not a recode of the sealed 50. |
+| Release tag | `v0.4.0`. **Not** `v1.0.0`. The leading zero is the claim being made about the interface and the accuracy story alike. |
+| Known limits | **D15**, a rules-only replay cannot test a gate whose inputs postdate its baseline; it reported `A5` as a no-op on human gold when the gate in fact moves 2 of 98. PILOT-001 exact agreement is **62/98**, corrected from 64/98. Numeric bounds (D1/D4/D12) and two-hop composition are v2 operators: CAL asks, it does not invent the comparison or the join. D6 held; D7 must not land alone. A7 withholds a contradiction when the passage names a different site than the claim. |
+
+The v0.2 lexical matcher was falsified as a measurement instrument by a blind PILOT-001
+calibration on 2026-06-18 (4/98 exact agreement, Cohen's κ ≈ −0.006). v1 is the redesign of
+the inference core in response.
+
+**Intended use (Track A):** an independent first-pass auditor. Verdicts are review
+inputs. A human still disposes consequential claims. Human gold is measurement, not
+permission to run.
+
+The July 50-item **human**-gold figure is 27/50 (on-scale AC2 0.7901 over n=22, not 50).
+That is what CAL vs one coder looks like on messy extracted claims. It is not a
+`v1.0.0` authorization. Against derived keys on licensed paraphrases of stipulated
+worlds, the same engine is 47/50. The remaining misses are numeric bounds, a quantity
+demotion, and (before A7) a site-scope false adverse.
+
+Four qualifications travel with any public number:
+
+1. **AC2 / weighted κ are computed over the on-scale minority, not 50.** `not_checkable`
+   sits off the ordinal scale. Exact 27/50 is the only headline on the whole human set.
+2. The human-gold gate ran on `cal-rules-v1.7.0`; the tree is now `v1.12.0`.
+3. D6 is held. D7 must not land without D6. Numeric comparison is a different operator
+   family, deferred.
+4. Exact agreement at 54% against a person is not a solved problem. Abstention with a
+   specific question is the designed remaining behavior.
+
+Nothing in this repository is validation evidence, gate clearance, an accuracy claim, or a
+GxP capability claim. Published measurements are DEV-grade and carry their population and n.
+See [Benchmarks & limits](https://camerontjs-dot.github.io/claim-audit-lab/benchmarks.html)
+for the open defect register, including the ones that are embarrassing.
+
+---
+
+## Install
+
+Not yet published to PyPI. Public GitHub `main` is still the earlier
+`cal-rules-v1.5.0` history. This v1 engine is unpublished `cal-v1-skeleton`, install from a local checkout until a release is tagged.
 
 ```bash
-python -m pip install -e ".[dev,v1]"
+# from this checkout; base is pure Python
+python -m pip install -e "."
+
+# with the v1 retrieve -> entail engine (CPU-only by design)
+python -m pip install -e ".[v1]"
 python -m spacy download en_core_web_sm
 ```
 
-Programmatic access to the pinned default `AuditConfig`:
+## Three version strings, and what each one means
+
+They are not interchangeable, and two of them used to collide.
+
+| axis | value | identifies |
+|---|---|---|
+| distribution | `0.4.0` | the Python package |
+| **engine** | `v1-retrieve-entail` (ordinary `audit`/`demo`) or `v0.2-lexical` | **which pipeline actually audits** |
+| rules version | `cal-rules-v1.13.0` | the frozen decision layer inside the v1 engine, SHA-pinned |
+
+Package `0.2.0` and engine `v0.2-lexical` shared a number by accident, which read as
+though the whole package were the retired lexical matcher. The bump broke that collision.
+`0.3.0` was declared but never released and named several different trees while the v1 work
+was in flight, so the first public tag is `0.4.0`, one version string, one tree.
+Engine and rules version both travel inside every v1 trace, so a trace always says which
+code produced it.
+
+## Which command runs which engine
+
+**This is the thing to know before running anything.** Ordinary `audit` and `demo`
+run retrieve → entail → rules. The `v0.2-lexical` engine is the falsified one (4/98 exact
+agreement, Cohen's κ ≈ 0 on PILOT-001) and remains selectable.
+
+| command | engine | notes |
+|---|---|---|
+| `claim-audit demo` | `v1-retrieve-entail` | fixture demo; `--engine v0.2-lexical` for the retired matcher |
+| `claim-audit audit` | `v1-retrieve-entail` | ordinary draft + YAML evidence; `--engine v0.2-lexical` still works |
+| `claim-audit audit-bundle` | `v0.2-lexical` **by default** | runs v1 only when the bundle's `CBAuditConfig.pipeline` is `v1-retrieve-entail` |
+| `claim-audit calibrate` | `v1-retrieve-entail` | research harness: needs a packet, a gold file and a config |
+| `claim-audit explain` | none | read-only over traces v1 already wrote |
+
+`audit-bundle` stays pin-faithful: sealed C-B bundles that do not opt in keep the
+lexical path so apparatus consumers are not silently re-routed.
+
+## Quickstart
+
+Run the built-in fixture demo. Requires the `[v1]` extra (CPU DeBERTa stack).
+No API keys.
+
+```bash
+claim-audit demo --out-dir ./demo-out
+```
+
+Audit a draft against an evidence bundle (same v1 engine):
+
+```bash
+claim-audit audit DRAFT.md --evidence evidence.yml --out ./report.md --json-out ./report.json
+```
+
+Audit a locked C-B evidence bundle, writing a resealed copy without mutating the input:
+
+```bash
+claim-audit audit-bundle ./evidence-bundle --out-dir ./out
+```
+
+### The human-readable report
+
+`demo` writes one automatically; `audit` writes one on request:
+
+```bash
+claim-audit audit DRAFT.md --evidence evidence.yml --out ./report.md --html-out ./report.html
+```
+
+The HTML report is a **single self-contained file**: the stylesheet is inlined, there are
+no scripts, and nothing is fetched when it is opened. It renders offline, it is safe to
+email, and it looks the same in a year. Rendering is deterministic: nothing in it reads the
+clock, so the same audit produces the same bytes.
+
+Every report states what produced it: engine, rules version, `rules_file_sha`,
+`audit_config_hash`, library version. It also carries a status band saying what it is not.
+That band is not decoration. This is the surface most likely to be forwarded to someone who
+never opens this README.
+
+**For PDF, print it from a browser.** The stylesheet has a print block that forces a light
+sheet, sets page margins, keeps a claim from splitting across a page break, and expands link
+targets. That is deliberately not a generated PDF: a PDF writer stamps a creation date and a
+file ID into every run, so a generated PDF could not be byte-reproducible even though the
+audit behind it is. The HTML is the record; the print is a rendering of it.
+
+On `audit-bundle` the report is opt-in, because there the audited bundle is the artifact and
+apparatus consumers read the traces:
+
+```bash
+claim-audit audit-bundle ./evidence-bundle --out-dir ./out --html-report
+```
+
+Explain what CAL decided and, when it abstained, why, read-only over traces it already
+wrote. Runs no model and re-decides nothing:
+
+```bash
+claim-audit explain ./out/traces --out-dir ./explanations
+```
+
+```
+Explained 98 traces
+Verdicts:
+    65  supported
+    26  not_checkable
+     4  partially_supported
+     2  contradicted
+     1  unsupported
+Abstentions: 26/98 (26.5%)
+    12  refutation_stood_down
+     7  read_silent
+     3  ambiguous_support
+     2  conflicting_signal
+     2  no_evidence_admitted
+```
+
+Every abstention carries a named reason and a reviewer next step, so `not_checkable` stops
+being one undifferentiated bucket. See
+[Benchmarks](https://camerontjs-dot.github.io/claim-audit-lab/benchmarks.html) for what
+those reasons look like across two corpora.
+
+Programmatic use:
 
 ```python
+from claim_audit_lab import audit_claims
 from claim_audit_lab.v1 import load_default_audit_config
 
-config = load_default_audit_config()
-# config.retriever.hf_revision_sha == "1110a243fdf4706b3f48f1d95db1a4f5529b4d41"
-# config.entailer.hf_revision_sha  == "6f5cf0a2b59cabb106aca4c287eed12e357e90eb"
+config = load_default_audit_config()   # pinned, SHA-verified thresholds
+report = audit_claims(claims, evidence)
 ```
 
-## Boundary
+## How it works
 
-Claim Audit Lab audits support from the evidence you supply. Match scores and support
-signals are deterministic measures, not truth probabilities.
+Three layers, each answering a different question. They fail on
+[disjoint populations](docs/research/brief-01-chunk-granularity-disjointness.md), so neither
+fix substitutes for the other.
 
-It does not:
+| | Layer | Kind | Decides | Key parameters |
+|---|---|---|---|---|
+| 1 | **Retrieve** | bi-encoder, probabilistic | which evidence is in the room | `retrieval_floor` 0.40, `top_k` 5 |
+| 2 | **Entail** | DeBERTa-v3 NLI, probabilistic | whether a passage entails the claim | `supported_threshold` 0.70, `contradicted_threshold` 0.70 |
+| 3 | **Rules** | frozen, deterministic | **the verdict** | `cal-rules-v1.10.0`, SHA-pinned |
 
-- discover or independently verify sources
-- replace human source review
-- certify research findings, workflows, or interventions
-- act as a regulated quality system
-- claim calibrated accuracy on real work
+Rule families `A1–A4` (gating and adverse), `B5` (degree), `C6a–f` (overreach), `P1–P2`
+(eligibility). Every rule that fires is recorded by id in the trace, alongside
+`audit_config_hash` and `library_version`.
 
-The public v0.2 engineering gate is complete. Research qualification is not: blind human
-calibration remains `0/98`. Human verdicts remain primary until the documented
-agreement, kappa, recall, and condition-error gates are met.
+Full detail: [Architecture](https://camerontjs-dot.github.io/claim-audit-lab/architecture.html).
 
-## Quick Start
+## Research
 
-Use Python 3.11 or newer.
+CAL is developed as an instrument, so its own behaviour is measured. Each probe writes a
+dated directory with its script, raw results, per-claim traces, and a `SHA256SUMS` manifest.
+Raw result files are never edited; corrections are appended as amendments.
+
+**[Brief 01: Why context allocation and semantic entailment fail on disjoint populations](docs/research/brief-01-chunk-granularity-disjointness.md)**
+
+Changing only the retrieval passage unit (sections to clauses) rescued **2 of 2**
+retrieval-floor failures and **0 of 10** entailment failures. A supporting clause that scores
+**0.392** inside its section scores **0.924** as its own unit: same text, same claim, same
+encoder. Because a claim that never clears the floor is never scored by the entailer, the two
+populations are disjoint by construction, and the size of each problem is unchanged by fixing
+the other.
+
+The docs site can [replay all twelve cases](https://camerontjs-dot.github.io/claim-audit-lab/)
+from the sealed traces.
+
+**[Brief 02: A gold that derives its own answers, and the coupled defect it found](docs/research/brief-02-construction-gold.md)**
+
+CAL's only human-labelled reference is measurably unreliable on absence claims: the coded
+verdict tracked how much material was in the bundle rather than any stated rule (Fisher exact
+**p = 0.0008**). So the reference was rebuilt as 33 cases whose verdicts are *derived from how
+each case was constructed*, regenerable rather than trusted, and no rater to disagree with.
+
+CAL scored **14 of 33** on a corpus deliberately concentrated on suspected failure shapes.
+Seven cases are constructed contradictions; the entailer caught all seven at 0.975–0.996 and
+`A4_negation_consistency` stood down all seven. The three `contradicted` verdicts CAL did emit
+were all on sources verified silent. And adding one passage stating the same obligation *for a
+different site* flipped a correct `supported` to an abstention. `max_entailment` takes the
+highest score regardless of its label.
+
+Both defects landed together as `cal-rules-v1.10.0`, because the corpus showed they could not
+land separately: replaying the real trace with the new gate blinded, the A4 fix on its own
+produces a **false `contradicted` on a correctly-sourced claim**. After the fix, exact
+agreement is **20 of 33**, the `contradicts` relation is **6/6**, and the adverse verdict goes
+from precision 0/3 and recall 0/7 to **6/9 and 6/7**. Six verdicts moved, all wrong→right, and
+**0 of 30** frozen inference goldens flip.
+
+**This landing is not free on human gold, and the correction is worth reading.** It was
+published as a no-op: 0 of 98 PILOT-001 verdicts changed against a rules-only control
+replay. Run end to end on 2026-08-20 it moves **2 of 98**, both `supported` →
+`not_checkable` via `A5_conflicting_evidence`, and human gold says `supported` for both.
+Exact agreement on PILOT-001 is **62/98**, not the 64/98 inherited from `v1.7.0`.
+
+The replay could not have seen it. `A5` reads `best_entail` and `best_contradict` on the
+support signal, and **those fields did not exist when the replayed baseline was recorded**,
+so the gate's precondition was unsatisfiable by construction. The evidence itself is
+identical. Same passages, same labels, 0 of 98 claims differ in entailed-set size. A
+rules-only replay cannot test a gate whose inputs postdate its baseline (D15).
+
+A third defect (an adverse verdict on absence claims whose source is silent) landed as
+`cal-rules-v1.10.0`, taking the corpus to **22 of 33** and the adverse verdict to
+**precision 6/6**. No false adverse verdict remains on it, at unchanged recall. The
+obvious fix there was lexical, and it separated the cases perfectly; it was rejected and
+rebuilt as a claim-side structural feature, because *overlap may flag, never decide* is a
+standing invariant here, adopted after the v0.2 lexical matcher was falsified, and after
+the same error was re-imported one layer up once already.
+
+`cal-rules-v1.11.0` then taught A6 to read the declared `source_boundary`, which moved the
+three exhaustive absences and the named-gap case. Re-run on the shipped `cal-rules-v1.13.0`,
+the corpus stands at **26 of 33**, with the adverse verdict at **precision 7/7 and recall
+7/7** and variant-group partition agreement **7 of 9**. Neither `v1.11.0` nor `v1.12.0`
+moves a human-gold verdict, checked end to end, not by replay.
+
+**All seven remaining misses are false abstentions**. Every one is gold `supported`, CAL
+`not_checkable`. There is no false adverse verdict left anywhere in the corpus at this rules
+version. That was a statement about the corpus and not the engine until `v1.13.0`: **D14**
+was a false adverse verdict found outside the corpus, measured at **14 of 66** identifier×verb
+combinations and now down to **3 of 66**. Every A7 passage in the corpus is short and free of
+alphanumeric identifiers, which is why the corpus never caught it. That is the designed direction to fail in, and it is still failing: CG-05 is D12
+(the entailer cannot instantiate a numeric bound), CG-06/CG-14/CG-15 are composition that v1
+never forms across passages, and CG-23b is two passages disagreeing where A5 abstains and
+asks which site the claim is about. Four of the 26 agreements are also reached with zero
+passages entailed (right answer, no reasoning) and are counted and named rather than
+quietly banked.
+
+## Verification
+
+The suite itself runs offline: models are pinned by revision SHA and read from the local
+cache, so no network access is required once they are present:
 
 ```bash
-python3.11 -m venv .venv
-. .venv/bin/activate
-python -m pip install -e ".[dev]"
+python -m pip install -e ".[dev,v1]"
+python -m coverage run --branch -m pytest -q
+python -m coverage report --include="src/*"
+python -m mypy
+python -m ruff check src/ && python -m ruff format --check src/
 ```
 
-Run the packaged demo:
+The install verifier is separate, and it does reach the network: it builds a wheel, creates
+three clean virtualenvs, and installs from PyPI to check that the published artifact works
+rather than the editable checkout. It provisions the spaCy pipeline from the local
+environment when one is already installed, and falls back to `spacy download`:
 
 ```bash
-claim-audit demo --out-dir build/reports/cli-demo
+python scripts/verify_install.py
 ```
 
-Audit a native draft and evidence bundle:
+Last full run, 2026-08-20, Python 3.11.15:
+
+| Check | Result |
+|---|---|
+| `pytest` | **1010 passed**, 0 failed |
+| Branch coverage, `src/` | **95%** (4073 stmts, 1192 branches) |
+| Clean-wheel install, v0.2 + v1 + ui surfaces | **verified** |
+| Sealed research outputs | **39/40 verify**. One left failing on purpose, see [DEV-005](validation/deviation-log.md) |
+| `mypy --strict` | **0 errors**, 49 source files |
+| `ruff check` + `format --check` | **0 errors**, `src/` fully formatted |
+
+Installing the UI surface additionally requires the `[ui]` extra, which pulls `fastapi`,
+`uvicorn`, and the `[v1]` inference stack:
 
 ```bash
-claim-audit audit examples/drafts/ai-research-note.md \
-  --evidence examples/evidence/ai-research-evidence.yml \
-  --out build/reports/ai-research-note.md \
-  --json-out build/reports/ai-research-note.json
+python -m pip install "claim-audit-lab[ui] @ git+https://github.com/camerontjs-dot/claim-audit-lab"
 ```
 
-Audit a locked C-B bundle:
+## Documentation
 
-```bash
-claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal \
-  --out-dir build/reports/cb-demo
+The site under [`docs/`](docs/) is static HTML/CSS/JS with no build step and no runtime
+dependencies, deployable directly via GitHub Pages.
+
+| Page | |
+|---|---|
+| [Overview](docs/index.html) | what it is, the three layers, install, sealed-trace replay |
+| [Architecture](docs/architecture.html) | why the verdict cannot come from the model |
+| [Research](docs/research.html) | briefs, and the hypotheses that died |
+| [Benchmarks](docs/benchmarks.html) | receipts, failure taxonomy, open defect register |
+
+Figures on the site are generated from the sealed probe directories by
+`scripts/gen_docs_traces.py` rather than transcribed, so the site and the briefs cannot drift
+apart without the generator failing.
+
+## Repository layout
+
 ```
-
-`audit-bundle` writes both a human-readable report and an audited bundle copy. For
-reproducible output, provide both metadata options:
-
-```bash
-claim-audit audit-bundle tests/fixtures/cb/evidence-bundle-minimal \
-  --out-dir build/reports/cb-reproducible \
-  --audit-run-id cal-example-run \
-  --audited-at 2026-06-13T12:00:00Z
+src/claim_audit_lab/       library + CLI
+  v1/                      retrieve -> entail -> rules core
+    configs/               frozen, SHA-pinned rule sets
+  assets/                  report stylesheet, inlined into rendered HTML reports
+  ui/                      Visual Workbench UI, stdlib server + FastAPI app
+tests/                    1010 tests, unit, metamorphic, golden, round-trip, CLI
+docs/                      static documentation site
+scripts/                   verification and generation utilities
+schema/                    contract version + vocabulary
 ```
-
-Supplying only one reproducibility option is an error.
-
-## Public Python API
-
-The supported orchestration entry points are:
-
-```python
-from claim_audit_lab import audit_claims, audit_document, classify_claim_text
-```
-
-- `classify_claim_text(text)` applies the sole governed classifier.
-- `audit_claims(claims, evidence_bundle, config=None)` audits an existing claim list.
-- `audit_document(draft, evidence_bundle, config=None)` extracts and audits native draft
-  claims, then returns an `AuditReport`.
-
-`ClaimType` includes `unclassified`. Native extraction skips unclassified text; C-B
-inputs preserve it and return `not_checkable`.
-
-## Audit Semantics
-
-The C-B path accepts only the exact frozen `cal-rules-v1.2.0` policy. Changed policy
-IDs, thresholds, weights, or switches fail closed.
-
-The deterministic support signal is:
-
-```text
-max_support - (0.3 * max_counterevidence)
-```
-
-The result is clamped to `[0, 1]`. Frozen boundaries are:
-
-| Boundary | Value |
-| --- | ---: |
-| Candidate admission | `0.40` |
-| Partial support | `0.55` |
-| Sourced support | `0.80` |
-| False-caution review | `0.85` |
-
-Counterevidence is never eligible as support. Linked counterevidence emits
-`counterevidence_present` and prevents a clean `supported` verdict. Absolute wording is
-suppressed only when direct evidence contains the same trigger and no linked
-counterevidence conflicts.
-
-## Labels
-
-Support labels:
-
-- `supported`: direct supplied evidence clears the sourced-support boundary.
-- `partially_supported`: some supplied-evidence support exists, but limits remain.
-- `unsupported`: the admitted evidence signal does not clear the partial boundary.
-- `overstated`: wording is stronger than the supplied evidence permits.
-- `needs_source`: the claim needs supplied evidence before useful assessment.
-- `not_checkable`: the claim is preserved but the classifier cannot assign an auditable
-  semantic type.
-
-Risk labels are `low`, `medium`, and `high`. Assessments also expose
-`rewrite_guidance: list[str]`.
-
-## Example Reports
-
-The repo contains two fictional draft/evidence/report families:
-
-| Fixture | Current v0.2 result |
-| --- | --- |
-| AI research memo | 4 claims: 1 supported, 1 partially supported, 2 overstated |
-| Product README paragraph | 4 claims: 2 unsupported, 2 overstated |
-
-See `examples/reports/README.md` for the artifact map.
-
-## Validation
-
-The repository keeps validation-inspired records visible:
-
-- `docs/validation-matrix-reference.md` maps public promises to `CAL-REQ-*` rows.
-- `docs/verification.md` records the v0.2 verification chain and results.
-- `validation/` contains IQ/OQ/PQ-style records and the deviation log.
-
-The engineering gate covers 213 tests, Ruff lint and formatting, strict mypy,
-compileall, 96% source branch coverage, clean-wheel execution, deterministic examples,
-and the Harness to Evidence Bundler to Claim Audit Lab round trip.
-
-The sealed 98-claim pilot was replayed with pinned metadata. A second replay was
-byte-identical, and every changed verdict is recorded in the MainFrame project outputs.
-That replay is engineering evidence only. It is not human calibration.
-
-## Development Checks
-
-```bash
-.venv/bin/python -m pytest
-.venv/bin/python -m ruff check .
-.venv/bin/python -m ruff format --check .
-.venv/bin/python -m mypy src
-.venv/bin/python -m compileall -q src tests
-.venv/bin/python -m coverage run --branch -m pytest
-.venv/bin/python -m coverage report --include='src/*' --fail-under=95
-.venv/bin/python -m build --wheel
-.venv/bin/python scripts/verify_install.py
-```
-
-## Repository Map
-
-| Path | Purpose |
-| --- | --- |
-| `src/claim_audit_lab/` | Package implementation and packaged runtime resources |
-| `tests/` | Unit, boundary, integration, CLI, report, and contract tests |
-| `examples/` | Fictional native inputs and generated reports |
-| `schema/` | Repository copies of the locked C-B contract resources |
-| `docs/` | Validation matrix and release verification |
-| `validation/` | Qualification-style records and deviations |
-| `scripts/verify_install.py` | Clean-wheel verifier |
-| `CHANGELOG.md` | Release history and known limits |
 
 ## License
 
-MIT. See `LICENSE`.
+MIT. See [LICENSE](LICENSE).

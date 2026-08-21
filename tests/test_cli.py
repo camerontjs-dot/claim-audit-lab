@@ -50,12 +50,16 @@ def test_command_help_documents_options() -> None:
     assert "--evidence" in audit_result.output
     assert "--out" in audit_result.output
     assert "--json-out" in audit_result.output
+    assert "--engine" in audit_result.output
+    assert "v1-retrieve-entail" in audit_result.output
     assert audit_bundle_result.exit_code == 0
     assert "--out-dir" in audit_bundle_result.output
     assert "--audit-run-id" in audit_bundle_result.output
     assert "--audited-at" in audit_bundle_result.output
     assert demo_result.exit_code == 0
     assert "--out-dir" in demo_result.output
+    assert "--engine" in demo_result.output
+    assert "v1-retrieve-entail" in demo_result.output
 
 
 def test_audit_writes_markdown_and_json(tmp_path: Path) -> None:
@@ -216,7 +220,7 @@ def test_audit_bundle_writes_audited_copy_and_summary(tmp_path: Path) -> None:
     assert result.exit_code == 0
     assert audited_bundle.exists()
     assert report_path.exists()
-    assert "1 claims audited" in result.stdout
+    assert "1 claims audited (engine v0.2-lexical)" in result.stdout
     assert "0 retrieval seeds skipped" in result.stdout
     assert f"Wrote audited C-B bundle: {audited_bundle}" in result.stdout
     assert f"Wrote Markdown report: {report_path}" in result.stdout
@@ -294,7 +298,7 @@ def test_audit_bundle_intake_failure_exits_nonzero_and_writes_deviation(
 
 def test_demo_writes_reports_to_requested_dir(tmp_path: Path) -> None:
     """The demo subcommand gives reviewers a one-command report path."""
-    result = runner.invoke(app, ["demo", "--out-dir", str(tmp_path)])
+    result = runner.invoke(app, ["demo", "--out-dir", str(tmp_path), "--engine", "v0.2-lexical"])
 
     markdown_out = tmp_path / "ai-research-note.cli.md"
     json_out = tmp_path / "ai-research-note.cli.json"
@@ -310,7 +314,7 @@ def test_demo_does_not_overwrite_checked_in_fixtures(tmp_path: Path) -> None:
     """Demo output stays away from tracked slice fixtures."""
     before = SLICE_MARKDOWN.read_text(encoding="utf-8")
 
-    result = runner.invoke(app, ["demo", "--out-dir", str(tmp_path)])
+    result = runner.invoke(app, ["demo", "--out-dir", str(tmp_path), "--engine", "v0.2-lexical"])
 
     assert result.exit_code == 0
     assert SLICE_MARKDOWN.read_text(encoding="utf-8") == before
@@ -324,7 +328,12 @@ def test_cli_does_not_emit_forbidden_capability_language(tmp_path: Path) -> None
     _assert_no_forbidden_capability_language(result.stdout)
 
 
-def _run_ai_research_audit(markdown_out: Path, json_out: Path | None = None):
+def _run_ai_research_audit(
+    markdown_out: Path,
+    json_out: Path | None = None,
+    *,
+    engine: str | None = "v0.2-lexical",
+):
     args = [
         "audit",
         str(EXAMPLES_ROOT / "drafts" / "ai-research-note.md"),
@@ -335,6 +344,8 @@ def _run_ai_research_audit(markdown_out: Path, json_out: Path | None = None):
     ]
     if json_out is not None:
         args.extend(["--json-out", str(json_out)])
+    if engine is not None:
+        args.extend(["--engine", engine])
     return runner.invoke(app, args)
 
 
@@ -360,3 +371,74 @@ def _assert_no_forbidden_capability_language(text: str) -> None:
 
 def _error_output(result) -> str:
     return getattr(result, "stderr", "") or result.output
+
+
+def test_audit_default_engine_is_v1_retrieve_entail(tmp_path: Path) -> None:
+    """Ordinary audit (no --engine) writes the v1 engine id from the real CLI path."""
+    markdown_out = tmp_path / "audit.md"
+    json_out = tmp_path / "audit.json"
+
+    result = _run_ai_research_audit(markdown_out, json_out, engine=None)
+
+    assert result.exit_code == 0, result.output
+    markdown = markdown_out.read_text(encoding="utf-8")
+    assert "v1-retrieve-entail" in markdown
+    assert "cal-rules-v1.13.0" in markdown
+    assert "## Known limits" in markdown
+    assert "Not a tagged v1.0.0" in markdown
+    payload = json.loads(json_out.read_text(encoding="utf-8"))
+    assert payload["engine"] == "v1-retrieve-entail"
+    assert payload["rules_version"] == "cal-rules-v1.13.0"
+    assert payload["traces"]
+    assert "v1-retrieve-entail" in result.stdout
+
+
+def test_demo_default_engine_is_v1_retrieve_entail(tmp_path: Path) -> None:
+    """Ordinary demo (no --engine) writes the v1 engine id from the real CLI path."""
+    result = runner.invoke(app, ["demo", "--out-dir", str(tmp_path)])
+
+    markdown_out = tmp_path / "ai-research-note.cli.md"
+    json_out = tmp_path / "ai-research-note.cli.json"
+    assert result.exit_code == 0, result.output
+    markdown = markdown_out.read_text(encoding="utf-8")
+    assert "v1-retrieve-entail" in markdown
+    assert "cal-rules-v1.13.0" in markdown
+    payload = json.loads(json_out.read_text(encoding="utf-8"))
+    assert payload["engine"] == "v1-retrieve-entail"
+    assert payload["rules_version"] == "cal-rules-v1.13.0"
+    assert payload["traces"]
+    assert "v1-retrieve-entail" in result.stdout
+
+
+def test_audit_bundle_without_v1_opt_in_stays_lexical(tmp_path: Path) -> None:
+    """audit-bundle still follows the sealed bundle pipeline (v0.2-lexical by default)."""
+    bundle_dir = _copy_cb_fixture(tmp_path)
+    out_dir = tmp_path / "cb-output"
+
+    result = runner.invoke(app, ["audit-bundle", str(bundle_dir), "--out-dir", str(out_dir)])
+
+    assert result.exit_code == 0, result.output
+    assert "v0.2-lexical" in result.stdout
+    assert "v1-retrieve-entail" not in result.stdout
+    report = (out_dir / f"{bundle_dir.name}-audit-report.md").read_text(encoding="utf-8")
+    assert "## Executive summary" in report
+
+
+def test_unknown_engine_exits_before_audit(tmp_path: Path) -> None:
+    result = runner.invoke(
+        app,
+        [
+            "audit",
+            str(EXAMPLES_ROOT / "drafts" / "ai-research-note.md"),
+            "--evidence",
+            str(EXAMPLES_ROOT / "evidence" / "ai-research-evidence.yml"),
+            "--out",
+            str(tmp_path / "audit.md"),
+            "--engine",
+            "not-an-engine",
+        ],
+    )
+
+    assert result.exit_code == 2
+    assert "v1-retrieve-entail" in _error_output(result)
+    assert not (tmp_path / "audit.md").exists()

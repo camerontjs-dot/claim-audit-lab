@@ -24,7 +24,9 @@
         -3.294921875,
         -1.091796875,
         4.5625
-      ]
+      ],
+      "p_entail": 0.000385284423828125,
+      "p_contradict": 0.99609375
     }
   ],
   "features": {
@@ -45,7 +47,11 @@
   "support_signal": {
     "label": "contradict",
     "max_entailment_score": 0.99609375,
-    "contributing_passage_id": "p1"
+    "contributing_passage_id": "p1",
+    "best_entail": 0.000385284423828125,
+    "best_contradict": 0.99609375,
+    "best_entail_passage_id": "p1",
+    "best_contradict_passage_id": "p1"
   },
   "rules_fired": [
     {
@@ -60,6 +66,22 @@
     "citation_status": "not_applicable",
     "audit_confidence": "high"
   },
-  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
-  "library_version": "0.2.0"
+  "audit_config_hash": "sha256:96a60db8fc9d6dd5404c0d2625b97755ebc8d073a507867fc526f59b513ad3c4",
+  "library_version": "0.4.0",
+  "negation_probe": {
+    "negated_claim": "The service does not meet 99 percent uptime.",
+    "abstained": false,
+    "result": {
+      "passage_id": "p1",
+      "label": "entail",
+      "score": 0.96923828125,
+      "raw_logits": [
+        3.19140625,
+        -0.325927734375,
+        -2.8828125
+      ],
+      "p_entail": 0.96923828125,
+      "p_contradict": 0.0022296905517578125
+    }
+  }
 }

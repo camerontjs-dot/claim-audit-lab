@@ -16,7 +16,6 @@ from scripts.gold_lite_model_panel import (
     MODEL_OUTPUT_SCHEMA,
     ModelCoderOutput,
     aggregate_model_reviews,
-    build_anthropic_request,
     build_blinded_prompt,
     build_majority_triage,
     finalize_parent_panel,
@@ -279,6 +278,31 @@ def test_parent_refusal_is_preserved_as_unavailable_vote(tmp_path: Path) -> None
     assert json.loads(failure.read_text())["stop_reason"] == "refusal"
 
 
+def test_parent_finalizer_rejects_manifest_path_traversal_before_writing(
+    tmp_path: Path,
+) -> None:
+    packet = _packet(tmp_path)
+    out = tmp_path / "parent-panel"
+    prepare_parent_panel(
+        packet,
+        out,
+        tiers=["haiku", "sonnet"],
+        max_tokens=4_000,
+        effort="low",
+    )
+    manifest_path = out / "panel-manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["parents"][0]["request_dir"] = "../escape"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    escape = tmp_path / "escape"
+    escape.mkdir()
+    (escape / "api-response.json").write_text("{}", encoding="utf-8")
+
+    with pytest.raises(ValueError, match="parent spec order, path"):
+        finalize_parent_panel(packet, out)
+    assert not (escape / "model-review-failure.json").exists()
+
+
 def test_normalization_binds_selected_candidate_to_packet_provenance(tmp_path: Path) -> None:
     packet = _packet(tmp_path)
     output = _coder_output(packet, labels=("supports", "insufficient"))
@@ -324,9 +348,10 @@ def test_normalization_rejects_unknown_candidate_and_missing_atom(tmp_path: Path
 def test_api_response_validation_checks_request_hash_model_and_output(tmp_path: Path) -> None:
     packet = _packet(tmp_path)
     model_id = MODEL_IDS["haiku"]
-    request = build_anthropic_request(packet, model_id=model_id, max_tokens=12_000)
-    request_path = tmp_path / "request.json"
-    request_path.write_text(json.dumps(request), encoding="utf-8")
+    panel_dir = tmp_path / "panel"
+    manifest = prepare_panel(packet, panel_dir, tiers=["haiku"], max_tokens=12_000)
+    request_path = panel_dir / model_id / "request.json"
+    request = json.loads(request_path.read_text(encoding="utf-8"))
     structured = _coder_output(packet).model_dump_json()
     envelope = {
         "schema_version": BRIDGE_SCHEMA,
@@ -341,18 +366,14 @@ def test_api_response_validation_checks_request_hash_model_and_output(tmp_path: 
             "usage": {"input_tokens": 100, "output_tokens": 50},
         },
     }
-    response_path = tmp_path / "response.json"
+    response_path = request_path.parent / "response.json"
     response_path.write_text(json.dumps(envelope), encoding="utf-8")
-    manifest = {
-        "panel_id": "test-panel",
-        "prompt_sha256": "0" * 64,
-    }
 
     artifact = validate_api_response(
         packet,
         request_path,
         response_path,
-        tmp_path / "model-review.json",
+        request_path.parent / "model-review.json",
         panel_manifest=manifest,
     )
 
@@ -365,7 +386,20 @@ def test_api_response_validation_checks_request_hash_model_and_output(tmp_path: 
             packet,
             request_path,
             response_path,
-            tmp_path / "other-review.json",
+            request_path.parent / "other-review.json",
+            panel_manifest=manifest,
+        )
+
+    request["messages"][0]["content"] += "\nOld labels: supported."
+    request_path.write_text(json.dumps(request), encoding="utf-8")
+    envelope["request_sha256"] = canonical_sha256(request)
+    response_path.write_text(json.dumps(envelope), encoding="utf-8")
+    with pytest.raises(ValueError, match="not canonical"):
+        validate_api_response(
+            packet,
+            request_path,
+            response_path,
+            request_path.parent / "tampered-review.json",
             panel_manifest=manifest,
         )
 
@@ -386,6 +420,39 @@ def test_unanimous_tier_votes_create_only_audited_silver_candidates(tmp_path: Pa
     triage = build_majority_triage(consensus)
     assert triage["counts"]["strong_majority_suggestion"] == 2
     assert triage["human_decision_required_for_every_atom"] is True
+
+
+def test_silver_aggregation_validates_artifact_schema_and_nested_provenance(
+    tmp_path: Path,
+) -> None:
+    packet = _packet(tmp_path)
+    manifest = {"panel_id": "test-panel"}
+    artifact_a = _artifact(packet, MODEL_IDS["haiku"])
+    artifact_b = _artifact(packet, MODEL_IDS["sonnet"])
+    artifact_a["schema_version"] = "wrong"
+    with pytest.raises(ValueError, match="unsupported model-review"):
+        aggregate_model_reviews(packet, [artifact_a, artifact_b], panel_manifest=manifest)
+
+    artifact_a = _artifact(packet, MODEL_IDS["haiku"])
+    artifact_a["review"]["decisions"][0]["selected_passages"][0]["passage_hash"] = (
+        "sha256:" + "0" * 64
+    )
+    with pytest.raises(ValueError, match="provenance/hash drift"):
+        aggregate_model_reviews(packet, [artifact_a, artifact_b], panel_manifest=manifest)
+
+    artifact_a = _artifact(packet, MODEL_IDS["haiku"])
+    relabelled = _artifact(packet, MODEL_IDS["sonnet"])
+    relabelled["review"]["reviewer"] = artifact_a["review"]["reviewer"]
+    with pytest.raises(ValueError, match="identity drift"):
+        aggregate_model_reviews(packet, [artifact_a, relabelled], panel_manifest=manifest)
+
+    artifact_a = _artifact(packet, MODEL_IDS["haiku"])
+    artifact_b = _artifact(packet, MODEL_IDS["sonnet"])
+    response_hash = "sha256:" + "2" * 64
+    artifact_a["api_response_sha256"] = response_hash
+    artifact_b["api_response_sha256"] = response_hash
+    with pytest.raises(ValueError, match="duplicate model source receipts"):
+        aggregate_model_reviews(packet, [artifact_a, artifact_b], panel_manifest=manifest)
 
 
 def test_disagreement_uncertainty_and_retrieval_gap_stay_in_human_queue(

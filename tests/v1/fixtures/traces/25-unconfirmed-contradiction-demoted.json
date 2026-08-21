@@ -1,0 +1,65 @@
+{
+  "claim_id": "e2e-25",
+  "claim_text": "The parcel was sealed before shipment.",
+  "retrieval": [
+    {
+      "passage_id": "p-1",
+      "score": 0.9
+    }
+  ],
+  "entailment": [
+    {
+      "passage_id": "p-1",
+      "label": "contradict",
+      "score": 0.92,
+      "raw_logits": [
+        -1.0,
+        -1.0,
+        2.0
+      ]
+    }
+  ],
+  "features": {
+    "numerical_values": [],
+    "has_explicit_negation": false,
+    "has_universal_quantifier": false,
+    "modal_strength": "asserts",
+    "claim_token_count": 7,
+    "compound_claim": false,
+    "sentence_type": "declarative"
+  },
+  "support_signal": {
+    "label": "contradict",
+    "max_entailment_score": 0.92,
+    "contributing_passage_id": "p-1"
+  },
+  "rules_fired": [
+    {
+      "rule_id": "A4_negation_consistency",
+      "reason": "NLI contradiction at 0.92 is unconfirmed: the premise does not entail the negated claim (neutral 0.95) → not_checkable"
+    }
+  ],
+  "verdict": {
+    "support_verdict": "not_checkable",
+    "support_verdict_reason": "no_entail_signal",
+    "audit_flags": [],
+    "citation_status": "not_applicable",
+    "audit_confidence": "low"
+  },
+  "audit_config_hash": "sha256:96a60db8fc9d6dd5404c0d2625b97755ebc8d073a507867fc526f59b513ad3c4",
+  "library_version": "0.4.0",
+  "negation_probe": {
+    "negated_claim": "The parcel was not sealed before shipment.",
+    "abstained": false,
+    "result": {
+      "passage_id": "p-1",
+      "label": "neutral",
+      "score": 0.95,
+      "raw_logits": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

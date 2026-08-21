@@ -427,6 +427,7 @@ def normalize_model_output(
     model_id: str,
     exported_at_utc: str,
     expected_parent_ids: list[str] | None = None,
+    reviewer: str | None = None,
 ) -> tuple[ReviewExport, list[dict[str, Any]]]:
     """Bind model-selected IDs back to exact packet provenance and derive parents."""
     if output.packet_sha256 != packet.packet_sha256:
@@ -495,7 +496,7 @@ def normalize_model_output(
         schema_version="gold-lite-review-v0.1",
         rehearsal_id=packet.rehearsal_id,
         packet_sha256=packet.packet_sha256,
-        reviewer=f"anthropic-api:{model_id}",
+        reviewer=reviewer or f"anthropic-api:{model_id}",
         exported_at_utc=exported_at_utc,
         decompositions=decompositions,
         decisions=decisions,
@@ -506,6 +507,101 @@ def normalize_model_output(
         for result in parent_results
         if result.parent_id in selected_ids
     ]
+
+
+def _validate_anthropic_parent_specs(
+    packet: ReviewPacket,
+    parent_specs: list[Any],
+) -> None:
+    if len(parent_specs) != len(packet.parents):
+        raise ValueError("Anthropic panel parent specs do not match packet")
+    for index, (parent, parent_spec) in enumerate(
+        zip(packet.parents, parent_specs, strict=True), start=1
+    ):
+        if not isinstance(parent_spec, dict):
+            raise ValueError("Anthropic parent spec must be an object")
+        if (
+            parent_spec.get("parent_id") != parent.parent_id
+            or parent_spec.get("request_dir") != f"p{index:02d}"
+            or parent_spec.get("prompt_sha256") != _sha256_text(build_parent_prompt(packet, parent))
+        ):
+            raise ValueError("Anthropic parent spec order, path, or prompt hash drift")
+
+
+def _canonical_anthropic_request(
+    packet: ReviewPacket,
+    request_path: Path,
+    panel_manifest: dict[str, Any],
+    *,
+    expected_parent_ids: list[str] | None,
+) -> dict[str, Any]:
+    """Rebuild the only Anthropic request admitted for this packet unit."""
+    if panel_manifest.get("schema_version") != PANEL_MANIFEST_SCHEMA:
+        raise ValueError("unsupported Anthropic panel manifest schema")
+    if panel_manifest.get("packet_sha256") != packet.packet_sha256:
+        raise ValueError("Anthropic panel manifest packet hash does not match packet")
+    model_ids = panel_manifest.get("model_ids")
+    if not isinstance(model_ids, list) or not all(
+        isinstance(model_id, str) and model_id for model_id in model_ids
+    ):
+        raise ValueError("Anthropic panel manifest model_ids must be a non-empty string array")
+
+    mode = panel_manifest.get("request_mode", "full-packet")
+    parent: ReviewParent | None = None
+    effort: str | None = None
+    if mode == "full-packet":
+        if expected_parent_ids is not None:
+            expected = [item.parent_id for item in packet.parents]
+            if expected_parent_ids != expected:
+                raise ValueError("full-packet Anthropic request parent coverage drift")
+        max_tokens = panel_manifest.get("max_tokens_per_model")
+        model_dir_name = request_path.parent.name
+    elif mode == "one-parent-per-call":
+        if expected_parent_ids is None or len(expected_parent_ids) != 1:
+            raise ValueError("parent Anthropic request requires one expected parent ID")
+        parent = next(
+            (item for item in packet.parents if item.parent_id == expected_parent_ids[0]),
+            None,
+        )
+        if parent is None:
+            raise ValueError(f"unknown expected parent ID: {expected_parent_ids[0]}")
+        parent_specs = panel_manifest.get("parents")
+        if not isinstance(parent_specs, list):
+            raise ValueError("Anthropic parent manifest is missing parent specs")
+        _validate_anthropic_parent_specs(packet, parent_specs)
+        parent_spec = next(
+            (
+                item
+                for item in parent_specs
+                if isinstance(item, dict) and item.get("parent_id") == parent.parent_id
+            ),
+            None,
+        )
+        if parent_spec is None or parent_spec.get("request_dir") != request_path.parent.name:
+            raise ValueError("Anthropic parent request path does not match panel manifest")
+        max_tokens = panel_manifest.get("max_tokens_per_parent")
+        effort_value = panel_manifest.get("effort_for_adaptive_models")
+        if not isinstance(effort_value, str) or not effort_value:
+            raise ValueError("Anthropic parent manifest is missing effort")
+        effort = effort_value
+        model_dir_name = request_path.parent.parent.name
+    else:
+        raise ValueError(f"unsupported Anthropic panel request mode: {mode}")
+
+    if not isinstance(max_tokens, int) or max_tokens <= 0:
+        raise ValueError("Anthropic panel manifest has invalid max_tokens")
+    matching_models = [
+        model_id for model_id in model_ids if _model_slug(model_id) == model_dir_name
+    ]
+    if len(matching_models) != 1:
+        raise ValueError("Anthropic request path does not identify one configured model")
+    return build_anthropic_request(
+        packet,
+        model_id=matching_models[0],
+        max_tokens=max_tokens,
+        parent=parent,
+        effort=effort,
+    )
 
 
 def validate_api_response(
@@ -519,6 +615,16 @@ def validate_api_response(
 ) -> dict[str, Any]:
     """Validate one raw API receipt and write a provenance-bound model review."""
     request_body = _load_json_object(request_path)
+    expected_request = _canonical_anthropic_request(
+        packet,
+        request_path,
+        panel_manifest,
+        expected_parent_ids=expected_parent_ids,
+    )
+    if request_body != expected_request:
+        raise ValueError(
+            "prepared Anthropic request is not canonical for the packet and panel manifest"
+        )
     envelope = _load_json_object(response_path)
     if envelope.get("schema_version") != BRIDGE_SCHEMA:
         raise ValueError(f"unsupported bridge response schema in {response_path}")
@@ -626,10 +732,11 @@ def finalize_parent_panel(packet: ReviewPacket, run_dir: Path) -> dict[str, Any]
         raise ValueError("panel manifest model_ids must be a string array")
     if not isinstance(parent_specs, list) or len(parent_specs) != len(packet.parents):
         raise ValueError("panel manifest parent specs do not match packet")
+    _validate_anthropic_parent_specs(packet, parent_specs)
 
     combined_artifacts: list[dict[str, Any]] = []
     for model_id in model_ids:
-        model_dir = run_dir / _model_slug(model_id)
+        model_dir = _safe_direct_child(run_dir, _model_slug(model_id), label="model_dir")
         child_reviews: list[ReviewExport] = []
         valid_parent_reviews: list[dict[str, Any]] = []
         failed_parent_reviews: list[dict[str, Any]] = []
@@ -637,7 +744,11 @@ def finalize_parent_panel(packet: ReviewPacket, run_dir: Path) -> dict[str, Any]
         for parent, parent_spec in zip(packet.parents, parent_specs, strict=True):
             if parent_spec.get("parent_id") != parent.parent_id:
                 raise ValueError("panel manifest parent order or identity drift")
-            request_dir = model_dir / str(parent_spec["request_dir"])
+            request_dir = _safe_direct_child(
+                model_dir,
+                str(parent_spec["request_dir"]),
+                label="request_dir",
+            )
             response_path = request_dir / "api-response.json"
             if not response_path.is_file():
                 raise ValueError(f"missing expected API response: {response_path}")
@@ -735,10 +846,22 @@ def aggregate_model_reviews(
     models = [str(artifact["model_id"]) for artifact in artifacts]
     _require_unique(models, "panel model")
     reviews: dict[str, ReviewExport] = {}
+    source_fingerprints: dict[str, str] = {}
     for artifact, model_id in zip(artifacts, models, strict=True):
+        if artifact.get("schema_version") != MODEL_REVIEW_SCHEMA:
+            raise ValueError(f"{model_id}: unsupported model-review artifact schema")
         if artifact.get("packet_sha256") != packet.packet_sha256:
             raise ValueError(f"{model_id}: model-review packet hash mismatch")
-        reviews[model_id] = ReviewExport.model_validate(artifact["review"])
+        review = ReviewExport.model_validate(artifact["review"])
+        validate_review_export(packet, review, require_complete=False)
+        _validate_model_review_identity(artifact, review, model_id=model_id)
+        source_fingerprint = _model_artifact_source_fingerprint(artifact)
+        if source_fingerprint is not None:
+            prior = source_fingerprints.get(source_fingerprint)
+            if prior is not None:
+                raise ValueError(f"duplicate model source receipts: {prior} and {model_id}")
+            source_fingerprints[source_fingerprint] = model_id
+        reviews[model_id] = review
 
     decompositions = {
         model_id: {item.parent_id: item for item in review.decompositions}
@@ -863,6 +986,12 @@ def aggregate_model_reviews(
         "panel_limit": (
             "all coders are Anthropic model tiers; agreement is correlated model evidence, "
             "not independent human annotation"
+            if panel_manifest.get("schema_version") == PANEL_MANIFEST_SCHEMA
+            else panel_manifest.get(
+                "independence_boundary",
+                "all coders are Anthropic model tiers; agreement is correlated model evidence, "
+                "not independent human annotation",
+            )
         ),
         "counts": {
             "models": len(models),
@@ -1198,6 +1327,65 @@ def _sha256_file(path: Path) -> str:
 
 def _model_slug(model_id: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", model_id.lower()).strip("-")
+
+
+def _safe_direct_child(base: Path, relative: str, *, label: str) -> Path:
+    candidate_relative = Path(relative)
+    if (
+        not relative
+        or candidate_relative.is_absolute()
+        or len(candidate_relative.parts) != 1
+        or candidate_relative.name in {".", ".."}
+    ):
+        raise ValueError(f"unsafe Anthropic {label}: {relative!r}")
+    candidate = base / candidate_relative
+    if candidate.resolve().parent != base.resolve():
+        raise ValueError(f"Anthropic {label} escapes its run directory: {relative!r}")
+    return candidate
+
+
+def _validate_model_review_identity(
+    artifact: dict[str, Any],
+    review: ReviewExport,
+    *,
+    model_id: str,
+) -> None:
+    provider = artifact.get("provider")
+    if provider is None:
+        expected_reviewer = f"anthropic-api:{model_id}"
+    elif isinstance(provider, str) and provider:
+        expected_reviewer = f"{provider}:{model_id}"
+    else:
+        raise ValueError(f"{model_id}: model-review provider must be a non-empty string")
+    if review.reviewer != expected_reviewer:
+        raise ValueError(
+            f"{model_id}: model-review identity drift: "
+            f"expected reviewer={expected_reviewer!r} got={review.reviewer!r}"
+        )
+
+
+def _model_artifact_source_fingerprint(artifact: dict[str, Any]) -> str | None:
+    hashes: set[str] = set()
+    for collection_name in (
+        "source_reviews",
+        "source_parent_reviews",
+        "failed_parent_reviews",
+    ):
+        collection = artifact.get(collection_name)
+        if not isinstance(collection, list):
+            continue
+        for item in collection:
+            if not isinstance(item, dict):
+                continue
+            for field in ("response_receipt_sha256", "api_response_sha256"):
+                value = item.get(field)
+                if isinstance(value, str) and re.fullmatch(r"sha256:[a-f0-9]{64}", value):
+                    hashes.add(value)
+    for field in ("response_receipt_sha256", "api_response_sha256"):
+        value = artifact.get(field)
+        if isinstance(value, str) and re.fullmatch(r"sha256:[a-f0-9]{64}", value):
+            hashes.add(value)
+    return _canonical_sha256(sorted(hashes)) if hashes else None
 
 
 def _require_unique(values: list[str], label: str) -> None:

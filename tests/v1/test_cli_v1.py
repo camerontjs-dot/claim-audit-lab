@@ -51,11 +51,12 @@ def test_audit_bundle_routes_to_v1_and_writes_trace(tmp_path: Path) -> None:
     result = runner.invoke(app, ["audit-bundle", str(bundle), "--out-dir", str(out_dir)])
 
     assert result.exit_code == 0, result.output
-    assert "v1 retrieve-entail" in result.stdout
+    assert "v1-retrieve-entail" in result.stdout
     audited = out_dir / f"{bundle.name}-audited"
     assert (audited / "claims" / "clm-001.audit-trace.json").exists()
-    # no markdown report on the v1 path — the trace is the report
+    # no report on the v1 path by default — the trace is the report
     assert not (out_dir / f"{bundle.name}-audit-report.md").exists()
+    assert not (out_dir / f"{bundle.name}-audit-report.html").exists()
 
     reloaded = load_bundle(audited, deviations_dir=tmp_path / "out-dev")
     audit = reloaded.claims[0].audit
@@ -86,3 +87,39 @@ def test_v1_audit_bundle_is_byte_identical_with_pinned_metadata(tmp_path: Path) 
     first = roots[0] / f"{bundle.name}-audited"
     second = roots[1] / f"{bundle.name}-audited"
     assert _tree_snapshot(first) == _tree_snapshot(second)
+
+
+def test_audit_bundle_v1_writes_an_html_report_when_asked(tmp_path: Path) -> None:
+    """The human-readable copy is opt-in here, and carries the run's pins when taken."""
+    bundle = _make_v1_bundle(tmp_path / "evidence-bundle-minimal")
+    out_dir = tmp_path / "out"
+
+    result = runner.invoke(
+        app,
+        [
+            "audit-bundle",
+            str(bundle),
+            "--out-dir",
+            str(out_dir),
+            "--html-report",
+            "--audit-run-id",
+            "run-fixed-001",
+            "--audited-at",
+            "2026-08-20T00:00:00Z",
+        ],
+    )
+
+    assert result.exit_code == 0, result.output
+    report = out_dir / f"{bundle.name}-audit-report.html"
+    assert report.exists()
+    html = report.read_text(encoding="utf-8")
+
+    # The pins that make it attestable, including the two the caller pinned.
+    assert "v1-retrieve-entail" in html
+    assert "cal-rules-v1.13.0" in html
+    assert "run-fixed-001" in html
+    assert "2026-08-20T00:00:00Z" in html
+    # And the band that stops it reading as a validated report.
+    assert "not validated" in html.lower()
+    # Still no Markdown on this path.
+    assert not (out_dir / f"{bundle.name}-audit-report.md").exists()

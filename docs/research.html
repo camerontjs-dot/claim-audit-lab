@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research: Claim Audit Lab</title>
+<meta name="description" content="Empirical research briefs from Claim Audit Lab, each traced to a sealed output directory with its own checksum manifest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cal.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">claim<span class="dim">-audit-</span>lab</a>
+    <nav class="site">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 style="margin-top:40px">Research</h1>
+  <p class="muted" style="max-width:72ch">
+    CAL is developed as an instrument, so its own behaviour is measured the same way anything
+    else is. Each brief below is a write-up of a probe that ran against a sealed output
+    directory. Where a brief and a sealed <code>FINDINGS.md</code> disagree, the sealed
+    artifact wins.
+  </p>
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>Every result published here is DEV-grade.</strong> None of it is validation
+      evidence, gate clearance, or an accuracy claim, and populations are small and often
+      deliberately selected. Each brief states its own n and its own boundary, and those
+      statements are the operative ones.</p>
+    </div>
+  </div>
+
+  <h2>How these are produced</h2>
+  <div class="grid c3">
+    <div class="card">
+      <h3>Sealed outputs</h3>
+      <p class="muted">Each probe writes a dated directory with its script, raw results,
+      per-claim traces, and a <code>SHA256SUMS</code> manifest. Raw result files are left
+      exactly as the run produced them; corrections live in amendments beside them, never as
+      edits.</p>
+    </div>
+    <div class="card">
+      <h3>Preregistered reads</h3>
+      <p class="muted">Probes commit to their decision rule before the numbers exist, and
+      carry identity controls: an inert restructure of the harness must reproduce the
+      baseline exactly before any arm is read as a one-variable change.</p>
+    </div>
+    <div class="card">
+      <h3>Falsification counts</h3>
+      <p class="muted">Hypotheses that die are recorded with the same weight as ones that
+      survive. Several briefs exist because a probe falsified its own premise and found a
+      defect while doing it.</p>
+    </div>
+  </div>
+
+  <h2>Briefs</h2>
+
+  <div class="card" style="margin-bottom:16px">
+    <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+      <span class="pill info">Brief 02</span>
+      <span class="faint">2026-08-19 &middot; DEV construction &middot; n=33 &middot; sealed</span>
+    </div>
+    <h3 style="margin-top:10px">
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab/blob/HEAD/docs/research/brief-02-construction-gold.md">
+        A gold that derives its own answers, and the coupled defect it found</a>
+    </h3>
+    <p class="muted">
+      The only human-labelled reference CAL has is measurably unreliable on absence claims:
+      the coded verdict tracked how much material was in the bundle rather than any stated
+      rule (Fisher exact <strong>p&nbsp;=&nbsp;0.0008</strong>). Rather than argue with the
+      coder, the reference was rebuilt so the answer is a <em>function of how each case was
+      constructed</em>, regenerable, and impossible to disagree with.
+    </p>
+    <p class="muted">
+      CAL scored <strong>14/33</strong>. The corpus is concentrated on suspected failure
+      shapes, so that is a probe result and not an accuracy figure. What it settled is more
+      useful than the score.
+    </p>
+
+    <div class="table-scroll" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr><th>Finding</th><th class="num">n</th><th>Reading</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Constructed contradictions the entailer caught at 0.975&ndash;0.996</td>
+            <td class="num"><strong>7 / 7</strong></td>
+            <td>The probabilistic stage did its job.</td>
+          </tr>
+          <tr>
+            <td>&hellip; that <code>A4_negation_consistency</code> then stood down</td>
+            <td class="num"><strong style="color:var(--bad)">7 / 7</strong></td>
+            <td>The deterministic stage discarded every one.</td>
+          </tr>
+          <tr>
+            <td><code>contradicted</code> verdicts CAL did emit, all on silent sources</td>
+            <td class="num"><strong style="color:var(--bad)">3</strong></td>
+            <td>Precision 0/3, recall 0/7. It fires only where it should not.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted" style="margin-top:14px">
+      The one that changed a plan: adding a single passage stating the same obligation
+      <em>for a different site</em> flipped a correct <code>supported</code> to an
+      abstention. <code>max_entailment</code> takes the highest score regardless of its
+      label, so an out-of-scope passage scoring <strong>0.016</strong> higher overrode a
+      correct <strong>0.948</strong> entailment, and A4 then suppressed the result.
+      <strong>A4's over-suppression was masking the aggregation defect</strong>, so the two
+      had to move together: replaying the real trace with the new gate blinded shows the A4
+      fix on its own producing a false <code>contradicted</code> on a correctly-sourced
+      claim.
+    </p>
+
+    <p class="muted">
+      Both landed as <code>cal-rules-v1.9.0</code>, and the third defect
+      (an adverse verdict on absence claims whose source is silent) as
+      <code>cal-rules-v1.10.0</code>. <code>v1.11.0</code> then taught A6 to read the declared
+      <code>source_boundary</code>. Exact agreement <strong>14&rarr;20&rarr;22&rarr;26</strong>
+      of 33; adverse-verdict precision <strong>0/3&rarr;6/9&rarr;6/6&rarr;7/7</strong> at recall
+      <strong>0/7&rarr;6/7&rarr;7/7</strong>. Twelve verdicts moved, every one wrong&rarr;right,
+      and <strong>no false adverse verdict remains</strong> on the corpus. All seven
+      misses that are left are gold <code>supported</code> read as <code>not_checkable</code>.
+All <strong>30</strong> frozen goldens hold. On human gold the picture is
+      worse than first published: run end to end, <code>v1.9.0</code>'s A5 gate moves
+      <strong>2 of 98</strong> PILOT-001 verdicts from <code>supported</code> to
+      <code>not_checkable</code>, against gold of <code>supported</code>. 64/98 becomes
+      <strong>62/98</strong>. The rules-only replay reported zero because A5's input fields
+      postdate the baseline it replays (D15).
+    </p>
+
+    <p class="faint" style="margin-top:12px">
+      Baseline: <code>outputs/2026-08-19-construction-gold/</code>, measured on
+      <code>cal-rules-v1.8.0</code> &middot; current result re-run on the shipped
+      <code>cal-rules-v1.13.0</code> and sealed at
+      <code>outputs/2026-08-20-construction-gold-v1.12.0/</code> &middot;
+      4 of the 26 agreements are reached with zero passages entailed, which the audit counts
+      and prints rather than banking.
+    </p>
+  </div>
+
+
+  <div class="card" style="margin-bottom:16px">
+    <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+      <span class="pill info">Brief 01</span>
+      <span class="faint">2026-08-02 &middot; DEV probe &middot; n=12 &middot; sealed</span>
+    </div>
+    <h3 style="margin-top:10px">
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab/blob/HEAD/docs/research/brief-01-chunk-granularity-disjointness.md">
+        Why context allocation and semantic entailment fail on disjoint populations</a>
+    </h3>
+    <p class="muted">
+      Changing only the retrieval passage unit (sections to clauses) rescued
+      <strong>2 of 2</strong> retrieval-floor failures and <strong>0 of 10</strong> entailment
+      failures. A supporting clause that scores <strong>0.392</strong> inside its section
+      scores <strong>0.924</strong> as its own unit: the same text, the same claim, the same
+      encoder. The two layers fail on populations that do not overlap, so neither fix shrinks
+      the other's problem.
+    </p>
+
+    <div class="table-scroll" style="margin-top:14px">
+      <table>
+        <thead>
+          <tr><th>Population</th><th class="num">n</th><th class="num">Rescued by finer units</th><th>Reading</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Retrieval-floor misses <code>no_evidence</code></td>
+            <td class="num">2</td>
+            <td class="num"><strong style="color:var(--good)">2 / 2</strong></td>
+            <td>A unit problem. Solved outright.</td>
+          </tr>
+          <tr>
+            <td>Entailment misses <code>no_entail_signal</code></td>
+            <td class="num">10</td>
+            <td class="num"><strong style="color:var(--bad)">0 / 10</strong></td>
+            <td>Untouched. Mean <code>neutral</code> confidence rose to 0.9976.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="faint" style="margin-top:12px">
+      Source: <code>outputs/2026-08-02-chunk-granularity-probe/</code> &middot;
+      pipeline <code>cal-rules-v1.7.0</code> &middot;
+      <a href="index.html">step through all 12 cases in the replay</a>
+    </p>
+  </div>
+
+  <h2>What the probes have settled</h2>
+  <p>
+    Findings below are stated at the confidence the receipts support. They are engineering
+    findings about this instrument on these corpora, not general claims about retrieval or NLI.
+  </p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Finding</th><th>Status</th><th>Where</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Retrieval and entailment fail on disjoint populations</td>
+        <td><span class="pill supported">held</span></td>
+        <td>Brief 01</td>
+      </tr>
+      <tr>
+        <td>Section-level chunking dilutes clause-level support below the floor</td>
+        <td><span class="pill supported">held</span></td>
+        <td>Brief 01</td>
+      </tr>
+      <tr>
+        <td>Adding section headers to fine units supplies useful context</td>
+        <td><span class="pill contradicted">falsified</span></td>
+        <td>Brief 01 &sect;3.1, no material change</td>
+      </tr>
+      <tr>
+        <td>Section distractors are what confuse the entailer</td>
+        <td><span class="pill contradicted">falsified</span></td>
+        <td>Brief 01 &sect;3.2, isolation raised neutral confidence</td>
+      </tr>
+      <tr>
+        <td>The v0.2 lexical matcher is a usable measurement instrument</td>
+        <td><span class="pill contradicted">falsified</span></td>
+        <td>2026-06-18 blind calibration, 4/98 exact, &kappa; &asymp; &minus;0.006</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="faint">
+    The falsified rows are the point, not an apology. The v0.2 result is why v1 exists, and
+    two of the three hypotheses Brief 01 set out to test died in the process of measuring them.
+  </p>
+
+  <h2>Not yet published</h2>
+  <p class="muted">
+    Additional probe directories are sealed locally but not written up. They cover abstention
+    decomposition, the retrieval-floor sweep, entailment localization, negation handling, and
+    compound-claim support. Several document defects in shipped code rather than results; those
+    are summarised in the <a href="benchmarks.html">open defect register</a> rather than left
+    implicit here.
+  </p>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Claim Audit Lab &middot; MIT licensed &middot;
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">github.com/camerontjs-dot/claim-audit-lab</a></p>
+    <p>Engineering build. Not validated software. Not a GxP capability claim.</p>
+  </div>
+</footer>
+
+</body>
+</html>

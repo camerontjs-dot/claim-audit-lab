@@ -24,7 +24,9 @@
         -2.390625,
         5.0078125,
         -2.826171875
-      ]
+      ],
+      "p_entail": 0.0006117820739746094,
+      "p_contradict": 0.0003955364227294922
     },
     {
       "passage_id": "p1",
@@ -34,7 +36,9 @@
         -2.0625,
         5.2109375,
         -3.34765625
-      ]
+      ],
+      "p_entail": 0.0006933212280273438,
+      "p_contradict": 0.00019168853759765625
     }
   ],
   "features": {
@@ -49,7 +53,11 @@
   "support_signal": {
     "label": "neutral",
     "max_entailment_score": 0.9990234375,
-    "contributing_passage_id": "p2"
+    "contributing_passage_id": "p2",
+    "best_entail": 0.0006933212280273438,
+    "best_contradict": 0.0003955364227294922,
+    "best_entail_passage_id": "p1",
+    "best_contradict_passage_id": "p2"
   },
   "rules_fired": [
     {
@@ -64,6 +72,6 @@
     "citation_status": "not_applicable",
     "audit_confidence": "high"
   },
-  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
-  "library_version": "0.2.0"
+  "audit_config_hash": "sha256:96a60db8fc9d6dd5404c0d2625b97755ebc8d073a507867fc526f59b513ad3c4",
+  "library_version": "0.4.0"
 }

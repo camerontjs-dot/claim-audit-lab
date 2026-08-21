@@ -21,6 +21,19 @@ Top-level pieces:
 
 from claim_audit_lab.v1 import config, features, intake, models, protocols
 from claim_audit_lab.v1.config import load_default_audit_config
+from claim_audit_lab.v1.explicit_claims import (
+    AtomAuditTrace,
+    AtomProvenance,
+    ExplicitClaimAtom,
+    ExplicitClaimRequest,
+    ExplicitClaimTrace,
+    ParentAggregationTrace,
+    aggregate_explicit_claim_verdicts,
+    canonical_explicit_claim_request_json,
+    hash_explicit_claim_request,
+    run_explicit_claim_audit,
+    serialize_explicit_claim_trace,
+)
 from claim_audit_lab.v1.intake import (
     AuditedBundleContents,
     AuditedBundleError,
@@ -31,7 +44,15 @@ from claim_audit_lab.v1.intake import (
 __all__ = [
     "AuditedBundleContents",
     "AuditedBundleError",
+    "AtomAuditTrace",
+    "AtomProvenance",
+    "ExplicitClaimAtom",
+    "ExplicitClaimRequest",
+    "ExplicitClaimTrace",
+    "ParentAggregationTrace",
+    "aggregate_explicit_claim_verdicts",
     "bundle_to_requests",
+    "canonical_explicit_claim_request_json",
     "config",
     "features",
     "intake",
@@ -39,4 +60,7 @@ __all__ = [
     "load_audited",
     "models",
     "protocols",
+    "hash_explicit_claim_request",
+    "run_explicit_claim_audit",
+    "serialize_explicit_claim_trace",
 ]
