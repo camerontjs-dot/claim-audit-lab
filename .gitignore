@@ -13,3 +13,7 @@ build/
 assets/github-pin.md
 examples/reports/*.json
 !examples/reports/*.slice.json
+
+# Research outputs are sealed with SHA256SUMS manifests, not version-controlled.
+# Keeping them untracked is deliberate — see DECISIONS.md.
+outputs/

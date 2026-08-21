@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claim Audit Lab</title>
+<meta name="description" content="A deterministic claim-to-evidence audit engine. Retrieve, entail, then decide under frozen rules, and abstain out loud when the evidence does not carry the claim.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cal.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">claim<span class="dim">-audit-</span>lab</a>
+    <nav class="site">
+      <a href="index.html" aria-current="page">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>Deterministic claim-to-evidence auditing.</h1>
+    <p class="tagline">
+      Claim Audit Lab audits whether a draft claim is actually carried by the evidence
+      supplied with it. It retrieves candidate passages, asks an NLI model whether they
+      entail the claim, and then decides under a frozen, versioned rule set, so the
+      verdict is reproducible and every step is on the record.
+    </p>
+    <p class="tagline" style="margin-top:12px">
+      It does not search the open web, and it does not decide whether a statement is true
+      of the world. It answers a narrower question: <strong>does the evidence you handed
+      me support the claim you wrote?</strong>
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="architecture.html">How it works</a>
+      <a class="btn" href="research.html">Research briefs</a>
+      <a class="btn" href="benchmarks.html">Benchmarks &amp; limits</a>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>Status: engineering build. Mechanisms verified, accuracy not validated.</strong>
+      Distribution <code>0.4.0</code>, the first public tag. Ordinary
+      <code>claim-audit audit</code> and <code>claim-audit demo</code> run the v1
+      <em>retrieve &rarr; entail &rarr; rules</em> engine
+      (<code>v1-retrieve-entail</code>, frozen rules <code>cal-rules-v1.13.0</code>).
+      That is not a <code>v1.0.0</code> tag and not a validation or GxP claim.
+      Verdicts are review inputs; a human disposes consequential claims.
+      Human-gold 27/50 (July packet) is measurement, not permission.
+      Against derived keys on a constructed 25+25 twin the same engine was 47/50.
+      Remaining limits (numeric bounds, two-hop composition) are questions, not
+      silent guesses.</p>
+      <p>Nothing here is validation evidence, a GxP capability claim, or an accuracy claim.
+      Published measurements are DEV-grade and are labelled with their population and n.
+      See <a href="benchmarks.html">Benchmarks &amp; limits</a> for what is known to be wrong.</p>
+    </div>
+  </div>
+
+  <h2>What it is for</h2>
+  <p>
+    In regulated and high-stakes writing, the expensive failure is not a model that says
+    something false. It is a claim that <em>looks</em> sourced and is not. CAL is built for
+    the reviewer who has to find those. It takes a draft and an evidence bundle, and for each
+    claim reports one of a small closed set of verdicts, together with the passage it read,
+    the score it got, and the rule that produced the decision.
+  </p>
+  <p>
+    The design commitment is that the last word belongs to deterministic code. A language
+    model contributes a signal; it does not get to be the verdict. Same inputs, same config,
+    same output. Byte for byte.
+  </p>
+
+  <div class="grid c3">
+    <div class="card">
+      <h3>Bounded, not clever</h3>
+      <p class="muted">The probabilistic stage is sandwiched between a retrieval floor and a
+      frozen rule layer. Neither can be talked out of its threshold by a confident model.</p>
+    </div>
+    <div class="card">
+      <h3>Abstains out loud</h3>
+      <p class="muted">When evidence does not carry a claim, CAL says so rather than
+      guessing. That rate is high, and it is published rather than hidden.</p>
+    </div>
+    <div class="card">
+      <h3>Everything on the record</h3>
+      <p class="muted">Every audit writes a typed trace: passages, scores, features, rules
+      fired, verdict, and the SHA of the rules file that decided it.</p>
+    </div>
+  </div>
+
+  <h2>The three layers</h2>
+  <p>
+    Each layer answers a different question, and, as the
+    <a href="https://github.com/camerontjs-dot/claim-audit-lab/blob/HEAD/docs/research/brief-01-chunk-granularity-disjointness.md">chunk-granularity probe</a>
+    showed, they fail on <strong>disjoint populations</strong>. Fixing one does not shrink
+    the other.
+  </p>
+
+  <div class="layers">
+    <div class="layer probabilistic">
+      <div class="lhead">
+        <span class="lnum">1</span>
+        <h3>Retrieve</h3>
+        <span class="kind">bi-encoder &middot; probabilistic</span>
+      </div>
+      <p>Embeds the claim and every supplied passage, ranks by similarity, and admits only
+      what clears the floor. Decides <em>which evidence is in the room</em>.</p>
+      <div class="params">
+        <span><b>retrieval_floor</b> 0.40</span>
+        <span><b>top_k</b> 5</span>
+      </div>
+    </div>
+    <div class="arrow">&darr; admitted passages</div>
+    <div class="layer probabilistic">
+      <div class="lhead">
+        <span class="lnum">2</span>
+        <h3>Entail</h3>
+        <span class="kind">DeBERTa-v3 NLI &middot; probabilistic</span>
+      </div>
+      <p>Asks, per admitted passage, whether it entails the claim, contradicts it, or takes
+      no position. Produces a signal, never a verdict.</p>
+      <div class="params">
+        <span><b>supported_threshold</b> 0.70</span>
+        <span><b>contradicted_threshold</b> 0.70</span>
+      </div>
+    </div>
+    <div class="arrow">&darr; entailment signal</div>
+    <div class="layer deterministic">
+      <div class="lhead">
+        <span class="lnum">3</span>
+        <h3>Rule engine</h3>
+        <span class="kind">frozen &middot; deterministic</span>
+      </div>
+      <p>Applies a versioned, SHA-pinned rule set over the signal plus structural features
+      of the claim: negation, quantities, compounds, modal strength, scope. This layer, and
+      only this layer, emits the verdict.</p>
+      <div class="params">
+        <span><b>rules_version</b> cal-rules-v1.13.0</span>
+        <span><b>families</b> A1&ndash;A7 &middot; B5 &middot; C6a&ndash;f &middot; P1&ndash;P2</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="faint">
+    Thresholds above are read from the shipped
+    <code>src/claim_audit_lab/v1/configs/cal-rules-v1.13.0.yaml</code>. Changing any value
+    changes the file SHA, which the loader pins and verifies at run time.
+  </p>
+
+  <h2>Replay a real audit</h2>
+  <p>
+    Below is not a simulation. It replays audit traces exactly as CAL recorded them during
+    the 2026-08-02 chunk-granularity probe, comparing the same claim under two passage
+    units. Every score, rule id and verdict was read out of a sealed trace file.
+  </p>
+
+  <div class="demo">
+    <div class="demo-head">
+      <h3>Sealed-trace replay</h3>
+      <span class="badge" id="demo-summary"></span>
+    </div>
+    <div class="demo-body">
+      <div class="controls">
+        <label class="grow">
+          <span class="sr-only">Choose a claim to replay</span>
+          <select id="demo-select"></select>
+        </label>
+        <button id="demo-next" type="button">Next case &rarr;</button>
+      </div>
+      <div class="claim-box" id="demo-claim"></div>
+      <div class="arms" id="demo-arms"></div>
+      <div class="delta-note" id="demo-note"></div>
+    </div>
+  </div>
+
+  <p class="faint">
+    Data: <code>docs/assets/traces.js</code>, generated by
+    <code>scripts/gen_docs_traces.py</code> from the sealed probe directories. The demo runs
+    no model, replay only. n=12, and those 12 were selected <em>because</em> they were
+    misses, so the rescue rates describe this group and not any corpus.
+  </p>
+
+  <h2>Install</h2>
+  <p>
+    Not yet published to PyPI. Install the released <code>0.4.0</code> source from a checkout
+    or directly from GitHub; the v1 engine is the ordinary released <code>audit</code> and
+    <code>demo</code> path.
+  </p>
+
+<pre><code>python -m pip install "claim-audit-lab[v1] @ git+https://github.com/camerontjs-dot/claim-audit-lab"
+python -m spacy download en_core_web_sm</code></pre>
+
+  <h3>Three version strings</h3>
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>axis</th><th>value</th><th>identifies</th></tr></thead>
+    <tbody>
+      <tr><td>distribution</td><td><code>0.4.0</code></td><td>the Python package</td></tr>
+      <tr><td><strong>engine</strong></td><td><code>v1-retrieve-entail</code> (ordinary <code>audit</code>/<code>demo</code>) &middot; <code>v0.2-lexical</code> (selectable)</td><td><strong>which pipeline actually audits</strong></td></tr>
+      <tr><td>rules version</td><td><code>cal-rules-v1.13.0</code></td><td>the frozen decision layer inside the v1 engine</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="faint">Package <code>0.2.0</code> and engine <code>v0.2-lexical</code> shared a
+  number by accident, which read as though the whole package were the retired lexical
+  matcher. The bump broke that collision. <code>0.3.0</code> was declared but never released
+  and named several different trees while the v1 work was in flight, so the first public tag
+  is <code>0.4.0</code>, one version string, one tree.</p>
+
+  <h3>Which command runs which engine</h3>
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>Ordinary <code>audit</code> and <code>demo</code> run
+      <code>v1-retrieve-entail</code>.</strong> The retired
+      <code>v0.2-lexical</code> matcher (falsified at 4/98 exact agreement,
+      Cohen's &kappa; &asymp; 0) remains selectable with
+      <code>--engine v0.2-lexical</code>. <code>audit-bundle</code> still follows
+      the bundle's sealed <code>pipeline</code> field and defaults to
+      <code>v0.2-lexical</code> so apparatus pins are not silently re-routed.</p>
+      <p>This is Track A packaging, not a tagged <code>v1.0.0</code> release.</p>
+    </div>
+  </div>
+
+  <p>Run the built-in fixture demo (requires the <code>[v1]</code> extra; CPU DeBERTa; no API keys):</p>
+
+<pre><code>claim-audit demo --out-dir ./demo-out</code></pre>
+
+  <p>Or audit a draft against an evidence bundle (same v1 engine):</p>
+
+<pre><code>claim-audit audit DRAFT.md --evidence evidence.yml --out ./report.md --json-out ./report.json</code></pre>
+
+  <h2>Where to go next</h2>
+  <div class="grid c3">
+    <div class="card">
+      <h3><a href="architecture.html">Architecture</a></h3>
+      <p class="muted">Why the rule layer is the only thing allowed to emit a verdict, and
+      what the deterministic core actually guarantees.</p>
+    </div>
+    <div class="card">
+      <h3><a href="research.html">Research</a></h3>
+      <p class="muted">Empirical briefs, each traced to a sealed output directory with its
+      own checksum manifest.</p>
+    </div>
+    <div class="card">
+      <h3><a href="benchmarks.html">Benchmarks &amp; limits</a></h3>
+      <p class="muted">Test and coverage receipts, reproducibility, and the open defect
+      register, including the ones that would embarrass us.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Claim Audit Lab &middot; MIT licensed &middot;
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">github.com/camerontjs-dot/claim-audit-lab</a></p>
+    <p>Engineering build. Not validated software. Not a GxP capability claim.
+      Measurements published here are DEV-grade and carry their population and n.</p>
+  </div>
+</footer>
+
+<script src="assets/traces.js"></script>
+<script src="assets/demo.js"></script>
+</body>
+</html>

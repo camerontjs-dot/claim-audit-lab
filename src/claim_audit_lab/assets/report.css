@@ -1,0 +1,286 @@
+/* Claim Audit Lab — audit report stylesheet.
+
+   Shipped as package data and inlined into every rendered report, so a report is
+   one self-contained file with no external requests.
+
+   Light-first, unlike the docs portal: a report is printed and read on paper as
+   often as on screen, and a dark-first sheet prints as a black rectangle. Dark is
+   a media query; print is an explicit block at the end. Same house palette and
+   type stack as docs/assets/cal.css. */
+
+:root {
+  --bg:        #ffffff;
+  --bg-raise:  #f6f8fa;
+  --bg-sunk:   #eef1f5;
+  --panel:     #ffffff;
+  --line:      #d3dae3;
+  --line-soft: #e6eaf0;
+
+  --ink:       #1f2733;
+  --ink-dim:   #55606f;
+  --ink-faint: #7a8697;
+  --ink-bright:#0d1117;
+
+  --accent:    #1667c9;
+  --good:      #1a7f37;
+  --warn:      #9a6700;
+  --bad:       #c02a25;
+  --neutral:   #6a737d;
+
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+          Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+
+  --maxw: 62rem;
+  --radius: 6px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0d1117;
+    --bg-raise:  #131a23;
+    --bg-sunk:   #0a0e14;
+    --panel:     #161c26;
+    --line:      #232c3a;
+    --line-soft: #1b2330;
+
+    --ink:       #d4dae3;
+    --ink-dim:   #8b97a8;
+    --ink-faint: #5d6878;
+    --ink-bright:#f0f4f9;
+
+    --accent:    #4da3ff;
+    --good:      #3fb950;
+    --warn:      #d29922;
+    --bad:       #f85149;
+    --neutral:   #8b949e;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; }
+
+h1, h2, h3 { color: var(--ink-bright); line-height: 1.25; font-weight: 650; }
+h1 { font-size: 1.6rem; margin: 0 0 .35rem; letter-spacing: -.01em; }
+/* A document id is arbitrary-length and often has no spaces. Let it break, and
+   keep the border on each fragment rather than only the first. */
+h1 code {
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+h2 {
+  font-size: 1.12rem;
+  margin: 2.25rem 0 .75rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--line);
+}
+h3 { font-size: .98rem; margin: 1.5rem 0 .4rem; font-family: var(--mono); font-weight: 600; }
+
+p { margin: .6rem 0; }
+a { color: var(--accent); }
+
+code, .mono { font-family: var(--mono); font-size: .88em; }
+code {
+  background: var(--bg-sunk);
+  border: 1px solid var(--line-soft);
+  border-radius: 3px;
+  padding: .08em .34em;
+}
+
+.subtitle { color: var(--ink-dim); font-style: italic; margin: 0 0 1.5rem; }
+
+/* The status band. Deliberately the first thing under the title, and deliberately
+   not dismissible or collapsible — this report is the surface most likely to be
+   forwarded to someone who never sees the README. */
+.status-band {
+  border: 1px solid var(--warn);
+  border-left: 4px solid var(--warn);
+  border-radius: var(--radius);
+  background: var(--bg-raise);
+  padding: .85rem 1rem;
+  margin: 0 0 1.75rem;
+}
+.status-band strong { color: var(--ink-bright); }
+.status-band p { margin: .3rem 0; font-size: .9rem; color: var(--ink-dim); }
+.status-band p:first-child { margin-top: 0; }
+.status-band p:last-child { margin-bottom: 0; }
+
+/* Provenance pins. A reader must be able to answer "what produced this?" without
+   leaving the page. */
+.pins {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: .3rem 1rem;
+  font-family: var(--mono);
+  font-size: .8rem;
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: .9rem 1rem;
+  margin: 0 0 1.25rem;
+}
+.pins dt { color: var(--ink-faint); }
+.pins dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
+
+.summary-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin: .75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.summary-grid li {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-raise);
+  padding: .45rem .7rem;
+  font-size: .82rem;
+  font-family: var(--mono);
+  color: var(--ink-dim);
+}
+.summary-grid b { color: var(--ink-bright); font-weight: 650; }
+
+/* Wide tables scroll inside their own container; the page never scrolls sideways. */
+.table-scroll { overflow-x: auto; margin: .75rem 0; }
+table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+th, td {
+  border: 1px solid var(--line);
+  padding: .42rem .6rem;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--bg-raise); color: var(--ink-bright); font-weight: 600; white-space: nowrap; }
+td.mono, th.mono { font-family: var(--mono); font-size: .8rem; }
+
+/* Verdict pills. Colour is an accompaniment to the word, never a replacement:
+   the verdict is always spelled out, so the report survives greyscale printing
+   and colour-blind readers. */
+.pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: .74rem;
+  padding: .1rem .45rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.pill.supported            { color: var(--good); }
+.pill.partially_supported  { color: var(--warn); }
+.pill.unsupported          { color: var(--bad); }
+.pill.contradicted         { color: var(--bad); }
+.pill.not_checkable        { color: var(--neutral); }
+
+.claim {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line);
+  border-radius: var(--radius);
+  padding: .9rem 1.1rem;
+  margin: 1rem 0;
+  background: var(--panel);
+}
+.claim.supported           { border-left-color: var(--good); }
+.claim.partially_supported { border-left-color: var(--warn); }
+.claim.unsupported         { border-left-color: var(--bad); }
+.claim.contradicted        { border-left-color: var(--bad); }
+.claim.not_checkable       { border-left-color: var(--neutral); }
+.claim h3 { margin-top: 0; }
+.claim-text {
+  border-left: 2px solid var(--line);
+  padding-left: .8rem;
+  margin: .5rem 0 .75rem;
+  color: var(--ink);
+}
+.claim-meta {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: .2rem .9rem;
+  font-size: .82rem;
+  font-family: var(--mono);
+  margin: 0;
+}
+.claim-meta dt { color: var(--ink-faint); }
+.claim-meta dd { margin: 0; overflow-wrap: anywhere; }
+
+.next-step {
+  margin: .7rem 0 0;
+  padding: .5rem .7rem;
+  background: var(--bg-sunk);
+  border-radius: var(--radius);
+  font-size: .85rem;
+  color: var(--ink-dim);
+}
+.next-step b { color: var(--ink-bright); }
+
+ul.limits { margin: .6rem 0; padding-left: 1.2rem; }
+ul.limits li { margin: .3rem 0; color: var(--ink-dim); font-size: .89rem; }
+
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-faint);
+  font-size: .8rem;
+}
+
+@media (max-width: 680px) {
+  body { padding: 1.5rem .9rem 3rem; }
+  .pins, .claim-meta { grid-template-columns: minmax(0, 1fr); gap: .15rem; }
+  .pins dt, .claim-meta dt { margin-top: .4rem; }
+}
+
+/* ---------------------------------------------------------------------------
+   Print. This is the PDF path: no generator, no dependency, no embedded
+   timestamp — the browser's own print dialog renders the same sealed HTML.
+   Forced light so the sheet does not print as a black rectangle, and claims are
+   kept off page breaks so a verdict never separates from the claim it judges.
+   --------------------------------------------------------------------------- */
+@media print {
+  :root {
+    --bg: #ffffff;
+    --bg-raise: #ffffff;
+    --bg-sunk: #ffffff;
+    --panel: #ffffff;
+    --line: #9aa4b1;
+    --line-soft: #c3cbd5;
+    --ink: #000000;
+    --ink-dim: #2b2b2b;
+    --ink-faint: #4a4a4a;
+    --ink-bright: #000000;
+    --accent: #0b3d91;
+  }
+
+  @page { margin: 16mm 14mm; }
+
+  body { padding: 0; font-size: 10.5pt; }
+  .wrap { max-width: none; }
+
+  /* Colour cannot be relied on in print; the border weight carries the emphasis. */
+  .status-band { border: 1.5pt solid #000; }
+  .pins, .summary-grid li, .claim, .next-step { border: .5pt solid #9aa4b1; }
+
+  h2 { break-after: avoid; }
+  h3 { break-after: avoid; }
+  .claim { break-inside: avoid; }
+  tr, .pins { break-inside: avoid; }
+  .table-scroll { overflow-x: visible; }
+
+  /* Nothing in a report should be a link the reader cannot follow on paper. */
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .85em; word-break: break-all; }
+
+  footer { break-inside: avoid; }
+}

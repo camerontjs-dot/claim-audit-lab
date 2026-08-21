@@ -3,7 +3,7 @@
 The operational defaults (pinned model revisions, ``top_k``, aggregation) ship
 as package data at ``claim_audit_lab/v1/configs/v1-default.yaml``. The *verdict
 thresholds* ship separately in the versioned rules file
-``claim_audit_lab/v1/configs/cal-rules-v1.5.0.yaml`` — the single authored
+``claim_audit_lab/v1/configs/cal-rules-v1.13.0.yaml`` — the single authored
 source of truth for any number that decides a verdict.
 
 :func:`load_default_audit_config` composes the two: it reads the operational
@@ -29,7 +29,7 @@ from claim_audit_lab.contracts.serialization import hash_text
 from claim_audit_lab.v1.models import AuditConfig
 
 DEFAULT_CONFIG_RESOURCE = "v1-default.yaml"
-RULES_FILE_RESOURCE = "cal-rules-v1.5.0.yaml"
+RULES_FILE_RESOURCE = "cal-rules-v1.13.0.yaml"
 
 _CONFIGS_PACKAGE = "claim_audit_lab.v1.configs"
 
@@ -63,7 +63,7 @@ def load_default_audit_config() -> AuditConfig:
     """Return the pinned v1 default :class:`AuditConfig`.
 
     Composes the operational defaults (``v1-default.yaml``) with the verdict
-    thresholds materialized from ``cal-rules-v1.5.0.yaml``, pinning the rules
+    thresholds materialized from ``cal-rules-v1.13.0.yaml``, pinning the rules
     file's SHA as ``rules_file_sha``. Works identically from an editable
     checkout and an installed wheel via :mod:`importlib.resources`.
     """
@@ -79,7 +79,7 @@ def load_audit_config(path: Path) -> AuditConfig:
     Mirrors :func:`load_default_audit_config` but reads the operational knobs
     (``top_k``, ``aggregation``, model revisions) from ``path`` instead of the
     packaged default. The verdict thresholds and ``rules_file_sha`` are still
-    materialized from the shipped ``cal-rules-v1.5.0.yaml`` — the rules file is
+    materialized from the shipped ``cal-rules-v1.13.0.yaml`` — the rules file is
     the single source of truth for any verdict-deciding number, never the per-run
     config — and :func:`verify_rules_consistency` then guards the result. This is
     the loader the ``calibrate`` command uses for its ``--config`` file.

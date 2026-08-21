@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "claim-audit-lab"
-version = "0.2.0"
+version = "0.4.0"
 description = "Audit whether draft claims are supported by supplied evidence."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -16,10 +16,14 @@ license = "MIT"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Topic :: Software Development :: Quality Assurance",
     "Topic :: Text Processing",
+    # The package ships py.typed and is mypy --strict clean over every source file.
+    "Typing :: Typed",
 ]
 dependencies = [
     "pydantic>=2.6",
@@ -29,7 +33,9 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://github.com/camerontjs-dot/claim-audit-lab"
+Documentation = "https://camerontjs-dot.github.io/claim-audit-lab/"
 Repository = "https://github.com/camerontjs-dot/claim-audit-lab"
+Changelog = "https://github.com/camerontjs-dot/claim-audit-lab/blob/main/CHANGELOG.md"
 Issues = "https://github.com/camerontjs-dot/claim-audit-lab/issues"
 
 [project.optional-dependencies]
@@ -52,6 +58,19 @@ v1 = [
     "transformers>=4.40",
     "torch>=2.2",
 ]
+# Visual Workbench UI. `claim_audit_lab.ui.server` is stdlib-only and needs
+# nothing here; `claim_audit_lab.ui.app` is the FastAPI variant and does.
+# Both are packaged, so this extra is what makes `ui.app` importable after a
+# clean install. uvicorn is included because a FastAPI app needs an ASGI
+# server to actually serve.
+ui = [
+    # The UI runs live v1 audits, so it needs the whole inference stack, not
+    # just the web layer. Verified by installing the wheel with only [ui] and
+    # importing claim_audit_lab.ui.app in a clean venv.
+    "claim-audit-lab[v1]",
+    "fastapi>=0.110",
+    "uvicorn>=0.29",
+]
 
 [project.scripts]
 claim-audit = "claim_audit_lab.cli:app"
@@ -61,15 +80,25 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 claim_audit_lab = [
+    # The package is mypy --strict clean; without this marker downstream type
+    # checkers report every import from it as untyped and skip it entirely.
+    "py.typed",
     "schema/.contract-version",
     "schema/vocabulary.yaml",
     "examples/drafts/*.md",
     "examples/evidence/*.yml",
     "v1/configs/*.yaml",
+    # Inlined into every rendered HTML report so the artifact is one self-contained
+    # file with no external requests.
+    "assets/*.css",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = "-m 'not research_artifact'"
+markers = [
+    "research_artifact: requires ignored CAL research outputs or a sibling-project artifact; excluded from the public suite",
+]
 
 [tool.ruff]
 line-length = 100

@@ -22,6 +22,7 @@ from claim_audit_lab.v1.models import (
     EntailResult,
     ExtractedFeatures,
     ModalStrength,
+    NegationProbe,
     Passage,
     Quantity,
     RetrievalResult,
@@ -41,6 +42,7 @@ def _features(
     claim_token_count: int = 8,
     has_explicit_negation: bool = False,
     has_universal_quantifier: bool = False,
+    compound_claim: bool = False,
     modal_strength: ModalStrength = "asserts",
     numerical_values: list[Quantity] | None = None,
 ) -> ExtractedFeatures:
@@ -49,6 +51,7 @@ def _features(
         claim_token_count=claim_token_count,
         has_explicit_negation=has_explicit_negation,
         has_universal_quantifier=has_universal_quantifier,
+        compound_claim=compound_claim,
         modal_strength=modal_strength,
         numerical_values=numerical_values or [],
     )
@@ -64,6 +67,10 @@ def _run(
     entailment: list[EntailResult] | None = None,
     rules: VerdictRules = _RULES,
     config: AuditConfig | None = None,
+    negation_probe: NegationProbe | None = None,
+    source_boundary: str | None = None,
+    claimed_material_is_a_named_gap: bool = False,
+    absence_complement_entailed: bool = False,
 ) -> tuple[Verdict, list[RuleFired]]:
     passage_text = claim
     if features is None:
@@ -87,6 +94,10 @@ def _run(
         entailment=entailment if entailment is not None else [],
         support_signal=support_signal,
         audit_config=config or _CONFIG,
+        negation_probe=negation_probe,
+        source_boundary=source_boundary,  # type: ignore[arg-type]
+        claimed_material_is_a_named_gap=claimed_material_is_a_named_gap,
+        absence_complement_entailed=absence_complement_entailed,
     )
 
 
@@ -127,6 +138,45 @@ def test_negation_backstop_contradicts_when_passage_asserts_unnegated_content() 
     )
     assert verdict.support_verdict == "contradicted"
     assert "A3_negation_backstop" in _ids(fired)
+
+
+def test_negation_backstop_stands_down_for_negated_conjunct_only() -> None:
+    verdict, fired = _run(
+        claim=(
+            "The guidance mentions trend analyses and continual monitoring for annual "
+            "product reviews but doesn't specify a volume threshold."
+        ),
+        features=_features(has_explicit_negation=True, compound_claim=True),
+        passages=[
+            Passage(
+                passage_id="p-1",
+                text=("Annual product reviews include trend analyses and continual monitoring."),
+            )
+        ],
+    )
+    assert verdict.support_verdict == "supported"
+    assert "A3_negation_backstop" not in _ids(fired)
+    assert "A3_conjunct_negation_suppressed" in _ids(fired)
+
+
+@pytest.mark.parametrize(
+    "claim",
+    [
+        "The system does not validate inputs or archive records.",
+        "The system does not validate inputs and does not archive records.",
+    ],
+)
+def test_negation_backstop_preserves_whole_compound_contradiction(claim: str) -> None:
+    verdict, fired = _run(
+        claim=claim,
+        features=_features(has_explicit_negation=True, compound_claim=True),
+        passages=[
+            Passage(passage_id="p-1", text="The system validates inputs and archives records.")
+        ],
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A3_negation_backstop" in _ids(fired)
+    assert "A3_conjunct_negation_suppressed" not in _ids(fired)
 
 
 def test_negation_backstop_skipped_when_passage_also_negated() -> None:
@@ -515,8 +565,14 @@ def test_p1_suppresses_ineligible_contradiction_so_eligible_entail_wins() -> Non
 def test_p1_lands_not_checkable_when_only_signal_is_ineligible() -> None:
     # c008 shape: the only non-neutral signal is an ineligible contradiction. P1
     # suppresses it and, with nothing eligible left, the verdict lands off-scale.
+    #
+    # The subject is deliberately a system rather than a document. The original
+    # fixture said "The guidance does not prescribe...", which cal-rules-v1.10.0
+    # classifies as a source-coverage claim, so A6 would gate the adverse degree
+    # before P1 ever ran and this test would silently stop exercising P1. The
+    # A6/P1 ordering is pinned by its own test below.
     verdict, fired = _run(
-        claim="The guidance does not prescribe a fixed interval.",
+        claim="The platform does not enforce a fixed interval.",
         features=_features(has_explicit_negation=True),
         passages=[
             Passage(
@@ -649,3 +705,496 @@ def test_apply_rejects_config_pinned_to_a_different_rules_file() -> None:
     mismatched = VerdictRules(rules_file_sha="0" * 64)
     with pytest.raises(ValueError, match="different rules file"):
         _run(rules=mismatched)
+
+
+# --- D2: A3 over bound instantiation (cal-rules-v1.8.0) ---
+
+
+def test_negation_backstop_suppressed_over_bound_instantiation() -> None:
+    # A negated *consequence* instantiating a stated bound follows correctly
+    # from a positively-stated rule, which need not express any negation. A3's
+    # mirror test has no valid operator over a bound, so it stands down.
+    verdict, fired = _run(
+        claim="A batch below 40% yield cannot pass release.",
+        features=_features(
+            has_explicit_negation=True,
+            numerical_values=[Quantity(value=40.0, unit=None, surface_text="40%")],
+        ),
+        passages=[
+            Passage(passage_id="p-1", text="Batches must achieve at least 40% yield to pass.")
+        ],
+    )
+    assert verdict.support_verdict == "supported"
+    assert "A3_negation_backstop" not in _ids(fired)
+    assert "A3_bound_instantiation_suppressed" in _ids(fired)
+
+
+def test_negation_backstop_still_fires_when_claim_carries_no_quantity() -> None:
+    # The suppression is narrow by construction: without a claim quantity there
+    # is no bound instantiation, so A3's MoNLI purpose is untouched.
+    verdict, fired = _run(
+        claim="The system does not validate inputs.",
+        features=_features(has_explicit_negation=True),
+        passages=[
+            Passage(passage_id="p-1", text="The system validates inputs, up to a maximum of 5.")
+        ],
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A3_negation_backstop" in _ids(fired)
+
+
+def test_negation_backstop_still_fires_over_a_stated_value() -> None:
+    # Passage states a value, not a bound → A3's operator is valid, no suppression.
+    verdict, fired = _run(
+        claim="The cycle does not run for 6 hours.",
+        features=_features(
+            has_explicit_negation=True,
+            numerical_values=[Quantity(value=6.0, unit="hour", surface_text="6 hours")],
+        ),
+        passages=[Passage(passage_id="p-1", text="The cycle runs for 6 hours.")],
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A3_negation_backstop" in _ids(fired)
+
+
+# --- A5: conflicting evidence (cal-rules-v1.9.0, D9) -----------------------
+# The aggregator reports one label — the strongest position any passage takes.
+# When two different passages take opposite positions and both clear their
+# thresholds, that label is whichever scored higher, by a margin that carries no
+# information about which passage governs. A5 refuses to resolve it by score.
+
+
+def _two_sided(*, entail: float, contradict: float, label: EntailLabel) -> SupportSignal:
+    """A signal whose two channels disagree, as the real aggregator records it."""
+    top = entail if label == "entail" else contradict
+    return SupportSignal(
+        label=label,
+        max_entailment_score=top,
+        contributing_passage_id="p-1" if label == "entail" else "p-2",
+        best_entail=entail,
+        best_entail_passage_id="p-1",
+        best_contradict=contradict,
+        best_contradict_passage_id="p-2",
+    )
+
+
+def _two_passages() -> tuple[list[Passage], list[RetrievalResult]]:
+    return (
+        [
+            Passage(passage_id="p-1", text="The platform validates submitted input records."),
+            Passage(passage_id="p-2", text="The platform discards submitted input records."),
+        ],
+        [
+            RetrievalResult(passage_id="p-1", score=0.90),
+            RetrievalResult(passage_id="p-2", score=0.88),
+        ],
+    )
+
+
+def test_a5_abstains_when_both_channels_clear_their_thresholds() -> None:
+    passages, retrieval = _two_passages()
+    verdict, fired = _run(
+        passages=passages,
+        retrieval=retrieval,
+        support_signal=_two_sided(entail=0.948, contradict=0.964, label="contradict"),
+    )
+    assert verdict.support_verdict == "not_checkable"
+    assert verdict.support_verdict_reason == "conflicting_evidence"
+    assert "A5_conflicting_evidence" in _ids(fired)
+    # Both passages must be named: the point of the abstention is that a human
+    # has to read them, so an explanation that cites one is not actionable.
+    reason = next(r.reason for r in fired if r.rule_id == "A5_conflicting_evidence")
+    assert "p-1" in reason and "p-2" in reason
+
+
+def test_a5_fires_in_the_entail_direction_too() -> None:
+    """The false-`supported` direction is the expensive one, and A5 covers it.
+
+    With the entail channel on top the aggregated label is ``entail``, which
+    would otherwise reach the degree mapping and land ``supported`` on a claim a
+    second admitted passage refutes above threshold.
+    """
+    passages, retrieval = _two_passages()
+    verdict, fired = _run(
+        passages=passages,
+        retrieval=retrieval,
+        support_signal=_two_sided(entail=0.964, contradict=0.948, label="entail"),
+    )
+    assert verdict.support_verdict == "not_checkable"
+    assert verdict.support_verdict_reason == "conflicting_evidence"
+    assert "A5_conflicting_evidence" in _ids(fired)
+    assert "B5_degree" not in _ids(fired)
+
+
+@pytest.mark.parametrize(
+    ("entail", "contradict"),
+    [(0.948, 0.60), (0.60, 0.964), (0.60, 0.60)],
+    ids=["only-entail-clears", "only-contradict-clears", "neither-clears"],
+)
+def test_a5_stands_down_unless_both_channels_clear(entail: float, contradict: float) -> None:
+    passages, retrieval = _two_passages()
+    label: EntailLabel = "entail" if entail >= contradict else "contradict"
+    _, fired = _run(
+        passages=passages,
+        retrieval=retrieval,
+        support_signal=_two_sided(entail=entail, contradict=contradict, label=label),
+    )
+    assert "A5_conflicting_evidence" not in _ids(fired)
+
+
+def test_a5_stands_down_when_the_channels_were_never_measured() -> None:
+    """A trace written before the channels existed must not be read as agreement."""
+    _, fired = _run(
+        support_signal=SupportSignal(
+            label="contradict", max_entailment_score=0.95, contributing_passage_id="p-1"
+        )
+    )
+    assert "A5_conflicting_evidence" not in _ids(fired)
+
+
+# --- A7: disjoint location phrases may not solo-decide a contradiction -----
+
+_A7_CLAIM = "Packaging sites shall record deviations within two hours."
+_A7_PASSAGE = (
+    "At the Building 4 manufacturing site, an excursion from a validated "
+    "process parameter shall be recorded as a deviation within one business "
+    "day of detection."
+)
+
+
+def test_a7_stands_down_a_disjoint_site_contradiction() -> None:
+    verdict, fired = _run(
+        claim=_A7_CLAIM,
+        passages=[Passage(passage_id="p-1", text=_A7_PASSAGE)],
+        support_signal=SupportSignal(
+            label="contradict",
+            max_entailment_score=0.80,
+            contributing_passage_id="p-1",
+        ),
+    )
+    assert verdict.support_verdict == "not_checkable"
+    assert verdict.support_verdict_reason == "out_of_scope"
+    assert "A7_scope_mismatch" in _ids(fired)
+    assert "A4_hard_contradiction" not in _ids(fired)
+    reason = next(r.reason for r in fired if r.rule_id == "A7_scope_mismatch")
+    assert "which" in reason.lower()
+
+
+def test_a7_does_not_stand_down_a_subject_level_contradiction() -> None:
+    """Relocation vs requalification is a real contradiction, not a site clash."""
+    claim = "Relocation of qualified equipment does not require requalification."
+    passage = (
+        "Requalification shall be performed following any change that affects "
+        "the qualified state, including relocation, major repair, or modification "
+        "of a critical component."
+    )
+    verdict, fired = _run(
+        claim=claim,
+        passages=[Passage(passage_id="p-1", text=passage)],
+        support_signal=SupportSignal(
+            label="contradict",
+            max_entailment_score=0.99,
+            contributing_passage_id="p-1",
+        ),
+    )
+    assert "A7_scope_mismatch" not in _ids(fired)
+    assert verdict.support_verdict == "contradicted"
+    assert "A4_hard_contradiction" in _ids(fired)
+
+
+def test_a7_does_not_stand_down_a_same_site_contradiction() -> None:
+    claim = (
+        "At the Building 4 manufacturing site, an excursion shall be recorded "
+        "within five business days of detection."
+    )
+    _, fired = _run(
+        claim=claim,
+        passages=[Passage(passage_id="p-1", text=_A7_PASSAGE)],
+        support_signal=SupportSignal(
+            label="contradict",
+            max_entailment_score=0.96,
+            contributing_passage_id="p-1",
+        ),
+    )
+    assert "A7_scope_mismatch" not in _ids(fired)
+
+
+# --- A4: the negation probe needs standing to veto (cal-rules-v1.9.0, D10) ---
+
+
+_PROBE_LOGITS: dict[EntailLabel, tuple[float, float, float]] = {
+    "entail": (2.0, -1.0, -1.0),
+    "neutral": (0.0, 0.0, 0.0),
+    "contradict": (-1.0, -1.0, 2.0),
+}
+
+
+def _probe(label: EntailLabel, score: float, *, passage_id: str = "p-1") -> NegationProbe:
+    return NegationProbe(
+        negated_claim="The platform does not validate submitted input records.",
+        abstained=False,
+        result=EntailResult(
+            passage_id=passage_id,
+            label=label,
+            score=score,
+            raw_logits=_PROBE_LOGITS[label],
+        ),
+    )
+
+
+def _contradiction_signal(score: float) -> SupportSignal:
+    return SupportSignal(
+        label="contradict", max_entailment_score=score, contributing_passage_id="p-1"
+    )
+
+
+def test_a4_demotes_when_the_probe_is_at_least_as_confident() -> None:
+    """The PILOT-001 c009 shape — primary 0.766, probe neutral 0.996 — still demotes."""
+    verdict, fired = _run(
+        support_signal=_contradiction_signal(0.766),
+        negation_probe=_probe("neutral", 0.996),
+    )
+    assert verdict.support_verdict == "not_checkable"
+    assert verdict.support_verdict_reason == "no_entail_signal"
+    assert "A4_negation_consistency" in _ids(fired)
+
+
+def test_a4_does_not_demote_on_a_probe_less_confident_than_the_contradiction() -> None:
+    """The construction-corpus shape — primary 0.995, probe neutral 0.43.
+
+    A second reading of a machine-negated sentence, at a confidence the primary
+    measurement beats by half, is not evidence the primary is spurious.
+    """
+    verdict, fired = _run(
+        support_signal=_contradiction_signal(0.995),
+        negation_probe=_probe("neutral", 0.43),
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A4_negation_consistency" not in _ids(fired)
+    assert "A4_hard_contradiction" in _ids(fired)
+
+
+def test_a4_records_the_probe_it_disregarded() -> None:
+    """A non-firing that leaves no trace is a non-firing nobody can audit."""
+    _, fired = _run(
+        support_signal=_contradiction_signal(0.995),
+        negation_probe=_probe("neutral", 0.43),
+    )
+    assert "A4_negation_probe_uninformative" in _ids(fired)
+    reason = next(r.reason for r in fired if r.rule_id == "A4_negation_probe_uninformative")
+    assert "0.43" in reason and "0.99" in reason
+
+
+def test_a4_demotes_on_an_exactly_equal_probe() -> None:
+    """The boundary is inclusive: an equally confident probe still has standing."""
+    verdict, fired = _run(
+        support_signal=_contradiction_signal(0.90),
+        negation_probe=_probe("neutral", 0.90),
+    )
+    assert verdict.support_verdict == "not_checkable"
+    assert "A4_negation_consistency" in _ids(fired)
+
+
+def test_a4_ignores_a_probe_computed_against_a_different_premise() -> None:
+    verdict, fired = _run(
+        support_signal=_contradiction_signal(0.80),
+        negation_probe=_probe("neutral", 0.99, passage_id="p-2"),
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A4_negation_consistency" not in _ids(fired)
+    assert "A4_negation_probe_uninformative" not in _ids(fired)
+
+
+# --- A6: a claim about what a document does not say (cal-rules-v1.10.0, D11) ---
+# Silence in the bundle is exactly what such a claim asserts, so passages
+# excerpted from that document cannot refute it. The gate is claim-side and
+# structural — it never compares claim terms to passage terms, which Decision F
+# forbids from deciding a degree.
+
+_COVERAGE_CLAIM = "The procedure does not cover deviations detected after batch release."
+_OBJECT_CLAIM = "Relocation of qualified equipment does not require requalification."
+
+
+def _refuting(score: float = 0.98) -> SupportSignal:
+    return SupportSignal(
+        label="contradict", max_entailment_score=score, contributing_passage_id="p-1"
+    )
+
+
+def test_a6_withholds_the_adverse_verdict_on_a_source_coverage_claim() -> None:
+    verdict, fired = _run(
+        claim=_COVERAGE_CLAIM,
+        features=_features(has_explicit_negation=True),
+        passages=[
+            Passage(
+                passage_id="p-1",
+                text=(
+                    "A deviation classified as critical shall trigger a Quality Hold on "
+                    "the affected batch until the investigation is closed."
+                ),
+            )
+        ],
+        support_signal=_refuting(),
+    )
+    # The landing is emergent, exactly as P1's and P2's are: the contributing
+    # passage is dropped, the pool re-aggregates, and an empty pool falls out of
+    # B5. The rule id carries the specificity, so a reviewer can still see which
+    # gate withheld the verdict.
+    assert verdict.support_verdict == "not_checkable"
+    assert verdict.support_verdict_reason == "no_entail_signal"
+    assert "A6_absence_not_decidable" in _ids(fired)
+    assert "A4_hard_contradiction" not in _ids(fired)
+
+
+def test_a6_leaves_an_object_level_negated_claim_refutable() -> None:
+    """The discriminator has to keep true contradictions, or it is just suppression."""
+    verdict, fired = _run(
+        claim=_OBJECT_CLAIM,
+        features=_features(has_explicit_negation=True),
+        passages=[
+            Passage(
+                passage_id="p-1",
+                text=(
+                    "Requalification shall be performed following any change that affects "
+                    "the qualified state, including relocation, major repair, or "
+                    "modification of a critical component."
+                ),
+            )
+        ],
+        support_signal=_refuting(0.99),
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A6_absence_not_decidable" not in _ids(fired)
+
+
+@pytest.mark.parametrize(
+    ("claim", "gated"),
+    [
+        ("The guidance does not address retention sample storage.", True),
+        # Document subject, but an object-level predicate a passage can refute.
+        ("The guidance does not apply to biologics.", False),
+        # Coverage predicate, but the subject is a thing, not a text.
+        ("The final formulation does not contain animal-derived ingredients.", False),
+    ],
+    ids=["document+coverage", "document+object-verb", "object+coverage-verb"],
+)
+def test_a6_requires_both_a_document_subject_and_a_coverage_predicate(
+    claim: str, gated: bool
+) -> None:
+    """Either condition alone over-fires, so both are load-bearing."""
+    _, fired = _run(
+        claim=claim,
+        features=_features(has_explicit_negation=True),
+        passages=[Passage(passage_id="p-1", text="Retention samples are stored at 25 degrees.")],
+        support_signal=_refuting(),
+    )
+    assert ("A6_absence_not_decidable" in _ids(fired)) is gated
+
+
+def test_a6_does_not_touch_a_supported_verdict() -> None:
+    """The gate withholds adverse verdicts only; it must not suppress support."""
+    verdict, fired = _run(
+        claim=_COVERAGE_CLAIM,
+        features=_features(has_explicit_negation=True),
+        passages=[Passage(passage_id="p-1", text="The procedure covers no post-release work.")],
+        support_signal=SupportSignal(
+            label="entail", max_entailment_score=0.95, contributing_passage_id="p-1"
+        ),
+    )
+    assert verdict.support_verdict == "supported"
+    assert "A6_absence_not_decidable" not in _ids(fired)
+
+
+def test_a6_exhaustive_coverage_claim_is_supported() -> None:
+    """A complete source that is silent on a coverage claim supports the absence."""
+    verdict, fired = _run(
+        claim=_COVERAGE_CLAIM,
+        features=_features(has_explicit_negation=True),
+        passages=[
+            Passage(
+                passage_id="p-1",
+                text=(
+                    "A deviation classified as critical shall trigger a Quality Hold on "
+                    "the affected batch until the investigation is closed."
+                ),
+            )
+        ],
+        support_signal=_refuting(),
+        source_boundary="exhaustive",
+    )
+    assert verdict.support_verdict == "supported"
+    assert "A6_absence_decidable" in _ids(fired)
+    assert "A6_absence_not_decidable" not in _ids(fired)
+
+
+def test_a6_exhaustive_complement_entailment_refutes_absence() -> None:
+    verdict, fired = _run(
+        claim=_COVERAGE_CLAIM,
+        features=_features(has_explicit_negation=True),
+        passages=[Passage(passage_id="p-1", text="The procedure covers post-release deviations.")],
+        support_signal=_refuting(),
+        source_boundary="exhaustive",
+        absence_complement_entailed=True,
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A6_absence_refuted" in _ids(fired)
+
+
+def test_a6_named_gap_is_contradicted() -> None:
+    verdict, fired = _run(
+        claim="The guidance does not address storage conditions for retention samples.",
+        features=_features(has_explicit_negation=True),
+        passages=[Passage(passage_id="p-1", text="Long-term testing covers 12 months.")],
+        support_signal=_refuting(),
+        source_boundary="named_missing_material",
+        claimed_material_is_a_named_gap=True,
+    )
+    assert verdict.support_verdict == "contradicted"
+    assert "A6_named_gap_present" in _ids(fired)
+
+
+def test_a6_bounded_coverage_claim_still_withholds() -> None:
+    verdict, fired = _run(
+        claim=_COVERAGE_CLAIM,
+        features=_features(has_explicit_negation=True),
+        passages=[
+            Passage(
+                passage_id="p-1",
+                text=(
+                    "A deviation classified as critical shall trigger a Quality Hold on "
+                    "the affected batch until the investigation is closed."
+                ),
+            )
+        ],
+        support_signal=_refuting(),
+        source_boundary="bounded",
+    )
+    assert verdict.support_verdict == "not_checkable"
+    assert "A6_absence_not_decidable" in _ids(fired)
+
+
+def test_a6_does_not_short_circuit_the_eligibility_loop() -> None:
+    """A6 suppresses and re-aggregates; it must not terminate the loop.
+
+    This is the property that PILOT-001 `c002` bought. As a terminal verdict, A6
+    landed `not_checkable` by pre-empting the P1 drop that recovers a
+    `partially_supported` — against a human gold of `supported`, strictly worse.
+    Here P1 is checked first and still governs, so the recovery path survives.
+    """
+    verdict, fired = _run(
+        claim="The guidance does not prescribe a fixed interval.",
+        features=_features(has_explicit_negation=True),
+        passages=[
+            Passage(
+                passage_id="bg", text="A fixed 30-day interval applies.", source_meta=_BACKGROUND
+            )
+        ],
+        retrieval=[RetrievalResult(passage_id="bg", score=0.90)],
+        support_signal=SupportSignal(
+            label="contradict", max_entailment_score=0.99, contributing_passage_id="bg"
+        ),
+        entailment=[_er("bg", "contradict", 0.99)],
+    )
+    assert verdict.support_verdict == "not_checkable"
+    assert "P1_eligibility_suppressed" in _ids(fired)
+    assert "B5_degree" in _ids(fired)

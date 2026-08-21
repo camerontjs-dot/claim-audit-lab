@@ -5,7 +5,7 @@
 #
 # The verdict thresholds (retrieval_floor, supported_threshold,
 # contradicted_threshold, numeric_tolerance) are NOT authored here — they are
-# the single source of truth in cal-rules-v1.5.0.yaml, materialized into
+# the single source of truth in cal-rules-v1.13.0.yaml, materialized into
 # AuditConfig by claim_audit_lab.v1.config.load_default_audit_config, which also
 # pins that file's SHA as rules_file_sha. See plans/adr-v1-rule-order.md.
 

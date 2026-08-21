@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchmarks: Claim Audit Lab</title>
+<meta name="description" content="Test, coverage and reproducibility receipts for Claim Audit Lab, plus the failure taxonomy and the open defect register.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/cal.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="index.html">claim<span class="dim">-audit-</span>lab</a>
+    <nav class="site">
+      <a href="index.html">Overview</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html" aria-current="page">Benchmarks</a>
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 style="margin-top:40px">Benchmarks &amp; limits</h1>
+  <p class="muted" style="max-width:72ch">
+    Two different things get measured on this page, and conflating them is the failure mode
+    this project most wants to avoid. <strong>Engineering integrity</strong> is verified and
+    green: the tests pass, it installs, it reproduces byte for byte.
+    <strong>Measurement accuracy</strong> is not established. Whether CAL reaches the verdict
+    a human reviewer would is the open question, and the numbers below say so.
+  </p>
+
+  <h2>Engineering integrity: verified</h2>
+  <p class="faint">Run locally against the workbench checkout on 2026-08-20, Python 3.11.15.</p>
+
+  <div class="grid c4">
+    <div class="card stat good">
+      <span class="value">957</span>
+      <span class="label">public tests passing</span>
+      <span class="note">5 skipped · self-contained unit, metamorphic, golden, round-trip, CLI</span>
+    </div>
+    <div class="card stat good">
+      <span class="value">95%</span>
+      <span class="label">branch coverage, <code>src/</code></span>
+      <span class="note">4073 stmts · 1192 branches · gate &ge; 95%</span>
+    </div>
+    <div class="card stat good">
+      <span class="value">39 / 40</span>
+      <span class="label">sealed dirs verify</span>
+      <span class="note">SHA256SUMS re-checked · 1 failing on purpose (DEV-005)</span>
+    </div>
+    <div class="card stat good">
+      <span class="value">clean</span>
+      <span class="label">wheel install</span>
+      <span class="note">v0.2 + v1 + ui surfaces, isolated venvs</span>
+    </div>
+    <div class="card stat good">
+      <span class="value">0</span>
+      <span class="label">mypy strict errors</span>
+      <span class="note">49 source files</span>
+    </div>
+    <div class="card stat good">
+      <span class="value">0</span>
+      <span class="label">ruff errors</span>
+      <span class="note">check + format, <code>src/</code></span>
+    </div>
+  </div>
+
+  <div class="chart">
+    <div class="cbar">
+      <span class="clabel">Tests passing</span>
+      <span class="ctrack"><span class="cfill good" style="width:100%"></span></span>
+      <span class="cval">957 passed</span>
+    </div>
+    <div class="cbar">
+      <span class="clabel">Branch coverage <code>src/</code></span>
+      <span class="ctrack"><span class="cfill good" style="width:95%"></span></span>
+      <span class="cval">95%</span>
+    </div>
+    <div class="cbar">
+      <span class="clabel">Sealed-output integrity</span>
+      <span class="ctrack"><span class="cfill good" style="width:97%"></span></span>
+      <span class="cval">39/40</span>
+    </div>
+    <div class="cbar">
+      <span class="clabel">Type check <code>src/</code></span>
+      <span class="ctrack"><span class="cfill good" style="width:100%"></span></span>
+      <span class="cval">0 err</span>
+    </div>
+    <div class="cbar">
+      <span class="clabel">Lint <code>src/</code></span>
+      <span class="ctrack"><span class="cfill good" style="width:100%"></span></span>
+      <span class="cval">0 err</span>
+    </div>
+  </div>
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>Gates as of 2026-08-20.</strong> <code>mypy --strict</code> and
+      <code>ruff</code> both report zero errors across 49 source files, and the tree is fully
+      formatted. Fixing these removed an import-time <code>sys.path</code> mutation from both
+      UI modules. A library should not rewrite the import path of the process that loads it.</p>
+      <p>The <code>ui</code> extra now declares what <code>claim_audit_lab.ui</code> actually
+      needs: <code>fastapi</code>, <code>uvicorn</code>, and the full <code>[v1]</code>
+      inference stack. Verified by installing the wheel with only <code>[ui]</code> into a
+      clean virtualenv and importing both UI modules.</p>
+    </div>
+  </div>
+
+  <h2>Reproducibility</h2>
+  <p>
+    Determinism is the property CAL is willing to spend performance on. The inference stack is
+    CPU-only by design so results do not move with accelerator availability.
+  </p>
+  <div class="grid c3">
+    <div class="card">
+      <h3>Byte-identical outputs</h3>
+      <p class="muted">With run id and timestamp pinned, C-B bundle audits reproduce byte for
+      byte. Verified by golden tests in the suite above.</p>
+    </div>
+    <div class="card">
+      <h3>SHA-pinned rules</h3>
+      <p class="muted">Thresholds live in <code>cal-rules-v1.13.0.yaml</code>. The loader pins
+      its SHA-256 and fails loudly if a materialized config diverges.</p>
+    </div>
+    <div class="card">
+      <h3>Sealed research outputs</h3>
+      <p class="muted">Probe directories carry checksum manifests. 39 of 40 re-verify. The
+      fortieth is left <em>failing on purpose</em>: it was re-run in place on 2026-08-20,
+      overwriting outputs the manifest still describes. Re-sealing would have hidden a real
+      loss, so the manifest stands and the incident is
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab/blob/main/validation/deviation-log.md">DEV-005</a>.</p>
+    </div>
+  </div>
+
+  <h2>Measurement accuracy: not established</h2>
+  <p>
+    This is the honest part. CAL's engineering is sound; its agreement with human judgement is
+    weak and well characterised. The abstention figures below are measured on
+    <code>scaled-30</code>, a synthetic GxP/QMS corpus, and are DEV-grade. They do
+    <strong>not</strong> describe the simple-logic gold lanes, where CAL returns
+    <code>supported</code> cleanly: those are structurally easier by construction, and their
+    passing is not evidence the abstention problem is solved.
+  </p>
+
+  <div class="grid c2">
+    <div class="card stat warn">
+      <span class="value">26.5%</span>
+      <span class="label">abstention, PILOT-001 (human gold)</span>
+      <span class="note">26 of 98 · the real FDA-derived corpus · stable across three runs</span>
+    </div>
+    <div class="card stat bad">
+      <span class="value">64.3%</span>
+      <span class="label">abstention, scaled-30 (synthetic GxP)</span>
+      <span class="note">135 of 210 · single-document bundles by construction</span>
+    </div>
+  </div>
+
+  <p>
+    <strong>The abstention rate is a property of the corpus, not a constant.</strong> The same
+    pipeline abstains on 26.5% of human-gold claims and 64.3% of synthetic ones. And the
+    <em>reasons</em> invert. On the synthetic corpus abstentions are overwhelmingly
+    <code>read_silent</code>; on human gold the largest class is
+    <code>refutation_stood_down</code>, where CAL measured a refutation and the rules layer
+    deliberately declined to act on it.
+  </p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>Why it abstained</th>
+        <th class="num">PILOT-001<br><span class="faint">human gold, n=98</span></th>
+        <th class="num">scaled-30<br><span class="faint">synthetic, n=210</span></th>
+        <th>What it means</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>refutation_stood_down</code></td>
+        <td class="num"><strong>12</strong> (46.2%)</td>
+        <td class="num">9 (6.7%)</td>
+        <td>A refutation signal was measured and the rules layer stood down. Deliberate, and recorded as such.</td>
+      </tr>
+      <tr>
+        <td><code>read_silent</code></td>
+        <td class="num">7 (26.9%)</td>
+        <td class="num"><strong>112</strong> (83.0%)</td>
+        <td>Evidence read; it takes no position either way.</td>
+      </tr>
+      <tr>
+        <td><code>ambiguous_support</code></td>
+        <td class="num">3 (11.5%)</td>
+        <td class="num">7 (5.2%)</td>
+        <td>Real support signal below threshold. Most likely to be a false abstention.</td>
+      </tr>
+      <tr>
+        <td><code>conflicting_signal</code></td>
+        <td class="num">2 (7.7%)</td>
+        <td class="num">0 (0.0%)</td>
+        <td>Support and refutation both present. <strong>The synthetic corpus cannot produce this at all.</strong></td>
+      </tr>
+      <tr>
+        <td><code>no_evidence_admitted</code></td>
+        <td class="num">2 (7.7%)</td>
+        <td class="num">7 (5.2%)</td>
+        <td>Nothing cleared the retrieval floor. Nothing was read.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>The <code>conflicting_signal</code> row is the cautionary one.</strong> A
+      sealed analysis of the synthetic corpus concluded that this reason code was dead weight,
+      because no claim in 210 carried both support and refutation. Running the same
+      classification over human gold fires it twice. <strong>The code was not dead; the corpus
+      could not exercise it</strong>: its bundles are single-document, so they contain no
+      off-topic passages by construction.</p>
+      <p>Nothing here is an accuracy claim. These are distributions of CAL's own recorded
+      reasons, not agreement with human labels.</p>
+    </div>
+  </div>
+
+  <p>
+    Reproduce either column with the shipped read-only command: it re-reads recorded
+    traces, runs no model, and re-decides nothing:
+  </p>
+
+<pre><code>claim-audit explain path/to/traces --out-dir ./explanations</code></pre>
+
+  <h2>Failure taxonomy</h2>
+  <p>Where a verdict goes wrong, it goes wrong in one of these places.</p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>Mode</th><th>Layer</th><th>Reported as</th><th>Danger</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Floor miss</strong>, support never clears retrieval</td>
+        <td>1 · Retrieve</td>
+        <td><code>not_checkable</code> / <code>no_evidence</code></td>
+        <td><span class="pill contradicted">high</span> indistinguishable from "the document
+          does not say that", when it may say it verbatim</td>
+      </tr>
+      <tr>
+        <td><strong>Entailment miss</strong>, passage read, no position taken</td>
+        <td>2 · Entail</td>
+        <td><code>not_checkable</code> / <code>no_entail_signal</code></td>
+        <td><span class="pill partial">moderate</span> at least records that evidence was
+          read; currently mislabelled, should be <code>unsupported</code></td>
+      </tr>
+      <tr>
+        <td><strong>Comparison not performed</strong>, threshold rule not applied to a value</td>
+        <td>2 · Entail</td>
+        <td><code>neutral</code> at high confidence</td>
+        <td><span class="pill partial">moderate</span> the model is not distracted; it does
+          not take the reasoning step</td>
+      </tr>
+      <tr>
+        <td><strong>False contradiction</strong>, adverse verdict on a compound claim</td>
+        <td>3 · Rules</td>
+        <td><code>contradicted</code></td>
+        <td><span class="pill contradicted">high</span> asserts the opposite of the evidence;
+          open defect D8</td>
+      </tr>
+      <tr>
+        <td><strong>Citation does not justify verdict</strong>, one passage recorded for a
+          two-passage claim</td>
+        <td>3 · Rules</td>
+        <td>correct verdict, wrong receipt</td>
+        <td><span class="pill contradicted">high</span> invisible to every agreement metric;
+          in a regulated context the citation <em>is</em> the product</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Are the abstentions right?</h2>
+  <p>
+    An abstention rate means nothing on its own. The question is whether CAL abstained on
+    claims a human could actually settle. Crossing the 26 PILOT-001 abstentions against human
+    gold, and separating out claims whose evidence was <em>deliberately starved</em> (where
+    abstaining is the correct answer):
+  </p>
+
+  <div class="grid c2">
+    <div class="card stat good">
+      <span class="value">18 / 26</span>
+      <span class="label">correctly abstained</span>
+      <span class="note">evidence starved by design, or gold also said <code>not_checkable</code></span>
+    </div>
+    <div class="card stat warn">
+      <span class="value">8 / 26</span>
+      <span class="label">questionable</span>
+      <span class="note">evidence was available and the human reached a verdict</span>
+    </div>
+  </div>
+
+  <p>
+    Of the eight, three are the same mechanism: a refutation measured between 0.24 and 0.998
+    that <code>P1_eligibility</code> suppressed because the source's trust level does not
+    permit it to solo-drive an adverse verdict. On two of those three, <strong>the human
+    independently agreed the claim was unsupported or contradicted</strong>. CAL measured the
+    right thing and discarded it.
+  </p>
+
+  <p>
+    That looks like an argument for a weak or hedged verdict. It is not, and the data says so
+    plainly. Sweeping a <code>weakly_supported</code> verdict over every threshold is
+    <strong>net-negative at all of them</strong>: at its best it recovers 2 claims while
+    wrongly promoting 3. And a weak <em>adverse</em> verdict cannot be separated by score at
+    all: the suppressed refutations that <em>should</em> be promoted score 0.9979 and 0.9948,
+    while one that <strong>must not</strong> be sits between them at 0.9939. The populations
+    interleave, so no threshold divides them.
+  </p>
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>The fix is reporting, not a new verdict.</strong> CAL already records why it
+      stood down. Surfacing that ("a refutation was measured at 0.99 but the source is not
+      eligible to carry an adverse verdict alone; read the passage") lets a reviewer catch the
+      two CAL was right about, without CAL asserting the one false adverse verdict that any
+      score-based promotion would also buy.</p>
+      <p>That output is what <code>claim-audit explain</code> emits today.</p>
+    </div>
+  </div>
+
+  <h2>Open defect register</h2>
+  <p>
+    Named defects are tracked here rather than in an internal tracker because a claim-auditing
+    tool that hid its own unsupported claims would be self-refuting. Open on this surface:
+    numeric operators (D1, D4, D12), D6 (held), D7 (must not land without D6), and
+    <strong>D14</strong>, a false adverse verdict found 2026-08-20 by running one
+    realistic paragraph through the built wheel, measured across identifier shapes, and fixed
+    in <code>cal-rules-v1.13.0</code>. And <strong>D15</strong>, a replay harness that
+    reported a gate as a no-op when it could not fire the gate at all, and
+    <strong>D16</strong>, found by the official release run: A7 withholding on an
+    out-of-scope passage while an in-scope one refutes the claim.
+    D10 and D11 were added 2026-08-19 by the
+    <a href="research.html">construction-gold probe</a>, which promoted D9 from a
+    presentation defect to a verdict-changing one and then landed D9 and D10 together in
+    <code>cal-rules-v1.9.0</code>, and D11 in <code>cal-rules-v1.10.0</code>. A7
+    (scope mismatch as a question) landed in <code>cal-rules-v1.12.0</code>, and <code>v1.13.0</code> taught it to see identifiers containing a numeral (D14).
+  </p>
+
+  <div class="table-scroll">
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Defect</th><th>Where</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>D1</strong></td><td>Numeric rule applies equality where the claim instantiates a bound</td><td><code>C6a_numeric</code></td><td><span class="pill notcheckable">open · v2 quantity operator</span></td></tr>
+      <tr><td><strong>D2</strong></td><td>Negation backstop mis-reads negative rule instantiation</td><td><code>A3</code></td><td><span class="pill supported">landed v1.8.0</span></td></tr>
+      <tr><td><strong>D3</strong></td><td>Numeric rule parses regulatory citations as quantities</td><td><code>C6a</code></td><td><span class="pill supported">landed v1.8.0</span></td></tr>
+      <tr><td><strong>D4</strong></td><td>Quantity extractor destroys ranges</td><td><code>features</code></td><td><span class="pill notcheckable">open · v2 quantity operator</span></td></tr>
+      <tr><td><strong>D5</strong></td><td>Structural negator inverts negative-existential claims</td><td><code>negate_claim</code></td><td><span class="pill supported">landed · abstains</span></td></tr>
+      <tr><td><strong>D6</strong></td><td>Probe sees one passage; demotes on evidence it never looked at</td><td><code>A4</code></td><td><span class="pill notcheckable">open · held</span></td></tr>
+      <tr><td><strong>D7</strong></td><td>Terminates instead of falling back to the eligible pool</td><td><code>A4</code></td><td><span class="pill notcheckable">open · must not land alone</span></td></tr>
+      <tr><td><strong>D8</strong></td><td>False <code>contradicted</code> on a compound claim at the shipped floor, unary A3 mirror over <code>P but not Q</code></td><td><code>A3_conjunct_negation_suppressed</code></td><td><span class="pill supported">landed (narrow) · broader compound forms still open</span></td></tr>
+      <tr><td><strong>D9</strong></td><td>Label-blind aggregation, took the highest score regardless of its label, so an out-of-scope passage could override a correct entailment and change the verdict</td><td>new gate <code>A5_conflicting_evidence</code></td><td><span class="pill supported">landed v1.9.0</span></td></tr>
+      <tr><td><strong>D10</strong></td><td>Every constructed contradiction stood down, entailer flagged 7/7 at 0.975–0.996 and none reached a verdict</td><td><code>A4_negation_consistency</code></td><td><span class="pill supported">landed v1.9.0</span></td></tr>
+      <tr><td><strong>D11</strong></td><td>Adverse verdict on an absence claim whose source is mechanically verified silent</td><td>new gate <code>A6_absence_not_decidable</code></td><td><span class="pill supported">landed v1.10.0</span></td></tr>
+      <tr><td><strong>D12</strong></td><td>Entailer cannot instantiate a numeric bound, entails the threshold restated verbatim at 0.988, neutral on a satisfying value at 0.011, and cannot tell 10 °C from 9 °C. <strong>The first entry no rule change can close</strong></td><td>pinned entailer, upstream of <code>C6a</code></td><td><span class="pill notcheckable">open · v2 scope</span></td></tr>
+      <tr><td><strong>D13</strong></td><td><code>explain</code> next-step for <code>read_silent</code>, no longer sends the reviewer to a different source when the admitted set may still settle the claim. Scope, numeric, and two-hop silence now ask a specific question</td><td><code>_next_step_for</code></td><td><span class="pill supported">landed</span></td></tr>
+      <tr><td><strong>A7</strong></td><td>One-passage false adverse when the contradicting passage names a different site than the claim (packaging vs Building 4)</td><td>new gate <code>A7_scope_mismatch</code>, asks which site; does not decide</td><td><span class="pill supported">landed v1.12.0</span></td></tr>
+      <tr><td><strong>D16</strong></td><td><strong>A7 terminates on the contributing passage instead of falling back to the eligible pool.</strong> When two passages contradict above threshold and the highest-scoring one is out of scope, A7 withholds without looking at the in-scope passage that genuinely refutes the claim. Demonstrated on the official release run: a CH-07 passage at 0.9888 masked a CH-04 passage at 0.9849 and a true contradiction became an abstention. <strong>D7's shape in a newer gate</strong>, and partly a cost of the v1.13.0 fix, before it, A7 could not see the out-of-scope passage and A4 returned the right verdict by deciding on the wrong passage. Direction is false abstention, not false adverse</td><td><code>A7_scope_mismatch</code></td><td><span class="pill notcheckable">open · lands with D6/D7</span></td></tr>
+      <tr><td><strong>D15</strong></td><td><strong>The rules-only replay cannot test a gate newer than its baseline.</strong> Replayed evidence carries only the <code>SupportSignal</code> fields that existed when it was recorded, so <code>A5_conflicting_evidence</code>. Which reads <code>best_entail</code> and <code>best_contradict</code>, added in v1.9.0, had an unsatisfiable precondition on every replayed claim. The replay reported zero changes; end to end the gate moves <strong>2 of 98</strong>. Every "no-op on PILOT-001" figure that rested on it has been corrected</td><td><code>pilot001_a5_a4_landing_run09.py</code> harness</td><td><span class="pill notcheckable">open · harness; use end-to-end for new gates</span></td></tr>
+      <tr><td><strong>D14</strong></td><td><strong>A7 failed open on identifiers containing a numeral.</strong> The parser tagged <code>CH-07</code>, <code>SOP-014</code>, <code>STB-2291</code> as numbers, so they attached as modifiers instead of heading the subject; with an ambiguous verb the sentence was left with no nominal subject, <code>scope_anchors</code> returned nothing, and A7 stood down so A4 decided. Producing the false adverse verdict A7 exists to withhold. Measured <strong>14 of 66</strong> identifier&times;verb combinations blind. <strong>Not the numeric-comparison family:</strong> quantities were ruled out as the trigger by measurement, and purely alphabetic identifiers never broke. Fixed by normalising identifier tokens before parsing and mapping them back, scoped to scope extraction so no other feature's parse moves; <strong>3 of 66</strong> remain, bare digits and multi-token forms, out of scope because catching them would mean treating quantities as identifiers</td><td><code>scope_anchors</code>, upstream of <code>A7</code></td><td><span class="pill supported">landed v1.13.0 · 14/66 &rarr; 3/66</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p class="faint">
+    Six of these (D7, D8, D9, D11, D12, D13) were found by probes testing something else
+    entirely, and <strong>none of the six was visible to an agreement metric</strong>. That is the
+    argument for keeping the decision layer deterministic and inspectable: a defect that no
+    score can see is still a defect, and it can still be read off a trace.
+  </p>
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>D9 and D10 landed together, and had to.</strong> D10 (A4 suppressing every
+      refutation) was <em>masking</em> D9 (aggregation that ignores labels). Replaying the
+      real trace with the new gate blinded shows the D10 fix on its own converting a
+      constructed abstention into a false <code>contradicted</code> on a correctly-sourced
+      claim, a worse outcome than the defect it fixes.</p>
+      <p>Effect on the 33-case construction corpus: exact agreement <strong>14&rarr;20</strong>,
+      the <code>contradicts</code> relation <strong>0/6&rarr;6/6</strong>, adverse-verdict
+      precision <strong>0/3&rarr;6/9</strong> and recall <strong>0/7&rarr;6/7</strong>. Six
+      verdicts moved, all wrong&rarr;right, and <strong>0 of 30</strong> frozen inference
+      goldens flip.</p>
+      <p><strong>Correction, 2026-08-20. This landing is not free on human gold.</strong>
+      It was published here as a no-op on PILOT-001, on the strength of a rules-only control
+      replay. Run end to end it moves <strong>2 of 98</strong>, both <code>supported</code>
+      &rarr; <code>not_checkable</code> via <code>A5_conflicting_evidence</code>, and human
+      gold says <code>supported</code> for both. Exact agreement on PILOT-001 is
+      <strong>62/98</strong>, not the 64/98 inherited from v1.7.0. The replay could not have
+      seen it: A5 reads <code>best_entail</code> and <code>best_contradict</code>, fields that
+      did not exist when the replayed baseline was recorded, so its precondition was
+      unsatisfiable by construction. The evidence is identical either way: same
+      passages, same labels, 0 of 98 claims differ in entailed-set size. See D15.</p>
+      <p><strong>D11 followed in v1.10.0</strong>, taking the corpus to <strong>22/33</strong>
+      and the adverse verdict to <strong>precision 6/6</strong>. No false adverse
+      verdict remains on it. A no-op on the goldens, and on PILOT-001 as far as the
+      end-to-end run can tell: the two movers above are A5's, not D11's. The obvious fix
+      there was lexical, and it worked; it was rejected and rebuilt structurally because
+      <em>overlap may flag, never decide</em> is a standing invariant, adopted after the
+      v0.2 lexical matcher was falsified and the same error was re-imported once already.</p>
+      <p><strong>v1.11.0 taught A6 to read the declared <code>source_boundary</code></strong>,
+      moving the three exhaustive absences and the named-gap case. Re-run on the shipped
+      <code>cal-rules-v1.13.0</code>, the corpus stands at <strong>26/33</strong>, adverse
+      verdict <strong>precision 7/7 and recall 7/7</strong>, variant-group partition agreement
+      <strong>7/9</strong>.</p>
+      <p><strong>All seven remaining misses are false abstentions.</strong> Every one is gold
+      <code>supported</code>, CAL <code>not_checkable</code>; no false adverse verdict is left
+      in the corpus at this rules version. Four of the 26 agreements are reached with zero
+      passages entailed (right answer, no reasoning) and are named rather than
+      banked. Sealed at
+      <code>outputs/2026-08-20-construction-gold-v1.12.0/</code>.</p>
+      <p><strong>Read that as a statement about the corpus, not the engine.</strong> D14 is a
+      false adverse verdict on this rules version, found outside the corpus. Every A7 passage
+      here is short, cleanly parsed, and free of alphanumeric identifiers, so the corpus
+      never exercised the gate on the shapes that carry scope in a real regulated document.
+      The absence of a failure in a corpus is evidence about the corpus first.</p>
+    </div>
+  </div>
+
+  <h2>What would change these numbers</h2>
+  <ul>
+    <li><strong>Relabelling abstentions.</strong> 128 of 135 abstentions have already had their
+      evidence admitted and read. Reporting them as <code>unsupported</code> rather than
+      <code>not_checkable</code> is a vocabulary fix, not a model fix.</li>
+    <li><strong>D8 (narrow) landed.</strong> The live PILOT-001 wording of
+      <code>rsh-475fe956a5fb-c002</code> is no longer a <code>contradicted</code>
+      under A3. Broader compound-negation forms remain open. <em>D9 landed
+      2026-08-19</em>, which also makes a cited passage match the evidence that
+      produced the verdict.</li>
+    <li><strong>A multi-source corpus.</strong> <em>Built 2026-08-19.</em> Single-document
+      bundles had concealed two independent defects because every candidate passage is
+      on-topic by construction. Adding out-of-scope passages surfaced a third (D9) within one
+      run, but only once the distractors were built to <em>clear</em> the retrieval
+      floor. Topically unrelated ones scored 0.13&ndash;0.30 against a 0.40 floor and never
+      reached the component under test.</li>
+    <li><strong>A gate on the current rule surface.</strong> The 2026-07-24 exploratory blind
+      gate cleared on <code>cal-rules-v1.7.0</code> (Gwet AC2 0.7901, weighted &kappa; 0.6876,
+      exact agreement 27/50). <strong>The two agreement coefficients are computed over 22 of
+      the 50 items</strong>: <code>not_checkable</code> is off-scale, so CAL's most
+      common outcome drops out of any complete-case statistic; 27/50 is the only headline
+      figure over the whole set. The tree has since moved to <code>v1.12.0</code> and six
+      defects were found after it, so that clearance does not transfer unexamined,       and the v1.9.0 landing costs <strong>2 of the 98</strong> PILOT-001 agreements when the
+      pipeline is run end to end, a cost that a rules-only replay reported as zero
+      because the gate's input fields postdate the baseline it replays (D15).</li>
+  </ul>
+
+  <div class="status-banner">
+    <span class="icon">&#9679;</span>
+    <div>
+      <p><strong>Engineering complete (mechanisms verified) &ne; formally validated.</strong>
+      CAL's pipeline, determinism, and provenance behave as specified and are tested. Its
+      agreement with expert human judgement is measured, weak, and unresolved. No claim of GxP
+      validation, regulatory fitness, or production accuracy is made anywhere in this
+      repository.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>Claim Audit Lab &middot; MIT licensed &middot;
+      <a href="https://github.com/camerontjs-dot/claim-audit-lab">github.com/camerontjs-dot/claim-audit-lab</a></p>
+    <p>Engineering build. Not validated software. Not a GxP capability claim.
+      Figures are DEV-grade and carry their population and n.</p>
+  </div>
+</footer>
+
+</body>
+</html>

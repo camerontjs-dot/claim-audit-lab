@@ -33,6 +33,28 @@ from dataclasses import dataclass
 from claim_audit_lab.v1.models import EntailResult, SupportSignal
 
 
+def _best(
+    results: list[EntailResult],
+) -> tuple[tuple[float | None, str | None], tuple[float | None, str | None]]:
+    """Highest ``p_entail`` and ``p_contradict`` across all results, with their passages.
+
+    Runs over **every** result, not just the support-bearing ones — the whole
+    reason the fields exist is that a neutral-labelled passage can still carry
+    substantial entailment probability, and the argmax selection above throws
+    that away. Returns ``(None, None)`` per channel when no result carries the
+    probability (a stub entailer, or a trace written before these fields
+    existed), so an absent measurement is never confused with a measured zero.
+    """
+    scored_e = [r for r in results if r.p_entail is not None]
+    scored_c = [r for r in results if r.p_contradict is not None]
+    top_e = max(scored_e, key=lambda r: r.p_entail or 0.0, default=None)
+    top_c = max(scored_c, key=lambda r: r.p_contradict or 0.0, default=None)
+    return (
+        (top_e.p_entail, top_e.passage_id) if top_e else (None, None),
+        (top_c.p_contradict, top_c.passage_id) if top_c else (None, None),
+    )
+
+
 @dataclass(frozen=True)
 class MaxEntailmentAggregator:
     """Take the highest-scoring support-bearing (non-neutral) result; neutral abstains."""
@@ -55,10 +77,15 @@ class MaxEntailmentAggregator:
         support_bearing = [r for r in entailment_results if r.label != "neutral"]
         candidates = support_bearing or entailment_results
         top = max(candidates, key=lambda r: r.score)
+        best_entail, best_contradict = _best(entailment_results)
         return SupportSignal(
             label=top.label,
             max_entailment_score=top.score,
             contributing_passage_id=top.passage_id,
+            best_entail=best_entail[0],
+            best_entail_passage_id=best_entail[1],
+            best_contradict=best_contradict[0],
+            best_contradict_passage_id=best_contradict[1],
         )
 
 

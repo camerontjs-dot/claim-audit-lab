@@ -1,6 +1,6 @@
 {
   "claim_id": "e2e-05",
-  "claim_text": "The platform validates submitted input records.",
+  "claim_text": "The batch was released on schedule.",
   "retrieval": [
     {
       "passage_id": "p-1",
@@ -46,6 +46,20 @@
     "citation_status": "not_applicable",
     "audit_confidence": "high"
   },
-  "audit_config_hash": "sha256:98c6609c0b540ab477e9855342806b45ed5650a2b6e6e9745b5bdf12a9a0dbd5",
-  "library_version": "0.2.0"
+  "audit_config_hash": "sha256:96a60db8fc9d6dd5404c0d2625b97755ebc8d073a507867fc526f59b513ad3c4",
+  "library_version": "0.4.0",
+  "negation_probe": {
+    "negated_claim": "The batch was not released on schedule.",
+    "abstained": false,
+    "result": {
+      "passage_id": "p-1",
+      "label": "entail",
+      "score": 0.9,
+      "raw_logits": [
+        2.0,
+        -1.0,
+        -1.0
+      ]
+    }
+  }
 }

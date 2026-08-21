@@ -18,7 +18,7 @@ tests/v1/test_pipeline_e2e.py``.
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import pytest
@@ -79,6 +79,9 @@ class Case:
     reason: VerdictReason | None
     flags: list[AuditFlag]
     rule_ids: set[str]
+    # A4 negation-consistency probe responses, keyed by the *negated* claim
+    # text (cal-rules-v1.7.0). Only hard-contradiction candidates probe.
+    probe: dict[str, EntailSpec] = field(default_factory=dict)
 
 
 CASES: list[Case] = [
@@ -135,14 +138,19 @@ CASES: list[Case] = [
     Case(
         name="05-contradicted-hard",
         claim_id="e2e-05",
-        claim=_CLAIM,
-        passages=[_p(_CLAIM)],
+        claim="The batch was released on schedule.",
+        passages=[_p("The batch was not released on schedule.")],
         retrieval_scores={"p-1": 0.90},
         entail={"p-1": _spec("contradict", 0.92)},
         verdict="contradicted",
         reason=None,
         flags=[],
         rule_ids={"A4_hard_contradiction"},
+        # True contradiction: the premise entails the negated claim, so the
+        # v1.7.0 negation-consistency probe confirms and A4 stands. (The prior
+        # _CLAIM text parse-roots "submitted", so its structural negation lands
+        # on the wrong verb — a documented negator hazard, not a fixture shape.)
+        probe={"The batch was not released on schedule.": _spec("entail", 0.90)},
     ),
     Case(
         name="06-contradicted-negation",
@@ -362,6 +370,61 @@ CASES: list[Case] = [
         flags=[],
         rule_ids={"B5_degree"},
     ),
+    # --- A1 combined structural guard (cal-rules-v1.6.0;
+    # adr-v1-a1-imperative-hardening.md). 23 locks the recovered PILOT-001
+    # noun-initial defect shape at the verdict layer: spaCy roots "links" with
+    # `guidance` as `compound`, so the old subject-less-root rule called the
+    # claim imperative and A1 discarded a strongly entailed claim. 24 is the
+    # true-imperative control with the fullest allowed prefix (intj+aux+neg) —
+    # the guard must keep routing it out_of_scope. --------------------------
+    Case(
+        name="23-noun-initial-declarative-audited",
+        claim_id="e2e-23",
+        claim=(
+            "The guidance links annual reviews to statistical process control and trend analysis."
+        ),
+        passages=[
+            _p(
+                "The guidance links annual reviews to statistical process control "
+                "and trend analysis."
+            )
+        ],
+        retrieval_scores={"p-1": 0.90},
+        entail={"p-1": _spec("entail", 0.95)},
+        verdict="supported",
+        reason=None,
+        flags=[],
+        rule_ids={"B5_degree"},
+    ),
+    # --- A4 negation-consistency confirmation (cal-rules-v1.7.0;
+    # adr-v1-slg09-negation-consistency.md). The SLG-09 defect shape at the
+    # verdict layer: a same-subject/unrelated-predicate false contradiction is
+    # demoted because the premise does not entail the negated claim. ---------
+    Case(
+        name="25-unconfirmed-contradiction-demoted",
+        claim_id="e2e-25",
+        claim="The parcel was sealed before shipment.",
+        passages=[_p("The parcel was weighed before shipment.")],
+        retrieval_scores={"p-1": 0.90},
+        entail={"p-1": _spec("contradict", 0.92)},
+        verdict="not_checkable",
+        reason="no_entail_signal",
+        flags=[],
+        rule_ids={"A4_negation_consistency"},
+        probe={"The parcel was not sealed before shipment.": _spec("neutral", 0.95)},
+    ),
+    Case(
+        name="24-imperative-out-of-scope",
+        claim_id="e2e-24",
+        claim="Please do not release the batch.",
+        passages=[_p("The batch is released after review.")],
+        retrieval_scores={"p-1": 0.90},
+        entail={"p-1": _spec("neutral", 0.30)},
+        verdict="not_checkable",
+        reason="out_of_scope",
+        flags=[],
+        rule_ids={"A1_scope"},
+    ),
 ]
 
 
@@ -376,7 +439,7 @@ def _run(case: Case) -> AuditTrace:
         request,
         feature_extractor=DefaultFeatureExtractor(),
         retriever=StubRetriever(scores=case.retrieval_scores),
-        entailer=StubEntailer(responses=case.entail),
+        entailer=StubEntailer(responses=case.entail, claim_responses=case.probe),
         aggregator=MaxEntailmentAggregator(),
         rules=VerdictRules(rules_file_sha=_CONFIG.rules_file_sha),
     )
@@ -384,6 +447,116 @@ def _run(case: Case) -> AuditTrace:
 
 def _dump(trace: AuditTrace) -> str:
     return trace.model_dump_json(indent=2) + "\n"
+
+
+def test_e2e_exhaustive_source_coverage_is_supported() -> None:
+    """A6 reads source_boundary: exhaustive silence supports the absence claim."""
+    request = AuditRequest(
+        claim_id="cg-08a",
+        claim_text="The guidance does not address storage conditions for retention samples.",
+        passages=[_p("Long-term testing must cover at least 12 months at submission.")],
+        audit_config=_CONFIG,
+        source_boundary="exhaustive",
+    )
+    trace = run_audit(
+        request,
+        feature_extractor=DefaultFeatureExtractor(),
+        retriever=StubRetriever(scores={"p-1": 0.90}),
+        entailer=StubEntailer(responses={"p-1": _spec("contradict", 0.98)}),
+        aggregator=MaxEntailmentAggregator(),
+        rules=VerdictRules(rules_file_sha=_CONFIG.rules_file_sha),
+    )
+    assert trace.verdict.support_verdict == "supported"
+    assert "A6_absence_decidable" in {fired.rule_id for fired in trace.rules_fired}
+
+
+def test_e2e_named_gap_coverage_is_contradicted() -> None:
+    request = AuditRequest(
+        claim_id="cg-21",
+        claim_text="The guidance does not address storage conditions for retention samples.",
+        passages=[_p("Long-term testing must cover at least 12 months at submission.")],
+        audit_config=_CONFIG,
+        source_boundary="named_missing_material",
+        claimed_material_is_a_named_gap=True,
+    )
+    trace = run_audit(
+        request,
+        feature_extractor=DefaultFeatureExtractor(),
+        retriever=StubRetriever(scores={"p-1": 0.90}),
+        entailer=StubEntailer(responses={"p-1": _spec("contradict", 0.98)}),
+        aggregator=MaxEntailmentAggregator(),
+        rules=VerdictRules(rules_file_sha=_CONFIG.rules_file_sha),
+    )
+    assert trace.verdict.support_verdict == "contradicted"
+    assert "A6_named_gap_present" in {fired.rule_id for fired in trace.rules_fired}
+
+
+def test_d8_c002_mid_score_is_not_contradicted() -> None:
+    """The live D8 score (entail 0.625) must not become an adverse verdict."""
+    case = Case(
+        name="d8-c002-mid-score",
+        claim_id="rsh-475fe956a5fb-c002",
+        claim=(
+            "The guidance mentions trend analyses and continual monitoring for annual "
+            "product reviews but doesn't specify a volume threshold."
+        ),
+        passages=[_p("Annual product reviews include trend analyses and continual monitoring.")],
+        retrieval_scores={"p-1": 0.90},
+        entail={"p-1": _spec("entail", 0.625)},
+        verdict="partially_supported",
+        reason=None,
+        flags=[],
+        rule_ids={"A3_conjunct_negation_suppressed", "B5_degree"},
+    )
+    trace = _run(case)
+    assert trace.verdict.support_verdict != "contradicted"
+    assert trace.verdict.support_verdict == "partially_supported"
+    assert "A3_negation_backstop" not in {fired.rule_id for fired in trace.rules_fired}
+    assert "A3_conjunct_negation_suppressed" in {fired.rule_id for fired in trace.rules_fired}
+
+
+@pytest.mark.parametrize(
+    ("claim", "passage", "expected_verdict", "expected_rule"),
+    [
+        (
+            "The guidance mentions trend analyses but does not specify a volume threshold.",
+            "The guidance mentions trend analyses for annual product reviews.",
+            "supported",
+            "A3_conjunct_negation_suppressed",
+        ),
+        (
+            "The guidance mentions trend analyses and continual monitoring for annual "
+            "product reviews but doesn't specify a volume threshold.",
+            "Annual product reviews include trend analyses and continual monitoring.",
+            "supported",
+            "A3_conjunct_negation_suppressed",
+        ),
+        (
+            "The system does not validate inputs and does not archive records.",
+            "The system validates inputs and archives records.",
+            "contradicted",
+            "A3_negation_backstop",
+        ),
+    ],
+)
+def test_a3_compound_negation_scope_gate_end_to_end(
+    claim: str, passage: str, expected_verdict: SupportVerdict, expected_rule: str
+) -> None:
+    case = Case(
+        name="x11-compound-negation-scope",
+        claim_id="x11",
+        claim=claim,
+        passages=[_p(passage)],
+        retrieval_scores={"p-1": 0.90},
+        entail={"p-1": _spec("entail", 0.95)},
+        verdict=expected_verdict,
+        reason=None,
+        flags=[],
+        rule_ids={expected_rule},
+    )
+    trace = _run(case)
+    assert trace.verdict.support_verdict == expected_verdict
+    assert expected_rule in {fired.rule_id for fired in trace.rules_fired}
 
 
 def test_case_names_unique() -> None:

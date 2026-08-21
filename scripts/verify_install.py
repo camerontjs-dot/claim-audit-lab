@@ -2,11 +2,13 @@
 
 Two checks run by default:
 
-1. v0.2 surface — install the wheel, run ``claim-audit --help``, ``claim-audit demo``,
-   and ``claim-audit audit-bundle``; assert output files exist.
-2. v1 surface — install the wheel with the ``[v1]`` extra in a separate clean venv
-   and import ``claim_audit_lab.v1``. Verifies the v1 inference-stack declaration
-   in ``pyproject.toml`` resolves cleanly and the v1 modules load without error.
+1. v0.2 surface — install the wheel, run ``claim-audit --help``,
+   ``claim-audit demo --engine v0.2-lexical``, and ``claim-audit audit-bundle``;
+   assert output files exist. The lexical engine is explicit so this venv does
+   not need torch.
+2. v1 surface — install the wheel with the ``[v1]`` extra in a separate clean
+   venv, import the inference modules, and run ``claim-audit demo`` (the
+   ordinary path). The written report must name ``v1-retrieve-entail``.
 
 Skip the heavier v1 check with ``--skip-v1`` for a fast turnaround during work that
 does not touch the v1 dependency surface.
@@ -48,6 +50,7 @@ def main() -> None:
         _verify_v02_surface(wheel, temp_dir)
         if not skip_v1:
             _verify_v1_surface(wheel, temp_dir)
+            _verify_ui_surface(wheel, temp_dir)
 
         print(f"Installed wheel verified: {wheel.name}")
 
@@ -62,7 +65,14 @@ def _verify_v02_surface(wheel: Path, temp_dir: Path) -> None:
 
     _run([str(claim_audit), "--help"], cwd=temp_dir)
     _run(
-        [str(claim_audit), "demo", "--out-dir", str(temp_dir / "demo")],
+        [
+            str(claim_audit),
+            "demo",
+            "--engine",
+            "v0.2-lexical",
+            "--out-dir",
+            str(temp_dir / "demo"),
+        ],
         cwd=temp_dir,
     )
     _run(
@@ -83,10 +93,11 @@ def _verify_v02_surface(wheel: Path, temp_dir: Path) -> None:
 
 
 def _verify_v1_surface(wheel: Path, temp_dir: Path) -> None:
-    """Install the wheel with [v1] in a clean venv and import v1 modules."""
+    """Install the wheel with [v1] and run a real ``claim-audit demo``."""
     venv_dir = temp_dir / "venv-v1"
     venv.EnvBuilder(with_pip=True).create(venv_dir)
     python = venv_dir / "bin" / "python"
+    claim_audit = venv_dir / "bin" / "claim-audit"
     _run([str(python), "-m", "pip", "install", f"{wheel}[v1]"], cwd=temp_dir)
     _run(
         [
@@ -107,12 +118,97 @@ def _verify_v1_surface(wheel: Path, temp_dir: Path) -> None:
                 "rules = sorted(p.name for p in "
                 "files('claim_audit_lab.v1.configs').iterdir() "
                 "if p.name.startswith('cal-rules-')); "
-                "assert rules == ['cal-rules-v1.5.0.yaml'], rules"
+                "assert rules == ['cal-rules-v1.13.0.yaml'], rules"
             ),
         ],
         cwd=temp_dir,
     )
-    print("v1 surface verified.")
+    # The v1 feature extractor needs the spaCy pipeline, which is a post-install
+    # step rather than a wheel dependency (see pyproject `[v1]` and the README
+    # install block). `demo` defaults to the v1 engine, so a verifier that skips
+    # this step is checking an install no README instruction produces.
+    _install_spacy_model(python, temp_dir)
+
+    demo_dir = temp_dir / "demo-v1"
+    _run(
+        [str(claim_audit), "demo", "--out-dir", str(demo_dir)],
+        cwd=temp_dir,
+    )
+    markdown = _require(demo_dir / "ai-research-note.cli.md").read_text(encoding="utf-8")
+    payload = _require(demo_dir / "ai-research-note.cli.json").read_text(encoding="utf-8")
+    if "v1-retrieve-entail" not in markdown or "v1-retrieve-entail" not in payload:
+        raise RuntimeError("Installed [v1] claim-audit demo did not name engine v1-retrieve-entail")
+    if "cal-rules-v1.13.0" not in markdown or "cal-rules-v1.13.0" not in payload:
+        raise RuntimeError("Installed [v1] claim-audit demo did not name rules cal-rules-v1.13.0")
+    print("v1 surface verified (claim-audit demo named v1-retrieve-entail).")
+
+
+def _verify_ui_surface(wheel: Path, temp_dir: Path) -> None:
+    """Install the wheel with [ui] only and import both UI modules.
+
+    ``claim_audit_lab.ui.server`` is stdlib-only; ``claim_audit_lab.ui.app`` is the
+    FastAPI variant and pulls the whole inference stack through the extra. Both are
+    packaged, so the extra is what makes the FastAPI module importable after a clean
+    install — which is the thing worth checking, and it is checked with only [ui]
+    declared so a missing dependency cannot be masked by [v1] being present too.
+    """
+    venv_dir = temp_dir / "venv-ui"
+    venv.EnvBuilder(with_pip=True).create(venv_dir)
+    python = venv_dir / "bin" / "python"
+    _run([str(python), "-m", "pip", "install", f"{wheel}[ui]"], cwd=temp_dir)
+    _run(
+        [
+            str(python),
+            "-c",
+            (
+                "import claim_audit_lab.ui.server as server; "
+                "import claim_audit_lab.ui.app as app; "
+                "assert hasattr(app, 'app'), 'ui.app does not expose an ASGI app'; "
+                "import sys; "
+                "assert server.__name__ in sys.modules"
+            ),
+        ],
+        cwd=temp_dir,
+    )
+    print("ui surface verified (ui.server and ui.app import from a [ui]-only install).")
+
+
+def _install_spacy_model(python: Path, cwd: Path) -> None:
+    """Put ``en_core_web_sm`` into the verification venv, offline where possible.
+
+    Prefers the copy already resolved in this interpreter's environment by copying
+    the package and its dist-info into the fresh venv, so a machine that has run
+    the suite once can verify an install without network. Falls back to the
+    documented ``python -m spacy download en_core_web_sm``.
+    """
+    source = _local_spacy_model()
+    if source is not None:
+        package, dist_info = source
+        target = Path(
+            subprocess.run(
+                [str(python), "-c", "import site; print(site.getsitepackages()[0])"],
+                capture_output=True,
+                text=True,
+                check=True,
+            ).stdout.strip()
+        )
+        shutil.copytree(package, target / package.name, dirs_exist_ok=True)
+        shutil.copytree(dist_info, target / dist_info.name, dirs_exist_ok=True)
+        return
+    _run([str(python), "-m", "spacy", "download", "en_core_web_sm"], cwd=cwd)
+
+
+def _local_spacy_model() -> tuple[Path, Path] | None:
+    """Locate an installed ``en_core_web_sm`` package plus its dist-info, if present."""
+    try:
+        import en_core_web_sm  # noqa: PLC0415
+    except ImportError:
+        return None
+    package = Path(en_core_web_sm.__file__).resolve().parent
+    dist_infos = sorted(package.parent.glob("en_core_web_sm-*.dist-info"))
+    if not dist_infos:
+        return None
+    return package, dist_infos[-1]
 
 
 def _clean_build_tree() -> None:
@@ -136,9 +232,10 @@ def _single_wheel(dist_dir: Path) -> Path:
     return wheels[0]
 
 
-def _require(path: Path) -> None:
+def _require(path: Path) -> Path:
     if not path.is_file():
         raise RuntimeError(f"Expected installed-artifact output is missing: {path}")
+    return path
 
 
 if __name__ == "__main__":

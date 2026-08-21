@@ -16,9 +16,11 @@ from claim_audit_lab.v1.models import (
     AuditConfig,
     EntailResult,
     ExtractedFeatures,
+    NegationProbe,
     Passage,
     RetrievalResult,
     RuleFired,
+    SourceBoundary,
     SupportSignal,
     Verdict,
 )
@@ -84,6 +86,10 @@ class Rules(Protocol):
         entailment: list[EntailResult],
         support_signal: SupportSignal,
         audit_config: AuditConfig,
+        negation_probe: NegationProbe | None = None,
+        source_boundary: SourceBoundary | None = None,
+        claimed_material_is_a_named_gap: bool = False,
+        absence_complement_entailed: bool = False,
     ) -> tuple[Verdict, list[RuleFired]]:
         """Return the final verdict and the trace of rules that fired.
 

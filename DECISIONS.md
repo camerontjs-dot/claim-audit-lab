@@ -99,9 +99,9 @@ Blind PILOT-001 audit calibration scored 4/98 exact agreement, Cohen's κ ≈ -0
 
 **Status:** Proposed (lock-before-build). Locks the design for `cal-rules-v1.3.0` and CAL package version `v1.0.0`. Consolidates the 2026-06-19 retrieve→entail direction with the full v1 design surface (architecture, contracts, taxonomy retirement, feature extractors, CLI, reproducibility, sync model).
 
-**Decision (summary):** CAL v1 is a **three-layer, protocol-driven, deterministic verifier** built around a single versioned JSON contract: **retrieve → entail → aggregate + rules**. Swappable inference cores behind protocols. Deterministic linguistic feature extractors replace the regex-driven `ClaimType` taxonomy. Calibration is a first-class CLI workflow. v0.2 is retired ([`retired-prototypes/v0.2-lexical-matcher/`](../retired-prototypes/v0.2-lexical-matcher/README.md)). The standalone CAL repo is canonical; consumers (Scaffold Claims Study, Biotech RAG Assistant) pin to a CAL release rather than edit the submodule working tree.
+**Decision (summary):** CAL v1 is a **three-layer, protocol-driven, deterministic verifier** built around a single versioned JSON contract: **retrieve → entail → aggregate + rules**. Swappable inference cores behind protocols. Deterministic linguistic feature extractors replace the regex-driven `ClaimType` taxonomy. Calibration is a first-class CLI workflow. v0.2 is retired (its prototype record is private-local and not distributed here). The standalone CAL repo is canonical; consumers (Scaffold Claims Study, Biotech RAG Assistant) pin to a CAL release rather than edit the submodule working tree.
 
-**For implementers and reviewers:** Follow the concrete coding conventions, required imports, base model patterns, v1 protocols, provenance rules, and tooling config documented in the sibling plan note [`../plans/v1-coding-conventions.md`](../plans/v1-coding-conventions.md). This makes it easy to review the build plan while staying consistent with existing `models.py`, `v1/models.py`, `v1/protocols.py`, and contract layers.
+**For implementers and reviewers:** Follow the concrete coding conventions, required imports, base model patterns, v1 protocols, provenance rules, and tooling config documented in the private-local sibling plan note (not distributed here). This makes it easy to review the build plan while staying consistent with existing `models.py`, `v1/models.py`, `v1/protocols.py`, and contract layers.
 
 ### Why (the lexical matcher was falsified)
 
@@ -325,7 +325,7 @@ Both SHAs are the `main`-branch revision SHAs returned by the HF API (`GET https
 
 ## 2026-06-25 — Phase 1 Unit 2: rule body + calibrated thresholds — ACCEPTED
 
-**Status:** Accepted. Ratifies [Decision C](../plans/adr-v1-rule-order.md) (the canonical rule order, accepted 2026-06-25) as built, plus the threshold-sourcing model and three interpretation calls made during implementation. Closes build-register **B8**; **B9** (StubEntailer + end-to-end fixtures) is the next session.
+**Status:** Accepted. Ratifies Decision C (the canonical rule-order record is private-local and not distributed here) as built, plus the threshold-sourcing model and three interpretation calls made during implementation. Closes build-register **B8**; **B9** (StubEntailer + end-to-end fixtures) is the next session.
 
 **Decision C, as built.** `VerdictRules.apply` (`v1/impl/rules.py`) implements the three-phase order — Phase A gates (A1 scope → A2 retrieval-empty → A3 negation/absence backstop → A4 hard-contradiction, short-circuit), Phase B degree mapping, Phase C adjustments (6a numeric, 6b strength/scope, 6c inferred, 6d source-scope, 6f false-caution) under the **composition rule** (within Phase C the degree moves adverse-only and `contradicted` is terminal; the final degree is the most-adverse proposal, so the outcome is order-independent). Every rule that fires appends a `RuleFired(rule_id, reason)`; no degree changes without one.
 
@@ -353,7 +353,7 @@ Both SHAs are the `main`-branch revision SHAs returned by the HF API (`GET https
 
 **Verification evidence (2026-06-25):** full suite **303 passed**; `ruff check` / `ruff format --check` clean; `mypy --strict src` clean; `compileall` clean; coverage **99%** on `src/*` (rules.py 99%, config.py 100%), gate `--fail-under=95` PASS; `scripts/verify_install.py` green (clean wheel install). Committed locally on `cal-v1-skeleton`; **not pushed** (git-history scrub pending).
 
-**Build-register:** B8 now cites [adr-v1-rule-order.md](../plans/adr-v1-rule-order.md). B9 (StubEntailer + end-to-end fixtures + byte-identical trace; the trace test needs `audit_config_hash`/B12 or a deterministic stand-in) is the next session.
+**Build-register:** B8 cites the private-local rule-order record. B9 (StubEntailer + end-to-end fixtures + byte-identical trace; the trace test needs `audit_config_hash`/B12 or a deterministic stand-in) is the next session.
 
 ## 2026-06-25 — Phase 1 Unit 3: StubEntailer + end-to-end pipeline + byte-identical traces — ACCEPTED
 
@@ -652,7 +652,7 @@ The canonical synthetic packet grew **5→12 in place** to exercise every sectio
 
 ## 2026-07-02 — Decisions F + G: rule-semantics fixes (`cal-rules-v1.4.0`) + PILOT-001 → dev set — ACCEPTED
 
-**Status:** Accepted (Cameron, review session 2026-07-02). Ratifies [adr-v1-rules-v1.4.0-semantic-fixes.md](../plans/adr-v1-rules-v1.4.0-semantic-fixes.md) (Decision F) and [adr-v1-pilot-001-dev-set.md](../plans/adr-v1-pilot-001-dev-set.md) (Decision G), plus the 2026-07-02 amendment to [adr-v1-lexicons.md](../plans/adr-v1-lexicons.md) (five new closed sets). Pre-gate correctness work on Phase-1/2 layers; no build-register ID.
+**Status:** Accepted (Cameron, review session 2026-07-02). Ratifies Decisions F and G and the 2026-07-02 lexicon amendment; their planning records are private-local and not distributed here. Pre-gate correctness work on Phase-1/2 layers; no build-register ID.
 
 **Why.** A pre-gate review probe (invented regulatory-style claims through the real pinned pipeline — no PILOT-001 material) showed the rule layer degrading or inverting correct NLI signals (≥0.95 entail) in 4/5 human-supported cases, two of them to `contradicted`. Root cause: lexical proxies deciding when to override the semantic signal — `verbatim = term_set(claim) ⊆ term_set(passage)` (the falsified v0.2 primitive) drove 6b's degree downgrade; A3's passage check reused the claim side's clause-level-only negation detector; 6a compared incomparable quantities at exact tolerance. The v0.2 category error, re-imported one layer up. New design-surface invariant: **no deterministic rule may flip or downgrade a degree on a lexical-overlap signal — overlap may flag, never decide.**
 
@@ -677,7 +677,7 @@ The canonical synthetic packet grew **5→12 in place** to exercise every sectio
 
 ## 2026-07-07 — Decision H (Stage 1): absence-route eligibility layer (`cal-rules-v1.5.0`) — ACCEPTED + LANDED
 
-**Status:** Accepted + landed (Cameron, 2026-07-07) after the run-03 dev evidence and the STOP #1 three-call sign-off. Ratifies [adr-v1-absence-route.md](../plans/adr-v1-absence-route.md) (Decision H); execution governed by [absence-route-execution-plan.md](../plans/absence-route-execution-plan.md). **Stage 1 only** — Stage 2 (the bundle-relative absence route) was measured on run-03 and **held**. Pre-gate correctness work on the Phase-1 rule layer + the Phase-3 intake; no build-register ID.
+**Status:** Accepted + landed (Cameron, 2026-07-07) after the run-03 dev evidence and the STOP #1 three-call sign-off. Ratifies Decision H; its plan and execution record are private-local and not distributed here. **Stage 1 only** — Stage 2 (the bundle-relative absence route) was measured on run-03 and **held**. Pre-gate correctness work on the Phase-1 rule layer + the Phase-3 intake; no build-register ID.
 
 **Why.** The run-01/02/03 dev misses are an **eligibility failure, not a recall failure**. Intake (`_to_passage`) never joined the passage to its `source_profile`, so `source_meta["trust_level"]` never arrived → rule 6d was **dead, not idle** (its guard field was always absent), and `A4`'s Phase-A short-circuit let a `background` fiction source solo-decide a contradiction (7 of 8 A4 fires in run-01). Max aggregation handed the verdict to the loudest raw NLI signal regardless of source or claim shape. run-03 (dev per Decision G) measured the fix: F4 clean by construction; Stage 2 net-negative on weighted κ → held.
 
@@ -696,3 +696,594 @@ The canonical synthetic packet grew **5→12 in place** to exercise every sectio
 **Verification evidence (2026-07-07):** full suite **484 passed** (+5); `ruff check .` / `ruff format --check .` / `mypy --strict src` clean; source branch coverage **97%** (gate ≥95% PASS); `scripts/verify_install.py` green (clean wheel, v0.2 + v1 surfaces — the packaged `cal-rules-v1.5.0.yaml` loads from the wheel). Two-run byte-identity green on stub + real-inference fixtures and the `claim-audit calibrate` CLI. Committed locally on `cal-v1-skeleton`; **not pushed** (git-history scrub pending).
 
 **Next:** draft the flag-based, non-lexical **subject-scope ADR** (the c003/c005 primary-source false-adverse cases) and **file the c002/A3 interaction** as its own defect (STOP #1 call 3 — draft only, don't build); then premise granularity → A1 imperative hardening → 6b passage inspection. The confirmatory gate remains a fresh blind packet per Decision G — PILOT-001 numbers never gate.
+
+## 2026-07-12 — Gold Lite model-panel provenance contract — ACCEPTED
+
+**Status:** Accepted as a project-local DEV tooling boundary. This does not modify `src/`, the
+public CLI, model labels, CAL rules/config, or the fresh-gate protocol.
+
+### Decision 1 — A receipt hash is necessary but not sufficient
+
+Before admitting any annotation, the validator reconstructs the exact Anthropic or portable
+request from the frozen packet and panel manifest and requires structural equality. The manifest,
+not the request file, owns provider/model/runtime, parent coverage, token settings, output schema,
+and prompt construction. A receipt that correctly hashes a locally edited request is rejected.
+Aggregation and comparison then validate both the outer model-review schema and the nested
+`ReviewExport`, including packet/rehearsal identity, allowed candidates, and selected-passage
+hashes.
+
+### Decision 2 — Runtime claims require runtime evidence
+
+The Codex CLI bridge preflights output collisions before execution and audits every JSONL event.
+Command, file, web, browser, MCP, or other non-message/reasoning items make the preserved receipt
+a `protocol_violation`; a read-only sandbox alone is not evidence of no tool use. Future Codex
+receipts hash the actual wrapped prompt.
+
+The MLX bridge resolves an already-cached Hugging Face snapshot and commit before load, passes the
+absolute snapshot path to `mlx_lm.load`, forces offline mode, hashes the rendered chat-template
+input, and consumes `stream_generate`'s finish reason and token counts. It does not infer a clean
+stop by re-tokenizing output. New combined records carry those runtime fingerprints; historical
+receipts are never backfilled.
+
+### Decision 3 — Comparison targets are neutral unless human provenance is sealed
+
+A complete `ReviewExport` may be scored as a neutral reference, but it is not described as human
+gold merely because its `reviewer` field was renamed. Human-gold status remains the responsibility
+of the separate sealed-review artifact and source hash. Cross-model agreement stays behavioral
+diagnosis only.
+
+Model identity is bound twice: `review.reviewer` must match the artifact provider/model, and two
+nominal models cannot reuse the same raw source-receipt fingerprint. Portable and Anthropic
+manifest paths must equal the generated provider/model and `pNN` directory names and remain direct
+contained children. Report denominators come from packet counts rather than the current
+10-parent/17-atom fixture. Historical Codex/MLX artifacts without the prospective runtime fields
+remain admissible only as explicitly `legacy-incomplete` records; comparison v0.2 reports 4/11
+direct-API records complete and seven legacy-incomplete without changing their votes.
+
+**Verification evidence (2026-07-12):** focused panel contracts **29 passed**; full cache-bound
+suite **532 passed** with seven existing Torch JIT deprecation warnings; Ruff check, 93-file format
+check, mypy `--strict src`, compileall, source branch coverage **97%**, clean-wheel v0.2/v1
+verification, cached revision resolution for all four local study models, and repeat finalization
+of runs 03–08 plus comparison v0.2 all green. No commit or push.
+
+## 2026-07-12 — Progressive human-gold Rung 1 contract — ACCEPTED
+
+**Status:** Accepted as project-local DEV annotation tooling. It does not change `src/`, CAL
+rules/config, the public CLI, or the fresh-gate protocol.
+
+### Decision 1 — Use a separate guided schema
+
+The five-item positive-control reviewer records `atomicity` before `direct_support`. Only
+`atomicity=yes` + `direct_support=yes` + an exact selected passage derives `supports`.
+`needs_split`, `no`, and `unsure` produce explicit escalation outcomes. They never map silently
+to `refutes`, `insufficient`, or `retrieval_gap`.
+
+The guided contract is separate from Gold Lite's four-label `ReviewExport`. This prevents an easy
+workflow rehearsal from weakening the richer relation schema or mutating the preserved ten-parent
+packet.
+
+### Decision 2 — Treat Rung 1 as a positive control, not an accuracy sample
+
+The five claims are fixed by inspected atomic structure and direct passage availability, without
+CAL or model-panel outcomes. Because the set was deliberately curated to be easy and affirmative,
+its result can test the annotation path but cannot estimate corpus accuracy, calibrate a threshold,
+or enter the fresh blind gate.
+
+### Decision 3 — Preserve escalation and provenance
+
+Every rationale is bound to the candidate/source/passage IDs and passage SHA-256 already supplied
+by the read-only C-B bundle. The validator rejects hash drift and incomplete required paths.
+Browser downloads are raw additive records; sealing writes a separate derivative. A negative or
+uncertain response remains available for the next ladder rung instead of being overwritten.
+
+## 2026-07-13 — Progressive Rung 1 audit hardening — ACCEPTED
+
+**Status:** Accepted as a correction to the project-local DEV reviewer before any human label was
+recorded. The v0.1 output stays preserved; v0.2 is the current review lineage.
+
+### Decision 1 — Negative evidence review is exhaustive
+
+`ProgressiveDecision.reviewed_candidate_ids` records which bounded passages were displayed. A
+direct-support `yes` may resolve as soon as its selected rationale is viewed. A direct-support
+`no` is valid only when the reviewed set exactly covers the item's candidate set. The browser
+disables `no` until that condition holds, and the Python validator independently enforces it.
+Selected rationales must also belong to the reviewed set.
+
+### Decision 2 — Seal against canonical sources, not only a self-hash
+
+The packet self-hash detects accidental drift but does not prove correspondence to the manifest
+and C-B bundles. The `validate` command therefore requires both source locations, performs a
+fresh build through the existing fail-closed C-B loader, and requires exact packet equality before
+validating or sealing the human export. A locally edited and re-hashed packet is rejected.
+
+### Decision 3 — Positive controls should minimize semantic judgment
+
+The two debatable v0.1 candidates were removed from the current fixed selection. V0.2 uses c012
+(fixed three-year equipment requalification) and c013 (claimed 34% endpoint improvement), whose
+bounded passages state the operative claim language nearly verbatim. This is a usability control,
+not an assertion that the source claims are externally true.
+
+**Verification evidence (2026-07-13):** 14 focused reviewer tests and the full **546-test** suite
+passed; Ruff check, 95-file format check, mypy `--strict src`, compileall, 97% source branch
+coverage, and clean-wheel v0.2/v1 verification passed. Repeat output generation was byte-identical;
+generated JavaScript syntax and hidden-field scans passed. No commit or push.
+
+## 2026-07-14 — Progressive Rungs 2–3 relation and availability contract — ACCEPTED
+
+**Status:** Accepted as project-local DEV annotation tooling. It does not modify package `src/`,
+CAL rules/config, the public CLI, Evidence Bundler inputs, or the fresh-gate protocol.
+
+### Decision 1 — The packet is source-rebuildable but answer-blind
+
+Each fixed manifest carries a private canonical source-claim anchor and expected candidate count.
+The generated packet contains only a neutral item ID, controlled atomic statement, bounded source
+passages, passage provenance, and the Rung 3 availability cue. It omits source-claim anchors,
+construction keys, target relations, CAL verdicts, old human gold, and model answers. Sealing
+requires equality with a fresh build through the existing fail-closed C-B loader.
+
+### Decision 2 — Missing support never becomes refutation
+
+Rung 2 separates direct support from positive incompatible evidence. `supports` and `refutes`
+require one exact reviewed rationale passage. `neither` becomes available only after every bounded
+candidate has been viewed and seals as an escalation, not a derived evidence relation. `needs
+split` and `not sure` likewise preserve uncertainty.
+
+### Decision 3 — Retrieval status is explicit packet metadata
+
+Rung 3 does not ask a reviewer to diagnose retrieval from silence. `insufficient` requires
+exhaustive passage review and `availability=none_identified`; its closest relevant passage is
+bound as rationale. `retrieval_gap` requires exhaustive review and
+`availability=specific_missing_material`; the named missing-source statement, rather than an
+unrelated visible passage, is its rationale. The manifest schema fails closed if those cues are
+missing or used on the wrong rung.
+
+**Boundary:** These controlled statements and PILOT-001 passages teach the annotation contract;
+they do not form a representative evaluation sample. The compound packet remains unchanged as
+Rung 4, and a fresh blind packet remains the only possible Phase 4 gate.
+
+**Verification evidence (2026-07-14):** 18 focused contracts and the full **564-test** suite
+passed with seven existing Torch JIT deprecation warnings; Ruff check/format, mypy `--strict src`,
+compileall, **97%** source branch coverage, clean-wheel v0.2/v1 verification, repeat packet builds,
+generated JavaScript parsing, and hidden-field scans passed. No commit or push.
+
+## 2026-07-15 — E2 explicit claim structure and deterministic parent aggregation — ACCEPTED
+
+**Status:** Accepted as an additive v1 engineering mechanism. The caller declares stable,
+provenance-bound atoms and a `single` or `all_of` operator; CAL does not infer, approve, or
+silently decompose claim structure.
+
+### Decision
+
+`claim_audit_lab.v1.explicit_claims` provides strict versioned request and trace models, canonical
+request/trace serialization, atomic-auditor binding, and deterministic two-axis parent aggregation.
+Every atom uses the same ordered passages and exact `AuditConfig`; claim ID, text, config hash, and
+library-version drift fail the whole request. The parent trace recomputes and verifies the complete
+aggregation receipt, including degree, flags, citation status, confidence, rule ID, and reason.
+`run_default_explicit_claim_audit` remains a heavy-inference wrapper in `v1.runner`; the public
+v1 surface exports only the import-light models and helpers.
+
+### Verification evidence
+
+The final offline/cached workbench chain passed on 2026-07-15: **668 tests**, Ruff check and format,
+strict mypy over `src`, compileall over `src tests scripts`, **97%** branch coverage, clean-wheel
+v0.2/v1 installation verification, and `git diff --check`. The focused E2 contract file contains
+54 tests; its all-25 ordered two-atom degree table, version/trace-tampering, aggregation-axis,
+cardinality, provenance, serialization, and default-wrapper cases are included in the full suite.
+
+### Boundary
+
+This proves the additive engineering mechanism only. It does **not** prove real-model Simple Logic
+Gold 15/15, representative accuracy, validation, fresh-gate clearance, release readiness, or
+production qualification. No rules/config/model, gold, CLI, PILOT, Evidence Bundler, or Apparatus
+Contracts surface changed.
+
+## 2026-07-16 — A1 combined structural guard (`cal-rules-v1.6.0`) — ACCEPTED + LANDED
+
+**Status:** Accepted + landed (Cameron, 2026-07-16, in-session sign-off on the recommended
+"land A1, then continue" candidate-freeze route). Ratifies
+the private-local A1 imperative-hardening plan (not distributed here). One focused
+package unit; no other DEV finding landed with it (Decision H Stage 2 stays held; c002/A3,
+subject-scope, and 6b stay drafted/held).
+
+### Decision
+
+`sentence_type()` calls a subject-less verbal root imperative only when both structural guards
+pass: (1) no non-root `VERB`/`AUX` carries its own `nsubj`/`nsubjpass`/`expl` child, and (2)
+every non-space, non-punctuation pre-root token has dependency `intj`, `advmod`, `neg`, or
+`aux`. Grammar decides, never a word list (Decision F invariant). The 17 fixed parser canaries
+are promoted into package tests (`tests/v1/test_features.py`), and two new end-to-end fixtures
+(`23-noun-initial-declarative-audited`, `24-imperative-out-of-scope`) make A1 behavior visible
+at the verdict layer. The frozen rules surface bumps `cal-rules-v1.5.0.yaml` →
+`cal-rules-v1.6.0.yaml` — **thresholds byte-identical**, feature logic changes a verdict — new
+rules SHA-256 `eaf8b463294c1f71a24fc9bd4c0719985c12650d605c0d7390c17abc89f63305`, new default
+`audit_config_hash` `sha256:0069a53b8ccdd530a6d7b8f5681cc4187aadca5912d18d3e4704c61a90293e63`.
+
+### Golden accounting
+
+All 27 pre-existing goldens deliberately regenerated: the only changed field path is
+`audit_config_hash` — **zero verdict flips** — plus the two new A1 e2e goldens (27 → 29).
+Preserved v1.5-baseline replay harnesses (the three A1 trial tests, the entailer-bakeoff
+binding test) now pin their era-correct v1.5 contract config; a new bakeoff test proves the
+preregistered re-run guard fails closed under the landed v1.6.0 surface.
+
+### 98-claim DEV replay (run-06)
+
+`scripts/pilot001_a1_landing_run06.py` replayed the recorded v1.5 retrieval/NLI evidence
+through the **landed package feature** and verified the exact run-05 prototype diff:
+changed = {`rsh-9a1e5f0994c2-c006` → `supported`+`inferred`, `rsh-9a1e5f0994c2-c008` →
+`supported`+`source_scope_error`}, recovered 2, regressed 0, changed-but-still-miss 0,
+**F4 = 0**, agreement float-identical to the prototype (exact **64/98**, κ 0.2143,
+weighted κ 0.2337, AC2 0.9531). Evidence:
+`outputs/pilot-001-dev-calibration/run-06-a1-landing-2026-07-16/`. PILOT-001 remains the
+Decision-G adaptation set — DEV evidence, never a gate.
+
+### Verification evidence (2026-07-16)
+
+Full suite **726 passed** (+29: 17 canaries, 4 e2e case tests, 7 run-06 script tests, 1
+bakeoff drift guard); Ruff check + format, strict mypy over `src` (41 files), compileall over
+`src tests scripts`, **97%** source branch coverage (gate ≥95%), clean-wheel v0.2 + v1
+installation verification (the packaged `cal-rules-v1.6.0.yaml` loads from the wheel),
+`git diff --check` clean. E3/e2e byte-identity asserted across two runs inside the suite.
+
+### Boundary
+
+With this landing the structured E3 candidate scores (14/15 targets, 18/19 runtime atoms,
+9/10 parents) become package behavior expectations; `SLG-09` remains the only semantic miss
+and its resolve-or-accept disposition is the next operator decision. This landing does **not**
+rerun the preserved real-model E3 suite, start SLG-09/E4/E5/E6 work, commission the fresh
+blind packet, clear any gate, or authorize commit/merge/push/tag/release/re-pin/v0.2 removal.
+
+## 2026-07-16 — A4 negation-consistency confirmation (`cal-rules-v1.7.0`) — ACCEPTED + LANDED
+
+**Status:** Accepted + landed (Cameron, 2026-07-16, in-session "Land it" after the preregistered
+trial returned `keep-candidate`). Ratifies
+the private-local SLG09 negation-consistency plan (not distributed here).
+
+### Decision
+
+The pipeline computes a **negation-consistency probe** for every hard-contradiction candidate
+(aggregated `contradict` ≥ `contradicted_threshold`): the structurally negated claim
+(`features.negate_claim` — compound abstain, neg-removal, "Not every…" universal prefixing,
+copular/auxiliary insertion, do-support) is entailed against the same contributing premise and
+recorded additively as `AuditTrace.negation_probe` (serialized only when a probe ran, so every
+pre-v1.7.0 trace byte-shape stays valid). The rules layer retains A4 only when the probe
+entails; an unconfirmed contradiction lands `not_checkable/no_entail_signal` via
+`A4_negation_consistency`. Abstained, absent, or premise-mismatched probes never demote; A3 is
+untouched. Rules bump `cal-rules-v1.6.0.yaml` → `cal-rules-v1.7.0.yaml` — thresholds
+byte-identical — new SHA `ef5cc21ea3872e345aac64b078c50a42c8e70a374130a942febdc571e03a22bc`.
+
+### Evidence (2026-07-16)
+
+- **E3 structured confirmation — FULLY GREEN:** 15/15 frozen semantic targets, 19/19 runtime
+  atoms, 10/10 parents, 3/3 wording variants
+  (`outputs/simple-logic-gold/v0.1-frozen-rev01-2026-07-15/e3-structured-direct-v1.7.0-confirmation/`).
+  `SLG-09` is closed; the visible semantic contract has no open miss.
+- **PILOT run-07:** zero verdict changes across all 98 recorded run-06 claims; 8
+  contradiction-candidates probed (3 correct neg-removals/insertions, 5 abstentions incl. the
+  compounds), receipt `outputs/pilot-001-dev-calibration/run-07-slg09-landing-2026-07-16/`.
+- **Goldens:** 29 regenerated `audit_config_hash`-only, ZERO verdict flips; real probes recorded
+  on `inf-02`/`inf-03` (both entail-confirm their true contradictions); e2e `05` rebuilt on a
+  cleanly-parsing claim + new `25-unconfirmed-contradiction-demoted` fixture.
+- **Chain:** 746 passed, 97% branch coverage, Ruff check+format, strict mypy, compileall,
+  clean-wheel verify_install (packaged `cal-rules-v1.7.0.yaml`), `git diff --check`.
+
+### Known limitation (documented, not blocking)
+
+The negator inherits parse quality: a mis-rooted sentence yields a wrong ¬H (observed on the
+retired e2e-05 text, where spaCy roots "submitted"), which could falsely demote a true A4
+contradiction to `not_checkable` — never to support. Scope is narrow (A4-only, hard
+contradictions), all DEV surfaces show zero occurrences, and the shape is flagged for the
+fresh-gate error taxonomy.
+
+### Boundary
+
+E3 closes with this landing. It does **not** start E4/E5/E6, commission the fresh blind packet,
+clear any gate, or authorize commit/merge/push/tag/release/re-pin/v0.2 removal.
+
+---
+
+## 2026-07-24 — CAL v1.0.0 Fresh Blind Acceptance Gate Clearance — ACCEPTED & QUALIFIED — **SUPERSEDED 2026-08-20**
+
+> **Amendment 2026-08-20 — read this before the entry below.**
+>
+> The entry's own framing is inconsistent, and its headline sentence overstated what the
+> gate established. Recorded corrections, in the order they matter:
+>
+> 1. **There is no `v1.0.0`.** Nothing was tagged then and nothing is tagged now. The
+>    distribution is `0.3.0`, unpublished. "CAL v1.0.0" in this entry names a build
+>    intent, not a release that exists.
+> 2. **"Unbiased research measurement instrument" is retracted.** A one-shot exploratory
+>    gate against a single coder does not establish absence of bias, and this entry does
+>    not contain evidence for that claim. No agreement study here has a second human coder.
+> 3. **"Confirmatory" is the wrong word** for a gate the same paragraph calls *one-shot
+>    exploratory*. The packet was exploratory. It is not a confirmatory packet.
+> 4. **The reliability coefficients are computed over the on-scale minority.** AC2 0.7901
+>    and weighted κ 0.6876 are over n=22, not 50 — `not_checkable` sits off the ordinal
+>    scale and drops out of any complete-case statistic. **Exact agreement 27/50 (54%) is
+>    the only figure that covers the whole set**, and it is the one to quote.
+> 5. **The gate ran on `cal-rules-v1.7.0`.** The tree is now `cal-rules-v1.12.0`. A
+>    2026-08-20 re-score of the sealed 50 leaves 27/50, AC2, and κ unchanged.
+>
+> What the gate does support: the engine is deterministic, its verdicts replay byte-for-byte
+> under a pinned config, and it abstains rather than guessing on the starved-recall set
+> (12/13). That is a mechanism result, not an accuracy authorization. See the README status
+> table and `docs/benchmarks.html` for the figures as published.
+
+**Status:** Superseded in part by the amendment above (2026-08-20). Originally recorded as
+Accepted & Landed (Cameron, 2026-07-24). Ratifies
+private-local fresh-blind gate commissioning and acceptance-report records (not distributed
+here).
+
+### Decision
+
+Claim Audit Lab v1 (Commit `275a703`, `cal-rules-v1.7.0`) has passed its one-shot exploratory fresh blind acceptance gate over 50 held-out items (25 Pharma/Regulatory Domain + 25 Plain Narrative) against Cameron's primary human gold verdicts (`fresh_blind_human_gold.json`).
+
+~~CAL v1.0.0 is formally accepted and qualified as a deterministic, unbiased research
+measurement instrument for the MainFrame research apparatus.~~
+
+**Retracted 2026-08-20** (struck above, preserved for the record). No `v1.0.0` exists,
+and this gate does not establish absence of bias. See the amendment at the top of this
+entry.
+
+### Verification Evidence (originally headed "Confirmatory" — see amendment, item 3)
+
+1. **Reliability Metrics (exploratory; the two coefficients are over n=22, not 50)**:
+   - **Gwet AC2 (Quadratic, On-Scale)**: **`0.7901`** (Exceeds target boundary $\ge 0.70$).
+   - **Weighted Kappa (Quadratic, On-Scale)**: **`0.6876`** (Substantial agreement).
+   - **Starved Recall Floor (`not_checkable`)**: **12 / 13 (92.3%)** (Exceeds target boundary $\ge 80.0\%$).
+   - **Exact Agreement**: 27 / 50 (54.0%).
+2. **DEV Benchmark Matrix**: Full 72-cell Lane A matrix (36 Domain + 36 Plain Narrative across T2, T3, T4) closed with 100% verdict stability vs baseline T1.
+3. **`SLG-04` Conjunction Miss**: 100% ground-truth recovery under E2 `all_of` sub-claim logic across T2, T3, T4 while maintaining 100% contradiction safety on `SLG-05`.
+4. **Lane B Evidence Bundler Narrowing**: 34/34 (100%) C-B parity, Metadata Scoping requirement established, CAL Dilution Survival Curve computed up to 1,000 passages.
+5. **Full Automated Test Suite**: 783 / 783 tests passed (100% green).
+
+---
+
+## 2026-08-19 — `cal-rules-v1.9.0`: D9 and D10 land together
+
+**Decision:** Land two rule-layer fixes as one version. `A4_negation_consistency`'s
+demotion now requires the negation probe to be at least as confident as the
+contradiction it demotes (D10), and a new gate `A5_conflicting_evidence` abstains when
+two admitted passages take opposite positions and both clear their thresholds (D9).
+Thresholds are unchanged from v1.4.0; the new gate reuses `supported_threshold` and
+`contradicted_threshold` rather than adding a knob.
+
+`rules_file_sha`: `dcff8c9d65c6a8f68ac452e381460d7a61aa327cddb55171acfcf6954a8bd39c`
+
+**Why they could not land separately.** D10 alone is a regression. Verified on the real
+`CG-23b` trace by blanking the two signal channels, which reproduces the pre-A5 code path
+exactly:
+
+| | verdict | rules |
+|---|---|---|
+| D9 + D10, as shipped | `not_checkable` / `conflicting_evidence` | `A5_conflicting_evidence` |
+| D10 only, A5 blind | **`contradicted`** | `A4_negation_probe_uninformative`, `A4_hard_contradiction` |
+
+Gold for `CG-23b` is `supported`. A4's over-suppression was *masking* the aggregation
+defect, so fixing A4 in isolation converts a wrong abstention into a **false adverse
+verdict on a correctly-sourced claim** — worse than the defect it fixes.
+
+**Why the D10 criterion is "at least as confident", not a fixed floor.** The probe is a
+second reading by the same model on a machine-negated sentence carrying modals,
+quantifiers or scope prefixes, so it is systematically less reliable than the primary
+measurement. A fixed floor does not separate the cases: on the construction corpus the
+probe was *confidently* wrong twice (neutral 0.930, contradict 0.909). Requiring the veto
+to out-confide the signal it vetoes is the criterion that discriminates, and it was not
+tuned to that corpus — it independently preserves the single PILOT-001 claim where the
+rule does real work (`c009`: primary 0.766, probe neutral 0.996, still demotes).
+
+**Evidence.**
+
+- Construction gold, 33 cases: **14/33 → 20/33**. The `contradicts` relation went
+  **0/6 → 6/6**, and the adverse verdict went from precision 0/3 and recall 0/7 to
+  **precision 6/9, recall 6/7**. Six verdicts moved, all wrong→right; none moved the
+  other way.
+- PILOT-001, 98 human-gold claims: **zero changes.** A rules-only replay over the sealed
+  run-08 evidence, run twice — once on v1.8.0 as a control, once on v1.9.0 — is identical
+  on all 98 claims in verdict, reason, and full fired-rule list.
+  (`outputs/pilot-001-dev-calibration/run-09-v1.9.0-rules-replay-2026-08-19/`)
+- Frozen inference goldens, 30 traces: **zero flips.** The only diff is
+  `audit_config_hash`, which moves by construction when the rules SHA moves.
+
+**What did not change.** `MaxEntailmentAggregator` is untouched. It already recorded
+`best_entail` and `best_contradict` with their passage IDs; the defect was that nothing
+read them. Keeping the decision in the rules layer is the architecture working as stated
+— the aggregator reports measurements, the deterministic layer decides what they mean.
+
+**Still open.** `CG-23b` remains a miss against gold, now honestly: CAL abstains and cites
+both passages instead of silently picking one. Closing it needs a scope feature CAL does
+not have, which is new capability rather than a defect fix. D11
+(`A4_hard_contradiction` returning an adverse verdict on absence claims whose source is
+silent) is untouched and is why precision is 6/9 rather than 6/6.
+
+---
+
+## 2026-08-20 — `cal-rules-v1.13.0`: identifiers are not numbers (D14), and a replay that could not see (D15)
+
+**Decision:** A7's scope operator could not see an entity whose identifier contains a numeral.
+Identifier tokens are normalised to letter-only placeholders before parsing and mapped back
+afterwards, **scoped to scope extraction** so every other feature keeps the parse it had.
+Thresholds unchanged from v1.4.0.
+
+`rules_file_sha`: `eac9105b756de64530ff0d345ffb3a29c213281d41ff1ee211090ccdf51d7e2a`
+
+### D14 — the defect
+
+Found by running one realistic paragraph through the built wheel: a claim about chamber
+`CH-04` returned `contradicted` on a passage about `CH-07`. spaCy tags `CH-07` as a NUMBER, so
+it attaches as `nummod` to a following noun instead of heading the subject; with an ambiguous
+verb the sentence is left with no nominal subject at all, `scope_anchors` returns nothing,
+`scope_mismatch` reads that as "no location named", and **A7 stands down so A4 emits the false
+adverse verdict A7 exists to withhold.**
+
+**It is identifiers, not quantities — measured, not assumed.** `CH-07` with quantities goes
+blind; `Bravo` with *the same quantities* does not; `CH-07` with *no quantities at all* still
+goes blind. Across identifier × verb, **14 of 66 combinations blind**; every one that breaks
+contains a separated numeral, every purely alphabetic identifier is safe, and which verb
+breaks it is unpredictable. This is **not** the D1/D4/D12 numeric-comparison family — that one
+abstains, which is the safe direction; this one emits a false adverse verdict.
+
+A blanket *"do not use on claims containing numbers"* warning was considered and **rejected**:
+it names a trigger the probe rules out, it would cover correctly-`supported` numeric claims,
+and it would point at the safe failure while staying silent about the dangerous one.
+
+**Why this fix and not the alternatives.** Forcing `token.pos_` does not work — the parser
+reads tok2vec vectors, not tags, and the parse is unchanged (tested). Widening the harvest to
+`nmod`/`compound` risks over-firing A7 and converting correct contradictions into abstentions.
+Failing closed contradicts `scope_mismatch`'s documented rule that an empty side is not a
+mismatch, which exists so A7 cannot suppress a subject-less true contradiction. Normalising
+the identifier fixes the parser's input rather than compensating downstream, and leaves that
+documented semantics exactly as written.
+
+### Evidence
+
+| check | result |
+|---|---|
+| Identifier probe | **14/66 → 3/66 blind** (residual: bare digits and multi-token forms, out of scope by design) |
+| The defect case | A7 now sees the mismatch and withholds |
+| Same-identifier control | still no mismatch — recall is not bought by abstaining |
+| Canonical A7 (packaging vs Building 4) | unchanged |
+| Construction gold | **26/33, adverse 7/7 and 7/7, groups 7/9 — zero verdict changes** |
+| PILOT-001 | **A7 fires 0 of 98 both before and after**, so the fix cannot move a verdict here |
+| Frozen goldens | **30 regenerated, all hash-only, 0 verdict or rule flips** |
+| Suite | 1010 passed, 95% branch coverage, mypy clean over 49 files |
+
+`scope_anchors` feeds only `scope_mismatch`, which feeds only A7. With A7 firing nowhere on
+PILOT-001, the fix is provably a no-op on human gold.
+
+### D15 — and the claim it invalidates
+
+Gating this fix required a fresh end-to-end PILOT-001 run, because a rules-only replay feeds
+recorded features back in and cannot test a feature change. That run found something else.
+
+**`cal-rules-v1.9.0` moves 2 of 98 human-gold verdicts**, both `supported` → `not_checkable`
+via `A5_conflicting_evidence`, both against gold of `supported`. **PILOT-001 exact agreement
+is 62/98, not the 64/98 inherited from `v1.7.0`.**
+
+This was published as *0 of 98* on the strength of a rules-only replay. The replay could never
+have shown it: A5 reads `best_entail` and `best_contradict`, and **those fields did not exist
+when the run-08 baseline was recorded**, so A5's precondition was unsatisfiable on every
+replayed claim. The evidence is identical either way — same passages, same labels, 0 of 98
+claims differ in entailed-set size. Silence from a harness that cannot see the thing is
+indistinguishable from a genuine no-op.
+
+**Rule adopted: a rules-only replay may only be cited as evidence for a gate whose inputs
+already existed in the baseline it replays.** `pilot001_a5_a4_landing_run09.py` now fails
+closed when the baseline predates any current `SupportSignal` field, with
+`--allow-stale-baseline` as an explicit, uncitable escape hatch. Every affected figure in the
+README, benchmarks page, research page and Brief 02 is corrected rather than footnoted.
+
+Receipts: `outputs/2026-08-20-d14-identifier-parse-probe/`,
+`outputs/2026-08-20-construction-gold-d14fix/`,
+`outputs/pilot-001-dev-calibration/run-12-d14fix-end-to-end-2026-08-20/`.
+
+### Still open
+
+3 of 66 probe cells remain blind — `07`, `Line 3`, `Unit 9`: bare digits and multi-token
+forms, deliberately outside the pattern because catching them would mean treating quantities
+as identifiers. A universal claim refuted by a specific counterexample is still withheld by
+A7; that behaviour predates this change and is unregistered pending an observed consequence.
+
+---
+
+## 2026-08-20 — `cal-rules-v1.12.0`: A7 asks which site; remaining families ask, not decide
+
+**Decision:** A contradiction whose contributing passage names a *disjoint location
+phrase* from the claim is not licensed to decide. New gate `A7_scope_mismatch`
+(after A5, before A4) returns `not_checkable` / `out_of_scope` and asks which
+site the claim is about. Same-site contradictions still fire A4. Operator is
+closed `LOCATION_HEADS` plus dependency attachment — not bag-of-stems overlap
+deciding support (Decision F). Eligibility, not a supported verdict (Decision H).
+
+**Ask, don't decide.** Numeric bounds (D12) and two-hop composition stay v2
+operators. `explain` next-step is family-specific. Thresholds unchanged from
+v1.4.0.
+
+`rules_file_sha`: `e5bc7799d0974e8680ed00d8a8a818ab7934fd223226818dcb3c0a47673758af`
+
+---
+
+## 2026-08-20 — `cal-rules-v1.11.0`: A6 reads `source_boundary`; D5 abstains; numeric deferred
+
+**Decision:** A6 consumes the declared `source_boundary`. Exhaustive coverage claims are
+decidable (`supported`, or `contradicted` if a complement-entailment shows the source
+addresses the denied material). `named_missing_material` plus caller-declared
+`claimed_material_is_a_named_gap` is `contradicted`. Bounded / undeclared stay at D11
+withholding. Thresholds unchanged.
+
+**D5:** `negate_claim` abstains on negative-existentials (`No X was P`) rather than
+inverting them.
+
+**Numeric (D1 / D4 / D12):** not patched. Quantity comparison is a different operator
+than C6a equality. Bound instantiation and range geometry need their own operator or a
+different entailer. v2.
+
+---
+
+## 2026-08-19 — `cal-rules-v1.10.0`: D11, and a lexical fix that was not built
+
+**Decision:** Land `A6_absence_not_decidable`. A claim that a *document* does not say
+something is not refutable from passages excerpted out of that document, so the
+contributing passage may not solo-decide an adverse degree. Thresholds unchanged from
+v1.4.0.
+
+`rules_file_sha`: `83c993e116b220f750046b082cf5e9331a3da26920cccecae4006a6a9fae273b`
+
+**The defect.** `A4_hard_contradiction` returned `contradicted` on "The procedure does not
+cover deviations detected after batch release" against a source mechanically verified
+silent on post-release detection. The entailer scored that contradiction at **0.978** — no
+threshold, floor, or confidence signal gives any warning, because the model is matching
+the surface negation against a passage that is about deviations in general.
+
+**The fix that was not built.** The obvious discriminator is lexical: the claim's denied
+material (*release*) appears nowhere in the evidence, whereas the true contradiction
+CG-04's denied material (*requalification*) appears verbatim. Measured, it separates the
+cases perfectly — suppresses exactly the three false adverse verdicts, keeps the one true
+one. It is also precisely what this file already forbids:
+
+> no deterministic rule may flip or downgrade a degree on a lexical-overlap signal —
+> overlap may flag, never decide.
+
+That invariant exists because the v0.2 lexical matcher was falsified at 4/98, κ≈0, and
+because the same category error was then re-imported one layer up into 6b. A third import
+is not worth two points of agreement. The shadow probe that measured it is kept at
+`scripts/d11_scope_shadow.py` with the rejection recorded in its docstring.
+
+**What was built instead.** A claim-side *structural* feature,
+`features.source_coverage_claim`: clause-level negation scoping a **coverage predicate**
+(address/cover/specify/…) whose **subject is a document noun** (guidance/procedure/…).
+It never compares claim terms to passage terms. Both conditions are load-bearing:
+
+| claim | gated | why |
+|---|---|---|
+| "The guidance does not address retention sample storage" | yes | document subject + coverage verb |
+| "The guidance does not apply to biologics" | no | object-level predicate — evidence can refute it |
+| "The formulation does not contain animal-derived ingredients" | no | not a claim about a text |
+
+**A6 is a suppression, not a terminal verdict — and that distinction cost a regression to
+find.** Built first as an early `return`, it landed `not_checkable` on PILOT-001 `c002` by
+pre-empting the P1 drop that recovers a `partially_supported`. Human gold there is
+`supported`, so the terminal form was **strictly worse on human gold** than doing nothing.
+Moving A6 into `_eligibility_guard` restores the loop's recovery: landing stays emergent
+through B5, exactly as P1 and P2 do, and the rule id carries the specificity in
+`rules_fired`. The dedicated `absence_not_decidable` verdict reason drafted for the
+terminal form was reverted rather than shipped unused.
+
+**Evidence.**
+
+- Construction gold, 33 cases: **20/33 → 22/33**; `absent_from` 6/13 → 8/13. The adverse
+  verdict reaches **precision 6/6** (from 6/9) at unchanged recall 6/7 — no false adverse
+  verdict remains on the corpus.
+- PILOT-001, 98 human-gold claims: **0 differences from v1.9.0** in verdict, reason, and
+  fired rules. (`outputs/pilot-001-dev-calibration/run-10-v1.10.0-rules-replay-2026-08-19/`)
+- Frozen goldens, 30 traces: **0 non-hash differences.**
+
+**A test fixture changed, deliberately.** `test_p1_lands_not_checkable_when_only_signal_is_ineligible`
+used "The guidance does not prescribe a fixed interval", which v1.10.0 classifies as a
+source-coverage claim; A6 would have pre-empted P1 and the test would have silently
+stopped exercising it. The subject is now a system rather than a document, and the A6/P1
+interaction has its own test.
+
+**Still open.** `CG-21` (an absence claim refuted by a *named gap*) is the remaining recall
+miss and needs a rule that reads `source_boundary`. `CG-23b` needs a scope feature. Both
+are new capability, not defect fixes.

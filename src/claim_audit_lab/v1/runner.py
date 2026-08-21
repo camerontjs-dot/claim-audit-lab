@@ -16,6 +16,11 @@ once.
 
 from __future__ import annotations
 
+from claim_audit_lab.v1.explicit_claims import (
+    ExplicitClaimRequest,
+    ExplicitClaimTrace,
+    run_explicit_claim_audit,
+)
 from claim_audit_lab.v1.impl.aggregator import MaxEntailmentAggregator
 from claim_audit_lab.v1.impl.entailer import DeBERTaEntailer
 from claim_audit_lab.v1.impl.features import DefaultFeatureExtractor
@@ -44,4 +49,13 @@ def run_default_audit(request: AuditRequest) -> AuditTrace:
     )
 
 
-__all__ = ["run_default_audit"]
+def run_default_explicit_claim_audit(request: ExplicitClaimRequest) -> ExplicitClaimTrace:
+    """Run caller-declared atoms through the pinned default v1 pipeline.
+
+    This is the heavy-inference counterpart to the dependency-injected
+    :func:`claim_audit_lab.v1.explicit_claims.run_explicit_claim_audit`.
+    """
+    return run_explicit_claim_audit(request, auditor=run_default_audit)
+
+
+__all__ = ["run_default_audit", "run_default_explicit_claim_audit"]
