@@ -1,5 +1,101 @@
 # Changelog
 
+## Unreleased
+
+Experimental v2 work. No distribution version, no rules version bump: `cal-rules-v1.13.0`
+still governs the v1 engine and the shipped `audit` / `demo` path is unchanged. The v2
+decision layer and the interval operator ship in the wheel because they live under `src/`,
+but neither is reachable from the CLI and neither is public API.
+
+### Added (v2 decision layer — `pipeline_rules`, experimental)
+
+- Five total stages, per-role eligibility, `Removal` records for everything dropped, and
+  table-driven stage-2 predicates and stage-4 resolution rules.
+- **Not** re-exported from `claim_audit_lab.v1.impl`. Import it by full path. An earlier
+  revision re-exported `run_v2`, `V2Verdict`, `ClaimFrame`, `PassageEvidence` and `Removal`,
+  which put an experimental module on the package's stable surface next to the v1 protocol
+  implementations.
+
+### Added (interval algebra operator — D1 / D12, partial)
+
+- Interval subset containment over normalized units (time, mass, volume, ratio, temperature)
+  with open/closed bounds and infinite endpoints.
+- `ambiguous` status. The operator abstains when either side carries more than one bound on
+  the claim's dimension, because it has no *measurand binding* and cannot tell which bound
+  belongs to the claim's subject.
+- Wired into stage 2 as `Q4_interval_containment`, **advisory**: it records its reading and
+  removes no role. See the defect below for why.
+
+### Found and fixed (v2 pre-merge review, 2026-08-22)
+
+Six defects in the v2 branch, found by review before it landed. Each has a regression test
+naming it.
+
+- **False *supported* from an unbound measurand.** Q4 dropped the `refute` role whenever the
+  interval operator read `satisfied`. On the claim "Product storage must not exceed 25 °C"
+  against a passage reading "Ambient lab temperature must not exceed 22 °C. The product
+  excursion reached 40 °C.", the operator matched the ambient bound, reported `satisfied`,
+  and stripped a genuinely refuting passage of its standing to refute. A false substantiation
+  on evidence recording a violation is the worst verdict this system can produce. Two fixes:
+  the operator now abstains when a side carries multiple bounds on the claim's dimension, and
+  Q4 no longer removes a role at all until a bound can be tied to a measurand.
+- **`ValueError` escaping the pipeline on a temperature tolerance.** A tolerance is a width on
+  a scale, not a position on it, so the affine °F/K conversion must not apply to it.
+  `98 ± 2 °F` converted the tolerance as an absolute temperature (−16.67 °C), built the
+  inverted interval `[53.33, 20.0]`, and raised out of `run_v2`. Added
+  `normalize_delta_to_base`.
+- **Stage 2 and stage 4 were not total.** The module header claims "an exception **marks a
+  passage** and every stage runs to completion"; there was no exception handling anywhere in
+  the module. A predicate that raises is now recorded, marked `skipped`, and **removes no
+  role**; a resolution rule that raises yields to the next rule with precedence intact.
+- **Containment depended on which spelling was the claim.** Unit normalization is
+  multiplicative and lossy: `2.5 percent` → `0.025`, `25000 ppm` → `0.024999999999999998`. One
+  direction read `satisfied` and the reverse `inconclusive` for one physical fact. Endpoint
+  comparisons are now relative-tolerance.
+- **Extraction followed the pattern table, not the sentence.** `within` sat above `less than`
+  in the table, so "less than 5 mg of reagent, completed within 30 days" returned the
+  duration. Extraction now collects every bound and orders them by position.
+- **A bare number took the next word as its unit.** "Batch 12 was held" extracted a quantity
+  on a `was` dimension. The identifier denylist only inspected the *following* token, so it
+  caught `21 CFR` and missed `Part 11`. A point quantity is now a measurement only when its
+  unit names a recognized dimension.
+
+Also: `is_disjoint_from` returned `True` for incomparable dimensions, which let
+`not subset and disjoint -> contradiction` fire on a unit mismatch; it now returns `False`
+and `is_comparable_with` is public. `within X` on a dimension with no anchor (ratio,
+temperature, scalar) no longer becomes the upper bound `(-inf, X]`.
+
+### Registered (v2 evaluation is not yet like-for-like)
+
+- `test_adversarial_twins_x5.py` asserts a false-adverse count of zero and an agreement floor
+  of 50/56, and **never executed**. Its artifacts are sealed research outputs that are not
+  version controlled, so it reported as a silent skip. It is now registered in
+  `tests/conftest.py::_RESEARCH_ARTIFACT_MODULES` like every other test with the same
+  dependency, so the public suite deselects it visibly instead. The assertions are unchanged
+  and remain unrun here — this makes the absence legible, it does not supply evidence.
+- `scripts/compare_v040_vs_v2.py` compared a v0.4.0 verdict *read from a sealed trace* against
+  a v2 verdict *recomputed live* with `declared_mode`, `source_boundary`,
+  `claimed_material_is_a_named_gap`, `claim_scope`, `passage_scope` and `passage_texts` that
+  the v1 run never had. The first three are corpus construction parameters, and on a
+  constructed corpus a construction parameter is close to the label: `relation="absent_from"`
+  routes to coverage mode, and R1 returns *contradicted* off the named-gap flag alone. Every
+  printed block now carries a declared-input disclosure counting how many cases received each,
+  and the module docstring says plainly that those subsets are not like-for-like. The script
+  also exits non-zero when no corpus was found, rather than printing nothing and succeeding.
+
+### Known limits (v2, unchanged by the above)
+
+- **No measurand binding.** The multi-bound abstention closes the demonstrated false
+  substantiation; it does not close the general case. A passage carrying exactly one
+  temperature bound that is still not the claim's temperature reads as unambiguous. This is
+  why Q4 is advisory, and it is the precondition for ever letting it decide.
+- `p_entail` / `p_contradict` are carried on `PassageEvidence` but read by no rule. Every v2
+  decision still runs off argmax and its probability, as v1's do.
+- Importing `pipeline_rules` pulls `claim_audit_lab.v1.impl.__init__`, which eagerly imports
+  the DeBERTa entailer and therefore torch and transformers. The layer needs no model *load*,
+  but it cannot be imported without the inference stack installed, which weakens the
+  "scored in seconds on every corpus" property it is built for.
+
 ## 0.4.0 — 2026-08-21
 
 First public release of the v1 retrieve→entail engine. Track A packaging: the ordinary CLI

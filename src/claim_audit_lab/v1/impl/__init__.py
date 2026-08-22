@@ -15,24 +15,19 @@ skeleton.
 
 from claim_audit_lab.v1.impl.aggregator import MaxEntailmentAggregator
 from claim_audit_lab.v1.impl.entailer import DeBERTaEntailer
-from claim_audit_lab.v1.impl.pipeline_rules import (
-    ClaimFrame,
-    PassageEvidence,
-    Removal,
-    V2Verdict,
-    run_v2,
-)
 from claim_audit_lab.v1.impl.retriever import BiEncoderRetriever
 from claim_audit_lab.v1.impl.rules import VerdictRules
 
+# `pipeline_rules` (the experimental v2 decision layer) is deliberately NOT
+# re-exported. It ships, because it is under `src/`, but re-exporting it here
+# would put an experimental module on the package's stable surface alongside the
+# v1 protocol implementations. Import it by its full path instead:
+#
+#     from claim_audit_lab.v1.impl.pipeline_rules import run_v2
+
 __all__ = [
     "BiEncoderRetriever",
-    "ClaimFrame",
     "DeBERTaEntailer",
     "MaxEntailmentAggregator",
-    "PassageEvidence",
-    "Removal",
-    "V2Verdict",
     "VerdictRules",
-    "run_v2",
 ]

@@ -15,8 +15,20 @@ import pytest
 
 from claim_audit_lab.v1.impl.pipeline_rules import Mode, run_v2
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-TWINS_DIR = PROJECT_ROOT / "outputs" / "2026-08-21-x5-adversarial-twins"
+# `outputs/` is a sibling of the repository root, not a directory inside it — the
+# research outputs are sealed with SHA256SUMS manifests and never version
+# controlled (see .gitignore and DECISIONS.md). `parents[2]` is the repo root, so
+# the workbench that holds both is `parents[3]`.
+#
+# This module is registered in `tests/conftest.py::_RESEARCH_ARTIFACT_MODULES`,
+# which marks it `research_artifact` and so deselects it from the public suite
+# (`addopts = -m 'not research_artifact'`). That registration is what makes the
+# absence of these artifacts *visible* as a deselect. Without it the skipif below
+# is the only guard and the suite reports a silent skip — which is how two tests
+# asserting a false-adverse count and an agreement floor came to look like
+# passing evidence while never executing.
+WORKBENCH_ROOT = Path(__file__).resolve().parents[3]
+TWINS_DIR = WORKBENCH_ROOT / "outputs" / "2026-08-21-x5-adversarial-twins"
 GOLD_PATH = TWINS_DIR / "gold.json"
 TRACES_DIR = TWINS_DIR / "results" / "traces"
 

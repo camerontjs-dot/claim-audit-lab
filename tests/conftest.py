@@ -6,6 +6,7 @@ import pytest
 
 _RESEARCH_ARTIFACT_MODULES = frozenset(
     {
+        "test_adversarial_twins_x5.py",
         "test_d6_aperture_replay.py",
         "test_decision_model_replay.py",
         "test_e3_a1_aux_prefix_trial.py",

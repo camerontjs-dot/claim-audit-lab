@@ -1,8 +1,16 @@
 """v2 decision layer — a pipeline of total stages, for testing against v1.
 
-**Experimental. Not part of the distribution.** Lives outside ``src/`` on
-purpose: the shipped package is `mypy --strict` clean over a counted set of
-files and this must not change that count or those figures.
+**Experimental. Not public API.** It ships — it is under ``src/``, so setuptools
+packages it and `mypy --strict` checks it, taking the counted source files from
+49 to 51. An earlier draft of this header said the opposite of all three, having
+been written for a copy of the file that lived outside ``src/``; it is recorded
+here because a module that misdescribes its own status is the same defect class
+as D17, and this one sat in the header of the file that exists to fix D17.
+
+What "not public API" therefore has to mean in practice: it is deliberately not
+re-exported from ``claim_audit_lab.v1.impl``, so nothing reaches it without
+naming ``pipeline_rules`` outright, and no stability promise attaches to any name
+in it.
 
 This replaces the *decision layer only*. Retrieval, entailment, thresholds and
 the seal model are untouched; v2 consumes the same stage-1-to-3 evidence v1
@@ -38,10 +46,15 @@ corpus that has ever been run.
    only ever gated *adverse* decisions: a background source may not refute, and
    may still support. One bit cannot say that, so v1 says it with control flow.
 
-6. **The entailment distribution is read.** v1's rules read ``label`` and
+6. **The entailment distribution is carried.** v1's rules read ``label`` and
    ``score``, the argmax and its probability, and never ``p_entail`` or
    ``p_contradict`` (0 references). A passage at entail 0.51 / contradict 0.48
    and one at entail 0.51 / neutral 0.48 are the same object to every v1 rule.
+   ``PassageEvidence`` carries both, so a rule here *can* read them — but as of
+   this revision none does, and every v2 decision still runs off argmax and its
+   probability. Carrying the distribution is the precondition, not the fix; the
+   claim is a plumbing change, and stating it as more than that would be the
+   over-claim this module is otherwise written against.
 
 7. **Claim type is declared when the caller knows it, parsed only as fallback.**
    X2a measured a three-line resolver *given declared claim type* beating v1's
@@ -556,43 +569,56 @@ def _q3_negation_consistency(ctx: QualifyContext) -> PredicateResult:
 
 
 def _q4_interval_containment(ctx: QualifyContext) -> PredicateResult:
-    """Evaluate mathematical interval containment for numeric bound claims.
+    """Record the interval operator's reading of a numeric bound. **Advisory.**
 
-    If the claim asserts a numeric bound and the passage text carries a comparable bound:
-    - If the evidence satisfies the claim interval -> drop 'refute'.
-    - If the evidence directly violates the claim interval -> drop 'support'.
+    The operator compares the claim's asserted bound against a bound found in the
+    passage, and its assessment is written to the trace. It removes no role.
+
+    That is deliberate, and it is the difference between an arithmetic operator
+    and an arithmetic operator you may decide on. ``interval_algebra`` has no
+    *measurand binding*: it finds bounds in a passage but cannot tell whether a
+    bound it found is a bound on the thing the claim is about. The first version
+    of this predicate dropped ``refute`` on ``satisfied``, which on
+
+        claim    "Product storage must not exceed 25 °C."
+        passage  "Ambient lab temperature must not exceed 22 °C.
+                  The product excursion reached 40 °C."
+
+    stripped a genuinely refuting passage of its standing to refute, on the
+    strength of a bound belonging to a different measurand. A false *supported*
+    is the worst verdict this system can produce, and an operator that can be
+    pointed at the wrong sentence must not be able to produce one.
+
+    The operator now abstains (``ambiguous``) when a side carries more than one
+    bound on the claim's dimension, which closes that specific case. It does not
+    close the general one: a passage with exactly one temperature bound that is
+    still not the claim's temperature reads as unambiguous. Binding a bound to
+    its measurand is the open work; until it exists the assessment informs a
+    reviewer and does not move a verdict.
+
+    To let this decide, a caller must be able to establish that claim and passage
+    bounds share a measurand. At that point the ``satisfied`` / ``violated``
+    branches become role drops and the D12 note in :func:`resolve` comes off.
     """
     if not ctx.frame.quantities or ctx.passage_text is None:
         return frozenset(), None, {}
 
     assessment = evaluate_interval_containment(ctx.frame.text, ctx.passage_text)
-    if assessment.status == "satisfied":
-        return (
-            frozenset({"refute"}),
-            (
-                f"evidence interval ({assessment.evidence_interval}) satisfies "
-                f"claim bound ({assessment.claim_interval}) -> drop spurious refutation"
-            ),
-            {
-                "status": assessment.status,
-                "claim_interval": assessment.claim_interval,
-                "evidence_interval": assessment.evidence_interval,
-            },
-        )
-    if assessment.status == "violated":
-        return (
-            frozenset({"support"}),
-            (
-                f"evidence interval ({assessment.evidence_interval}) mathematically violates "
-                f"claim bound ({assessment.claim_interval}) -> drop support"
-            ),
-            {
-                "status": assessment.status,
-                "claim_interval": assessment.claim_interval,
-                "evidence_interval": assessment.evidence_interval,
-            },
-        )
-    return frozenset(), None, {}
+    if assessment.status in ("inconclusive", "incomparable") and assessment.claim_interval is None:
+        # Nothing quantitative to say about this pair; keep the trace quiet.
+        return frozenset(), None, {}
+
+    return (
+        frozenset(),
+        f"interval operator reads this passage as {assessment.status}: {assessment.reason}",
+        {
+            "advisory": True,
+            "status": assessment.status,
+            "claim_interval": assessment.claim_interval,
+            "evidence_interval": assessment.evidence_interval,
+            "verdict_impact_if_deciding": assessment.verdict_impact,
+        },
+    )
 
 
 #: Stage 2, as data. Adding an eligibility rule is adding a row, not a branch.
@@ -609,11 +635,27 @@ def qualify(ctx: QualifyContext) -> tuple[frozenset[Role], list[Removal]]:
 
     Every predicate runs on every passage even after one has disqualified it,
     because a reviewer reading the trace should see every reason, not the first.
+
+    **A predicate that raises marks the passage and removes nothing.** This is
+    the property the module header claims and, until it was written here, did not
+    have: ``_q4_interval_containment`` reaches arithmetic that could raise on
+    ordinary input, and the exception left stage 2 through ``run_v2`` as an
+    unhandled error. A predicate that could not run must not be
+    indistinguishable from one that passed, and it must certainly not remove a
+    role — so the failure is recorded, marked ``skipped`` so it does not read as
+    ineligibility, and the fold continues.
     """
     roles: frozenset[Role] = frozenset({"support", "refute"})
     removals: list[Removal] = []
     for name, predicate in ELIGIBILITY_PREDICATES:
-        drop, reason, detail = predicate(ctx)
+        try:
+            drop, reason, detail = predicate(ctx)
+        except Exception as exc:  # a stage is total; see the docstring above
+            drop, reason, detail = (
+                frozenset(),
+                f"not evaluated: {name} raised {type(exc).__name__}",
+                {"skipped": True, "error": f"{type(exc).__name__}: {exc}"},
+            )
         roles -= drop
         if reason is not None:
             removals.append(
@@ -799,6 +841,12 @@ def resolve(
     There is no quantitative mode. That was a third route in the first draft and
     construction gold rejected it in one run: D12 is an operator gap and no
     resolution rule closes it, so the quantity is recorded and not acted on.
+
+    ``Q4`` now does the arithmetic D12 names, and still does not close it. Its
+    assessment is advisory (see :func:`_q4_interval_containment`) because the
+    operator cannot bind a bound to a measurand, so the note below stands: stage 4
+    decides on the entailer's reading and asks the reviewer to confirm the
+    quantity. When Q4 can decide, this note comes off with it.
     """
     ctx = ResolveContext(
         frame=frame,
@@ -824,7 +872,14 @@ def resolve(
         )
 
     for name, rule in RESOLUTION_RULES:
-        outcome = rule(ctx)
+        # As in stage 2: a rule that raises is recorded and skipped rather than
+        # redirecting control. Precedence is preserved — the next rule in the
+        # table gets its turn, exactly as if this one had declined.
+        try:
+            outcome = rule(ctx)
+        except Exception as exc:  # a stage is total; see the module header
+            notes.append(f"{name}: not evaluated, raised {type(exc).__name__}: {exc}")
+            continue
         if outcome is not None:
             degree, null_reason, citations, note = outcome
             notes.append(f"{name}: {note}")
@@ -836,7 +891,13 @@ def resolve(
 
 
 # ---------------------------------------------------------------------------
-# The pipeline. Five stages, each total, no early return that skips a stage.
+# The pipeline. Five stages, each total.
+#
+# Two early returns exist and both are terminal rather than skips: an
+# inadmissible claim (stage 0) and a held set with no eligible passage (stage 2).
+# Each names the stage it stopped at in `stage_reached` and its own null reason.
+# Nothing downstream of either could change the outcome — that is what makes them
+# terminal and not the family of jump this pipeline is written against.
 # ---------------------------------------------------------------------------
 
 
@@ -939,7 +1000,13 @@ def run_v2(
                 p_entail=e.get("p_entail"),
                 p_contradict=e.get("p_contradict"),
                 eligible_for=roles,
-                ineligibility=tuple(w for w in why if not w.detail.get("skipped")),
+                # A record is ineligibility only if it removed something. A
+                # predicate that could not run (`skipped`) or that only reports
+                # (`advisory`) is in the trace but is not a reason this passage
+                # may not decide.
+                ineligibility=tuple(
+                    w for w in why if not w.detail.get("skipped") and not w.detail.get("advisory")
+                ),
                 trust_level=(trust_levels or {}).get(pid),
                 source_id=(source_ids or {}).get(pid),
             )
