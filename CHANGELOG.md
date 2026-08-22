@@ -83,6 +83,36 @@ temperature, scalar) no longer becomes the upper bound `(-inf, X]`.
   and the module docstring says plainly that those subsets are not like-for-like. The script
   also exits non-zero when no corpus was found, rather than printing nothing and succeeding.
 
+### Qualification (run against `validation/` on 2026-08-22)
+
+The branch was run against the project's own validation package rather than only against CI.
+
+**No revalidation trigger fires.** v2 changes no shipped-engine file, is reachable from no CLI
+command, and alters no dependency, so the v0.2 IQ/OQ/PQ records stand. It is library-only code
+that happens to ship.
+
+**CAL-REQ-054 failed on arrival and is now met.** The gate holds `src/` to ≥95% branch
+coverage. The branch arrived at 74% (`interval_algebra.py`) and 79% (`impl/pipeline_rules.py`),
+taking the `src/` total from 93% to 91% measured the same way. Both modules are now at **100%**,
+and the total sits above the pre-branch baseline. Recorded as DEV-006, closed.
+
+**No new validation matrix row is required.** The maintenance rule is to add a row before
+adding a *public capability claim*; v2 makes none — it is absent from the README, absent from
+the CLI, and no longer re-exported from `claim_audit_lab.v1.impl`. A row should be added when
+and if v2 becomes a selectable engine, not before.
+
+**Two pre-existing package gaps were found and recorded, not fixed** (DEV-007, DEV-008):
+`docs/verification.md` is cited 18 times across the IQ/OQ/PQ protocols and is not in the tree,
+and the whole package is still stamped `verified for v0.2 engineering release` against a tree
+that is now `0.4.0` / `cal-rules-v1.13.0` with a 1,085-test suite where the OQ record cites 213.
+Both need a release verification run with model access to close.
+
+**The README verification table is left alone.** It is a dated receipt for `main`
+(957 passed, 49 source files, 4073 statements). This branch moves all three (1,035 selected,
+51 source files, 4,559 statements), so the table must be regenerated from a CI run before any
+merge that lands v2 — but overwriting a dated receipt with figures from an unreleased branch
+measured in a degraded environment would itself be the deviation it exists to prevent.
+
 ### Known limits (v2, unchanged by the above)
 
 - **No measurand binding.** The multi-bound abstention closes the demonstrated false

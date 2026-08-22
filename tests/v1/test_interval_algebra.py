@@ -231,3 +231,130 @@ def test_within_on_an_anchorless_dimension_yields_no_bound() -> None:
     assert days is not None
     assert days.lower == 0.0
     assert days.dimension == "time_s"
+
+
+# ---------------------------------------------------------------------------
+# Operating range. CAL-REQ-054 holds `src/` to 95% branch coverage, and the
+# branches below are the operator's decision surface, not incidental lines.
+# ---------------------------------------------------------------------------
+
+
+def test_normalization_covers_every_dimension() -> None:
+    assert normalize_quantity_to_base(5, None) == (5.0, "scalar")
+    assert normalize_quantity_to_base(2, "L") == (2000.0, "volume_ml")
+    assert normalize_quantity_to_base(500, "ppm") == (pytest.approx(5e-4), "ratio_unit")
+    assert normalize_quantity_to_base(3, "kg") == (3000.0, "mass_g")
+    assert normalize_quantity_to_base(1, "K") == (pytest.approx(-272.15), "temp_c")
+    # An unrecognized unit keeps its normalized verbatim name as the dimension,
+    # which is what makes it incomparable with everything else.
+    assert normalize_quantity_to_base(7, "widgets") == (7.0, "widgets")
+
+
+def test_delta_normalization_covers_every_dimension() -> None:
+    assert normalize_delta_to_base(5, None) == (5.0, "scalar")
+    assert normalize_delta_to_base(3, "C") == (3.0, "temp_c")
+    assert normalize_delta_to_base(3, "K") == (3.0, "temp_c")
+    # Multiplicative dimensions convert a width exactly as they convert a point.
+    assert normalize_delta_to_base(2, "hours") == (7200.0, "time_s")
+
+
+def test_an_inverted_interval_is_rejected() -> None:
+    """The invariant is kept, and it is what caught the tolerance defect."""
+    with pytest.raises(ValueError, match="Invalid interval"):
+        Interval(lower=10.0, upper=1.0)
+
+    # A last-ulp artefact of unit conversion is not an inversion.
+    Interval(lower=1.0, upper=1.0 - 1e-15)
+
+
+def test_open_and_closed_bounds_decide_containment() -> None:
+    """`[a, b]` is not inside `(a, b)`, and the strict constructors say so."""
+    closed = Interval.closed(0.0, 10.0, dimension="time_s")
+    open_low = Interval.greater_than(0.0, dimension="time_s")
+    open_high = Interval.less_than(10.0, dimension="time_s")
+
+    assert closed.is_subset_of(open_low) is False  # shares the lower endpoint
+    assert closed.is_subset_of(open_high) is False  # shares the upper endpoint
+    assert Interval.closed(1.0, 9.0, dimension="time_s").is_subset_of(open_low) is True
+
+
+def test_touching_endpoints_are_disjoint_only_when_a_side_is_open() -> None:
+    a_closed = Interval.closed(0.0, 5.0, dimension="mass_g")
+    b_closed = Interval.closed(5.0, 9.0, dimension="mass_g")
+    assert a_closed.is_disjoint_from(b_closed) is False  # both contain 5
+
+    b_open = Interval.greater_than(5.0, dimension="mass_g")
+    assert a_closed.is_disjoint_from(b_open) is True
+    assert b_open.is_disjoint_from(a_closed) is True  # symmetric
+
+
+def test_strict_and_inclusive_lower_bounds_are_distinguished() -> None:
+    strict = extract_interval_from_text("more than 5 mg")
+    assert strict is not None and strict.left_closed is False
+
+    inclusive = extract_interval_from_text("greater than or equal to 5 mg")
+    assert inclusive is not None and inclusive.left_closed is True
+
+
+def test_extraction_stays_total_when_a_builder_raises(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The guarantee, not the current absence of a raising builder.
+
+    `extract_intervals_from_text` promises totality. Pinning it means proving a
+    raising builder is absorbed, so a future pattern family cannot reintroduce
+    the crash the tolerance defect caused.
+    """
+    from claim_audit_lab.v1 import interval_algebra as ia
+
+    def _raises(match: object) -> None:
+        raise ValueError("Invalid interval: lower (53.3) > upper (20.0)")
+
+    monkeypatch.setattr(ia, "_EXTRACTORS", ((ia._POINT_PATTERNS, _raises),))
+    assert ia.extract_intervals_from_text("held at 25 C") == []
+
+
+def test_a_claim_with_no_bound_is_inconclusive() -> None:
+    res = evaluate_interval_containment("The procedure was followed.", "Held at 5 C.")
+    assert res.status == "inconclusive"
+    assert res.claim_interval is None
+    assert res.verdict_impact is None
+
+
+def test_a_claim_carrying_two_bounds_abstains() -> None:
+    """Ambiguity on the claim side is the same defect as on the evidence side."""
+    res = evaluate_interval_containment(
+        "Hold between 2 and 8 C for at least 30 days.",
+        "Storage was 5 C.",
+    )
+    assert res.status == "ambiguous"
+    assert res.verdict_impact is None
+    assert res.claim_interval is not None and ";" in res.claim_interval
+
+
+def test_evidence_on_another_dimension_is_incomparable() -> None:
+    res = evaluate_interval_containment("must not exceed 25 C", "the run took 30 days")
+    assert res.status == "incomparable"
+    assert res.verdict_impact is None
+    assert "temp_c" in res.reason
+
+
+def test_claim_with_no_comparable_evidence_is_inconclusive() -> None:
+    res = evaluate_interval_containment("must not exceed 25 C", "The procedure was followed.")
+    assert res.status == "inconclusive"
+    assert res.evidence_interval is None
+
+
+def test_partial_overlap_is_inconclusive_not_a_verdict() -> None:
+    """Neither containment nor disjointness holds, so the operator will not decide."""
+    res = evaluate_interval_containment(
+        "Reagent must be stored between 2 and 8 C.",
+        "Storage condition is between 5 and 12 C.",
+    )
+    assert res.status == "inconclusive"
+    assert res.verdict_impact == "not_checkable"
+
+
+def test_interval_str_shows_bound_closure() -> None:
+    assert str(Interval.closed(1.0, 2.0, dimension="mass_g")) == "[1.0, 2.0] mass_g"
+    assert str(Interval.greater_than(1.0)).startswith("(1.0,")

@@ -401,3 +401,80 @@ def test_a_raising_resolution_rule_yields_to_the_next(monkeypatch: pytest.Monkey
     assert degree == "supported"
     assert citations == ("p1",)
     assert any("R_boom" in n and "RuntimeError" in n for n in notes)
+
+
+def test_q2_passes_a_passage_whose_scope_overlaps_the_claim() -> None:
+    """Scope disjointness withholds refutation; a shared anchor does not."""
+    ctx = QualifyContext(
+        frame=_frame("Chamber CH-04 had no excursions.", scope_anchors=frozenset({"CH-04"})),
+        passage_id="p1",
+        trust_level="primary",
+        passage_scope=frozenset({"CH-04", "CH-07"}),
+        negated_reading=None,
+        claim_reading={"label": "contradict", "score": 0.98},
+    )
+    roles, removals = qualify(ctx)
+    assert roles == frozenset({"support", "refute"})
+    assert not [r for r in removals if r.predicate == "Q2_scope"]
+
+
+def test_q3_reports_an_uninformative_negation_probe_without_dropping() -> None:
+    """The veto only bites when the missing mirror is read at least as confidently.
+
+    Read *less* confidently than the contradiction it would veto, the probe says
+    nothing, and saying nothing must not remove a role.
+    """
+    ctx = QualifyContext(
+        frame=_frame("Batch release time is 12 hours."),
+        passage_id="p1",
+        trust_level="primary",
+        passage_scope=None,
+        negated_reading={"label": "neutral", "score": 0.30},
+        claim_reading={"label": "contradict", "score": 0.95},
+    )
+    roles, removals = qualify(ctx)
+    assert "refute" in roles
+
+    q3 = [r for r in removals if r.predicate == "Q3_negation_consistency"]
+    assert len(q3) == 1
+    assert "uninformative" in q3[0].reason
+    assert q3[0].detail["veto"] == 0.3
+    assert q3[0].detail["target"] == 0.95
+
+
+def test_q4_stays_quiet_when_the_claim_has_no_extractable_bound() -> None:
+    """A claim can carry a numeral without carrying a comparable bound.
+
+    `Building 4` is D14's confusion. The feature extractor reports a numerical
+    value, the interval operator finds no measurement, and the trace should stay
+    quiet rather than record an assessment about nothing.
+    """
+    ctx = QualifyContext(
+        frame=_frame("Building 4 was inspected this quarter.", quantities=[4]),
+        passage_id="p1",
+        trust_level="primary",
+        passage_scope=None,
+        negated_reading=None,
+        claim_reading={"label": "entail", "score": 0.9},
+        passage_text="The inspection covered every building on site.",
+    )
+    _, removals = qualify(ctx)
+    assert not [r for r in removals if r.predicate == "Q4_interval_containment"]
+
+
+def test_q3_is_silent_when_the_probe_agrees_with_the_claim_reading() -> None:
+    """A supplied probe that raises no incoherence records nothing at all.
+
+    Distinct from the not-evaluated case: the probe ran, and had nothing to say.
+    """
+    ctx = QualifyContext(
+        frame=_frame("Batch release time is 12 hours."),
+        passage_id="p1",
+        trust_level="primary",
+        passage_scope=None,
+        negated_reading={"label": "neutral", "score": 0.20},
+        claim_reading={"label": "entail", "score": 0.95},
+    )
+    roles, removals = qualify(ctx)
+    assert roles == frozenset({"support", "refute"})
+    assert not [r for r in removals if r.predicate == "Q3_negation_consistency"]

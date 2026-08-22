@@ -392,14 +392,14 @@ _INCLUSIVE_MARKERS = (">=", "≥", "<=", "≤", "equal")
 
 
 def _range_candidate(match: re.Match[str]) -> Interval | None:
+    # Both endpoints normalize through the pattern's single `unit` group, so they
+    # always land on the same dimension; there is no mismatch branch to take.
     v1_raw = float(match.group("val1"))
     v2_raw = float(match.group("val2"))
     unit = match.group("unit")
-    v1, dim1 = normalize_quantity_to_base(v1_raw, unit)
-    v2, dim2 = normalize_quantity_to_base(v2_raw, unit)
-    if dim1 != dim2:
-        return None
-    return Interval.closed(min(v1, v2), max(v1, v2), dimension=dim1)
+    v1, dim = normalize_quantity_to_base(v1_raw, unit)
+    v2, _ = normalize_quantity_to_base(v2_raw, unit)
+    return Interval.closed(min(v1, v2), max(v1, v2), dimension=dim)
 
 
 def _tolerance_candidate(match: re.Match[str]) -> Interval | None:
