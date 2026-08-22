@@ -3,23 +3,55 @@
 Evaluates mathematical containment of asserted numeric intervals against
 evidence-permitted intervals without delegating arithmetic to language models.
 
-Solves the D1 / D12 capability boundary:
-- Replaces brittle heuristic overlap with exact interval subset containment.
+Addresses part of the D1 / D12 capability boundary:
+
+- Replaces brittle heuristic overlap with interval subset containment.
 - Distinguishes numeric measurements from entity identifiers.
 - Normalizes physical units (time, temperature, mass, volume, percentage).
+
+## What this operator cannot do, and why it abstains
+
+It has **no measurand binding**: nothing here decides whether a bound found in a
+passage is a bound *on the thing the claim is about*. A passage reading
+"Ambient lab temperature must not exceed 22 °C. The product excursion reached
+40 °C." carries two temperature bounds, and a bare first-match extractor reports
+the first one and calls a 25 °C storage claim satisfied — a false *supported* on
+evidence that in fact records a violation.
+
+Until a measurand is bound, the only sound behaviour is to abstain whenever a
+side carries more than one bound in the claim's dimension. That is what
+``ambiguous`` is. It is a real abstention with a specific question attached, not
+a failure, and it is why the pipeline treats this operator's output as advisory
+rather than as a role veto (see ``pipeline_rules._q4_interval_containment``).
+
+## Comparisons are tolerance-aware, not bit-exact
+
+Unit normalization is multiplicative, so two spellings of one physical quantity
+need not land on the same double: ``2.5 percent`` normalizes to ``0.025`` and
+``25000 ppm`` to ``0.024999999999999998``. Comparing those with ``==`` made
+containment depend on which spelling was the claim and which the evidence.
+Endpoint comparisons therefore go through :func:`_eq` / :func:`_lt`, which are
+relative-tolerance comparisons at :data:`_REL_TOL`.
 """
 
 from __future__ import annotations
 
 import math
 import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Literal
 
 BoundKind = Literal[
     "exact", "at_least", "greater_than", "at_most", "less_than", "range", "tolerance", "unknown"
 ]
-IntervalStatus = Literal["satisfied", "violated", "incomparable", "inconclusive"]
+IntervalStatus = Literal["satisfied", "violated", "incomparable", "ambiguous", "inconclusive"]
+
+#: Relative tolerance for endpoint comparison. Unit normalization is
+#: multiplicative and therefore lossy in binary floating point; two spellings of
+#: the same physical quantity can differ in the last ulp. Endpoints are compared
+#: at this relative tolerance so containment does not depend on spelling.
+_REL_TOL = 1e-9
 
 # Canonical unit normalization factors to base units:
 # Base Time: seconds (s)
@@ -89,6 +121,35 @@ _RATIO_FACTORS: dict[str, float] = {
     "ppb": 1e-9,
 }
 
+_CELSIUS_NAMES = ("c", "celsius", "centigrade")
+_FAHRENHEIT_NAMES = ("f", "fahrenheit")
+_KELVIN_NAMES = ("k", "kelvin")
+
+#: Dimensions this module recognizes as physical measurements. A point quantity
+#: whose unit does not land in one of these is not treated as a measurement at
+#: all; see :func:`_point_candidate`.
+MEASUREMENT_DIMENSIONS = frozenset({"time_s", "mass_g", "volume_ml", "ratio_unit", "temp_c"})
+
+#: Dimensions on which a bare "within X" denotes the range [0, X]. Time, mass and
+#: volume are non-negative and "within 30 days" means "somewhere in the first 30
+#: days". On a signed or anchored dimension "within 5 %" means "within ±5 % of a
+#: target" and the target is not in the text, so no interval is emitted.
+_WITHIN_NON_NEGATIVE_DIMENSIONS = frozenset({"time_s", "mass_g", "volume_ml"})
+
+
+def _eq(a: float, b: float) -> bool:
+    """Endpoint equality at the module's relative tolerance.
+
+    ``math.isclose`` handles the infinite endpoints correctly: ``inf`` is close
+    to ``inf`` and not to ``-inf``.
+    """
+    return math.isclose(a, b, rel_tol=_REL_TOL, abs_tol=0.0)
+
+
+def _lt(a: float, b: float) -> bool:
+    """True when ``a`` is below ``b`` by more than the module's tolerance."""
+    return a < b and not _eq(a, b)
+
 
 def _normalize_unit_name(unit: str) -> str:
     cleaned = unit.strip().lower().replace("°", "").replace("deg ", "").replace("degrees ", "")
@@ -96,17 +157,22 @@ def _normalize_unit_name(unit: str) -> str:
 
 
 def normalize_quantity_to_base(value: float, unit: str | None) -> tuple[float, str]:
-    """Convert (value, unit) to a canonical base dimension."""
+    """Convert a *point on a scale* to a canonical base dimension.
+
+    For a difference on a scale — a tolerance, a span — use
+    :func:`normalize_delta_to_base` instead. The two differ on temperature,
+    where the conversion is affine rather than multiplicative.
+    """
     if unit is None:
         return value, "scalar"
     u = _normalize_unit_name(unit)
 
     # Temperature (special non-multiplicative conversion)
-    if u in ("c", "celsius", "centigrade"):
+    if u in _CELSIUS_NAMES:
         return value, "temp_c"
-    if u in ("f", "fahrenheit"):
+    if u in _FAHRENHEIT_NAMES:
         return (value - 32.0) * (5.0 / 9.0), "temp_c"
-    if u in ("k", "kelvin"):
+    if u in _KELVIN_NAMES:
         return value - 273.15, "temp_c"
 
     # Multiplicative dimensions
@@ -123,11 +189,35 @@ def normalize_quantity_to_base(value: float, unit: str | None) -> tuple[float, s
     return value, u
 
 
+def normalize_delta_to_base(value: float, unit: str | None) -> tuple[float, str]:
+    """Convert a *difference* on a scale to a canonical base dimension.
+
+    A tolerance is a width, not a position, so the affine temperature offsets
+    must not be applied to it. ``±2 °F`` is a 1.11 °C-wide tolerance; running it
+    through :func:`normalize_quantity_to_base` yields ``−16.67``, and
+    ``98 ± 2 °F`` then constructs the inverted interval ``[53.33, 20.0]`` and
+    raises. Every other dimension is multiplicative, where a difference and a
+    position convert identically.
+    """
+    if unit is None:
+        return value, "scalar"
+    u = _normalize_unit_name(unit)
+    if u in _CELSIUS_NAMES or u in _KELVIN_NAMES:
+        return value, "temp_c"
+    if u in _FAHRENHEIT_NAMES:
+        return value * (5.0 / 9.0), "temp_c"
+    return normalize_quantity_to_base(value, unit)
+
+
 @dataclass(frozen=True)
 class Interval:
     """Mathematical 1D continuous interval [lower, upper].
 
     Supports open and closed bounds, infinite endpoints, and set containment.
+
+    Endpoint comparisons are tolerance-aware (see :data:`_REL_TOL`), so the
+    containment relations below are decidable *to that tolerance* rather than
+    bit-exact.
     """
 
     lower: float
@@ -137,7 +227,9 @@ class Interval:
     dimension: str = "scalar"
 
     def __post_init__(self) -> None:
-        if self.lower > self.upper:
+        # Tolerance-aware so a last-ulp artefact of unit conversion is not fatal,
+        # while a genuinely inverted interval still is.
+        if _lt(self.upper, self.lower):
             raise ValueError(f"Invalid interval: lower ({self.lower}) > upper ({self.upper})")
 
     @classmethod
@@ -176,41 +268,54 @@ class Interval:
             lower=value, upper=value, left_closed=True, right_closed=True, dimension=dimension
         )
 
+    def is_comparable_with(self, other: Interval) -> bool:
+        """Return True when both intervals live on the same dimension.
+
+        :meth:`is_subset_of` and :meth:`is_disjoint_from` are only meaningful for
+        comparable intervals. Check this first; both relations answer ``False``
+        for incomparable ones, which means "not established", not "established
+        false".
+        """
+        return self.dimension == other.dimension
+
     def is_subset_of(self, other: Interval) -> bool:
-        """Return True if self is a mathematical subset of other (self ⊆ other)."""
-        if self.dimension != other.dimension:
+        """Return True if self is a subset of other (self ⊆ other).
+
+        False for incomparable dimensions: a mass is not a subset of a duration,
+        but neither is it provably outside one.
+        """
+        if not self.is_comparable_with(other):
             return False
 
-        # Check lower bound
-        if self.lower < other.lower:
+        if _lt(self.lower, other.lower):
             return False
-        if self.lower == other.lower:
-            if not self.left_closed and other.left_closed:
-                pass  # (a, ...] is subset of [a, ...]
-            elif self.left_closed and not other.left_closed:
-                return False  # [a, ...] is NOT subset of (a, ...]
+        if _eq(self.lower, other.lower) and self.left_closed and not other.left_closed:
+            return False  # [a, ...] is NOT a subset of (a, ...]
 
-        # Check upper bound
-        if self.upper > other.upper:
+        if _lt(other.upper, self.upper):
             return False
-        if self.upper == other.upper:
-            if not self.right_closed and other.right_closed:
-                pass  # [..., b) is subset of [..., b]
-            elif self.right_closed and not other.right_closed:
-                return False  # [..., b] is NOT subset of [..., b)
+        if _eq(self.upper, other.upper) and self.right_closed and not other.right_closed:
+            return False  # [..., b] is NOT a subset of [..., b)
 
         return True
 
     def is_disjoint_from(self, other: Interval) -> bool:
-        """Return True if self and other do not intersect (self ∩ other = ∅)."""
-        if self.dimension != other.dimension:
-            return True
+        """Return True if self and other provably do not intersect.
 
-        if self.upper < other.lower or other.upper < self.lower:
+        **False for incomparable dimensions.** Disjointness is a positive claim,
+        and two intervals on different dimensions do not establish it — they are
+        not comparable at all. Returning True here would let the natural caller
+        idiom (``not subset and disjoint -> contradiction``) turn a unit mismatch
+        into a contradiction.
+        """
+        if not self.is_comparable_with(other):
+            return False
+
+        if _lt(self.upper, other.lower) or _lt(other.upper, self.lower):
             return True
-        if self.upper == other.lower and (not self.right_closed or not other.left_closed):
+        if _eq(self.upper, other.lower) and (not self.right_closed or not other.left_closed):
             return True
-        if other.upper == self.lower and (not other.right_closed or not self.left_closed):
+        if _eq(other.upper, self.lower) and (not other.right_closed or not self.left_closed):
             return True
         return False
 
@@ -279,77 +384,143 @@ _TOLERANCE_PATTERNS = [
     ),
 ]
 
+_POINT_PATTERNS = [re.compile(r"\b(?P<val>\d+(?:\.\d+)?)\s*(?P<unit>[A-Za-z%°]+)?\b")]
+
+_STRICT_LOWER_WORDS = ("greater than", "more than", "exceeding", "above", ">")
+_STRICT_UPPER_WORDS = ("less than", "under", "below", "<")
+_INCLUSIVE_MARKERS = (">=", "≥", "<=", "≤", "equal")
+
+
+def _range_candidate(match: re.Match[str]) -> Interval | None:
+    v1_raw = float(match.group("val1"))
+    v2_raw = float(match.group("val2"))
+    unit = match.group("unit")
+    v1, dim1 = normalize_quantity_to_base(v1_raw, unit)
+    v2, dim2 = normalize_quantity_to_base(v2_raw, unit)
+    if dim1 != dim2:
+        return None
+    return Interval.closed(min(v1, v2), max(v1, v2), dimension=dim1)
+
+
+def _tolerance_candidate(match: re.Match[str]) -> Interval | None:
+    v_raw = float(match.group("val"))
+    t_raw = float(match.group("tol"))
+    unit = match.group("unit")
+    v, dim = normalize_quantity_to_base(v_raw, unit)
+    # A tolerance is a width on the scale, not a position on it.
+    t, _ = normalize_delta_to_base(t_raw, unit)
+    return Interval.closed(v - abs(t), v + abs(t), dimension=dim)
+
+
+def _lower_bound_candidate(match: re.Match[str]) -> Interval | None:
+    v_raw = float(match.group("val"))
+    unit = match.group("unit")
+    v, dim = normalize_quantity_to_base(v_raw, unit)
+    phrase = match.group(0).lower()
+    strict = any(w in phrase for w in _STRICT_LOWER_WORDS)
+    if strict and not any(w in phrase for w in _INCLUSIVE_MARKERS):
+        return Interval.greater_than(v, dimension=dim)
+    return Interval.at_least(v, dimension=dim)
+
+
+def _upper_bound_candidate(match: re.Match[str]) -> Interval | None:
+    v_raw = float(match.group("val"))
+    unit = match.group("unit")
+    v, dim = normalize_quantity_to_base(v_raw, unit)
+    phrase = match.group(0).lower()
+    if "within" in phrase:
+        if dim not in _WITHIN_NON_NEGATIVE_DIMENSIONS:
+            # "within 5 %" is a tolerance around a target the text does not name.
+            return None
+        return Interval.closed(0.0, v, dimension=dim)
+    strict = any(w in phrase for w in _STRICT_UPPER_WORDS)
+    if strict and not any(w in phrase for w in _INCLUSIVE_MARKERS):
+        return Interval.less_than(v, dimension=dim)
+    return Interval.at_most(v, dimension=dim)
+
+
+def _point_candidate(match: re.Match[str]) -> Interval | None:
+    """A bare quantity is a measurement only when its unit names a dimension.
+
+    This is what separates ``37 °C`` from ``Part 11``, ``Suite S-12`` and
+    ``Building 4``. An earlier denylist of identifier words (``cfr``, ``part``,
+    ``annex``…) inspected only the token *following* the number, so it caught
+    ``21 CFR`` and missed ``Part 11``, and any unrecognized following word
+    became a bogus dimension: ``Batch 12 was held`` extracted
+    ``[12.0, 12.0] was``. Requiring a recognized unit is the same guard stated
+    positively, and it is total.
+    """
+    unit = match.group("unit")
+    if unit is None:
+        return None
+    value, dim = normalize_quantity_to_base(float(match.group("val")), unit)
+    if dim not in MEASUREMENT_DIMENSIONS:
+        return None
+    return Interval.point(value, dimension=dim)
+
+
+#: Builds an interval from one regex match, or declines by returning None.
+_CandidateBuilder = Callable[[re.Match[str]], "Interval | None"]
+
+#: Extraction families in precedence order. A span consumed by a higher-priority
+#: family is not offered to a lower one, so ``between 2 and 8 °C`` yields one
+#: range rather than a range plus two points.
+_EXTRACTORS: tuple[tuple[list[re.Pattern[str]], _CandidateBuilder], ...] = (
+    (_RANGE_PATTERNS, _range_candidate),
+    (_TOLERANCE_PATTERNS, _tolerance_candidate),
+    (_LOWER_BOUND_PATTERNS, _lower_bound_candidate),
+    (_UPPER_BOUND_PATTERNS, _upper_bound_candidate),
+    (_POINT_PATTERNS, _point_candidate),
+)
+
+
+def _overlaps(span: tuple[int, int], consumed: list[tuple[int, int]]) -> bool:
+    return any(span[0] < end and start < span[1] for start, end in consumed)
+
+
+def extract_intervals_from_text(text: str) -> list[Interval]:
+    """Extract **every** normalized interval the text carries, in text order.
+
+    Precedence is by extraction family, but the returned order is the order the
+    bounds appear in the sentence. The distinction matters: the previous
+    first-match-wins extractor returned whichever family sat earliest in the
+    pattern table, so ``less than 5 mg of reagent, completed within 30 days``
+    returned the *duration*, because ``within`` preceded ``less than`` in the
+    table rather than in the text.
+
+    Total: never raises.
+    """
+    consumed: list[tuple[int, int]] = []
+    found: list[tuple[int, Interval]] = []
+
+    for patterns, build in _EXTRACTORS:
+        for pattern in patterns:
+            for match in pattern.finditer(text):
+                span = match.span()
+                if _overlaps(span, consumed):
+                    continue
+                # The span is claimed by this family whether or not it yields an
+                # interval. Declining is a decision — "within 5 %" names no
+                # usable bound — and a lower-priority family must not reinterpret
+                # the same characters and override it.
+                consumed.append(span)
+                try:
+                    candidate = build(match)
+                except ValueError:
+                    # A malformed interval is not a candidate. Recorded as absent
+                    # rather than raised: extraction is total.
+                    continue
+                if candidate is None:
+                    continue
+                found.append((span[0], candidate))
+
+    return [interval for _, interval in sorted(found, key=lambda pair: pair[0])]
+
 
 def extract_interval_from_text(text: str) -> Interval | None:
-    """Extract a normalized mathematical Interval from natural language text."""
-    # 1. Check Range Patterns (between A and B)
-    for pat in _RANGE_PATTERNS:
-        match = pat.search(text)
-        if match:
-            v1_raw = float(match.group("val1"))
-            v2_raw = float(match.group("val2"))
-            unit = match.group("unit")
-            v1, dim1 = normalize_quantity_to_base(v1_raw, unit)
-            v2, dim2 = normalize_quantity_to_base(v2_raw, unit)
-            if dim1 == dim2:
-                low = min(v1, v2)
-                high = max(v1, v2)
-                return Interval.closed(low, high, dimension=dim1)
-
-    # 2. Check Tolerance Patterns (A ± T)
-    for pat in _TOLERANCE_PATTERNS:
-        match = pat.search(text)
-        if match:
-            v_raw = float(match.group("val"))
-            t_raw = float(match.group("tol"))
-            unit = match.group("unit")
-            v, dim1 = normalize_quantity_to_base(v_raw, unit)
-            t, _ = normalize_quantity_to_base(t_raw, unit)
-            return Interval.closed(v - t, v + t, dimension=dim1)
-
-    # 3. Check Lower Bound Patterns
-    for pat in _LOWER_BOUND_PATTERNS:
-        match = pat.search(text)
-        if match:
-            v_raw = float(match.group("val"))
-            unit = match.group("unit")
-            v, dim = normalize_quantity_to_base(v_raw, unit)
-            strict = any(
-                w in match.group(0).lower()
-                for w in ("greater than", "more than", "exceeding", "above", ">")
-            )
-            if strict and not any(w in match.group(0).lower() for w in (">=", "≥", "equal")):
-                return Interval.greater_than(v, dimension=dim)
-            return Interval.at_least(v, dimension=dim)
-
-    # 4. Check Upper Bound Patterns
-    for pat in _UPPER_BOUND_PATTERNS:
-        match = pat.search(text)
-        if match:
-            v_raw = float(match.group("val"))
-            unit = match.group("unit")
-            v, dim = normalize_quantity_to_base(v_raw, unit)
-            if "within" in match.group(0).lower() and dim in ("time_s", "mass_g", "volume_ml"):
-                # Within X is a non-negative range [0, X]
-                return Interval.closed(0.0, v, dimension=dim)
-            strict = any(w in match.group(0).lower() for w in ("less than", "under", "below", "<"))
-            if strict and not any(w in match.group(0).lower() for w in ("<=", "≤", "equal")):
-                return Interval.less_than(v, dimension=dim)
-            return Interval.at_most(v, dimension=dim)
-
-    # 5. Point Quantity Fallback
-    point_match = re.search(r"\b(?P<val>\d+(?:\.\d+)?)\s*(?P<unit>[A-Za-z%°]+)?\b", text)
-    if point_match:
-        val_str = point_match.group("val")
-        unit = point_match.group("unit")
-        if unit and unit.lower() in ("cfr", "part", "annex", "ch", "suite", "lot", "line"):
-            # Entity identifier or regulation citation, not a measurement
-            return None
-        v_raw = float(val_str)
-        v, dim = normalize_quantity_to_base(v_raw, unit)
-        return Interval.point(v, dimension=dim)
-
-    return None
+    """Extract the first normalized interval the text carries, or None."""
+    intervals = extract_intervals_from_text(text)
+    return intervals[0] if intervals else None
 
 
 @dataclass(frozen=True)
@@ -367,15 +538,20 @@ def evaluate_interval_containment(
     claim_text: str,
     evidence_text: str,
 ) -> IntervalAssessment:
-    """Evaluate mathematical containment between claim quantity bounds and evidence bounds.
+    """Evaluate containment between claim quantity bounds and evidence bounds.
 
     For prescriptive / specification assertions:
-    - If Evidence is a subset of Claim Interval (I_evidence ⊆ I_claim) -> Satisfied.
-    - If Evidence is disjoint from Claim Interval (I_evidence ∩ I_claim = ∅) -> Violated.
-    - Otherwise -> Incomparable / Inconclusive.
+
+    - Evidence is a subset of the claim interval (I_e ⊆ I_c) -> satisfied.
+    - Evidence is disjoint from the claim interval (I_e ∩ I_c = ∅) -> violated.
+    - More than one comparable bound on either side -> **ambiguous**, because
+      nothing here binds a bound to a measurand.
+    - Otherwise -> incomparable / inconclusive.
+
+    Total: never raises. Every failure to decide is a status.
     """
-    claim_iv = extract_interval_from_text(claim_text)
-    if claim_iv is None:
+    claim_intervals = extract_intervals_from_text(claim_text)
+    if not claim_intervals:
         return IntervalAssessment(
             status="inconclusive",
             claim_interval=None,
@@ -383,9 +559,34 @@ def evaluate_interval_containment(
             reason="no quantitative bound extracted from claim",
             verdict_impact=None,
         )
+    if len(claim_intervals) > 1:
+        return IntervalAssessment(
+            status="ambiguous",
+            claim_interval="; ".join(str(i) for i in claim_intervals),
+            evidence_interval=None,
+            reason=(
+                f"claim carries {len(claim_intervals)} bounds and nothing binds one to a "
+                f"measurand; which bound is under audit is undetermined"
+            ),
+            verdict_impact=None,
+        )
 
-    evidence_iv = extract_interval_from_text(evidence_text)
-    if evidence_iv is None:
+    claim_iv = claim_intervals[0]
+    evidence_intervals = extract_intervals_from_text(evidence_text)
+    comparable = [i for i in evidence_intervals if i.is_comparable_with(claim_iv)]
+
+    if not comparable:
+        if evidence_intervals:
+            dims = ", ".join(sorted({i.dimension for i in evidence_intervals}))
+            return IntervalAssessment(
+                status="incomparable",
+                claim_interval=str(claim_iv),
+                evidence_interval="; ".join(str(i) for i in evidence_intervals),
+                reason=(
+                    f"incompatible dimensions: claim ({claim_iv.dimension}) vs evidence ({dims})"
+                ),
+                verdict_impact=None,
+            )
         return IntervalAssessment(
             status="inconclusive",
             claim_interval=str(claim_iv),
@@ -394,19 +595,25 @@ def evaluate_interval_containment(
             verdict_impact=None,
         )
 
-    if claim_iv.dimension != evidence_iv.dimension:
+    if len(comparable) > 1:
+        # The false-supported case. Two bounds on the claim's dimension and no
+        # way to tell which one is a bound on the claim's subject.
         return IntervalAssessment(
-            status="incomparable",
+            status="ambiguous",
             claim_interval=str(claim_iv),
-            evidence_interval=str(evidence_iv),
+            evidence_interval="; ".join(str(i) for i in comparable),
             reason=(
-                f"incompatible dimensions: claim ({claim_iv.dimension}) "
-                f"vs evidence ({evidence_iv.dimension})"
+                f"evidence carries {len(comparable)} bounds on the claim's dimension "
+                f"({claim_iv.dimension}) and nothing binds one to the claim's measurand; "
+                f"confirm which bound is the one under audit"
             ),
             verdict_impact=None,
         )
 
-    # 1. Check subset containment: Compliance with Evidence guarantees compliance with Claim
+    evidence_iv = comparable[0]
+
+    # 1. Subset containment: compliance with the evidence guarantees compliance
+    #    with the claim.
     if evidence_iv.is_subset_of(claim_iv):
         return IntervalAssessment(
             status="satisfied",
@@ -416,7 +623,7 @@ def evaluate_interval_containment(
             verdict_impact="supported",
         )
 
-    # 2. Check disjointness: Evidence directly excludes the asserted interval
+    # 2. Disjointness: the evidence directly excludes the asserted interval.
     if evidence_iv.is_disjoint_from(claim_iv):
         return IntervalAssessment(
             status="violated",
@@ -429,24 +636,26 @@ def evaluate_interval_containment(
             verdict_impact="contradicted",
         )
 
-    # 3. Partial overlap or loose specification
+    # 3. Partial overlap or loose specification.
     return IntervalAssessment(
         status="inconclusive",
         claim_interval=str(claim_iv),
         evidence_interval=str(evidence_iv),
         reason=(
-            f"partial overlap between claim interval {claim_iv} "
-            f"and evidence interval {evidence_iv}"
+            f"partial overlap between claim interval {claim_iv} and evidence interval {evidence_iv}"
         ),
         verdict_impact="not_checkable",
     )
 
 
 __all__ = [
+    "MEASUREMENT_DIMENSIONS",
     "Interval",
     "IntervalAssessment",
     "IntervalStatus",
     "evaluate_interval_containment",
     "extract_interval_from_text",
+    "extract_intervals_from_text",
+    "normalize_delta_to_base",
     "normalize_quantity_to_base",
 ]
