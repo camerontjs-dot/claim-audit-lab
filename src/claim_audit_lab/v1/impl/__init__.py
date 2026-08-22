@@ -15,12 +15,24 @@ skeleton.
 
 from claim_audit_lab.v1.impl.aggregator import MaxEntailmentAggregator
 from claim_audit_lab.v1.impl.entailer import DeBERTaEntailer
+from claim_audit_lab.v1.impl.pipeline_rules import (
+    ClaimFrame,
+    PassageEvidence,
+    Removal,
+    V2Verdict,
+    run_v2,
+)
 from claim_audit_lab.v1.impl.retriever import BiEncoderRetriever
 from claim_audit_lab.v1.impl.rules import VerdictRules
 
 __all__ = [
     "BiEncoderRetriever",
+    "ClaimFrame",
     "DeBERTaEntailer",
     "MaxEntailmentAggregator",
+    "PassageEvidence",
+    "Removal",
+    "V2Verdict",
     "VerdictRules",
+    "run_v2",
 ]
