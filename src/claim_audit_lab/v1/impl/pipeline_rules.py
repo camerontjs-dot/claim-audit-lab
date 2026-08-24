@@ -99,7 +99,23 @@ NullReason = Literal[
 
 #: Only two modes. `quantitative` was a third in the first draft and it was
 #: wrong: see `resolve`. A quantity is a *flag* on a verdict, not a route.
+#:
+#: Mode is **not** a route either. It selects which obligations a claim has to
+#: discharge, not which rules may run; see `RESOLUTION_RULES`.
 Mode = Literal["ordinary", "coverage"]
+
+#: What an absent per-passage trust level means. A caller whose corpus carries a
+#: trust model says `required`, and an unlevelled passage is then an unknown
+#: source. A caller building passages directly says `optional`, the default, and
+#: absence is recorded without withholding anything. See `_q1_provenance`.
+TrustPolicy = Literal["optional", "required"]
+
+#: A caller's statement about how much of the source the passages represent.
+#: `None` is distinct from `"bounded"`: it means *not declared*, and a rule that
+#: needs it says so rather than assuming the conservative value. Reading `None`
+#: as `"bounded"` is what made every undeclared coverage claim terminate in
+#: `not_resolvable` regardless of the evidence.
+SourceBoundary = Literal["exhaustive", "bounded", "named_missing_material"]
 
 SUPPORTED_THRESHOLD = 0.70
 CONTRADICTED_THRESHOLD = 0.70
@@ -479,6 +495,9 @@ class QualifyContext:
     negated_reading: dict[str, Any] | None
     claim_reading: dict[str, Any]
     passage_text: str | None = None
+    #: What an absent trust level means for *this caller*. Only the caller knows
+    #: whether its corpus carries a trust model at all; see ``_q1_provenance``.
+    trust_policy: TrustPolicy = "optional"
 
 
 #: What a predicate returns: roles it removes, why, and any detail worth a trace.
@@ -489,11 +508,43 @@ def _q1_provenance(ctx: QualifyContext) -> PredicateResult:
     """Decision H / D1. A non-primary source may not decide an adverse degree.
 
     Policy, not accuracy. If deleting it raised agreement it would still stay.
-    An absent trust level is a directly-constructed passage and is eligible, so
-    the predicate never fires outside the apparatus intake path.
+
+    **An absent trust level is recorded, never assumed.** The predicate used to
+    read ``trust is None`` as "directly constructed, therefore primary" and pass
+    silently, on the reasoning that it "never fires outside the apparatus intake
+    path". That is an assumption about the caller, and a replay whose traces do
+    not carry ``trust_levels`` violates it: every background source in the corpus
+    silently regains the right to refute, and the trace shows a check that looks
+    like it passed. Q2 and Q3 already report *not evaluated* in the same
+    situation. This is the third one, and it is D17's shape — a gate that is
+    unreachable while the register reads as though it considered the case.
+
+    Whether an absent level should also *withhold refutation* is a caller
+    decision, because only the caller knows whether its corpus has a trust model:
+
+    - ``optional`` (default) — no trust model in play. Absence is recorded and
+      the passage keeps both roles. Construction-gold corpora build passages
+      directly and carry no levels; failing closed there would silence every
+      legitimate refutation in them.
+    - ``required`` — the caller has a trust model, so an unlevelled passage is
+      an unknown source rather than a directly-constructed one, and may not
+      decide an adverse degree.
     """
     trust = ctx.trust_level
-    if trust is None or trust == "primary":
+    if trust is None:
+        if ctx.trust_policy == "required":
+            return (
+                frozenset({"refute"}),
+                "no trust level supplied and the caller declared trust required, "
+                "so this source may not decide an adverse degree",
+                {"trust_policy": "required"},
+            )
+        return (
+            frozenset(),
+            "not evaluated: no trust level supplied",
+            {"skipped": True, "trust_policy": "optional"},
+        )
+    if trust == "primary":
         return frozenset(), None, {}
     return (
         frozenset({"refute"}),
@@ -681,7 +732,7 @@ class ResolveContext:
 
     frame: ClaimFrame
     evidence: list[PassageEvidence]
-    source_boundary: str | None
+    source_boundary: SourceBoundary | None
     nothing_admitted: bool
     claimed_material_is_a_named_gap: bool
 
@@ -754,13 +805,34 @@ def _r_coverage_exhaustive(c: ResolveContext) -> Outcome | None:
 
 
 def _r_coverage_bounded(c: ResolveContext) -> Outcome | None:
-    """Silence in an excerpt is not refutation (D11).
+    """Silence in an excerpt is not refutation (D11). **Terminal, not a gate.**
 
-    A passage on an adjacent topic neither confirms nor refutes a claim about
-    what a document omits, so this route is never adverse.
+    This rule used to sit third in the table, above every evidence rule, and it
+    fires unconditionally for coverage mode. So a claim the stage-0 lexicon
+    guessed into coverage could not be decided by evidence at all — a passage
+    entailing it at 0.989 lost to a substring match on the claim. That is
+    precedence following pipeline position instead of confidence: the cheapest,
+    least certain step outranking the most expensive, most certain one.
+
+    It now sits *below* the evidence rules. Reaching it means no eligible passage
+    read either way, which is the situation D11 is actually about: silence.
+
+    The two reasons are kept apart because the inputs are different. A declared
+    ``bounded`` source is a caller saying "this is an excerpt". A ``None``
+    boundary is a caller who said nothing, and a coverage claim resolved against
+    an undeclared boundary should name the missing input rather than present
+    itself as a finding about the source.
     """
     if c.frame.mode != "coverage":
         return None
+    if c.source_boundary is None:
+        return (
+            "not_checkable",
+            "not_resolvable",
+            (),
+            "coverage claim with no declared source boundary: silence cannot be "
+            "read either way until the caller says what the passages cover",
+        )
     return (
         "not_checkable",
         "not_resolvable",
@@ -792,12 +864,40 @@ def _r_conflicting(c: ResolveContext) -> Outcome | None:
 
 
 def _r_refuted(c: ResolveContext) -> Outcome | None:
+    """Refutation is an obligation **both** modes can discharge.
+
+    A coverage claim asserts a universal negative — the source does not say X.
+    Popper's asymmetry, which Layer 1 of the blueprint states outright, is that
+    such a claim cannot be verified from an excerpt but *is* falsified by a
+    single counterexample. A passage that explicitly contradicts "the SOP does
+    not specify a timeframe" is a passage specifying a timeframe, and that
+    refutes it whatever the source boundary says.
+
+    So this rule is mode-blind, and it sits above the coverage-silence rule. D11
+    is untouched: D11 is about *silence*, and an explicit contradiction is not
+    silence.
+    """
     if not c.refuting:
         return None
     return "contradicted", None, _cite(c.refuting), "eligible evidence refutes the claim"
 
 
 def _r_supported(c: ResolveContext) -> Outcome | None:
+    """Support is the obligation that **is** mode-restricted.
+
+    The other half of the asymmetry. An excerpt entailing "the document does not
+    mention X" establishes nothing about the document as a whole — it is one
+    passage that happens not to mention X, which is the closed-world step A6
+    refuses (D11). A coverage claim's support obligation therefore needs the
+    source declared exhaustive, which is `_r_coverage_exhaustive`'s job, not this
+    rule's.
+
+    This is what "mode parameterises the obligation" means in practice, and it is
+    the whole of the mode's remaining authority: it decides which obligations
+    exist, not which rules may run.
+    """
+    if c.frame.mode == "coverage":
+        return None
     if not c.supporting:
         return None
     return "supported", None, _cite(c.supporting), "eligible evidence establishes the claim"
@@ -812,14 +912,27 @@ def _r_no_signal(c: ResolveContext) -> Outcome:
 #: Stage 4, as data. First rule whose guard fires decides. Order **is**
 #: significant here, unlike stage 2, and that is why the table is explicit: the
 #: precedence is a list you can read and reorder, not control flow to trace.
+#:
+#: **The order encodes one policy: precedence follows confidence, not pipeline
+#: position.** The previous table put three mode-guarded rules on top, so a
+#: stage-0 lexical guess outranked a stage-3 measurement and a misclassified
+#: claim could not be rescued by any evidence. Now the caller's own declarations
+#: come first (R1, R2 — the caller stated the boundary, so it is not a guess),
+#: then measured evidence (R3-R5), and only then the silence and emptiness rules
+#: that reason about what is *absent*. A rule that reasons about absence must not
+#: run before the rules that look at what is present.
 RESOLUTION_RULES: tuple[tuple[str, Any], ...] = (
+    # Caller-declared facts about the source. Not guesses.
     ("R1_named_gap", _r_named_gap),
     ("R2_coverage_exhaustive", _r_coverage_exhaustive),
-    ("R3_coverage_bounded", _r_coverage_bounded),
-    ("R4_no_evidence", _r_no_evidence),
-    ("R5_conflicting", _r_conflicting),
-    ("R6_refuted", _r_refuted),
-    ("R7_supported", _r_supported),
+    # Measured evidence. Mode-blind except for the support obligation.
+    ("R3_conflicting", _r_conflicting),
+    ("R4_refuted", _r_refuted),
+    ("R5_supported", _r_supported),
+    # Reasoning about absence. Last, because it is only sound once nothing
+    # present has decided.
+    ("R6_coverage_bounded", _r_coverage_bounded),
+    ("R7_no_evidence", _r_no_evidence),
 )
 
 
@@ -827,7 +940,7 @@ def resolve(
     frame: ClaimFrame,
     evidence: list[PassageEvidence],
     *,
-    source_boundary: str | None,
+    source_boundary: SourceBoundary | None,
     nothing_admitted: bool = False,
     claimed_material_is_a_named_gap: bool = False,
 ) -> tuple[Degree, NullReason | None, tuple[str, ...], tuple[str, ...]]:
@@ -907,12 +1020,13 @@ def run_v2(
     features: dict[str, Any],
     retrieval: list[dict[str, Any]],
     entailment: list[dict[str, Any]],
-    source_boundary: str | None = None,
+    source_boundary: SourceBoundary | None = None,
     claimed_material_is_a_named_gap: bool = False,
     declared_mode: Mode | None = None,
     claim_scope: frozenset[str] = frozenset(),
     passage_scope: dict[str, frozenset[str]] | None = None,
     trust_levels: dict[str, str] | None = None,
+    trust_policy: TrustPolicy = "optional",
     source_ids: dict[str, str] | None = None,
     passage_texts: dict[str, str] | None = None,
     unions: list[dict[str, Any]] | None = None,
@@ -988,6 +1102,7 @@ def run_v2(
                 negated_reading=negated_by_id.get(pid),
                 claim_reading=e,
                 passage_text=(passage_texts or {}).get(pid),
+                trust_policy=trust_policy,
             )
         )
         removals.extend(why)

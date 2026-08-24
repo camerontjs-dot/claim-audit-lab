@@ -102,16 +102,16 @@ def test_r2_exhaustive_source_is_refuted_by_a_positive_complement() -> None:
     assert any("R2_coverage_exhaustive" in n for n in notes)
 
 
-def test_r4_no_evidence_precedes_the_ordinary_rules() -> None:
+def test_r7_no_evidence_when_nothing_cleared_the_floor() -> None:
     degree, null_reason, citations, notes = resolve(
         _frame(), [], source_boundary=None, nothing_admitted=True
     )
     assert (degree, null_reason) == ("not_checkable", "no_evidence")
     assert citations == ()
-    assert any("R4_no_evidence" in n for n in notes)
+    assert any("R7_no_evidence" in n for n in notes)
 
 
-def test_r5_conflicting_evidence_settles_nothing() -> None:
+def test_r3_conflicting_evidence_settles_nothing() -> None:
     """v1 aggregates to a maximum and picks one; this refuses to."""
     evidence = [
         _passage("p1", "entail", 0.95),
@@ -120,10 +120,10 @@ def test_r5_conflicting_evidence_settles_nothing() -> None:
     degree, null_reason, citations, notes = resolve(_frame(), evidence, source_boundary=None)
     assert (degree, null_reason) == ("not_checkable", "not_resolvable")
     assert set(citations) == {"p1", "p2"}
-    assert any("R5_conflicting" in n for n in notes)
+    assert any("R3_conflicting" in n for n in notes)
 
 
-def test_r6_refuted_requires_eligibility_not_just_a_reading() -> None:
+def test_r4_refuted_requires_eligibility_not_just_a_reading() -> None:
     """A passage that may not refute cannot produce a contradiction."""
     ineligible = [_passage("p1", "contradict", 0.99, roles=frozenset({"support"}))]
     degree, null_reason, _, _ = resolve(_frame(), ineligible, source_boundary=None)
@@ -133,7 +133,7 @@ def test_r6_refuted_requires_eligibility_not_just_a_reading() -> None:
     degree, _, citations, notes = resolve(_frame(), eligible, source_boundary=None)
     assert degree == "contradicted"
     assert citations == ("p1",)
-    assert any("R6_refuted" in n for n in notes)
+    assert any("R4_refuted" in n for n in notes)
 
 
 def test_r8_no_signal_is_the_terminal_outcome() -> None:
@@ -410,3 +410,141 @@ def test_as_dict_is_a_complete_serializable_record() -> None:
     import json
 
     json.dumps(payload)  # the record must survive a trace write
+
+
+# ---------------------------------------------------------------------------
+# Mode parameterises obligations; it does not route rules.
+# ---------------------------------------------------------------------------
+
+
+def test_a_coverage_claim_is_refuted_by_an_explicit_counterexample() -> None:
+    """Popper's asymmetry, which the old table inverted.
+
+    A coverage claim is a universal negative. It cannot be verified from an
+    excerpt, but one counterexample falsifies it. The old table put
+    `_r_coverage_bounded` third — above every evidence rule — so a coverage claim
+    returned `not_checkable` no matter what any passage said.
+    """
+    frame = _frame(mode="coverage", polarity="negative")
+    counterexample = [_passage("p1", "contradict", 0.98)]
+
+    degree, null_reason, citations, notes = resolve(
+        frame, counterexample, source_boundary="bounded"
+    )
+    assert degree == "contradicted"
+    assert null_reason is None
+    assert citations == ("p1",)
+    assert any("R4_refuted" in n for n in notes)
+
+
+def test_a_coverage_claim_is_not_supported_by_an_excerpt_that_entails_it() -> None:
+    """The other half of the asymmetry, and D11 intact.
+
+    One passage that happens not to mention X establishes nothing about the
+    document as a whole. Support for a coverage claim needs the source declared
+    exhaustive, which is R2's job.
+    """
+    frame = _frame(mode="coverage", polarity="negative")
+    entailing = [_passage("p1", "entail", 0.99)]
+
+    degree, null_reason, _, notes = resolve(frame, entailing, source_boundary="bounded")
+    assert degree == "not_checkable"
+    assert null_reason == "not_resolvable"
+    assert any("R6_coverage_bounded" in n for n in notes)
+    # The same evidence on an ordinary claim does support it.
+    ordinary, _, _, _ = resolve(_frame(), entailing, source_boundary="bounded")
+    assert ordinary == "supported"
+
+
+def test_an_undeclared_boundary_is_distinguished_from_a_declared_bounded_one() -> None:
+    """`None` means the caller said nothing, and the trace should say so."""
+    frame = _frame(mode="coverage", polarity="negative")
+
+    _, _, _, undeclared = resolve(frame, [], source_boundary=None, nothing_admitted=True)
+    _, _, _, declared = resolve(frame, [], source_boundary="bounded", nothing_admitted=True)
+
+    assert any("no declared source boundary" in n for n in undeclared)
+    assert any("non-exhaustive source" in n for n in declared)
+    assert not any("no declared source boundary" in n for n in declared)
+
+
+def test_a_misclassified_coverage_claim_can_still_be_decided_by_evidence() -> None:
+    """The PILOT-001 shape, end to end.
+
+    "does not establish requirements ..." trips the stage-0 lexicon into coverage
+    mode because `requirements` satisfies two of the three coverage conditions at
+    once. Under the old table that guess was terminal. It should now cost a note,
+    not the verdict, whenever a passage explicitly contradicts the claim.
+    """
+    claim = "This packet does not establish requirements for a specific timeframe."
+    verdict = run_v2(
+        claim_text=claim,
+        features={
+            "has_explicit_negation": True,
+            "claim_token_count": 11,
+            "sentence_type": "declarative",
+        },
+        retrieval=[{"passage_id": "p1", "score": 0.92}],
+        entailment=[{"passage_id": "p1", "label": "contradict", "score": 0.989}],
+        trust_levels={"p1": "primary"},
+        source_boundary="bounded",
+    )
+    assert verdict.mode == "coverage"  # still misclassified
+    assert verdict.degree == "contradicted"  # but no longer fatal
+
+
+# ---------------------------------------------------------------------------
+# Q1 provenance: an absent trust level is recorded, and its meaning is declared.
+# ---------------------------------------------------------------------------
+
+
+def _unlevelled_refutation(**kw: object) -> object:
+    return run_v2(
+        claim_text="Chamber CH-04 recorded no excursions this quarter.",
+        features={
+            "has_explicit_negation": False,
+            "claim_token_count": 8,
+            "sentence_type": "declarative",
+        },
+        retrieval=[{"passage_id": "p1", "score": 0.9}],
+        entailment=[{"passage_id": "p1", "label": "contradict", "score": 0.98}],
+        **kw,  # type: ignore[arg-type]
+    )
+
+
+def test_absent_trust_is_recorded_rather_than_assumed_primary() -> None:
+    """Q2 and Q3 already said "not evaluated"; Q1 said nothing at all.
+
+    The silent pass is why a replay whose traces carry no `trust_levels` let
+    every background source refute, with a trace that looked like a check had
+    passed. That is D17's shape in the file written to fix D17.
+    """
+    verdict = _unlevelled_refutation()
+    q1 = [r for r in verdict.removals if r.predicate == "Q1_provenance"]  # type: ignore[attr-defined]
+    assert len(q1) == 1
+    assert q1[0].detail["skipped"] is True
+    assert q1[0].detail["trust_policy"] == "optional"
+    # Default policy keeps current behaviour: the passage may still refute.
+    assert verdict.degree == "contradicted"  # type: ignore[attr-defined]
+
+
+def test_a_caller_with_a_trust_model_can_require_it() -> None:
+    """Only the caller knows whether its corpus has a trust model."""
+    verdict = _unlevelled_refutation(trust_policy="required")
+    q1 = [r for r in verdict.removals if r.predicate == "Q1_provenance"]  # type: ignore[attr-defined]
+    assert q1[0].detail["trust_policy"] == "required"
+    assert "skipped" not in q1[0].detail  # a real removal, not a not-evaluated note
+    assert verdict.degree == "not_checkable"  # type: ignore[attr-defined]
+
+
+def test_a_declared_primary_source_is_unaffected_by_either_policy() -> None:
+    for policy in ("optional", "required"):
+        verdict = _unlevelled_refutation(trust_levels={"p1": "primary"}, trust_policy=policy)
+        assert verdict.degree == "contradicted"  # type: ignore[attr-defined]
+        assert not [r for r in verdict.removals if r.predicate == "Q1_provenance"]  # type: ignore[attr-defined]
+
+
+def test_a_declared_background_source_may_not_refute_under_either_policy() -> None:
+    for policy in ("optional", "required"):
+        verdict = _unlevelled_refutation(trust_levels={"p1": "background"}, trust_policy=policy)
+        assert verdict.degree == "not_checkable"  # type: ignore[attr-defined]

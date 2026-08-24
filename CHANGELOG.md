@@ -83,6 +83,67 @@ temperature, scalar) no longer becomes the upper bound `(-inf, X]`.
   and the module docstring says plainly that those subsets are not like-for-like. The script
   also exits non-zero when no corpus was found, rather than printing nothing and succeeding.
 
+### Changed (v2 — precedence follows confidence, not pipeline position)
+
+Two structural fixes from a design review of the PILOT-001 regression, where v2
+scored 64/98 against v0.4.0's 65/98 with 3 false adverse against 2, while scoring
+56/56 on constructed twins. That gap localises to stage 0 and to what stage 4 was
+willing to let a stage-0 guess decide.
+
+- **The resolution table is reordered, and mode no longer routes it.** The three
+  mode-guarded rules sat on top, and `_r_coverage_bounded` fires unconditionally
+  for coverage mode, so a claim the stage-0 lexicon guessed into coverage could
+  not be decided by evidence at all — a passage entailing it at 0.989 lost to a
+  substring match. The table now runs caller-declared facts (R1, R2), then
+  measured evidence (R3 conflicting, R4 refuted, R5 supported), then the rules
+  that reason about absence (R6 coverage-bounded, R7 no-evidence, R8 no-signal).
+  A rule reasoning about what is absent must not run before the rules that look
+  at what is present.
+- **Mode now parameterises obligations instead of partitioning rules.**
+  Refutation is mode-blind: a coverage claim asserts a universal negative, and
+  one counterexample falsifies it whatever the boundary says. Support is the
+  mode-restricted obligation: an excerpt entailing "the document does not mention
+  X" establishes nothing about the document, so a coverage claim's support still
+  needs a declared exhaustive source (R2). D11 is intact — it governs *silence*,
+  and an explicit contradiction is not silence. A stage-0 misclassification now
+  costs a note rather than the verdict.
+- **An undeclared `source_boundary` is distinguished from a declared `bounded`
+  one.** `None` meant "not declared" and was read as the conservative value, so
+  every undeclared coverage claim terminated in `not_resolvable` regardless of
+  evidence. The two now carry different reasons, and the undeclared one names the
+  missing input instead of presenting itself as a finding about the source.
+
+### Fixed (v2 — Q1 provenance failed open on a missing trust level)
+
+`_q1_provenance` read `trust is None` as "directly constructed, therefore
+primary" and passed **silently**, justified by the assumption that it "never
+fires outside the apparatus intake path". A replay whose traces do not carry
+`trust_levels` violates that: every background source regains the right to
+refute, and the trace shows a check that looks like it passed. Q2 and Q3 already
+report *not evaluated* in the same situation — this was the third one, and D17's
+shape in the file written to fix D17.
+
+Absence is now always recorded. Whether it should also withhold refutation is a
+new caller parameter, `trust_policy`, because only the caller knows whether its
+corpus carries a trust model at all:
+
+- `optional` (default, unchanged behaviour) — no trust model; absence is recorded
+  and the passage keeps both roles. Construction-gold corpora build passages
+  directly and carry no levels; failing closed there would silence every
+  legitimate refutation in them.
+- `required` — the caller has a trust model, so an unlevelled passage is an
+  unknown source and may not decide an adverse degree.
+
+### Added (docs — the atomicity seam)
+
+`docs/v2-atomicity-seam.md` specifies what CAL v2 requires of an upstream
+decomposer, so the apparatus-contracts work has a fixed target. Key finding: the
+contract already exists as `v1/explicit_claims.py`, and v2's **three** atomic
+degrees already produce `partially_supported` through the existing `all_of`
+parent table. The 11 PILOT-001 misses attributed to v2's degree vocabulary are a
+missing seam, not a missing degree, and widening `Degree` would put a
+compound-claim outcome into an atomic vocabulary. No decomposer belongs in CAL.
+
 ### Qualification (run against `validation/` on 2026-08-22)
 
 The branch was run against the project's own validation package rather than only against CI.
