@@ -96,7 +96,7 @@ willing to let a stage-0 guess decide.
   not be decided by evidence at all — a passage entailing it at 0.989 lost to a
   substring match. The table now runs caller-declared facts (R1, R2), then
   measured evidence (R3 conflicting, R4 refuted, R5 supported), then the rules
-  that reason about absence (R6 coverage-bounded, R7 no-evidence, R8 no-signal).
+  that reason about absence (R6 coverage-bounded, R7 no-evidence, R8 unsupported).
   A rule reasoning about what is absent must not run before the rules that look
   at what is present.
 - **Mode now parameterises obligations instead of partitioning rules.**
