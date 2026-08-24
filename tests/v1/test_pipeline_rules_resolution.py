@@ -127,7 +127,7 @@ def test_r4_refuted_requires_eligibility_not_just_a_reading() -> None:
     """A passage that may not refute cannot produce a contradiction."""
     ineligible = [_passage("p1", "contradict", 0.99, roles=frozenset({"support"}))]
     degree, null_reason, _, _ = resolve(_frame(), ineligible, source_boundary=None)
-    assert (degree, null_reason) == ("not_checkable", "no_signal")
+    assert (degree, null_reason) == ("unsupported", None)
 
     eligible = [_passage("p1", "contradict", 0.99)]
     degree, _, citations, notes = resolve(_frame(), eligible, source_boundary=None)
@@ -136,13 +136,19 @@ def test_r4_refuted_requires_eligibility_not_just_a_reading() -> None:
     assert any("R4_refuted" in n for n in notes)
 
 
-def test_r8_no_signal_is_the_terminal_outcome() -> None:
-    """Evidence admitted and eligible, nothing reading above threshold."""
+def test_r8_unsupported_is_a_finding_not_a_gap() -> None:
+    """Eligible evidence was read and none of it establishes the claim.
+
+    This used to be `not_checkable` + `no_signal`, which put a completed check
+    in the same bucket as "could not look at all". `unsupported` is a degree so a
+    consumer can route on it without parsing a reason string.
+    """
     below = [_passage("p1", "entail", SUPPORTED_THRESHOLD - 0.01)]
     degree, null_reason, citations, notes = resolve(_frame(), below, source_boundary=None)
-    assert (degree, null_reason) == ("not_checkable", "no_signal")
+    assert (degree, null_reason) == ("unsupported", None)
+    # Nothing decided, so nothing is cited as deciding.
     assert citations == ()
-    assert any("R8_no_signal" in n for n in notes)
+    assert any("R8_unsupported" in n for n in notes)
 
 
 def test_thresholds_are_inclusive_at_the_boundary() -> None:
@@ -245,8 +251,8 @@ def test_a_union_naming_one_present_member_is_skipped() -> None:
         entailment=[{"passage_id": "p1", "label": "neutral", "score": 0.6}],
         unions=[{"members": ["p1", "absent"], "label": "entail", "score": 0.99}],
     )
-    assert verdict.degree == "not_checkable"
-    assert verdict.null_reason == "no_signal"
+    assert verdict.degree == "unsupported"
+    assert verdict.null_reason is None
 
 
 # ---------------------------------------------------------------------------
@@ -258,7 +264,7 @@ def test_an_admitted_passage_with_no_entailment_is_recorded() -> None:
     """Admitted-but-never-entailed is a stage-3 gap, not an empty retrieval.
 
     The passage cleared the floor, so `nothing_admitted` is False and R4 declines;
-    the set is simply empty by the time stage 4 runs, which is `no_signal`. The
+    the set is simply empty by the time stage 4 runs, which is `unsupported`. The
     distinction is the point of the record: a reviewer can see that a passage was
     held and then lost, rather than that nothing was retrieved.
     """
@@ -275,7 +281,7 @@ def test_an_admitted_passage_with_no_entailment_is_recorded() -> None:
     dropped = [r for r in verdict.removals if r.predicate == "entailment_present"]
     assert len(dropped) == 1
     assert dropped[0].stage == "3-score"
-    assert verdict.null_reason == "no_signal"
+    assert verdict.degree == "unsupported"
 
 
 def test_a_held_but_wholly_ineligible_set_stops_at_stage_two() -> None:
@@ -319,8 +325,8 @@ def test_q1_and_q2_leave_a_passage_able_to_support() -> None:
         passage_scope={"p1": frozenset({"CH-07"})},
     )
     # Refutation withheld by both Q1 and Q2, but the passage is not ineligible.
-    assert verdict.degree == "not_checkable"
-    assert verdict.null_reason == "no_signal"
+    assert verdict.degree == "unsupported"
+    assert verdict.null_reason is None
     assert {r.predicate for r in verdict.removals} >= {"Q1_provenance", "Q2_scope"}
 
 
@@ -534,7 +540,9 @@ def test_a_caller_with_a_trust_model_can_require_it() -> None:
     q1 = [r for r in verdict.removals if r.predicate == "Q1_provenance"]  # type: ignore[attr-defined]
     assert q1[0].detail["trust_policy"] == "required"
     assert "skipped" not in q1[0].detail  # a real removal, not a not-evaluated note
-    assert verdict.degree == "not_checkable"  # type: ignore[attr-defined]
+    # The passage was read; it was just not allowed to refute, and nothing
+    # supported. That is a completed check with a negative result, not a gap.
+    assert verdict.degree == "unsupported"  # type: ignore[attr-defined]
 
 
 def test_a_declared_primary_source_is_unaffected_by_either_policy() -> None:
@@ -547,4 +555,125 @@ def test_a_declared_primary_source_is_unaffected_by_either_policy() -> None:
 def test_a_declared_background_source_may_not_refute_under_either_policy() -> None:
     for policy in ("optional", "required"):
         verdict = _unlevelled_refutation(trust_levels={"p1": "background"}, trust_policy=policy)
-        assert verdict.degree == "not_checkable"  # type: ignore[attr-defined]
+        assert verdict.degree == "unsupported"  # type: ignore[attr-defined]
+        assert verdict.null_reason is None  # type: ignore[attr-defined]
+
+
+# ---------------------------------------------------------------------------
+# ChecksEvaluated — counts and provenance, never a confidence.
+# ---------------------------------------------------------------------------
+
+
+def test_checks_records_what_ran_not_how_confident_it_is() -> None:
+    verdict = run_v2(
+        claim_text="Retention samples are held for six months.",
+        features={
+            "has_explicit_negation": False,
+            "claim_token_count": 7,
+            "sentence_type": "declarative",
+        },
+        retrieval=[{"passage_id": "p1", "score": 0.9}, {"passage_id": "p2", "score": 0.2}],
+        entailment=[{"passage_id": "p1", "label": "entail", "score": 0.95}],
+        trust_levels={"p1": "primary"},
+        declared_mode="ordinary",
+        source_boundary="bounded",
+    )
+    checks = verdict.checks
+    assert checks is not None
+    assert checks.mode_declared is True
+    assert checks.boundary_declared is True
+    assert checks.passages_admitted == 1
+    assert checks.passages_eligible == 1
+    assert checks.passages_deciding == 1
+    assert checks.passages_removed >= 1  # p2 dropped below the floor
+
+    # Q2 and Q3 had no inputs, so they are named as blind rather than counted
+    # as passes.
+    assert set(checks.predicates_not_evaluated) == {"Q2_scope", "Q3_negation_consistency"}
+    assert checks.predicates_evaluated == checks.predicates_attempted - 2
+
+
+def test_checks_names_a_guessed_mode_and_an_undeclared_boundary() -> None:
+    verdict = run_v2(
+        claim_text="Retention samples are held for six months.",
+        features={
+            "has_explicit_negation": False,
+            "claim_token_count": 7,
+            "sentence_type": "declarative",
+        },
+        retrieval=[{"passage_id": "p1", "score": 0.9}],
+        entailment=[{"passage_id": "p1", "label": "entail", "score": 0.95}],
+    )
+    assert verdict.checks is not None
+    assert verdict.checks.mode_declared is False
+    assert verdict.checks.boundary_declared is False
+
+
+def test_checks_is_present_on_every_terminal_including_stage_zero() -> None:
+    """A claim rejected at stage 0 still reports what was and was not declared."""
+    verdict = run_v2(
+        claim_text="Is the sample retained?",
+        features={"claim_token_count": 4, "sentence_type": "question"},
+        retrieval=[],
+        entailment=[],
+    )
+    assert verdict.stage_reached == "0-frame"
+    assert verdict.checks is not None
+    assert verdict.checks.passages_admitted == 0
+
+
+def test_checks_serializes_inside_the_verdict_record() -> None:
+    import json
+
+    verdict = run_v2(
+        claim_text="Retention samples are held for six months.",
+        features={
+            "has_explicit_negation": False,
+            "claim_token_count": 7,
+            "sentence_type": "declarative",
+        },
+        retrieval=[{"passage_id": "p1", "score": 0.9}],
+        entailment=[{"passage_id": "p1", "label": "entail", "score": 0.95}],
+    )
+    payload = verdict.as_dict()
+    assert payload["checks"]["mode_declared"] is False
+    assert isinstance(payload["checks"]["predicates_not_evaluated"], list)
+    json.dumps(payload)
+
+
+# ---------------------------------------------------------------------------
+# The four degrees feed the existing parent table without widening it.
+# ---------------------------------------------------------------------------
+
+
+def test_v2_degrees_drive_the_existing_all_of_aggregation() -> None:
+    """`partially_supported` is a parent outcome derived from atom degrees.
+
+    v2 never emits it and should not: no single atom is ever partially
+    supported. Promoting `no_signal` to the `unsupported` degree also makes the
+    `ECA-ALLOF-UNSUPPORTED` branch reachable from v2 for the first time.
+    """
+    from claim_audit_lab.v1.explicit_claims import aggregate_explicit_claim_verdicts
+    from claim_audit_lab.v1.models import Verdict
+
+    def _v(degree: str) -> Verdict:
+        return Verdict(
+            support_verdict=degree,  # type: ignore[arg-type]
+            audit_flags=[],
+            citation_status="correct",
+            audit_confidence="medium",
+        )
+
+    cases = {
+        ("supported", "supported"): ("supported", "ECA-ALLOF-SUPPORTED"),
+        ("supported", "unsupported"): ("partially_supported", "ECA-ALLOF-PARTIAL"),
+        ("supported", "not_checkable"): ("partially_supported", "ECA-ALLOF-PARTIAL"),
+        ("unsupported", "unsupported"): ("unsupported", "ECA-ALLOF-UNSUPPORTED"),
+        ("unsupported", "not_checkable"): ("unsupported", "ECA-ALLOF-UNSUPPORTED"),
+        ("supported", "contradicted"): ("contradicted", "ECA-ALLOF-CONTRADICTED"),
+        ("not_checkable", "not_checkable"): ("not_checkable", "ECA-ALLOF-NOT-CHECKABLE"),
+    }
+    for atoms, (expected_degree, expected_rule) in cases.items():
+        trace = aggregate_explicit_claim_verdicts("all_of", [_v(a) for a in atoms])
+        assert trace.verdict.support_verdict == expected_degree, atoms
+        assert trace.rule_id == expected_rule, atoms

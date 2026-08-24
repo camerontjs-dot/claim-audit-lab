@@ -144,6 +144,35 @@ parent table. The 11 PILOT-001 misses attributed to v2's degree vocabulary are a
 missing seam, not a missing degree, and widening `Degree` would put a
 compound-claim outcome into an atomic vocabulary. No decomposer belongs in CAL.
 
+### Changed (v2 — four degrees, and counts instead of a confidence)
+
+- **`unsupported` is a degree.** It was `not_checkable` carrying the null reason
+  `no_signal`, which put a completed check — eligible evidence was read and none
+  of it establishes the claim — in the same bucket as "could not look at all".
+  Those are a finding and a gap, and they need different things from a reviewer.
+  Burying the difference in a reason string makes every consumer parse prose to
+  route on it. `no_signal` is removed from `NullReason` rather than left
+  unreachable, because a declared literal no rule can emit is the same defect X4
+  measured in v1's vocabulary, only smaller.
+- **`partially_supported` stays out of `Degree`, deliberately.** It is a property
+  of a conjunction — no single atom is ever partially supported — and it is
+  derived at the parent by the existing `all_of` table in `v1/explicit_claims.py`.
+  Promoting `unsupported` also makes `ECA-ALLOF-UNSUPPORTED` reachable from v2 for
+  the first time; the v2-to-E2 degree mapping is now the identity on all four.
+- **`ChecksEvaluated` records how much of the apparatus ran.** Counts and
+  caller-provenance only: whether mode and boundary were declared or guessed,
+  which stage-2 predicates were blind and which ran, and how many passages were
+  admitted, eligible, deciding and removed. It is **not** a confidence, and the
+  type says so at length. A confidence here would have to come from the
+  entailer's softmax, and `p_entail` is a three-class distribution from a model
+  trained on MNLI / FEVER / ANLI — not `P(the claim is true)`, not calibrated to
+  this domain, and gated behind DEV-001 where blind calibration stands at 0/98
+  against a bar of κ ≥ 0.60. Publishing it as a confidence would license
+  averaging, thresholding and document-level roll-up that nothing supports.
+- **No ordinal is derived from those counts.** Collapsing them to
+  `high / medium / low` puts back the single number that invites the confidence
+  reading, and the right threshold is the consumer's policy, not CAL's.
+
 ### Qualification (run against `validation/` on 2026-08-22)
 
 The branch was run against the project's own validation package rather than only against CI.

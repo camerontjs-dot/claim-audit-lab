@@ -19,29 +19,33 @@ currently takes `claim_text: str` and has no idea atoms exist.
 
 ## The finding that changes the shape of the fix
 
-The v2 diagnostic attributed 11 of 98 PILOT-001 misses to v2's three-degree
-vocabulary — `supported | contradicted | not_checkable` — being unable to express
-the gold label `partially_supported`.
+The v2 diagnostic attributed 11 of 98 PILOT-001 misses to v2's degree vocabulary
+being unable to express the gold label `partially_supported`.
 
-That is a seam problem, not a vocabulary problem. Feeding v2's three atomic
-degrees into the existing aggregator produces the fourth degree at the parent:
+**That is a seam problem, not a vocabulary problem.** Atom degrees fed to the
+existing aggregator produce `partially_supported` at the parent:
 
 | atom degrees (all from v2) | parent | rule |
 |---|---|---|
 | `supported`, `supported` | `supported` | `ECA-ALLOF-SUPPORTED` |
+| `supported`, `unsupported` | **`partially_supported`** | `ECA-ALLOF-PARTIAL` |
 | `supported`, `not_checkable` | **`partially_supported`** | `ECA-ALLOF-PARTIAL` |
+| `unsupported`, `unsupported` | `unsupported` | `ECA-ALLOF-UNSUPPORTED` |
 | `supported`, `contradicted` | `contradicted` | `ECA-ALLOF-CONTRADICTED` |
 | `not_checkable`, `not_checkable` | `not_checkable` | `ECA-ALLOF-NOT-CHECKABLE` |
 
-**v2's `Degree` should stay at three values.** Widening it would put a
-compound-claim outcome into an atomic vocabulary, which is the category error
-that produced the problem. `partially_supported` is a statement about a
-conjunction; no single atom is ever partially supported.
+**`partially_supported` must not enter v2's `Degree`.** It is a property of a
+*conjunction*: no single atom is ever partially supported. Putting a
+compound-claim outcome into an atomic vocabulary is the category error that
+produced the original confusion, and it would make the parent table ambiguous —
+an atom arriving as `partially_supported` would have no defined decomposition.
 
-`unsupported` is the one E2 degree v2 can never produce, because v2 collapses
-"no evidence", "all ineligible" and "no signal" into `not_checkable` with a
-distinguishing `null_reason`. That is a deliberate difference and the mapping
-below keeps it visible rather than papering over it.
+v2 emits **four** degrees: `supported`, `unsupported`, `contradicted`,
+`not_checkable`. The fourth is `unsupported`, promoted from what used to be
+`not_checkable` carrying the null reason `no_signal` — a completed check
+("eligible evidence was read and none of it establishes this") that was sharing
+a bucket with "could not look at all". Those are a finding and a gap, and a
+consumer should not have to parse a reason string to tell them apart.
 
 ## What CAL v2 requires of an atom
 
@@ -105,8 +109,8 @@ Refuse it, visibly. The right shape is a stage-0 outcome, not a rule:
 - `run_v2` terminates at `0-frame`, as it already does for `out_of_form`
 
 That is strictly better than today, where a compound claim is audited as though
-it were atomic and lands in `no_signal` — indistinguishable in the trace from a
-genuine absence of evidence. **A claim that could not be tested must not look
+it were atomic and lands in `unsupported` — indistinguishable from a claim that
+was properly tested and found unsupported. **A claim that could not be tested must not look
 like a claim that was tested and found wanting.** Same principle as the Q1 fix.
 
 CAL should not attempt the split itself even as a fallback. A parse-based
@@ -137,14 +141,20 @@ def run_v2_explicit(
 The degree mapping is total and lossy in exactly one direction, which the trace
 should carry:
 
-| v2 `Degree` + `null_reason` | E2 `SupportVerdict` |
+| v2 `Degree` | E2 `SupportVerdict` |
 |---|---|
 | `supported` | `supported` |
+| `unsupported` | `unsupported` |
 | `contradicted` | `contradicted` |
-| `not_checkable` (any null reason) | `not_checkable` |
+| `not_checkable` (+ `null_reason`) | `not_checkable` |
 
-v2 never emits `unsupported` or `partially_supported` at the atom level. Both
-remain reachable at the parent.
+The identity on all four. v2 never emits `partially_supported` at the atom
+level and must not: it is a property of the conjunction, derived at the parent.
+
+`ChecksEvaluated` should travel with each atom verdict. A parent that is
+`partially_supported` because one conjunct was `not_checkable` with two blind
+predicates is a different object from one where every check ran, and only the
+per-atom counts carry that.
 
 ## Open question for the contract owners
 

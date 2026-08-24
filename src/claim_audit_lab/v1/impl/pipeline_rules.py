@@ -82,18 +82,33 @@ from claim_audit_lab.v1.interval_algebra import evaluate_interval_containment
 # Vocabulary
 # ---------------------------------------------------------------------------
 
-Degree = Literal["supported", "contradicted", "not_checkable"]
+#: Four degrees, and each one tells a reviewer to do something different.
+#:
+#: `unsupported` is the one v1 has and the v2 draft did not. It used to be
+#: `not_checkable` carrying the null reason `no_signal`, which put a real finding
+#: — we looked, eligible evidence was there, it did not establish the claim —
+#: into the same bucket as "we could not look at all". Those are a *check* and a
+#: *gap*, and burying the difference in a reason string makes every downstream
+#: consumer parse prose to route on it.
+#:
+#: `partially_supported` is deliberately absent and should stay absent. It is a
+#: property of a *conjunction*, not of a claim: no single atom is ever partially
+#: supported. It belongs to the parent aggregation over declared atoms (see
+#: `docs/v2-atomicity-seam.md`), which derives it from these four.
+Degree = Literal["supported", "unsupported", "contradicted", "not_checkable"]
 Role = Literal["support", "refute"]
 
-#: One reason per stage that could not proceed. X4 measured v1's declared
-#: vocabulary at 3 of 5 `VerdictReason` values ever emitted, 2 of 6 `AuditFlag`,
-#: and 1 of 6 `CitationStatus`. Declaring a vocabulary up front is what produces
-#: that; here the reason is whatever stage stopped.
+#: Why a claim could not be tested. Only ever set alongside `not_checkable`.
+#:
+#: X4 measured v1's declared vocabulary at 3 of 5 `VerdictReason` values ever
+#: emitted, 2 of 6 `AuditFlag`, and 1 of 6 `CitationStatus`. Declaring a
+#: vocabulary up front is what produces that, so `no_signal` came out when it
+#: became the `unsupported` degree: a literal no rule can emit is the same defect
+#: measured smaller.
 NullReason = Literal[
     "out_of_form",  # stage 0 — not a checkable assertion
     "no_evidence",  # stage 1 — nothing was admitted. A real null
     "all_ineligible",  # stage 2 — evidence was held, none of it may decide
-    "no_signal",  # stage 3 — eligible evidence, no reading above threshold
     "not_resolvable",  # stage 4 — readings that do not combine
 ]
 
@@ -211,6 +226,58 @@ class PassageEvidence:
 
 
 @dataclass(frozen=True)
+class ChecksEvaluated:
+    """How much of the apparatus actually ran. **Not a confidence.**
+
+    The distinction is the whole point of the type. A confidence number here
+    would have to come from the entailer's softmax, and ``p_entail`` is a
+    three-class distribution from a model trained on MNLI / FEVER / ANLI — not
+    ``P(the claim is true)``, not calibrated to this domain, and gated behind
+    DEV-001, where blind calibration stands at 0/98 against a bar of κ ≥ 0.60 and
+    85% adverse recall. Publishing it as a confidence would license averaging,
+    thresholding and document-level roll-up that nothing supports.
+
+    Every field below is instead a **fact about this run**: a count, or whether a
+    caller supplied an input. All of it is deterministic, all of it survives
+    replay, and arithmetic over it is arithmetic over things that happened.
+
+    No ordinal is derived here on purpose. Collapsing these to
+    ``high / medium / low`` would put back the single number that invites the
+    confidence reading, and the right threshold is the consumer's policy, not
+    CAL's. A consumer that wants a band should compute it from these and own it.
+    """
+
+    #: Caller declared the claim's mode rather than the lexicon guessing it.
+    mode_declared: bool
+    #: Caller declared what the passages cover. `False` means R2 and R6 were
+    #: reasoning without it.
+    boundary_declared: bool
+    #: Stage-2 predicates that ran against real inputs, out of those attempted.
+    predicates_evaluated: int
+    predicates_attempted: int
+    #: Named, so a reviewer can see *which* check was blind rather than only that
+    #: one was.
+    predicates_not_evaluated: tuple[str, ...]
+    passages_admitted: int
+    passages_eligible: int
+    passages_deciding: int
+    passages_removed: int
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "mode_declared": self.mode_declared,
+            "boundary_declared": self.boundary_declared,
+            "predicates_evaluated": self.predicates_evaluated,
+            "predicates_attempted": self.predicates_attempted,
+            "predicates_not_evaluated": list(self.predicates_not_evaluated),
+            "passages_admitted": self.passages_admitted,
+            "passages_eligible": self.passages_eligible,
+            "passages_deciding": self.passages_deciding,
+            "passages_removed": self.passages_removed,
+        }
+
+
+@dataclass(frozen=True)
 class V2Verdict:
     degree: Degree
     null_reason: NullReason | None
@@ -220,6 +287,7 @@ class V2Verdict:
     removals: tuple[Removal, ...]
     stage_reached: str
     notes: tuple[str, ...] = ()
+    checks: ChecksEvaluated | None = None
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -241,6 +309,7 @@ class V2Verdict:
             ],
             "stage_reached": self.stage_reached,
             "notes": list(self.notes),
+            "checks": self.checks.as_dict() if self.checks else None,
         }
 
 
@@ -903,10 +972,21 @@ def _r_supported(c: ResolveContext) -> Outcome | None:
     return "supported", None, _cite(c.supporting), "eligible evidence establishes the claim"
 
 
-def _r_no_signal(c: ResolveContext) -> Outcome:
-    """Terminal. Evidence was admitted and eligible, and nothing read above
-    threshold in either direction."""
-    return "not_checkable", "no_signal", (), "eligible evidence, no reading above threshold"
+def _r_unsupported(c: ResolveContext) -> Outcome:
+    """Terminal. Eligible evidence was read, and none of it establishes the claim.
+
+    This is a finding, not a gap, and it is the only terminal rule that reports
+    one. The apparatus ran end to end: passages cleared the floor, survived
+    qualification, and were scored — and nothing reached threshold in either
+    direction. A reviewer should read that as "the evidence you supplied does not
+    carry this claim", which is a different instruction from "I could not test
+    this", and both are different again from "the evidence refutes this".
+
+    Citations stay empty on purpose. The field is `deciding_passages`, and
+    nothing decided; the passages that were looked at and found wanting are in
+    the working papers, not in a citation list that implies they settled it.
+    """
+    return "unsupported", None, (), "eligible evidence, no reading above threshold"
 
 
 #: Stage 4, as data. First rule whose guard fires decides. Order **is**
@@ -998,9 +1078,40 @@ def resolve(
             notes.append(f"{name}: {note}")
             return degree, null_reason, citations, tuple(notes)
 
-    degree, null_reason, citations, note = _r_no_signal(ctx)
-    notes.append(f"R8_no_signal: {note}")
+    degree, null_reason, citations, note = _r_unsupported(ctx)
+    notes.append(f"R8_unsupported: {note}")
     return degree, null_reason, citations, tuple(notes)
+
+
+def _checks_evaluated(
+    frame: ClaimFrame,
+    *,
+    boundary_declared: bool,
+    evidence: list[PassageEvidence],
+    removals: list[Removal],
+    deciding: tuple[str, ...],
+    admitted: int,
+) -> ChecksEvaluated:
+    """Count what actually ran. Every field is a fact about this run.
+
+    `skipped` is the marker a predicate sets when it could not evaluate — a
+    missing trust level, absent passage text, no negation probe. Counting those
+    is what turns "two checks were blind" from something buried in the removal
+    log into something a consumer can route on.
+    """
+    blind = tuple(sorted({r.predicate for r in removals if r.detail.get("skipped")}))
+    attempted = len(ELIGIBILITY_PREDICATES)
+    return ChecksEvaluated(
+        mode_declared=not frame.mode_was_guessed,
+        boundary_declared=boundary_declared,
+        predicates_evaluated=max(attempted - len(blind), 0),
+        predicates_attempted=attempted,
+        predicates_not_evaluated=blind,
+        passages_admitted=admitted,
+        passages_eligible=sum(1 for e in evidence if e.eligible_for),
+        passages_deciding=len(deciding),
+        passages_removed=len(removals),
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -1061,6 +1172,14 @@ def run_v2(
             removals=(),
             stage_reached="0-frame",
             notes=(f"sentence_type={frame.sentence_type}, tokens={frame.token_count}",),
+            checks=_checks_evaluated(
+                frame,
+                boundary_declared=source_boundary is not None,
+                evidence=[],
+                removals=[],
+                deciding=(),
+                admitted=0,
+            ),
         )
 
     # Stage 1. Emptiness is recorded and carried forward rather than returned:
@@ -1161,6 +1280,14 @@ def run_v2(
             removals=tuple(removals),
             stage_reached="2-qualify",
             notes=(f"{len(evidence)} passages held, none eligible for any role",),
+            checks=_checks_evaluated(
+                frame,
+                boundary_declared=source_boundary is not None,
+                evidence=evidence,
+                removals=removals,
+                deciding=(),
+                admitted=len(admitted),
+            ),
         )
 
     # Stage 4
@@ -1180,4 +1307,12 @@ def run_v2(
         removals=tuple(removals),
         stage_reached="4-resolve",
         notes=stage_notes + notes,
+        checks=_checks_evaluated(
+            frame,
+            boundary_declared=source_boundary is not None,
+            evidence=evidence,
+            removals=removals,
+            deciding=deciding,
+            admitted=len(admitted),
+        ),
     )
