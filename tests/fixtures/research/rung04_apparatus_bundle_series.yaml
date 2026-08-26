@@ -1,0 +1,384 @@
+schema_version: "research-rung-04"
+subject_claim_id: "clm-b04"
+subject_claim_text: "The current AI-assisted deviation-triage workflow is adequately controlled for critical GMP use."
+
+contract_gap_expected:
+  - eligibility
+  - proposition_specific_validity
+  - aperture
+  - temporal_applicability
+  - authority_status
+
+measurement_fixture:
+  p-pre-validation:
+    support: 0.93
+    refutation: 0.04
+  p-human-review:
+    support: 0.92
+    refutation: 0.03
+  p-supplier-attestation:
+    support: 0.88
+    refutation: 0.05
+  p-incident:
+    support: 0.03
+    refutation: 0.95
+  p-supplier-qualification:
+    support: 0.86
+    refutation: 0.03
+  p-capa-closure:
+    support: 0.90
+    refutation: 0.04
+  p-current-validation:
+    support: 0.97
+    refutation: 0.02
+
+snapshots:
+  - name: "B04-1"
+    bundle_manifest:
+      bundle_id: "10400000-0000-4000-8000-000000000001"
+      schema_version: "1.1.0"
+      source_run_id: "10400000-0000-4000-8000-100000000001"
+      source_contract_version: "1.1.0"
+      source_corpus_hash: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      audit_config_version: "cal-rules-v1.2.0"
+      audit_config_hash: "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      validation_set_version: "valset-v1.0.0"
+      validation_set_hash: "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    claim:
+      claim_id: "clm-b04"
+      bundle_id: "10400000-0000-4000-8000-000000000001"
+      schema_version: "1.1.0"
+      claim_text: "The current AI-assisted deviation-triage workflow is adequately controlled for critical GMP use."
+      claim_type: "extracted_claim"
+      workflow_condition: "full_scaffold"
+      task_id: "annex22-rung04"
+      scaffold_support_status: "uncertain"
+      scaffold_claim_strength: 0.72
+      scaffold_extraction_fidelity: 0.95
+      scaffold_counterevidence_found: true
+      scaffold_downgraded: true
+      evidence_passages:
+        - passage_id: "p-pre-validation"
+          source_id: "src-validation-v1"
+          passage_text: "Validation before the model update met the frozen acceptance criteria."
+          section: "Validation summary"
+          char_start: 120
+          char_end: 191
+          source_trust_level: "primary"
+          passage_hash: "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        - passage_id: "p-human-review"
+          source_id: "src-sop-review"
+          passage_text: "Critical deviation dispositions require documented quality-unit review and approval."
+          section: "SOP 7.4"
+          char_start: 420
+          char_end: 501
+          source_trust_level: "primary"
+          passage_hash: "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+        - passage_id: "p-supplier-attestation"
+          source_id: "src-cloud-attestation"
+          passage_text: "The cloud supplier attests that required logical and operational controls are implemented."
+          section: "Supplier attestation"
+          char_start: 88
+          char_end: 178
+          source_trust_level: "secondary"
+          passage_hash: "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+      counterevidence_passages:
+        - passage_id: "p-incident"
+          source_id: "src-incident-17"
+          passage_text: "After the model update, a guardrail failed to flag a critical deviation for human escalation."
+          section: "Incident 17"
+          char_start: 52
+          char_end: 142
+          source_trust_level: "primary"
+          passage_hash: "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      audit:
+        audit_run_id: null
+        audited_at_utc: null
+        audit_support_verdict: null
+        audit_confidence: null
+        audit_notes: null
+        false_caution_flag: null
+        deviation_flag: null
+        deviation_notes: null
+    research_decision_annotations:
+      scope_status: "in_scope"
+      apertures:
+        support: "complete"
+        refutation: "complete"
+      passage_assessments:
+        p-pre-validation:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "invalid"
+          operator: "lifecycle_temporal_scope"
+          reason: "Validation predates the model update and cannot establish current-state control."
+        p-human-review:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "human_oversight_scope"
+          reason: "The SOP directly establishes the required human-review control."
+        p-supplier-attestation:
+          channel: "support"
+          eligibility: "unknown"
+          validity: "valid"
+          operator: "supplier_control"
+          reason: "Supplier qualification status is unresolved at this bundle state."
+        p-incident:
+          channel: "refutation"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "guardrail_reliability"
+          reason: "The post-update incident directly bears on current control effectiveness."
+
+  - name: "B04-2"
+    bundle_manifest:
+      bundle_id: "10400000-0000-4000-8000-000000000002"
+      schema_version: "1.1.0"
+      source_run_id: "10400000-0000-4000-8000-100000000002"
+      source_contract_version: "1.1.0"
+      source_corpus_hash: "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+      audit_config_version: "cal-rules-v1.2.0"
+      audit_config_hash: "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      validation_set_version: "valset-v1.0.0"
+      validation_set_hash: "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    claim:
+      claim_id: "clm-b04"
+      bundle_id: "10400000-0000-4000-8000-000000000002"
+      schema_version: "1.1.0"
+      claim_text: "The current AI-assisted deviation-triage workflow is adequately controlled for critical GMP use."
+      claim_type: "extracted_claim"
+      workflow_condition: "full_scaffold"
+      task_id: "annex22-rung04"
+      scaffold_support_status: "uncertain"
+      scaffold_claim_strength: 0.72
+      scaffold_extraction_fidelity: 0.95
+      scaffold_counterevidence_found: true
+      scaffold_downgraded: true
+      evidence_passages:
+        - passage_id: "p-pre-validation"
+          source_id: "src-validation-v1"
+          passage_text: "Validation before the model update met the frozen acceptance criteria."
+          section: "Validation summary"
+          char_start: 120
+          char_end: 191
+          source_trust_level: "primary"
+          passage_hash: "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        - passage_id: "p-human-review"
+          source_id: "src-sop-review"
+          passage_text: "Critical deviation dispositions require documented quality-unit review and approval."
+          section: "SOP 7.4"
+          char_start: 420
+          char_end: 501
+          source_trust_level: "primary"
+          passage_hash: "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+        - passage_id: "p-supplier-attestation"
+          source_id: "src-cloud-attestation"
+          passage_text: "The cloud supplier attests that required logical and operational controls are implemented."
+          section: "Supplier attestation"
+          char_start: 88
+          char_end: 178
+          source_trust_level: "secondary"
+          passage_hash: "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+        - passage_id: "p-supplier-qualification"
+          source_id: "src-supplier-qualification"
+          passage_text: "Supplier qualification verified the attested controls against the approved assessment plan."
+          section: "Qualification conclusion"
+          char_start: 610
+          char_end: 699
+          source_trust_level: "primary"
+          passage_hash: "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+      counterevidence_passages:
+        - passage_id: "p-incident"
+          source_id: "src-incident-17"
+          passage_text: "After the model update, a guardrail failed to flag a critical deviation for human escalation."
+          section: "Incident 17"
+          char_start: 52
+          char_end: 142
+          source_trust_level: "primary"
+          passage_hash: "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      audit:
+        audit_run_id: null
+        audited_at_utc: null
+        audit_support_verdict: null
+        audit_confidence: null
+        audit_notes: null
+        false_caution_flag: null
+        deviation_flag: null
+        deviation_notes: null
+    research_decision_annotations:
+      scope_status: "in_scope"
+      apertures:
+        support: "complete"
+        refutation: "complete"
+      passage_assessments:
+        p-pre-validation:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "invalid"
+          operator: "lifecycle_temporal_scope"
+          reason: "Validation predates the model update and cannot establish current-state control."
+        p-human-review:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "human_oversight_scope"
+          reason: "The SOP directly establishes the required human-review control."
+        p-supplier-attestation:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "supplier_control"
+          reason: "The supplier attestation is now backed by completed qualification."
+        p-supplier-qualification:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "supplier_control"
+          reason: "The qualification record directly establishes supplier-control eligibility."
+        p-incident:
+          channel: "refutation"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "guardrail_reliability"
+          reason: "The post-update incident remains unresolved evidence against current control."
+
+  - name: "B04-3"
+    bundle_manifest:
+      bundle_id: "10400000-0000-4000-8000-000000000003"
+      schema_version: "1.1.0"
+      source_run_id: "10400000-0000-4000-8000-100000000003"
+      source_contract_version: "1.1.0"
+      source_corpus_hash: "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+      audit_config_version: "cal-rules-v1.2.0"
+      audit_config_hash: "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      validation_set_version: "valset-v1.0.0"
+      validation_set_hash: "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    claim:
+      claim_id: "clm-b04"
+      bundle_id: "10400000-0000-4000-8000-000000000003"
+      schema_version: "1.1.0"
+      claim_text: "The current AI-assisted deviation-triage workflow is adequately controlled for critical GMP use."
+      claim_type: "extracted_claim"
+      workflow_condition: "full_scaffold"
+      task_id: "annex22-rung04"
+      scaffold_support_status: "uncertain"
+      scaffold_claim_strength: 0.72
+      scaffold_extraction_fidelity: 0.95
+      scaffold_counterevidence_found: true
+      scaffold_downgraded: true
+      evidence_passages:
+        - passage_id: "p-pre-validation"
+          source_id: "src-validation-v1"
+          passage_text: "Validation before the model update met the frozen acceptance criteria."
+          section: "Validation summary"
+          char_start: 120
+          char_end: 191
+          source_trust_level: "primary"
+          passage_hash: "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        - passage_id: "p-human-review"
+          source_id: "src-sop-review"
+          passage_text: "Critical deviation dispositions require documented quality-unit review and approval."
+          section: "SOP 7.4"
+          char_start: 420
+          char_end: 501
+          source_trust_level: "primary"
+          passage_hash: "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+        - passage_id: "p-supplier-attestation"
+          source_id: "src-cloud-attestation"
+          passage_text: "The cloud supplier attests that required logical and operational controls are implemented."
+          section: "Supplier attestation"
+          char_start: 88
+          char_end: 178
+          source_trust_level: "secondary"
+          passage_hash: "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+        - passage_id: "p-supplier-qualification"
+          source_id: "src-supplier-qualification"
+          passage_text: "Supplier qualification verified the attested controls against the approved assessment plan."
+          section: "Qualification conclusion"
+          char_start: 610
+          char_end: 699
+          source_trust_level: "primary"
+          passage_hash: "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+        - passage_id: "p-capa-closure"
+          source_id: "src-capa-17"
+          passage_text: "CAPA 17 closed after guardrail remediation, verification, and effectiveness review."
+          section: "CAPA effectiveness"
+          char_start: 780
+          char_end: 857
+          source_trust_level: "primary"
+          passage_hash: "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+        - passage_id: "p-current-validation"
+          source_id: "src-validation-v2"
+          passage_text: "Post-remediation validation of the current model version met all frozen acceptance criteria."
+          section: "Current validation"
+          char_start: 920
+          char_end: 1005
+          source_trust_level: "primary"
+          passage_hash: "sha256:7777777777777777777777777777777777777777777777777777777777777777"
+      counterevidence_passages:
+        - passage_id: "p-incident"
+          source_id: "src-incident-17"
+          passage_text: "After the model update, a guardrail failed to flag a critical deviation for human escalation."
+          section: "Incident 17"
+          char_start: 52
+          char_end: 142
+          source_trust_level: "primary"
+          passage_hash: "sha256:4444444444444444444444444444444444444444444444444444444444444444"
+      audit:
+        audit_run_id: null
+        audited_at_utc: null
+        audit_support_verdict: null
+        audit_confidence: null
+        audit_notes: null
+        false_caution_flag: null
+        deviation_flag: null
+        deviation_notes: null
+    research_decision_annotations:
+      scope_status: "in_scope"
+      apertures:
+        support: "complete"
+        refutation: "complete"
+      passage_assessments:
+        p-pre-validation:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "invalid"
+          operator: "lifecycle_temporal_scope"
+          reason: "The older validation remains historical but is stale for the current-state proposition."
+        p-human-review:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "human_oversight_scope"
+          reason: "The human-review control remains applicable to the current workflow."
+        p-supplier-attestation:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "supplier_control"
+          reason: "The attestation remains backed by completed supplier qualification."
+        p-supplier-qualification:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "supplier_control"
+          reason: "The qualification record remains applicable to the current supplier state."
+        p-capa-closure:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "lifecycle_change_control"
+          reason: "CAPA closure directly addresses the historical guardrail failure."
+        p-current-validation:
+          channel: "support"
+          eligibility: "eligible"
+          validity: "valid"
+          operator: "lifecycle_temporal_scope"
+          reason: "Validation applies to the current post-remediation model version."
+        p-incident:
+          channel: "refutation"
+          eligibility: "eligible"
+          validity: "invalid"
+          operator: "post_remediation_temporal_scope"
+          reason: "The incident remains historical evidence but predates verified remediation and revalidation."
