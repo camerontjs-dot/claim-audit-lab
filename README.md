@@ -1,5 +1,7 @@
 # Claim Audit Lab
 
+![Claim Audit Lab — Deterministic Claim Auditing](assets/social-card.svg)
+
 [![public suite](https://img.shields.io/badge/public%20suite-self--contained-3fb950)](#verification)
 [![coverage](https://img.shields.io/badge/branch%20coverage-95%25-3fb950)](#verification)
 [![python](https://img.shields.io/badge/python-3.11%2B-4da3ff)](pyproject.toml)
