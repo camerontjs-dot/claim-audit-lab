@@ -1,29 +1,154 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="628" viewBox="0 0 1200 628" role="img" aria-labelledby="title desc">
-  <title id="title">Claim Audit Lab social card</title>
-  <desc id="desc">A public portfolio card for Claim Audit Lab, a supplied-evidence claim audit tool.</desc>
-  <rect width="1200" height="628" fill="#f7f4ec"/>
-  <rect x="72" y="72" width="1056" height="484" rx="18" fill="#ffffff" stroke="#1f2937" stroke-width="3"/>
-  <rect x="72" y="72" width="1056" height="72" rx="18" fill="#1f2937"/>
-  <rect x="72" y="120" width="1056" height="24" fill="#1f2937"/>
-  <circle cx="116" cy="108" r="10" fill="#e85d75"/>
-  <circle cx="150" cy="108" r="10" fill="#f2b84b"/>
-  <circle cx="184" cy="108" r="10" fill="#38a169"/>
-  <text x="96" y="228" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="72" font-weight="800" letter-spacing="0">Claim Audit Lab</text>
-  <text x="100" y="286" fill="#2f5d62" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="0">supplied-evidence claim audit</text>
-  <line x1="100" y1="326" x2="1100" y2="326" stroke="#d6d3ca" stroke-width="3"/>
-  <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="30" fill="#111827">
-    <text x="140" y="392">Deterministic checks</text>
-    <text x="140" y="452">Traceable claim support</text>
-    <text x="140" y="512">Inspectable Markdown + JSON reports</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Claim Audit Lab — Social Preview Card</title>
+  <desc id="desc">Deterministic claim auditing over supplied evidence.</desc>
+  
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080c16"/>
+      <stop offset="50%" stop-color="#0d1527"/>
+      <stop offset="100%" stop-color="#070a12"/>
+    </linearGradient>
+    
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#152033" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0f1728" stop-opacity="0.95"/>
+    </linearGradient>
+    
+    <linearGradient id="glowIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </linearGradient>
+    
+    <linearGradient id="overstatedBadge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#f59e0b" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.1"/>
+    </linearGradient>
+
+    <!-- Subtle Background Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.5"/>
+    </pattern>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1200" height="675" fill="url(#bgGrad)"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="200" cy="180" r="280" fill="url(#glowIndigo)"/>
+  <circle cx="980" cy="340" r="320" fill="url(#glowIndigo)"/>
+
+  <!-- LEFT COLUMN: Brand & Core Stance -->
+  <g transform="translate(80, 85)">
+    <!-- Version Tag -->
+    <rect x="0" y="0" width="175" height="32" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <circle cx="16" cy="16" r="4" fill="#38bdf8"/>
+    <text x="30" y="21" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="13" font-weight="600" letter-spacing="0.5">ENGINEERING BUILD v0.4</text>
+
+    <!-- Title -->
+    <text x="0" y="105" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="64" font-weight="800" letter-spacing="-1.5">Claim Audit Lab</text>
+
+    <!-- Subtitle -->
+    <text x="0" y="152" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="23" font-weight="500">Deterministic Claim Auditing Over Supplied Evidence</text>
+
+    <!-- Quote Box / Core Boundary Rule -->
+    <g transform="translate(0, 195)">
+      <rect x="0" y="0" width="465" height="100" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+      <path d="M 0 14 Q 0 0 14 0 L 14 100 Q 0 100 0 86 Z" fill="#6366f1"/>
+      <text x="28" y="42" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="17" font-weight="600" font-style="italic">“Does the evidence you handed me</text>
+      <text x="28" y="70" fill="#e2e8f0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="17" font-weight="600" font-style="italic">support the claim you wrote?”</text>
+    </g>
+
+    <!-- Core Mechanism Triad -->
+    <g transform="translate(0, 335)">
+      <text x="0" y="0" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="13" font-weight="700" letter-spacing="1">DECISION ARCHITECTURE</text>
+      
+      <g transform="translate(0, 18)">
+        <rect x="0" y="0" width="135" height="34" rx="8" fill="#1e1b4b" stroke="#4338ca" stroke-width="1.2"/>
+        <text x="67" y="22" text-anchor="middle" fill="#a5b4fc" font-family="ui-monospace, monospace" font-size="13" font-weight="600">1. RETRIEVE</text>
+        
+        <text x="148" y="22" fill="#475569" font-family="sans-serif" font-size="16">→</text>
+
+        <rect x="165" y="0" width="125" height="34" rx="8" fill="#1e1b4b" stroke="#4338ca" stroke-width="1.2"/>
+        <text x="227" y="22" text-anchor="middle" fill="#a5b4fc" font-family="ui-monospace, monospace" font-size="13" font-weight="600">2. ENTAIL</text>
+
+        <text x="303" y="22" fill="#475569" font-family="sans-serif" font-size="16">→</text>
+
+        <rect x="320" y="0" width="135" height="34" rx="8" fill="#064e3b" stroke="#059669" stroke-width="1.2"/>
+        <text x="387" y="22" text-anchor="middle" fill="#6ee7b7" font-family="ui-monospace, monospace" font-size="13" font-weight="700">3. RULES (CODE)</text>
+      </g>
+    </g>
   </g>
-  <g fill="none" stroke="#2f5d62" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M104 382 l16 16 l28 -34"/>
-    <path d="M104 442 l16 16 l28 -34"/>
-    <path d="M104 502 l16 16 l28 -34"/>
+
+  <!-- RIGHT COLUMN: Real Audit Inspector Card -->
+  <g transform="translate(605, 80)">
+    <!-- Card Container -->
+    <rect x="0" y="0" width="515" height="460" rx="16" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.8"/>
+    
+    <!-- Inspector Header Bar -->
+    <rect x="0" y="0" width="515" height="46" rx="16" fill="#1e293b"/>
+    <rect x="0" y="32" width="515" height="14" fill="#1e293b"/>
+    <circle cx="24" cy="23" r="6" fill="#ef4444"/>
+    <circle cx="44" cy="23" r="6" fill="#f59e0b"/>
+    <circle cx="64" cy="23" r="6" fill="#10b981"/>
+    <text x="90" y="28" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="13" font-weight="500">cal-audit-inspector / claim-04.json</text>
+    <rect x="420" y="12" width="75" height="22" rx="6" fill="#0f172a"/>
+    <text x="457" y="27" text-anchor="middle" fill="#38bdf8" font-family="ui-monospace, monospace" font-size="11" font-weight="600">PASS 1</text>
+
+    <!-- Card Content -->
+    <g transform="translate(24, 68)">
+      <!-- Claim text section -->
+      <text x="0" y="16" fill="#64748b" font-family="ui-monospace, monospace" font-size="12" font-weight="600">EVALUATED CLAIM</text>
+      <rect x="0" y="26" width="467" height="60" rx="8" fill="#0b1120" stroke="#1e293b" stroke-width="1"/>
+      <text x="14" y="52" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="14" font-weight="500">“Process reduces active bioburden by 99.9%</text>
+      <text x="14" y="73" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="14" font-weight="500">across all commercial production batches.”</text>
+
+      <!-- NLI Signal Layer -->
+      <g transform="translate(0, 106)">
+        <text x="0" y="16" fill="#64748b" font-family="ui-monospace, monospace" font-size="12" font-weight="600">MODEL ENTAILMENT SIGNAL (NLI)</text>
+        <rect x="0" y="24" width="467" height="42" rx="8" fill="#0b1120" stroke="#1e293b" stroke-width="1"/>
+        <text x="14" y="50" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="13">Entail: <tspan fill="#38bdf8" font-weight="700">0.42</tspan> · Contradict: <tspan fill="#f87171" font-weight="700">0.04</tspan> · Neutral: <tspan fill="#94a3b8">0.54</tspan></text>
+      </g>
+
+      <!-- Deterministic Rule Verdict -->
+      <g transform="translate(0, 192)">
+        <text x="0" y="16" fill="#64748b" font-family="ui-monospace, monospace" font-size="12" font-weight="600">DETERMINISTIC VERDICT</text>
+        <rect x="0" y="24" width="467" height="74" rx="10" fill="url(#overstatedBadge)" stroke="#f59e0b" stroke-width="1.8"/>
+        
+        <rect x="14" y="40" width="155" height="38" rx="8" fill="#78350f" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="91" y="65" text-anchor="middle" fill="#fef08a" font-family="ui-monospace, monospace" font-size="16" font-weight="800">OVERSTATED</text>
+        
+        <text x="185" y="51" fill="#fcd34d" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="13" font-weight="600">Causal claim backed by pilot correlation</text>
+        <text x="185" y="70" fill="#94a3b8" font-family="ui-monospace, monospace" font-size="11">governed by: cal-rules-v1.13.0</text>
+      </g>
+
+      <!-- Traceability & Receipt footer -->
+      <g transform="translate(0, 312)">
+        <rect x="0" y="0" width="467" height="38" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+        <circle cx="16" cy="19" r="4" fill="#10b981"/>
+        <text x="28" y="24" fill="#a7f3d0" font-family="ui-monospace, monospace" font-size="12" font-weight="600">Receipt SHA-256: 7f4a... (Deterministic Match)</text>
+      </g>
+    </g>
   </g>
-  <g transform="translate(770 364)">
-    <rect x="0" y="0" width="280" height="104" rx="14" fill="#f0f7f7" stroke="#2f5d62" stroke-width="3"/>
-    <text x="140" y="43" text-anchor="middle" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="0">No network</text>
-    <text x="140" y="76" text-anchor="middle" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="0">No API key</text>
+
+  <!-- BOTTOM FOOTER STRIP -->
+  <g transform="translate(80, 595)">
+    <rect x="0" y="0" width="1040" height="42" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1.2"/>
+    <text x="520" y="26" text-anchor="middle" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif" font-size="14" font-weight="600" letter-spacing="0.3">
+      <tspan fill="#38bdf8">Retrieve → Entail → Rules</tspan>
+      <tspan fill="#475569">  •  </tspan>
+      <tspan fill="#f1f5f9">6 Strength-Aware Labels</tspan>
+      <tspan fill="#475569">  •  </tspan>
+      <tspan fill="#f1f5f9">Zero Open-Web Synthesis</tspan>
+      <tspan fill="#475569">  •  </tspan>
+      <tspan fill="#34d399">IQ/OQ/PQ Lineage</tspan>
+    </text>
   </g>
 </svg>
