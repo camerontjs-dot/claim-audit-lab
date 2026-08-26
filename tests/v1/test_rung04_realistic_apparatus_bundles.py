@@ -172,7 +172,7 @@ def test_r04_01_bundles_are_immutable_monotonic_snapshots() -> None:
     assert len(set(bundle_ids)) == 3
     assert set(passage_maps[0]) < set(passage_maps[1]) < set(passage_maps[2])
 
-    for earlier, later in zip(passage_maps, passage_maps[1:], strict=True):
+    for earlier, later in zip(passage_maps[:-1], passage_maps[1:], strict=True):
         for passage_id, passage in earlier.items():
             assert later[passage_id] == passage
 
@@ -182,7 +182,7 @@ def test_r04_02_measurements_are_frozen_across_bundle_snapshots() -> None:
     traces = [_trace(data, name) for name in ("B04-1", "B04-2", "B04-3")]
     measurement_maps = [_measurement_map(trace) for trace in traces]
 
-    for earlier, later in zip(measurement_maps, measurement_maps[1:], strict=True):
+    for earlier, later in zip(measurement_maps[:-1], measurement_maps[1:], strict=True):
         for passage_id, scores in earlier.items():
             assert later[passage_id] == scores
 
