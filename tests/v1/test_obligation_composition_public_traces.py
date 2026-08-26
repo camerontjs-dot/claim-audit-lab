@@ -44,8 +44,10 @@ def test_f02_projection_preserves_admitted_passage_identity() -> None:
         projection = project_evidence_state(trace)
         admitted = tuple(result.passage_id for result in trace.entailment)
         assert projection.admitted_passage_ids == admitted
-        assert {item.passage_id for item in projection.support_candidates}.issubset(set(admitted))
-        assert {item.passage_id for item in projection.refutation_candidates}.issubset(set(admitted))
+        support_ids = {item.passage_id for item in projection.support_candidates}
+        refutation_ids = {item.passage_id for item in projection.refutation_candidates}
+        assert support_ids.issubset(set(admitted))
+        assert refutation_ids.issubset(set(admitted))
 
 
 def test_f03_projection_is_deterministic_over_public_trace_fixtures() -> None:
