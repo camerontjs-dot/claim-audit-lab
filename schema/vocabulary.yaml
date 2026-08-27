@@ -46,9 +46,9 @@ vocabularies:
       - supported
       - partially_supported
       - unsupported
-      - overstated
-      - needs_source
-      - not_checkable
+      - overstated         # claim is stronger than evidence supports — overconfident conclusions failure mode
+      - needs_source       # claim is stateable but no citation attached — missing source provenance failure mode
+      - not_checkable      # claim too vague/malformed to audit — instrument limitation
 
   source_type:
     description: "Bibliographic class of a corpus source."
