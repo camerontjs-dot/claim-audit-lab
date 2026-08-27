@@ -35,8 +35,8 @@ from claim_audit_lab.resources import (
     read_package_text,
 )
 
-CONTRACT_VERSION = "1.1.0"
-SUPPORTED_CONTRACT_VERSIONS: frozenset[str] = frozenset({"1.0.0", "1.1.0"})
+CONTRACT_VERSION = "1.2.0"
+SUPPORTED_CONTRACT_VERSIONS: frozenset[str] = frozenset({"1.0.0", "1.1.0", "1.2.0"})
 DETECTED_BY = "claim_audit_lab"
 
 DeviationType = Literal[
@@ -91,7 +91,6 @@ class DeviationRecord:
         )
 
     def to_dict(self) -> dict[str, str]:
-        """Return a YAML-serializable mapping."""
         return {
             "deviation_id": self.deviation_id,
             "deviation_type": self.deviation_type,
