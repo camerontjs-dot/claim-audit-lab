@@ -119,7 +119,8 @@ class ApertureObservation(_Strict):
 
 
 class ContractBFactualContext(_Strict):
-    schema: Literal["contract-b-factual-context-v1"]
+    # The Contract-B wire key is intentionally `schema`; BaseModel.schema is a legacy API.
+    schema: Literal["contract-b-factual-context-v1"]  # type: ignore[assignment]
     history_complete: Literal[True]
     claims: list[ClaimContext] = Field(default_factory=list)
     sources: list[SourceContext] = Field(default_factory=list)
