@@ -15,7 +15,11 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, ValidationError, model_validator
 
-from claim_audit_lab.contracts.bundle_loader import BundleContents, BundleIntegrityError, load_bundle
+from claim_audit_lab.contracts.bundle_loader import (
+    BundleContents,
+    BundleIntegrityError,
+    load_bundle,
+)
 
 EXTENSION_PATH = Path("extensions/contract-b-factual-context-v1.json")
 PROHIBITED_KEYS = frozenset(
@@ -49,7 +53,7 @@ class ExplicitValue(_Strict):
     value: Any | None
 
     @model_validator(mode="after")
-    def validate_state(self) -> "ExplicitValue":
+    def validate_state(self) -> ExplicitValue:
         if self.state == "known" and self.value is None:
             raise ValueError("known state requires a non-null value")
         if self.state == "unknown" and self.value is not None:
@@ -94,7 +98,7 @@ class HistoryLink(_Strict):
     review: dict[str, Any]
 
     @model_validator(mode="after")
-    def validate_review(self) -> "HistoryLink":
+    def validate_review(self) -> HistoryLink:
         if self.review.get("decision") not in {"accepted", "rejected", "needs-review"}:
             raise ValueError("review.decision must be accepted, rejected, or needs-review")
         return self
@@ -136,7 +140,13 @@ class ContractBIntakeView:
 
 
 def _json_key(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
+    return json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+        allow_nan=False,
+    )
 
 
 def _normalized_object(extension: ContractBFactualContext) -> dict[str, Any]:
@@ -203,7 +213,8 @@ def _identity_sets(bundle: BundleContents) -> tuple[set[str], set[str], set[str]
             prior = passage_source.get(passage.passage_id)
             if prior is not None and prior != source_id:
                 raise FactualContextIntakeError(
-                    f"passage_id is not globally unique across canonical sources: {passage.passage_id}"
+                    "passage_id is not globally unique across canonical sources: "
+                    f"{passage.passage_id}"
                 )
             passage_source[passage.passage_id] = source_id
     return claim_ids, source_ids, passage_ids, passage_source
@@ -234,7 +245,9 @@ def _validate_extension(bundle: BundleContents, extension: ContractBFactualConte
             errors.append(f"unknown canonical source reference: {source.source_id}")
         duplicate_facts = _duplicates([fact.fact_id for fact in source.context_facts])
         if duplicate_facts:
-            errors.append(f"duplicate fact_id in source {source.source_id}: {', '.join(duplicate_facts)}")
+            errors.append(
+                f"duplicate fact_id in source {source.source_id}: {', '.join(duplicate_facts)}"
+            )
         for fact in source.context_facts:
             if fact.provenance_passage_id not in passage_ids:
                 errors.append(f"unknown provenance passage reference: {fact.provenance_passage_id}")
@@ -264,7 +277,8 @@ def _validate_extension(bundle: BundleContents, extension: ContractBFactualConte
         expected = tuple(derived.get(check.claim_id, [0, 0, 0]))
         if supplied != expected:
             errors.append(
-                f"history count mismatch for {check.claim_id}: supplied={supplied}, derived={expected}"
+                f"history count mismatch for {check.claim_id}: "
+                f"supplied={supplied}, derived={expected}"
             )
 
     if errors:
@@ -309,7 +323,9 @@ def _semantic_context(bundle: BundleContents, extension: ContractBFactualContext
         claims.append(
             {
                 "claim_id": claim_id,
-                "origin": claim_row.origin.model_dump(mode="json") if claim_row is not None else None,
+                "origin": (
+                    claim_row.origin.model_dump(mode="json") if claim_row is not None else None
+                ),
                 "atomicity": (
                     claim_row.atomicity.model_dump(mode="json") if claim_row is not None else None
                 ),
