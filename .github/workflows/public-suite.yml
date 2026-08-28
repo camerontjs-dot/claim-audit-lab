@@ -20,3 +20,89 @@ jobs:
       - run: uv run python -m ruff check src tests
       - run: uv run python -m ruff format --check src
       - run: uv run python -m mypy
+
+  contract-c-rc2-producer:
+    if: github.event_name == 'pull_request' && github.head_ref == 'research/contract-c-real-boundary-compression-rc2'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout CAL RC2
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout locked Evidence Bundler production
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: c8189c31adbab11729c31430c2070126224a2d42
+          path: _external/evidence-bundler
+
+      - name: Checkout locked Apparatus production
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c314e53bd91c0736aa4370a364673b069aceb43e
+          path: _external/apparatus-contracts
+
+      - name: Checkout frozen CAL RC1 predecessor
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: c7f4ad6949967538c35386ddc2a3c6c7f245c53c
+          path: _predecessor/cal-rc1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install current CAL and pinned EB
+        run: |
+          uv sync --all-extras
+          uv pip install --python .venv/bin/python -e _external/evidence-bundler
+
+      - name: Verify frozen production pins and no CAL production-code mutation
+        run: |
+          test "$(git -C _external/evidence-bundler rev-parse HEAD)" = "c8189c31adbab11729c31430c2070126224a2d42"
+          test "$(git -C _external/apparatus-contracts rev-parse HEAD)" = "c314e53bd91c0736aa4370a364673b069aceb43e"
+          test "$(git -C _predecessor/cal-rc1 rev-parse HEAD)" = "c7f4ad6949967538c35386ddc2a3c6c7f245c53c"
+          test "$(cat _external/apparatus-contracts/schema/.contract-version)" = "1.2.0"
+          git diff --exit-code 33a928db97316a3652d57df9cafb8ca240305233 -- src
+
+      - name: Run real Contract-B to CAL producer experiment
+        run: |
+          uv run python scripts/run_contract_c_rc2.py \
+            --eb-root _external/evidence-bundler \
+            --fixture _external/evidence-bundler/tests/fixtures/scaffold-run-mixed-formats \
+            --out build/contract-c-rc2 \
+            --cal-production-sha 33a928db97316a3652d57df9cafb8ca240305233 \
+            --eb-production-sha c8189c31adbab11729c31430c2070126224a2d42 \
+            --apparatus-production-sha c314e53bd91c0736aa4370a364673b069aceb43e \
+            --rc1-cal-sha c7f4ad6949967538c35386ddc2a3c6c7f245c53c \
+            --rc1-apparatus-sha ba4ab7462fda440698f3e853b1ec9385aa2c1725
+
+      - name: Run RC2 representation and firewall tests
+        run: uv run python -m pytest -q tests/research/test_contract_c_rc2.py
+
+      - name: Re-run frozen RC1 semantic falsifiers unchanged
+        env:
+          PYTHONPATH: ${{ github.workspace }}/_predecessor/cal-rc1
+        run: uv run python -m pytest -q _predecessor/cal-rc1/tests/research/test_contract_c_rc1.py
+
+      - name: Emit decisive receipts
+        if: always()
+        run: |
+          if test -d build/contract-c-rc2; then
+            find build/contract-c-rc2 -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum || true
+            test ! -f build/contract-c-rc2/summary.json || cat build/contract-c-rc2/summary.json
+          fi
+
+      - name: Upload frozen RC2 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contract-c-rc2-producer-evidence
+          path: build/contract-c-rc2
+          if-no-files-found: warn
+          retention-days: 90
