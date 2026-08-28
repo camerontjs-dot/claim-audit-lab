@@ -15,16 +15,23 @@ from datetime import date as Date
 from pathlib import Path
 from typing import Any
 
-from claim_audit_lab.models import Claim, EvidenceBundle, EvidenceCandidate, EvidenceExcerpt, EvidenceSource
+from claim_audit_lab.models import (
+    Claim,
+    EvidenceBundle,
+    EvidenceCandidate,
+    EvidenceExcerpt,
+    EvidenceSource,
+)
 from claim_audit_lab.policy import CAL_RULES_V1_2_0, AuditPolicy
 from claim_audit_lab.rules import assess_claim_support
-
 from research_contract_c_rc2_d.validator import (
     RECEIPT_MARKER,
     REQUIRED_ASSESSMENTS,
-    policy_hash as independent_policy_hash,
     validate_receipt,
     validate_suite,
+)
+from research_contract_c_rc2_d.validator import (
+    policy_hash as independent_policy_hash,
 )
 
 PRODUCTION_SHA = "33a928db97316a3652d57df9cafb8ca240305233"
@@ -261,7 +268,11 @@ def _threshold_case() -> tuple[dict[str, Any], bool, str]:
 def _credential_case() -> tuple[dict[str, Any], dict[str, Any]]:
     claim_text = "The reviewer is a licensed sterile manufacturing specialist."
     claim = Claim(id="credential-claim", text=claim_text, claim_type="credential")
-    unrelated = _source("source-unrelated", "excerpt-unrelated", "The reviewer works on audit notes.")
+    unrelated = _source(
+        "source-unrelated",
+        "excerpt-unrelated",
+        "The reviewer works on audit notes.",
+    )
     baseline_bundle = EvidenceBundle(sources=[unrelated])
     baseline, _ = _observe(claim, baseline_bundle, [])
 
@@ -556,7 +567,10 @@ def _tied_independent_case() -> dict[str, Any]:
     members = [ref_a, ref_b]
     return _receipt(
         family_id="tied_independent_support",
-        vector_source="test_frozen_support_threshold_boundaries[sourced] + frozen two-source tie perturbation",
+        vector_source=(
+            "test_frozen_support_threshold_boundaries[sourced] + "
+            "frozen two-source tie perturbation"
+        ),
         baseline=both,
         mutations={"a_only": a_only, "b_only": b_only, "neither": neither},
         causal_claim={
@@ -641,8 +655,12 @@ def run_sweep() -> dict[str, Any]:
     false_joint_errors = validate_receipt(false_joint)
 
     false_independent = copy.deepcopy(absolute)
-    false_independent["causal_claim"]["classification"] = "independent_sufficient_alternatives"
-    false_independent["co_maximal_support_refs"] = list(false_independent["causal_claim"]["members"])
+    false_independent["causal_claim"]["classification"] = (
+        "independent_sufficient_alternatives"
+    )
+    false_independent["co_maximal_support_refs"] = list(
+        false_independent["causal_claim"]["members"]
+    )
     false_independent_errors = validate_receipt(false_independent)
 
     bad_policy_binding = copy.deepcopy(absolute)
@@ -653,13 +671,16 @@ def run_sweep() -> dict[str, Any]:
     credential_mutated_policy = credential_policy["mutated_policy"]
     policy_controls = {
         "credential": {
-            "config_id_unchanged": credential_mutated_policy.config_id == CAL_RULES_V1_2_0.config_id,
+            "config_id_unchanged": (
+                credential_mutated_policy.config_id == CAL_RULES_V1_2_0.config_id
+            ),
             "hash_changed": policy_hash(credential_mutated_policy) != EXPECTED_POLICY_HASH,
             "behavior_changed": credential_policy["mutated_outcome"]["final_verdict"]
             != credential_policy["baseline_outcome"]["final_verdict"],
         },
         "absolute_wording": {
-            "config_id_unchanged": mutated_policy.config_id == CAL_RULES_V1_2_0.config_id,
+            "config_id_unchanged": mutated_policy.config_id
+            == CAL_RULES_V1_2_0.config_id,
             "hash_changed": policy_hash(mutated_policy) != EXPECTED_POLICY_HASH,
             "behavior_changed": absolute_policy["mutated_outcome"]["final_verdict"]
             != absolute_policy["baseline_outcome"]["final_verdict"],
@@ -676,7 +697,9 @@ def run_sweep() -> dict[str, Any]:
             all(row.values()) for row in policy_controls.values()
         ),
         "policy_hash_mismatch_fails_closed": bool(bad_policy_binding_errors),
-        "irrelevant_evidence_world_state_is_output_invariant_and_noncausal": irrelevant_ok,
+        "irrelevant_evidence_world_state_is_output_invariant_and_noncausal": (
+            irrelevant_ok
+        ),
         "all_generic_assessments_explicit_not_performed": all(
             all(
                 receipt["generic_assessments"][name]["state"] == "not_performed"
@@ -709,7 +732,11 @@ def run_sweep() -> dict[str, Any]:
             "irrelevant_evidence_ref": irrelevant_ref,
         },
         "available_multiplicity_shapes": {
-            "single_necessary": ["threshold_no_rule", "credential_needs_source", "unclassified_not_checkable"],
+            "single_necessary": [
+                "threshold_no_rule",
+                "credential_needs_source",
+                "unclassified_not_checkable",
+            ],
             "independent_sufficient_alternatives": ["tied_independent_support"],
             "jointly_sufficient": ["absolute_wording_joint"],
             "redundant_non_deciding": ["low_reliability_residual"],
@@ -740,12 +767,18 @@ def main() -> int:
     result = run_sweep()
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_bytes(canonical_bytes(result))
-    print(json.dumps({
-        "all_controls_passed": result["all_controls_passed"],
-        "controls": result["controls"],
-        "families": [receipt["family_id"] for receipt in result["receipts"]],
-        "artifact": str(OUT_PATH),
-    }, indent=2, sort_keys=True))
+    print(
+        json.dumps(
+            {
+                "all_controls_passed": result["all_controls_passed"],
+                "controls": result["controls"],
+                "families": [receipt["family_id"] for receipt in result["receipts"]],
+                "artifact": str(OUT_PATH),
+            },
+            indent=2,
+            sort_keys=True,
+        )
+    )
     return 0 if result["all_controls_passed"] else 1
 
 
