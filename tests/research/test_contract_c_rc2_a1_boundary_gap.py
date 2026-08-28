@@ -8,7 +8,10 @@ its legitimate result state.
 from __future__ import annotations
 
 import inspect
+import json
 from datetime import date as Date
+from pathlib import Path
+from types import SimpleNamespace
 
 import claim_audit_lab.rules as rules
 from claim_audit_lab.contracts.output_writer import write_audited_bundle
@@ -135,6 +138,64 @@ def test_exact_v02_verdict_path_is_reconstructable_from_legitimate_result_state(
     assert max(c.score for c in assessment.candidate_evidence) == 0.90
     assert max(c.score for c in assessment.counterevidence) == 0.50
     assert _codes(assessment) == {"counterevidence_present"}
+
+
+def test_frozen_rc2_a_real_verdict_bases_are_reconstructable_and_narrow() -> None:
+    """Frozen RC2-A results identify winning contributions and the exact verdict branch."""
+    fixture_path = (
+        Path(__file__).parents[1]
+        / "fixtures"
+        / "research"
+        / "contract-c-rc2-a-frozen-boundary-observation.json"
+    )
+    frozen = json.loads(fixture_path.read_text(encoding="utf-8"))
+    assert frozen["source"]["rc2_a_head_sha"] == "96c55fd4721b66cf138d89f52e262696ba6b6c01"
+    assert frozen["source"]["artifact_id"] == 9672432251
+    assert frozen["source"]["producer_gate"] == "FAILED"
+
+    for row in frozen["assessments"]:
+        support_contexts = [
+            SimpleNamespace(candidate=SimpleNamespace(score=item["score"]))
+            for item in row["support_candidates"]
+        ]
+        counter_contexts = [
+            SimpleNamespace(candidate=SimpleNamespace(score=item["score"]))
+            for item in row["counter_candidates"]
+        ]
+        flags = [SimpleNamespace(code=code) for code in row["rule_codes"]]
+
+        signal = rules._support_signal(
+            support_contexts,
+            counter_contexts,
+            rules.CAL_RULES_V1_2_0,
+        )
+        verdict = rules._support_label(
+            support_contexts,
+            counter_contexts,
+            flags,
+            signal,
+            rules.CAL_RULES_V1_2_0,
+        )
+        winner_score = max(item["score"] for item in row["support_candidates"])
+        winners = [
+            item["excerpt_id"]
+            for item in row["support_candidates"]
+            if item["score"] == winner_score
+        ]
+
+        assert signal == row["support_signal"]
+        assert verdict == row["support_label"]
+        assert len(winners) == 1
+
+    md = frozen["assessments"][0]
+    assert len(md["support_candidates"]) == 2
+    assert md["support_signal"] == md["support_candidates"][0]["score"]
+
+    pdf, txt = frozen["assessments"][1:]
+    assert pdf["rule_codes"] == ["low_reliability_only"]
+    assert txt["rule_codes"] == ["low_reliability_only"]
+    assert 0.55 <= pdf["support_signal"] < 0.80
+    assert txt["support_signal"] < 0.55
 
 
 def test_low_reliability_is_a_rule_limitation_not_an_eligibility_gate() -> None:
