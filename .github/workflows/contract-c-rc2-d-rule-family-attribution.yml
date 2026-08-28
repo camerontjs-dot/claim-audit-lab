@@ -1,0 +1,68 @@
+name: Contract C RC2-D rule-family attribution
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  attribution-sweep:
+    if: github.head_ref == 'research/contract-c-rule-family-attribution-rc2-d'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout RC2-D
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL
+        run: uv sync --all-extras
+
+      - name: Verify frozen production identities and no src mutation
+        run: |
+          test "$(git rev-parse HEAD:tests/test_rules.py)" = \
+            "ed42acb8c21843676028ccd8c2b9ecc776ad2154"
+          test "$(git rev-parse HEAD:src/claim_audit_lab/rules.py)" = \
+            "4e2c7ebb1a7866d941fc2570757e64098359413a"
+          test "$(git rev-parse HEAD:src/claim_audit_lab/policy.py)" = \
+            "cdd7c248b50660c0d2ed93db0f351e3c0630f67f"
+          git diff --exit-code \
+            33a928db97316a3652d57df9cafb8ca240305233 -- src/
+
+      - name: Run frozen attribution sweep
+        run: uv run python -m research_contract_c_rc2_d.sweep
+
+      - name: Run independent receipt assertions
+        run: >
+          uv run python -m pytest -q
+          tests/research/test_contract_c_rc2_d_attribution.py
+
+      - name: Check research code hygiene
+        run: |
+          uv run ruff check \
+            research_contract_c_rc2_d \
+            tests/research/test_contract_c_rc2_d_attribution.py
+          uv run ruff format --check \
+            research_contract_c_rc2_d \
+            tests/research/test_contract_c_rc2_d_attribution.py
+
+      - name: Hash decisive receipt
+        if: always()
+        run: |
+          if test -f build/research/contract-c-rc2-d/attribution-sweep.json; then
+            sha256sum build/research/contract-c-rc2-d/attribution-sweep.json
+          fi
+
+      - name: Upload decisive receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contract-c-rc2-d-rule-family-attribution
+          path: build/research/contract-c-rc2-d/attribution-sweep.json
+          if-no-files-found: error
+          retention-days: 90
