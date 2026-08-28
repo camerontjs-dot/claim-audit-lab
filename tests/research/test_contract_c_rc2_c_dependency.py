@@ -6,8 +6,8 @@ from research_contract_c_rc2_c.dependency_probe import (
     CAL_RULES_V1_2_0,
     EXPECTED_POLICY_HASH,
     policy_hash,
-    run_experiment,
 )
+from research_contract_c_rc2_c.fixture_corrected_probe import run_experiment
 
 
 def test_frozen_policy_hash_matches_preregistration() -> None:

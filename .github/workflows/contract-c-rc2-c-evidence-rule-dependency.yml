@@ -35,7 +35,7 @@ jobs:
             33a928db97316a3652d57df9cafb8ca240305233 -- src/
 
       - name: Run frozen RC2-C dependency probe
-        run: uv run python -m research_contract_c_rc2_c.dependency_probe
+        run: uv run python -m research_contract_c_rc2_c.fixture_corrected_probe
 
       - name: Run independent RC2-C research tests
         run: >
