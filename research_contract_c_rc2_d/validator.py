@@ -112,8 +112,10 @@ def validate_receipt(receipt: dict[str, Any]) -> list[str]:
         errors.append("causal target does not match baseline verdict")
 
     members = causal.get("members")
-    if not isinstance(members, list) or not members or not all(
-        isinstance(member, str) and member for member in members
+    if (
+        not isinstance(members, list)
+        or not members
+        or not all(isinstance(member, str) and member for member in members)
     ):
         errors.append("causal members missing")
         members = []
@@ -124,14 +126,14 @@ def validate_receipt(receipt: dict[str, Any]) -> list[str]:
         return errors
 
     edges = receipt.get("dependency_edges")
-    if not isinstance(edges, list) or not edges or not all(
-        isinstance(edge, dict) for edge in edges
+    if (
+        not isinstance(edges, list)
+        or not edges
+        or not all(isinstance(edge, dict) for edge in edges)
     ):
         errors.append("dependency edges missing")
         edges = []
-    edge_sources = {
-        edge.get("from") for edge in edges if isinstance(edge.get("from"), str)
-    }
+    edge_sources = {edge.get("from") for edge in edges if isinstance(edge.get("from"), str)}
 
     if classification == "single_necessary":
         removal_name = causal.get("removal_mutation")
