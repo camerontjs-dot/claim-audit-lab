@@ -1,0 +1,181 @@
+{
+  "fixture_kind": "synthetic_boundary_state_control",
+  "non_claim": "These states exercise representational distinctions already present in CAL research types; they are not claims that production CAL emitted these exact packages.",
+  "base": {
+    "candidate_profile": "contract-c-rc1-semantic-package",
+    "result_id": "recompute-in-test",
+    "identity": {
+      "producer": "claim-audit-lab",
+      "producer_code_sha": "33a928db97316a3652d57df9cafb8ca240305233",
+      "cal_library_version": "0.4.0",
+      "contract_b": {
+        "contract_version": "1.2.0",
+        "bundle_id": "rc1-synthetic-bundle",
+        "bundle_sha256": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "proposition": {
+        "proposition_id": "rc1-p1",
+        "text": "The controlled process completed as specified.",
+        "text_sha256": "sha256:552842a8b11de182bba6c1641c3543c24bdbc00d99a88cf71a2b663868098b87"
+      },
+      "audit_config_sha256": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    },
+    "evidence": {
+      "refs": [
+        {
+          "evidence_id": "ev-support",
+          "source": "contract_b"
+        },
+        {
+          "evidence_id": "ev-counter",
+          "source": "contract_b"
+        },
+        {
+          "evidence_id": "ev-unresolved",
+          "source": "contract_b"
+        }
+      ],
+      "counterevidence_ids": [],
+      "unresolved_evidence_ids": []
+    },
+    "measurements": [
+      {
+        "measurement_id": "relation:ev-support",
+        "kind": "claim_passage_relation",
+        "evidence_id": "ev-support",
+        "relation": "entail",
+        "score": 0.91
+      }
+    ],
+    "assessments": {
+      "citation": {
+        "state": "performed",
+        "value": "correct"
+      },
+      "eligibility": {
+        "state": "performed",
+        "value": "eligible"
+      },
+      "semantic_validity": {
+        "state": "performed",
+        "value": "valid"
+      },
+      "aperture": {
+        "state": "performed",
+        "value": "complete"
+      },
+      "temporal_applicability": {
+        "state": "performed",
+        "value": "current"
+      }
+    },
+    "conclusion": {
+      "reported_verdict": "supported",
+      "reason_code": "support_above_threshold",
+      "audit_flags": [],
+      "basis": {
+        "evidence_ids": [
+          "ev-support"
+        ],
+        "rule_ids": [
+          "resolve-support"
+        ]
+      },
+      "residual": {
+        "counterevidence_ids": [],
+        "unresolved_evidence_ids": []
+      }
+    },
+    "reassessment": {
+      "relation": "original",
+      "prior_result_id": null
+    },
+    "execution": {
+      "status": "completed",
+      "failures": [],
+      "deviations": []
+    }
+  },
+  "same_verdict_variants": {
+    "counterevidence": {
+      "conclusion.residual.counterevidence_ids": [
+        "ev-counter"
+      ]
+    },
+    "eligibility_unknown": {
+      "assessments.eligibility": {
+        "state": "performed",
+        "value": "unknown"
+      }
+    },
+    "eligibility_negative": {
+      "assessments.eligibility": {
+        "state": "performed",
+        "value": "ineligible"
+      }
+    },
+    "validity_unknown": {
+      "assessments.semantic_validity": {
+        "state": "performed",
+        "value": "unknown"
+      }
+    },
+    "validity_negative": {
+      "assessments.semantic_validity": {
+        "state": "performed",
+        "value": "invalid"
+      }
+    },
+    "aperture_unknown": {
+      "assessments.aperture": {
+        "state": "performed",
+        "value": "unknown"
+      }
+    },
+    "aperture_incomplete": {
+      "assessments.aperture": {
+        "state": "performed",
+        "value": "incomplete"
+      }
+    },
+    "temporal_historical": {
+      "assessments.temporal_applicability": {
+        "state": "performed",
+        "value": "historical_only"
+      }
+    },
+    "different_basis": {
+      "conclusion.basis.evidence_ids": [
+        "ev-counter"
+      ]
+    },
+    "unresolved_residual": {
+      "conclusion.residual.unresolved_evidence_ids": [
+        "ev-unresolved"
+      ]
+    }
+  },
+  "assessment_state_controls": {
+    "not_performed": {
+      "state": "not_performed"
+    },
+    "performed_unknown": {
+      "state": "performed",
+      "value": "unknown"
+    },
+    "failed": {
+      "state": "failed",
+      "failure": {
+        "code": "operator_failure",
+        "message": "semantic operator unavailable"
+      }
+    },
+    "not_applicable": {
+      "state": "not_applicable"
+    },
+    "explicit_negative": {
+      "state": "performed",
+      "value": "invalid"
+    }
+  }
+}

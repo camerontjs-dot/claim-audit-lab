@@ -1,0 +1,20 @@
+{
+  "claim_id": "inf-02",
+  "claim_text": "The platform does not log administrator actions.",
+  "retrieval": [
+    {"passage_id": "p2", "score": 0.7858104109764099},
+    {"passage_id": "p1", "score": 0.6771330833435059},
+    {"passage_id": "p3", "score": -0.1284605860710144}
+  ],
+  "entailment": [
+    {"passage_id": "p2", "label": "contradict", "score": 0.99951171875, "raw_logits": [-3.05859375, -2.8984375, 5.8046875], "p_entail": 0.00014150142669677734, "p_contradict": 0.99951171875},
+    {"passage_id": "p1", "label": "contradict", "score": 0.99951171875, "raw_logits": [-3.578125, -2.404296875, 5.9609375], "p_entail": 0.00007194280624389648, "p_contradict": 0.99951171875}
+  ],
+  "features": {"numerical_values": [], "has_explicit_negation": true, "has_universal_quantifier": false, "modal_strength": "asserts", "claim_token_count": 8, "compound_claim": false, "sentence_type": "declarative"},
+  "support_signal": {"label": "contradict", "max_entailment_score": 0.99951171875, "contributing_passage_id": "p2", "best_entail": 0.00014150142669677734, "best_contradict": 0.99951171875, "best_entail_passage_id": "p2", "best_contradict_passage_id": "p2"},
+  "rules_fired": [{"rule_id": "A4_hard_contradiction", "reason": "NLI contradiction at 1.00 >= contradicted_threshold=0.7"}],
+  "verdict": {"support_verdict": "contradicted", "support_verdict_reason": null, "audit_flags": [], "citation_status": "not_applicable", "audit_confidence": "high"},
+  "audit_config_hash": "sha256:96a60db8fc9d6dd5404c0d2625b97755ebc8d073a507867fc526f59b513ad3c4",
+  "library_version": "0.4.0",
+  "negation_probe": {"negated_claim": "The platform does log administrator actions.", "abstained": false, "result": {"passage_id": "p2", "label": "entail", "score": 0.9892578125, "raw_logits": [3.921875, -0.71435546875, -3.04296875], "p_entail": 0.9892578125, "p_contradict": 0.000934600830078125}}
+}
