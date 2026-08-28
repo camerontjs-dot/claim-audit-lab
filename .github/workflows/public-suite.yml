@@ -71,6 +71,8 @@ jobs:
           git diff --exit-code 33a928db97316a3652d57df9cafb8ca240305233 -- src
 
       - name: Run real Contract-B to CAL producer experiment
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           uv run python scripts/run_contract_c_rc2.py \
             --eb-root _external/evidence-bundler \
@@ -95,7 +97,24 @@ jobs:
         run: |
           if test -d build/contract-c-rc2; then
             find build/contract-c-rc2 -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum || true
-            test ! -f build/contract-c-rc2/summary.json || cat build/contract-c-rc2/summary.json
+            for file in \
+              summary.json \
+              frozen-contract-b-hashes.json \
+              contract-c-rc2-candidate.json \
+              field-justification-registry.json \
+              field-ablation-matrix.json \
+              semantic-firewall.json \
+              telemetry-invariance.json \
+              integrity-negative-control.json \
+              compression-diagnostics.json \
+              obligation-availability.json \
+              real-producer-boundary-capture.json; do
+              if test -f "build/contract-c-rc2/$file"; then
+                echo "RC2_ARTIFACT_BEGIN:$file"
+                cat "build/contract-c-rc2/$file"
+                echo "RC2_ARTIFACT_END:$file"
+              fi
+            done
           fi
 
       - name: Upload frozen RC2 evidence
