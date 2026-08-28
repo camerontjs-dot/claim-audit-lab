@@ -1,0 +1,52 @@
+name: Contract C RC2-C evidence-rule dependency
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  dependency-receipt:
+    if: github.head_ref == 'research/contract-c-evidence-rule-dependency-rc2-c'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout RC2-C
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL
+        run: uv sync --all-extras
+
+      - name: Verify frozen production identities and no src mutation
+        run: |
+          test "$(git rev-parse HEAD:tests/test_rules.py)" = \
+            "ed42acb8c21843676028ccd8c2b9ecc776ad2154"
+          test "$(git rev-parse HEAD:src/claim_audit_lab/rules.py)" = \
+            "4e2c7ebb1a7866d941fc2570757e64098359413a"
+          test "$(git rev-parse HEAD:src/claim_audit_lab/policy.py)" = \
+            "cdd7c248b50660c0d2ed93db0f351e3c0630f67f"
+          git diff --exit-code \
+            33a928db97316a3652d57df9cafb8ca240305233 -- src/
+
+      - name: Run frozen RC2-C dependency probe
+        run: uv run python research_contract_c_rc2_c/dependency_probe.py
+
+      - name: Run independent RC2-C research tests
+        run: >
+          uv run python -m pytest -q
+          tests/research/test_contract_c_rc2_c_dependency.py
+
+      - name: Upload dependency receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contract-c-rc2-c-evidence-rule-dependency
+          path: build/research/contract-c-rc2-c/dependency-receipt.json
+          if-no-files-found: warn
+          retention-days: 90
