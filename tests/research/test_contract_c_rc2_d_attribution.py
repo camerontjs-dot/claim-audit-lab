@@ -47,17 +47,14 @@ def test_multiplicity_and_residual_classifications_are_preserved() -> None:
         "redundant_non_deciding"
     )
     tied = receipts["tied_independent_support"]
-    assert sorted(tied["co_maximal_support_refs"]) == sorted(
-        tied["causal_claim"]["members"]
-    )
+    assert sorted(tied["co_maximal_support_refs"]) == sorted(tied["causal_claim"]["members"])
 
 
 def test_generic_rich_assessments_remain_not_performed() -> None:
     result = run_sweep()
     for receipt in result["receipts"]:
         assert all(
-            item["state"] == "not_performed"
-            for item in receipt["generic_assessments"].values()
+            item["state"] == "not_performed" for item in receipt["generic_assessments"].values()
         )
 
 
