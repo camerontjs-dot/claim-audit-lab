@@ -123,6 +123,16 @@ def validate_receipt(receipt: dict[str, Any]) -> list[str]:
         errors.append("mutation observations missing")
         return errors
 
+    edges = receipt.get("dependency_edges")
+    if not isinstance(edges, list) or not edges or not all(
+        isinstance(edge, dict) for edge in edges
+    ):
+        errors.append("dependency edges missing")
+        edges = []
+    edge_sources = {
+        edge.get("from") for edge in edges if isinstance(edge.get("from"), str)
+    }
+
     if classification == "single_necessary":
         removal_name = causal.get("removal_mutation")
         if not isinstance(removal_name, str):
@@ -204,9 +214,13 @@ def validate_receipt(receipt: dict[str, Any]) -> list[str]:
         if not isinstance(residual, list) or not residual:
             errors.append("redundant receipt lacks residual/non-deciding state")
 
+    for member in members:
+        if member not in edge_sources:
+            errors.append(f"causal member lacks dependency edge: {member}")
+
     causal_members = set(members)
     residual = receipt.get("residual_non_deciding", [])
-    if isinstance(residual, list):
+    if classification != "redundant_non_deciding" and isinstance(residual, list):
         overlap = causal_members & {item for item in residual if isinstance(item, str)}
         if overlap:
             errors.append("state is both causal and residual: " + ",".join(sorted(overlap)))
