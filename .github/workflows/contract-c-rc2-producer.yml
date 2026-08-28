@@ -55,6 +55,8 @@ jobs:
           git diff --exit-code 33a928db97316a3652d57df9cafb8ca240305233 -- src
 
       - name: Run real Contract-B to CAL producer experiment
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           uv run python scripts/run_contract_c_rc2.py \
             --eb-root _external/evidence-bundler \
@@ -70,9 +72,9 @@ jobs:
         run: uv run python -m pytest -q tests/research/test_contract_c_rc2.py
 
       - name: Re-run frozen RC1 semantic falsifiers unchanged
-        env:
-          PYTHONPATH: ${{ github.workspace }}/_predecessor/cal-rc1
-        run: uv run python -m pytest -q _predecessor/cal-rc1/tests/research/test_contract_c_rc1.py
+        run: |
+          cd _predecessor/cal-rc1
+          PYTHONPATH="$PWD" ../../.venv/bin/python -m pytest -q tests/research/test_contract_c_rc1.py
 
       - name: Emit decisive receipts
         if: always()
