@@ -176,7 +176,14 @@ def _materialize_receipt(
     ]
     signal_role = (
         "computed_nondeciding"
-        if branch in {"unclassified", "no_sources", "needs_source_rule", "needs_source_comparison", "overstated_rule"}
+        if branch
+        in {
+            "unclassified",
+            "no_sources",
+            "needs_source_rule",
+            "needs_source_comparison",
+            "overstated_rule",
+        }
         else "branch_input"
     )
     return {
@@ -571,7 +578,9 @@ def test_counterevidence_maximum_not_all_counterevidence_is_scalar_basis() -> No
                 reliability="high",
                 date=Date(2026, 1, 1),
                 url="https://example.test/support",
-                excerpts=[EvidenceExcerpt(id="support", text="The tool can generate audit summaries.")],
+                excerpts=[
+                    EvidenceExcerpt(id="support", text="The tool can generate audit summaries.")
+                ],
             ),
             EvidenceSource(
                 id="counter-a",
@@ -684,7 +693,8 @@ def test_config_id_alone_cannot_reproduce_behaviorally_relevant_policy_switches(
     assert receipt["policy"]["needs_source_detection"] is False
 
 
-def test_counterevidence_can_be_upstream_of_a_deciding_rule_even_when_its_own_flag_is_residual() -> None:
+def test_counterevidence_can_be_upstream_of_a_deciding_rule_even_when_its_own_flag_is_residual(
+) -> None:
     claim = _claim("The tool guarantees audit summaries.", "prediction")
     bundle = _bundle("The tool guarantees audit summaries.")
     with_counter, receipt = _run(
