@@ -1,0 +1,47 @@
+name: Contract C RC2-B upstream sufficiency
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  matched-input:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout CAL research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout locked Evidence Bundler production
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: c8189c31adbab11729c31430c2070126224a2d42
+          path: _deps/evidence-bundler
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL and locked EB
+        run: |
+          uv sync --all-extras
+          uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+
+      - name: Verify research branch has no CAL production-code mutation
+        run: git diff --exit-code 33a928db97316a3652d57df9cafb8ca240305233 -- src/
+
+      - name: Run matched Contract-B absent/present discrimination
+        run: uv run python research_contract_c_rc2_b/matched_input_probe.py
+
+      - name: Upload RC2-B receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: contract-c-rc2-b-upstream-sufficiency
+          path: build/research/contract-c-rc2-b/matched-input-receipt.json
+          if-no-files-found: error
