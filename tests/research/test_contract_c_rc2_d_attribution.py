@@ -5,13 +5,12 @@ from __future__ import annotations
 from pathlib import Path
 
 from claim_audit_lab.policy import CAL_RULES_V1_2_0
-
+from research_contract_c_rc2_d import validator
 from research_contract_c_rc2_d.sweep import (
     EXPECTED_POLICY_HASH,
     policy_hash,
     run_sweep,
 )
-from research_contract_c_rc2_d import validator
 
 
 def _by_family(result: dict[str, object]) -> dict[str, dict[str, object]]:
