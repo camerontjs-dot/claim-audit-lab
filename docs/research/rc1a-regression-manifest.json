@@ -1,0 +1,98 @@
+{
+  "assessment_states": [
+    "failed",
+    "not-applicable",
+    "not-performed",
+    "performed-adverse",
+    "performed-positive",
+    "performed-unknown"
+  ],
+  "experiment": "CAL Epistemic Methodology RC1A",
+  "failure_injection": {
+    "message": "RC1A_INJECTED_WRAPPER_FAILURE",
+    "stage": "pre_run",
+    "type": "RuntimeError"
+  },
+  "invariance": {
+    "semantic_measurement": [
+      "features",
+      "retrieval",
+      "entailment",
+      "support_signal",
+      "negation_probe"
+    ],
+    "successful_trace_object_identity": "exact object returned by observed run_audit delegate",
+    "trace": "AuditTrace.model_dump_json(indent=2) + newline",
+    "verdict": "canonical complete Verdict JSON"
+  },
+  "live_main": "e90f301cf6ca02c0c77b6e88c3b08f8b93b9a36a",
+  "participation_states": [
+    "deciding",
+    "excluded",
+    "residual",
+    "unresolved"
+  ],
+  "policies": [
+    "ALLOW_PRIMARY_OR_SECONDARY",
+    "PRIMARY_ONLY"
+  ],
+  "predecessors": {
+    "rc0b_evaluator_freeze": "5d880110e39d0450af346fea91074eebaa2c2f96",
+    "rc0b_research_head": "260e6eaf777675835ae1cf5c97f643f9e516d173",
+    "rc1_evaluator_freeze": "7accb1d731d1b68cbadd2f62a0835fba8d6e0f1d",
+    "rc1_terminal_head": "ad0dd6a53985e1cd1600818b54bec5138f7d73ea"
+  },
+  "protected_objects": {
+    "src/claim_audit_lab/contracts/contract_c.py": "d6b32a44ef11109fe0ee91efa212d3904badf58c",
+    "src/claim_audit_lab/v1/configs/cal-rules-v1.13.0.yaml": "ac8147f6624164e9081a4ec365cd3920c25df96d",
+    "src/claim_audit_lab/v1/impl/aggregator.py": "b1f9e2309ae3d024bc609b83cc546acb30be6e9b",
+    "src/claim_audit_lab/v1/impl/entailer.py": "aaf9415e74ec2f04357ecf5346491d92f3e2d0d3",
+    "src/claim_audit_lab/v1/impl/retriever.py": "279a287e10f5466b8d2985291080bc0183c72a52",
+    "src/claim_audit_lab/v1/impl/rules.py": "bc388d64a5a53db0d33610ab6ff84bd93a811b46",
+    "src/claim_audit_lab/v1/intake.py": "d8b304a4259ec128e656f07ca628d8a0a88ddd69",
+    "src/claim_audit_lab/v1/models.py": "755e0ef1757055905f3c8b76b7edc5e8ddc1fefd",
+    "src/claim_audit_lab/v1/pipeline.py": "dd67d0d35590d3052826ad697ce9fd11222fff6f",
+    "src/claim_audit_lab/v1/runner.py": "db53f49745876b6158da0c233fb80916bbeaabaf",
+    "tests/fixtures/cb/evidence-bundle-minimal": "5bcfa0a27877cb7ceebf22cd8960e907f6f92083",
+    "tests/v1/fixtures/traces": "7d6735da5f23f78efae479d3c99c1fd2f075f935",
+    "tests/v1/test_pipeline_e2e.py": "48a22cfab82ea0a2abd8d1c80d0da32a3dacd260",
+    "tests/v1/testing/stubs.py": "c7fa94569234caaf5f2134f672737097e5c70111"
+  },
+  "real_contract_b_boundary": "tests/fixtures/cb/evidence-bundle-minimal",
+  "status": "pre-freeze",
+  "weak_controls": {
+    "W1": [
+      "gate_01",
+      "gate_13"
+    ],
+    "W2": [
+      "gate_05"
+    ],
+    "W3": [
+      "gate_05",
+      "gate_06",
+      "gate_12"
+    ],
+    "W4": [
+      "gate_10"
+    ],
+    "W5": [
+      "gate_07"
+    ],
+    "W6": [
+      "gate_12"
+    ]
+  },
+  "wrapper_regression_cases": [
+    "supported",
+    "partially-supported",
+    "unsupported",
+    "contradicted",
+    "not-checkable-no-evidence",
+    "not-checkable-no-entail",
+    "conflicting-evidence",
+    "filtered-non-deciding",
+    "inference-shaped",
+    "absence-exhaustive-source-boundary"
+  ]
+}
