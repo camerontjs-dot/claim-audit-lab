@@ -363,6 +363,7 @@ def _contribution_attribution(
     support_source = [row["candidate"] for row in support_rows]
     counter_source = [row["candidate"] for row in counter_rows]
     target = assessment.support_label
+    all_ids = [row["contribution_id"] for row in rows]
 
     necessary: list[str] = []
     for row in rows:
@@ -385,47 +386,88 @@ def _contribution_attribution(
         ):
             necessary.append(row["contribution_id"])
 
-    independently_sufficient: list[str] = []
-    for row in rows:
-        if row["channel"] == "support":
-            support = [row["candidate"]]
-            counters = []
-        else:
-            support = []
-            counters = [row["candidate"]]
-        if (
+    if len(necessary) == 1:
+        causal = sorted(necessary)
+        return "single_necessary", causal, sorted(set(all_ids) - set(causal))
+
+    if len(necessary) >= 2:
+        isolated_target = []
+        for row in rows:
+            if row["contribution_id"] not in necessary:
+                continue
+            if row["channel"] == "support":
+                support = [row["candidate"]]
+                counters: list[EvidenceCandidate] = []
+            else:
+                support = []
+                counters = [row["candidate"]]
+            isolated_target.append(
+                _replay_label(
+                    assessment,
+                    evidence_bundle,
+                    support,
+                    counters,
+                    audit_config,
+                    policy,
+                )
+                == target
+            )
+        if not any(isolated_target):
+            causal = sorted(necessary)
+            return (
+                "jointly_sufficient",
+                causal,
+                sorted(set(all_ids) - set(causal)),
+            )
+        raise ContractCExportError(
+            "necessary contributors show an unsupported mixed multiplicity"
+        )
+
+    # RC2-D explicitly falsified terminal-replay-alone as causal evidence:
+    # residual state can reproduce an already-adverse terminal verdict in
+    # isolation without deciding that verdict. Independent alternatives are
+    # therefore recognized only for the demonstrated tied/co-maximal shape.
+    measurement_basis = set(_measurement_basis(rows))
+    tied_support = [
+        row
+        for row in support_rows
+        if row["contribution_id"] in measurement_basis
+    ]
+    if len(tied_support) >= 2:
+        isolated_target = [
             _replay_label(
                 assessment,
                 evidence_bundle,
-                support,
-                counters,
+                [row["candidate"]],
+                [],
                 audit_config,
                 policy,
             )
             == target
-        ):
-            independently_sufficient.append(row["contribution_id"])
-
-    all_ids = [row["contribution_id"] for row in rows]
-    if len(independently_sufficient) >= 2 and not necessary:
-        causal = sorted(independently_sufficient)
-        return (
-            "independent_sufficient_alternatives",
-            causal,
-            sorted(set(all_ids) - set(causal)),
+            for row in tied_support
+        ]
+        none_target = (
+            _replay_label(
+                assessment,
+                evidence_bundle,
+                [],
+                counter_source,
+                audit_config,
+                policy,
+            )
+            == target
         )
-    if len(necessary) == 1:
-        causal = sorted(necessary)
-        return "single_necessary", causal, sorted(set(all_ids) - set(causal))
-    if len(necessary) >= 2 and not independently_sufficient:
-        causal = sorted(necessary)
-        return "jointly_sufficient", causal, sorted(set(all_ids) - set(causal))
-    if not necessary and not independently_sufficient:
-        return "redundant_non_deciding", [], sorted(all_ids)
-    raise ContractCExportError(
-        "observed contribution multiplicity is outside promoted "
-        "Contract C v1 forms"
-    )
+        if all(isolated_target) and not none_target:
+            causal = sorted(
+                row["contribution_id"] for row in tied_support
+            )
+            return (
+                "independent_sufficient_alternatives",
+                causal,
+                sorted(set(all_ids) - set(causal)),
+            )
+
+    return "redundant_non_deciding", [], sorted(all_ids)
 
 
 def _replay_label(
