@@ -1,0 +1,25 @@
+{
+  "version": "rc0b-frozen-1",
+  "claim": {"id": "RC0B-CLAIM-1", "text": "The policy requires annual review."},
+  "passages": [
+    {"id": "P-support", "text": "The policy requires annual review.", "semantic": {"label": "entail", "score": 0.95}},
+    {"id": "P-contradict", "text": "The policy does not require annual review.", "semantic": {"label": "contradict", "score": 0.95}},
+    {"id": "P-silent", "text": "The policy was published in 2024.", "semantic": {"label": "neutral", "score": 0.93}},
+    {"id": "P-weak", "text": "Reviews are discussed in the policy.", "semantic": {"label": "neutral", "score": 0.55}},
+    {"id": "P-part-a", "text": "The policy requires review.", "semantic": {"label": "entail", "score": 0.55}},
+    {"id": "P-part-b", "text": "The interval is annual.", "semantic": {"label": "entail", "score": 0.55}}
+  ],
+  "evidence_presence": ["zero", "available_none_admitted", "admitted_silent", "admitted_weak", "supportive", "contradictory", "mixed"],
+  "nomination_roles": ["support", "counter"],
+  "trust_levels": ["primary", "secondary", "background"],
+  "eligibility": ["performed-positive", "performed-adverse", "performed-unknown", "not-performed", "not-applicable", "failed"],
+  "temporal": ["not-performed", "performed-unknown", "performed-adverse", "not-applicable"],
+  "authority": ["not-performed", "performed-unknown"],
+  "execution": ["completed-assessed", "completed-not-checkable", "assessment-failed", "incomplete", "parser-rule-model-failed"],
+  "policies": {
+    "ALLOW_PRIMARY_OR_SECONDARY": {"eligible_trust": ["primary", "secondary"]},
+    "PRIMARY_ONLY": {"eligible_trust": ["primary"]}
+  },
+  "distributed": {"passages": ["P-part-a", "P-part-b"], "validated_composition_rule": null},
+  "weak_controls": ["W1", "W2", "W3", "W4", "W5"]
+}
