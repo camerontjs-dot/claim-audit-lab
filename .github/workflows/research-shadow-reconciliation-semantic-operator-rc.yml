@@ -72,30 +72,35 @@ jobs:
       - name: Regenerate all 25 cases through the exact frozen real production shadow apparatus
         run: |
           set -o pipefail
-          mkdir -p artifacts/predecessor-shadow
+          mkdir -p artifacts/production-trace-decision-shadow
           uv run python -m research.production_trace_decision_shadow.run_shadow_experiment_entry \
-            --output-dir artifacts/predecessor-shadow \
-            | tee artifacts/predecessor-shadow/summary.json
+            --output-dir artifacts/production-trace-decision-shadow \
+            | tee artifacts/production-trace-decision-shadow/summary.json
+      - name: Verify exact scientific-object reproduction modulo execution-head metadata
+        run: |
+          uv run python -m research.shadow_reconciliation_semantic_operator_rc.verify_predecessor_reproduction \
+            artifacts/production-trace-decision-shadow/RESULTS.json \
+            | tee artifacts/production-trace-decision-shadow/REPRODUCTION_RECEIPT.json
       - name: Reconcile focal disagreements and emit parallel non-authoritative epistemic artifacts
         run: |
           set -o pipefail
           mkdir -p artifacts/shadow-reconciliation-semantic-operator-rc
           uv run python -m research.shadow_reconciliation_semantic_operator_rc.run_reconciliation \
-            --shadow-root artifacts/predecessor-shadow \
+            --shadow-root artifacts/production-trace-decision-shadow \
             --output-dir artifacts/shadow-reconciliation-semantic-operator-rc \
             --execution-head-sha "${GITHUB_SHA}" \
             | tee artifacts/shadow-reconciliation-semantic-operator-rc/summary.json
       - name: Print receipts
         if: always()
         run: |
-          test ! -f artifacts/predecessor-shadow/RESULTS.sha256 || cat artifacts/predecessor-shadow/RESULTS.sha256
+          test ! -f artifacts/production-trace-decision-shadow/RESULTS.sha256 || cat artifacts/production-trace-decision-shadow/RESULTS.sha256
           test ! -f artifacts/shadow-reconciliation-semantic-operator-rc/RESULTS.sha256 || cat artifacts/shadow-reconciliation-semantic-operator-rc/RESULTS.sha256
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cal-shadow-reconciliation-semantic-operator-rc-${{ github.sha }}
           path: |
-            artifacts/predecessor-shadow/
+            artifacts/production-trace-decision-shadow/
             artifacts/shadow-reconciliation-semantic-operator-rc/
           if-no-files-found: warn
           retention-days: 30
