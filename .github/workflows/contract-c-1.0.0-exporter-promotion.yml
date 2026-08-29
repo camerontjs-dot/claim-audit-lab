@@ -45,7 +45,7 @@ jobs:
       - uses: astral-sh/setup-uv@v6
 
       - name: Install CAL
-        run: uv sync --all-extras
+        run: uv sync --extra dev
 
       - name: Verify frozen identities and bounded mutation surface
         shell: bash
