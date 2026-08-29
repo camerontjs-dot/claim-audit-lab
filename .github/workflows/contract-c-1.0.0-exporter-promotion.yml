@@ -53,7 +53,7 @@ jobs:
           set -euo pipefail
           test "$(git -C _external/apparatus-v1 rev-parse HEAD)" =             "5759985ee0ae82c469a129152b2eac278b30e919"
           test "$(git -C _external/apparatus-handoff rev-parse HEAD)" =             "213ed9e912b922bd5c57ef58009eb6b0d7fff398"
-          git diff --name-only             18592eef336ffc7c2b6b34d8ac489843f5274583...HEAD |
+          git diff --name-only             885004b455dbb8717b9db99230376452b6f03427...HEAD |
           while read -r path; do
             case "$path" in
               src/claim_audit_lab/contracts/contract_c.py|              tests/test_contract_c_exporter.py|              .github/workflows/contract-c-1.0.0-exporter-promotion.yml) ;;
