@@ -281,6 +281,89 @@ def test_tied_co_maxima_export_as_independent_sufficient_alternatives(
     assert proposition["conclusion"]["residual_contribution_ids"] == []
 
 
+
+def test_adverse_terminal_replay_does_not_promote_residual_to_cause(
+    tmp_path: Path,
+) -> None:
+    """Same adverse verdict in isolation is not causal sufficiency."""
+    contents, _assessments, evidence_bundle, audit_config = _production_run(
+        tmp_path
+    )
+    claim = Claim(
+        id="clm-residual",
+        text="Accelerated approval applications require a submission package.",
+        claim_type="capability",
+    )
+    source = evidence_bundle.sources[0]
+    excerpt = source.excerpts[0].model_copy(
+        update={
+            "id": "src-001/pass-residual",
+            "text": claim.text,
+        }
+    )
+    residual_bundle = evidence_bundle.model_copy(
+        update={
+            "sources": [
+                source.model_copy(
+                    update={
+                        "reliability": "low",
+                        "excerpts": [excerpt],
+                    }
+                )
+            ]
+        }
+    )
+    candidate = EvidenceCandidate(
+        source_id="src-001",
+        excerpt_id=excerpt.id,
+        score=0.4,
+        source_reliability="low",
+    )
+    assessment = assess_claim_support(
+        claim,
+        residual_bundle,
+        [candidate],
+        audit_config,
+    )
+    assert assessment.support_label == "unsupported"
+    assert assess_claim_support(
+        claim,
+        residual_bundle,
+        [],
+        audit_config,
+    ).support_label == "unsupported"
+
+    base_passage = contents.passages["src-001"][0]
+    residual_contents = replace(
+        contents,
+        claims=[
+            contents.claims[0].model_copy(
+                update={"claim_id": claim.id, "claim_text": claim.text}
+            )
+        ],
+        passages={
+            "src-001": [
+                base_passage.model_copy(
+                    update={
+                        "passage_id": "pass-residual",
+                        "passage_text": excerpt.text,
+                        "passage_hash": "sha256:" + "e" * 64,
+                    }
+                )
+            ]
+        },
+    )
+    result = export_contract_c(
+        contents=residual_contents,
+        assessments=[assessment],
+        evidence_bundle=residual_bundle,
+        audit_config=audit_config,
+    )
+    conclusion = result["propositions"][0]["conclusion"]
+    assert conclusion["causal_form"] == "redundant_non_deciding"
+    assert conclusion["basis_members"] == []
+    assert len(conclusion["residual_contribution_ids"]) == 1
+
 def test_unclassified_early_return_is_completed_not_checkable_not_failure(
     tmp_path: Path,
 ) -> None:
