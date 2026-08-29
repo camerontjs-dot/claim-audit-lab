@@ -60,6 +60,7 @@ jobs:
 
           git diff --check
           python - <<'PY'
+          import re
           import subprocess
 
           diff = subprocess.check_output(
@@ -72,11 +73,14 @@ jobs:
               and not line.startswith('+++')
               and not line.startswith('---')
           ]
-          expected_old = '-  "library_version": "0.4.0"'
-          expected_new = '+  "library_version": "0.5.0"'
-          old_lines = [line for line in changed_lines if line == expected_old]
-          new_lines = [line for line in changed_lines if line == expected_new]
-          unexpected = [line for line in changed_lines if line not in {expected_old, expected_new}]
+          old_pat = re.compile(r'^-\s*"library_version": "0\.4\.0",?$')
+          new_pat = re.compile(r'^\+\s*"library_version": "0\.5\.0",?$')
+          old_lines = [line for line in changed_lines if old_pat.match(line)]
+          new_lines = [line for line in changed_lines if new_pat.match(line)]
+          unexpected = [
+              line for line in changed_lines
+              if not old_pat.match(line) and not new_pat.match(line)
+          ]
           if len(old_lines) != 30 or len(new_lines) != 30 or unexpected:
               raise SystemExit(
                   f'version-only diff invariant failed: old={len(old_lines)} new={len(new_lines)} unexpected={unexpected[:5]}'
