@@ -1,0 +1,101 @@
+name: Research - Shadow reconciliation semantic operator RC
+
+on:
+  push:
+    branches:
+      - research-infra/shadow-reconciliation-semantic-operator-rc-20260829
+  pull_request:
+    paths:
+      - "research/shadow_reconciliation_semantic_operator_rc/**"
+      - ".github/workflows/research-shadow-reconciliation-semantic-operator-rc.yml"
+      - "research/production_trace_decision_shadow/**"
+      - "src/claim_audit_lab/**"
+      - "scripts/decision_model_replay.py"
+      - "scripts/evidence_state_eligibility_shadow.py"
+      - "scripts/evidence_state_operator_shadow.py"
+      - "tests/v1/test_pipeline_e2e.py"
+      - "pyproject.toml"
+
+permissions:
+  contents: read
+
+jobs:
+  protected-surface-and-falsifiers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify production, explicit-model, replay, corpus, and Contract C surfaces unchanged
+        run: |
+          git diff --exit-code b487d1dce4cc1a076e3705b0a7ef457e7d438814...HEAD -- \
+            src \
+            scripts/decision_model_replay.py \
+            scripts/evidence_state_eligibility_shadow.py \
+            scripts/evidence_state_operator_shadow.py \
+            tests/v1/test_pipeline_e2e.py \
+            pyproject.toml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Run successor mutation and operator falsifiers
+        run: uv run python -m pytest -q research/shadow_reconciliation_semantic_operator_rc/test_reconciliation.py
+      - name: Re-run predecessor metamorphic controls
+        run: uv run python -m pytest -q research/production_trace_decision_shadow/test_metamorphic_controls.py
+      - name: Re-run explicit machinery controls
+        run: |
+          uv run python -m pytest -q \
+            tests/v1/test_decision_model.py \
+            tests/v1/test_evidence_state.py \
+            tests/v1/test_evidence_state_eligibility_shadow.py \
+            tests/v1/test_evidence_state_operator_shadow.py \
+            tests/v1/test_semantic_operators.py
+      - name: Lint successor research apparatus
+        run: uv run python -m ruff check research/shadow_reconciliation_semantic_operator_rc
+
+  real-shadow-and-parallel-artifact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Regenerate all 25 cases through the exact frozen real production shadow apparatus
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/predecessor-shadow
+          uv run python -m research.production_trace_decision_shadow.run_shadow_experiment_entry \
+            --output-dir artifacts/predecessor-shadow \
+            | tee artifacts/predecessor-shadow/summary.json
+      - name: Reconcile focal disagreements and emit parallel non-authoritative epistemic artifacts
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/shadow-reconciliation-semantic-operator-rc
+          uv run python -m research.shadow_reconciliation_semantic_operator_rc.run_reconciliation \
+            --shadow-root artifacts/predecessor-shadow \
+            --output-dir artifacts/shadow-reconciliation-semantic-operator-rc \
+            --execution-head-sha "${GITHUB_SHA}" \
+            | tee artifacts/shadow-reconciliation-semantic-operator-rc/summary.json
+      - name: Print receipts
+        if: always()
+        run: |
+          test ! -f artifacts/predecessor-shadow/RESULTS.sha256 || cat artifacts/predecessor-shadow/RESULTS.sha256
+          test ! -f artifacts/shadow-reconciliation-semantic-operator-rc/RESULTS.sha256 || cat artifacts/shadow-reconciliation-semantic-operator-rc/RESULTS.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-shadow-reconciliation-semantic-operator-rc-${{ github.sha }}
+          path: |
+            artifacts/predecessor-shadow/
+            artifacts/shadow-reconciliation-semantic-operator-rc/
+          if-no-files-found: warn
+          retention-days: 30
