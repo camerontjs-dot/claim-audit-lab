@@ -1,0 +1,65 @@
+{
+  "schema_version": "cal-shadow-reconciliation-semantic-operator-rc-receipt-v0.1",
+  "experiment_class": "Research Infrastructure / epistemic-machinery",
+  "authority": "non_authoritative_research",
+  "production_main_sha": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+  "machinery_audit_pr": 35,
+  "predecessor_shadow_pr": 36,
+  "predecessor_shadow_head_sha": "b487d1dce4cc1a076e3705b0a7ef457e7d438814",
+  "successor_pr": 37,
+  "successor_preregistration_commit_sha": "87304482dfa8792fda3ed035c98538603280c3ab",
+  "accepted_science_branch_head_sha": "0d8e67a2cf96e1d6eb665dae2cf9dc11629cfcc8",
+  "accepted_actions_run_id": 33281047763,
+  "accepted_actions_artifact_id": 9723010160,
+  "accepted_actions_artifact_name": "cal-shadow-reconciliation-semantic-operator-rc-0d8e67a2cf96e1d6eb665dae2cf9dc11629cfcc8",
+  "accepted_actions_artifact_zip_sha256": "sha256:ddbbd9a3c0bd4523ef79afe0aec390e1a516f53012a41f61828ed6884a2eed84",
+  "accepted_actions_artifact_retention_days": 30,
+  "predecessor_frozen_repeat_run_id": 33275342888,
+  "predecessor_frozen_repeat_execution_head_sha": "e864f3e12942bf3f47306ba895b8b965b638dae0",
+  "predecessor_frozen_repeat_results_sha256": "sha256:a2bab28e138fbadc8343d4efce29d8e42823bf8ee97f1a41fa094b9f45da9bdf",
+  "predecessor_normalized_scientific_object_sha256": "sha256:db6ac4dac26045c0b489cf28a704376b659522979759e33f704706c61472c51d",
+  "fresh_predecessor_results_sha256_at_accepted_head": "sha256:38a92ac641c39000cf20f52feae788a1bbd178912d926d0eae29759068cb1c00",
+  "successor_results_sha256_at_accepted_head": "sha256:6a1d31de1f5ed381a36961d42891086619740d5625e86f926b037d0e28e71061",
+  "exact_predecessor_scientific_object_reproduced_modulo_execution_head_metadata": true,
+  "total_cases_regenerated_through_real_cal_path": 25,
+  "terminal_agreements": 23,
+  "terminal_disagreements": 2,
+  "support_to_adverse_transitions": 0,
+  "adverse_to_support_transitions": 0,
+  "predecessor_metamorphic_controls_passed": 6,
+  "predecessor_metamorphic_controls_total": 6,
+  "successor_invariant_falsifiers_passed": 9,
+  "successor_invariant_falsifiers_total": 9,
+  "protected_surfaces_unchanged_from_predecessor_head": true,
+  "threshold_tuning_performed": false,
+  "pinned_entailer_replaced": false,
+  "contract_c_changed": false,
+  "audit_trace_replaced": false,
+  "parallel_artifact_authority": "non_authoritative_research",
+  "parallel_artifacts_emitted": 25,
+  "e2e_08_disposition": "SUPPORTED_WITH_BOUNDS",
+  "e2e_09_disposition": "SUPPORTED_WITH_BOUNDS",
+  "preserved_deviation_runs": [
+    {
+      "run_id": 33274969229,
+      "kind": "predecessor_apparatus_failure_masked_by_missing_pipefail",
+      "scientific_result_accepted": false
+    },
+    {
+      "run_id": 33275106892,
+      "kind": "predecessor_fixture_loading_failure_before_model_measurement",
+      "scientific_result_accepted": false
+    },
+    {
+      "run_id": 33275184773,
+      "kind": "predecessor_valid_science_formatting_only_failure",
+      "scientific_result_accepted": true
+    },
+    {
+      "run_id": 33280935112,
+      "kind": "successor_science_complete_lint_red_and_nonexact_output_path",
+      "scientific_result_accepted": false
+    }
+  ],
+  "receipt_scope_note": "This receipt intentionally pins the accepted scientific execution at 0d8e67a2cf96e1d6eb665dae2cf9dc11629cfcc8. Later commits that add narrative RESULTS, preregistration, NEXT, or receipt documentation are evidence-record commits and do not redefine this frozen science head."
+}
