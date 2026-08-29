@@ -1,0 +1,58 @@
+{
+  "schema_version": "cal-production-trace-decision-shadow-receipt-v0.1",
+  "experiment_class": "Research Infrastructure / epistemic-machinery",
+  "base_sha": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+  "preregistration_commit": "0db9f18f40117c274df32dba999cba176752281b",
+  "corpus": {
+    "path": "tests/v1/test_pipeline_e2e.py::CASES",
+    "git_blob_sha": "48a22cfab82ea0a2abd8d1c80d0da32a3dacd260",
+    "case_count": 25,
+    "fixture_expectations_used_for_tuning_or_scoring": false
+  },
+  "frozen_adapter": {
+    "path": "scripts/decision_model_replay.py",
+    "git_blob_sha": "cb26ba5a5ba9174dedbd686ea10dffcaae1a80db"
+  },
+  "frozen_decision_model": {
+    "path": "src/claim_audit_lab/v1/decision_model.py",
+    "git_blob_sha": "f0d9d3bc061d966ed9c8c16b3424b3dd5c3bb339"
+  },
+  "policy": {
+    "signal_floor": 0.2,
+    "support_threshold": 0.7,
+    "refutation_threshold": 0.7,
+    "threshold_search_performed": false
+  },
+  "primary_valid_execution": {
+    "workflow_run_id": 33275184773,
+    "head_sha": "2f8f9e1447ab1f52d2c43caafb4505e436142969",
+    "result_json_sha256": "sha256:57eb3e5445b3887a8ffd105f72d30ba2e0779d644dba4d25512c119d850d1090",
+    "artifact_id": 9721292244,
+    "artifact_zip_sha256": "sha256:b84ab780c6cd0d1475a4ca969ee595c09e069025b376eaa505600595cb06d439",
+    "artifact_files": 128
+  },
+  "repeat_valid_execution": {
+    "workflow_run_id": 33275342888,
+    "head_sha": "e864f3e12942bf3f47306ba895b8b965b638dae0",
+    "result_json_sha256": "sha256:a2bab28e138fbadc8343d4efce29d8e42823bf8ee97f1a41fa094b9f45da9bdf",
+    "artifact_id": 9721337978,
+    "artifact_zip_sha256": "sha256:ff99e54b5b3f5b0ab81acc70d1f1a6a84c1c83b5fcb7093b84983e45bf797b59",
+    "artifact_files": 128
+  },
+  "repeat_comparison": {
+    "rows_exactly_equal": true,
+    "summary_exactly_equal": true,
+    "metamorphic_report_exactly_equal": true,
+    "output_coverage_exactly_equal": true,
+    "results_equal_after_removing_execution_head_sha": true,
+    "underlying_case_artifacts_exactly_equal": true,
+    "files_differing_across_artifact_trees": [
+      "RESULTS.json",
+      "RESULTS.sha256",
+      "summary.json"
+    ],
+    "difference_explanation": "RESULTS.json embeds execution_head_sha; RESULTS.sha256 and summary.json transitively embed that result checksum. All scientific rows and underlying case artifacts are identical."
+  },
+  "terminal_disposition": "SHADOW_COMPATIBLE_WITH_GAPS",
+  "production_promotion_authorized": false
+}
