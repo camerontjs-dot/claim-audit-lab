@@ -1,0 +1,28 @@
+name: RC1A research apparatus
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rc1a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Execute RC1A apparatus
+        run: uv run python docs/research/rc1a_evaluator.py --output rc1a-receipts.json
+      - name: Upload RC1A receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rc1a-receipts-${{ github.event.pull_request.head.sha }}
+          path: rc1a-receipts.json
+          if-no-files-found: warn
