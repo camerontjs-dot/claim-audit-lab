@@ -1,0 +1,329 @@
+{
+  "assessment_ladder": [
+    "performed-positive",
+    "performed-adverse",
+    "performed-unknown",
+    "not-performed",
+    "not-applicable",
+    "failed"
+  ],
+  "causal_case": {
+    "baseline_terminal": "contradicted",
+    "removed_terminal": "not_checkable",
+    "target_passage": "e2"
+  },
+  "execution_cases": {
+    "completed": {
+      "failure": null,
+      "state": "completed"
+    },
+    "failed": {
+      "failure": {
+        "code": "ASSESSOR_FAILURE",
+        "stage": "research-receipt-assessment"
+      },
+      "state": "failed"
+    }
+  },
+  "irrelevant_metadata": {
+    "field": "note",
+    "passage_id": "e1",
+    "value": "irrelevant-to-receipt-semantics"
+  },
+  "participation_state": {
+    "aggregation": {
+      "reason": "composition-absent",
+      "state": "unresolved"
+    },
+    "assessments": {
+      "e1": {
+        "eligibility": "performed-positive"
+      },
+      "e2": {
+        "eligibility": "performed-positive"
+      },
+      "e3": {
+        "eligibility": "performed-adverse"
+      },
+      "e4": {
+        "eligibility": "performed-unknown"
+      }
+    },
+    "execution": {
+      "failure": null,
+      "state": "completed"
+    },
+    "policy": {
+      "allowed_trust": [
+        "primary"
+      ],
+      "policy_id": "PRIMARY_ONLY"
+    },
+    "source_facts": {
+      "e1": {
+        "trust": "primary"
+      },
+      "e2": {
+        "trust": "secondary"
+      },
+      "e3": {
+        "trust": "background"
+      },
+      "e4": {
+        "trust": "primary"
+      }
+    }
+  },
+  "policy_counterfactual": {
+    "baseline": {
+      "allowed_trust": [
+        "primary",
+        "secondary"
+      ],
+      "policy_id": "ALLOW_PRIMARY_OR_SECONDARY"
+    },
+    "counterfactual": {
+      "allowed_trust": [
+        "primary"
+      ],
+      "policy_id": "PRIMARY_ONLY"
+    },
+    "target_passage": "e2"
+  },
+  "predecessor_evaluator": "5d880110e39d0450af346fea91074eebaa2c2f96",
+  "production_baseline": "e90f301cf6ca02c0c77b6e88c3b08f8b93b9a36a",
+  "regression_traces": [
+    {
+      "git_blob": "308d59c60fa5f868e3fce8d862cb613af71e1646",
+      "path": "tests/v1/fixtures/traces/01-supported-verbatim.json"
+    },
+    {
+      "git_blob": "a833bce1f07d68198585aa37edad0b3f8526df26",
+      "path": "tests/v1/fixtures/traces/02-supported-inferred.json"
+    },
+    {
+      "git_blob": "d0ef75025160532f337130bfc5f4f57a35aaa123",
+      "path": "tests/v1/fixtures/traces/03-partially-supported.json"
+    },
+    {
+      "git_blob": "ead8b59aba998c50f5dcc01ff6723570f550cdd9",
+      "path": "tests/v1/fixtures/traces/04-unsupported.json"
+    },
+    {
+      "git_blob": "f2e56d676300a8d0fd21f94871ed5619701695a4",
+      "path": "tests/v1/fixtures/traces/05-contradicted-hard.json"
+    },
+    {
+      "git_blob": "1099bad4067f5b4caa2f6d59bcf98ff8746d39e2",
+      "path": "tests/v1/fixtures/traces/06-contradicted-negation.json"
+    },
+    {
+      "git_blob": "dcda5571ea381cf3b45282600ca1d938de119e9f",
+      "path": "tests/v1/fixtures/traces/07-composition-numeric-overstated.json"
+    },
+    {
+      "git_blob": "3c80cbfa18c9f2abd546aea172b2749e13c3964f",
+      "path": "tests/v1/fixtures/traces/08-numeric-noncrux-partial.json"
+    },
+    {
+      "git_blob": "cbb14eff9f14037465d607dcc32a2f398a7b510e",
+      "path": "tests/v1/fixtures/traces/09-overstated-from-supported.json"
+    },
+    {
+      "git_blob": "f78584d62b6c3f99e82ed2374ea0cc60c47da31c",
+      "path": "tests/v1/fixtures/traces/10-overstated-from-partial.json"
+    },
+    {
+      "git_blob": "149d0cb30255711aa0d4ff24af0a570aa572a0e4",
+      "path": "tests/v1/fixtures/traces/11-source-scope-error.json"
+    },
+    {
+      "git_blob": "a885e849afeef01cdc7aa8c7adb6741d49eb31de",
+      "path": "tests/v1/fixtures/traces/12-false-caution.json"
+    },
+    {
+      "git_blob": "cd036a759c9743e395d376eb8e6897434dd5bdc5",
+      "path": "tests/v1/fixtures/traces/13-not-checkable-opinion.json"
+    },
+    {
+      "git_blob": "49420e3074f26ca2bc43fbed162f72723e4a24fa",
+      "path": "tests/v1/fixtures/traces/14-not-checkable-short.json"
+    },
+    {
+      "git_blob": "04f85581219b039919f06f53b98354d338d17ad5",
+      "path": "tests/v1/fixtures/traces/15-not-checkable-no-evidence.json"
+    },
+    {
+      "git_blob": "f402f22b3dc41a43a24537c1e46e8c37ab7cd2a1",
+      "path": "tests/v1/fixtures/traces/16-not-checkable-no-entail.json"
+    },
+    {
+      "git_blob": "72c6d1e0f9e230bd8996f50ef04584c5773972f3",
+      "path": "tests/v1/fixtures/traces/17-numeric-ambiguous-unit.json"
+    },
+    {
+      "git_blob": "95c684fef9d70d3dc8a128815953533681d76c2c",
+      "path": "tests/v1/fixtures/traces/18-negation-agreeing-absence.json"
+    },
+    {
+      "git_blob": "faa043eec2ff022e81ba49b16c1cacbeb00ce58d",
+      "path": "tests/v1/fixtures/traces/19-strong-claim-plain-paraphrase.json"
+    },
+    {
+      "git_blob": "55cc52cd3c1b5913e1f1f4fa54f65ae3b2a60980",
+      "path": "tests/v1/fixtures/traces/20-approx-numeric-tolerated.json"
+    },
+    {
+      "git_blob": "c2eaa2d9773ada55ae5ef94f894959c52b19f7f0",
+      "path": "tests/v1/fixtures/traces/21-year-vs-measure-abstains.json"
+    },
+    {
+      "git_blob": "23e4cea577c1a641047957c9ceee4609d468d1f5",
+      "path": "tests/v1/fixtures/traces/22-subfloor-contradict-filtered.json"
+    },
+    {
+      "git_blob": "e59582d66d0a5b593ecab37ec6ae32132331e109",
+      "path": "tests/v1/fixtures/traces/23-noun-initial-declarative-audited.json"
+    },
+    {
+      "git_blob": "f64fdc385e61da2638dfae97a3aebcec1b22d5ae",
+      "path": "tests/v1/fixtures/traces/24-imperative-out-of-scope.json"
+    },
+    {
+      "git_blob": "6de7cb1db234a254f04e0eab383e7921193a5749",
+      "path": "tests/v1/fixtures/traces/25-unconfirmed-contradiction-demoted.json"
+    },
+    {
+      "git_blob": "084767dc83041f8059aff61f82423a59b19c00a0",
+      "path": "tests/v1/fixtures/traces/inference/inf-01-supported-encryption.json"
+    },
+    {
+      "git_blob": "8b4eeac2a734f9d621465afdc51c40b17492a1b4",
+      "path": "tests/v1/fixtures/traces/inference/inf-02-contradicted-logging.json"
+    },
+    {
+      "git_blob": "b75c6fae10265d04b2afceeaca38ab844676c9c4",
+      "path": "tests/v1/fixtures/traces/inference/inf-03-numeric-uptime.json"
+    },
+    {
+      "git_blob": "ba0e7c1c54cbf1b4705c42769ebf07407b618908",
+      "path": "tests/v1/fixtures/traces/inference/inf-04-opinion-out-of-scope.json"
+    },
+    {
+      "git_blob": "fae05dfd94b5f24eeff95f18428b9521db50e3db",
+      "path": "tests/v1/fixtures/traces/inference/inf-05-no-evidence.json"
+    }
+  ],
+  "required_top_level_state": [
+    "execution",
+    "assessments",
+    "source_facts",
+    "policy",
+    "aggregation"
+  ],
+  "synthetic_trace": {
+    "audit_config_hash": "rc1-frozen-config",
+    "claim_id": "rc1-synthetic",
+    "claim_text": "The system enforces the bounded control.",
+    "entailment": [
+      {
+        "label": "entail",
+        "p_contradict": 0.02,
+        "p_entail": 0.91,
+        "passage_id": "e1",
+        "raw_logits": [
+          -1.0,
+          0.0,
+          3.0
+        ],
+        "score": 0.91
+      },
+      {
+        "label": "contradict",
+        "p_contradict": 0.88,
+        "p_entail": 0.03,
+        "passage_id": "e2",
+        "raw_logits": [
+          3.0,
+          0.0,
+          -1.0
+        ],
+        "score": 0.88
+      },
+      {
+        "label": "neutral",
+        "p_contradict": 0.15,
+        "p_entail": 0.15,
+        "passage_id": "e3",
+        "raw_logits": [
+          0.0,
+          2.0,
+          0.0
+        ],
+        "score": 0.7
+      },
+      {
+        "label": "neutral",
+        "p_contradict": 0.17,
+        "p_entail": 0.17,
+        "passage_id": "e4",
+        "raw_logits": [
+          0.0,
+          1.8,
+          0.0
+        ],
+        "score": 0.66
+      }
+    ],
+    "features": {
+      "claim_token_count": 7,
+      "compound_claim": false,
+      "has_explicit_negation": false,
+      "has_universal_quantifier": false,
+      "modal_strength": "asserts",
+      "numerical_values": [],
+      "sentence_type": "declarative"
+    },
+    "library_version": "0.5.0",
+    "retrieval": [
+      {
+        "passage_id": "e1",
+        "score": 0.95
+      },
+      {
+        "passage_id": "e2",
+        "score": 0.93
+      },
+      {
+        "passage_id": "e3",
+        "score": 0.8
+      },
+      {
+        "passage_id": "e4",
+        "score": 0.79
+      }
+    ],
+    "rules_fired": [
+      {
+        "reason": "synthetic frozen semantic/verdict record",
+        "rule_id": "RC1-FIXTURE"
+      }
+    ],
+    "support_signal": {
+      "best_contradict": 0.88,
+      "best_contradict_passage_id": "e2",
+      "best_entail": 0.91,
+      "best_entail_passage_id": "e1",
+      "contributing_passage_id": "e1",
+      "label": "entail",
+      "max_entailment_score": 0.91
+    },
+    "verdict": {
+      "audit_confidence": "high",
+      "audit_flags": [],
+      "citation_status": "not_applicable",
+      "support_verdict": "supported",
+      "support_verdict_reason": null
+    }
+  }
+}
