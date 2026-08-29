@@ -138,13 +138,56 @@ jobs:
               "_external/apparatus-v1/"
               "fixtures/contract-c/1.0.0/valid-canonical.json"
           ).read_bytes()
-          assert raw == expected, "real CAL exporter differs from frozen canonical v1 fixture"
 
-          out = pathlib.Path(
-              "build/promotion/contract-c-1.0.0/"
-              "contract-c-1.0.0.json"
+          out_root = pathlib.Path(
+              "build/promotion/contract-c-1.0.0"
           )
+          out_root.mkdir(parents=True, exist_ok=True)
+          out = out_root / "contract-c-1.0.0.json"
           out.write_bytes(raw)
+          (out_root / "expected-valid-canonical.json").write_bytes(expected)
+
+          def structural_diff(left, right, path="$"):
+              rows = []
+              if type(left) is not type(right):
+                  return [{"path": path, "left": left, "right": right}]
+              if isinstance(left, dict):
+                  for key in sorted(set(left) | set(right)):
+                      child = f"{path}.{key}"
+                      if key not in left:
+                          rows.append({"path": child, "left": "<missing>", "right": right[key]})
+                      elif key not in right:
+                          rows.append({"path": child, "left": left[key], "right": "<missing>"})
+                      else:
+                          rows.extend(structural_diff(left[key], right[key], child))
+                  return rows
+              if isinstance(left, list):
+                  if len(left) != len(right):
+                      rows.append({
+                          "path": path + ".length",
+                          "left": len(left),
+                          "right": len(right),
+                      })
+                  for index, (l_item, r_item) in enumerate(zip(left, right)):
+                      rows.extend(
+                          structural_diff(l_item, r_item, f"{path}[{index}]")
+                      )
+                  return rows
+              if left != right:
+                  rows.append({"path": path, "left": left, "right": right})
+              return rows
+
+          observed_obj = json.loads(raw)
+          expected_obj = json.loads(expected)
+          differences = structural_diff(observed_obj, expected_obj)
+          (out_root / "producer-diff.json").write_text(
+              json.dumps(differences, indent=2, sort_keys=True) + "\n"
+          )
+          assert raw == expected, (
+              "real CAL exporter differs from frozen canonical v1 fixture; "
+              "see producer-diff.json"
+          )
+
           receipt = {
               "apparatus_contract_c_head":
                   "5759985ee0ae82c469a129152b2eac278b30e919",
