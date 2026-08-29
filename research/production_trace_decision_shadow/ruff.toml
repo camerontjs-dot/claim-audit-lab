@@ -1,4 +1,4 @@
 line-length = 200
 
 [lint]
-ignore = ["B009"]
+ignore = ["B009", "EXE001"]
