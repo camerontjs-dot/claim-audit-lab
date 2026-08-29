@@ -32,13 +32,13 @@ you wrote?**
 
 | | |
 |---|---|
-| Distribution | `0.4.0`, the first public tag. `0.3.0` was declared but never released |
+| Distribution | `0.5.0`; adds the public Contract C 1.0.0 exporter. `0.4.0` remains the first public tag |
 | Default engine | `v1-retrieve-entail`, retrieve → entail → rules on `audit` and `demo` |
 | Selectable | `v0.2-lexical` via `--engine` (falsified; kept for apparatus pins) |
 | Frozen rules | `cal-rules-v1.13.0`, governs the v1 engine only |
 | Blind acceptance gate | Exploratory 2026-07-24 on `cal-rules-v1.7.0`, n=50 vs **human** gold. Re-scored 2026-08-20: exact **27/50**, AC2 0.7901, weighted κ 0.6876. Unchanged. Not a confirmatory packet. |
 | Constructed twin | Same 25+25 shape, **derived** keys: **47/50** on `cal-rules-v1.11.0`. Not a recode of the sealed 50. |
-| Release tag | `v0.4.0`. **Not** `v1.0.0`. The leading zero is the claim being made about the interface and the accuracy story alike. |
+| Release tag | `v0.5.0`. **Not** `v1.0.0`. The leading zero is still the claim being made about the interface and the accuracy story alike. |
 | Known limits | **D15**, a rules-only replay cannot test a gate whose inputs postdate its baseline; it reported `A5` as a no-op on human gold when the gate in fact moves 2 of 98. PILOT-001 exact agreement is **62/98**, corrected from 64/98. Numeric bounds (D1/D4/D12) and two-hop composition are v2 operators: CAL asks, it does not invent the comparison or the join. D6 held; D7 must not land alone. A7 withholds a contradiction when the passage names a different site than the claim. |
 
 The v0.2 lexical matcher was falsified as a measurement instrument by a blind PILOT-001
@@ -74,8 +74,9 @@ ones that are embarrassing.
 
 ## Install
 
-Not yet published to PyPI. Install the released `0.4.0` source from a checkout, or directly
-from GitHub. The v1 engine is the ordinary released `audit` and `demo` path.
+Not yet published to PyPI. Install the released `0.5.0` source from a checkout, from the
+GitHub Release artifacts, or directly from GitHub. The v1 engine remains the ordinary released
+`audit` and `demo` path; 0.5.0 adds Contract-C export without changing verdict semantics.
 
 ```bash
 # released source from GitHub; base is pure Python

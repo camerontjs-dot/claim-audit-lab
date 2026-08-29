@@ -62,5 +62,5 @@
     "audit_confidence": "medium"
   },
   "audit_config_hash": "sha256:96a60db8fc9d6dd5404c0d2625b97755ebc8d073a507867fc526f59b513ad3c4",
-  "library_version": "0.4.0"
+  "library_version": "0.5.0"
 }

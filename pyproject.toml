@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "claim-audit-lab"
-version = "0.4.0"
+version = "0.5.0"
 description = "Audit whether draft claims are supported by supplied evidence."
 readme = "README.md"
 requires-python = ">=3.11"
