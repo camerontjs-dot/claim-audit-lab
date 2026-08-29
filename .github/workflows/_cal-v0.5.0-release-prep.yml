@@ -1,0 +1,82 @@
+name: CAL 0.5.0 one-shot release metadata prep
+
+on:
+  push:
+    branches:
+      - release/v0.5.0
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepend 0.5.0 changelog and reconcile live README version statements
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+
+          changelog = Path('CHANGELOG.md')
+          text = changelog.read_text(encoding='utf-8')
+          entry = '''## 0.5.0 — 2026-08-29
+
+CAL 0.5.0 adds the public deterministic Apparatus Contract C 1.0.0 exporter. It is a strict pre-1.0 **MINOR** release because the exporter is a new public capability; existing CAL verdict semantics, the frozen policy, the ordinary v1 engine, and the selectable v0.2 path are unchanged by this promotion.
+
+### Added
+
+- Public `claim_audit_lab.contracts.contract_c` exporter for immutable Apparatus Contract C `1.0.0`.
+- Exact Contract-B version/bundle/hash binding, CAL semantic implementation/policy identity, proposition/evidence references, retained residual/non-deciding contribution state, aggregate measurement basis, explicit stage/execution state, terminal basis, and supported causal multiplicity.
+- Deterministic canonical Contract-C bytes and content-derived result-set identity.
+- Fail-closed export on unresolved Contract-B references, policy drift, unsupported rule families, and unpromoted multiplicity shapes.
+
+### Compatibility and assurance
+
+- Conformed to immutable Apparatus tag `contract-c-v1.0.0`, exact release commit `5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1`.
+- Contract C canonical fixture SHA-256: `7a66583e332be4901d13ba9f2d7e12419938c77a41b83223a4b0946ad529b7a1`.
+- CAL exporter promotion evidence PR #24; exact tested candidate `095d0fc0d4a8746a1b5296d9414ba9e6e173dc96`; production exporter merge `a069707e5031cef5b82af02d08b0f1a47ea8752e`.
+- Decision Engine clean-consumer release-conformance evidence head `a488c1b8058b5cda8766e670eb2b18d65e4e504e`.
+- CAL 0.5.0 does not claim correctness of CAL semantic judgments, universal Contract-C interoperability, source/corpus completeness, Decision Engine production behavior, operational authorization, or arbitrary future producer compatibility.
+
+'''
+          if '## 0.5.0 — 2026-08-29' not in text:
+              marker = '# Changelog\n\n'
+              if not text.startswith(marker):
+                  raise SystemExit('unexpected CHANGELOG header')
+              text = marker + entry + text[len(marker):]
+              changelog.write_text(text, encoding='utf-8')
+
+          readme = Path('README.md')
+          text = readme.read_text(encoding='utf-8')
+          replacements = {
+              '| Distribution | `0.4.0`, the first public tag. `0.3.0` was declared but never released |':
+                  '| Distribution | `0.5.0`; adds the public Contract C 1.0.0 exporter. `0.4.0` remains the first public tag |',
+              '| Release tag | `v0.4.0`. **Not** `v1.0.0`. The leading zero is the claim being made about the interface and the accuracy story alike. |':
+                  '| Release tag | `v0.5.0`. **Not** `v1.0.0`. The leading zero is still the claim being made about the interface and the accuracy story alike. |',
+              'Not yet published to PyPI. Install the released `0.4.0` source from a checkout, or directly\nfrom GitHub. The v1 engine is the ordinary released `audit` and `demo` path.':
+                  'Not yet published to PyPI. Install the released `0.5.0` source from a checkout, from the\nGitHub Release artifacts, or directly from GitHub. The v1 engine remains the ordinary released\n`audit` and `demo` path; 0.5.0 adds Contract-C export without changing verdict semantics.',
+          }
+          for old, new in replacements.items():
+              if old not in text and new not in text:
+                  raise SystemExit(f'expected README release statement not found: {old[:48]}')
+              text = text.replace(old, new)
+          readme.write_text(text, encoding='utf-8')
+          PY
+
+          git diff --check
+          if git diff --quiet -- README.md CHANGELOG.md; then
+            echo 'Release metadata already normalized.'
+            exit 0
+          fi
+          git diff -- README.md CHANGELOG.md
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md CHANGELOG.md
+          git commit -m 'release: reconcile CAL 0.5.0 public metadata'
+          git push origin HEAD:release/v0.5.0
