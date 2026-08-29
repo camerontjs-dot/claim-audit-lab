@@ -375,16 +375,16 @@ def _contribution_attribution(
                 continue
             if row["channel"] == "support":
                 support = [row["candidate"]]
-                counters: list[EvidenceCandidate] = []
+                isolated_counters: list[EvidenceCandidate] = []
             else:
                 support = []
-                counters = [row["candidate"]]
+                isolated_counters = [row["candidate"]]
             isolated_target.append(
                 _replay_label(
                     assessment,
                     evidence_bundle,
                     support,
-                    counters,
+                    isolated_counters,
                     audit_config,
                     policy,
                 )
