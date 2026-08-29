@@ -47,6 +47,40 @@ RC1A also explicitly left unknown:
 
 The candidate itself exposes research-only choices including `assessment_plan`, an injected `assessor`, two frozen research policy IDs, optional aggregation mode, replay IDs, and a failure injector. RC1A established that this packaging can satisfy the frozen experiment. It did not establish that these are the correct public production API or policy semantics.
 
+## Existing-consumer audit
+
+Before finalizing this decision, the current downstream/operator surfaces were inspected rather than assuming no consumer existed.
+
+### Decision Engine
+
+Decision Engine PR #10 independently consumed frozen Contract C 1.0.0 without CAL internals and passed distinctions for:
+
+- `not_performed`;
+- performed-unknown;
+- performed-adverse;
+- not-applicable;
+- failed/incomplete execution distinct from completed `not_checkable`;
+- single-necessary, independent-alternative, jointly-sufficient, and residual-non-deciding causal/participation representations;
+- residual-state preservation;
+- aggregate measurement-basis preservation;
+- fail-closed missing/malformed state and unknown-field rejection.
+
+That evidence shows the existing downstream contract already carries the tested consumer distinctions that Decision Engine actually exercised. It does not establish a present need for the RC1A research receipt or for widening Contract C.
+
+The one RC1A assessment state not explicitly demonstrated by that clean-consumer record, generic performed-positive, has no observed current Decision Engine rule or gate that requires it. Absence from the conformance list is therefore not itself a consumer requirement.
+
+### CAL report/UI surfaces
+
+Current CAL report and operator-reason surfaces consume the existing structured report / `AuditTrace` verdict, recorded reasons, rules fired, evidence links, and support measurements. They do not presently request RC1A assessment-plan state, participation state, policy-effect receipts, aggregation receipt state, or replay-derived causal basis.
+
+The operator reason layer is deliberately verdict-reading rather than a second decision procedure, which is compatible with leaving RC1A state outside the current production trace until a concrete surface needs it.
+
+### Consumer-audit conclusion
+
+No current production consumer inspected in this decision falsifies the sufficiency of the existing production surfaces.
+
+Therefore the reopen condition remains unmet: there is still no observed consumer that needs RC1A-only state beyond current `AuditTrace` / Contract C behavior.
+
 ## Alternatives considered
 
 ### A. Merge or mechanically transplant the RC1A candidate
