@@ -70,7 +70,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p artifacts/production-trace-decision-shadow
-          uv run python -m research.production_trace_decision_shadow.run_shadow_experiment \
+          uv run python -m research.production_trace_decision_shadow.run_shadow_experiment_entry \
             --output-dir artifacts/production-trace-decision-shadow \
             | tee artifacts/production-trace-decision-shadow/summary.json
       - name: Print immutable result receipt
