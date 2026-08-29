@@ -64,3 +64,30 @@ Authority/public visibility does not expand the aperture. Links do not inherit a
 ## PRE-FREEZE OPERATING RULE
 
 Until evaluator, fixtures, weak controls, expected invariants, falsifiers, scoring/disposition logic, and their identities are frozen in a committed freeze record, retrieval remains default-deny and no candidate/historical implementation access is permitted.
+
+
+## POST-FREEZE APERTURE EXPANSION
+
+Freeze commit: `5d880110e39d0450af346fea91074eebaa2c2f96`.
+
+Only after that freeze existed, the aperture expanded per the preregistration.
+
+Observed post-freeze accesses:
+
+- PR #28 body/diff: authorized RC0 candidate/comparison material, used only after freeze.
+- PR #28 changed-filename list.
+- RC0 terminal result record at head `cdf861b6c9974d90e844597fc84eb3e6ab2e36ea`, blob `db07c8ac5ed88e8632fb301d0e69150acf8cc4a4`.
+- Released Contract C 1.0.0 normative specification at tag `contract-c-v1.0.0`, path `contract-c-v1.0.0.md`, blob `8c15f2e5f4047ccd17e204fb23aee1168781b9d5`.
+- Apparatus Contract C release PR #21 changed-filename list.
+- RC0 exploratory/historical-v2 findings were treated as hypotheses/mechanism observations only; no RC0 architecture result was imported into the frozen RC0B scoring.
+- The independent external epistemic-abstention synthesis was not supplied in this execution and was not retrieved.
+
+Post-freeze predecessor records resolve the deferred immutable identities as:
+- CAL `v0.5.0` -> `5533bbcf27a3ee3a7d901f7dfc44c241bc558e2c`.
+- Contract C `contract-c-v1.0.0` -> `5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1`.
+- RC0 head -> `cdf861b6c9974d90e844597fc84eb3e6ab2e36ea`.
+- historical-v2 head -> `b7254e713feb5556a81fb0c5b39649c415a949c6`.
+
+## INFORMATION-APERTURE RESULT
+
+PASS. No forbidden candidate implementation detail, candidate result, gate vector, historical-v2 mechanism detail, or external methodology conclusion was exposed before the durable corrected-evaluator freeze. All such accesses occurred only after freeze commit `5d880110e39d0450af346fea91074eebaa2c2f96`.
