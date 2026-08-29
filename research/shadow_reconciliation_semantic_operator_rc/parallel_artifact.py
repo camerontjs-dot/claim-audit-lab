@@ -23,7 +23,7 @@ class ExecutionState(_Strict):
     failure_detail: str | None = None
 
     @model_validator(mode="after")
-    def _pair(self) -> "ExecutionState":
+    def _pair(self) -> ExecutionState:
         if self.status == "completed" and (self.failure_class or self.failure_detail):
             raise ValueError("completed execution may not carry failure fields")
         if self.status == "failed" and not self.failure_class:
@@ -54,7 +54,7 @@ class ParallelEpistemicArtifact(_Strict):
     causal_basis_contribution_ids: tuple[str, ...] = ()
 
     @model_validator(mode="after")
-    def _execution_boundary(self) -> "ParallelEpistemicArtifact":
+    def _execution_boundary(self) -> ParallelEpistemicArtifact:
         if self.execution.status == "failed":
             epistemic_payload = (
                 self.raw_evidence_state,
