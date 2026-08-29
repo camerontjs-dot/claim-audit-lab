@@ -1,0 +1,196 @@
+name: Contract C 1.0.0 exporter promotion
+
+on:
+  push:
+    branches:
+      - promotion/contract-c-1.0.0-exporter
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/claim_audit_lab/contracts/contract_c.py'
+      - 'tests/test_contract_c_exporter.py'
+      - '.github/workflows/contract-c-1.0.0-exporter-promotion.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  producer-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout CAL promotion branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen Contract C candidate
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 5759985ee0ae82c469a129152b2eac278b30e919
+          path: _external/apparatus-v1
+
+      - name: Checkout exact frozen RC2 handoff
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 213ed9e912b922bd5c57ef58009eb6b0d7fff398
+          path: _external/apparatus-handoff
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL
+        run: uv sync --all-extras
+
+      - name: Verify frozen identities and bounded mutation surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _external/apparatus-v1 rev-parse HEAD)" =             "5759985ee0ae82c469a129152b2eac278b30e919"
+          test "$(git -C _external/apparatus-handoff rev-parse HEAD)" =             "213ed9e912b922bd5c57ef58009eb6b0d7fff398"
+          git diff --name-only             18592eef336ffc7c2b6b34d8ac489843f5274583...HEAD |
+          while read -r path; do
+            case "$path" in
+              src/claim_audit_lab/contracts/contract_c.py|              tests/test_contract_c_exporter.py|              .github/workflows/contract-c-1.0.0-exporter-promotion.yml) ;;
+              *) echo "unexpected promotion mutation: $path" >&2; exit 1 ;;
+            esac
+          done
+          git diff --exit-code             33a928db97316a3652d57df9cafb8ca240305233 --             src/claim_audit_lab/rules.py             src/claim_audit_lab/policy.py             src/claim_audit_lab/auditor.py             src/claim_audit_lab/models.py             src/claim_audit_lab/contracts/adapter.py             src/claim_audit_lab/contracts/bundle_loader.py
+
+      - name: Run bounded exporter and producer regression tests
+        run: |
+          uv run pytest -q             tests/test_contract_c_exporter.py             tests/test_cb_adapter.py             tests/test_cb_bundle_loader.py             tests/test_rules.py
+
+      - name: Reconstruct exact frozen Contract B input
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import base64
+          import json
+          import pathlib
+          import zipfile
+          import io
+
+          root = pathlib.Path(
+              "_external/apparatus-handoff/"
+              "handoffs/contract-c/rc2-consumer-b"
+          )
+          manifest = json.loads((root / "MANIFEST.json").read_text())
+          parts = sorted(manifest["contract_b_input"]["base64_parts"])
+          encoded = "".join(
+              (root / part).read_text().rstrip("\n")
+              for part in parts
+          )
+          raw = base64.b64decode(encoded, validate=True)
+          out = pathlib.Path("/tmp/contract-b")
+          out.mkdir(parents=True, exist_ok=True)
+          with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+              archive.extractall(out)
+          PY
+
+      - name: Emit exact Contract C from real CAL producer
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/promotion/contract-c-1.0.0
+          uv run python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+
+          from claim_audit_lab.auditor import audit_claims
+          from claim_audit_lab.contracts.adapter import (
+              adapt_bundle_to_pipeline,
+              build_claim_evidence_scopes,
+          )
+          from claim_audit_lab.contracts.bundle_loader import load_bundle
+          from claim_audit_lab.contracts.contract_c import (
+              export_contract_c_bytes,
+          )
+
+          bundle_dir = next(pathlib.Path("/tmp/contract-b").glob("contract-b-*"))
+          contents = load_bundle(
+              bundle_dir,
+              deviations_dir=pathlib.Path("/tmp/cal-deviations"),
+          )
+          claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(
+              contents
+          )
+          assessments = audit_claims(
+              claims,
+              evidence_bundle,
+              audit_config,
+              evidence_scopes=build_claim_evidence_scopes(contents),
+          )
+          raw = export_contract_c_bytes(
+              contents=contents,
+              assessments=assessments,
+              evidence_bundle=evidence_bundle,
+              audit_config=audit_config,
+          )
+          expected = pathlib.Path(
+              "_external/apparatus-v1/"
+              "fixtures/contract-c/1.0.0/valid-canonical.json"
+          ).read_bytes()
+          assert raw == expected, "real CAL exporter differs from frozen canonical v1 fixture"
+
+          out = pathlib.Path(
+              "build/promotion/contract-c-1.0.0/"
+              "contract-c-1.0.0.json"
+          )
+          out.write_bytes(raw)
+          receipt = {
+              "apparatus_contract_c_head":
+                  "5759985ee0ae82c469a129152b2eac278b30e919",
+              "handoff_commit":
+                  "213ed9e912b922bd5c57ef58009eb6b0d7fff398",
+              "cal_semantic_sha":
+                  "33a928db97316a3652d57df9cafb8ca240305233",
+              "contract_c_sha256": hashlib.sha256(raw).hexdigest(),
+              "byte_identical_to_frozen_fixture": True,
+              "status": "PASS",
+          }
+          pathlib.Path(
+              "build/promotion/contract-c-1.0.0/"
+              "producer-conformance-receipt.json"
+          ).write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(receipt, sort_keys=True))
+          PY
+
+      - name: Validate emitted bytes with independent Apparatus validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="$(
+            awk '{print $1}'               _external/apparatus-v1/fixtures/contract-c/1.0.0/valid-canonical.sha256
+          )"
+          PYTHONPATH="_external/apparatus-v1"             uv run python -m validators.contract_c               build/promotion/contract-c-1.0.0/contract-c-1.0.0.json               --expected-sha256 "$expected"               --contract-b-index                 _external/apparatus-v1/fixtures/contract-c/1.0.0/contract-b-index.json
+
+      - name: Check promotion code hygiene
+        shell: bash
+        run: |
+          set +e
+          uv run ruff check             src/claim_audit_lab/contracts/contract_c.py             tests/test_contract_c_exporter.py             --output-format=json > build/promotion/contract-c-1.0.0/ruff.json
+          ruff_status=$?
+          set -e
+          cat build/promotion/contract-c-1.0.0/ruff.json
+          test "$ruff_status" -eq 0
+          uv run ruff format --check src/claim_audit_lab/contracts/contract_c.py
+          uv run mypy src/claim_audit_lab/contracts/contract_c.py
+
+      - name: Upload producer-conformance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: contract-c-1.0.0-cal-producer-conformance
+          path: build/promotion/contract-c-1.0.0
+          if-no-files-found: warn
+          retention-days: 90
