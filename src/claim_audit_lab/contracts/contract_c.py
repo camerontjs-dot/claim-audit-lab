@@ -73,9 +73,7 @@ def export_contract_c(
     """
     canonical_policy = asdict(policy)
     if policy != CAL_RULES_V1_2_0:
-        raise ContractCExportError(
-            "Contract C 1.0.0 exporter supports only CAL_RULES_V1_2_0"
-        )
+        raise ContractCExportError("Contract C 1.0.0 exporter supports only CAL_RULES_V1_2_0")
 
     result: dict[str, Any] = {
         "contract_c_version": CONTRACT_C_VERSION,
@@ -106,9 +104,7 @@ def export_contract_c(
         ],
     }
     if not result["propositions"]:
-        raise ContractCExportError(
-            "completed Contract C result set requires proposition results"
-        )
+        raise ContractCExportError("completed Contract C result set requires proposition results")
     result["result_set_id"] = _result_set_id(result)
     return result
 
@@ -167,9 +163,7 @@ def _project_assessment(
                 "unclassified early-return with retained candidates is not promoted"
             )
         causal_form = "single_necessary"
-        basis_members = [
-            {"namespace": "state", "id": "state:claim_type:unclassified"}
-        ]
+        basis_members = [{"namespace": "state", "id": "state:claim_type:unclassified"}]
         residual_ids = []
         rule_roles = []
         measurement: dict[str, Any] | None = None
@@ -191,10 +185,7 @@ def _project_assessment(
         rule_roles = _rule_roles_for_overstatement(assessment)
         measurement = _measurement(assessment, measurement_basis)
         completion = "assessed"
-    elif (
-        assessment.support_label == "needs_source"
-        and "credential_missing_source" in rule_codes
-    ):
+    elif assessment.support_label == "needs_source" and "credential_missing_source" in rule_codes:
         causal_form = "single_necessary"
         basis_members = [
             {
@@ -205,9 +196,7 @@ def _project_assessment(
         residual_ids = sorted(contribution_ids)
         rule_roles = [
             {
-                "rule_id": (
-                    f"rule-role:{assessment.claim.id}:credential_missing_source"
-                ),
+                "rule_id": (f"rule-role:{assessment.claim.id}:credential_missing_source"),
                 "code": "credential_missing_source",
                 "terminal_role": "causal",
             }
@@ -241,9 +230,7 @@ def _project_assessment(
             "text_sha256": _sha256(assessment.claim.text.encode("utf-8")),
         },
         "execution": {"state": "completed", "completion": completion},
-        "assessments": {
-            name: {"state": "not_performed"} for name in _ASSESSMENT_STAGES
-        },
+        "assessments": {name: {"state": "not_performed"} for name in _ASSESSMENT_STAGES},
         "contributions": [
             {
                 "contribution_id": row["contribution_id"],
@@ -314,17 +301,11 @@ def _measurement_basis(rows: list[dict[str, Any]]) -> list[str]:
     basis: list[str] = []
     if support:
         maximum = max(row["candidate"].score for row in support)
-        basis.extend(
-            row["contribution_id"]
-            for row in support
-            if row["candidate"].score == maximum
-        )
+        basis.extend(row["contribution_id"] for row in support if row["candidate"].score == maximum)
     if counters:
         maximum = max(row["candidate"].score for row in counters)
         basis.extend(
-            row["contribution_id"]
-            for row in counters
-            if row["candidate"].score == maximum
+            row["contribution_id"] for row in counters if row["candidate"].score == maximum
         )
     return basis
 
@@ -352,14 +333,11 @@ def _contribution_attribution(
 ) -> tuple[str, list[str], list[str]]:
     if not rows:
         raise ContractCExportError(
-            "no promoted causal basis for contribution-free "
-            f"{assessment.support_label} result"
+            f"no promoted causal basis for contribution-free {assessment.support_label} result"
         )
 
     support_rows = [row for row in rows if row["channel"] == "support"]
-    counter_rows = [
-        row for row in rows if row["channel"] == "counterevidence"
-    ]
+    counter_rows = [row for row in rows if row["channel"] == "counterevidence"]
     support_source = [row["candidate"] for row in support_rows]
     counter_source = [row["candidate"] for row in counter_rows]
     target = assessment.support_label
@@ -419,20 +397,14 @@ def _contribution_attribution(
                 causal,
                 sorted(set(all_ids) - set(causal)),
             )
-        raise ContractCExportError(
-            "necessary contributors show an unsupported mixed multiplicity"
-        )
+        raise ContractCExportError("necessary contributors show an unsupported mixed multiplicity")
 
     # RC2-D explicitly falsified terminal-replay-alone as causal evidence:
     # residual state can reproduce an already-adverse terminal verdict in
     # isolation without deciding that verdict. Independent alternatives are
     # therefore recognized only for the demonstrated tied/co-maximal shape.
     measurement_basis = set(_measurement_basis(rows))
-    tied_support = [
-        row
-        for row in support_rows
-        if row["contribution_id"] in measurement_basis
-    ]
+    tied_support = [row for row in support_rows if row["contribution_id"] in measurement_basis]
     if len(tied_support) >= 2:
         isolated_target = [
             _replay_label(
@@ -458,9 +430,7 @@ def _contribution_attribution(
             == target
         )
         if all(isolated_target) and not none_target:
-            causal = sorted(
-                row["contribution_id"] for row in tied_support
-            )
+            causal = sorted(row["contribution_id"] for row in tied_support)
             return (
                 "independent_sufficient_alternatives",
                 causal,
@@ -498,9 +468,7 @@ def _generic_rule_roles(
     rows: list[dict[str, str]] = []
     for code in sorted(flag.code for flag in assessment.rule_flags):
         if code != "low_reliability_only":
-            raise ContractCExportError(
-                f"no promoted generic rule-role control for {code}"
-            )
+            raise ContractCExportError(f"no promoted generic rule-role control for {code}")
         high_support = [
             candidate.model_copy(update={"source_reliability": "high"})
             for candidate in assessment.candidate_evidence
@@ -530,9 +498,7 @@ def _generic_rule_roles(
                 "rule_id": f"rule-role:{assessment.claim.id}:{code}",
                 "code": code,
                 "terminal_role": (
-                    "causal"
-                    if mutated.support_label != assessment.support_label
-                    else "residual"
+                    "causal" if mutated.support_label != assessment.support_label else "residual"
                 ),
             }
         )
@@ -549,9 +515,7 @@ def _rule_roles_for_overstatement(
         elif code == "counterevidence_present":
             role = "residual"
         else:
-            raise ContractCExportError(
-                f"unsupported overstatement rule combination: {code}"
-            )
+            raise ContractCExportError(f"unsupported overstatement rule combination: {code}")
         rows.append(
             {
                 "rule_id": f"rule-role:{assessment.claim.id}:{code}",
@@ -603,9 +567,7 @@ def _sha256(raw: bytes) -> str:
 
 def _reject_non_finite(value: Any) -> None:
     if isinstance(value, float) and not math.isfinite(value):
-        raise ContractCExportError(
-            "non-finite number is not permitted in Contract C"
-        )
+        raise ContractCExportError("non-finite number is not permitted in Contract C")
     if isinstance(value, dict):
         for child in value.values():
             _reject_non_finite(child)
