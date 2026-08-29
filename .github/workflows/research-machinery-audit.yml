@@ -1,0 +1,56 @@
+name: Research - CAL machinery audit baseline
+
+on:
+  push:
+    branches:
+      - research/machinery-audit-20260829
+  pull_request:
+    paths:
+      - "research/machinery_audit/**"
+      - ".github/workflows/research-machinery-audit.yml"
+      - "src/claim_audit_lab/**"
+      - "tests/**"
+      - "pyproject.toml"
+
+permissions:
+  contents: read
+
+jobs:
+  full-suite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - run: uv run python -m pytest -q
+      - run: uv run python -m ruff check src tests research/machinery_audit
+      - run: uv run python -m ruff format --check src
+      - run: uv run python -m mypy
+
+  integrated-real-model-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Execute pinned production retriever + entailer + rules
+        run: |
+          mkdir -p artifacts/machinery-audit
+          uv run python research/machinery_audit/real_pipeline_smoke.py             | tee artifacts/machinery-audit/real-pipeline-smoke.json
+          sha256sum artifacts/machinery-audit/real-pipeline-smoke.json             > artifacts/machinery-audit/real-pipeline-smoke.sha256
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-machinery-audit-${{ github.sha }}
+          path: artifacts/machinery-audit/
+          if-no-files-found: warn
+          retention-days: 30
