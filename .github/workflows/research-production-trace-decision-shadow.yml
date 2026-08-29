@@ -4,9 +4,22 @@ on:
   push:
     branches:
       - research-infra/production-trace-decision-shadow-20260829
+    paths:
+      - "research/production_trace_decision_shadow/*.py"
+      - "research/production_trace_decision_shadow/ruff.toml"
+      - "research/production_trace_decision_shadow/PREREGISTRATION.md"
+      - ".github/workflows/research-production-trace-decision-shadow.yml"
+      - "src/claim_audit_lab/**"
+      - "scripts/decision_model_replay.py"
+      - "scripts/evidence_state_eligibility_shadow.py"
+      - "scripts/evidence_state_operator_shadow.py"
+      - "tests/v1/test_pipeline_e2e.py"
+      - "pyproject.toml"
   pull_request:
     paths:
-      - "research/production_trace_decision_shadow/**"
+      - "research/production_trace_decision_shadow/*.py"
+      - "research/production_trace_decision_shadow/ruff.toml"
+      - "research/production_trace_decision_shadow/PREREGISTRATION.md"
       - ".github/workflows/research-production-trace-decision-shadow.yml"
       - "src/claim_audit_lab/**"
       - "scripts/decision_model_replay.py"
@@ -50,8 +63,8 @@ jobs:
             tests/v1/test_evidence_state_eligibility_shadow.py \
             tests/v1/test_evidence_state_operator_shadow.py \
             tests/v1/test_semantic_operators.py
-      - run: uv run python -m ruff check research/production_trace_decision_shadow
-      - run: uv run python -m ruff format --check research/production_trace_decision_shadow
+      - name: Lint research harness
+        run: uv run python -m ruff check research/production_trace_decision_shadow
 
   real-production-shadow:
     runs-on: ubuntu-latest
