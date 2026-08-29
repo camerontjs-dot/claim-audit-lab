@@ -1,0 +1,196 @@
+name: CAL 0.5.0 publication recovery
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/cal-v0.5.0-publication-recovery.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/cal-v0.5.0-publication-recovery.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  CAL_TAG: v0.5.0
+  LOCKED_RELEASE_COMMIT: 5533bbcf27a3ee3a7d901f7dfc44c241bc558e2c
+  LOCK_RUN_ID: '33252993880'
+  LOCK_ARTIFACT_NAME: cal-v0.5.0-release
+
+jobs:
+  verify-recovery-input:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout recovery tree with tags
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify immutable tag still binds the locked release commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --force origin "refs/tags/$CAL_TAG:refs/tags/$CAL_TAG"
+          target="$(git rev-list -n 1 "$CAL_TAG")"
+          test "$target" = "$LOCKED_RELEASE_COMMIT" || {
+            echo "Immutable tag $CAL_TAG resolves to $target, expected $LOCKED_RELEASE_COMMIT" >&2
+            exit 1
+          }
+
+      - name: Download exact successful release-lock artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf recovery-evidence
+          gh run download "$LOCK_RUN_ID" \
+            --repo "$GITHUB_REPOSITORY" \
+            --name "$LOCK_ARTIFACT_NAME" \
+            --dir recovery-evidence
+
+      - name: Verify locked artifact identity, receipt, and package digests
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f recovery-evidence/dist/claim_audit_lab-0.5.0-py3-none-any.whl
+          test -f recovery-evidence/dist/claim_audit_lab-0.5.0.tar.gz
+          test -f recovery-evidence/build/cal-v0.5.0-release/SHA256SUMS
+          test -f recovery-evidence/build/cal-v0.5.0-release/release-lock-receipt.json
+          test -f recovery-evidence/build/cal-v0.5.0-release/contract-c-1.0.0.json
+
+          test "$(find recovery-evidence -type f | wc -l | tr -d ' ')" = "5"
+
+          (cd recovery-evidence/dist && \
+            sha256sum -c ../build/cal-v0.5.0-release/SHA256SUMS)
+
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path('recovery-evidence')
+          receipt = json.loads(
+              (root / 'build/cal-v0.5.0-release/release-lock-receipt.json').read_text(encoding='utf-8')
+          )
+          assert receipt['status'] == 'PASS'
+          assert receipt['cal_version'] == '0.5.0'
+          assert receipt['release_commit'] == '5533bbcf27a3ee3a7d901f7dfc44c241bc558e2c'
+          assert receipt['tag'] == 'v0.5.0'
+          assert receipt['contract_c_tag'] == 'contract-c-v1.0.0'
+          assert receipt['contract_c_release_commit'] == '5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1'
+          assert receipt['contract_c_fixture_sha256'] == '7a66583e332be4901d13ba9f2d7e12419938c77a41b83223a4b0946ad529b7a1'
+          assert receipt['full_public_suite'] is True
+          assert receipt['clean_wheel_install'] is True
+          assert receipt['clean_wheel_contract_c_byte_identity'] is True
+          assert receipt['independent_contract_c_validation'] is True
+          assert receipt['pypi_published'] is False
+
+          fixture = root / 'build/cal-v0.5.0-release/contract-c-1.0.0.json'
+          assert hashlib.sha256(fixture.read_bytes()).hexdigest() == (
+              '7a66583e332be4901d13ba9f2d7e12419938c77a41b83223a4b0946ad529b7a1'
+          )
+          PY
+
+  recover-publication:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify-recovery-input
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Checkout recovery tree with tags
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Re-verify immutable release identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --force origin "refs/tags/$CAL_TAG:refs/tags/$CAL_TAG"
+          target="$(git rev-list -n 1 "$CAL_TAG")"
+          test "$target" = "$LOCKED_RELEASE_COMMIT" || {
+            echo "Refusing recovery: $CAL_TAG moved from locked release commit" >&2
+            exit 1
+          }
+
+      - name: Download exact successful release-lock artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf recovery-evidence
+          gh run download "$LOCK_RUN_ID" \
+            --repo "$GITHUB_REPOSITORY" \
+            --name "$LOCK_ARTIFACT_NAME" \
+            --dir recovery-evidence
+
+      - name: Verify receipt and package hashes again before upload
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd recovery-evidence/dist && \
+            sha256sum -c ../build/cal-v0.5.0-release/SHA256SUMS)
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(
+              Path('recovery-evidence/build/cal-v0.5.0-release/release-lock-receipt.json').read_text(encoding='utf-8')
+          )
+          assert receipt['status'] == 'PASS'
+          assert receipt['release_commit'] == '5533bbcf27a3ee3a7d901f7dfc44c241bc558e2c'
+          assert receipt['tag'] == 'v0.5.0'
+          assert receipt['pypi_published'] is False
+          PY
+
+      - name: Upload the four intended GitHub Release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release view "$CAL_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null
+          gh release upload "$CAL_TAG" \
+            recovery-evidence/dist/claim_audit_lab-0.5.0-py3-none-any.whl \
+            recovery-evidence/dist/claim_audit_lab-0.5.0.tar.gz \
+            recovery-evidence/build/cal-v0.5.0-release/SHA256SUMS \
+            recovery-evidence/build/cal-v0.5.0-release/release-lock-receipt.json \
+            --repo "$GITHUB_REPOSITORY" \
+            --clobber
+
+      - name: Verify published asset names and GitHub-side digests
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/$CAL_TAG" > release.json
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          release = json.loads(Path('release.json').read_text(encoding='utf-8'))
+          assert release['tag_name'] == 'v0.5.0'
+
+          files = {
+              'claim_audit_lab-0.5.0-py3-none-any.whl': Path('recovery-evidence/dist/claim_audit_lab-0.5.0-py3-none-any.whl'),
+              'claim_audit_lab-0.5.0.tar.gz': Path('recovery-evidence/dist/claim_audit_lab-0.5.0.tar.gz'),
+              'SHA256SUMS': Path('recovery-evidence/build/cal-v0.5.0-release/SHA256SUMS'),
+              'release-lock-receipt.json': Path('recovery-evidence/build/cal-v0.5.0-release/release-lock-receipt.json'),
+          }
+          expected = {
+              name: 'sha256:' + hashlib.sha256(path.read_bytes()).hexdigest()
+              for name, path in files.items()
+          }
+          observed = {asset['name']: asset.get('digest') for asset in release['assets']}
+          assert set(observed) == set(expected), (observed, expected)
+          assert observed == expected, (observed, expected)
+          print(json.dumps({'status': 'PASS', 'tag': 'v0.5.0', 'release_commit': '5533bbcf27a3ee3a7d901f7dfc44c241bc558e2c', 'assets': observed}, indent=2, sort_keys=True))
+          PY
