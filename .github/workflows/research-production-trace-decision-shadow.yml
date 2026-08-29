@@ -1,0 +1,87 @@
+name: Research - Production trace decision shadow
+
+on:
+  push:
+    branches:
+      - research-infra/production-trace-decision-shadow-20260829
+  pull_request:
+    paths:
+      - "research/production_trace_decision_shadow/**"
+      - ".github/workflows/research-production-trace-decision-shadow.yml"
+      - "src/claim_audit_lab/**"
+      - "scripts/decision_model_replay.py"
+      - "scripts/evidence_state_eligibility_shadow.py"
+      - "scripts/evidence_state_operator_shadow.py"
+      - "tests/v1/test_pipeline_e2e.py"
+      - "pyproject.toml"
+
+permissions:
+  contents: read
+
+jobs:
+  protected-surface-and-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify production and frozen adapter surfaces unchanged from preregistered base
+        run: |
+          git diff --exit-code 53f0885b111676794d1bd20e10b91aa58b07e9d4...HEAD -- \
+            src \
+            scripts/decision_model_replay.py \
+            scripts/evidence_state_eligibility_shadow.py \
+            scripts/evidence_state_operator_shadow.py \
+            tests/v1/test_pipeline_e2e.py \
+            pyproject.toml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Run preregistered metamorphic controls
+        run: uv run python -m pytest -q research/production_trace_decision_shadow/test_metamorphic_controls.py
+      - name: Run existing decision-model and shadow adapter tests
+        run: |
+          uv run python -m pytest -q \
+            tests/v1/test_decision_model.py \
+            tests/v1/test_evidence_state.py \
+            tests/v1/test_evidence_state_eligibility_shadow.py \
+            tests/v1/test_evidence_state_operator_shadow.py \
+            tests/v1/test_semantic_operators.py
+      - run: uv run python -m ruff check research/production_trace_decision_shadow
+      - run: uv run python -m ruff format --check research/production_trace_decision_shadow
+
+  real-production-shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Execute exact current production runner on frozen diagnostic texts and replay explicit decision model
+        run: |
+          mkdir -p artifacts/production-trace-decision-shadow
+          uv run python research/production_trace_decision_shadow/run_shadow_experiment.py \
+            --output-dir artifacts/production-trace-decision-shadow \
+            | tee artifacts/production-trace-decision-shadow/summary.json
+      - name: Print immutable result receipt
+        if: always()
+        run: |
+          if test -f artifacts/production-trace-decision-shadow/RESULTS.sha256; then
+            cat artifacts/production-trace-decision-shadow/RESULTS.sha256
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-production-trace-decision-shadow-${{ github.sha }}
+          path: artifacts/production-trace-decision-shadow/
+          if-no-files-found: warn
+          retention-days: 30
