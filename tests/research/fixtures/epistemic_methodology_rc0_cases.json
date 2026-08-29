@@ -1,0 +1,244 @@
+{
+  "apparatus": "cal-epistemic-methodology-rc0-phase1",
+  "baseline": "5533bbcf27a3ee3a7d901f7dfc44c241bc558e2c",
+  "purpose": "Behavioral fixtures for epistemic-state discrimination. These are not semantic gold labels and do not prescribe a production schema or architecture.",
+  "cases": [
+    {
+      "id": "F01_no_evidence",
+      "facts": {
+        "evidence_ids": ["p-low"],
+        "admitted_ids": [],
+        "measurement_token": null,
+        "strong_signal": "unknown",
+        "source_facts": {},
+        "required_assessments": {},
+        "execution": "completed",
+        "expected_terminal_class": "not_checkable"
+      },
+      "required_observations": ["distinguish_no_evidence_from_read_silent"]
+    },
+    {
+      "id": "F02_read_silent",
+      "facts": {
+        "evidence_ids": ["p-neutral"],
+        "admitted_ids": ["p-neutral"],
+        "measurement_token": "m:neutral:0.30",
+        "strong_signal": "no",
+        "source_facts": {},
+        "required_assessments": {},
+        "execution": "completed",
+        "expected_terminal_class": "not_checkable"
+      },
+      "required_observations": ["distinguish_no_evidence_from_read_silent"]
+    },
+    {
+      "id": "F03_out_of_scope_after_measurement",
+      "facts": {
+        "evidence_ids": ["p-opinion"],
+        "admitted_ids": ["p-opinion"],
+        "measurement_token": "m:neutral:0.30",
+        "strong_signal": "no",
+        "source_facts": {},
+        "required_assessments": {"checkability": "adverse"},
+        "execution": "completed",
+        "expected_terminal_class": "not_checkable"
+      },
+      "required_observations": ["scope_state_distinct_from_execution_failure"]
+    },
+    {
+      "id": "F04_signal_excluded_by_policy",
+      "facts": {
+        "evidence_ids": ["p-bg"],
+        "admitted_ids": ["p-bg"],
+        "measurement_token": "m:contradict:0.99",
+        "strong_signal": "yes",
+        "source_facts": {"p-bg": {"trust_level": "background"}},
+        "required_assessments": {"eligibility": "not_performed"},
+        "named_policy": "P1-source-class-adverse-suppression",
+        "execution": "completed",
+        "expected_terminal_class": "not_checkable"
+      },
+      "required_observations": ["retain_excluded_evidence", "separate_measurement_from_decision_permission"]
+    },
+    {
+      "id": "F05_louder_excluded_signal_plus_deciding_signal",
+      "facts": {
+        "evidence_ids": ["p-bg", "p-primary"],
+        "admitted_ids": ["p-bg", "p-primary"],
+        "measurement_token": "m:{p-bg:contradict:0.99,p-primary:entail:0.95}",
+        "strong_signal": "yes",
+        "source_facts": {
+          "p-bg": {"trust_level": "background"},
+          "p-primary": {"trust_level": "primary"}
+        },
+        "required_assessments": {"eligibility": "not_performed"},
+        "named_policy": "P1-source-class-adverse-suppression",
+        "execution": "completed",
+        "expected_terminal_class": "supported"
+      },
+      "required_observations": ["retain_excluded_evidence", "identify_deciding_vs_residual_evidence"]
+    },
+    {
+      "id": "F06a_nomination_support",
+      "pair": "nomination-role-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:entail:0.91",
+        "upstream_nomination": "support",
+        "execution": "completed",
+        "expected_terminal_class": "supported"
+      }
+    },
+    {
+      "id": "F06b_nomination_counter",
+      "pair": "nomination-role-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:entail:0.91",
+        "upstream_nomination": "counterevidence",
+        "execution": "completed",
+        "expected_terminal_class": "supported"
+      }
+    },
+    {
+      "id": "F07a_trust_primary",
+      "pair": "trust-metadata-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:contradict:0.92",
+        "source_facts": {"p-fixed": {"trust_level": "primary"}},
+        "required_assessments": {"eligibility": "not_performed"},
+        "execution": "completed"
+      }
+    },
+    {
+      "id": "F07b_trust_background",
+      "pair": "trust-metadata-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:contradict:0.92",
+        "source_facts": {"p-fixed": {"trust_level": "background"}},
+        "required_assessments": {"eligibility": "not_performed"},
+        "execution": "completed"
+      }
+    },
+    {
+      "id": "F08a_eligibility_unknown",
+      "pair": "eligibility-state-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:entail:0.91",
+        "required_assessments": {"eligibility": "performed_unknown"},
+        "execution": "completed"
+      }
+    },
+    {
+      "id": "F08b_eligibility_adverse",
+      "pair": "eligibility-state-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:entail:0.91",
+        "required_assessments": {"eligibility": "performed_adverse"},
+        "execution": "completed"
+      }
+    },
+    {
+      "id": "F08c_eligibility_not_performed",
+      "pair": "eligibility-state-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:entail:0.91",
+        "required_assessments": {"eligibility": "not_performed"},
+        "execution": "completed"
+      }
+    },
+    {
+      "id": "F08d_eligibility_not_applicable",
+      "pair": "eligibility-state-mutation",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:entail:0.91",
+        "required_assessments": {"eligibility": "not_applicable"},
+        "execution": "completed"
+      }
+    },
+    {
+      "id": "F09_execution_failed",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": [],
+        "measurement_token": null,
+        "required_assessments": {},
+        "execution": "failed",
+        "expected_terminal_class": null
+      },
+      "required_observations": ["execution_failure_not_epistemic_abstention"]
+    },
+    {
+      "id": "F10_distributed_partial_evidence",
+      "facts": {
+        "evidence_ids": ["p-a", "p-b"],
+        "admitted_ids": ["p-a", "p-b"],
+        "measurement_token": "m:{p-a:partial-A,p-b:partial-B}",
+        "strong_signal": "unknown",
+        "aggregation_status": "unresolved",
+        "execution": "completed"
+      },
+      "required_observations": ["retain_partial_contributions_without_inventing_aggregation"]
+    },
+    {
+      "id": "F11_independent_sufficient_alternatives",
+      "facts": {
+        "evidence_ids": ["p-a", "p-b"],
+        "admitted_ids": ["p-a", "p-b"],
+        "measurement_token": "m:{p-a:entail,p-b:entail}",
+        "removal_effect": {"p-a": "terminal_unchanged", "p-b": "terminal_unchanged", "both": "terminal_changes"},
+        "execution": "completed",
+        "expected_terminal_class": "supported"
+      },
+      "required_observations": ["preserve_causal_multiplicity"]
+    },
+    {
+      "id": "F12_jointly_sufficient",
+      "facts": {
+        "evidence_ids": ["p-a", "p-b"],
+        "admitted_ids": ["p-a", "p-b"],
+        "measurement_token": "m:joint:{p-a,p-b}",
+        "removal_effect": {"p-a": "terminal_changes", "p-b": "terminal_changes", "both": "terminal_changes"},
+        "execution": "completed",
+        "expected_terminal_class": "supported"
+      },
+      "required_observations": ["preserve_joint_causation"]
+    },
+    {
+      "id": "F13a_policy_counterfactual_P0",
+      "pair": "policy-counterfactual",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:contradict:0.92",
+        "policy_id": "P0",
+        "execution": "completed"
+      }
+    },
+    {
+      "id": "F13b_policy_counterfactual_P1",
+      "pair": "policy-counterfactual",
+      "facts": {
+        "evidence_ids": ["p-fixed"],
+        "admitted_ids": ["p-fixed"],
+        "measurement_token": "m:contradict:0.92",
+        "policy_id": "P1",
+        "execution": "completed"
+      }
+    }
+  ]
+}
