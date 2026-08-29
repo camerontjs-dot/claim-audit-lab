@@ -1,0 +1,342 @@
+name: CAL 0.5.0 release lock
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'pyproject.toml'
+      - 'src/claim_audit_lab/__init__.py'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'releases/0.5.0.md'
+      - '.github/workflows/cal-v0.5.0-release.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'pyproject.toml'
+      - 'src/claim_audit_lab/__init__.py'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'releases/0.5.0.md'
+      - '.github/workflows/cal-v0.5.0-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CAL_PROMOTION_MAIN: a069707e5031cef5b82af02d08b0f1a47ea8752e
+  CAL_VERSION: 0.5.0
+  CAL_TAG: v0.5.0
+  CONTRACT_C_TAG: contract-c-v1.0.0
+  CONTRACT_C_RELEASE_COMMIT: 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+  CONTRACT_C_FIXTURE_SHA256: 7a66583e332be4901d13ba9f2d7e12419938c77a41b83223a4b0946ad529b7a1
+  HANDOFF_COMMIT: 213ed9e912b922bd5c57ef58009eb6b0d7fff398
+
+jobs:
+  release-lock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout CAL release tree
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout immutable Contract C release
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: ${{ env.CONTRACT_C_TAG }}
+          path: _external/contract-c
+
+      - name: Checkout exact frozen Contract B handoff
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: ${{ env.HANDOFF_COMMIT }}
+          path: _external/handoff
+
+      - name: Verify release-only mutation surface and immutable Contract C identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _external/contract-c rev-parse HEAD)" = "$CONTRACT_C_RELEASE_COMMIT"
+          test "$(git -C _external/handoff rev-parse HEAD)" = "$HANDOFF_COMMIT"
+
+          git diff --exit-code "$CAL_PROMOTION_MAIN" -- \
+            src/claim_audit_lab/contracts/contract_c.py \
+            tests/test_contract_c_exporter.py \
+            src/claim_audit_lab/rules.py \
+            src/claim_audit_lab/policy.py \
+            src/claim_audit_lab/auditor.py \
+            src/claim_audit_lab/models.py \
+            src/claim_audit_lab/contracts/adapter.py \
+            src/claim_audit_lab/contracts/bundle_loader.py
+
+          unexpected="$({ git diff --name-only "$CAL_PROMOTION_MAIN"...HEAD || true; } | \
+            grep -Ev '^(pyproject\.toml|src/claim_audit_lab/__init__\.py|README\.md|CHANGELOG\.md|releases/0\.5\.0\.md|\.github/workflows/cal-v0\.5\.0-release\.yml)$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected CAL 0.5.0 release-tree mutation:" >&2
+            echo "$unexpected" >&2
+            exit 1
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Verify version metadata and public release statements
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import re
+          import tomllib
+          from pathlib import Path
+
+          project = tomllib.loads(Path('pyproject.toml').read_text(encoding='utf-8'))
+          assert project['project']['version'] == '0.5.0'
+
+          init = Path('src/claim_audit_lab/__init__.py').read_text(encoding='utf-8')
+          assert '__version__ = "0.5.0"' in init
+
+          readme = Path('README.md').read_text(encoding='utf-8')
+          assert '| Distribution | `0.5.0`;' in readme
+          assert '| Release tag | `v0.5.0`.' in readme
+          assert 'Install the released `0.5.0` source' in readme
+
+          changelog = Path('CHANGELOG.md').read_text(encoding='utf-8')
+          assert changelog.startswith('# Changelog\n\n## 0.5.0 — 2026-08-29\n')
+          assert Path('releases/0.5.0.md').exists()
+
+          forbidden = re.compile(r'__version__\s*=\s*["\u0027](?!0\.5\.0["\u0027])')
+          assert not forbidden.search(init)
+          PY
+
+      - name: Install full CAL release-test environment
+        run: uv sync --all-extras
+
+      - name: Provision v1 language model
+        run: uv run python -m spacy download en_core_web_sm
+
+      - name: Run full CAL public acceptance suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python -m pytest -q
+          uv run python -m ruff check src tests
+          uv run python -m ruff format --check src
+          uv run python -m mypy
+
+      - name: Build wheel and source distribution
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist
+          uv build
+          test "$(find dist -maxdepth 1 -type f -name '*.whl' | wc -l)" -eq 1
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 1
+
+      - name: Clean-install built wheel and verify distribution identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/cal-release-smoke
+          python -m venv /tmp/cal-release-smoke
+          /tmp/cal-release-smoke/bin/python -m pip install --upgrade pip
+          /tmp/cal-release-smoke/bin/python -m pip install dist/*.whl
+          cd /tmp
+          /tmp/cal-release-smoke/bin/python - <<'PY'
+          import importlib.metadata
+          import claim_audit_lab
+          from claim_audit_lab.contracts.contract_c import export_contract_c_bytes
+
+          assert importlib.metadata.version('claim-audit-lab') == '0.5.0'
+          assert claim_audit_lab.__version__ == '0.5.0'
+          assert callable(export_contract_c_bytes)
+          PY
+          /tmp/cal-release-smoke/bin/claim-audit --help >/dev/null
+
+      - name: Reconstruct frozen Contract B input
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/contract-b /tmp/cal-deviations
+          REPO="$GITHUB_WORKSPACE" /tmp/cal-release-smoke/bin/python - <<'PY'
+          import base64
+          import io
+          import json
+          import os
+          import pathlib
+          import zipfile
+
+          root = pathlib.Path(os.environ['REPO']) / '_external/handoff/handoffs/contract-c/rc2-consumer-b'
+          manifest = json.loads((root / 'MANIFEST.json').read_text(encoding='utf-8'))
+          parts = sorted(manifest['contract_b_input']['base64_parts'])
+          encoded = ''.join((root / part).read_text(encoding='utf-8').rstrip('\n') for part in parts)
+          raw = base64.b64decode(encoded, validate=True)
+          out = pathlib.Path('/tmp/contract-b')
+          out.mkdir(parents=True, exist_ok=True)
+          with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+              archive.extractall(out)
+          PY
+
+      - name: Prove clean-wheel CAL exporter byte identity to immutable Contract C release
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          REPO="$GITHUB_WORKSPACE" /tmp/cal-release-smoke/bin/python - <<'PY'
+          import hashlib
+          import os
+          import pathlib
+
+          from claim_audit_lab.auditor import audit_claims
+          from claim_audit_lab.contracts.adapter import adapt_bundle_to_pipeline, build_claim_evidence_scopes
+          from claim_audit_lab.contracts.bundle_loader import load_bundle
+          from claim_audit_lab.contracts.contract_c import export_contract_c_bytes
+
+          repo = pathlib.Path(os.environ['REPO'])
+          bundle_dir = next(pathlib.Path('/tmp/contract-b').glob('contract-b-*'))
+          contents = load_bundle(bundle_dir, deviations_dir=pathlib.Path('/tmp/cal-deviations'))
+          claims, evidence_bundle, audit_config = adapt_bundle_to_pipeline(contents)
+          assessments = audit_claims(
+              claims,
+              evidence_bundle,
+              audit_config,
+              evidence_scopes=build_claim_evidence_scopes(contents),
+          )
+          first = export_contract_c_bytes(
+              contents=contents,
+              assessments=assessments,
+              evidence_bundle=evidence_bundle,
+              audit_config=audit_config,
+          )
+          second = export_contract_c_bytes(
+              contents=contents,
+              assessments=assessments,
+              evidence_bundle=evidence_bundle,
+              audit_config=audit_config,
+          )
+          assert first == second
+          frozen = (repo / '_external/contract-c/fixtures/contract-c/1.0.0/valid-canonical.json').read_bytes()
+          assert first == frozen
+          assert hashlib.sha256(first).hexdigest() == (
+              '7a66583e332be4901d13ba9f2d7e12419938c77a41b83223a4b0946ad529b7a1'
+          )
+          out = repo / 'build/cal-v0.5.0-release'
+          out.mkdir(parents=True, exist_ok=True)
+          (out / 'contract-c-1.0.0.json').write_bytes(first)
+          PY
+
+      - name: Validate clean-wheel output with independent Apparatus validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd /tmp
+          REPO="$GITHUB_WORKSPACE"
+          PYTHONPATH="$REPO/_external/contract-c" \
+            /tmp/cal-release-smoke/bin/python -m validators.contract_c \
+              "$REPO/build/cal-v0.5.0-release/contract-c-1.0.0.json" \
+              --expected-sha256 "$CONTRACT_C_FIXTURE_SHA256" \
+              --contract-b-index "$REPO/_external/contract-c/fixtures/contract-c/1.0.0/contract-b-index.json"
+
+      - name: Write package digests and exact release-lock receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/cal-v0.5.0-release
+          (cd dist && sha256sum *.whl *.tar.gz > SHA256SUMS)
+          cp dist/SHA256SUMS build/cal-v0.5.0-release/SHA256SUMS
+          cat > build/cal-v0.5.0-release/release-lock-receipt.json <<JSON
+          {
+            "status": "PASS",
+            "cal_version": "0.5.0",
+            "release_commit": "${GITHUB_SHA}",
+            "tag": "${CAL_TAG}",
+            "promotion_main": "${CAL_PROMOTION_MAIN}",
+            "contract_c_tag": "${CONTRACT_C_TAG}",
+            "contract_c_release_commit": "${CONTRACT_C_RELEASE_COMMIT}",
+            "contract_c_fixture_sha256": "${CONTRACT_C_FIXTURE_SHA256}",
+            "handoff_commit": "${HANDOFF_COMMIT}",
+            "full_public_suite": true,
+            "clean_wheel_install": true,
+            "clean_wheel_contract_c_byte_identity": true,
+            "independent_contract_c_validation": true,
+            "pypi_published": false
+          }
+          JSON
+          cat build/cal-v0.5.0-release/release-lock-receipt.json
+
+      - name: Upload CAL 0.5.0 release evidence and distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-v0.5.0-release
+          path: |
+            dist/*.whl
+            dist/*.tar.gz
+            build/cal-v0.5.0-release/SHA256SUMS
+            build/cal-v0.5.0-release/release-lock-receipt.json
+            build/cal-v0.5.0-release/contract-c-1.0.0.json
+          if-no-files-found: error
+          retention-days: 90
+
+  publish:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: release-lock
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout exact locked CAL release commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download release evidence
+        uses: actions/download-artifact@v4
+        with:
+          name: cal-v0.5.0-release
+          path: release-evidence
+
+      - name: Create or verify immutable CAL tag
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          if git ls-remote --exit-code --tags origin "refs/tags/$CAL_TAG" >/dev/null 2>&1; then
+            git fetch --force origin "refs/tags/$CAL_TAG:refs/tags/$CAL_TAG"
+            target="$(git rev-list -n 1 "$CAL_TAG")"
+            test "$target" = "$GITHUB_SHA" || {
+              echo "Existing immutable CAL tag points to $target, not $GITHUB_SHA" >&2
+              exit 1
+            }
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git tag -a "$CAL_TAG" "$GITHUB_SHA" -m 'Claim Audit Lab 0.5.0'
+            git push origin "refs/tags/$CAL_TAG"
+          fi
+
+      - name: Create or verify CAL GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$CAL_TAG" >/dev/null 2>&1; then
+            echo "GitHub Release already exists for $CAL_TAG"
+          else
+            gh release create "$CAL_TAG" \
+              --verify-tag \
+              --title 'Claim Audit Lab 0.5.0' \
+              --notes-file releases/0.5.0.md
+          fi
+          gh release upload "$CAL_TAG" \
+            release-evidence/*.whl \
+            release-evidence/*.tar.gz \
+            release-evidence/SHA256SUMS \
+            release-evidence/release-lock-receipt.json \
+            --clobber
