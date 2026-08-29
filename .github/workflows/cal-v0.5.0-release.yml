@@ -9,6 +9,7 @@ on:
       - 'README.md'
       - 'CHANGELOG.md'
       - 'releases/0.5.0.md'
+      - 'tests/v1/fixtures/traces/**'
       - '.github/workflows/cal-v0.5.0-release.yml'
   push:
     branches: [main]
@@ -18,6 +19,7 @@ on:
       - 'README.md'
       - 'CHANGELOG.md'
       - 'releases/0.5.0.md'
+      - 'tests/v1/fixtures/traces/**'
       - '.github/workflows/cal-v0.5.0-release.yml'
   workflow_dispatch:
 
@@ -74,12 +76,53 @@ jobs:
             src/claim_audit_lab/contracts/bundle_loader.py
 
           unexpected="$({ git diff --name-only "$CAL_PROMOTION_MAIN"...HEAD || true; } | \
-            grep -Ev '^(pyproject\.toml|src/claim_audit_lab/__init__\.py|README\.md|CHANGELOG\.md|releases/0\.5\.0\.md|\.github/workflows/cal-v0\.5\.0-release\.yml)$' || true)"
+            grep -Ev '^(pyproject\.toml|src/claim_audit_lab/__init__\.py|README\.md|CHANGELOG\.md|releases/0\.5\.0\.md|tests/v1/fixtures/traces/.+\.json|\.github/workflows/cal-v0\.5\.0-release\.yml)$' || true)"
           if [ -n "$unexpected" ]; then
             echo "Unexpected CAL 0.5.0 release-tree mutation:" >&2
             echo "$unexpected" >&2
             exit 1
           fi
+
+          trace_changes="$(git diff --name-only "$CAL_PROMOTION_MAIN"...HEAD -- tests/v1/fixtures/traces | wc -l | tr -d ' ')"
+          test "$trace_changes" = "30" || {
+            echo "Expected exactly 30 release-version trace golden updates, found $trace_changes" >&2
+            exit 1
+          }
+          forbidden_trace_shape="$(git diff --name-only --diff-filter=ADR "$CAL_PROMOTION_MAIN"...HEAD -- tests/v1/fixtures/traces || true)"
+          test -z "$forbidden_trace_shape" || {
+            echo "Trace goldens must be modified in place only; found added/deleted/renamed files:" >&2
+            echo "$forbidden_trace_shape" >&2
+            exit 1
+          }
+
+          python - <<'PY'
+          import re
+          import subprocess
+
+          base = 'a069707e5031cef5b82af02d08b0f1a47ea8752e'
+          diff = subprocess.check_output(
+              ['git', 'diff', '--unified=0', f'{base}...HEAD', '--', 'tests/v1/fixtures/traces'],
+              text=True,
+          )
+          changed_lines = [
+              line for line in diff.splitlines()
+              if (line.startswith('+') or line.startswith('-'))
+              and not line.startswith('+++')
+              and not line.startswith('---')
+          ]
+          old_pat = re.compile(r'^-\s*"library_version": "0\.4\.0",?$')
+          new_pat = re.compile(r'^\+\s*"library_version": "0\.5\.0",?$')
+          old_lines = [line for line in changed_lines if old_pat.match(line)]
+          new_lines = [line for line in changed_lines if new_pat.match(line)]
+          unexpected = [
+              line for line in changed_lines
+              if not old_pat.match(line) and not new_pat.match(line)
+          ]
+          assert len(old_lines) == 30, len(old_lines)
+          assert len(new_lines) == 30, len(new_lines)
+          assert not unexpected, unexpected[:10]
+          print('Golden diff proof: exactly 30 library_version 0.4.0 -> 0.5.0 substitutions and no other trace bytes changed.')
+          PY
 
       - uses: actions/setup-python@v5
         with:
