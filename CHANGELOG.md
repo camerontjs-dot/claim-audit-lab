@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.5.0 — 2026-08-29
+
+CAL 0.5.0 adds the public deterministic Apparatus Contract C 1.0.0 exporter. It is a strict pre-1.0 **MINOR** release because the exporter is a new public capability; existing CAL verdict semantics, the frozen policy, the ordinary v1 engine, and the selectable v0.2 path are unchanged by this promotion.
+
+### Added
+
+- Public `claim_audit_lab.contracts.contract_c` exporter for immutable Apparatus Contract C `1.0.0`.
+- Exact Contract-B version/bundle/hash binding, CAL semantic implementation/policy identity, proposition/evidence references, retained residual/non-deciding contribution state, aggregate measurement basis, explicit stage/execution state, terminal basis, and supported causal multiplicity.
+- Deterministic canonical Contract-C bytes and content-derived result-set identity.
+- Fail-closed export on unresolved Contract-B references, policy drift, unsupported rule families, and unpromoted multiplicity shapes.
+
+### Compatibility and assurance
+
+- Conformed to immutable Apparatus tag `contract-c-v1.0.0`, exact release commit `5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1`.
+- Contract C canonical fixture SHA-256: `7a66583e332be4901d13ba9f2d7e12419938c77a41b83223a4b0946ad529b7a1`.
+- CAL exporter promotion evidence PR #24; exact tested candidate `095d0fc0d4a8746a1b5296d9414ba9e6e173dc96`; production exporter merge `a069707e5031cef5b82af02d08b0f1a47ea8752e`.
+- Decision Engine clean-consumer release-conformance evidence head `a488c1b8058b5cda8766e670eb2b18d65e4e504e`.
+- CAL 0.5.0 does not claim correctness of CAL semantic judgments, universal Contract-C interoperability, source/corpus completeness, Decision Engine production behavior, operational authorization, or arbitrary future producer compatibility.
+
 ## 0.4.0 — 2026-08-21
 
 First public release of the v1 retrieve→entail engine. Track A packaging: the ordinary CLI
