@@ -68,8 +68,9 @@ jobs:
       - run: uv run python -m spacy download en_core_web_sm
       - name: Execute exact current production runner on frozen diagnostic texts and replay explicit decision model
         run: |
+          set -o pipefail
           mkdir -p artifacts/production-trace-decision-shadow
-          uv run python research/production_trace_decision_shadow/run_shadow_experiment.py \
+          uv run python -m research.production_trace_decision_shadow.run_shadow_experiment \
             --output-dir artifacts/production-trace-decision-shadow \
             | tee artifacts/production-trace-decision-shadow/summary.json
       - name: Print immutable result receipt
