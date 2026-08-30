@@ -41,8 +41,11 @@ jobs:
           PYTHONPATH=. uv run python -m research.nli_independent_calibration_rc2.build_cohort             --output artifacts/independent-nli-calibration-rc2/COHORT.json
           test "$(sha256sum artifacts/independent-nli-calibration-rc2/COHORT.json | cut -d' ' -f1)" =             "c5f64d6ad73d198aef575b5274280363bb71fc99aac78197e3abf13b13599f2d"
 
-      - name: Lint new RC2 apparatus
-        run: uv run python -m ruff check research/nli_independent_calibration_rc2
+      - name: Lint post-freeze RC2 apparatus
+        run: |
+          uv run python -m ruff check \
+            research/nli_independent_calibration_rc2/run_calibration.py \
+            research/nli_independent_calibration_rc2/test_calibration.py
 
       - name: Run cohort and calibration apparatus tests
         run: |
