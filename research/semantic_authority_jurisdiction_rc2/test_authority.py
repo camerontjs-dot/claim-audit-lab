@@ -161,3 +161,30 @@ def test_boundary_receipt_cannot_be_used_as_numeric_authority():
         operation="semantic.validate_numeric",
         target_id="c",
     )
+
+
+def test_cal_native_assessment_descriptor_binds_identity_not_semantics():
+    from pathlib import Path
+    from research.semantic_authority_jurisdiction_rc2.native_descriptor import (
+        from_contract_b_fixture,
+    )
+
+    root = Path(__file__).resolve().parents[2]
+    d = from_contract_b_fixture(root)
+    assert d.actor == "claim-audit-lab"
+    assert d.operation == "assessment.issue"
+    assert d.authority_domain == "assessment_mandate"
+    assert d.target_id.endswith("::clm-001")
+    assert d.current_hash.startswith("sha256:")
+
+
+def test_assessment_mandate_is_not_semantic_support_authority():
+    from pathlib import Path
+    from research.semantic_authority_jurisdiction_rc2.native_descriptor import (
+        from_contract_b_fixture,
+    )
+
+    root = Path(__file__).resolve().parents[2]
+    d = from_contract_b_fixture(root)
+    assert d.authority_domain != "numeric_relation"
+    assert "support" not in d.authority_domain
