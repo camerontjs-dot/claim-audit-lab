@@ -15,7 +15,8 @@ from scripts.evidence_state_operator_shadow import OperatorJudgment, build_opera
 
 def _write(path: Path, value: object) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "
+", encoding="utf-8")
 
 
 def _firewall_judgments(operator_row: dict[str, Any]) -> list[OperatorJudgment]:
@@ -105,7 +106,9 @@ def run(predecessor_root: Path, output: Path) -> dict[str, Any]:
     result = {
         "schema_version": "cal-operator-applicability-monotonicity-rc1-v0.1",
         "authority": "non_authoritative_research",
-        "predecessor_results_sha256": (\n            "sha256:38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7"\n        ),
+        "predecessor_results_sha256": (
+            "sha256:38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7"
+        ),
         "new_model_execution": False,
         "threshold_tuning_performed": False,
         "production_behavior_changed": False,
@@ -116,7 +119,9 @@ def run(predecessor_root: Path, output: Path) -> dict[str, Any]:
                 and "non-entailment" in j["reason"]
                 for r in rows for j in r["a4_judgments"]
             ),
-            "guarded_outcome_counts": dict(\n                sorted(Counter(r["rc1_guarded_outcome"] for r in rows).items())\n            ),
+            "guarded_outcome_counts": dict(
+                sorted(Counter(r["rc1_guarded_outcome"] for r in rows).items())
+            ),
             "monotonicity_guards_fired": sum(r["guard_reason"] is not None for r in rows),
             "cg23b_strengthening_blocked": cg23b["rc1_guarded_outcome"] == "abstain",
             "support_to_adverse_created": sum(
@@ -145,7 +150,10 @@ def main() -> int:
     print(json.dumps(result["summary"], indent=2, sort_keys=True))
     if not result["summary"]["cg23b_strengthening_blocked"]:
         raise SystemExit("CG-23b strengthening falsifier failed")
-    if (\n        result["summary"]["support_to_adverse_created"]\n        or result["summary"]["adverse_to_support_created"]\n    ):
+    if (
+        result["summary"]["support_to_adverse_created"]
+        or result["summary"]["adverse_to_support_created"]
+    ):
         raise SystemExit("RC1 created a forbidden support/adverse polarity transition")
     return 0
 
