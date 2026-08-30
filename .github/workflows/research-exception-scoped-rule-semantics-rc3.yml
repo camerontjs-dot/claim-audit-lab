@@ -1,0 +1,102 @@
+name: Research - Exception scoped-rule semantics RC3 science
+
+on:
+  push:
+    branches:
+      - research-infra/exception-scoped-rule-semantics-rc3-20260830
+    paths:
+      - "research/exception_scoped_rule_semantics_rc3/run_experiment.py"
+      - "research/exception_scoped_rule_semantics_rc3/test_run_experiment.py"
+      - ".github/workflows/research-exception-scoped-rule-semantics-rc3.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require accepted freeze ancestry
+        run: git merge-base --is-ancestor b3e811e08c76d0149edf38fd8409536404c44be4 HEAD
+
+      - name: Require frozen RC3 science inputs unchanged
+        run: |
+          git diff --exit-code c2a0c6f10f932933cc385d87fe8b6da3e3a74a0d...HEAD -- \
+            research/exception_scoped_rule_semantics_rc3/PREREGISTRATION.md \
+            research/exception_scoped_rule_semantics_rc3/build_cohort.py \
+            research/exception_scoped_rule_semantics_rc3/COHORT_META.json \
+            research/exception_scoped_rule_semantics_rc3/MUTATION_PAIRS.json \
+            research/exception_scoped_rule_semantics_rc3/validate_cohort.py \
+            research/exception_scoped_rule_semantics_rc3/test_validate_cohort.py \
+            research/exception_scoped_rule_semantics_rc3/mechanisms.py \
+            research/exception_scoped_rule_semantics_rc3/test_mechanisms.py \
+            research/exception_scoped_rule_semantics_rc3/cohort_cases
+
+      - name: Require production and predecessor surfaces unchanged
+        run: |
+          git diff --exit-code b4ba3fd049812a480c7cb315d43d918ed463f3c3...HEAD -- \
+            src scripts \
+            research/nli_independent_calibration_rc2 \
+            research/nli_ensemble_disagreement_rc1 \
+            research/nli_measurement_discrimination_rc0 \
+            research/construction_cohort_a_shadow \
+            research/shadow_reconciliation_semantic_operator_rc
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Compile post-freeze evaluator
+        run: |
+          uv run python -m py_compile \
+            research/exception_scoped_rule_semantics_rc3/run_experiment.py \
+            research/exception_scoped_rule_semantics_rc3/test_run_experiment.py
+
+      - name: Run post-freeze evaluator tests
+        run: |
+          PYTHONPATH=. uv run python -m unittest -v \
+            research.exception_scoped_rule_semantics_rc3.test_run_experiment
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TOKENIZERS_PARALLELISM: "false"
+      HF_HUB_DISABLE_XET: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Execute frozen S0-S5 comparison
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/exception-scoped-rule-semantics-rc3
+          PYTHONPATH=. uv run python -m \
+            research.exception_scoped_rule_semantics_rc3.run_experiment \
+            --output-dir artifacts/exception-scoped-rule-semantics-rc3 \
+            | tee artifacts/exception-scoped-rule-semantics-rc3/stdout.json
+          sha256sum artifacts/exception-scoped-rule-semantics-rc3/MEASUREMENTS.json \
+            | tee artifacts/exception-scoped-rule-semantics-rc3/MEASUREMENTS.sha256
+          sha256sum artifacts/exception-scoped-rule-semantics-rc3/RESULTS.json \
+            | tee artifacts/exception-scoped-rule-semantics-rc3/RESULTS.sha256
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-exception-scoped-rule-semantics-rc3-science-${{ github.sha }}
+          path: artifacts/exception-scoped-rule-semantics-rc3/
+          if-no-files-found: warn
+          retention-days: 90
