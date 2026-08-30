@@ -1,0 +1,87 @@
+name: Research - Entity population membership RC4 science
+
+on:
+  push:
+    branches:
+      - research-infra/entity-population-membership-rc4-20260830
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  TOKENIZERS_PARALLELISM: "false"
+  HF_HUB_DISABLE_XET: "1"
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require accepted freeze ancestry
+        run: git merge-base --is-ancestor da9f99777119a010ae1889cc542bb3351bc3799c HEAD
+
+      - name: Require frozen RC4 scientific inputs unchanged
+        run: |
+          git diff --exit-code da3885350fdf9b88d74f72cb6ee34ddc6d46de71...HEAD -- \
+            research/entity_population_membership_rc4/PREREGISTRATION.md \
+            research/entity_population_membership_rc4/build_cohort.py \
+            research/entity_population_membership_rc4/mechanisms.py \
+            research/entity_population_membership_rc4/test_freeze.py
+
+      - name: Require production and predecessor surfaces unchanged
+        run: |
+          git diff --exit-code eb4e3043f5b16e3d65e5635b9d7013f312d5daf8...HEAD -- \
+            src scripts schema \
+            research/exception_scoped_rule_semantics_rc3 \
+            research/nli_independent_calibration_rc2 \
+            research/nli_ensemble_disagreement_rc1 \
+            research/nli_measurement_discrimination_rc0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Compile post-freeze evaluator
+        run: uv run python -m py_compile research/entity_population_membership_rc4/run_experiment.py
+
+      - name: Run post-freeze evaluator tests
+        working-directory: research/entity_population_membership_rc4
+        run: PYTHONPATH=../.. ../../.venv/bin/python -m unittest -v test_evaluator.py
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Execute frozen S0-S5 comparison
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/entity-population-membership-rc4
+          PYTHONPATH=. uv run python -m research.entity_population_membership_rc4.run_experiment \
+            --output-dir artifacts/entity-population-membership-rc4 \
+            | tee artifacts/entity-population-membership-rc4/stdout.json
+          sha256sum artifacts/entity-population-membership-rc4/MEASUREMENTS.json \
+            | tee artifacts/entity-population-membership-rc4/MEASUREMENTS.sha256
+          sha256sum artifacts/entity-population-membership-rc4/RESULTS.json \
+            | tee artifacts/entity-population-membership-rc4/RESULTS.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-entity-population-membership-rc4-science-${{ github.sha }}
+          path: artifacts/entity-population-membership-rc4/
+          if-no-files-found: error
+          retention-days: 90
