@@ -1,0 +1,97 @@
+{
+  "schema_version": "cal-nli-measurement-discrimination-rc0-receipt-v0.1",
+  "experiment_class": "Research Infrastructure / semantic-measurement discrimination",
+  "authority": "non_authoritative_research",
+  "terminal_disposition": "INCONCLUSIVE",
+  "production_main_sha": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+  "cohort_a_science_head_sha": "ba1310d73ab63adf7c83de2f1e130f7f00a665af",
+  "cohort_a_actions_run_id": 33286159031,
+  "cohort_a_results_sha256": "sha256:38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7",
+  "preregistration_commit": "c3208161e8a69c5a86adf1849161900e7383bb77",
+  "accepted_execution_head_sha": "8e4267e42e2be0615c20da79b74988e4f1747668",
+  "accepted_actions_run_id": 33286762938,
+  "accepted_artifact_id": 9724863795,
+  "accepted_artifact_zip_sha256": "sha256:4a1653aca619921eaa1393b7085a33a031342f969ae0284134a3d1c58cf60a36",
+  "inputs_sha256": "sha256:6c1780a05c5720d0f8c2d20b0109198939846a8f6ea6d47ef6c79afeaa73c5ab",
+  "results_sha256": "sha256:07eb1a99927226779e5071959c527f7a7d280afebe23855e1f1ae058cc425caf",
+  "primary_cases": 14,
+  "primary_target_counts": {
+    "entailment": 7,
+    "contradiction": 6,
+    "neutral": 1
+  },
+  "short_results": {
+    "incumbent_base": {
+      "correct": 11,
+      "n": 14,
+      "neutral_to_contradiction_false_adverse": 1
+    },
+    "same_family_large": {
+      "correct": 13,
+      "n": 14,
+      "neutral_to_contradiction_false_adverse": 1
+    },
+    "long_context_base": {
+      "correct": 12,
+      "n": 14,
+      "neutral_to_contradiction_false_adverse": 0
+    }
+  },
+  "stress_tail_results": {
+    "incumbent_base": {
+      "correct": 3,
+      "n": 14,
+      "truncated": 14,
+      "label_stability": 3
+    },
+    "same_family_large": {
+      "correct": 7,
+      "n": 14,
+      "truncated": 14,
+      "label_stability": 6
+    },
+    "long_context_base": {
+      "correct": 12,
+      "n": 14,
+      "truncated": 0,
+      "label_stability": 14
+    }
+  },
+  "same_family_large_short_improvements": [
+    "CG-19",
+    "CG-20"
+  ],
+  "same_family_large_short_regressions": [],
+  "long_only_stress_tail_recoveries": [
+    "CG-03",
+    "CG-04",
+    "CG-12a",
+    "CG-12b",
+    "CG-20",
+    "CG-24"
+  ],
+  "threshold_tuning_performed": false,
+  "production_behavior_changed": false,
+  "operator_owned_cases_used_for_ranking": false,
+  "production_model_replacement_authorized": false,
+  "preserved_deviations": [
+    {
+      "run_id": 33286692575,
+      "stage": "pre_science_lint",
+      "result": "stopped",
+      "repair": "formatting_only"
+    },
+    {
+      "run_id": 33286734751,
+      "stage": "pre_science_test_collection",
+      "result": "stopped",
+      "repair": "invocation_path_only"
+    },
+    {
+      "run_id": 33286764482,
+      "stage": "pr_synthetic_merge_guard",
+      "result": "failed",
+      "repair": "not_weakened"
+    }
+  ]
+}
