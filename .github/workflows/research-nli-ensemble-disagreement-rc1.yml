@@ -1,0 +1,53 @@
+name: Research - NLI ensemble disagreement RC1
+
+on:
+  push:
+    branches:
+      - research-infra/nli-ensemble-disagreement-rc1-20260829
+
+permissions:
+  contents: read
+
+jobs:
+  ensemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require preregistration ancestry
+        run: git merge-base --is-ancestor bcd110de783cafaf7fc705480746466940f13e3a HEAD
+
+      - name: Require frozen RC0 parent surfaces unchanged
+        run: |
+          git diff --exit-code b316d115c82fb635b0e089d43342b4b6e75c326e...HEAD --             src             scripts             research/nli_measurement_discrimination_rc0             research/construction_cohort_a_shadow             research/shadow_reconciliation_semantic_operator_rc
+
+      - name: Verify frozen measurement projection
+        run: |
+          test "$(sha256sum research/nli_ensemble_disagreement_rc1/FROZEN_MEASUREMENTS.json | cut -d' ' -f1)" = "a575966ca1089d43d7fdf162e01d15bfa2f06b8ab8afec95a826aa121dc132b7"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Lint RC1 apparatus
+        run: uv run python -m ruff check research/nli_ensemble_disagreement_rc1
+
+      - name: Run evaluator tests
+        run: PYTHONPATH=. uv run pytest -q research/nli_ensemble_disagreement_rc1/test_evaluate_ensemble.py
+
+      - name: Evaluate preregistered frozen ensemble rules
+        run: |
+          mkdir -p artifacts/nli-ensemble-disagreement-rc1
+          PYTHONPATH=. uv run python -m research.nli_ensemble_disagreement_rc1.evaluate_ensemble             --frozen research/nli_ensemble_disagreement_rc1/FROZEN_MEASUREMENTS.json             --output artifacts/nli-ensemble-disagreement-rc1/RESULTS.json             | tee artifacts/nli-ensemble-disagreement-rc1/stdout.json
+          sha256sum artifacts/nli-ensemble-disagreement-rc1/RESULTS.json             | tee artifacts/nli-ensemble-disagreement-rc1/RESULTS.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-nli-ensemble-disagreement-rc1-${{ github.sha }}
+          path: artifacts/nli-ensemble-disagreement-rc1/
+          if-no-files-found: error
+          retention-days: 30
