@@ -60,11 +60,11 @@ jobs:
           mkdir -p artifacts/exception-scoped-rule-semantics-rc3
           cd research/exception_scoped_rule_semantics_rc3
           python build_cohort.py \
-            --output ../../../artifacts/exception-scoped-rule-semantics-rc3/COHORT.json \
-            | tee ../../../artifacts/exception-scoped-rule-semantics-rc3/FREEZE.json
+            --output ../../artifacts/exception-scoped-rule-semantics-rc3/COHORT.json \
+            | tee ../../artifacts/exception-scoped-rule-semantics-rc3/FREEZE.json
           python validate_cohort.py \
-            | tee ../../../artifacts/exception-scoped-rule-semantics-rc3/VALIDATION.json
-          cd ../../..
+            | tee ../../artifacts/exception-scoped-rule-semantics-rc3/VALIDATION.json
+          cd ../..
           test "$(sha256sum artifacts/exception-scoped-rule-semantics-rc3/COHORT.json | cut -d' ' -f1)" = \
             "01b0d436ccf9ed812f9bb26d64f4ddd1a656e26175ee007f1fe9594a2a203785"
           sha256sum artifacts/exception-scoped-rule-semantics-rc3/COHORT.json \
