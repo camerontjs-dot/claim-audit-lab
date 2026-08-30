@@ -1,0 +1,65 @@
+{
+  "experiment": "Fresh Independent Text-to-Typed-Authority Reproduction v1",
+  "state": "READY_FOR_REVEAL",
+  "fresh_branch": "research-infra/text-to-typed-authority-fresh-reproduction-v1-20260830",
+  "draft_pr": {
+    "number": 52,
+    "url": "https://github.com/camerontjs-dot/claim-audit-lab/pull/52",
+    "base_branch": "research-infra/text-to-typed-authority-fresh-v1-aperture-20260830"
+  },
+  "aperture_head": "213c6af2b11cfc5d0673c715d2a2385bed0a9f44",
+  "implementation_freeze_commit": "19e6341216877c5a9bb73da5ddbc94529f6198bf",
+  "implementation_tree": "938a9ec6c6d9d0528c0f52a9759c91c04847befb",
+  "source_sha256": {
+    "research/text_to_typed_authority_fresh_v1/__init__.py": "f698b0e803615388fd846af92e6c1add7913c44e94a2da7e7b99aaa695aa2b5b",
+    "research/text_to_typed_authority_fresh_v1/extractor.py": "f7a4d0426985d33405bf813c84be3c3adc19712c995a82543604210b87922804",
+    "research/text_to_typed_authority_fresh_v1/test_contract_sentinels.py": "6fb54ab5c8eb0c37948209df9c00c428b0223a54737676a46190685457a7ae79",
+    "research/text_to_typed_authority_fresh_v1/IMPLEMENTATION_NOTES.md": "e51f09b8ed9f09e2cce1d8e74a4d4f873da6e84397b9fd01ca7a5ff67020b408",
+    ".github/workflows/research-freeze-text-to-typed-authority-fresh-v1.yml": "6f16ed6d3cf0f2c3afdeed8b1f6a314131a2d2792daf2ae4d1b80ff9f19ebb47"
+  },
+  "freeze_workflow": {
+    "name": "research-freeze-text-to-typed-authority-fresh-v1",
+    "run_id": 33339053497,
+    "job_id": 99331190738,
+    "event": "push",
+    "conclusion": "success",
+    "sentinel_tests_run": 12,
+    "sentinel_tests_result": "OK",
+    "artifact": {
+      "id": 9739941547,
+      "name": "text-to-typed-authority-fresh-v1-freeze-manifest",
+      "digest": "sha256:faf522f02865ec8643cb06d2aeb7167b4767771f01a4ee6c6428d0afd5fa8a0f",
+      "size_in_bytes": 592,
+      "expires_at": "2026-09-29T22:24:18Z"
+    }
+  },
+  "pre_freeze_repository_files_read": [
+    {
+      "path": "research/text_to_typed_authority_fresh_v1_aperture/BOOTSTRAP.md",
+      "commit": "213c6af2b11cfc5d0673c715d2a2385bed0a9f44",
+      "blob_sha": "a888c7511e0a152eedfbcfe0907fa65c4108b0c0"
+    },
+    {
+      "path": "research/text_to_typed_authority_fresh_v1_aperture/EXTRACTION_CONTRACT-v1.md",
+      "commit": "213c6af2b11cfc5d0673c715d2a2385bed0a9f44",
+      "blob_sha": "04cfa12dd18dd6540c571171d2f2883a3f090724"
+    },
+    {
+      "path": ".github/workflows/research-freeze-text-to-typed-authority-fresh-v1.yml",
+      "ref": "research-infra/text-to-typed-authority-fresh-reproduction-v1-20260830",
+      "status": "self-created file read back only to make the pre-freeze trigger adjustment"
+    }
+  ],
+  "pre_freeze_semantic_sources": [
+    "research/text_to_typed_authority_fresh_v1_aperture/BOOTSTRAP.md@213c6af2b11cfc5d0673c715d2a2385bed0a9f44",
+    "research/text_to_typed_authority_fresh_v1_aperture/EXTRACTION_CONTRACT-v1.md@213c6af2b11cfc5d0673c715d2a2385bed0a9f44"
+  ],
+  "denylisted_material_read": false,
+  "denylisted_material_statement": "No denylisted prior extraction work, prior PR narrative/comments, historical research branches, corpora, evaluator/reveal material, downstream RC5B consumer, repository-wide search, web search, or surrounding CAL Pipeline conversation/memory was read or used before freeze.",
+  "contamination_status": "CLEAN_PRE_FREEZE_APERTURE",
+  "accidental_exposure": null,
+  "operational_adjustments": [
+    "The initially committed pull_request-only freeze workflow did not produce a run after the Draft PR was opened. Before freeze, the self-created workflow was amended to add a push trigger and to bind checkout/manifest to github.sha. No extractor or sentinel-test content was changed by this adjustment. The successful freeze is the resulting push run at implementation freeze commit 19e6341216877c5a9bb73da5ddbc94529f6198bf."
+  ],
+  "post_freeze_immutability": "The extractor and contract sentinel tests are frozen at implementation_freeze_commit and must not be modified before or during reveal evaluation."
+}
