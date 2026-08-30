@@ -1,0 +1,42 @@
+name: Research - Freeze text-to-typed-authority extraction RC6
+
+on:
+  push:
+    branches:
+      - research-infra/text-to-typed-authority-extraction-rc6-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require pre-reveal source ancestry
+        run: git merge-base --is-ancestor 39419546adc2a0c3369c6d3cc84ef360968ced9b HEAD
+      - name: Require RC6 scientific source unchanged
+        run: git diff --exit-code 39419546adc2a0c3369c6d3cc84ef360968ced9b HEAD -- research/text_to_typed_authority_extraction_rc6/
+      - name: Require RC5B semantic authority unchanged
+        run: |
+          git diff --exit-code b50c4b94ed5700a7eb4025016c8ab600cbe0ab59 HEAD -- research/population_semantics_contract_rc5b/consumer.py research/population_semantics_contract_rc5/consumer.py
+          git diff --exit-code b50c4b94ed5700a7eb4025016c8ab600cbe0ab59 HEAD -- src/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile cohort apparatus only
+        run: python -m py_compile research/text_to_typed_authority_extraction_rc6/build_cohort.py research/text_to_typed_authority_extraction_rc6/validate_cohort.py
+      - name: Materialize frozen cohort without importing extractors
+        run: |
+          mkdir -p artifacts/text-to-typed-authority-extraction-rc6
+          python research/text_to_typed_authority_extraction_rc6/build_cohort.py --output artifacts/text-to-typed-authority-extraction-rc6/COHORT.json | tee artifacts/text-to-typed-authority-extraction-rc6/FREEZE.json
+          python research/text_to_typed_authority_extraction_rc6/validate_cohort.py artifacts/text-to-typed-authority-extraction-rc6/COHORT.json
+          test "$(sha256sum artifacts/text-to-typed-authority-extraction-rc6/COHORT.json | cut -d' ' -f1)" = "820b5a64cf4187998f2c4b416293c8fd0a577b564cab31be22dddd4ace822d23"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-text-to-typed-authority-extraction-rc6-freeze-${{ github.sha }}
+          path: artifacts/text-to-typed-authority-extraction-rc6/
+          if-no-files-found: error
+          retention-days: 90
