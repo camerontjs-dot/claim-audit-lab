@@ -1,0 +1,54 @@
+name: Research - Operator applicability monotonicity RC1
+
+on:
+  push:
+    branches:
+      - research-infra/operator-applicability-monotonicity-rc1-20260829
+  pull_request:
+    paths:
+      - "research/operator_applicability_monotonicity_rc1/**"
+      - ".github/workflows/research-operator-applicability-monotonicity-rc1.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  frozen-receipt-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify production and predecessor science surfaces unchanged
+        run: |
+          git diff --exit-code 8f8ec3593bbfe52e26c1fa7d39372acf6458993a...HEAD --             src             scripts             tests             research/construction_cohort_a_shadow             research/shadow_reconciliation_semantic_operator_rc             research/production_trace_decision_shadow             pyproject.toml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Download exact frozen Cohort A artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts/predecessor
+          gh run download 33286159031             -n cal-construction-cohort-a-shadow-ba1310d73ab63adf7c83de2f1e130f7f00a665af             -D artifacts/predecessor
+          test -f artifacts/predecessor/construction-cohort-a-shadow/RESULTS.json
+          actual="$(sha256sum artifacts/predecessor/construction-cohort-a-shadow/RESULTS.json | awk '{print $1}')"
+          test "$actual" = "38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7"
+      - name: Lint RC1 apparatus
+        run: uv run python -m ruff check research/operator_applicability_monotonicity_rc1
+      - name: Replay frozen receipts through RC1 firewall
+        run: |
+          mkdir -p artifacts/operator-applicability-monotonicity-rc1
+          uv run python -m research.operator_applicability_monotonicity_rc1.run_rc1             --predecessor-root artifacts/predecessor/construction-cohort-a-shadow             --output artifacts/operator-applicability-monotonicity-rc1/RESULTS.json             | tee artifacts/operator-applicability-monotonicity-rc1/summary.json
+          sha256sum artifacts/operator-applicability-monotonicity-rc1/RESULTS.json             | tee artifacts/operator-applicability-monotonicity-rc1/RESULTS.sha256
+      - name: Preserve RC1 receipts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-operator-applicability-monotonicity-rc1-${{ github.sha }}
+          path: artifacts/operator-applicability-monotonicity-rc1/
+          if-no-files-found: warn
+          retention-days: 30
