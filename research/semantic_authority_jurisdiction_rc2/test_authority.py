@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from research.semantic_authority_jurisdiction_rc2.authority import (
     AuthorityReceipt,
     Quantity,
@@ -164,7 +166,6 @@ def test_boundary_receipt_cannot_be_used_as_numeric_authority():
 
 
 def test_cal_native_assessment_descriptor_binds_identity_not_semantics():
-    from pathlib import Path
     from research.semantic_authority_jurisdiction_rc2.native_descriptor import (
         from_contract_b_fixture,
     )
@@ -179,7 +180,6 @@ def test_cal_native_assessment_descriptor_binds_identity_not_semantics():
 
 
 def test_assessment_mandate_is_not_semantic_support_authority():
-    from pathlib import Path
     from research.semantic_authority_jurisdiction_rc2.native_descriptor import (
         from_contract_b_fixture,
     )
