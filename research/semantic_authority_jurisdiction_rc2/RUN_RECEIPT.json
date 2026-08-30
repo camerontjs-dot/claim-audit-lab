@@ -1,0 +1,16 @@
+{
+  "schema": "cal-semantic-authority-jurisdiction-rc2-receipt",
+  "authority": "non_authoritative_research",
+  "parent_pr": 41,
+  "accepted_science_head": "4000f37b1f861cca696cb9852722fee8f4f50f0b",
+  "push_run": 33321461944,
+  "pr_run": 33321464202,
+  "artifact": 9735000430,
+  "artifact_digest": "sha256:b443a1c36ad75a6356c16ba9eb727e3aed9ce36b73bde4008d9a8c88968bdbb6",
+  "falsifiers_passed": 12,
+  "production_changed": false,
+  "threshold_tuning": false,
+  "new_model_execution": false,
+  "result": "SUPPORTED_RESEARCH_ARCHITECTURE_CANDIDATE",
+  "residual_unknown": "natural_language_to_typed_relation_extraction"
+}
