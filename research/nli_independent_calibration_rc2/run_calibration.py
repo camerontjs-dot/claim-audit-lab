@@ -7,7 +7,6 @@ import argparse
 import hashlib
 import importlib.metadata
 import json
-import math
 import platform
 from collections import Counter
 from pathlib import Path
@@ -214,7 +213,15 @@ def system_metrics(outputs: list[str], targets: list[str]) -> dict[str, Any]:
     y_true_decided = [targets[i] for i in decided]
     y_pred_decided = [outputs[i] for i in decided]
     macro = (
-        float(f1_score(y_true_decided, y_pred_decided, labels=list(LABELS), average="macro", zero_division=0))
+        float(
+            f1_score(
+                y_true_decided,
+                y_pred_decided,
+                labels=list(LABELS),
+                average="macro",
+                zero_division=0,
+            )
+        )
         if decided
         else None
     )
@@ -500,7 +507,9 @@ def run(output_dir: Path) -> dict[str, Any]:
             }
             for i, row in enumerate(eval_rows)
         ],
-        "score_normalization": "model-specific scalar temperature scaling on calibration split only",
+        "score_normalization": (
+            "model-specific scalar temperature scaling on calibration split only"
+        ),
         "learned_ensemble_weights": False,
         "evaluation_threshold_tuning": False,
         "production_behavior_changed": False,
