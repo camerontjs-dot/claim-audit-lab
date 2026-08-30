@@ -1,0 +1,58 @@
+name: Research - Population semantics contract RC5A science
+
+on:
+  push:
+    branches:
+      - research-infra/population-semantics-contract-rc5a-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require accepted corrected freeze ancestry
+        run: git merge-base --is-ancestor 63e11a4911b65f20c1f1c40cb7b413df1606f0cf HEAD
+      - name: Require corrected corpus source unchanged
+        run: git diff --exit-code e1fe18e5c534f247ac0164fac4fb28c284eca065 HEAD -- research/population_semantics_contract_rc5a/build_corpus.py research/population_semantics_contract_rc5a/freeze.py research/population_semantics_contract_rc5a/test_model_free.py research/population_semantics_contract_rc5a/PREREGISTRATION.md
+      - name: Require parent semantic mechanisms byte-unchanged
+        run: git diff --exit-code e06ca62d21758c757add6f782bc4334f9b419709 HEAD -- research/population_semantics_contract_rc5/oracle.py research/population_semantics_contract_rc5/consumer.py
+      - name: Require production and RC4 science unchanged
+        run: |
+          git diff --exit-code e06ca62d21758c757add6f782bc4334f9b419709 HEAD -- src/
+          git diff --exit-code e06ca62d21758c757add6f782bc4334f9b419709 HEAD -- research/entity_population_membership_rc4/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile corrected evaluator
+        run: python -m py_compile research/population_semantics_contract_rc5a/run_experiment.py
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute frozen parent oracle and consumer on corrected corpus
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/population-semantics-contract-rc5a
+          PYTHONPATH=. python -m research.population_semantics_contract_rc5a.run_experiment \
+            --output-dir artifacts/population-semantics-contract-rc5a \
+            | tee artifacts/population-semantics-contract-rc5a/stdout.json
+          sha256sum artifacts/population-semantics-contract-rc5a/RESULTS.json \
+            | tee artifacts/population-semantics-contract-rc5a/RESULTS.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-population-semantics-contract-rc5a-science-${{ github.sha }}
+          path: artifacts/population-semantics-contract-rc5a/
+          if-no-files-found: error
+          retention-days: 90
