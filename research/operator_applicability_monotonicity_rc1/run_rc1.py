@@ -53,6 +53,10 @@ def run(predecessor_root: Path, output: Path) -> dict[str, Any]:
             (case_dir / "operator-shadow.json").read_text(encoding="utf-8")
         )
         eligibility = json.loads(eligibility_path.read_text(encoding="utf-8"))
+        # Rebind the frozen report's original Actions-local trace path to the
+        # downloaded immutable receipt directory. The scientific objects are
+        # unchanged; only their replay location differs.
+        eligibility["source"] = str(case_dir / "traces")
         judgments = _firewall_judgments(frozen_operator["rows"][0])
         counterfactual_operator = build_operator_report(eligibility, judgments)
         operator_path = output.parent / "cases" / claim_id / "operator-rc1.json"
