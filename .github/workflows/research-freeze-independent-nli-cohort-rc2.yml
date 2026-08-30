@@ -1,0 +1,43 @@
+name: Research - Freeze independent NLI cohort RC2
+
+on:
+  push:
+    branches:
+      - research-infra/nli-independent-calibration-cohort-rc2-20260829
+    paths:
+      - "research/nli_independent_calibration_rc2/PREREGISTRATION.md"
+      - "research/nli_independent_calibration_rc2/build_cohort.py"
+      - "research/nli_independent_calibration_rc2/test_cohort.py"
+      - ".github/workflows/research-freeze-independent-nli-cohort-rc2.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require preregistration ancestry
+        run: git merge-base --is-ancestor 3fc060228406b52aa65d4a3eb35579ffc7dff335 HEAD
+      - name: Require parent research and production surfaces unchanged
+        run: |
+          git diff --exit-code 7ce57893eada43de9d4ee77281854f78a07ad0c2...HEAD --             src scripts             research/nli_measurement_discrimination_rc0             research/nli_ensemble_disagreement_rc1             research/construction_cohort_a_shadow             research/shadow_reconciliation_semantic_operator_rc
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate cohort
+        run: PYTHONPATH=. python -m unittest discover -s research/nli_independent_calibration_rc2 -p 'test_cohort.py'
+      - name: Materialize frozen cohort
+        run: |
+          mkdir -p artifacts/independent-nli-cohort-rc2
+          PYTHONPATH=. python -m research.nli_independent_calibration_rc2.build_cohort             --output artifacts/independent-nli-cohort-rc2/COHORT.json             | tee artifacts/independent-nli-cohort-rc2/FREEZE.txt
+          sha256sum artifacts/independent-nli-cohort-rc2/COHORT.json             | tee artifacts/independent-nli-cohort-rc2/COHORT.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-independent-nli-cohort-rc2-${{ github.sha }}
+          path: artifacts/independent-nli-cohort-rc2/
+          if-no-files-found: error
+          retention-days: 90
