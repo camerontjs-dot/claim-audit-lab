@@ -1,0 +1,83 @@
+name: Research - Independent NLI calibration RC2
+
+on:
+  push:
+    branches:
+      - research-infra/nli-independent-calibration-cohort-rc2-20260829
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require preregistration and accepted freeze ancestry
+        run: |
+          git merge-base --is-ancestor 3fc060228406b52aa65d4a3eb35579ffc7dff335 HEAD
+          git merge-base --is-ancestor b87c3bc005777c8aecebe17bd7cbd07c9ab5dd5e HEAD
+
+      - name: Require frozen cohort authority unchanged
+        run: |
+          git diff --exit-code b87c3bc005777c8aecebe17bd7cbd07c9ab5dd5e...HEAD --             research/nli_independent_calibration_rc2/PREREGISTRATION.md             research/nli_independent_calibration_rc2/build_cohort.py             research/nli_independent_calibration_rc2/test_cohort.py             research/nli_independent_calibration_rc2/COHORT_FREEZE.json
+
+      - name: Require parent research and production surfaces unchanged
+        run: |
+          git diff --exit-code 7ce57893eada43de9d4ee77281854f78a07ad0c2...HEAD --             src scripts             research/nli_measurement_discrimination_rc0             research/nli_ensemble_disagreement_rc1             research/construction_cohort_a_shadow             research/shadow_reconciliation_semantic_operator_rc
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Re-materialize and verify frozen cohort
+        run: |
+          mkdir -p artifacts/independent-nli-calibration-rc2
+          PYTHONPATH=. uv run python -m research.nli_independent_calibration_rc2.build_cohort             --output artifacts/independent-nli-calibration-rc2/COHORT.json
+          test "$(sha256sum artifacts/independent-nli-calibration-rc2/COHORT.json | cut -d' ' -f1)" =             "c5f64d6ad73d198aef575b5274280363bb71fc99aac78197e3abf13b13599f2d"
+
+      - name: Lint new RC2 apparatus
+        run: uv run python -m ruff check research/nli_independent_calibration_rc2
+
+      - name: Run cohort and calibration apparatus tests
+        run: |
+          PYTHONPATH=. uv run python -m unittest             research.nli_independent_calibration_rc2.test_cohort
+          PYTHONPATH=. uv run pytest -q             research/nli_independent_calibration_rc2/test_calibration.py
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TOKENIZERS_PARALLELISM: "false"
+      HF_HUB_DISABLE_XET: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Execute frozen three-model calibration/evaluation
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/independent-nli-calibration-rc2
+          PYTHONPATH=. uv run python -m research.nli_independent_calibration_rc2.run_calibration             --output-dir artifacts/independent-nli-calibration-rc2             | tee artifacts/independent-nli-calibration-rc2/stdout.json
+          sha256sum artifacts/independent-nli-calibration-rc2/MEASUREMENTS.json             | tee artifacts/independent-nli-calibration-rc2/MEASUREMENTS.sha256
+          sha256sum artifacts/independent-nli-calibration-rc2/RESULTS.json             | tee artifacts/independent-nli-calibration-rc2/RESULTS.sha256
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-independent-nli-calibration-rc2-${{ github.sha }}
+          path: artifacts/independent-nli-calibration-rc2/
+          if-no-files-found: warn
+          retention-days: 90
