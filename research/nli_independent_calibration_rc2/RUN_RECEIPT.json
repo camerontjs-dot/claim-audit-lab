@@ -1,0 +1,133 @@
+{
+  "schema_version": "cal-independent-nli-calibration-rc2-receipt-v0.1",
+  "experiment_class": "Research Infrastructure / semantic-measurement calibration and disagreement replication",
+  "authority": "non_authoritative_research",
+  "terminal_disposition": "SUPPORTED FOR SUCCESSOR RESEARCH",
+  "production_main_sha": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+  "rc1_parent_sha": "7ce57893eada43de9d4ee77281854f78a07ad0c2",
+  "preregistration_commit": "3fc060228406b52aa65d4a3eb35579ffc7dff335",
+  "accepted_cohort_freeze_head_sha": "53b1a9d1de4fac86445bfd85bb3a4ae3bf3cbbf9",
+  "accepted_cohort_freeze_run_id": 33288951809,
+  "cohort_artifact_id": 9725345054,
+  "cohort_sha256": "sha256:c5f64d6ad73d198aef575b5274280363bb71fc99aac78197e3abf13b13599f2d",
+  "accepted_science_head_sha": "1c057c1aeb7c6501704efb347c46fc9c56d20e3a",
+  "accepted_science_run_id": 33289051885,
+  "accepted_science_artifact_id": 9725451970,
+  "accepted_science_artifact_digest": "sha256:6e4e0c97b72d8295072b6cc157786186ce9912dff3d2a6233b644c515431734f",
+  "measurements_sha256": "sha256:1751b4fd16eefbcea114cca406302e05d66d2c73848c078d7d96153e9aac0ae3",
+  "results_sha256": "sha256:48d57996666b9ecf3176ee270fd20201acca56a2c1ca61d1ac149de2983e26ed",
+  "cohort": {
+    "total": 72,
+    "calibration": 36,
+    "evaluation": 36,
+    "evaluation_labels": {
+      "entailment": 12,
+      "neutral": 12,
+      "contradiction": 12
+    }
+  },
+  "temperatures": {
+    "incumbent_base": 2.6579941173144146,
+    "same_family_large": 2.2102535589350802,
+    "long_context_base": 1.7394217408032007
+  },
+  "held_out_individual": {
+    "incumbent_base": {
+      "correct": 26,
+      "n": 36,
+      "false_adverse": 3,
+      "neutral_to_contradiction": 3
+    },
+    "same_family_large": {
+      "correct": 30,
+      "n": 36,
+      "false_adverse": 2,
+      "neutral_to_contradiction": 2
+    },
+    "long_context_base": {
+      "correct": 27,
+      "n": 36,
+      "false_adverse": 4,
+      "neutral_to_contradiction": 4
+    }
+  },
+  "disagreement": {
+    "unanimous_cases": 27,
+    "disagreement_cases": 9,
+    "incumbent_error_rate_unanimous": 0.14814814814814814,
+    "incumbent_error_rate_disagreement": 0.6666666666666666,
+    "relative_risk": 4.5,
+    "polar_conflict_cases": 2,
+    "polar_conflict_incumbent_error_rate": 1,
+    "unanimous_error_cases": [
+      "IC2-016",
+      "IC2-019",
+      "IC2-044",
+      "IC2-056"
+    ]
+  },
+  "held_out_systems": {
+    "incumbent": {
+      "correct": 26,
+      "decided": 36,
+      "wrong_decided": 10,
+      "false_adverse": 3
+    },
+    "majority": {
+      "correct": 28,
+      "decided": 35,
+      "wrong_decided": 7,
+      "false_adverse": 3
+    },
+    "adverse_conservative": {
+      "correct": 27,
+      "decided": 32,
+      "wrong_decided": 5,
+      "false_adverse": 2,
+      "selective_accuracy": 0.84375
+    },
+    "uncalibrated_probability_mean": {
+      "correct": 28,
+      "decided": 36,
+      "wrong_decided": 8,
+      "false_adverse": 4
+    },
+    "calibrated_probability_mean": {
+      "correct": 28,
+      "decided": 36,
+      "wrong_decided": 8,
+      "false_adverse": 4
+    }
+  },
+  "calibration_h1": "SUPPORTED_ON_COHORT",
+  "calibrated_probability_averaging_h2": "FALSIFIED",
+  "score_comparability_h3": "INCONCLUSIVE_WEAKLY_NOT_SUPPORTED",
+  "production_behavior_changed": false,
+  "production_promotion_authorized": false,
+  "preserved_deviations": [
+    {
+      "run_id": 33288935143,
+      "stage": "pre_model_cohort_freeze",
+      "issue": "unittest discovered zero pytest-style functions",
+      "model_execution": false,
+      "cohort_changed": false
+    },
+    {
+      "run_id": 33289016892,
+      "stage": "pre_science_lint",
+      "issue": "sealed cohort source and post-freeze apparatus lint",
+      "model_execution": false,
+      "cohort_changed": false
+    },
+    {
+      "run_id": 33289048748,
+      "stage": "pre_science_lint_intermediate_repair",
+      "model_execution": false
+    },
+    {
+      "run_id": 33289050411,
+      "stage": "pre_science_lint_intermediate_repair",
+      "model_execution": false
+    }
+  ]
+}
