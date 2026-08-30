@@ -1,0 +1,78 @@
+name: Research - Freeze exception scoped-rule semantics RC3
+
+on:
+  push:
+    branches:
+      - research-infra/exception-scoped-rule-semantics-rc3-20260830
+  pull_request:
+    paths:
+      - "research/exception_scoped_rule_semantics_rc3/**"
+      - ".github/workflows/research-freeze-exception-scoped-rule-semantics-rc3.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require preregistration ancestry
+        run: git merge-base --is-ancestor c2a0c6f10f932933cc385d87fe8b6da3e3a74a0d HEAD
+
+      - name: Require frozen scientific sources unchanged from preregistration
+        run: |
+          git diff --exit-code c2a0c6f10f932933cc385d87fe8b6da3e3a74a0d...HEAD -- \
+            research/exception_scoped_rule_semantics_rc3/PREREGISTRATION.md \
+            research/exception_scoped_rule_semantics_rc3/build_cohort.py \
+            research/exception_scoped_rule_semantics_rc3/COHORT_META.json \
+            research/exception_scoped_rule_semantics_rc3/MUTATION_PAIRS.json \
+            research/exception_scoped_rule_semantics_rc3/validate_cohort.py \
+            research/exception_scoped_rule_semantics_rc3/test_validate_cohort.py \
+            research/exception_scoped_rule_semantics_rc3/mechanisms.py \
+            research/exception_scoped_rule_semantics_rc3/test_mechanisms.py \
+            research/exception_scoped_rule_semantics_rc3/cohort_cases
+
+      - name: Require predecessor and production surfaces unchanged
+        run: |
+          git diff --exit-code b4ba3fd049812a480c7cb315d43d918ed463f3c3...HEAD -- \
+            src scripts \
+            research/nli_independent_calibration_rc2 \
+            research/nli_ensemble_disagreement_rc1 \
+            research/nli_measurement_discrimination_rc0 \
+            research/construction_cohort_a_shadow \
+            research/shadow_reconciliation_semantic_operator_rc
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run model-free freeze tests
+        working-directory: research/exception_scoped_rule_semantics_rc3
+        run: python -m unittest -v test_validate_cohort.py test_mechanisms.py
+
+      - name: Materialize and verify frozen cohort
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/exception-scoped-rule-semantics-rc3
+          cd research/exception_scoped_rule_semantics_rc3
+          python build_cohort.py \
+            --output ../../../artifacts/exception-scoped-rule-semantics-rc3/COHORT.json \
+            | tee ../../../artifacts/exception-scoped-rule-semantics-rc3/FREEZE.json
+          python validate_cohort.py \
+            | tee ../../../artifacts/exception-scoped-rule-semantics-rc3/VALIDATION.json
+          cd ../../..
+          test "$(sha256sum artifacts/exception-scoped-rule-semantics-rc3/COHORT.json | cut -d' ' -f1)" = \
+            "01b0d436ccf9ed812f9bb26d64f4ddd1a656e26175ee007f1fe9594a2a203785"
+          sha256sum artifacts/exception-scoped-rule-semantics-rc3/COHORT.json \
+            | tee artifacts/exception-scoped-rule-semantics-rc3/COHORT.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-exception-scoped-rule-semantics-rc3-freeze-${{ github.sha }}
+          path: artifacts/exception-scoped-rule-semantics-rc3/
+          if-no-files-found: error
+          retention-days: 90
