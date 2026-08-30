@@ -1,0 +1,56 @@
+name: Research - Population semantics contract RC5 science
+
+on:
+  push:
+    branches:
+      - research-infra/population-semantics-contract-rc5-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require accepted freeze ancestry
+        run: git merge-base --is-ancestor bdf6f257f47b38853a3d03874f77a8ba433d6925 HEAD
+      - name: Require frozen scientific inputs unchanged
+        run: git diff --exit-code c11b211f9bae6952ad8aae9f50b3215fbefa9a77 HEAD -- research/population_semantics_contract_rc5/
+      - name: Require production and RC4 scientific surfaces unchanged
+        run: |
+          git diff --exit-code c157da7953753a2f27c306abc86ab0141752c512 HEAD -- src/
+          git diff --exit-code c157da7953753a2f27c306abc86ab0141752c512 HEAD -- research/entity_population_membership_rc4/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile evaluator
+        run: python -m py_compile research/population_semantics_contract_rc5/*.py
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute frozen independent oracle and consumer
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/population-semantics-contract-rc5
+          PYTHONPATH=. python -m research.population_semantics_contract_rc5.run_experiment \
+            --output-dir artifacts/population-semantics-contract-rc5 \
+            | tee artifacts/population-semantics-contract-rc5/stdout.json
+          sha256sum artifacts/population-semantics-contract-rc5/RESULTS.json \
+            | tee artifacts/population-semantics-contract-rc5/RESULTS.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-population-semantics-contract-rc5-science-${{ github.sha }}
+          path: artifacts/population-semantics-contract-rc5/
+          if-no-files-found: error
+          retention-days: 90
