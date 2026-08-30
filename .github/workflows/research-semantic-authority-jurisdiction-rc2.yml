@@ -38,10 +38,16 @@ jobs:
           PYTHONPATH=. uv run pytest -q \
             research/semantic_authority_jurisdiction_rc2/test_authority.py \
             | tee authority-rc2-pytest.txt
+      - name: Emit frozen semantic authority receipts
+        run: |
+          PYTHONPATH=. uv run python -m \
+            research.semantic_authority_jurisdiction_rc2.run_experiment
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cal-semantic-authority-jurisdiction-rc2-${{ github.sha }}
-          path: authority-rc2-pytest.txt
+          path: |
+            authority-rc2-pytest.txt
+            artifacts/semantic-authority-jurisdiction-rc2/RESULTS.json
           if-no-files-found: warn
           retention-days: 30
