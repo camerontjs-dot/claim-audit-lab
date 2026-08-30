@@ -1,0 +1,150 @@
+name: Research - Construction Cohort A shadow
+
+on:
+  push:
+    branches:
+      - research-infra/construction-cohort-a-shadow-20260830
+  pull_request:
+    paths:
+      - "research/construction_cohort_a_shadow/**"
+      - ".github/workflows/research-construction-cohort-a-shadow.yml"
+      - "research/production_trace_decision_shadow/**"
+      - "research/shadow_reconciliation_semantic_operator_rc/**"
+      - "src/claim_audit_lab/**"
+      - "scripts/build_construction_gold.py"
+      - "scripts/decision_model_replay.py"
+      - "scripts/evidence_state_eligibility_shadow.py"
+      - "scripts/evidence_state_operator_shadow.py"
+      - "tests/v1/test_pipeline_e2e.py"
+      - "pyproject.toml"
+
+permissions:
+  contents: read
+
+jobs:
+  freeze-and-protect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify protected semantic surfaces unchanged from PR 37
+        run: |
+          git diff --exit-code 64d05b731a4f5b4c0a829a8f03b252fa0103d7fe...HEAD -- \
+            src \
+            scripts/build_construction_gold.py \
+            scripts/decision_model_replay.py \
+            scripts/evidence_state_eligibility_shadow.py \
+            scripts/evidence_state_operator_shadow.py \
+            tests/v1/test_pipeline_e2e.py \
+            pyproject.toml \
+            research/production_trace_decision_shadow \
+            research/shadow_reconciliation_semantic_operator_rc
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Freeze blind input-only manifest before model execution
+        run: |
+          mkdir -p artifacts/construction-cohort-a-shadow
+          uv run python -m research.construction_cohort_a_shadow.emit_input_manifest \
+            --output artifacts/construction-cohort-a-shadow/INPUT_MANIFEST.json \
+            | tee artifacts/construction-cohort-a-shadow/INPUT_FREEZE_RECEIPT.json
+          python - <<'PY'
+          import json
+          p=json.load(open("artifacts/construction-cohort-a-shadow/INPUT_MANIFEST.json"))
+          forbidden={"expected_verdict","gold","gold_verdict","derivation","expected_rule","historical_cal","audit_results"}
+          def walk(v,path="$"):
+              if isinstance(v,dict):
+                  for k,x in v.items():
+                      if k in forbidden:
+                          raise SystemExit(f"forbidden assessment key {path}.{k}")
+                      walk(x,f"{path}.{k}")
+              elif isinstance(v,list):
+                  for i,x in enumerate(v): walk(x,f"{path}[{i}]")
+          walk(p)
+          assert p["n_cases"] == 33
+          print("blind manifest aperture: PASS; 33 cases")
+          PY
+      - name: Lint Cohort A research apparatus
+        run: uv run python -m ruff check research/construction_cohort_a_shadow
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-construction-cohort-a-input-freeze-${{ github.sha }}
+          path: artifacts/construction-cohort-a-shadow/
+          retention-days: 30
+
+  sentinel-and-cohort-a:
+    needs: freeze-and-protect
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+
+      - name: Regenerate blind input-only manifest
+        run: |
+          mkdir -p artifacts/construction-cohort-a-shadow
+          uv run python -m research.construction_cohort_a_shadow.emit_input_manifest \
+            --output artifacts/construction-cohort-a-shadow/INPUT_MANIFEST.json \
+            | tee artifacts/construction-cohort-a-shadow/INPUT_FREEZE_RECEIPT.json
+
+      - name: Re-run frozen 25-case sentinel
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/production-trace-decision-shadow
+          uv run python -m research.production_trace_decision_shadow.run_shadow_experiment_entry \
+            --output-dir artifacts/production-trace-decision-shadow \
+            | tee artifacts/production-trace-decision-shadow/summary.json
+
+      - name: Require exact normalized sentinel reproduction
+        run: |
+          uv run python -m research.shadow_reconciliation_semantic_operator_rc.verify_predecessor_reproduction \
+            artifacts/production-trace-decision-shadow/RESULTS.json \
+            | tee artifacts/production-trace-decision-shadow/REPRODUCTION_RECEIPT.json
+
+      - name: Execute all 33 blind Cohort A inputs through real CAL and frozen explicit shadow
+        run: |
+          set -o pipefail
+          uv run python -m research.construction_cohort_a_shadow.run_cohort_a \
+            --manifest artifacts/construction-cohort-a-shadow/INPUT_MANIFEST.json \
+            --output-dir artifacts/construction-cohort-a-shadow \
+            --execution-head-sha "${GITHUB_SHA}" \
+            | tee artifacts/construction-cohort-a-shadow/summary.json
+
+      - name: Assert execution boundary and polarity invariants
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open("artifacts/construction-cohort-a-shadow/RESULTS.json"))
+          s=r["summary"]
+          assert s["completed_cases"] + s["execution_failures"] == 33
+          assert s["support_to_adverse_transitions"] == 0
+          assert s["adverse_to_support_transitions"] == 0
+          print(json.dumps(s,indent=2,sort_keys=True))
+          PY
+
+      - name: Print receipts
+        if: always()
+        run: |
+          test ! -f artifacts/production-trace-decision-shadow/RESULTS.sha256 || cat artifacts/production-trace-decision-shadow/RESULTS.sha256
+          test ! -f artifacts/construction-cohort-a-shadow/RESULTS.sha256 || cat artifacts/construction-cohort-a-shadow/RESULTS.sha256
+          test ! -f artifacts/construction-cohort-a-shadow/INPUT_FREEZE_RECEIPT.json || cat artifacts/construction-cohort-a-shadow/INPUT_FREEZE_RECEIPT.json
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-construction-cohort-a-shadow-${{ github.sha }}
+          path: |
+            artifacts/production-trace-decision-shadow/
+            artifacts/construction-cohort-a-shadow/
+          if-no-files-found: warn
+          retention-days: 30
