@@ -105,7 +105,7 @@ def run(predecessor_root: Path, output: Path) -> dict[str, Any]:
     result = {
         "schema_version": "cal-operator-applicability-monotonicity-rc1-v0.1",
         "authority": "non_authoritative_research",
-        "predecessor_results_sha256": "sha256:38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7",
+        "predecessor_results_sha256": (\n            "sha256:38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7"\n        ),
         "new_model_execution": False,
         "threshold_tuning_performed": False,
         "production_behavior_changed": False,
@@ -116,7 +116,7 @@ def run(predecessor_root: Path, output: Path) -> dict[str, Any]:
                 and "non-entailment" in j["reason"]
                 for r in rows for j in r["a4_judgments"]
             ),
-            "guarded_outcome_counts": dict(sorted(Counter(r["rc1_guarded_outcome"] for r in rows).items())),
+            "guarded_outcome_counts": dict(\n                sorted(Counter(r["rc1_guarded_outcome"] for r in rows).items())\n            ),
             "monotonicity_guards_fired": sum(r["guard_reason"] is not None for r in rows),
             "cg23b_strengthening_blocked": cg23b["rc1_guarded_outcome"] == "abstain",
             "support_to_adverse_created": sum(
@@ -145,7 +145,7 @@ def main() -> int:
     print(json.dumps(result["summary"], indent=2, sort_keys=True))
     if not result["summary"]["cg23b_strengthening_blocked"]:
         raise SystemExit("CG-23b strengthening falsifier failed")
-    if result["summary"]["support_to_adverse_created"] or result["summary"]["adverse_to_support_created"]:
+    if (\n        result["summary"]["support_to_adverse_created"]\n        or result["summary"]["adverse_to_support_created"]\n    ):
         raise SystemExit("RC1 created a forbidden support/adverse polarity transition")
     return 0
 
