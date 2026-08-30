@@ -1,6 +1,15 @@
 name: research-freeze-text-to-typed-authority-fresh-v1
 
 on:
+  push:
+    branches:
+      - research-infra/text-to-typed-authority-fresh-reproduction-v1-20260830
+    paths:
+      - 'research/text_to_typed_authority_fresh_v1/__init__.py'
+      - 'research/text_to_typed_authority_fresh_v1/extractor.py'
+      - 'research/text_to_typed_authority_fresh_v1/test_contract_sentinels.py'
+      - 'research/text_to_typed_authority_fresh_v1/IMPLEMENTATION_NOTES.md'
+      - '.github/workflows/research-freeze-text-to-typed-authority-fresh-v1.yml'
   pull_request:
     branches:
       - research-infra/text-to-typed-authority-fresh-v1-aperture-20260830
@@ -22,7 +31,7 @@ jobs:
       - name: Checkout frozen fresh head only
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
           sparse-checkout: |
             research/text_to_typed_authority_fresh_v1
             .github/workflows/research-freeze-text-to-typed-authority-fresh-v1.yml
@@ -42,7 +51,7 @@ jobs:
           set -euo pipefail
           {
             echo "aperture_head=213c6af2b11cfc5d0673c715d2a2385bed0a9f44"
-            echo "implementation_head=${{ github.event.pull_request.head.sha }}"
+            echo "implementation_head=${{ github.sha }}"
             sha256sum \
               research/text_to_typed_authority_fresh_v1/__init__.py \
               research/text_to_typed_authority_fresh_v1/extractor.py \
