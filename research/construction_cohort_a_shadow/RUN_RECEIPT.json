@@ -1,0 +1,69 @@
+{
+  "schema_version": "cal-construction-cohort-a-shadow-receipt-v0.1",
+  "experiment_class": "Research Infrastructure / epistemic-machinery",
+  "authority": "non_authoritative_research",
+  "production_main_sha": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+  "predecessor_pr": 37,
+  "predecessor_head_sha": "64d05b731a4f5b4c0a829a8f03b252fa0103d7fe",
+  "cohort_a_pr": 39,
+  "accepted_science_head_sha": "ba1310d73ab63adf7c83de2f1e130f7f00a665af",
+  "accepted_actions_run_id": 33286159031,
+  "accepted_actions_artifact_id": 9724541749,
+  "accepted_actions_artifact_digest": "sha256:afb6c1bcc81aff2526e9dcc3f4bd270d68333b8a909bec69c853ab5bdc6259d0",
+  "canonical_builder_blob": "2c677ee29fd121cf1c76b1476664474aa09dc982",
+  "input_manifest_cases": 33,
+  "input_manifest_sha256": "sha256:e86374c6ca12342c56a8640b5124073278179ac6379bb88bdadebeb25f57ccad",
+  "results_sha256": "sha256:38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7",
+  "predecessor_sentinel_normalized_sha256": "sha256:db6ac4dac26045c0b489cf28a704376b659522979759e33f704706c61472c51d",
+  "predecessor_sentinel_exactly_reproduced": true,
+  "completed_cases": 33,
+  "execution_failures": 0,
+  "legacy_outcomes": {
+    "supported": 8,
+    "contradicted": 7,
+    "not_checkable": 18
+  },
+  "explicit_outcomes": {
+    "supported": 6,
+    "contradicted": 0,
+    "abstain": 27
+  },
+  "first_divergence_stage_counts": {
+    "semantic_validity": 14,
+    "aperture": 6,
+    "aggregate": 3,
+    "resolve": 1,
+    "none": 9
+  },
+  "unknown_semantic_validity_cases": 4,
+  "aperture_failure_cases": 10,
+  "support_to_adverse_transitions": 0,
+  "adverse_to_support_transitions": 0,
+  "unresolved_to_support_counterexamples": [
+    {
+      "case_id": "CG-23b",
+      "legacy": "not_checkable",
+      "explicit": "supported"
+    }
+  ],
+  "operator_judgment_counts": {
+    "A4_negation_consistency.invalid": 11,
+    "A4_negation_consistency.valid": 3,
+    "A4_negation_consistency.unknown": 4,
+    "direct_claim_identity.valid": 7
+  },
+  "terminal_disposition": {
+    "parallel_research_observation_surface": "supported",
+    "authoritative_explicit_decision_path": "not_supported",
+    "primary_blockers": [
+      "semantic_operator_applicability_and_authority",
+      "source_boundary_and_scope_state_projection",
+      "unknown_or_conflicting_to_decided_monotonicity_gap"
+    ]
+  },
+  "preserved_apparatus_deviation": {
+    "first_attempt": "blind manifest freeze passed; successor-only Ruff F401 stopped before sentinel/science execution",
+    "repair": "removed unused import only; no semantic/corpus/threshold change"
+  },
+  "note": "Later documentation commits do not redefine the accepted science head."
+}
