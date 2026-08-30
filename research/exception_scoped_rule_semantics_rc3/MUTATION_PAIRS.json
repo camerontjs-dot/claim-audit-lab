@@ -1,0 +1,82 @@
+[
+  {
+    "after": "XR3-M01B",
+    "before": "XR3-M01A",
+    "expected_after": "entailment",
+    "expected_before": "neutral",
+    "pair_id": "M01",
+    "transformation": "remove_exception"
+  },
+  {
+    "after": "XR3-M02B",
+    "before": "XR3-M02A",
+    "expected_after": "entailment",
+    "expected_before": "neutral",
+    "pair_id": "M02",
+    "transformation": "add_explicit_opposite"
+  },
+  {
+    "after": "XR3-M03B",
+    "before": "XR3-M03A",
+    "expected_after": "entailment",
+    "expected_before": "neutral",
+    "pair_id": "M03",
+    "transformation": "add_alternate_process"
+  },
+  {
+    "after": "XR3-M04B",
+    "before": "XR3-M04A",
+    "expected_after": "contradiction",
+    "expected_before": "neutral",
+    "pair_id": "M04",
+    "transformation": "alternate_process_no_process"
+  },
+  {
+    "after": "XR3-M05B",
+    "before": "XR3-M05A",
+    "expected_after": "entailment",
+    "expected_before": "neutral",
+    "pair_id": "M05",
+    "transformation": "narrow_to_broad"
+  },
+  {
+    "after": "XR3-M06B",
+    "before": "XR3-M06A",
+    "expected_after": "entailment",
+    "expected_before": "contradiction",
+    "pair_id": "M06",
+    "transformation": "temporary_to_permanent"
+  },
+  {
+    "after": "XR3-M07B",
+    "before": "XR3-M07A",
+    "expected_after": "entailment",
+    "expected_before": "contradiction",
+    "pair_id": "M07",
+    "transformation": "entity_swap"
+  },
+  {
+    "after": "XR3-M08B",
+    "before": "XR3-M08A",
+    "expected_after": "entailment",
+    "expected_before": "neutral",
+    "pair_id": "M08",
+    "transformation": "may_to_must"
+  },
+  {
+    "after": "XR3-M09B",
+    "before": "XR3-M09A",
+    "expected_after": "neutral",
+    "expected_before": "neutral",
+    "pair_id": "M09",
+    "transformation": "clause_movement_invariant"
+  },
+  {
+    "after": "XR3-M10B",
+    "before": "XR3-M10A",
+    "expected_after": "entailment",
+    "expected_before": "entailment",
+    "pair_id": "M10",
+    "transformation": "explicit_equivalent_invariant"
+  }
+]

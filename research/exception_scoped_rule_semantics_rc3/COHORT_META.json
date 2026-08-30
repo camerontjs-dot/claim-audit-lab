@@ -1,0 +1,19 @@
+{
+  "authority": "non_authoritative_research",
+  "construction_notes": {
+    "ambiguous_cases": "6 evaluator-ambiguous diagnostic cases with no forced three-way target",
+    "metamorphic_cases": "20 diagnostic cases forming 10 preregistered mutation pairs",
+    "model_execution_before_freeze": false,
+    "scientific_cases": "84 primary cases across seven semantic families, exactly 4 entailment / 4 neutral / 4 contradiction per family"
+  },
+  "families": [
+    "explicit_opposite_exception",
+    "bare_exception_exclusion",
+    "separate_process_exception",
+    "temporary_exception",
+    "narrow_obligation_exemption",
+    "nested_qualified_exception",
+    "only_and_exclusion"
+  ],
+  "schema_version": "cal-exception-scoped-rule-semantics-rc3-cohort-v0.1"
+}
