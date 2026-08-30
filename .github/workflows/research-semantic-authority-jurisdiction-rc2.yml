@@ -1,0 +1,42 @@
+name: Research - Semantic authority jurisdiction RC2
+
+on:
+  push:
+    branches:
+      - research-infra/semantic-authority-jurisdiction-rc2-20260830
+  pull_request:
+    paths:
+      - "research/semantic_authority_jurisdiction_rc2/**"
+      - ".github/workflows/research-semantic-authority-jurisdiction-rc2.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  authority-jurisdiction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Protect production and frozen predecessor
+        run: |
+          git diff --exit-code 79c131732161c51b2f03cd8f89fe7efe98fcbb7b...HEAD --             src scripts tests pyproject.toml             research/operator_applicability_monotonicity_rc1             research/construction_cohort_a_shadow
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Lint research apparatus
+        run: uv run python -m ruff check research/semantic_authority_jurisdiction_rc2
+      - name: Run authority-domain falsifiers
+        run: |
+          set -o pipefail
+          uv run pytest -q research/semantic_authority_jurisdiction_rc2/test_authority.py             | tee authority-rc2-pytest.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-semantic-authority-jurisdiction-rc2-${{ github.sha }}
+          path: authority-rc2-pytest.txt
+          if-no-files-found: warn
+          retention-days: 30
