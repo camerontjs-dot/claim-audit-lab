@@ -1,0 +1,9 @@
+{
+  "base_rc4_science_head": "c157da7953753a2f27c306abc86ab0141752c512",
+  "corpus_sha256": "9b5ce098f92061b310e812e2681ff4a7b710f05c8f3d777395a75c87ef8fa92a",
+  "n_cases": 464,
+  "n_ablation_witnesses": 13,
+  "n_metamorphic_pairs": 8,
+  "mechanisms_executed_before_receipt": false,
+  "notes": "Scientific corpus, possible-world oracle, direct consumer, evaluator, and model-free tests are frozen before execution."
+}
