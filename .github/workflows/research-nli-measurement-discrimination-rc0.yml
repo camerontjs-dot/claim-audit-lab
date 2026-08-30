@@ -1,0 +1,81 @@
+name: Research - NLI measurement discrimination RC0
+
+on:
+  push:
+    branches:
+      - research-infra/nli-measurement-discrimination-rc0-20260829
+  pull_request:
+    paths:
+      - "research/nli_measurement_discrimination_rc0/**"
+      - ".github/workflows/research-nli-measurement-discrimination-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require preregistration ancestry
+        run: git merge-base --is-ancestor c3208161e8a69c5a86adf1849161900e7383bb77 HEAD
+
+      - name: Require protected semantic surfaces unchanged from frozen Cohort A science head
+        run: |
+          git diff --exit-code ba1310d73ab63adf7c83de2f1e130f7f00a665af...HEAD --             src             scripts/build_construction_gold.py             scripts/slg_entailer_bakeoff.py             scripts/decision_model_replay.py             scripts/evidence_state_eligibility_shadow.py             scripts/evidence_state_operator_shadow.py             research/production_trace_decision_shadow             research/shadow_reconciliation_semantic_operator_rc             research/construction_cohort_a_shadow
+
+      - name: Require frozen construction builder blob
+        run: |
+          test "$(git rev-parse HEAD:scripts/build_construction_gold.py)" = "2c677ee29fd121cf1c76b1476664474aa09dc982"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Lint new apparatus
+        run: uv run python -m ruff check research/nli_measurement_discrimination_rc0
+
+      - name: Run deterministic apparatus tests
+        run: uv run pytest -q research/nli_measurement_discrimination_rc0/test_run_experiment.py
+
+  experiment:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TOKENIZERS_PARALLELISM: "false"
+      HF_HUB_DISABLE_XET: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+
+      - name: Execute preregistered three-model measurement comparison
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/nli-measurement-discrimination-rc0
+          uv run python -m research.nli_measurement_discrimination_rc0.run_experiment             --output-dir artifacts/nli-measurement-discrimination-rc0             | tee artifacts/nli-measurement-discrimination-rc0/stdout.json
+
+      - name: Print frozen receipts
+        if: always()
+        run: |
+          test ! -f artifacts/nli-measurement-discrimination-rc0/INPUTS.sha256 || cat artifacts/nli-measurement-discrimination-rc0/INPUTS.sha256
+          test ! -f artifacts/nli-measurement-discrimination-rc0/RESULTS.sha256 || cat artifacts/nli-measurement-discrimination-rc0/RESULTS.sha256
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-nli-measurement-discrimination-rc0-${{ github.sha }}
+          path: artifacts/nli-measurement-discrimination-rc0/
+          if-no-files-found: warn
+          retention-days: 30
