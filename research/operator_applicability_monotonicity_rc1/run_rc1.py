@@ -57,13 +57,17 @@ def run(predecessor_root: Path, output: Path) -> dict[str, Any]:
         # downloaded immutable receipt directory. The scientific objects are
         # unchanged; only their replay location differs.
         eligibility["source"] = str(case_dir / "traces")
+        rc1_case_dir = output.parent / "cases" / claim_id
+        eligibility_rc1_path = rc1_case_dir / "eligibility-rc1.json"
+        _write(eligibility_rc1_path, eligibility)
+
         judgments = _firewall_judgments(frozen_operator["rows"][0])
         counterfactual_operator = build_operator_report(eligibility, judgments)
-        operator_path = output.parent / "cases" / claim_id / "operator-rc1.json"
+        operator_path = rc1_case_dir / "operator-rc1.json"
         _write(operator_path, counterfactual_operator)
 
         replay = build_report(
-            eligibility_path,
+            eligibility_rc1_path,
             operator_path,
             support_threshold=0.70,
             refutation_threshold=0.70,
