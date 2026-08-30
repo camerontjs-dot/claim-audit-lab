@@ -41,7 +41,7 @@ jobs:
         run: uv run python -m ruff check research/nli_measurement_discrimination_rc0
 
       - name: Run deterministic apparatus tests
-        run: uv run pytest -q research/nli_measurement_discrimination_rc0/test_run_experiment.py
+        run: PYTHONPATH=. uv run pytest -q research/nli_measurement_discrimination_rc0/test_run_experiment.py
 
   experiment:
     needs: apparatus
