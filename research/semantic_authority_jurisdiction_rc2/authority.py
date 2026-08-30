@@ -12,7 +12,6 @@ Domain = Literal[
     "scope",
     "composition",
 ]
-
 Status = Literal["valid", "invalid", "unknown", "inapplicable"]
 
 
@@ -27,7 +26,13 @@ class AuthorityReceipt:
     status: Status
     reason: str
 
-    def may_decide(self, *, required_domain: Domain, operation: str, target_id: str) -> bool:
+    def may_decide(
+        self,
+        *,
+        required_domain: Domain,
+        operation: str,
+        target_id: str,
+    ) -> bool:
         return (
             self.current
             and self.applicable
@@ -67,37 +72,67 @@ def assess_numeric_relation(
     ok, reason = comparable(claim, evidence)
     if not ok:
         return AuthorityReceipt(
-            receipt_id, "numeric_relation", "semantic.validate_numeric", target_id,
-            True, False, "inapplicable", reason
+            receipt_id,
+            "numeric_relation",
+            "semantic.validate_numeric",
+            target_id,
+            True,
+            False,
+            "inapplicable",
+            reason,
         )
 
-    # Exact point equality.
     if claim.relation == "eq" and evidence.relation == "eq":
         status = "valid" if claim.value == evidence.value else "invalid"
         return AuthorityReceipt(
-            receipt_id, "numeric_relation", "semantic.validate_numeric", target_id,
-            True, True, status, "point_equality"
+            receipt_id,
+            "numeric_relation",
+            "semantic.validate_numeric",
+            target_id,
+            True,
+            True,
+            status,
+            "point_equality",
         )
 
-    # Claim says the allowed maximum is X; evidence establishes a stricter/different maximum Y.
     if claim.relation == "max" and evidence.relation == "max":
         status = "valid" if claim.value == evidence.value else "invalid"
         return AuthorityReceipt(
-            receipt_id, "numeric_relation", "semantic.validate_numeric", target_id,
-            True, True, status, "maximum_bound_comparison"
+            receipt_id,
+            "numeric_relation",
+            "semantic.validate_numeric",
+            target_id,
+            True,
+            True,
+            status,
+            "maximum_bound_comparison",
         )
 
-    # Condition checking: evidence threshold is a minimum/greater-than rule and claim observation is point.
     if claim.relation == "eq" and evidence.relation in {"min", "gt"}:
-        satisfied = claim.value > evidence.value if evidence.relation == "gt" else claim.value >= evidence.value
+        if evidence.relation == "gt":
+            satisfied = claim.value > evidence.value
+        else:
+            satisfied = claim.value >= evidence.value
         return AuthorityReceipt(
-            receipt_id, "numeric_relation", "semantic.evaluate_condition", target_id,
-            True, True, "valid" if satisfied else "invalid", "threshold_condition"
+            receipt_id,
+            "numeric_relation",
+            "semantic.evaluate_condition",
+            target_id,
+            True,
+            True,
+            "valid" if satisfied else "invalid",
+            "threshold_condition",
         )
 
     return AuthorityReceipt(
-        receipt_id, "numeric_relation", "semantic.validate_numeric", target_id,
-        True, True, "unknown", "relation_geometry_unmodeled"
+        receipt_id,
+        "numeric_relation",
+        "semantic.validate_numeric",
+        target_id,
+        True,
+        True,
+        "unknown",
+        "relation_geometry_unmodeled",
     )
 
 
@@ -112,25 +147,55 @@ def assess_absence_boundary(
 ) -> AuthorityReceipt:
     if boundary == "bounded":
         return AuthorityReceipt(
-            receipt_id, "source_boundary", "semantic.validate_absence", target_id,
-            True, True, "unknown", "bounded_aperture_cannot_establish_absence"
+            receipt_id,
+            "source_boundary",
+            "semantic.validate_absence",
+            target_id,
+            True,
+            True,
+            "unknown",
+            "bounded_aperture_cannot_establish_absence",
         )
     if boundary == "exhaustive":
         return AuthorityReceipt(
-            receipt_id, "source_boundary", "semantic.validate_absence", target_id,
-            True, True, "valid", "exhaustive_aperture_supports_absence_assessment"
+            receipt_id,
+            "source_boundary",
+            "semantic.validate_absence",
+            target_id,
+            True,
+            True,
+            "valid",
+            "exhaustive_aperture_supports_absence_assessment",
         )
     if boundary == "named_missing_material":
         if claimed_material_is_named_gap and topic in named_gaps:
             return AuthorityReceipt(
-                receipt_id, "source_boundary", "semantic.validate_absence", target_id,
-                True, True, "invalid", "claimed_absence_conflicts_with_named_missing_material"
+                receipt_id,
+                "source_boundary",
+                "semantic.validate_absence",
+                target_id,
+                True,
+                True,
+                "invalid",
+                "claimed_absence_conflicts_with_named_missing_material",
             )
         return AuthorityReceipt(
-            receipt_id, "source_boundary", "semantic.validate_absence", target_id,
-            True, True, "unknown", "named_gap_receipt_does_not_cover_claimed_topic"
+            receipt_id,
+            "source_boundary",
+            "semantic.validate_absence",
+            target_id,
+            True,
+            True,
+            "unknown",
+            "named_gap_receipt_does_not_cover_claimed_topic",
         )
     return AuthorityReceipt(
-        receipt_id, "source_boundary", "semantic.validate_absence", target_id,
-        True, False, "inapplicable", "unknown_boundary_kind"
+        receipt_id,
+        "source_boundary",
+        "semantic.validate_absence",
+        target_id,
+        True,
+        False,
+        "inapplicable",
+        "unknown_boundary_kind",
     )
