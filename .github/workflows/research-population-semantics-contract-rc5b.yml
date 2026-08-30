@@ -1,0 +1,62 @@
+name: Research - Population semantics contract RC5B science
+
+on:
+  push:
+    branches:
+      - research-infra/population-semantics-contract-rc5b-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require pre-execution RC5B source ancestry
+        run: git merge-base --is-ancestor c9dc89631047cfedf6868324a455014783a6cf24 HEAD
+      - name: Require RC5B scientific source unchanged
+        run: git diff --exit-code c9dc89631047cfedf6868324a455014783a6cf24 HEAD -- research/population_semantics_contract_rc5b/
+      - name: Require frozen corpus oracle and parent consumer unchanged
+        run: |
+          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- research/population_semantics_contract_rc5a/build_corpus.py
+          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- research/population_semantics_contract_rc5/oracle.py research/population_semantics_contract_rc5/consumer.py
+      - name: Require production and RC4 science unchanged
+        run: |
+          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- src/
+          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- research/entity_population_membership_rc4/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile frozen RC5B evaluator
+        run: python -m py_compile research/population_semantics_contract_rc5b/*.py
+      - name: Run preregistered subclass-direction sentinels
+        run: PYTHONPATH=. python -m unittest research.population_semantics_contract_rc5b.test_consumer_contract
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute frozen RC5B sufficiency comparison
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/population-semantics-contract-rc5b
+          PYTHONPATH=. python -m research.population_semantics_contract_rc5b.run_experiment \
+            --output-dir artifacts/population-semantics-contract-rc5b \
+            | tee artifacts/population-semantics-contract-rc5b/stdout.json
+          sha256sum artifacts/population-semantics-contract-rc5b/RESULTS.json \
+            | tee artifacts/population-semantics-contract-rc5b/RESULTS.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-population-semantics-contract-rc5b-science-${{ github.sha }}
+          path: artifacts/population-semantics-contract-rc5b/
+          if-no-files-found: error
+          retention-days: 90
