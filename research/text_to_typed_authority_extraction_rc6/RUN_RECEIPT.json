@@ -1,0 +1,70 @@
+{
+  "classification": "Research Infrastructure / semantic-extraction discrimination experiment",
+  "governance_disposition": "INCONCLUSIVE",
+  "bounded_scientific_conclusion": "SUPPORTED: text-to-typed-authority extraction and jurisdiction recognition are the remaining bottleneck in the controlled RC6 domain",
+  "production_promotion_authorized": false,
+  "main_sha_at_start": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+  "rc5b_accepted_science_head": "c623af35bee3b5f685c9a44e6d91ced006b2d690",
+  "rc6_pre_reveal_source_head": "39419546adc2a0c3369c6d3cc84ef360968ced9b",
+  "freeze": {
+    "head": "54abacaae9e5ff0f912b6a6523f85c556ffd6ac2",
+    "run_id": 33330441265,
+    "artifact_id": 9737476767,
+    "artifact_digest": "sha256:fed6bacf248776cbd29b205df84344e69842977d81e9dab28438f6b4d870ed8b",
+    "cohort_sha256": "820b5a64cf4187998f2c4b416293c8fd0a577b564cab31be22dddd4ace822d23",
+    "n_cases": 100,
+    "n_in_schema": 70,
+    "n_expected_unknown": 30,
+    "n_mutation_pairs": 12
+  },
+  "science": {
+    "head": "103ceeda47f7fc1e136c899d31a269cd032ba5cf",
+    "run_id": 33330592983,
+    "artifact_id": 9737521527,
+    "artifact_digest": "sha256:effb1599ad2f93881e23d8da063f3d27ce2102371478615a616c8f539988daaf",
+    "results_sha256": "d6b49430299c17f47db7c7d504cdedd535b7949ddfe8430da5990dd9bbeece89",
+    "measurements_sha256": "691fb46edc622d45721f3aea8bd775eb48c0823c0ddc6461b4601345120638b4",
+    "counterexamples_sha256": "b72697eb4ccf798b7312c6228d6c9bbed76fa5638cecdf7524336cc136524a95"
+  },
+  "observed": {
+    "gold_consumer_disagreements": 0,
+    "extractor_authority_disagreements": 17,
+    "regex": {
+      "status_accuracy": 0.86,
+      "resolved_coverage_in_schema": 0.8,
+      "exact_object_recovery_in_schema": 0.8,
+      "downstream_relation_accuracy_in_schema": 0.8,
+      "downstream_relation_precision_resolved": 1.0,
+      "authority_fabrication_unknown": 0,
+      "semantic_neutral_resolved_correct": "19/24",
+      "mutation_pairs": "8/12"
+    },
+    "tokens": {
+      "status_accuracy": 0.95,
+      "resolved_coverage_in_schema": 0.9285714285714286,
+      "exact_object_recovery_in_schema": 0.9142857142857143,
+      "downstream_relation_accuracy_in_schema": 0.9285714285714286,
+      "downstream_relation_precision_resolved": 1.0,
+      "authority_fabrication_unknown": 0,
+      "semantic_neutral_resolved_correct": "22/24",
+      "mutation_pairs": "12/12"
+    },
+    "consensus": {
+      "status_accuracy": 0.82,
+      "resolved_coverage_in_schema": 0.7428571428571429,
+      "exact_object_recovery_in_schema": 0.7428571428571429,
+      "downstream_relation_accuracy_in_schema": 0.7428571428571429,
+      "downstream_relation_precision_resolved": 1.0,
+      "authority_fabrication_unknown": 0,
+      "semantic_neutral_resolved_correct": "17/24",
+      "mutation_pairs": "8/12"
+    }
+  },
+  "limitations": [
+    "Both extractors and the synthetic RC6 corpus were authored in the same research execution.",
+    "The two extractors are separate code paths but are not context-free independent consumers.",
+    "The controlled cohort may reward bounded lexical/template regularity and does not establish arbitrary-language extraction.",
+    "No frozen extractor was repaired after reveal."
+  ],
+  "next_boundary": "A fresh context-independent extraction reproduction is required before any parser-generalization or production claim."
+}
