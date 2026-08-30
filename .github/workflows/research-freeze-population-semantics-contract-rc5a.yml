@@ -1,0 +1,48 @@
+name: Research - Freeze population semantics contract RC5A
+
+on:
+  push:
+    branches:
+      - research-infra/population-semantics-contract-rc5a-20260830
+  pull_request:
+    branches:
+      - research-infra/population-semantics-contract-rc5-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require RC5A pre-execution source ancestry
+        run: git merge-base --is-ancestor e1fe18e5c534f247ac0164fac4fb28c284eca065 HEAD
+      - name: Require corrected scientific sources unchanged
+        run: git diff --exit-code e1fe18e5c534f247ac0164fac4fb28c284eca065 HEAD -- research/population_semantics_contract_rc5a/
+      - name: Require RC5 semantic mechanisms byte-unchanged
+        run: git diff --exit-code e06ca62d21758c757add6f782bc4334f9b419709 HEAD -- research/population_semantics_contract_rc5/oracle.py research/population_semantics_contract_rc5/consumer.py
+      - name: Require production and RC4 science unchanged
+        run: |
+          git diff --exit-code e06ca62d21758c757add6f782bc4334f9b419709 HEAD -- src/
+          git diff --exit-code e06ca62d21758c757add6f782bc4334f9b419709 HEAD -- research/entity_population_membership_rc4/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile corrected source without executing semantic mechanisms
+        run: python -m py_compile research/population_semantics_contract_rc5a/build_corpus.py research/population_semantics_contract_rc5a/freeze.py
+      - name: Run model-free tests
+        run: PYTHONPATH=. python -m unittest research.population_semantics_contract_rc5a.test_model_free
+      - name: Materialize corrected corpus only
+        run: |
+          mkdir -p artifacts/population-semantics-contract-rc5a-freeze
+          PYTHONPATH=. python -m research.population_semantics_contract_rc5a.freeze --output-dir artifacts/population-semantics-contract-rc5a-freeze
+          sha256sum artifacts/population-semantics-contract-rc5a-freeze/CORPUS.json | tee artifacts/population-semantics-contract-rc5a-freeze/CORPUS.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-population-semantics-contract-rc5a-freeze-${{ github.sha }}
+          path: artifacts/population-semantics-contract-rc5a-freeze/
+          if-no-files-found: error
+          retention-days: 90
