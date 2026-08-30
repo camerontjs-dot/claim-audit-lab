@@ -1,0 +1,61 @@
+name: Research - Text-to-typed-authority extraction RC6 science
+
+on:
+  push:
+    branches:
+      - research-infra/text-to-typed-authority-extraction-rc6-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require accepted RC6 freeze ancestry
+        run: git merge-base --is-ancestor 54abacaae9e5ff0f912b6a6523f85c556ffd6ac2 HEAD
+      - name: Require frozen cohort and extractors unchanged
+        run: git diff --exit-code 39419546adc2a0c3369c6d3cc84ef360968ced9b HEAD -- research/text_to_typed_authority_extraction_rc6/
+      - name: Require frozen RC5B semantic consumer unchanged
+        run: |
+          git diff --exit-code b50c4b94ed5700a7eb4025016c8ab600cbe0ab59 HEAD -- research/population_semantics_contract_rc5b/consumer.py research/population_semantics_contract_rc5/consumer.py
+          git diff --exit-code b50c4b94ed5700a7eb4025016c8ab600cbe0ab59 HEAD -- src/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile frozen extraction apparatus and scorer
+        run: |
+          python -m py_compile research/text_to_typed_authority_extraction_rc6/*.py
+          python -m py_compile research/text_to_typed_authority_extraction_rc6_science/*.py
+      - name: Run only out-of-cohort extractor sentinels
+        run: PYTHONPATH=. python -m unittest research.text_to_typed_authority_extraction_rc6.test_extractors
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute frozen RC6 extraction comparison
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/text-to-typed-authority-extraction-rc6
+          PYTHONPATH=. python -m research.text_to_typed_authority_extraction_rc6_science.run_experiment \
+            --output-dir artifacts/text-to-typed-authority-extraction-rc6 \
+            | tee artifacts/text-to-typed-authority-extraction-rc6/stdout.json
+          sha256sum artifacts/text-to-typed-authority-extraction-rc6/RESULTS.json | tee artifacts/text-to-typed-authority-extraction-rc6/RESULTS.sha256
+          sha256sum artifacts/text-to-typed-authority-extraction-rc6/MEASUREMENTS.json | tee artifacts/text-to-typed-authority-extraction-rc6/MEASUREMENTS.sha256
+          sha256sum artifacts/text-to-typed-authority-extraction-rc6/COUNTEREXAMPLES.json | tee artifacts/text-to-typed-authority-extraction-rc6/COUNTEREXAMPLES.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-text-to-typed-authority-extraction-rc6-science-${{ github.sha }}
+          path: artifacts/text-to-typed-authority-extraction-rc6/
+          if-no-files-found: error
+          retention-days: 90
