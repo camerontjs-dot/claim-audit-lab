@@ -7,8 +7,9 @@ import argparse
 import hashlib
 import json
 from collections import Counter
+from collections.abc import Callable
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 EXPECTED_MEASUREMENTS_SHA256 = "a575966ca1089d43d7fdf162e01d15bfa2f06b8ab8afec95a826aa121dc132b7"
 MODELS = ("incumbent_base", "same_family_large", "long_context_base")
