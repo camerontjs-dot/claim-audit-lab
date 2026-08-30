@@ -1,0 +1,68 @@
+name: Research - Freeze entity population membership RC4
+
+on:
+  push:
+    branches:
+      - research-infra/entity-population-membership-rc4-20260830
+  pull_request:
+    paths:
+      - "research/entity_population_membership_rc4/**"
+      - ".github/workflows/research-freeze-entity-population-membership-rc4.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Require preregistration ancestry
+        run: git merge-base --is-ancestor da3885350fdf9b88d74f72cb6ee34ddc6d46de71 HEAD
+
+      - name: Require frozen scientific sources unchanged from preregistration
+        run: |
+          git diff --exit-code da3885350fdf9b88d74f72cb6ee34ddc6d46de71...HEAD -- \
+            research/entity_population_membership_rc4/PREREGISTRATION.md \
+            research/entity_population_membership_rc4/build_cohort.py \
+            research/entity_population_membership_rc4/mechanisms.py \
+            research/entity_population_membership_rc4/test_freeze.py
+
+      - name: Require predecessor and production surfaces unchanged
+        run: |
+          git diff --exit-code eb4e3043f5b16e3d65e5635b9d7013f312d5daf8...HEAD -- \
+            src scripts schema \
+            research/exception_scoped_rule_semantics_rc3 \
+            research/nli_independent_calibration_rc2 \
+            research/nli_ensemble_disagreement_rc1 \
+            research/nli_measurement_discrimination_rc0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run model-free freeze tests
+        working-directory: research/entity_population_membership_rc4
+        run: python -m unittest -v test_freeze.py
+
+      - name: Materialize and verify frozen cohort
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/entity-population-membership-rc4
+          python research/entity_population_membership_rc4/build_cohort.py \
+            --output artifacts/entity-population-membership-rc4/COHORT.json \
+            | tee artifacts/entity-population-membership-rc4/FREEZE.json
+          test "$(sha256sum artifacts/entity-population-membership-rc4/COHORT.json | cut -d' ' -f1)" = \
+            "c34aa64fe2a4ffad3eae6396cfd0f4ac400009065d0c7296229d15573e85200b"
+          sha256sum artifacts/entity-population-membership-rc4/COHORT.json \
+            | tee artifacts/entity-population-membership-rc4/COHORT.sha256
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-entity-population-membership-rc4-freeze-${{ github.sha }}
+          path: artifacts/entity-population-membership-rc4/
+          if-no-files-found: error
+          retention-days: 90
