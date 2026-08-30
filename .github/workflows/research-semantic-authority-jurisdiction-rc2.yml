@@ -21,7 +21,10 @@ jobs:
           fetch-depth: 0
       - name: Protect production and frozen predecessor
         run: |
-          git diff --exit-code 79c131732161c51b2f03cd8f89fe7efe98fcbb7b...HEAD --             src scripts tests pyproject.toml             research/operator_applicability_monotonicity_rc1             research/construction_cohort_a_shadow
+          git diff --exit-code 79c131732161c51b2f03cd8f89fe7efe98fcbb7b...HEAD -- \
+            src scripts tests pyproject.toml \
+            research/operator_applicability_monotonicity_rc1 \
+            research/construction_cohort_a_shadow
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -32,7 +35,9 @@ jobs:
       - name: Run authority-domain falsifiers
         run: |
           set -o pipefail
-          uv run pytest -q research/semantic_authority_jurisdiction_rc2/test_authority.py             | tee authority-rc2-pytest.txt
+          PYTHONPATH=. uv run pytest -q \
+            research/semantic_authority_jurisdiction_rc2/test_authority.py \
+            | tee authority-rc2-pytest.txt
       - uses: actions/upload-artifact@v4
         if: always()
         with:
