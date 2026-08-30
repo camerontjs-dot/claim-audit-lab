@@ -9,9 +9,18 @@ from research.nli_independent_calibration_rc2.run_calibration import (
 
 
 def test_adverse_conservative_preserves_conflict() -> None:
-    assert adverse_conservative(["contradiction", "contradiction", "entailment"]) == "unresolved"
-    assert adverse_conservative(["contradiction", "contradiction", "contradiction"]) == "contradiction"
-    assert adverse_conservative(["entailment", "entailment", "neutral"]) == "entailment"
+    assert (
+        adverse_conservative(["contradiction", "contradiction", "entailment"])
+        == "unresolved"
+    )
+    assert (
+        adverse_conservative(["contradiction", "contradiction", "contradiction"])
+        == "contradiction"
+    )
+    assert (
+        adverse_conservative(["entailment", "entailment", "neutral"])
+        == "entailment"
+    )
 
 
 def test_temperature_fit_is_positive_and_does_not_change_argmax() -> None:
