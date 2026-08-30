@@ -7,7 +7,6 @@ import argparse
 import hashlib
 import json
 import os
-import subprocess
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
