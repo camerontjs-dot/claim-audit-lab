@@ -1,0 +1,52 @@
+{
+  "schema_version": "cal-operator-applicability-monotonicity-rc1-receipt-v0.1",
+  "authority": "non_authoritative_research",
+  "predecessor_pr": 39,
+  "predecessor_head_sha": "8f8ec3593bbfe52e26c1fa7d39372acf6458993a",
+  "predecessor_science_head_sha": "ba1310d73ab63adf7c83de2f1e130f7f00a665af",
+  "predecessor_run_id": 33286159031,
+  "predecessor_results_sha256": "sha256:38cd6f29eab0ea6e0f50e737814b993aaf45a3919cacb5e02296289516e112d7",
+  "rc1_pr": 41,
+  "accepted_science_head_sha": "c105a705aa0db1f196639cdedef3f1993130ce0e",
+  "accepted_run_id": 33317475966,
+  "accepted_artifact_id": 9733897192,
+  "accepted_artifact_digest": "sha256:303c1484be86d82a40d617fc773f579f80bdc750c34e2a5c863a98932180f9e3",
+  "results_sha256": "sha256:eebe2ced25e489f462fd8f8f3197a8d0da2692222117f2046f11f97d4e79f744",
+  "new_model_execution": false,
+  "threshold_tuning_performed": false,
+  "production_behavior_changed": false,
+  "a4_invalid_to_unknown": 11,
+  "monotonicity_guards_fired": 0,
+  "cg23b_strengthening_blocked": true,
+  "guarded_outcome_counts": {
+    "supported": 5,
+    "abstain": 28
+  },
+  "support_to_adverse_created": 0,
+  "adverse_to_support_created": 0,
+  "terminal_outcome_changes": [
+    {
+      "case_id": "CG-23b",
+      "from": "supported",
+      "to": "abstain"
+    }
+  ],
+  "hypothesis_results": {
+    "H1": "SUPPORTED",
+    "H2": "FALSIFIED",
+    "H3": "SUPPORTED"
+  },
+  "preserved_apparatus_deviations": [
+    "Ruff failures before replay",
+    "escaped-newline source corruption",
+    "result-writer newline syntax failure",
+    "frozen trace path mismatch",
+    "eligibility replay path mismatch",
+    "piped failure masked by tee before workflow was hardened"
+  ],
+  "workflow_hardening": [
+    "set -o pipefail",
+    "require non-empty RESULTS.json",
+    "explicit copied eligibility receipt with rebound immutable trace path"
+  ]
+}
