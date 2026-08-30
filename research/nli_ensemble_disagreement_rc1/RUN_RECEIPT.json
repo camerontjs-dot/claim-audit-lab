@@ -1,0 +1,84 @@
+{
+  "schema_version": "cal-nli-ensemble-disagreement-rc1-receipt-v0.1",
+  "experiment_class": "Research Infrastructure / semantic-measurement aggregation",
+  "authority": "non_authoritative_research",
+  "terminal_disposition": "SUPPORTED FOR SUCCESSOR RESEARCH",
+  "production_main_sha": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+  "rc0_parent_sha": "b316d115c82fb635b0e089d43342b4b6e75c326e",
+  "preregistration_commit": "bcd110de783cafaf7fc705480746466940f13e3a",
+  "accepted_execution_head_sha": "aca0f84fd16d7dad128c038b139cb7ab00b232a3",
+  "accepted_actions_run_id": 33288443965,
+  "accepted_artifact_id": 9725192045,
+  "accepted_artifact_digest": "sha256:3659dfcddcf6fe2b4c4155768736cf0bde0b09e7bc165209df622ec45184e405",
+  "frozen_measurements_sha256": "sha256:a575966ca1089d43d7fdf162e01d15bfa2f06b8ab8afec95a826aa121dc132b7",
+  "evaluator_results_sha256": "sha256:bc806409d776de70324865642b6d582f8f33341de8173b06e26fbfddab3143df",
+  "short": {
+    "incumbent": {
+      "decided": 14,
+      "correct": 11,
+      "wrong_decided": 3,
+      "false_adverse": 2
+    },
+    "majority": {
+      "decided": 14,
+      "correct": 12,
+      "wrong_decided": 2,
+      "false_adverse": 1
+    },
+    "unanimity": {
+      "decided": 11,
+      "correct": 11,
+      "wrong_decided": 0,
+      "false_adverse": 0
+    },
+    "adverse_conservative": {
+      "decided": 11,
+      "correct": 11,
+      "wrong_decided": 0,
+      "false_adverse": 0
+    }
+  },
+  "short_disagreement_cases": [
+    "CG-18",
+    "CG-19",
+    "CG-20"
+  ],
+  "short_incumbent_error_cases": [
+    "CG-18",
+    "CG-19",
+    "CG-20"
+  ],
+  "stress_tail": {
+    "incumbent": {
+      "decided": 14,
+      "correct": 3,
+      "wrong_decided": 11
+    },
+    "majority": {
+      "decided": 10,
+      "correct": 7,
+      "wrong_decided": 3
+    },
+    "adverse_conservative": {
+      "decided": 9,
+      "correct": 7,
+      "wrong_decided": 2
+    },
+    "aperture_route": {
+      "decided": 14,
+      "correct": 12,
+      "wrong_decided": 2
+    }
+  },
+  "score_normalization_performed": false,
+  "learned_weights_performed": false,
+  "threshold_tuning_performed": false,
+  "production_behavior_changed": false,
+  "production_ensemble_authorized": false,
+  "preserved_deviation": {
+    "run_id": 33288414448,
+    "stage": "pre_science_lint",
+    "result": "stopped",
+    "repair": "Callable import source only"
+  }
+}
