@@ -1,0 +1,30 @@
+{
+  "classification": "sealed_post_freeze_evaluator",
+  "experiment": "text-to-typed-authority-fresh-reproduction-v1",
+  "sealed_before_fresh_implementation": true,
+  "semantic_ancestor": "c623af35bee3b5f685c9a44e6d91ced006b2d690",
+  "aperture_head": "213c6af2b11cfc5d0673c715d2a2385bed0a9f44",
+  "evaluator_source_head_before_receipt": "d6a2b570be1c0365edba5e0839e8d1a4012a7b38",
+  "payload_blob_sha": "b6f9330bf1c9da75a3cb6db3fb236b659c5cbe00",
+  "evaluator_blob_sha": "9184b7fb535ab44b3d3f32acb23ec6862e27ddf6",
+  "cohort_sha256": "002b4239d6ab5a981cc2d3921232daaa4533f38224c6e104d2d26e5a0d11c562",
+  "mutations_sha256": "924691ac1e896ab1ec0dc3cd8f64633a4c7548ade1ec22daac2fa386ecb5e6ab",
+  "counts": {
+    "total": 140,
+    "in_schema": 112,
+    "expected_unknown": 28,
+    "semantic_dimensions": 7,
+    "mutation_pairs": 14
+  },
+  "expected_unknown_partitions": {
+    "ambiguous_reference": 10,
+    "insufficient_authority": 10,
+    "ontology_escape": 8
+  },
+  "frozen_consumer": {
+    "rc5_parent_consumer_blob": "f2839acc51d518108bc07d21f6ab2ac4fccc35bd",
+    "rc5b_consumer_blob": "988c2bd6c2e7079639a1f5759e02ed5d14fbcfb6"
+  },
+  "reveal_rule": "Do not disclose this branch/ref, payload, evaluator, corpus, cases, or expected outputs to the fresh implementation before its accepted freeze receipt. After freeze, reveal only the exact final sealed commit and these three paths: sealed_payload.py, evaluate.py, SEALED_RECEIPT.json.",
+  "non_authorization": "This sealed evaluator does not authorize production parser, semantic operator, entailer, threshold, Contract C, aggregation, or downstream policy changes."
+}
