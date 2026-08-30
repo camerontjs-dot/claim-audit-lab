@@ -1,0 +1,37 @@
+{
+  "schema": "cal-local-pipeline-reconciliation/v1",
+  "observed_at_utc": "2026-08-30",
+  "github": {
+    "repo": "camerontjs-dot/claim-audit-lab",
+    "main": "53f0885b111676794d1bd20e10b91aa58b07e9d4",
+    "release_tag": "v0.5.0",
+    "feat_v2_epistemic_pipeline": "b7254e713feb5556a81fb0c5b39649c415a949c6",
+    "merge_base_main_vs_v2": "f0c07e8981b3f883b2f0c12fb0c8be1e265b75f2",
+    "v2_unique_commits": [
+      "b903537d1fb16977d65c42c4aea2958edb171dbc",
+      "b7254e713feb5556a81fb0c5b39649c415a949c6"
+    ],
+    "open_draft_prs": [35, 36, 37, 38, 39, 40, 41]
+  },
+  "unpublished_workbench": {
+    "branch": "feat/v2-epistemic-pipeline",
+    "head": "b7254e713feb5556a81fb0c5b39649c415a949c6",
+    "committed_tree": "fc85172cfae1305837086529fff648d73fe5127e",
+    "dirty_tracked_count": 8,
+    "untracked_count": 11,
+    "portable_file_sha256": {
+      "src/claim_audit_lab/v1/v2_pipeline.py": "649ed475c521e2988a5ed4aa23929e5c01d6980f11b7418e269fb2d5f111d35c",
+      "src/claim_audit_lab/contracts/deep_research_adapter.py": "30ddd11744aa9e2df1687ac6e90932178b3a7bfe5aab47a656a5350c4c8af8a6",
+      "tests/v1/test_v2_pipeline.py": "ef937ba4838a834e2575d5ce63feb18cd7acffe41041a949664c13a5e58a7934",
+      "tests/v1/test_deep_research_adapter.py": "e95bb7da6a2931bc3532ca12f32a56074bd24554e1cde9458dbd0356a3d08c5f",
+      "scripts/probe01_atomicity_bakeoff.py": "19c9a2db80b6efc5e8bf72ef1636d3178c77d8c9a5ae48b7334427493f6d7ddb",
+      "scripts/probe04_negation_meta_claims.py": "926a93362ba17b3f075cc1988d691f634d7443d8cfae4f8b3bf953f2fb34399b",
+      "scripts/compare_v040_vs_v2.py": "7e6a3198a64f4f0cd0d1d940dd2f7c73a268b25ed18c25bc1622c4388d2c5e29"
+    }
+  },
+  "other_local_heads": {
+    "frozen_candidate": "c1e3e58740f8670aa3c89163732d190ef8e48904",
+    "historical_inventory_pr38": "7acad37ba6c0090f77deea51b80989fc84a43b8b"
+  },
+  "this_reconciliation_base": "53f0885b111676794d1bd20e10b91aa58b07e9d4"
+}
