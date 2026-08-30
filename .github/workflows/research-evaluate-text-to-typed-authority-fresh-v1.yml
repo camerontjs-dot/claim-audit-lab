@@ -1,0 +1,91 @@
+name: research-evaluate-text-to-typed-authority-fresh-v1
+
+on:
+  push:
+    branches:
+      - research-infra/text-to-typed-authority-fresh-reproduction-v1-20260830
+    paths:
+      - '.github/workflows/research-evaluate-text-to-typed-authority-fresh-v1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fresh reproduction branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify immutable implementation and ancestry
+        shell: bash
+        run: |
+          set -euo pipefail
+          FREEZE=19e6341216877c5a9bb73da5ddbc94529f6198bf
+          git merge-base --is-ancestor "$FREEZE" HEAD
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          receipt = json.loads(Path("research/text_to_typed_authority_fresh_v1/FREEZE_RECEIPT.json").read_text())
+          for path in [
+              "research/text_to_typed_authority_fresh_v1/extractor.py",
+              "research/text_to_typed_authority_fresh_v1/test_contract_sentinels.py",
+          ]:
+              actual = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+              expected = receipt["source_sha256"][path]
+              if actual != expected:
+                  raise SystemExit(f"frozen hash mismatch for {path}: {actual} != {expected}")
+              print(f"verified {path} {actual}")
+          if receipt["implementation_freeze_commit"] != "19e6341216877c5a9bb73da5ddbc94529f6198bf":
+              raise SystemExit("freeze receipt implementation SHA mismatch")
+          PY
+
+      - name: Materialize exact sealed reveal files
+        shell: bash
+        run: |
+          set -euo pipefail
+          REVEAL=f6c1a3a36e4a1b8ae666be9e33b75696a3e89b55
+          git fetch --no-tags origin "$REVEAL"
+          mkdir -p research/text_to_typed_authority_fresh_v1_reveal
+          for f in sealed_payload.py evaluate.py SEALED_RECEIPT.json; do
+            git show "$REVEAL:research/text_to_typed_authority_fresh_v1_reveal/$f" > "research/text_to_typed_authority_fresh_v1_reveal/$f"
+          done
+          test "$(git hash-object research/text_to_typed_authority_fresh_v1_reveal/sealed_payload.py)" = "b6f9330bf1c9da75a3cb6db3fb236b659c5cbe00"
+          test "$(git hash-object research/text_to_typed_authority_fresh_v1_reveal/evaluate.py)" = "9184b7fb535ab44b3d3f32acb23ec6862e27ddf6"
+          test "$(git hash-object research/text_to_typed_authority_fresh_v1_reveal/SEALED_RECEIPT.json)" = "7ae4eab270c4e10a8b5c3a93a1ae705828911c4a"
+
+      - name: Run sealed evaluator exactly
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p reveal-artifact
+          PYTHONPATH=. python -m research.text_to_typed_authority_fresh_v1_reveal.evaluate --output-dir reveal-artifact | tee reveal-artifact/EVALUATOR_STDOUT.txt
+
+      - name: Record evaluation receipts and hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "implementation_freeze_sha=19e6341216877c5a9bb73da5ddbc94529f6198bf"
+            echo "sealed_reveal_sha=f6c1a3a36e4a1b8ae666be9e33b75696a3e89b55"
+            echo "evaluation_branch_head=${{ github.sha }}"
+            echo "freeze_run_id=33339053497"
+            echo "freeze_artifact_id=9739941547"
+            sha256sum \
+              reveal-artifact/RESULTS.json \
+              reveal-artifact/MEASUREMENTS.json \
+              reveal-artifact/MUTATIONS.json \
+              reveal-artifact/COUNTEREXAMPLES.json
+          } | tee reveal-artifact/EVALUATION_RECEIPT.txt
+          cp research/text_to_typed_authority_fresh_v1/FREEZE_RECEIPT.json reveal-artifact/FREEZE_RECEIPT.json
+          cp research/text_to_typed_authority_fresh_v1_reveal/SEALED_RECEIPT.json reveal-artifact/SEALED_RECEIPT.json
+
+      - name: Upload complete evaluation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: text-to-typed-authority-fresh-v1-evaluation
+          path: reveal-artifact/
+          if-no-files-found: error
+          retention-days: 90
