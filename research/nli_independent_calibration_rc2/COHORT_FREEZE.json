@@ -1,0 +1,35 @@
+{
+  "schema_version": "cal-independent-nli-calibration-cohort-freeze-v0.1",
+  "authority": "non_authoritative_research",
+  "preregistration_commit": "3fc060228406b52aa65d4a3eb35579ffc7dff335",
+  "accepted_freeze_head_sha": "53b1a9d1de4fac86445bfd85bb3a4ae3bf3cbbf9",
+  "accepted_freeze_run_id": 33288951809,
+  "accepted_artifact_id": 9725345054,
+  "accepted_artifact_digest": "sha256:989a5c54e91874ad882f2ac48e09e2e41e00d8908b3b8dc87047c031ba849372",
+  "cohort_sha256": "sha256:c5f64d6ad73d198aef575b5274280363bb71fc99aac78197e3abf13b13599f2d",
+  "n_cases": 72,
+  "calibration_cases": 36,
+  "evaluation_cases": 36,
+  "per_split_labels": {
+    "entailment": 12,
+    "neutral": 12,
+    "contradiction": 12
+  },
+  "semantic_families": [
+    "quantifier_scope",
+    "exceptions",
+    "modality",
+    "entity_population_scope",
+    "temporal_qualifiers",
+    "conditional_causal"
+  ],
+  "model_execution_before_freeze": false,
+  "preserved_deviation": {
+    "run_id": 33288935143,
+    "head_sha": "2432c86183a0f10b26af2b86fc6d6e64dbd59699",
+    "issue": "unittest discovery executed zero pytest-style test functions",
+    "scientific_content_changed": false,
+    "first_materialized_cohort_sha256": "sha256:c5f64d6ad73d198aef575b5274280363bb71fc99aac78197e3abf13b13599f2d",
+    "disposition": "apparatus-incomplete freeze superseded by accepted run"
+  }
+}
