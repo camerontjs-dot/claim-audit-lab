@@ -210,7 +210,13 @@ def freeze_inputs(tokenizer: Any) -> dict[str, Any]:
     }
 
 
-def _score_one(model: Any, tokenizer: Any, order: tuple[str, ...], claim: str, premise: str) -> dict[str, Any]:
+def _score_one(
+    model: Any,
+    tokenizer: Any,
+    order: tuple[str, ...],
+    claim: str,
+    premise: str,
+) -> dict[str, Any]:
     max_length = _native_max_length(model, tokenizer)
     raw_ids = tokenizer(premise, claim, truncation=False)["input_ids"]
     encoded = tokenizer(
@@ -235,14 +241,20 @@ def _score_one(model: Any, tokenizer: Any, order: tuple[str, ...], claim: str, p
     }
 
 
-def _determinism_check(model: Any, tokenizer: Any, order: tuple[str, ...], inputs: dict[str, Any]) -> dict[str, Any]:
+def _determinism_check(
+    model: Any,
+    tokenizer: Any,
+    order: tuple[str, ...],
+    inputs: dict[str, Any],
+) -> dict[str, Any]:
     sentinels = inputs["cases"][: min(3, len(inputs["cases"]))]
     rows = []
     for case in sentinels:
         first = _score_one(model, tokenizer, order, case["claim"], case["premises"]["short"])
         second = _score_one(model, tokenizer, order, case["claim"], case["premises"]["short"])
         logits_equal = all(
-            abs(a - b) <= 1e-6 for a, b in zip(first["raw_logits"], second["raw_logits"], strict=True)
+            abs(a - b) <= 1e-6
+            for a, b in zip(first["raw_logits"], second["raw_logits"], strict=True)
         )
         row = {
             "case_id": case["case_id"],
@@ -287,10 +299,12 @@ def _summarize(rows: list[dict[str, Any]]) -> dict[str, Any]:
         by_case.setdefault(row["case_id"], {})[row["variant"]] = row
     summary["short_to_stress"] = {
         "head_label_stability": sum(
-            vals["short"]["predicted"] == vals["stress_head"]["predicted"] for vals in by_case.values()
+            vals["short"]["predicted"] == vals["stress_head"]["predicted"]
+            for vals in by_case.values()
         ),
         "tail_label_stability": sum(
-            vals["short"]["predicted"] == vals["stress_tail"]["predicted"] for vals in by_case.values()
+            vals["short"]["predicted"] == vals["stress_tail"]["predicted"]
+            for vals in by_case.values()
         ),
         "head_correctness_retained": sum(
             vals["short"]["predicted"] == vals["short"]["target"]
