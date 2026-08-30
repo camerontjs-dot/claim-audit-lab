@@ -1,0 +1,60 @@
+name: research-freeze-text-to-typed-authority-fresh-v1
+
+on:
+  pull_request:
+    branches:
+      - research-infra/text-to-typed-authority-fresh-v1-aperture-20260830
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'research/text_to_typed_authority_fresh_v1/__init__.py'
+      - 'research/text_to_typed_authority_fresh_v1/extractor.py'
+      - 'research/text_to_typed_authority_fresh_v1/test_contract_sentinels.py'
+      - 'research/text_to_typed_authority_fresh_v1/IMPLEMENTATION_NOTES.md'
+      - '.github/workflows/research-freeze-text-to-typed-authority-fresh-v1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen fresh head only
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          sparse-checkout: |
+            research/text_to_typed_authority_fresh_v1
+            .github/workflows/research-freeze-text-to-typed-authority-fresh-v1.yml
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run contract-only sentinels
+        run: python -m unittest research.text_to_typed_authority_fresh_v1.test_contract_sentinels -v
+
+      - name: Build freeze manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "aperture_head=213c6af2b11cfc5d0673c715d2a2385bed0a9f44"
+            echo "implementation_head=${{ github.event.pull_request.head.sha }}"
+            sha256sum \
+              research/text_to_typed_authority_fresh_v1/__init__.py \
+              research/text_to_typed_authority_fresh_v1/extractor.py \
+              research/text_to_typed_authority_fresh_v1/test_contract_sentinels.py \
+              research/text_to_typed_authority_fresh_v1/IMPLEMENTATION_NOTES.md \
+              .github/workflows/research-freeze-text-to-typed-authority-fresh-v1.yml
+          } | tee freeze-manifest.txt
+
+      - name: Upload freeze manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: text-to-typed-authority-fresh-v1-freeze-manifest
+          path: freeze-manifest.txt
+          if-no-files-found: error
+          retention-days: 30
