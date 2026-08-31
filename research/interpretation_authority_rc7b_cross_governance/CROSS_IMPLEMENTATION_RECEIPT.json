@@ -1,0 +1,10 @@
+{
+  "comparison_result_sha256": "e0d179636e1f9c405e70f5cf58dcbddad6ac1adc2b9c1363e955791be39145a0",
+  "cross_implementation_state": "UNSAFE_INTERPRETATION",
+  "implementation_a_evidence_commit": "fc1b3ff7a7ca273d732ef6202c10fb3f24b12750",
+  "implementation_b_evidence_commit": "04f52a6506336c5b0772fede9dca25d4f894ef18",
+  "production_authorization": false,
+  "sealed_comparator_commit": "19e9302a11decb08dda644fbf1018997cf138c3b",
+  "sealed_compare_two_blob": "56aad27cd1fb52a411b43ef94874a1be7fd772d4",
+  "workflow_run_id": 33400194526
+}

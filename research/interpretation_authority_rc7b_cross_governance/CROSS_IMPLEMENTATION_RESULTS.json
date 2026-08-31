@@ -1,0 +1,19 @@
+{
+  "cross_implementation_state": "UNSAFE_INTERPRETATION",
+  "implementation_a_state": "UNSAFE_INTERPRETATION",
+  "implementation_b_state": "UNSAFE_INTERPRETATION",
+  "pairwise": {
+    "agreement_cases": 124,
+    "authorization_agreement": 0.9833333333333333,
+    "authorized_relation_agreement": 0.821917808219178,
+    "case_overlap": 180,
+    "core_case_semantic_agreement": 0.7407407407407407,
+    "disagreement_cases": 56,
+    "gold_error_rate_when_agree": 0.46774193548387094,
+    "gold_error_rate_when_disagree": 1.0,
+    "mutation_total": 30,
+    "mutations_passed_by_both": 19,
+    "semantic_field_status_value_agreement": 0.905367231638418,
+    "warrant_rule_agreement_given_same_semantics": 1.0
+  }
+}
