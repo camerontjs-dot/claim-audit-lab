@@ -51,7 +51,7 @@ jobs:
           git show "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/evaluate.py" > research/interpretation_authority_rc7b_reveal/evaluate.py
           git show "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json" > research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json
 
-      - name: Search bounded one-character transport repair
+      - name: Search bounded one-character insertion or deletion repair
         shell: bash
         run: |
           set -euo pipefail
@@ -64,31 +64,39 @@ jobs:
           for node in tree.body:
               if isinstance(node, ast.Assign) and len(node.targets)==1 and isinstance(node.targets[0], ast.Name) and node.targets[0].id in {'PAYLOAD_B64','PAYLOAD_SHA256'}:
                   vals[node.targets[0].id]=ast.literal_eval(node.value)
-          raw=bytearray(vals['PAYLOAD_B64'].encode('ascii'))
-          decoded=base64.b64decode(bytes(raw)+b'='*((-len(raw))%4))
+          raw=vals['PAYLOAD_B64'].encode('ascii')
+          decoded=base64.b64decode(raw+b'='*((-len(raw))%4))
           first=zlib.decompressobj(wbits=-15)
           first.decompress(decoded[2:]); first.flush()
           consumed=(len(decoded)-2)-len(first.unused_data)
           center=((2+consumed)*4)//3
-          lo=max(0,center-384); hi=min(len(raw),center+385)
+          lo=max(0,center-512); hi=min(len(raw),center+513)
           alphabet=b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
           target=vals['PAYLOAD_SHA256']
           print('search_center_b64=',center,'search_range=',lo,hi,'candidate_positions=',hi-lo)
-          found=[]
+
+          def matches(candidate_b64):
+              try:
+                  candidate=base64.b64decode(candidate_b64+b'='*((-len(candidate_b64))%4))
+                  plain=zlib.decompress(candidate)
+                  obj=json.loads(plain.decode())
+                  canon=json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+                  if hashlib.sha256(canon).hexdigest()==target:
+                      return hashlib.sha256(candidate).hexdigest(),len(plain)
+              except Exception:
+                  return None
+              return None
+
+          insertions=[]
+          deletions=[]
           for pos in range(lo,hi):
-              original=raw[pos]
-              for repl in alphabet:
-                  if repl==original: continue
-                  raw[pos]=repl
-                  try:
-                      candidate=base64.b64decode(bytes(raw)+b'='*((-len(raw))%4))
-                      plain=zlib.decompress(candidate)
-                      obj=json.loads(plain.decode())
-                      canon=json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
-                      if hashlib.sha256(canon).hexdigest()==target:
-                          found.append((pos,chr(original),chr(repl),hashlib.sha256(candidate).hexdigest(),len(plain)))
-                  except Exception:
-                      pass
-              raw[pos]=original
-          print('bounded_single_char_repairs=',found)
+              for ch in alphabet:
+                  hit=matches(raw[:pos]+bytes([ch])+raw[pos:])
+                  if hit:
+                      insertions.append((pos,chr(ch),hit[0],hit[1]))
+              hit=matches(raw[:pos]+raw[pos+1:])
+              if hit:
+                  deletions.append((pos,chr(raw[pos]),hit[0],hit[1]))
+          print('bounded_single_char_insertions=',insertions)
+          print('bounded_single_char_deletions=',deletions)
           PY
