@@ -1,0 +1,113 @@
+name: Research Localize - Interpretation Authority RC7B Failures
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7b-failure-localization-20260831
+    paths:
+      - .github/workflows/research-localize-interpretation-authority-rc7b-failures.yml
+      - research/interpretation_authority_rc7b_failure_localization/analyze.py
+      - research/interpretation_authority_rc7b_failure_localization/PREREGISTRATION.md
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  localize:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: research-infra/interpretation-authority-rc7b-failure-localization-20260831
+      A_EVIDENCE: fc1b3ff7a7ca273d732ef6202c10fb3f24b12750
+      B_EVIDENCE: 04f52a6506336c5b0772fede9dca25d4f894ef18
+      SEALED: 19e9302a11decb08dda644fbf1018997cf138c3b
+      SEALED_PAYLOAD_BLOB: 3d26de023fb4cdaf6befafa0dbe11f448231d42a
+      OUT: research/interpretation_authority_rc7b_failure_localization/results
+
+    steps:
+      - name: Exact analysis-head checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Materialize immutable evidence inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin "+${A_EVIDENCE}:refs/rc7b-a-localize"
+          git fetch --no-tags --depth=1 origin "+${B_EVIDENCE}:refs/rc7b-b-localize"
+          git fetch --no-tags --depth=1 origin "+${SEALED}:refs/rc7b-sealed-localize"
+          test "$(git rev-parse "${SEALED}:research/interpretation_authority_rc7b_reveal/sealed_payload.py")" = "$SEALED_PAYLOAD_BLOB"
+          mkdir -p /tmp/rc7b-localize "$OUT"
+          git show "${A_EVIDENCE}:research/interpretation_authority_rc7b_a/post_reveal_evaluation/PREDICTIONS.json" > /tmp/rc7b-localize/a-predictions.json
+          git show "${A_EVIDENCE}:research/interpretation_authority_rc7b_a/post_reveal_evaluation/MUTATIONS.json" > /tmp/rc7b-localize/a-mutations.json
+          git show "${B_EVIDENCE}:research/interpretation_authority_rc7b_b/post_reveal_evaluation/PREDICTIONS.json" > /tmp/rc7b-localize/b-predictions.json
+          git show "${B_EVIDENCE}:research/interpretation_authority_rc7b_b/post_reveal_evaluation/MUTATIONS.json" > /tmp/rc7b-localize/b-mutations.json
+          git show "${SEALED}:research/interpretation_authority_rc7b_reveal/sealed_payload.py" > /tmp/rc7b-localize/sealed_payload.py
+
+      - name: Run preregistered localizer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/interpretation_authority_rc7b_failure_localization/analyze.py \
+            --a-predictions /tmp/rc7b-localize/a-predictions.json \
+            --a-mutations /tmp/rc7b-localize/a-mutations.json \
+            --b-predictions /tmp/rc7b-localize/b-predictions.json \
+            --b-mutations /tmp/rc7b-localize/b-mutations.json \
+            --sealed-payload /tmp/rc7b-localize/sealed_payload.py \
+            --output-dir "$OUT"
+          test -f "$OUT/RESULTS.json"
+          test -f "$OUT/CASE_COHORTS.json"
+          test -f "$OUT/FIELD_CONSTRUCTION_AGGREGATES.json"
+          test -f "$OUT/MUTATION_LOCALIZATION.json"
+          test -f "$OUT/REPORT.md"
+
+      - name: Write immutable run receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os,subprocess
+          from pathlib import Path
+          out=Path(os.environ['OUT'])
+          names=['RESULTS.json','CASE_COHORTS.json','FIELD_CONSTRUCTION_AGGREGATES.json','MUTATION_LOCALIZATION.json','REPORT.md']
+          def sha(path): return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+          receipt={
+            'analysis_head_sha':os.environ['GITHUB_SHA'],
+            'implementation_a_evidence_commit':os.environ['A_EVIDENCE'],
+            'implementation_b_evidence_commit':os.environ['B_EVIDENCE'],
+            'sealed_evaluator_commit':os.environ['SEALED'],
+            'sealed_payload_git_blob':os.environ['SEALED_PAYLOAD_BLOB'],
+            'input_sha256':{
+              'a-predictions.json':sha('/tmp/rc7b-localize/a-predictions.json'),
+              'a-mutations.json':sha('/tmp/rc7b-localize/a-mutations.json'),
+              'b-predictions.json':sha('/tmp/rc7b-localize/b-predictions.json'),
+              'b-mutations.json':sha('/tmp/rc7b-localize/b-mutations.json'),
+              'sealed_payload.py':sha('/tmp/rc7b-localize/sealed_payload.py'),
+            },
+            'output_sha256':{name:sha(out/name) for name in names},
+            'scientific_state':json.loads((out/'RESULTS.json').read_text())['scientific_state'],
+            'workflow_run_id':int(os.environ['GITHUB_RUN_ID']),
+            'production_authorization':False,
+          }
+          (out/'RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          PY
+
+      - name: Upload localization evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: interpretation-authority-rc7b-failure-localization-${{ github.sha }}
+          path: ${{ env.OUT }}/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Commit preserved localization evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$OUT/RESULTS.json" "$OUT/CASE_COHORTS.json" "$OUT/FIELD_CONSTRUCTION_AGGREGATES.json" "$OUT/MUTATION_LOCALIZATION.json" "$OUT/REPORT.md" "$OUT/RUN_RECEIPT.json"
+          git commit -m "RC7B: preserve failure-localization evidence"
+          git push origin HEAD:${BRANCH}
