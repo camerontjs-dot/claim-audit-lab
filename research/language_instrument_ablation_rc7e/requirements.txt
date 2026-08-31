@@ -1,0 +1,8 @@
+# Frozen RC7E research-only dependencies.
+stanza==1.14.0
+quantulum3==0.10.0
+transformers==4.56.2
+sentencepiece==0.2.1
+safetensors==0.6.2
+rdflib==7.6.0
+owlrl==7.6.2

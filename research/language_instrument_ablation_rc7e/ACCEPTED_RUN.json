@@ -1,0 +1,28 @@
+{
+  "experiment": "RC7E heterogeneous non-LLM language-instrument ablation",
+  "accepted_run": 33448511982,
+  "run_head": "0ba6a30d4168f92198cd18443ce290b666761987",
+  "apparatus_freeze": "05f6570cbfc46aad7941b791aa7345209494da69",
+  "source_manifest_freeze": "8e9ae32574b871a3f340090270bdc8843db3e2df",
+  "cohort_freeze": "0ba6a30d4168f92198cd18443ce290b666761987",
+  "artifact_id": 9779020469,
+  "artifact_digest": "sha256:983de37ca9c9f0c55a8b610e526d84e186f333311ed7529494974b212f090459",
+  "results_payload_digest": "sha256:0514df612d52e0949d9f80aeb2698ccbbb20d17c97bbf4d06bd9f2689e10c2cc",
+  "receipts_payload_digest": "sha256:af91b1426965a7bc81a9b1bedbd1b3afc3f19189b0b7bc064eab98b01de62dca",
+  "report_payload_digest": "sha256:0608c762ceab76fbfabb69b95f792793553548c79a5962fa852d4745b4a22cd4",
+  "case_count": 94,
+  "scientific_state": "MORE_NON_LLM_INSTRUMENT_RESEARCH_JUSTIFIED",
+  "baseline_proposal_dimension_recall": 0.7380952380952381,
+  "complete_union_proposal_dimension_recall": 0.8968253968253969,
+  "complete_union_authorized_dimension_recall": 0.7380952380952381,
+  "complete_union_authorized_typed_atom_precision": 0.7154471544715447,
+  "unsafe_authorized_atoms": 35,
+  "false_authorized_dimensions": 20,
+  "smallest_safe_gain_candidate": null,
+  "residual_by_dimension": {
+    "permission": 5,
+    "comparison": 4,
+    "event_ordering": 4
+  },
+  "production_authorization": false
+}
