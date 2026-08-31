@@ -12,11 +12,9 @@ These deviations were discovered and corrected before any RC7E held-out corpus e
 
 **Preregistered alias:** `sdp-biaffine-en`.
 
-**Current documented SuPar 1.1.4 alias:** `biaffine-sdp-en` for the English DM semantic-dependency parser.
+**Documented SuPar 1.1.4 alias:** `biaffine-sdp-en` for the English DM semantic-dependency parser.
 
-**External verification:** https://pypi.org/project/supar/1.1.4/ (retrieved 2026-08-31).
-
-**Disposition:** correct the alias before held-out construction. Preserve the original alias in the final instrument identity as a deviation field. This is runtime qualification, not result-driven tuning.
+**Disposition:** the alias was corrected before held-out construction so runtime qualification could exercise the intended model. The original alias remains preserved in instrument identity.
 
 ## RC7E-D03 — cross-instrument authority-anchor pooling risk
 
@@ -38,6 +36,16 @@ These deviations were discovered and corrected before any RC7E held-out corpus e
 
 **Disposition:** preserve canonical proposal-origin instrument IDs in every NLI measurement. NLI remains non-authoritative and cannot originate atoms.
 
+## RC7E-D06 — semantic-dependency graph lane unavailable on safe modern runtime
+
+**Observed:** corrected qualification run `33444767215` successfully verified production `src/` against exact base `253af5313e93932875bdd5956ac46246f3796271`, preserved raw source, passed every evaluator control, and loaded the selected portfolio except `supar_sdp`. After downloading the documented `biaffine-sdp-en` checkpoint, SuPar failed with PyTorch's `weights_only=True` safe-deserialization error on `supar.utils.config.Config`.
+
+**Preserved evidence:** artifact `9777713249`, digest `sha256:c403a5e47af93fcaf00a6150fa61bd0bc77facc11705c95fc3a19a814a6479cc`.
+
+**Maintenance/compatibility check:** the upstream `yzhangcs/parser` repository's latest observed code commit is `bebdd350e034c517cd5b71185e056503290164fa` dated 2023-09-03. Upstream issues #147 and #149 independently reproduce PyTorch 2.6+ / 2.7 safe-loading incompatibility; reported workarounds include older PyTorch or unofficial forks.
+
+**Disposition:** prune SuPar from the RC7E scientific portfolio before held-out construction. Do not set `weights_only=False`, accumulate pickle allowlists, pin an obsolete PyTorch solely for category coverage, or substitute an unofficial fork after qualification. Preserve a `supar_sdp_unavailable` receipt with no semantic proposal jurisdiction. Semantic-graph coverage therefore remains an explicit apparatus gap.
+
 ## Non-authoritative intermediate tree
 
-A local Git-data tree object `9a619745eec6e015ef1176ebeb1dcf39704783df` was constructed during pre-held-out repair but never committed or moved onto the RC7E branch. It is not an apparatus freeze and must not be cited as scientific authority.
+A Git-data tree object `9a619745eec6e015ef1176ebeb1dcf39704783df` was constructed during pre-held-out repair but never committed or moved onto the RC7E branch. It is not an apparatus freeze and must not be cited as scientific authority.
