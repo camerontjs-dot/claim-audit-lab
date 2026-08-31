@@ -1,0 +1,46 @@
+{
+  "apparatus_defects": [
+    "Run 33395836054 failed before case evaluation with binascii.Error: Incorrect padding; preserved in FAILED_RUN_33395836054_RECEIPT.json.",
+    "Run 33396034954 failed before case evaluation with zlib.error: incorrect data check after padding-only normalization; preserved in FAILED_RUN_33396034954_RECEIPT.json.",
+    "Run 33396286971 failed before case evaluation with zlib.error: incorrect data check after exhaustive zero-to-two-terminal-Base64-character reconstruction; preserved in FAILED_RUN_33396286971_RECEIPT.json.",
+    "Run 33396614350 failed before case evaluation with zlib.error: incorrect data check after checksum-trailer-only reconstruction; preserved in FAILED_RUN_33396614350_RECEIPT.json.",
+    "Run 33396799846 failed before case evaluation with zlib.error: incorrect data check after raw-DEFLATE verified-plaintext recompression attempt; preserved in FAILED_RUN_33396799846_RECEIPT.json."
+  ],
+  "contamination": null,
+  "deviations": [
+    "Non-semantic apparatus repair: diagnostic run 33397267340 found a unique bounded one-character insertion repair that exactly satisfies the sealed payload semantic SHA-256. A temporary sitecustomize.py inserts Base64 character I at transport position 3168 only for the authorized 12,787-character sealed payload, requires repaired compressed SHA-256 4f3ea5c6f00e85dfc60b833eac397626503338311c9305a81cc3ef6672af6aa2, decompresses it, and requires canonical JSON SHA-256 35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a before returning the repaired transport. sealed_payload.py and evaluate.py remain byte-for-byte unchanged, and sealed load_payload() independently re-verifies PAYLOAD_SHA256."
+  ],
+  "evaluation_head_sha": "ec1d50e685e1081fa12765b1c012da0138e12263",
+  "evaluator_command": "PYTHONPATH=. python -m research.interpretation_authority_rc7b_reveal.evaluate --implementation-module research.interpretation_authority_rc7b_b.interpret --output-dir research/interpretation_authority_rc7b_b/post_reveal_evaluation",
+  "exact_reveal_files_materialized": [
+    "research/interpretation_authority_rc7b_reveal/sealed_payload.py",
+    "research/interpretation_authority_rc7b_reveal/evaluate.py",
+    "research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json"
+  ],
+  "frozen_sha256_reverified": {
+    "interpret.py": "8d897b291ef7a89f9a7e1a3a321c4229bdb3396cc294fcb0de846e1806d3ed6e",
+    "test_contract_sentinels.py": "cbd39ba43cfa77785e29290aac2e77446e1f20a070dbc2bba49aad8e40ae3411"
+  },
+  "immutable_implementation_freeze_sha": "074363bf243717a502cb2e3269309cc94ddf5106",
+  "implementation_id": "B",
+  "output_sha256": {
+    "COUNTEREXAMPLES.json": "70fb02786b1835f5f003e9679508f3212988caa94b5ff878d428c1d72b6377b6",
+    "MUTATIONS.json": "471c27e3e114dd3d57ed52482a3e7c85609613b84c64c996bdd4cf870b8f5a37",
+    "PREDICTIONS.json": "3512b5281104c830ef476942cb8f56fce109e5bdefb9326c1223c4a6719ee8c7",
+    "RESULTS.json": "e331cc6a986510959e3977f4d9691f7531d785bdb9cf9fba315eb82ec89fc6fc"
+  },
+  "reveal_git_blob_identities": {
+    "SEALED_RECEIPT.json": "ad6dd94472e316e19113d1d5aed7f27b2bd47749",
+    "evaluate.py": "eb5d862faf7a59704988da905c9b2a07bbadc22f",
+    "sealed_payload.py": "3d26de023fb4cdaf6befafa0dbe11f448231d42a"
+  },
+  "scientific_state": "UNSAFE_INTERPRETATION",
+  "sealed_evaluator_commit": "19e9302a11decb08dda644fbf1018997cf138c3b",
+  "workflow": {
+    "artifact_digest": "fd3aba73b3b4e7231a0358e873332d69a43cd6c56e56728e436a089326ef5fa3",
+    "artifact_id": 9759894023,
+    "artifact_name": "interpretation-authority-rc7b-b-evaluation-outputs-ec1d50e685e1081fa12765b1c012da0138e12263",
+    "conclusion": "success",
+    "run_id": 33397506459
+  }
+}
