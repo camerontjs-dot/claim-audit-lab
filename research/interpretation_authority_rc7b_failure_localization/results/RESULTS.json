@@ -1,0 +1,288 @@
+{
+  "agree_but_wrong_diagnostic_key_greedy_coverage": {
+    "chosen": [
+      {
+        "case_ids": [
+          "RB7-RL-004",
+          "RB7-RL-008",
+          "RB7-RL-012",
+          "RB7-RL-016",
+          "RB7-RL-020",
+          "RB7-RL-024",
+          "RB7-RL-028",
+          "RB7-RL-032",
+          "RB7-RL-036"
+        ],
+        "key": "role_binding|polarity|explicit_negation",
+        "new_cases": 9
+      }
+    ],
+    "coverage": 0.15517241379310345,
+    "covered_cases": 9,
+    "total_cases": 58,
+    "uncovered_case_ids": [
+      "RB7-OOD-05",
+      "RB7-OOD-06",
+      "RB7-OOD-07",
+      "RB7-OOD-08",
+      "RB7-OOD-13",
+      "RB7-OOD-14",
+      "RB7-OOD-15",
+      "RB7-OOD-16",
+      "RB7-OOD-21",
+      "RB7-OOD-22",
+      "RB7-OOD-23",
+      "RB7-OOD-24",
+      "RB7-OP-003",
+      "RB7-OP-005",
+      "RB7-OP-006",
+      "RB7-OP-007",
+      "RB7-OP-015",
+      "RB7-OP-017",
+      "RB7-OP-018",
+      "RB7-OP-019",
+      "RB7-OP-027",
+      "RB7-OP-029",
+      "RB7-OP-030",
+      "RB7-OP-031",
+      "RB7-OP-I-03",
+      "RB7-OP-I-11",
+      "RB7-OP-U-03",
+      "RB7-OP-U-09",
+      "RB7-RL-019",
+      "RB7-RL-021",
+      "RB7-RL-023",
+      "RB7-RL-025",
+      "RB7-RL-027",
+      "RB7-RL-029",
+      "RB7-RL-031",
+      "RB7-RL-033",
+      "RB7-RL-035",
+      "RB7-RL-I-01",
+      "RB7-RL-I-02",
+      "RB7-RL-I-03",
+      "RB7-RL-I-04",
+      "RB7-RL-I-05",
+      "RB7-RL-I-06",
+      "RB7-RL-I-07",
+      "RB7-RL-I-08",
+      "RB7-RL-I-09",
+      "RB7-RL-I-10",
+      "RB7-RL-I-11",
+      "RB7-RL-I-12"
+    ]
+  },
+  "agree_but_wrong_distinct_semantic_keys": 5,
+  "agree_but_wrong_families": [
+    "only_permission",
+    "role_binding"
+  ],
+  "agree_but_wrong_semantic_key_greedy_coverage": {
+    "chosen": [
+      {
+        "case_ids": [
+          "RB7-RL-I-01",
+          "RB7-RL-I-02",
+          "RB7-RL-I-03",
+          "RB7-RL-I-04",
+          "RB7-RL-I-05",
+          "RB7-RL-I-06",
+          "RB7-RL-I-07",
+          "RB7-RL-I-08",
+          "RB7-RL-I-09",
+          "RB7-RL-I-10",
+          "RB7-RL-I-11",
+          "RB7-RL-I-12"
+        ],
+        "key": "role_binding|predicate|(none)",
+        "new_cases": 12
+      },
+      {
+        "case_ids": [
+          "RB7-OP-005",
+          "RB7-OP-006",
+          "RB7-OP-017",
+          "RB7-OP-018",
+          "RB7-OP-029",
+          "RB7-OP-030",
+          "RB7-OP-U-03",
+          "RB7-OP-U-09"
+        ],
+        "key": "only_permission|only_population_may|necessary_permission_condition",
+        "new_cases": 8
+      },
+      {
+        "case_ids": [
+          "RB7-OP-003",
+          "RB7-OP-007",
+          "RB7-OP-015",
+          "RB7-OP-019",
+          "RB7-OP-027",
+          "RB7-OP-031"
+        ],
+        "key": "only_permission|membership|explicit_nonmembership_assertion",
+        "new_cases": 6
+      }
+    ],
+    "coverage": 0.4482758620689655,
+    "covered_cases": 26,
+    "total_cases": 58,
+    "uncovered_case_ids": [
+      "RB7-OOD-05",
+      "RB7-OOD-06",
+      "RB7-OOD-07",
+      "RB7-OOD-08",
+      "RB7-OOD-13",
+      "RB7-OOD-14",
+      "RB7-OOD-15",
+      "RB7-OOD-16",
+      "RB7-OOD-21",
+      "RB7-OOD-22",
+      "RB7-OOD-23",
+      "RB7-OOD-24",
+      "RB7-OP-I-03",
+      "RB7-OP-I-11",
+      "RB7-RL-004",
+      "RB7-RL-008",
+      "RB7-RL-012",
+      "RB7-RL-016",
+      "RB7-RL-019",
+      "RB7-RL-020",
+      "RB7-RL-021",
+      "RB7-RL-023",
+      "RB7-RL-024",
+      "RB7-RL-025",
+      "RB7-RL-027",
+      "RB7-RL-028",
+      "RB7-RL-029",
+      "RB7-RL-031",
+      "RB7-RL-032",
+      "RB7-RL-033",
+      "RB7-RL-035",
+      "RB7-RL-036"
+    ]
+  },
+  "case_count": 180,
+  "cohort_counts": {
+    "agree_but_wrong": 58,
+    "both_correct": 66,
+    "disagree": 56
+  },
+  "failed_mutations": 11,
+  "family_cohort_counts": {
+    "only_permission": {
+      "agree_but_wrong": 16,
+      "both_correct": 15,
+      "disagree": 29
+    },
+    "out_of_jurisdiction": {
+      "agree_but_wrong": 12,
+      "both_correct": 9,
+      "disagree": 3
+    },
+    "quantifier": {
+      "both_correct": 24,
+      "disagree": 24
+    },
+    "role_binding": {
+      "agree_but_wrong": 30,
+      "both_correct": 18
+    }
+  },
+  "mutation_failure_signature_top3_coverage": 1.0,
+  "partition_cohort_counts": {
+    "authority_boundary": {
+      "agree_but_wrong": 16,
+      "both_correct": 9,
+      "disagree": 23
+    },
+    "construction": {
+      "agree_but_wrong": 11,
+      "both_correct": 29,
+      "disagree": 14
+    },
+    "out_of_jurisdiction": {
+      "agree_but_wrong": 12,
+      "both_correct": 9,
+      "disagree": 3
+    },
+    "paraphrase": {
+      "agree_but_wrong": 19,
+      "both_correct": 19,
+      "disagree": 16
+    }
+  },
+  "partition_error_rates": {
+    "A": {
+      "authority_boundary": {
+        "cases": 48,
+        "error_rate": 0.6041666666666666,
+        "errors": 29
+      },
+      "construction": {
+        "cases": 54,
+        "error_rate": 0.46296296296296297,
+        "errors": 25
+      },
+      "out_of_jurisdiction": {
+        "cases": 24,
+        "error_rate": 0.25,
+        "errors": 6
+      },
+      "paraphrase": {
+        "cases": 54,
+        "error_rate": 0.6481481481481481,
+        "errors": 35
+      },
+      "paraphrase_minus_construction": 0.18518518518518517
+    },
+    "B": {
+      "authority_boundary": {
+        "cases": 48,
+        "error_rate": 0.7916666666666666,
+        "errors": 38
+      },
+      "construction": {
+        "cases": 54,
+        "error_rate": 0.24074074074074073,
+        "errors": 13
+      },
+      "out_of_jurisdiction": {
+        "cases": 24,
+        "error_rate": 0.5,
+        "errors": 12
+      },
+      "paraphrase": {
+        "cases": 54,
+        "error_rate": 0.42592592592592593,
+        "errors": 23
+      },
+      "paraphrase_minus_construction": 0.1851851851851852
+    }
+  },
+  "payload_identity": {
+    "compressed_sha256": "4f3ea5c6f00e85dfc60b833eac397626503338311c9305a81cc3ef6672af6aa2",
+    "semantic_sha256": "35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a"
+  },
+  "preregistered_predicates": {
+    "concentrated": false,
+    "distributed_surface": false,
+    "mixed": false,
+    "mutation_concentrated": true
+  },
+  "residual_families_outside_top3_semantic_keys": [
+    "only_permission",
+    "role_binding"
+  ],
+  "scientific_state": "INCONCLUSIVE_LOCALIZATION",
+  "top_mutation_failure_signatures": [
+    {
+      "failed_mutations": 6,
+      "signature": "quantifier|quantifier"
+    },
+    {
+      "failed_mutations": 5,
+      "signature": "role_binding|object,subject"
+    }
+  ]
+}

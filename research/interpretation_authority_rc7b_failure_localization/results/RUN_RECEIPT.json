@@ -1,0 +1,24 @@
+{
+  "analysis_head_sha": "4b8f6631feb097661a244943a74aabe8285f9121",
+  "implementation_a_evidence_commit": "fc1b3ff7a7ca273d732ef6202c10fb3f24b12750",
+  "implementation_b_evidence_commit": "04f52a6506336c5b0772fede9dca25d4f894ef18",
+  "input_sha256": {
+    "a-mutations.json": "5ee1eec480564098628be62eceff6c2f2f54e46f6930b412a3f3afbbc00b0550",
+    "a-predictions.json": "1be848f953cc3246685bba31d70984ab069acfdde835e1d5e0d86b5df22a1bd5",
+    "b-mutations.json": "471c27e3e114dd3d57ed52482a3e7c85609613b84c64c996bdd4cf870b8f5a37",
+    "b-predictions.json": "3512b5281104c830ef476942cb8f56fce109e5bdefb9326c1223c4a6719ee8c7",
+    "sealed_payload.py": "77b1154443a4a4af395c0050cb9c50cbd7e803d6d1b21cf697ee4eeb8700d5f2"
+  },
+  "output_sha256": {
+    "CASE_COHORTS.json": "70968e6735ac0bcf009ecd727be4f9b1f6b4a1ee3e94c48c37d59949a465ec53",
+    "FIELD_CONSTRUCTION_AGGREGATES.json": "819decf9d094e549d5e18034953f436aa2996582894713c331ca6ca14a09c037",
+    "MUTATION_LOCALIZATION.json": "be221dbd5bcf29042f846fa3270d400dd562e206773f7c5ecb0634680c78e6a8",
+    "REPORT.md": "898aede59c8b76c51be7e788eb77a2b35d239d6382187e576c822f368f26f1c8",
+    "RESULTS.json": "7433e871d5aa3517fe2e28caf27da47692a488925c139c72f71e21de7d0cb82d"
+  },
+  "production_authorization": false,
+  "scientific_state": "INCONCLUSIVE_LOCALIZATION",
+  "sealed_evaluator_commit": "19e9302a11decb08dda644fbf1018997cf138c3b",
+  "sealed_payload_git_blob": "3d26de023fb4cdaf6befafa0dbe11f448231d42a",
+  "workflow_run_id": 33402186415
+}

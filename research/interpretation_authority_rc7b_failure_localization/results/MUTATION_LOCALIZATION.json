@@ -1,0 +1,573 @@
+[
+  {
+    "a_observed_changed_fields": [
+      "membership"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "membership"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-01",
+    "signature": "only_permission|membership",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-02",
+    "signature": "only_permission|explicit_permission",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "membership"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "membership"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-03",
+    "signature": "only_permission|membership",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-04",
+    "signature": "only_permission|explicit_permission",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "membership"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "membership"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-05",
+    "signature": "only_permission|membership",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-06",
+    "signature": "only_permission|explicit_permission",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "membership"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "membership"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-07",
+    "signature": "only_permission|membership",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-08",
+    "signature": "only_permission|explicit_permission",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "membership"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "membership"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-09",
+    "signature": "only_permission|membership",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "family": "only_permission",
+    "name": "RB7-M-OP-10",
+    "signature": "only_permission|explicit_permission",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "population",
+      "quantifier"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-01",
+    "signature": "quantifier|quantifier",
+    "status": "b_only"
+  },
+  {
+    "a_observed_changed_fields": [
+      "population",
+      "quantifier"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-02",
+    "signature": "quantifier|quantifier",
+    "status": "b_only"
+  },
+  {
+    "a_observed_changed_fields": [
+      "quantifier"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-03",
+    "signature": "quantifier|quantifier",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "quantifier"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-04",
+    "signature": "quantifier|quantifier",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "population",
+      "quantifier"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-05",
+    "signature": "quantifier|quantifier",
+    "status": "b_only"
+  },
+  {
+    "a_observed_changed_fields": [
+      "population",
+      "quantifier"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-06",
+    "signature": "quantifier|quantifier",
+    "status": "b_only"
+  },
+  {
+    "a_observed_changed_fields": [
+      "quantifier"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-07",
+    "signature": "quantifier|quantifier",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "quantifier"
+    ],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-08",
+    "signature": "quantifier|quantifier",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "population",
+      "quantifier"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-09",
+    "signature": "quantifier|quantifier",
+    "status": "b_only"
+  },
+  {
+    "a_observed_changed_fields": [
+      "population",
+      "quantifier"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "quantifier"
+    ],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "name": "RB7-M-QU-10",
+    "signature": "quantifier|quantifier",
+    "status": "b_only"
+  },
+  {
+    "a_observed_changed_fields": [],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "name": "RB7-M-RL-01",
+    "signature": "role_binding|",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "b_passed": false,
+    "before_text": null,
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "name": "RB7-M-RL-02",
+    "signature": "role_binding|object,subject",
+    "status": "both_fail"
+  },
+  {
+    "a_observed_changed_fields": [],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "name": "RB7-M-RL-03",
+    "signature": "role_binding|",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "b_passed": false,
+    "before_text": null,
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "name": "RB7-M-RL-04",
+    "signature": "role_binding|object,subject",
+    "status": "both_fail"
+  },
+  {
+    "a_observed_changed_fields": [],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "name": "RB7-M-RL-05",
+    "signature": "role_binding|",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "b_passed": false,
+    "before_text": null,
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "name": "RB7-M-RL-06",
+    "signature": "role_binding|object,subject",
+    "status": "both_fail"
+  },
+  {
+    "a_observed_changed_fields": [],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "name": "RB7-M-RL-07",
+    "signature": "role_binding|",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "b_passed": false,
+    "before_text": null,
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "name": "RB7-M-RL-08",
+    "signature": "role_binding|object,subject",
+    "status": "both_fail"
+  },
+  {
+    "a_observed_changed_fields": [],
+    "a_passed": true,
+    "after_text": null,
+    "b_observed_changed_fields": [],
+    "b_passed": true,
+    "before_text": null,
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "name": "RB7-M-RL-09",
+    "signature": "role_binding|",
+    "status": "both_pass"
+  },
+  {
+    "a_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "a_passed": false,
+    "after_text": null,
+    "b_observed_changed_fields": [
+      "object",
+      "polarity",
+      "subject"
+    ],
+    "b_passed": false,
+    "before_text": null,
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "name": "RB7-M-RL-10",
+    "signature": "role_binding|object,subject",
+    "status": "both_fail"
+  }
+]
