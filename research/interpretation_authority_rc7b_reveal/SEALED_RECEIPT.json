@@ -1,0 +1,68 @@
+{
+  "classification": "sealed_post_freeze_evaluator",
+  "experiment": "interpretation-authority-rc7b",
+  "sealed_before_implementation_A": true,
+  "sealed_before_implementation_B": true,
+  "semantic_ancestor": "c623af35bee3b5f685c9a44e6d91ced006b2d690",
+  "aperture": {
+    "branch": "research-infra/interpretation-authority-rc7b-aperture-20260830",
+    "head": "80c2d2f8c96025ea62e8552ecfd4621cd81ea1f4"
+  },
+  "sealed_source_head_before_receipt": "22f104c409eb21b45617098ffadc3fc758614f51",
+  "sealed_files": {
+    "sealed_payload.py": {
+      "git_blob_sha": "3d26de023fb4cdaf6befafa0dbe11f448231d42a",
+      "sha256": "9aee1f007d6c6dddd3bf1a289874ab4738d6dfff0648830d01f0f4da7ff99e13"
+    },
+    "evaluate.py": {
+      "git_blob_sha": "eb5d862faf7a59704988da905c9b2a07bbadc22f",
+      "sha256": "b02bb5f6b2ca995262841a038df24255983a8bcc66651e5a56d31b138e56d03a"
+    },
+    "compare_two.py": {
+      "git_blob_sha": "56aad27cd1fb52a411b43ef94874a1be7fd772d4",
+      "sha256": "f9de7df72abb34d26f040f6ced18c0403b32ba23eb7a772930df67efe434ac85"
+    }
+  },
+  "payload_semantic_sha256": "35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a",
+  "counts": {
+    "cases": 180,
+    "mutation_pairs": 30,
+    "families": {
+      "only_permission": 60,
+      "role_binding": 48,
+      "quantifier": 48,
+      "out_of_jurisdiction": 24
+    },
+    "partitions": {
+      "construction": 54,
+      "paraphrase": 54,
+      "authority_boundary": 48,
+      "out_of_jurisdiction": 24
+    },
+    "gold_relation_distribution_for_fully_semantic_cases": {
+      "entailment": 64,
+      "neutral": 17,
+      "contradiction": 39
+    }
+  },
+  "frozen_semantic_consumer": {
+    "rc5b_blob": "988c2bd6c2e7079639a1f5759e02ed5d14fbcfb6",
+    "rc5_parent_blob": "f2839acc51d518108bc07d21f6ab2ac4fccc35bd"
+  },
+  "preseal_controls": {
+    "perfect_receipt_producer": "SAFE_AND_RECOVERABLE",
+    "fail_closed_producer_with_correct_jurisdiction": "SAFE_BUT_INCOMPLETE",
+    "out_of_jurisdiction_blind_blocking_producer": "UNSAFE_INTERPRETATION",
+    "perfect_vs_perfect_cross_comparison": "INTERPRETATION_AUTHORITY_REPRODUCED"
+  },
+  "reveal_rule": {
+    "before_both_accepted_clean_freezes": "Do not disclose this branch, final sealed ref, evaluator paths, corpus, mutations, expected outputs, payload hash, thresholds beyond the public normative contract, or any other implementation's existence/content to either executor.",
+    "after_both_accepted_clean_freezes": [
+      "Reveal only the exact final sealed commit and research/interpretation_authority_rc7b_reveal/sealed_payload.py, research/interpretation_authority_rc7b_reveal/evaluate.py, and research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json to each implementation separately.",
+      "Do not reveal compare_two.py or the other implementation to either executor until each implementation's own sealed scientific evaluation is complete and frozen.",
+      "Use compare_two.py only from normal CAL governance context after both independent science artifacts exist."
+    ]
+  },
+  "claim_boundary": "The evaluator was authored and sealed in normal CAL governance context before either fresh implementation existed. It tests independent implementation recoverability; it is not claimed to be an independently authored evaluator.",
+  "production_authorization": false
+}
