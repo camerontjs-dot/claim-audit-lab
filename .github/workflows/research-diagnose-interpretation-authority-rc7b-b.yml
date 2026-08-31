@@ -51,12 +51,12 @@ jobs:
           git show "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/evaluate.py" > research/interpretation_authority_rc7b_reveal/evaluate.py
           git show "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json" > research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json
 
-      - name: Diagnose transport segmentation without corpus contents
+      - name: Search bounded one-character transport repair
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import ast, base64, hashlib, zlib
+          import ast, base64, hashlib, json, zlib
           from pathlib import Path
 
           tree=ast.parse(Path('research/interpretation_authority_rc7b_reveal/sealed_payload.py').read_text(encoding='utf-8'))
@@ -64,35 +64,31 @@ jobs:
           for node in tree.body:
               if isinstance(node, ast.Assign) and len(node.targets)==1 and isinstance(node.targets[0], ast.Name) and node.targets[0].id in {'PAYLOAD_B64','PAYLOAD_SHA256'}:
                   vals[node.targets[0].id]=ast.literal_eval(node.value)
-          raw=vals['PAYLOAD_B64'].encode('ascii')
-          decoded=base64.b64decode(raw+b'='*((-len(raw))%4))
-          print('b64_length=',len(raw),'b64_mod4=',len(raw)%4,'decoded_length=',len(decoded))
-          print('b64_eN_positions=',[i for i in range(len(raw)-1) if raw[i:i+2]==b'eN'][:40])
-
+          raw=bytearray(vals['PAYLOAD_B64'].encode('ascii'))
+          decoded=base64.b64decode(bytes(raw)+b'='*((-len(raw))%4))
           first=zlib.decompressobj(wbits=-15)
-          plain=first.decompress(decoded[2:])+first.flush()
+          first.decompress(decoded[2:]); first.flush()
           consumed=(len(decoded)-2)-len(first.unused_data)
-          print('first_raw_eof=',first.eof,'first_consumed_deflate_bytes=',consumed,'first_unused_length=',len(first.unused_data))
-          print('first_unused_head24_hex=',first.unused_data[:24].hex())
-          print('first_plain_length=',len(plain),'first_plain_sha256=',hashlib.sha256(plain).hexdigest())
-
-          headers=[]
-          for i in range(len(decoded)-1):
-              cmf,flg=decoded[i],decoded[i+1]
-              if (cmf & 0x0f)==8 and ((cmf<<8)|flg)%31==0 and not (flg & 0x20):
-                  headers.append(i)
-          print('valid_zlib_header_positions=',headers[:80])
-          print('valid_zlib_header_count=',len(headers))
-
-          viable=[]
-          for pos in headers:
-              try:
-                  inf=zlib.decompressobj(wbits=-15)
-                  out=inf.decompress(decoded[pos+2:])+inf.flush()
-                  if inf.eof and len(out)>=100:
-                      consumed=(len(decoded)-(pos+2))-len(inf.unused_data)
-                      viable.append((pos,consumed,len(inf.unused_data),len(out),hashlib.sha256(out).hexdigest()))
-              except Exception:
-                  pass
-          print('viable_raw_segments=',viable[:40])
+          center=((2+consumed)*4)//3
+          lo=max(0,center-384); hi=min(len(raw),center+385)
+          alphabet=b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+          target=vals['PAYLOAD_SHA256']
+          print('search_center_b64=',center,'search_range=',lo,hi,'candidate_positions=',hi-lo)
+          found=[]
+          for pos in range(lo,hi):
+              original=raw[pos]
+              for repl in alphabet:
+                  if repl==original: continue
+                  raw[pos]=repl
+                  try:
+                      candidate=base64.b64decode(bytes(raw)+b'='*((-len(raw))%4))
+                      plain=zlib.decompress(candidate)
+                      obj=json.loads(plain.decode())
+                      canon=json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+                      if hashlib.sha256(canon).hexdigest()==target:
+                          found.append((pos,chr(original),chr(repl),hashlib.sha256(candidate).hexdigest(),len(plain)))
+                  except Exception:
+                      pass
+              raw[pos]=original
+          print('bounded_single_char_repairs=',found)
           PY
