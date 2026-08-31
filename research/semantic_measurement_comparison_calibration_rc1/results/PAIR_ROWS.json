@@ -1,0 +1,3240 @@
+[
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-01",
+    "dimension": "quantifier",
+    "exactly_one_correct": true,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "of the technicians",
+        "predicate": "inspect the vessel aside from mira",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "All of the technicians inspected the vessel aside from Mira.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "technicians",
+        "predicate": "inspect the vessel",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-01",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "All of the technicians inspected the vessel aside from Mira.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "mira",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-02",
+    "dimension": "quantifier",
+    "exactly_one_correct": true,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "one of the reviewers",
+        "predicate": "approve the packet bar hugo",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "Every one of the reviewers approved the packet bar Hugo.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "approve the packet",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-02",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Every one of the reviewers approved the packet bar Hugo.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "hugo",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-03",
+    "dimension": "quantifier",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Some of the auditors signed the release, Ada excepted.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "auditors",
+        "predicate": "sign the release",
+        "quantifier": "some"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-03",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Some of the auditors signed the release, Ada excepted.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "ada",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-04",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "of the inspectors",
+        "predicate": "review the record with rowan left out",
+        "quantifier": "none"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_DIFFERENT",
+    "raw_source": "None of the inspectors reviewed the record with Rowan left out.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "inspectors",
+        "predicate": "review the record with rowan left out",
+        "quantifier": "none"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-04",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "None of the inspectors reviewed the record with Rowan left out.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "rowan",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-05",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_CORRECT_INACTIVE",
+    "raw_source": "At least one of the analysts approved the sample but not Nia.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample but not nia",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "at least one of the analysts"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-05",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_CORRECT_INACTIVE",
+    "raw_source": "At least one of the analysts approved the sample but not Nia.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample but not nia",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "of the analysts"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-05",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample but not nia",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "at least one of the analysts"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_DIFFERENT",
+    "raw_source": "At least one of the analysts approved the sample but not Nia.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample but not nia",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "of the analysts"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-05",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "of the analysts",
+        "predicate": "approve the sample but not nia",
+        "quantifier": "some"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_DIFFERENT",
+    "raw_source": "At least one of the analysts approved the sample but not Nia.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "analysts",
+        "predicate": "approve the sample but not nia",
+        "quantifier": "some"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-05",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "At least one of the analysts approved the sample but not Nia.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "nia",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-06",
+    "dimension": "quantifier",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Not all of the reviewers signed the certificate, Hugo being the exception.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "sign the certificate",
+        "quantifier": "not_every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-06",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Not all of the reviewers signed the certificate, Hugo being the exception.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "hugo",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QE-09",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [
+      {
+        "excluded": "ada",
+        "kind": "exception"
+      }
+    ],
+    "left_reader": "exception-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "There was at least one auditor signing the release, other than Ada.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "exception-alt-entity",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QE-12",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_exception",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "sign the certificate",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_SHARED",
+    "raw_source": "It was not the case that all reviewers signed the certificate; Hugo was exempt.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "sign the certificate",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": true,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-01",
+    "dimension": "quantifier",
+    "exactly_one_correct": true,
+    "facets": [
+      "quantifier_argument_boundary"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "of the technicians",
+        "predicate": "inspect the vessel",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "Perhaps all of the technicians inspected the vessel.",
+    "relation": "SLOT_BOUNDARY_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "technicians",
+        "predicate": "inspect the vessel",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QP-01",
+    "dimension": "probability",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [],
+    "left_reader": "probability-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Perhaps all of the technicians inspected the vessel.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "possible"
+      }
+    ],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-02",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "one of the reviewers quite likely",
+        "predicate": "approve the packet",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_DIFFERENT",
+    "raw_source": "Every one of the reviewers quite likely approved the packet.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "reviewers quite likely",
+        "predicate": "approve the packet",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": true,
+    "case_id": "D-QP-02",
+    "dimension": "probability",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "likely"
+      }
+    ],
+    "left_reader": "probability-v1",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_CORRECT",
+    "raw_source": "Every one of the reviewers quite likely approved the packet.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "likely"
+      }
+    ],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-03",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "of the auditors probably",
+        "predicate": "sign the release",
+        "quantifier": "some"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_DIFFERENT",
+    "raw_source": "Some of the auditors probably signed the release.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "auditors probably",
+        "predicate": "sign the release",
+        "quantifier": "some"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": true,
+    "case_id": "D-QP-03",
+    "dimension": "probability",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "probable"
+      }
+    ],
+    "left_reader": "probability-v1",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_CORRECT",
+    "raw_source": "Some of the auditors probably signed the release.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "probable"
+      }
+    ],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-04",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "of the inspectors conceivably",
+        "predicate": "review the record",
+        "quantifier": "not_every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_DIFFERENT",
+    "raw_source": "Not all of the inspectors conceivably reviewed the record.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "inspectors conceivably",
+        "predicate": "review the record",
+        "quantifier": "not_every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QP-04",
+    "dimension": "probability",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [],
+    "left_reader": "probability-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Not all of the inspectors conceivably reviewed the record.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "possible"
+      }
+    ],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-05",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "scope_bearing_slot_difference"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "of the analysts were likely to have",
+        "predicate": "approve the sample",
+        "quantifier": "none"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_DIFFERENT",
+    "raw_source": "None of the analysts were likely to have approved the sample.",
+    "relation": "SCOPE_ATTACHMENT_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "analysts were likely to have",
+        "predicate": "approve the sample",
+        "quantifier": "none"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": true,
+    "case_id": "D-QP-05",
+    "dimension": "probability",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "likely"
+      }
+    ],
+    "left_reader": "probability-v1",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_CORRECT",
+    "raw_source": "None of the analysts were likely to have approved the sample.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "likely"
+      }
+    ],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-06",
+    "dimension": "quantifier",
+    "exactly_one_correct": true,
+    "facets": [
+      "quantifier_argument_boundary"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "one of the reviewers",
+        "predicate": "sign the certificate",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "There is a real chance that every one of the reviewers signed the certificate.",
+    "relation": "SLOT_BOUNDARY_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "sign the certificate",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QP-06",
+    "dimension": "probability",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [],
+    "left_reader": "probability-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "There is a real chance that every one of the reviewers signed the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "possible"
+      }
+    ],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": true,
+    "case_id": "D-QP-07",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "technician",
+        "predicate": "inspect the vessel",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_CORRECT",
+    "raw_source": "Plausibly every technician inspected the vessel.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "technician",
+        "predicate": "inspect the vessel",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-09",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "auditors may well have",
+        "predicate": "sign the release",
+        "quantifier": "some"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_SHARED",
+    "raw_source": "Some auditors may well have signed the release.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "auditors may well have",
+        "predicate": "sign the release",
+        "quantifier": "some"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": true,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-10",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "inspector",
+        "predicate": "review the record",
+        "quantifier": "every"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_SHARED",
+    "raw_source": "It seems doubtful that every inspector reviewed the record.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "inspector",
+        "predicate": "review the record",
+        "quantifier": "every"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": true,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QP-11",
+    "dimension": "quantifier",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "quantifier_probability",
+    "left_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "analyst apparently",
+        "predicate": "approve the sample",
+        "quantifier": "none"
+      }
+    ],
+    "left_reader": "quantifier-v1-regex",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_SHARED",
+    "raw_source": "No analyst apparently approved the sample.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantifier",
+        "population": "analyst apparently",
+        "predicate": "approve the sample",
+        "quantifier": "none"
+      }
+    ],
+    "right_reader": "quantifier-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": true,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-01",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Inspectors alone may release batch a, aside from Mira.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "release batch a"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-01",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Inspectors alone may release batch a, aside from Mira.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "mira",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-02",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Approve the packet is reserved for reviewers, bar Hugo.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "approve the packet"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-02",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Approve the packet is reserved for reviewers, bar Hugo.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "hugo",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-03",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release stewards alone may sign the certificate, Ada excepted.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "release stewards",
+        "predicate": "sign the certificate"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-03",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release stewards alone may sign the certificate, Ada excepted.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "ada",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-04",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Approve the dossier is reserved for auditors, Rowan being the exception.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "auditors",
+        "predicate": "approve the dossier"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-04",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Approve the dossier is reserved for auditors, Rowan being the exception.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "rowan",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-PE-05",
+    "dimension": "permission",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Inspectors alone may sign the record with Nia left out.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "sign the record with nia left out"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-05",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Inspectors alone may sign the record with Nia left out.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "nia",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-06",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [
+      {
+        "excluded": "mira",
+        "kind": "exception"
+      }
+    ],
+    "left_reader": "exception-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "The exclusive privilege to release batch a belongs to inspectors, except Mira.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "exception-alt-entity",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-07",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [],
+    "left_reader": "exception-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Reviewers hold sole approval rights for the packet, Hugo excluded.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "excluded": "hugo",
+        "kind": "exception"
+      }
+    ],
+    "right_reader": "exception-alt-entity",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-08",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [
+      {
+        "excluded": "ada",
+        "kind": "exception"
+      }
+    ],
+    "left_reader": "exception-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Signing the certificate is the preserve of release stewards, except Ada.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "exception-alt-entity",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PE-09",
+    "dimension": "exception",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_exception",
+    "left_atoms": [
+      {
+        "excluded": "rowan",
+        "kind": "exception"
+      }
+    ],
+    "left_reader": "exception-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Auditors have exclusive dossier approval authority, except Rowan.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "exception-alt-entity",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-PT-01",
+    "dimension": "permission",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "release stewards",
+        "predicate": "sign the certificate"
+      },
+      {
+        "entity": "nia",
+        "kind": "membership",
+        "population": "the release stewards before the cutoff",
+        "value": "member"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Only release stewards may sign the certificate. Nia is a member of the release stewards before the cutoff.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-PT-02",
+    "dimension": "permission",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Inspectors alone may release batch a. Hugo has permission to release batch a after the deadline.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "release batch a"
+      },
+      {
+        "entity": "hugo",
+        "kind": "explicit_permission",
+        "predicate": "release batch a after the deadline",
+        "value": "permitted"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-PT-03",
+    "dimension": "permission",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Approve the packet is reserved for reviewers. Ada falls within reviewers prior to the cutoff.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "approve the packet"
+      },
+      {
+        "entity": "ada",
+        "kind": "membership",
+        "population": "reviewers prior to the cutoff",
+        "value": "member"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-PT-03",
+    "dimension": "subclass",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [
+      {
+        "child": "ada",
+        "kind": "subclass",
+        "parent": "reviewers prior to the cutoff"
+      }
+    ],
+    "left_reader": "subclass-v1",
+    "left_status": "CLAIMED",
+    "outcome": "WRONG_CLAIM_VS_CORRECT_INACTIVE",
+    "raw_source": "Approve the packet is reserved for reviewers. Ada falls within reviewers prior to the cutoff.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "subclass-alt-taxonomy",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-PT-04",
+    "dimension": "permission",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "auditors",
+        "predicate": "sign the release"
+      },
+      {
+        "entity": "rowan",
+        "kind": "membership",
+        "population": "auditors following the deadline",
+        "value": "non_member"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Only auditors may sign the release. Rowan is not a member of auditors following the deadline.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-PT-05",
+    "dimension": "permission",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Release officers alone may approve the dossier. Nia has permission to approve the dossier until the cutoff.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "release officers",
+        "predicate": "approve the dossier"
+      },
+      {
+        "entity": "nia",
+        "kind": "explicit_permission",
+        "predicate": "approve the dossier until the cutoff",
+        "value": "permitted"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PT-06",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "sign the record"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Only reviewers may sign the record. Hugo is a member of reviewers as of 2026-08-31.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-PT-10",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "permission_temporal",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "auditors",
+        "predicate": "sign the release"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Only auditors may sign the release. Rowan ceased to belong once the deadline passed.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-01",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "approve the packet"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release stewards are a subtype of reviewers. Only reviewers may approve the packet.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-01",
+    "dimension": "subclass",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [],
+    "left_reader": "subclass-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release stewards are a subtype of reviewers. Only reviewers may approve the packet.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "child": "release stewards",
+        "kind": "subclass",
+        "parent": "reviewers"
+      }
+    ],
+    "right_reader": "subclass-alt-taxonomy",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-02",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Lab auditors are nested beneath inspectors. Inspectors alone may release batch a.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "release batch a"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-02",
+    "dimension": "subclass",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [],
+    "left_reader": "subclass-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Lab auditors are nested beneath inspectors. Inspectors alone may release batch a.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "child": "lab auditors",
+        "kind": "subclass",
+        "parent": "inspectors"
+      }
+    ],
+    "right_reader": "subclass-alt-taxonomy",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-03",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "sign the certificate"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release officers belong to a narrower class than reviewers. Only reviewers may sign the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-03",
+    "dimension": "subclass",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [],
+    "left_reader": "subclass-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release officers belong to a narrower class than reviewers. Only reviewers may sign the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "child": "release officers",
+        "kind": "subclass",
+        "parent": "reviewers"
+      }
+    ],
+    "right_reader": "subclass-alt-taxonomy",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-04",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [],
+    "left_reader": "permission-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Auditors are contained within inspectors. Approve the dossier is reserved for inspectors.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "approve the dossier"
+      }
+    ],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-04",
+    "dimension": "subclass",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [],
+    "left_reader": "subclass-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Auditors are contained within inspectors. Approve the dossier is reserved for inspectors.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "child": "auditors",
+        "kind": "subclass",
+        "parent": "inspectors"
+      }
+    ],
+    "right_reader": "subclass-alt-taxonomy",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-05",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "approve the packet"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release stewards form a narrower category of reviewers. Only reviewers may approve the packet.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-06",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "release batch a"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Lab auditors occupy a child category under inspectors. Only inspectors may release batch a.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-07",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "sign the certificate"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release officers sit one taxonomic level below reviewers. Only reviewers may sign the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-08",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "approve the dossier"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Auditors are encompassed by the inspector category. Only inspectors may approve the dossier.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-01",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Roughly three quarters of auditors signed the release.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the release",
+        "polarity": "positive",
+        "predicate": "sign",
+        "subject": "roughly three quarters of auditors"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-01",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Roughly three quarters of auditors signed the release.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the release",
+        "polarity": "positive",
+        "predicate": "sign",
+        "subject": "auditors"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-01",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "participant_binding"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the release",
+        "polarity": "positive",
+        "predicate": "sign",
+        "subject": "roughly three quarters of auditors"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "Roughly three quarters of auditors signed the release.",
+    "relation": "ROLE_BINDING_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the release",
+        "polarity": "positive",
+        "predicate": "sign",
+        "subject": "auditors"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-01",
+    "dimension": "quantitative",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "quantitative-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Roughly three quarters of auditors signed the release.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantitative_scope",
+        "quantitative_kind": "proportion",
+        "surface": "roughly three quarters of"
+      }
+    ],
+    "right_reader": "quantitative-alt-forms",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Two thirds of technicians inspected the vessel.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the vessel",
+        "polarity": "positive",
+        "predicate": "inspect",
+        "subject": "two thirds of technicians"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Two thirds of technicians inspected the vessel.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the vessel",
+        "polarity": "positive",
+        "predicate": "inspect",
+        "subject": "technicians"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "participant_binding"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the vessel",
+        "polarity": "positive",
+        "predicate": "inspect",
+        "subject": "two thirds of technicians"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "Two thirds of technicians inspected the vessel.",
+    "relation": "ROLE_BINDING_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the vessel",
+        "polarity": "positive",
+        "predicate": "inspect",
+        "subject": "technicians"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-02",
+    "dimension": "quantitative",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "quantitative-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Two thirds of technicians inspected the vessel.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantitative_scope",
+        "quantitative_kind": "proportion",
+        "surface": "two thirds of"
+      }
+    ],
+    "right_reader": "quantitative-alt-forms",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-03",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "A small minority of reviewers approved the packet.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the packet",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "a small minority of reviewers"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-03",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "A small minority of reviewers approved the packet.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the packet",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "reviewers"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-03",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "participant_binding"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the packet",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "a small minority of reviewers"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "A small minority of reviewers approved the packet.",
+    "relation": "ROLE_BINDING_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the packet",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "reviewers"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-03",
+    "dimension": "quantitative",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "quantitative-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "A small minority of reviewers approved the packet.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantitative_scope",
+        "quantitative_kind": "minority",
+        "surface": "a small minority of"
+      }
+    ],
+    "right_reader": "quantitative-alt-forms",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-04",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Fewer than three inspectors reviewed the record.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the record",
+        "polarity": "positive",
+        "predicate": "review",
+        "subject": "fewer than three inspectors"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-04",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Fewer than three inspectors reviewed the record.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the record",
+        "polarity": "positive",
+        "predicate": "review",
+        "subject": "inspectors"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-04",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "participant_binding"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the record",
+        "polarity": "positive",
+        "predicate": "review",
+        "subject": "fewer than three inspectors"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "Fewer than three inspectors reviewed the record.",
+    "relation": "ROLE_BINDING_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the record",
+        "polarity": "positive",
+        "predicate": "review",
+        "subject": "inspectors"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-04",
+    "dimension": "quantitative",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "quantitative-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Fewer than three inspectors reviewed the record.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantitative_scope",
+        "quantitative_kind": "maximum_count",
+        "surface": "fewer than three"
+      }
+    ],
+    "right_reader": "quantitative-alt-forms",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-05",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "WRONG_CLAIM_VS_OMISSION",
+    "raw_source": "Roughly half of analysts approved the sample.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "roughly half of analysts"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-05",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Roughly half of analysts approved the sample.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "analysts"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-QR-05",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "participant_binding"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "roughly half of analysts"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "RIGHT_ONLY_CORRECT",
+    "raw_source": "Roughly half of analysts approved the sample.",
+    "relation": "ROLE_BINDING_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "analysts"
+      }
+    ],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-05",
+    "dimension": "quantitative",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [],
+    "left_reader": "quantitative-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Roughly half of analysts approved the sample.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "quantitative_scope",
+        "quantitative_kind": "proportion",
+        "surface": "roughly half of"
+      }
+    ],
+    "right_reader": "quantitative-alt-forms",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-10",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "the analysts"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Close to half the analysts approved the sample.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-QR-10",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "quantitative_role",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the sample",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "the analysts"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Close to half the analysts approved the sample.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-RL-01",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "role_binding",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Dana never reviewed the dossier.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the dossier",
+        "polarity": "negative",
+        "predicate": "review",
+        "subject": "dana"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-RL-01",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "role_binding",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the dossier",
+        "polarity": "negative",
+        "predicate": "review",
+        "subject": "dana"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Dana never reviewed the dossier.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-RL-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "role_binding",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "At no point did Hugo sign the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the certificate",
+        "polarity": "negative",
+        "predicate": "sign",
+        "subject": "hugo"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-RL-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "role_binding",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the certificate",
+        "polarity": "negative",
+        "predicate": "sign",
+        "subject": "hugo"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "At no point did Hugo sign the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-RL-03",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "role_binding",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the packet",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "mira"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "The packet was approved by Mira.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-RL-03",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "role_binding",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the packet",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "mira"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "The packet was approved by Mira.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-CF-01",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "internal_conflict",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the dossier",
+        "polarity": "positive",
+        "predicate": "review",
+        "subject": "dana"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Dana reviewed the dossier. Dana did not review the dossier.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-CF-01",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "internal_conflict",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the dossier",
+        "polarity": "positive",
+        "predicate": "review",
+        "subject": "dana"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Dana reviewed the dossier. Dana did not review the dossier.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": true,
+    "case_id": "D-CF-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": false,
+    "facets": [
+      "event_polarity"
+    ],
+    "group": "internal_conflict",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the certificate",
+        "polarity": "positive",
+        "predicate": "sign",
+        "subject": "hugo"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_VALID_DISTINCT",
+    "raw_source": "Hugo signed the certificate. Hugo never signed the certificate.",
+    "relation": "POLARITY_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the certificate",
+        "polarity": "negative",
+        "predicate": "sign",
+        "subject": "hugo"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-CF-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "internal_conflict",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the certificate",
+        "polarity": "positive",
+        "predicate": "sign",
+        "subject": "hugo"
+      }
+    ],
+    "left_reader": "role-binding-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Hugo signed the certificate. Hugo never signed the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-CF-02",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "internal_conflict",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the certificate",
+        "polarity": "negative",
+        "predicate": "sign",
+        "subject": "hugo"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Hugo signed the certificate. Hugo never signed the certificate.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-CF-04",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "internal_conflict",
+    "left_atoms": [],
+    "left_reader": "role-binding-v1",
+    "left_status": "NOT_APPLICABLE",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Rowan inspected the vessel. At no point did Rowan inspect the vessel.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "event",
+        "object": "the vessel",
+        "polarity": "negative",
+        "predicate": "inspect",
+        "subject": "rowan"
+      }
+    ],
+    "right_reader": "role-binding-alt-structure",
+    "right_status": "CLAIMED",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-CF-04",
+    "dimension": "role_binding",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "internal_conflict",
+    "left_atoms": [
+      {
+        "kind": "event",
+        "object": "the vessel",
+        "polarity": "negative",
+        "predicate": "inspect",
+        "subject": "rowan"
+      }
+    ],
+    "left_reader": "role-binding-alt-structure",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Rowan inspected the vessel. At no point did Rowan inspect the vessel.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "role-binding-alt-base-pop",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-NA-01",
+    "dimension": "probability",
+    "exactly_one_correct": false,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "no_authority",
+    "left_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "probabilistic"
+      }
+    ],
+    "left_reader": "probability-v1",
+    "left_status": "CLAIMED",
+    "outcome": "WRONG_CLAIM_VS_CORRECT_INACTIVE",
+    "raw_source": "The probability notebook contains reviewer names.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": true,
+    "both_correct": false,
+    "case_id": "D-NA-02",
+    "dimension": "probability",
+    "exactly_one_correct": false,
+    "facets": [
+      "same_native_atom_set"
+    ],
+    "group": "no_authority",
+    "left_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "likely"
+      }
+    ],
+    "left_reader": "probability-v1",
+    "left_status": "CLAIMED",
+    "outcome": "BOTH_WRONG_SHARED",
+    "raw_source": "The likely folder was archived yesterday.",
+    "relation": "EXACT_AGREEMENT",
+    "right_atoms": [
+      {
+        "kind": "epistemic_probability",
+        "value": "likely"
+      }
+    ],
+    "right_reader": "probability-alt-lexicon",
+    "right_status": "CLAIMED",
+    "shared_error": true,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-09",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "reviewers",
+        "predicate": "approve the packet"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Release custodians comprise a narrower species within reviewers. Only reviewers may approve the packet.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  },
+  {
+    "any_error": false,
+    "both_correct": false,
+    "case_id": "D-SP-10",
+    "dimension": "permission",
+    "exactly_one_correct": true,
+    "facets": [
+      "claimed_vs_inactive"
+    ],
+    "group": "subclass_permission",
+    "left_atoms": [
+      {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "release batch a"
+      }
+    ],
+    "left_reader": "permission-v1",
+    "left_status": "CLAIMED",
+    "outcome": "CORRECT_CLAIM_VS_OMISSION",
+    "raw_source": "Lab auditors sit beneath the inspector umbrella. Only inspectors may release batch a.",
+    "relation": "JURISDICTION_DISAGREEMENT",
+    "right_atoms": [],
+    "right_reader": "permission-alt-grammar",
+    "right_status": "NOT_APPLICABLE",
+    "shared_error": false,
+    "winner": null
+  }
+]

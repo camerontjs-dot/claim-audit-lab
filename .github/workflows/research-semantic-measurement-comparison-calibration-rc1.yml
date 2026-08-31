@@ -1,0 +1,94 @@
+name: Research - Semantic Measurement Comparison Calibration RC1
+
+on:
+  push:
+    branches:
+      - research-infra/semantic-measurement-comparison-calibration-rc1-20260831
+    paths-ignore:
+      - research/semantic_measurement_comparison_calibration_rc1/results/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify research boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 253af5313e93932875bdd5956ac46246f3796271 HEAD
+          git diff --exit-code 253af5313e93932875bdd5956ac46246f3796271 HEAD -- src/
+          git diff --exit-code 253af5313e93932875bdd5956ac46246f3796271 HEAD -- research/semantic_operator_jurisdiction_rc7d_d/
+          git diff --exit-code 253af5313e93932875bdd5956ac46246f3796271 HEAD -- research/semantic_operator_jurisdiction_rc7d_c/equivalence.py
+          git diff --exit-code 253af5313e93932875bdd5956ac46246f3796271 HEAD -- research/semantic_operator_jurisdiction_rc7d/candidate.py
+          python -m py_compile \
+            research/semantic_measurement_comparison_calibration_rc1/taxonomy.py \
+            research/semantic_measurement_comparison_calibration_rc1/analyze_rc7d_d.py \
+            research/semantic_measurement_comparison_calibration_rc1/test_taxonomy.py
+
+      - name: Run taxonomy controls
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=. python research/semantic_measurement_comparison_calibration_rc1/test_taxonomy.py
+
+      - name: Run retrospective diagnostic
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research/semantic_measurement_comparison_calibration_rc1/results
+          PYTHONPATH=. python -m research.semantic_measurement_comparison_calibration_rc1.analyze_rc7d_d \
+            --output-dir research/semantic_measurement_comparison_calibration_rc1/results \
+            > research/semantic_measurement_comparison_calibration_rc1/results/STDOUT.json
+
+      - name: Write run receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root = Path('research/semantic_measurement_comparison_calibration_rc1/results')
+          names = ['RESULTS.json','PAIR_ROWS.json','READER_USE_CASE_PROFILES.json','REPORT.md','STDOUT.json']
+          result = json.loads((root/'RESULTS.json').read_text())
+          receipt = {
+              'classification': 'post_reveal_retrospective_diagnostic',
+              'production_authorization': False,
+              'base_evidence_commit': '253af5313e93932875bdd5956ac46246f3796271',
+              'preregistration_commit': 'af22cc1426f06179209ad8c73a125aacda9b38c2',
+              'taxonomy_freeze_commit': '12ffd3923810927965f97164d3da4004c5d70b4b',
+              'analyzer_freeze_commit': 'caca57f54ad4b4f52e840a6e4266c962a05e1f5f',
+              'control_commit': '4654e2b16979b7fba956fb92806c3ef17f5192c1',
+              'analysis_head_sha': os.environ['GITHUB_SHA'],
+              'workflow_run_id': int(os.environ['GITHUB_RUN_ID']),
+              'scientific_state': result['scientific_state'],
+              'pair_comparison_count': result['pair_comparison_count'],
+              'output_sha256': {n: hashlib.sha256((root/n).read_bytes()).hexdigest() for n in names},
+              'deviations': [
+                  'initial workflow run 33441345667 stopped at taxonomy-control execution before retrospective diagnostic; control harness was changed to a dependency-free stdlib execution path without changing taxonomy, analyzer, predecessor measurements, cohort, or gold'
+              ],
+          }
+          (root/'RUN_RECEIPT.json').write_text(json.dumps(receipt, indent=2, sort_keys=True)+'\n')
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semantic-measurement-comparison-calibration-rc1-${{ github.sha }}
+          path: research/semantic_measurement_comparison_calibration_rc1/results/
+          if-no-files-found: error
+
+      - name: Commit evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/semantic_measurement_comparison_calibration_rc1/results/
+          git commit -m "Research evidence: semantic measurement comparison calibration RC1"
+          git push origin HEAD:research-infra/semantic-measurement-comparison-calibration-rc1-20260831

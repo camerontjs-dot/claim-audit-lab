@@ -1,0 +1,1618 @@
+{
+  "exception-alt-entity": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": 0.6,
+      "cases": 10,
+      "claimed_cases": 6,
+      "correct_atoms": 6,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 6,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": 0.5,
+      "cases": 12,
+      "claimed_cases": 6,
+      "correct_atoms": 6,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 6,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "exception-v1": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": 0.3,
+      "cases": 10,
+      "claimed_cases": 3,
+      "correct_atoms": 3,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 3,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": 0.08333333333333333,
+      "cases": 12,
+      "claimed_cases": 1,
+      "correct_atoms": 1,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 1,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "permission-alt-grammar": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": 0.4,
+      "cases": 10,
+      "claimed_cases": 5,
+      "correct_atoms": 4,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 0.8,
+      "unique_correct_atoms": 4,
+      "wrong_atoms": 1
+    },
+    "permission_temporal": {
+      "atom_recall": 0.3,
+      "cases": 10,
+      "claimed_cases": 3,
+      "correct_atoms": 3,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 0.5,
+      "unique_correct_atoms": 3,
+      "wrong_atoms": 3
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": 0.2,
+      "cases": 10,
+      "claimed_cases": 2,
+      "correct_atoms": 2,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 2,
+      "wrong_atoms": 0
+    }
+  },
+  "permission-v1": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": 0.0,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": 0.4,
+      "cases": 10,
+      "claimed_cases": 4,
+      "correct_atoms": 4,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 0.6666666666666666,
+      "unique_correct_atoms": 4,
+      "wrong_atoms": 2
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": 0.8,
+      "cases": 10,
+      "claimed_cases": 8,
+      "correct_atoms": 8,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 8,
+      "wrong_atoms": 0
+    }
+  },
+  "probability-alt-lexicon": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 1,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": 0.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 1
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": 0.5,
+      "cases": 12,
+      "claimed_cases": 6,
+      "correct_atoms": 6,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 3,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "probability-v1": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 2,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": 0.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 2
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": 0.25,
+      "cases": 12,
+      "claimed_cases": 3,
+      "correct_atoms": 3,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "quantifier-alt-grammar": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": 0.3333333333333333,
+      "cases": 12,
+      "claimed_cases": 7,
+      "correct_atoms": 4,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 0.5714285714285714,
+      "unique_correct_atoms": 4,
+      "wrong_atoms": 3
+    },
+    "quantifier_probability": {
+      "atom_recall": 0.25,
+      "cases": 12,
+      "claimed_cases": 10,
+      "correct_atoms": 3,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 0.3,
+      "unique_correct_atoms": 2,
+      "wrong_atoms": 7
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "quantifier-v1-regex": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": 0.0,
+      "cases": 12,
+      "claimed_cases": 5,
+      "correct_atoms": 0,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 0.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 5
+    },
+    "quantifier_probability": {
+      "atom_recall": 0.08333333333333333,
+      "cases": 12,
+      "claimed_cases": 10,
+      "correct_atoms": 1,
+      "gold_atoms": 12,
+      "gold_present_cases": 12,
+      "proposal_precision": 0.1,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 9
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "quantitative-alt-forms": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": 0.5,
+      "cases": 10,
+      "claimed_cases": 5,
+      "correct_atoms": 5,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 5,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "quantitative-v1": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": 0.0,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "role-binding-alt-base-pop": {
+    "internal_conflict": {
+      "atom_recall": 0.0,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 8,
+      "gold_present_cases": 4,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 1,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": 0.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 1
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": 0.5,
+      "cases": 10,
+      "claimed_cases": 5,
+      "correct_atoms": 5,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 5,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": 0.0,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 8,
+      "gold_present_cases": 8,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "role-binding-alt-structure": {
+    "internal_conflict": {
+      "atom_recall": 0.25,
+      "cases": 4,
+      "claimed_cases": 2,
+      "correct_atoms": 2,
+      "gold_atoms": 8,
+      "gold_present_cases": 4,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 2,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 1,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": 0.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 1
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": 0.0,
+      "cases": 10,
+      "claimed_cases": 5,
+      "correct_atoms": 0,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 0.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 5
+    },
+    "role_binding": {
+      "atom_recall": 0.25,
+      "cases": 8,
+      "claimed_cases": 2,
+      "correct_atoms": 2,
+      "gold_atoms": 8,
+      "gold_present_cases": 8,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 2,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "role-binding-v1": {
+    "internal_conflict": {
+      "atom_recall": 0.25,
+      "cases": 4,
+      "claimed_cases": 2,
+      "correct_atoms": 2,
+      "gold_atoms": 8,
+      "gold_present_cases": 4,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 2,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": 0.1,
+      "cases": 10,
+      "claimed_cases": 1,
+      "correct_atoms": 1,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 1,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": 0.125,
+      "cases": 8,
+      "claimed_cases": 1,
+      "correct_atoms": 1,
+      "gold_atoms": 8,
+      "gold_present_cases": 8,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 1,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "subclass-alt-taxonomy": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": 0.4,
+      "cases": 10,
+      "claimed_cases": 4,
+      "correct_atoms": 4,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 4,
+      "wrong_atoms": 0
+    }
+  },
+  "subclass-v1": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 1,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": 0.0,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 1
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": 0.0,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  },
+  "temporal-v1": {
+    "internal_conflict": {
+      "atom_recall": null,
+      "cases": 4,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "no_authority": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_exception": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "permission_temporal": {
+      "atom_recall": 0.6,
+      "cases": 10,
+      "claimed_cases": 6,
+      "correct_atoms": 6,
+      "gold_atoms": 10,
+      "gold_present_cases": 10,
+      "proposal_precision": 1.0,
+      "unique_correct_atoms": 6,
+      "wrong_atoms": 0
+    },
+    "quantifier_exception": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantifier_probability": {
+      "atom_recall": null,
+      "cases": 12,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "quantitative_role": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "role_binding": {
+      "atom_recall": null,
+      "cases": 8,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    },
+    "subclass_permission": {
+      "atom_recall": null,
+      "cases": 10,
+      "claimed_cases": 0,
+      "correct_atoms": 0,
+      "gold_atoms": 0,
+      "gold_present_cases": 0,
+      "proposal_precision": null,
+      "unique_correct_atoms": 0,
+      "wrong_atoms": 0
+    }
+  }
+}
