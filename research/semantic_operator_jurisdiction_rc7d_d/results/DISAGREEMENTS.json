@@ -1,0 +1,366 @@
+[
+  {
+    "agreement": false,
+    "case_id": "D-QE-01",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"technicians\",\"predicate\":\"inspect vessel\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"of the technicians\",\"predicate\":\"inspect vessel aside from mira\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QE-02",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"reviewers\",\"predicate\":\"approve packet\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"one of the reviewers\",\"predicate\":\"approve packet bar hugo\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QE-04",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"inspectors\",\"predicate\":\"review record with rowan left out\",\"quantifier\":\"none\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"of the inspectors\",\"predicate\":\"review record with rowan left out\",\"quantifier\":\"none\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QE-05",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"analysts\",\"predicate\":\"approve sample but not nia\",\"quantifier\":\"some\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"of the analysts\",\"predicate\":\"approve sample but not nia\",\"quantifier\":\"some\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QE-05",
+    "dimension": "role_binding",
+    "error": true,
+    "reader_atoms": {
+      "role-binding-alt-base-pop": [
+        "{\"kind\":\"event\",\"object\":\"sample but not nia\",\"polarity\":\"positive\",\"predicate\":\"approve\",\"subject\":\"of the analysts\"}"
+      ],
+      "role-binding-alt-structure": [
+        "{\"kind\":\"event\",\"object\":\"sample but not nia\",\"polarity\":\"positive\",\"predicate\":\"approve\",\"subject\":\"at least one of the analysts\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QE-12",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"reviewers\",\"predicate\":\"sign certificate\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"reviewers\",\"predicate\":\"sign certificate\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QP-01",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"technicians\",\"predicate\":\"inspect vessel\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"of the technicians\",\"predicate\":\"inspect vessel\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QP-02",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"reviewers quite likely\",\"predicate\":\"approve packet\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"one of the reviewers quite likely\",\"predicate\":\"approve packet\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QP-02",
+    "dimension": "probability",
+    "error": false,
+    "reader_atoms": {
+      "probability-alt-lexicon": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"likely\"}"
+      ],
+      "probability-v1": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"likely\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QP-03",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"auditors probably\",\"predicate\":\"sign release\",\"quantifier\":\"some\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"of the auditors probably\",\"predicate\":\"sign release\",\"quantifier\":\"some\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QP-03",
+    "dimension": "probability",
+    "error": false,
+    "reader_atoms": {
+      "probability-alt-lexicon": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"probable\"}"
+      ],
+      "probability-v1": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"probable\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QP-04",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"inspectors conceivably\",\"predicate\":\"review record\",\"quantifier\":\"not_every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"of the inspectors conceivably\",\"predicate\":\"review record\",\"quantifier\":\"not_every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QP-05",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"analysts were likely to have\",\"predicate\":\"approve sample\",\"quantifier\":\"none\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"of the analysts were likely to have\",\"predicate\":\"approve sample\",\"quantifier\":\"none\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QP-05",
+    "dimension": "probability",
+    "error": false,
+    "reader_atoms": {
+      "probability-alt-lexicon": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"likely\"}"
+      ],
+      "probability-v1": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"likely\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QP-06",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"reviewers\",\"predicate\":\"sign certificate\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"one of the reviewers\",\"predicate\":\"sign certificate\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QP-07",
+    "dimension": "quantifier",
+    "error": false,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"technician\",\"predicate\":\"inspect vessel\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"technician\",\"predicate\":\"inspect vessel\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QP-09",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"auditors may well have\",\"predicate\":\"sign release\",\"quantifier\":\"some\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"auditors may well have\",\"predicate\":\"sign release\",\"quantifier\":\"some\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QP-10",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"inspector\",\"predicate\":\"review record\",\"quantifier\":\"every\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"inspector\",\"predicate\":\"review record\",\"quantifier\":\"every\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-QP-11",
+    "dimension": "quantifier",
+    "error": true,
+    "reader_atoms": {
+      "quantifier-alt-grammar": [
+        "{\"kind\":\"quantifier\",\"population\":\"analyst apparently\",\"predicate\":\"approve sample\",\"quantifier\":\"none\"}"
+      ],
+      "quantifier-v1-regex": [
+        "{\"kind\":\"quantifier\",\"population\":\"analyst apparently\",\"predicate\":\"approve sample\",\"quantifier\":\"none\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QR-01",
+    "dimension": "role_binding",
+    "error": true,
+    "reader_atoms": {
+      "role-binding-alt-base-pop": [
+        "{\"kind\":\"event\",\"object\":\"release\",\"polarity\":\"positive\",\"predicate\":\"sign\",\"subject\":\"auditors\"}"
+      ],
+      "role-binding-alt-structure": [
+        "{\"kind\":\"event\",\"object\":\"release\",\"polarity\":\"positive\",\"predicate\":\"sign\",\"subject\":\"roughly three quarters of auditors\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QR-02",
+    "dimension": "role_binding",
+    "error": true,
+    "reader_atoms": {
+      "role-binding-alt-base-pop": [
+        "{\"kind\":\"event\",\"object\":\"vessel\",\"polarity\":\"positive\",\"predicate\":\"inspect\",\"subject\":\"technicians\"}"
+      ],
+      "role-binding-alt-structure": [
+        "{\"kind\":\"event\",\"object\":\"vessel\",\"polarity\":\"positive\",\"predicate\":\"inspect\",\"subject\":\"two thirds of technicians\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QR-03",
+    "dimension": "role_binding",
+    "error": true,
+    "reader_atoms": {
+      "role-binding-alt-base-pop": [
+        "{\"kind\":\"event\",\"object\":\"packet\",\"polarity\":\"positive\",\"predicate\":\"approve\",\"subject\":\"reviewers\"}"
+      ],
+      "role-binding-alt-structure": [
+        "{\"kind\":\"event\",\"object\":\"packet\",\"polarity\":\"positive\",\"predicate\":\"approve\",\"subject\":\"small minority of reviewers\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QR-04",
+    "dimension": "role_binding",
+    "error": true,
+    "reader_atoms": {
+      "role-binding-alt-base-pop": [
+        "{\"kind\":\"event\",\"object\":\"record\",\"polarity\":\"positive\",\"predicate\":\"review\",\"subject\":\"inspectors\"}"
+      ],
+      "role-binding-alt-structure": [
+        "{\"kind\":\"event\",\"object\":\"record\",\"polarity\":\"positive\",\"predicate\":\"review\",\"subject\":\"fewer than three inspectors\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-QR-05",
+    "dimension": "role_binding",
+    "error": true,
+    "reader_atoms": {
+      "role-binding-alt-base-pop": [
+        "{\"kind\":\"event\",\"object\":\"sample\",\"polarity\":\"positive\",\"predicate\":\"approve\",\"subject\":\"analysts\"}"
+      ],
+      "role-binding-alt-structure": [
+        "{\"kind\":\"event\",\"object\":\"sample\",\"polarity\":\"positive\",\"predicate\":\"approve\",\"subject\":\"roughly half of analysts\"}"
+      ]
+    }
+  },
+  {
+    "agreement": false,
+    "case_id": "D-CF-02",
+    "dimension": "role_binding",
+    "error": false,
+    "reader_atoms": {
+      "role-binding-alt-structure": [
+        "{\"kind\":\"event\",\"object\":\"certificate\",\"polarity\":\"negative\",\"predicate\":\"sign\",\"subject\":\"hugo\"}"
+      ],
+      "role-binding-v1": [
+        "{\"kind\":\"event\",\"object\":\"certificate\",\"polarity\":\"positive\",\"predicate\":\"sign\",\"subject\":\"hugo\"}"
+      ]
+    }
+  },
+  {
+    "agreement": true,
+    "case_id": "D-NA-02",
+    "dimension": "probability",
+    "error": true,
+    "reader_atoms": {
+      "probability-alt-lexicon": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"likely\"}"
+      ],
+      "probability-v1": [
+        "{\"kind\":\"epistemic_probability\",\"value\":\"likely\"}"
+      ]
+    }
+  }
+]

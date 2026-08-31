@@ -1,0 +1,3 @@
+# Execution Boundary
+
+Scientific execution must use the frozen candidate/validator, accepted held-out cohort loader, and frozen evaluator identities recorded in this directory. Workflow-only or evidence-only commits may follow. Any semantic change to readers, validator, cohort, equivalence, or evaluator after the first scientific result requires a successor experiment and may not be counted as the same preregistered RC7D-D run.

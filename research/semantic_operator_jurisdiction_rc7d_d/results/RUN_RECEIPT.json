@@ -1,0 +1,26 @@
+{
+  "analysis_head_sha": "f040b34c4b632de08154e99913500ab7a83633fd",
+  "candidate_validator_freeze_commit": "300efc0ef3961f7d8dcc0ad651f4faf060377793",
+  "case_count": 84,
+  "classification": "post_reveal_diagnostic_hardening",
+  "cohort_freeze_commit": "ae11de6da6a7346e6cf2d9dbfbfd3d636676156a",
+  "context_free": false,
+  "deviations": [
+    "initial held-out cohort file had a pre-run count/novelty assertion defect; preserved and corrected by frozen cohort_final.py before evaluator construction or scientific execution"
+  ],
+  "evaluator_freeze_commit": "a8832e114a435907d5b2af24fadda24c9d08dfc2",
+  "learned_model_used": false,
+  "llm_used": false,
+  "output_sha256": {
+    "COMPOSITION.json": "e7f5a28366d174fc0a5bb8e7d79fa4c01266652951ba9684309451f83b45118b",
+    "COUNTEREXAMPLES.json": "8202499ecdbfad806ecad56be447c3fd568ce655b20c453274cd204d4ec3c34c",
+    "DISAGREEMENTS.json": "ea9bf24b591ef22534e3c29eea9a50251d116e5702272d27b6e3553ffbab2c27",
+    "REPORT.md": "85f9806c95fac40428fa0edd2370ebf4c5c56e5e8be372614224d41da58324e2",
+    "RESULTS.json": "4b5d9a1d6a807363b15a002575fda790a81ea12c256c842441957c2915e5bd5c",
+    "STDOUT.json": "30a159e0beb22918df79221a32b4f702ac71d28421f3d3798b92a4ef574a26e5"
+  },
+  "preregistration_commit": "b2573ed031109215622796287312ee7699270363",
+  "production_authorization": false,
+  "scientific_state": "MULTI_READER_OVERCLAIM",
+  "workflow_run_id": 33439373393
+}

@@ -1,0 +1,682 @@
+[
+  {
+    "case_id": "D-QE-01",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-02",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-03",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-04",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-05",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-06",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-07",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-08",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-09",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-10",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-11",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QE-12",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-QP-01",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-02",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-03",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-04",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-05",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-06",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-07",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-08",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-09",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-10",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-11",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QP-12",
+    "correct": true,
+    "dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-PE-01",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-02",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-03",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-04",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-05",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-06",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-07",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-08",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-09",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PE-10",
+    "correct": true,
+    "dimensions": [
+      "exception",
+      "permission"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-01",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-02",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-03",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-04",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-05",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-06",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-07",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-08",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-09",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-PT-10",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "expected": "compose",
+    "got": "compose"
+  },
+  {
+    "case_id": "D-SP-01",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-02",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-03",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-04",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-05",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-06",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-07",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-08",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-01",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-02",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-03",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-04",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-05",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-06",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-07",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-08",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-09",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-QR-10",
+    "correct": true,
+    "dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-CF-01",
+    "correct": true,
+    "dimensions": [
+      "role_binding",
+      "role_binding"
+    ],
+    "expected": "conflict",
+    "got": "conflict"
+  },
+  {
+    "case_id": "D-CF-02",
+    "correct": true,
+    "dimensions": [
+      "role_binding",
+      "role_binding"
+    ],
+    "expected": "conflict",
+    "got": "conflict"
+  },
+  {
+    "case_id": "D-CF-03",
+    "correct": true,
+    "dimensions": [
+      "role_binding",
+      "role_binding"
+    ],
+    "expected": "conflict",
+    "got": "conflict"
+  },
+  {
+    "case_id": "D-CF-04",
+    "correct": true,
+    "dimensions": [
+      "role_binding",
+      "role_binding"
+    ],
+    "expected": "conflict",
+    "got": "conflict"
+  },
+  {
+    "case_id": "D-SP-09",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  },
+  {
+    "case_id": "D-SP-10",
+    "correct": true,
+    "dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "expected": "coexist",
+    "got": "coexist"
+  }
+]
