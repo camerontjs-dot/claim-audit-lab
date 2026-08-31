@@ -1,0 +1,24 @@
+{
+  "analysis_head_sha": "6a6dbb5f778a22c3c10715a88332eebaee85ce80",
+  "case_count": 68,
+  "classification": "post_reveal_diagnostic_hardening",
+  "cohort_freeze_commit": "ede2dab2db15e47f0d3f31cf15ded2e03b59fae5",
+  "context_free": false,
+  "deviations": [],
+  "equivalence_validator_freeze_commit": "d01a7b0da3a19010162c08544835d4aed6b11950",
+  "evaluator_freeze_commit": "9fd887da0ead98f38ee02654e6efd7a93f92c9f8",
+  "llm_used": false,
+  "output_sha256": {
+    "BROADCAST_ROWS.json": "ec56cebe5c45d5bd04e87c382d0b6144f4c98e45c98a3e2b01c0008af9521f94",
+    "COUNTEREXAMPLES.json": "7df4ac8a798efb30df8f2710ee51247e762ed68457e10bfd40e6439dff1790b1",
+    "REPORT.md": "2fe71ddbd544b509e1a64efeec7fbe4b8b464390b4ffd9b6f3d18806d7167ec6",
+    "RESULTS.json": "5168d597681f79a6e2834882a327ddffdb62dba8920f0c19c8b0b388037acb72",
+    "SINGLE_ROWS.json": "8ef57e6038f02a84fa4c8c0c7ec0278913fb7e79eabd143640dbe6667ddeadab",
+    "STDOUT.json": "5168d597681f79a6e2834882a327ddffdb62dba8920f0c19c8b0b388037acb72",
+    "STRESS.json": "fee5cde24db8f4b118230feb2c6f8b881c141211079743fe67ef7809b0fa5556"
+  },
+  "preregistration_commit": "bb9644f27abcd5b5103dcbe2d0d822f0d7747b13",
+  "production_authorization": false,
+  "scientific_state": "SPECIALIST_DISCOVERY_TOO_WEAK",
+  "workflow_run_id": 33420506391
+}
