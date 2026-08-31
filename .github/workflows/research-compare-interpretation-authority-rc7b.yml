@@ -7,6 +7,11 @@ on:
       - research-infra/interpretation-authority-rc7b-cross-governance-20260831
     paths:
       - .github/workflows/research-compare-interpretation-authority-rc7b.yml
+  pull_request:
+    branches:
+      - research-infra/interpretation-authority-rc7b-aperture-20260830
+    paths:
+      - .github/workflows/research-compare-interpretation-authority-rc7b.yml
   workflow_dispatch:
 
 permissions:
@@ -89,6 +94,7 @@ jobs:
           retention-days: 90
 
       - name: Commit cross-implementation evidence
+        if: github.event_name == 'push'
         shell: bash
         run: |
           set -euo pipefail
