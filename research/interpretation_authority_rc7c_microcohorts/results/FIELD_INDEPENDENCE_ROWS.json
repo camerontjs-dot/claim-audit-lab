@@ -1,0 +1,806 @@
+[
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-A-01"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-N-01"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-A-02"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-N-02"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-A-03"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-N-03"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-A-04"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "object",
+        "subject"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "subject",
+      "object"
+    ],
+    "family": "role_binding",
+    "kind": "role_swap",
+    "pair_id": "RC7C-M-RL-SWAP-N-04"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "polarity"
+    ],
+    "family": "role_binding",
+    "kind": "polarity_flip",
+    "pair_id": "RC7C-M-RL-POL-01"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-RL-PARA-01"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "polarity"
+    ],
+    "family": "role_binding",
+    "kind": "polarity_flip",
+    "pair_id": "RC7C-M-RL-POL-02"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-RL-PARA-02"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "polarity"
+    ],
+    "family": "role_binding",
+    "kind": "polarity_flip",
+    "pair_id": "RC7C-M-RL-POL-03"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-RL-PARA-03"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "polarity"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "polarity"
+    ],
+    "family": "role_binding",
+    "kind": "polarity_flip",
+    "pair_id": "RC7C-M-RL-POL-04"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "role_binding",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-RL-PARA-04"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "kind": "quantifier_change",
+    "pair_id": "RC7C-M-QU-CHG-01"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "quantifier",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-QU-PARA-01"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "kind": "quantifier_change",
+    "pair_id": "RC7C-M-QU-CHG-02"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "quantifier",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-QU-PARA-02"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "kind": "quantifier_change",
+    "pair_id": "RC7C-M-QU-CHG-03"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "quantifier",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-QU-PARA-03"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "kind": "quantifier_change",
+    "pair_id": "RC7C-M-QU-CHG-04"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "quantifier",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-QU-PARA-04"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "kind": "quantifier_change",
+    "pair_id": "RC7C-M-QU-CHG-05"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "quantifier",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-QU-PARA-05"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [
+        "quantifier"
+      ],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [
+      "quantifier"
+    ],
+    "family": "quantifier",
+    "kind": "quantifier_change",
+    "pair_id": "RC7C-M-QU-CHG-06"
+  },
+  {
+    "A": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "B": {
+      "after_exception": null,
+      "after_status": "receipt",
+      "before_exception": null,
+      "before_status": "receipt",
+      "exact_pair": true,
+      "observed_changed_fields": [],
+      "unintended_fields": []
+    },
+    "expected_changed_fields": [],
+    "family": "quantifier",
+    "kind": "paraphrase_invariant",
+    "pair_id": "RC7C-M-QU-PARA-06"
+  }
+]

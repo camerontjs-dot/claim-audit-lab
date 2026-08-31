@@ -1,0 +1,3362 @@
+[
+  {
+    "case_id": "RC7C-OP-001",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-002",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-003",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-004",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-005",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-006",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-007",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-008",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-009",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 2,
+    "semantic_unknown_total": 2,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-010",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-011",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-012",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-013",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-014",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-015",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-016",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-017",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-018",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 2,
+    "semantic_unknown_total": 2,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-019",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-020",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-021",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-022",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-023",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-024",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-025",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-026",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-027",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 2,
+    "semantic_unknown_total": 2,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-028",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-029",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-030",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-031",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-032",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-033",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "non_member",
+        "pred_status": "established",
+        "pred_value": "non_member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-034",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-035",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "not_permitted",
+        "pred_status": "established",
+        "pred_value": "not_permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 1,
+    "semantic_unknown_total": 1,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-036",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "semantic_unknown",
+        "gold_value": "unknown",
+        "pred_status": "semantic_unknown",
+        "pred_value": "unknown",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 0,
+    "insufficient_total": 0,
+    "kind": "fully_specified",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 2,
+    "semantic_unknown_total": 2,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-01-M",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-01-P",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-01-MP",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "nia",
+        "pred_status": "established",
+        "pred_value": "nia",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release stewards",
+        "pred_status": "established",
+        "pred_value": "release stewards",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign certificate",
+        "pred_status": "established",
+        "pred_value": "sign certificate",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 2,
+    "insufficient_total": 2,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-02-M",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-02-P",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-02-MP",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "hugo",
+        "pred_status": "established",
+        "pred_value": "hugo",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "quality reviewers",
+        "pred_status": "established",
+        "pred_value": "quality reviewers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "approve packet",
+        "pred_status": "established",
+        "pred_value": "approve packet",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 2,
+    "insufficient_total": 2,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-03-M",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-03-P",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-03-MP",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "ada",
+        "pred_status": "established",
+        "pred_value": "ada",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "lab auditors",
+        "pred_status": "established",
+        "pred_value": "lab auditors",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "unlock archive",
+        "pred_status": "established",
+        "pred_value": "unlock archive",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 2,
+    "insufficient_total": 2,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-04-M",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "established",
+        "gold_value": "permitted",
+        "pred_status": "established",
+        "pred_value": "permitted",
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-04-P",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "established",
+        "gold_value": "member",
+        "pred_status": "established",
+        "pred_value": "member",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 1,
+    "insufficient_total": 1,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  },
+  {
+    "case_id": "RC7C-OP-I-04-MP",
+    "field_exact": 6,
+    "field_rows": [
+      {
+        "exact": true,
+        "field": "entity",
+        "gold_status": "established",
+        "gold_value": "rowan",
+        "pred_status": "established",
+        "pred_value": "rowan",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "population",
+        "gold_status": "established",
+        "gold_value": "release officers",
+        "pred_status": "established",
+        "pred_value": "release officers",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "membership",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "predicate",
+        "gold_status": "established",
+        "gold_value": "sign release",
+        "pred_status": "established",
+        "pred_value": "sign release",
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "only_population_may",
+        "gold_status": "established",
+        "gold_value": true,
+        "pred_status": "established",
+        "pred_value": true,
+        "unsafe": false
+      },
+      {
+        "exact": true,
+        "field": "explicit_permission",
+        "gold_status": "insufficient_authority",
+        "gold_value": null,
+        "pred_status": "insufficient_authority",
+        "pred_value": null,
+        "unsafe": false
+      }
+    ],
+    "field_total": 6,
+    "insufficient_exact": 2,
+    "insufficient_total": 2,
+    "kind": "insufficient_control",
+    "only_exact": 1,
+    "only_total": 1,
+    "prediction_status": "receipt",
+    "semantic_unknown_exact": 0,
+    "semantic_unknown_total": 0,
+    "unsafe_fields": 0
+  }
+]

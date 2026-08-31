@@ -1,0 +1,82 @@
+[
+  {
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "mutation_id": "RC7C-OP-MEM-01",
+    "observed_changed_fields": [
+      "membership"
+    ],
+    "passed": true
+  },
+  {
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "mutation_id": "RC7C-OP-PERM-01",
+    "observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "passed": true
+  },
+  {
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "mutation_id": "RC7C-OP-MEM-02",
+    "observed_changed_fields": [
+      "membership"
+    ],
+    "passed": true
+  },
+  {
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "mutation_id": "RC7C-OP-PERM-02",
+    "observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "passed": true
+  },
+  {
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "mutation_id": "RC7C-OP-MEM-03",
+    "observed_changed_fields": [
+      "membership"
+    ],
+    "passed": true
+  },
+  {
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "mutation_id": "RC7C-OP-PERM-03",
+    "observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "passed": true
+  },
+  {
+    "expected_changed_fields": [
+      "membership"
+    ],
+    "mutation_id": "RC7C-OP-MEM-04",
+    "observed_changed_fields": [
+      "membership"
+    ],
+    "passed": true
+  },
+  {
+    "expected_changed_fields": [
+      "explicit_permission"
+    ],
+    "mutation_id": "RC7C-OP-PERM-04",
+    "observed_changed_fields": [
+      "explicit_permission"
+    ],
+    "passed": true
+  }
+]
