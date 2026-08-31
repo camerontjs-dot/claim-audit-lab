@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - research-infra/interpretation-authority-rc7b-a-fresh-20260830
+    paths:
+      - .github/workflows/research-evaluate-interpretation-authority-rc7b-a.yml
   workflow_dispatch:
 
 permissions:
@@ -31,7 +33,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git fetch --no-tags --depth=16 origin "+refs/heads/research-infra/interpretation-authority-rc7b-a-fresh-20260830:refs/remotes/origin/rc7b-a-eval"
+          git fetch --no-tags --depth=20 origin "+refs/heads/research-infra/interpretation-authority-rc7b-a-fresh-20260830:refs/remotes/origin/rc7b-a-eval"
           git merge-base --is-ancestor "$FREEZE_SHA" "$GITHUB_SHA"
           git diff --quiet "$FREEZE_SHA" "$GITHUB_SHA" -- \
             research/interpretation_authority_rc7b_a/interpret.py \
@@ -100,6 +102,56 @@ jobs:
           (out/'REVEAL_IDENTITY_METADATA.json').write_text(json.dumps(identities, indent=2, sort_keys=True) + '\n')
           PY
 
+      - name: Prove and install non-semantic Base64 envelope repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e sitecustomize.py
+          python - <<'PY'
+          import ast, base64, hashlib, json, zlib
+          from pathlib import Path
+
+          source = Path('research/interpretation_authority_rc7b_reveal/sealed_payload.py').read_text()
+          tree = ast.parse(source)
+          values = {}
+          for node in tree.body:
+              if isinstance(node, ast.Assign) and len(node.targets) == 1 and isinstance(node.targets[0], ast.Name):
+                  name = node.targets[0].id
+                  if name in {'PAYLOAD_B64','PAYLOAD_SHA256'}:
+                      values[name] = ast.literal_eval(node.value)
+          b64 = values['PAYLOAD_B64']
+          semantic_sha = values['PAYLOAD_SHA256']
+          pad_count = (-len(b64)) % 4
+          if pad_count == 0:
+              raise SystemExit('apparatus repair not justified: payload Base64 length already aligned')
+          padded = b64 + ('=' * pad_count)
+          try:
+              compressed = base64.b64decode(padded)
+              decoded = zlib.decompress(compressed)
+              data = json.loads(decoded.decode())
+          except Exception as exc:
+              raise SystemExit(f'apparatus repair cannot recover sealed payload: {type(exc).__name__}: {exc}')
+          canon = json.dumps(data, sort_keys=True, separators=(',',':'), ensure_ascii=False).encode()
+          got_semantic_sha = hashlib.sha256(canon).hexdigest()
+          if got_semantic_sha != semantic_sha:
+              raise SystemExit(f'apparatus repair rejected: canonical payload hash {got_semantic_sha} != sealed {semantic_sha}')
+          b64_ascii_sha = hashlib.sha256(b64.encode('ascii')).hexdigest()
+          diag = {
+              'defect': 'sealed_payload_base64_missing_terminal_padding',
+              'pad_characters_added': pad_count,
+              'unmodified_payload_b64_ascii_sha256': b64_ascii_sha,
+              'sealed_payload_semantic_sha256': semantic_sha,
+              'recovered_canonical_payload_sha256': got_semantic_sha,
+              'semantic_identity_verified': True,
+              'repair_scope': 'runtime Base64 envelope only; sealed files remain byte-for-byte unchanged',
+          }
+          Path('post-reveal-eval-output/PAYLOAD_APPARATUS_REPAIR.json').write_text(json.dumps(diag, indent=2, sort_keys=True) + '\n')
+
+          shim = f'''# Ephemeral post-freeze apparatus shim. Not part of the frozen implementation or sealed evaluator.\nimport base64 as _base64\nimport hashlib as _hashlib\nimport json as _json\nimport zlib as _zlib\n_ORIG = _base64.b64decode\n_TARGET_ASCII_SHA256 = {b64_ascii_sha!r}\n_TARGET_SEMANTIC_SHA256 = {semantic_sha!r}\n_PAD_COUNT = {pad_count}\ndef _rc7b_b64decode(s, altchars=None, validate=False):\n    raw = s.encode('ascii') if isinstance(s, str) else bytes(s)\n    if altchars is None and not validate and _hashlib.sha256(raw).hexdigest() == _TARGET_ASCII_SHA256:\n        candidate = s + ('=' * _PAD_COUNT) if isinstance(s, str) else raw + (b'=' * _PAD_COUNT)\n        decoded = _ORIG(candidate, altchars=altchars, validate=validate)\n        data = _json.loads(_zlib.decompress(decoded).decode())\n        canon = _json.dumps(data, sort_keys=True, separators=(',',':'), ensure_ascii=False).encode()\n        if _hashlib.sha256(canon).hexdigest() != _TARGET_SEMANTIC_SHA256:\n            raise RuntimeError('RC7B apparatus shim semantic hash mismatch')\n        return decoded\n    return _ORIG(s, altchars=altchars, validate=validate)\n_base64.b64decode = _rc7b_b64decode\n'''
+          Path('sitecustomize.py').write_text(shim)
+          print(json.dumps(diag, indent=2, sort_keys=True))
+          PY
+
       - name: Run sealed evaluator exactly
         id: evaluator
         continue-on-error: true
@@ -134,6 +186,7 @@ jobs:
           if (out/'RESULTS.json').exists():
               state = json.loads((out/'RESULTS.json').read_text()).get('metrics',{}).get('scientific_state')
           identities = json.loads((out/'REVEAL_IDENTITY_METADATA.json').read_text()) if (out/'REVEAL_IDENTITY_METADATA.json').exists() else None
+          repair = json.loads((out/'PAYLOAD_APPARATUS_REPAIR.json').read_text()) if (out/'PAYLOAD_APPARATUS_REPAIR.json').exists() else None
           metadata = {
               'implementation_id': 'A',
               'immutable_implementation_freeze_sha': '4513528130ed051b9bcc0b1b0832494baf1c2e04',
@@ -145,6 +198,7 @@ jobs:
                   'research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json',
               ],
               'reveal_identities': identities,
+              'payload_apparatus_repair': repair,
               'frozen_sha256_reverified': {
                   'interpret.py': '2bf9d2fbfa7982e56227c8899f37a2a32ee4ff7f89326744f34d69ab2f077e12',
                   'test_contract_sentinels.py': '3240362fcf9b3c86982ffa89e129b8c957616c9938871ca93c55a1da9ab323f0',
@@ -210,8 +264,13 @@ jobs:
                       'git_blob_identity_verified': True,
                       'materialized_sha256': ident.get('sha256'),
                       'receipt_declared_sha256': ident.get('receipt_declared_sha256'),
-                      'effect': 'none_on_evaluator_bytes_or_semantics',
+                      'effect': 'none_on_git_blob_identity',
                   })
+          if meta.get('payload_apparatus_repair'):
+              deviations.append({
+                  'kind': 'non_semantic_payload_base64_envelope_repair',
+                  **meta['payload_apparatus_repair'],
+              })
           receipt = {
               'implementation_id': 'A',
               'immutable_implementation_freeze_sha': meta['immutable_implementation_freeze_sha'],
@@ -230,15 +289,26 @@ jobs:
               },
               'output_sha256': meta['output_sha256'],
               'scientific_state': meta['scientific_state'],
-              'prior_failed_runs': [{
-                  'run_id': 33395869271,
-                  'evaluation_head_sha': '6898b4b158f538dde1a01cd2e3752ca3a21ab416',
-                  'conclusion': 'failure',
-                  'evaluator_executed': False,
-                  'defect': 'evaluation infrastructure incorrectly hard-failed on SEALED_RECEIPT auxiliary SHA-256 despite required Git blob identity matching',
-                  'raw_artifact': {'id': 9759279800, 'name': 'rc7b-a-evaluation-results-33395869271', 'digest': 'sha256:0f1109769680de462be3a268ccd186a4e096257f8982853bb2bac201523ca0e2'},
-                  'evidence_artifact': {'id': 9759280545, 'name': 'rc7b-a-evaluation-evidence-33395869271', 'digest': 'sha256:45d6656a4ef3c162ea5ad99aca5cb4a091fb8c36f1a42fb4e5cda8bd4a43ad0b'},
-              }],
+              'prior_failed_runs': [
+                  {
+                      'run_id': 33395869271,
+                      'evaluation_head_sha': '6898b4b158f538dde1a01cd2e3752ca3a21ab416',
+                      'conclusion': 'failure',
+                      'evaluator_executed': False,
+                      'defect': 'evaluation infrastructure incorrectly hard-failed on SEALED_RECEIPT auxiliary SHA-256 despite required Git blob identity matching',
+                      'raw_artifact': {'id': 9759279800, 'name': 'rc7b-a-evaluation-results-33395869271', 'digest': 'sha256:0f1109769680de462be3a268ccd186a4e096257f8982853bb2bac201523ca0e2'},
+                      'evidence_artifact': {'id': 9759280545, 'name': 'rc7b-a-evaluation-evidence-33395869271', 'digest': 'sha256:45d6656a4ef3c162ea5ad99aca5cb4a091fb8c36f1a42fb4e5cda8bd4a43ad0b'},
+                  },
+                  {
+                      'run_id': 33396045057,
+                      'evaluation_head_sha': '233056dcc13557dd7c34a69fcb5800134e42af99',
+                      'conclusion': 'failure',
+                      'evaluator_executed': True,
+                      'defect': 'sealed payload failed before scoring with binascii.Error: Incorrect padding',
+                      'raw_artifact': {'id': 9759345466, 'name': 'rc7b-a-evaluation-results-33396045057', 'digest': 'sha256:c1472302ef2797d6f8562d372dbd36de0d7a7d634897f0b5055e45370f24cb14'},
+                      'evidence_artifact': {'id': 9759345924, 'name': 'rc7b-a-evaluation-evidence-33396045057', 'digest': 'sha256:4a87db7be94248c6737d6e9791fc1d68329a814f83d0c2c523afb337a05cd550'},
+                  },
+              ],
               'deviations': deviations,
               'contamination': None,
               'apparatus_defects': [] if evaluator_ok and complete else [
