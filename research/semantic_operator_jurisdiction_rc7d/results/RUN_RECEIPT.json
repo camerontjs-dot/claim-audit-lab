@@ -1,0 +1,27 @@
+{
+  "analysis_head_sha": "554f465dd06195b483ae93bd4a2931951c993434",
+  "candidate_freeze_commit": "b5b04485cb1e09f025017e25cd6d008e6c5030f6",
+  "case_count": 74,
+  "classification": "post_reveal_diagnostic_hardening",
+  "cohort_apparatus_note_commit": "f4ab5fb666302e554ff93149ca8ee912be52f701",
+  "cohort_freeze_with_assertion_typo": "4a5148bce7d861815a08fcdf8623a7e9e28fa367",
+  "context_free": false,
+  "deviations": [
+    "cohort terminal count assertion corrected in memory from 86 to 74 exactly as preregistered apparatus note; no case semantics changed"
+  ],
+  "evaluator_freeze_commit": "d28bdd2d9e52a1c8ebf2506529c1ae0cc25b6acd",
+  "llm_used": false,
+  "output_sha256": {
+    "CASE_ROWS.json": "2835ea4091f4aa2e654cdb56c61a6106910d59304425876c113a422fefad083a",
+    "COUNTEREXAMPLES.json": "b2ba6eee0fb43c80a5497723df992ad8e866cf50d8fac9deb8baaaa9acbda868",
+    "DISAGREEMENTS.json": "245b60f61e30721bd151c563ef3f0add68b4e9a68a061427e1631498311f812c",
+    "REPORT.md": "031ca5cd0bd8f9e14b53fdd9676421f790b9329e3efb60528b9dc7624300f849",
+    "RESULTS.json": "b5c6622ebb2496e4cb8071ea705b83eb55a69f17c547257f59e903f433a16a2a",
+    "STDOUT.json": "b5c6622ebb2496e4cb8071ea705b83eb55a69f17c547257f59e903f433a16a2a",
+    "STRESS.json": "436395d0677dc952cb2500cb906e155cef73cf68c5d34b99e53fd30eb00252f4"
+  },
+  "preregistration_commit": "eb24714aea61c9b24f03f655883a352df5eeacda",
+  "production_authorization": false,
+  "scientific_state": "MULTIPLE_TESTING_OVERCLAIM",
+  "workflow_run_id": 33419151030
+}

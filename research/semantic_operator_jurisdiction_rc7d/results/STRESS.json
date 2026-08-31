@@ -1,0 +1,34 @@
+[
+  {
+    "bank_size": 2,
+    "false_jurisdiction_case_rate": 0.0,
+    "false_jurisdiction_claim_rate": 0.0,
+    "semantic_dimension_recall": 0.2672413793103448,
+    "unsafe_case_rate": 0.12162162162162163,
+    "unsafe_semantic_atom_rate": 0.23684210526315788
+  },
+  {
+    "bank_size": 4,
+    "false_jurisdiction_case_rate": 0.0,
+    "false_jurisdiction_claim_rate": 0.0,
+    "semantic_dimension_recall": 0.5086206896551724,
+    "unsafe_case_rate": 0.35135135135135137,
+    "unsafe_semantic_atom_rate": 0.3939393939393939
+  },
+  {
+    "bank_size": 6,
+    "false_jurisdiction_case_rate": 0.0,
+    "false_jurisdiction_claim_rate": 0.0,
+    "semantic_dimension_recall": 0.6206896551724138,
+    "unsafe_case_rate": 0.36486486486486486,
+    "unsafe_semantic_atom_rate": 0.34177215189873417
+  },
+  {
+    "bank_size": 8,
+    "false_jurisdiction_case_rate": 0.013513513513513514,
+    "false_jurisdiction_claim_rate": 0.011904761904761904,
+    "semantic_dimension_recall": 0.7155172413793104,
+    "unsafe_case_rate": 0.3783783783783784,
+    "unsafe_semantic_atom_rate": 0.3076923076923077
+  }
+]

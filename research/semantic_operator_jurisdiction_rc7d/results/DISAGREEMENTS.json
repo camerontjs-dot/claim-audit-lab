@@ -1,0 +1,1441 @@
+[
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-01",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "Every technician inspected the vessel except Mira.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantifier"
+      ],
+      "predicted_dimensions": [
+        "exception"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-QE-02",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantifier"
+      ],
+      "predicted_dimensions": [
+        "exception"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "All reviewers approved the packet, excluding Hugo.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-03",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "Each auditor signed the release other than Ada.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-04",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "Some inspectors reviewed the record with the exception of Rowan.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-05",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "No lab analysts approved the sample save for Nia.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-06",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "Not every reviewer signed the certificate except Hugo.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-07",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "Every technician inspected the vessel bar Mira.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-08",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "All reviewers aside from Hugo approved the packet.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QE-11",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "quantifier"
+    ],
+    "group": "quantifier_exception",
+    "raw_source": "Every analyst other than Nia approved the sample.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PT-01",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "group": "permission_temporal",
+    "raw_source": "Only release stewards may sign the certificate. Nia is a member of the release stewards before the cutoff.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "temporal"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PT-02",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "group": "permission_temporal",
+    "raw_source": "Only inspectors may release batch a. Hugo was authorized to release batch a after the deadline.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "temporal"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PT-03",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "group": "permission_temporal",
+    "raw_source": "Permission to approve the packet is limited to reviewers. Ada is a member of reviewers prior to the cutoff.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "temporal"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PT-04",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "group": "permission_temporal",
+    "raw_source": "Only auditors may sign the release. Rowan is not a member of auditors following the deadline.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "temporal"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PT-05",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "group": "permission_temporal",
+    "raw_source": "Only release officers may approve the dossier. Nia was permitted to approve the dossier until the cutoff.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "temporal"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-PT-06",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "temporal"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "permission",
+      "temporal"
+    ],
+    "group": "permission_temporal",
+    "raw_source": "Only reviewers may sign the record. As of 2026-08-31, Hugo is a member of reviewers.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "temporal"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PE-01",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "permission"
+    ],
+    "group": "permission_exception",
+    "raw_source": "Only inspectors may release batch a except Mira.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "permission"
+      ],
+      "predicted_dimensions": [
+        "exception"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-PE-02",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "permission"
+      ],
+      "predicted_dimensions": [
+        "exception"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "exception",
+      "permission"
+    ],
+    "group": "permission_exception",
+    "raw_source": "Permission to approve the packet is restricted to reviewers, excluding Hugo.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception",
+        "permission"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PE-03",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "permission"
+    ],
+    "group": "permission_exception",
+    "raw_source": "Only release stewards may sign the certificate other than Ada.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-PE-04",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "exception",
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "exception",
+      "permission"
+    ],
+    "group": "permission_exception",
+    "raw_source": "Only auditors may approve the dossier save for Rowan.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "exception"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 1
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-01",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "Probably every technician inspected the vessel.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-02",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "Every technician probably inspected the vessel.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-03",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "All reviewers are likely to have approved the packet.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-04",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "It is likely that all reviewers approved the packet.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-05",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "Some auditors probably signed the release.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-06",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "Not every inspector is likely to have reviewed the record.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-07",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "Every technician conceivably inspected the vessel.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-QP-08",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability"
+      ],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "probability",
+      "quantifier"
+    ],
+    "group": "quantifier_probability",
+    "raw_source": "There is a reasonable chance every reviewer approved the packet.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "probability",
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-SP-01",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "group": "subclass_permission",
+    "raw_source": "Release stewards are a subset of reviewers. Only reviewers may approve the packet.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-SP-02",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "group": "subclass_permission",
+    "raw_source": "Lab auditors are a subclass of inspectors. Only inspectors may release batch a.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-SP-03",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "group": "subclass_permission",
+    "raw_source": "Release officers are a type of reviewers. Only reviewers may sign the certificate.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-SP-04",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "group": "subclass_permission",
+    "raw_source": "Auditors are a kind of inspectors. Permission to approve the dossier is limited to inspectors.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-SP-05",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "group": "subclass_permission",
+    "raw_source": "Release stewards sit within the reviewer class. Only reviewers may approve the packet.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "permission",
+        "subclass"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-SP-06",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "permission",
+      "subclass"
+    ],
+    "group": "subclass_permission",
+    "raw_source": "Lab auditors fall under inspectors. Only inspectors may release batch a.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "subclass"
+      ],
+      "predicted_dimensions": [
+        "permission"
+      ],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-QR-01",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "group": "quantitative_role",
+    "raw_source": "Exactly four auditors signed the release.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantitative",
+        "role_binding"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-QR-03",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "group": "quantitative_role",
+    "raw_source": "Seventy percent of the reviewers approved the packet.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantitative",
+        "role_binding"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-QR-04",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "group": "quantitative_role",
+    "raw_source": "At least 3 inspectors approved the record.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantitative",
+        "role_binding"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-QR-05",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "group": "quantitative_role",
+    "raw_source": "A majority of lab analysts inspected the sample.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantitative",
+        "role_binding"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "case_id": "RC7D-QR-06",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "role_binding"
+      ],
+      "predicted_dimensions": [
+        "quantitative"
+      ],
+      "unsafe_atom_count": 0
+    },
+    "gold_dimensions": [
+      "quantitative",
+      "role_binding"
+    ],
+    "group": "quantitative_role",
+    "raw_source": "Most release stewards reviewed the dossier.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantitative",
+        "role_binding"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  },
+  {
+    "broadcast_all": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "case_id": "RC7D-IR-03",
+    "fallback": {
+      "false_dimensions": [],
+      "missing_dimensions": [],
+      "predicted_dimensions": [
+        "quantifier"
+      ],
+      "unsafe_atom_count": 1
+    },
+    "gold_dimensions": [
+      "quantifier"
+    ],
+    "group": "irrelevant_prose",
+    "raw_source": "A note in the margin says draft. Every technician inspected the vessel.",
+    "single_router": {
+      "false_dimensions": [],
+      "missing_dimensions": [
+        "quantifier"
+      ],
+      "predicted_dimensions": [],
+      "unsafe_atom_count": 0
+    }
+  }
+]
