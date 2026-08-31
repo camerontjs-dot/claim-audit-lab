@@ -1,0 +1,41 @@
+{
+  "implementation_id": "B",
+  "immutable_implementation_freeze_sha": "074363bf243717a502cb2e3269309cc94ddf5106",
+  "evaluation_head_sha": "867aa1ebb1865761bfeb263a291ef7f0fc411a9d",
+  "sealed_evaluator_commit": "19e9302a11decb08dda644fbf1018997cf138c3b",
+  "exact_reveal_files_materialized": [
+    "research/interpretation_authority_rc7b_reveal/sealed_payload.py",
+    "research/interpretation_authority_rc7b_reveal/evaluate.py",
+    "research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json"
+  ],
+  "reveal_git_blob_identities": {
+    "sealed_payload.py": "3d26de023fb4cdaf6befafa0dbe11f448231d42a",
+    "evaluate.py": "eb5d862faf7a59704988da905c9b2a07bbadc22f",
+    "SEALED_RECEIPT.json": "ad6dd94472e316e19113d1d5aed7f27b2bd47749"
+  },
+  "frozen_sha256_reverified": {
+    "interpret.py": "8d897b291ef7a89f9a7e1a3a321c4229bdb3396cc294fcb0de846e1806d3ed6e",
+    "test_contract_sentinels.py": "cbd39ba43cfa77785e29290aac2e77446e1f20a070dbc2bba49aad8e40ae3411"
+  },
+  "evaluator_command": "PYTHONPATH=. python -m research.interpretation_authority_rc7b_reveal.evaluate --implementation-module research.interpretation_authority_rc7b_b.interpret --output-dir research/interpretation_authority_rc7b_b/post_reveal_evaluation",
+  "workflow": {
+    "run_id": 33396799846,
+    "job_id": 99503130074,
+    "conclusion": "failure",
+    "artifact_id": null,
+    "artifact_name": null,
+    "artifact_digest": null
+  },
+  "failed_step": "Run sealed evaluator exactly",
+  "exact_error": "zlib.error: Error -3 while decompressing data: incorrect data check",
+  "error_location": "sealed_payload.py load_payload -> zlib.decompress(base64.b64decode(PAYLOAD_B64))",
+  "scientific_state": null,
+  "deviations": [
+    "Temporary apparatus-only verified-recompression repair attempted raw-DEFLATE inflation and would recompress only a complete JSON plaintext whose canonical SHA-256 exactly matched the sealed payload semantic hash. No such plaintext was recovered; sealed files remained byte-for-byte unchanged."
+  ],
+  "contamination": null,
+  "apparatus_defects": [
+    "The authorized sealed transport does not yield the sealed semantic payload under padding plus raw-DEFLATE recovery; the run failed before any case evaluation."
+  ],
+  "status": "EVALUATOR_APPARATUS_DEFECT"
+}
