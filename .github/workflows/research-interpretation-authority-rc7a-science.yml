@@ -1,0 +1,64 @@
+name: Research - Interpretation authority RC7A science
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7a-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require accepted RC7A freeze ancestry
+        run: git merge-base --is-ancestor 61d59509bb6d15a6b463aabb01834c8f34ce2665 HEAD
+      - name: Require frozen RC7A source unchanged
+        run: git diff --exit-code 4b32b99299fa7d76bf8ad0723a097f739462dcb3 HEAD -- research/interpretation_authority_rc7a/
+      - name: Require frozen consumers and production unchanged
+        run: |
+          git diff --exit-code c623af35bee3b5f685c9a44e6d91ced006b2d690 HEAD -- research/population_semantics_contract_rc5/consumer.py research/population_semantics_contract_rc5b/consumer.py
+          git diff --exit-code c623af35bee3b5f685c9a44e6d91ced006b2d690 HEAD -- src/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile and rerun frozen controls
+        run: |
+          python -m py_compile research/interpretation_authority_rc7a/*.py
+          PYTHONPATH=. python -m unittest research.interpretation_authority_rc7a.test_contract -v
+      - name: Verify frozen corpus identity
+        run: |
+          mkdir -p artifacts/interpretation-authority-rc7a
+          PYTHONPATH=. python -m research.interpretation_authority_rc7a.build_corpus > artifacts/interpretation-authority-rc7a/FROZEN_CORPUS.json
+          test "$(sha256sum artifacts/interpretation-authority-rc7a/FROZEN_CORPUS.json | cut -d' ' -f1)" = "84034f442d4546c26eeeb18e3a8cd4ca2549333992d2cfa45f555408c752718e"
+          python - <<'PY'
+          import json
+          p=json.load(open('artifacts/interpretation-authority-rc7a/FROZEN_CORPUS.json'))
+          assert p['sha256']=='a4909215072590e6b02d387090b1c9792336c2cf87fe2ce34efcd846f0705c3f'
+          assert len(p['cases'])==104 and len(p['invalid_cases'])==4 and len(p['mutations'])==19
+          PY
+
+  science:
+    needs: apparatus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute frozen RC7A comparison
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/interpretation-authority-rc7a
+          PYTHONPATH=. python -m research.interpretation_authority_rc7a.run_experiment --output-dir artifacts/interpretation-authority-rc7a | tee artifacts/interpretation-authority-rc7a/stdout.json
+          sha256sum artifacts/interpretation-authority-rc7a/RESULTS.json artifacts/interpretation-authority-rc7a/DISAGREEMENTS.json artifacts/interpretation-authority-rc7a/AUTHORIZED.json artifacts/interpretation-authority-rc7a/BLOCKED.json artifacts/interpretation-authority-rc7a/LEGACY_LAUNDERING.json artifacts/interpretation-authority-rc7a/INVALID_CASES.json artifacts/interpretation-authority-rc7a/MUTATIONS.json | tee artifacts/interpretation-authority-rc7a/RESULT_HASHES.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-interpretation-authority-rc7a-science-${{ github.sha }}
+          path: artifacts/interpretation-authority-rc7a/
+          if-no-files-found: error
+          retention-days: 90
