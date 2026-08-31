@@ -1,0 +1,50 @@
+name: Research - Freeze interpretation authority RC7A
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7a-20260830
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require preregistered RC7A source ancestry
+        run: git merge-base --is-ancestor 4b32b99299fa7d76bf8ad0723a097f739462dcb3 HEAD
+      - name: Require RC7A scientific source unchanged
+        run: git diff --exit-code 4b32b99299fa7d76bf8ad0723a097f739462dcb3 HEAD -- research/interpretation_authority_rc7a/
+      - name: Require frozen semantic consumers unchanged
+        run: |
+          git diff --exit-code c623af35bee3b5f685c9a44e6d91ced006b2d690 HEAD -- research/population_semantics_contract_rc5/consumer.py
+          git diff --exit-code c623af35bee3b5f685c9a44e6d91ced006b2d690 HEAD -- research/population_semantics_contract_rc5b/consumer.py
+      - name: Require production unchanged from RC5B parent
+        run: git diff --exit-code c623af35bee3b5f685c9a44e6d91ced006b2d690 HEAD -- src/
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile RC7A apparatus
+        run: python -m py_compile research/interpretation_authority_rc7a/*.py
+      - name: Run preregistered model-free contract controls
+        run: PYTHONPATH=. python -m unittest research.interpretation_authority_rc7a.test_contract -v
+      - name: Materialize and hash frozen corpus
+        run: |
+          mkdir -p artifacts/interpretation-authority-rc7a-freeze
+          PYTHONPATH=. python -m research.interpretation_authority_rc7a.build_corpus > artifacts/interpretation-authority-rc7a-freeze/FROZEN_CORPUS.json
+          sha256sum artifacts/interpretation-authority-rc7a-freeze/FROZEN_CORPUS.json | tee artifacts/interpretation-authority-rc7a-freeze/FROZEN_CORPUS.sha256
+          python - <<'PY'
+          import json
+          p=json.load(open('artifacts/interpretation-authority-rc7a-freeze/FROZEN_CORPUS.json'))
+          print({'cases':len(p['cases']),'invalid_cases':len(p['invalid_cases']),'mutations':len(p['mutations']),'semantic_payload_sha256':p['sha256']})
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-interpretation-authority-rc7a-freeze-${{ github.sha }}
+          path: artifacts/interpretation-authority-rc7a-freeze/
+          if-no-files-found: error
+          retention-days: 90
