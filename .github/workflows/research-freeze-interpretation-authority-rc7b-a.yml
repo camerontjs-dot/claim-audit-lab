@@ -1,0 +1,106 @@
+name: Research Freeze - Interpretation Authority RC7B A
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7b-a-fresh-20260830
+    paths:
+      - research/interpretation_authority_rc7b_a/__init__.py
+      - research/interpretation_authority_rc7b_a/interpret.py
+      - research/interpretation_authority_rc7b_a/test_contract_sentinels.py
+      - research/interpretation_authority_rc7b_a/IMPLEMENTATION_NOTES.md
+      - .github/workflows/research-freeze-interpretation-authority-rc7b-a.yml
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    env:
+      APERTURE_SHA: 80c2d2f8c96025ea62e8552ecfd4621cd81ea1f4
+      OWN_BRANCH: research-infra/interpretation-authority-rc7b-a-fresh-20260830
+    steps:
+      - name: Shallow exact-ref checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Fetch only aperture and own branch history
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin "${APERTURE_SHA}"
+          git fetch --no-tags --depth=64 origin "+refs/heads/${OWN_BRANCH}:refs/remotes/origin/${OWN_BRANCH}"
+
+      - name: Verify aperture ancestry and changed-path aperture
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "${APERTURE_SHA}" "${GITHUB_SHA}"
+          git diff --name-only "${APERTURE_SHA}" "${GITHUB_SHA}" > /tmp/changed-files.txt
+          while IFS= read -r path; do
+            case "$path" in
+              research/interpretation_authority_rc7b_a/__init__.py) ;;
+              research/interpretation_authority_rc7b_a/interpret.py) ;;
+              research/interpretation_authority_rc7b_a/test_contract_sentinels.py) ;;
+              research/interpretation_authority_rc7b_a/IMPLEMENTATION_NOTES.md) ;;
+              .github/workflows/research-freeze-interpretation-authority-rc7b-a.yml) ;;
+              *)
+                echo "unauthorized changed path: $path" >&2
+                exit 1
+                ;;
+            esac
+          done < /tmp/changed-files.txt
+
+      - name: Compile implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile research/interpretation_authority_rc7b_a/__init__.py research/interpretation_authority_rc7b_a/interpret.py research/interpretation_authority_rc7b_a/test_contract_sentinels.py
+
+      - name: Run self-authored contract sentinels
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p freeze-artifact
+          python -m unittest research.interpretation_authority_rc7b_a.test_contract_sentinels 2>&1 | tee freeze-artifact/sentinel-results.txt
+
+      - name: Build freeze artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum research/interpretation_authority_rc7b_a/interpret.py research/interpretation_authority_rc7b_a/test_contract_sentinels.py > freeze-artifact/source-sha256.txt
+          cp /tmp/changed-files.txt freeze-artifact/changed-files.txt
+          cat > freeze-artifact/freeze-summary.txt <<EOF
+          implementation_id=A
+          aperture_branch=research-infra/interpretation-authority-rc7b-aperture-20260830
+          aperture_head=${APERTURE_SHA}
+          implementation_freeze_commit=${GITHUB_SHA}
+          prefreeze_read_1=research/interpretation_authority_rc7b_aperture/INTERPRETATION_AUTHORITY_CONTRACT-v1.md
+          prefreeze_read_2=research/interpretation_authority_rc7b_aperture/BOOTSTRAP-A.md
+          denylist_not_read=true
+          deviations=none
+          contamination=none
+          EOF
+
+      - name: Upload freeze artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: rc7b-a-freeze-${{ github.sha }}
+          path: freeze-artifact/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Record artifact identity in job summary
+        shell: bash
+        run: |
+          {
+            echo "implementation_freeze_commit=${GITHUB_SHA}"
+            echo "run_id=${GITHUB_RUN_ID}"
+            echo "artifact_id=${{ steps.upload.outputs.artifact-id }}"
+            echo "artifact_digest=${{ steps.upload.outputs.artifact-digest }}"
+          } >> "${GITHUB_STEP_SUMMARY}"
