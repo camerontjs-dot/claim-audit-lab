@@ -27,11 +27,11 @@ env:
 jobs:
   rc7e:
     runs-on: ubuntu-24.04
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Resolve bounded phase
         id: phase
@@ -58,7 +58,7 @@ jobs:
           cache: pip
           cache-dependency-path: research/language_instrument_ablation_rc7e/requirements.txt
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         if: ${{ steps.phase.outputs.phase != 'skip' }}
         with:
           distribution: temurin
@@ -71,7 +71,7 @@ jobs:
           set -euxo pipefail
           python -m pip install --upgrade pip
           python -m pip install -r research/language_instrument_ablation_rc7e/requirements.txt
-          python -m pip install 'supar==1.1.4' || echo 'SUPAR_INSTALL_FAILED=1' >> "$GITHUB_ENV"
+          python -m pip install 'supar==1.1.4'
 
       - name: Download frozen Stanza English processors
         if: ${{ steps.phase.outputs.phase != 'skip' }}
@@ -97,11 +97,12 @@ jobs:
         shell: bash
         run: |
           set -euxo pipefail
+          git cat-file -e 253af5313e93932875bdd5956ac46246f3796271^{commit}
           git diff --exit-code 253af5313e93932875bdd5956ac46246f3796271 -- src/
 
       - name: Run pre-held-out qualification
         if: ${{ steps.phase.outputs.phase == 'qualification' }}
-        run: python -m research.language_instrument_ablation_rc7e.qualification
+        run: python -m research.language_instrument_ablation_rc7e.qualification_v2
 
       - name: Guard scientific phase requires frozen cohort
         if: ${{ steps.phase.outputs.phase == 'scientific' }}
@@ -118,7 +119,7 @@ jobs:
 
       - name: Run scientific ablation
         if: ${{ steps.phase.outputs.phase == 'scientific' }}
-        run: python -m research.language_instrument_ablation_rc7e.run_ablation
+        run: python -m research.language_instrument_ablation_rc7e.run_ablation_v2
 
       - name: Write environment receipt
         if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
@@ -131,6 +132,10 @@ jobs:
           git rev-parse HEAD > research/language_instrument_ablation_rc7e/results/RUN_HEAD.txt
           git status --short > research/language_instrument_ablation_rc7e/results/GIT_STATUS.txt
           printf '%s\n' '${{ steps.phase.outputs.phase }}' > research/language_instrument_ablation_rc7e/results/PHASE.txt
+          free -h > research/language_instrument_ablation_rc7e/results/HOST_MEMORY.txt || true
+          df -h > research/language_instrument_ablation_rc7e/results/HOST_DISK.txt || true
+          du -sb "$HOME/.cache" > research/language_instrument_ablation_rc7e/results/CACHE_BYTES.txt 2>&1 || true
+          du -sb "$CORENLP_HOME" > research/language_instrument_ablation_rc7e/results/CORENLP_BYTES.txt 2>&1 || true
 
       - name: Hash evidence payload
         if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
