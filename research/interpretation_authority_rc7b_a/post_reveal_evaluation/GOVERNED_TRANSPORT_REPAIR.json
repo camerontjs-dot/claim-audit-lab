@@ -1,0 +1,8 @@
+{
+  "repair_kind": "non_semantic_sealed_transport_repair",
+  "insert_position": 3168,
+  "insert_character": "I",
+  "repaired_compressed_sha256": "4f3ea5c6f00e85dfc60b833eac397626503338311c9305a81cc3ef6672af6aa2",
+  "presealed_semantic_sha256": "35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a",
+  "sealed_files_modified": false
+}

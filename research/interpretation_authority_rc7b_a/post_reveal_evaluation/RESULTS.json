@@ -1,0 +1,51 @@
+{
+  "implementation_module": "research.interpretation_authority_rc7b_a.interpret",
+  "metrics": {
+    "case_count": 180,
+    "insufficient_classification_recall": 0.88,
+    "insufficient_exact": 88,
+    "insufficient_gold_fields": 100,
+    "invalid_outputs_or_exceptions": 0,
+    "mutations_passed": 19,
+    "mutations_total": 30,
+    "ood_correct": 18,
+    "ood_total": 24,
+    "partitions": {
+      "authority_boundary": {
+        "authorization_recovery": 0.3333333333333333,
+        "authorized_correct": 4,
+        "semantic_cases": 12
+      },
+      "construction": {
+        "authorization_recovery": 0.5370370370370371,
+        "authorized_correct": 29,
+        "semantic_cases": 54
+      },
+      "out_of_jurisdiction": {
+        "authorization_recovery": null,
+        "authorized_correct": 0,
+        "semantic_cases": 0
+      },
+      "paraphrase": {
+        "authorization_recovery": 0.35185185185185186,
+        "authorized_correct": 19,
+        "semantic_cases": 54
+      }
+    },
+    "scientific_state": "UNSAFE_INTERPRETATION",
+    "semantic_case_authorization_recovery": 0.43333333333333335,
+    "semantic_cases": 120,
+    "semantic_cases_exact_authorized": 52,
+    "semantic_field_recovery": 0.8470394736842105,
+    "semantic_field_value_status_exact": 515,
+    "semantic_gold_fields": 608,
+    "semantic_unknown_exact": 28,
+    "semantic_unknown_recall": 1.0,
+    "semantic_unknown_total": 28,
+    "unsafe_cases": 27,
+    "warrant_rule_recovery": 1.0,
+    "warrant_span_coverage": 0.9825242718446602,
+    "wrong_authorized_relations": 12
+  },
+  "payload_sha256": "35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a"
+}
