@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       A_EVIDENCE: fc1b3ff7a7ca273d732ef6202c10fb3f24b12750
-      B_EVIDENCE: ec1d50e685e1081fa12765b1c012da0138e12263
+      B_EVIDENCE: 04f52a6506336c5b0772fede9dca25d4f894ef18
       SEALED: 19e9302a11decb08dda644fbf1018997cf138c3b
       COMPARE_BLOB: 56aad27cd1fb52a411b43ef94874a1be7fd772d4
       OUT: research/interpretation_authority_rc7b_cross_governance
