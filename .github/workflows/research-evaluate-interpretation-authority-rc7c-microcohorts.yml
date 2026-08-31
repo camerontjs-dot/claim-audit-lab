@@ -1,0 +1,130 @@
+name: Research Evaluate - Interpretation Authority RC7C Microcohorts
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7c-microcohort-hardening-20260831
+    paths:
+      - .github/workflows/research-evaluate-interpretation-authority-rc7c-microcohorts.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: research-infra/interpretation-authority-rc7c-microcohort-hardening-20260831
+      A_FREEZE: 4513528130ed051b9bcc0b1b0832494baf1c2e04
+      B_FREEZE: 074363bf243717a502cb2e3269309cc94ddf5106
+      A_SHA256: 2bf9d2fbfa7982e56227c8899f37a2a32ee4ff7f89326744f34d69ab2f077e12
+      B_SHA256: 8d897b291ef7a89f9a7e1a3a321c4229bdb3396cc294fcb0de846e1806d3ed6e
+      PREREG_SHA: 8b7ec4385ab972960f3140b5413b9d546704b425
+      CANDIDATE_SHA: b7bc51bc02502e4e30bb2d4ef880606cde5bf138
+      COHORT_SHA: f62ea6ae1e7170d79c4647956f8139a1c4c3c94c
+      EVALUATOR_SHA: 5fc26227b308b2e2fea396231ab04e47e2ec3272
+      OUT: research/interpretation_authority_rc7c_microcohorts/results
+
+    steps:
+      - name: Exact analysis checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Verify preregistration and freeze order
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=64 origin "+refs/heads/${BRANCH}:refs/remotes/origin/rc7c"
+          for sha in "$PREREG_SHA" "$CANDIDATE_SHA" "$COHORT_SHA" "$EVALUATOR_SHA"; do
+            git merge-base --is-ancestor "$sha" "$GITHUB_SHA"
+          done
+          git merge-base --is-ancestor "$PREREG_SHA" "$CANDIDATE_SHA"
+          git merge-base --is-ancestor "$CANDIDATE_SHA" "$COHORT_SHA"
+          git merge-base --is-ancestor "$COHORT_SHA" "$EVALUATOR_SHA"
+          test "$(git diff --name-only "$CANDIDATE_SHA" "$GITHUB_SHA" -- research/interpretation_authority_rc7c_microcohorts/candidate.py | wc -l)" -eq 0
+          test "$(git diff --name-only "$COHORT_SHA" "$GITHUB_SHA" -- research/interpretation_authority_rc7c_microcohorts/cohorts.py | wc -l)" -eq 0
+          test "$(git diff --name-only "$EVALUATOR_SHA" "$GITHUB_SHA" -- research/interpretation_authority_rc7c_microcohorts/evaluate.py | wc -l)" -eq 0
+
+      - name: Materialize exact frozen A and B implementations
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin "+${A_FREEZE}:refs/rc7c-a-freeze"
+          git fetch --no-tags --depth=1 origin "+${B_FREEZE}:refs/rc7c-b-freeze"
+          mkdir -p /tmp/rc7c
+          git show "${A_FREEZE}:research/interpretation_authority_rc7b_a/interpret.py" > /tmp/rc7c/a.py
+          git show "${B_FREEZE}:research/interpretation_authority_rc7b_b/interpret.py" > /tmp/rc7c/b.py
+          printf '%s  %s\n' "$A_SHA256" /tmp/rc7c/a.py | sha256sum -c -
+          printf '%s  %s\n' "$B_SHA256" /tmp/rc7c/b.py | sha256sum -c -
+
+      - name: Run preregistered microcohort evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "$OUT"
+          PYTHONPATH=. python -m research.interpretation_authority_rc7c_microcohorts.evaluate \
+            --a-module-path /tmp/rc7c/a.py \
+            --b-module-path /tmp/rc7c/b.py \
+            --output-dir "$OUT"
+
+      - name: Write run receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          root=Path('research/interpretation_authority_rc7c_microcohorts')
+          out=root/'results'
+          names=['RESULTS.json','JURISDICTION_ROWS.json','FIELD_INDEPENDENCE_ROWS.json','ONLY_PERMISSION_ROWS.json','ONLY_PERMISSION_MUTATIONS.json','REPORT.md']
+          results=json.loads((out/'RESULTS.json').read_text())
+          receipt={
+            'classification':'post_reveal_diagnostic_hardening',
+            'context_free':False,
+            'preregistration_commit':os.environ['PREREG_SHA'],
+            'candidate_freeze_commit':os.environ['CANDIDATE_SHA'],
+            'cohort_freeze_commit':os.environ['COHORT_SHA'],
+            'evaluator_freeze_commit':os.environ['EVALUATOR_SHA'],
+            'analysis_head_sha':os.environ['GITHUB_SHA'],
+            'frozen_a_implementation_commit':os.environ['A_FREEZE'],
+            'frozen_b_implementation_commit':os.environ['B_FREEZE'],
+            'frozen_a_interpret_sha256':os.environ['A_SHA256'],
+            'frozen_b_interpret_sha256':os.environ['B_SHA256'],
+            'source_sha256':{
+              'candidate.py':hashlib.sha256((root/'candidate.py').read_bytes()).hexdigest(),
+              'cohorts.py':hashlib.sha256((root/'cohorts.py').read_bytes()).hexdigest(),
+              'evaluate.py':hashlib.sha256((root/'evaluate.py').read_bytes()).hexdigest(),
+            },
+            'output_sha256':{n:hashlib.sha256((out/n).read_bytes()).hexdigest() for n in names},
+            'overall_state':results['overall_state'],
+            'lane_states':{
+              'jurisdiction':results['jurisdiction']['state'],
+              'field_independence':results['field_independence']['state'],
+              'only_permission':results['only_permission']['state'],
+            },
+            'workflow_run_id':int(os.environ['GITHUB_RUN_ID']),
+            'production_authorization':False,
+          }
+          (out/'RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          PY
+
+      - name: Upload RC7C evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: interpretation-authority-rc7c-microcohorts-${{ github.sha }}
+          path: ${{ env.OUT }}/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Commit preserved results
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$OUT"
+          git commit -m "RC7C: preserve interpretation-boundary microcohort results"
+          git push origin "HEAD:${BRANCH}"
