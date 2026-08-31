@@ -1,0 +1,133 @@
+name: Research Evaluate - Interpretation Authority RC7B A Governed Repair
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7b-a-fresh-20260830
+    paths:
+      - .github/workflows/research-evaluate-interpretation-authority-rc7b-a-governed-repair.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: research-infra/interpretation-authority-rc7b-a-fresh-20260830
+      FREEZE_SHA: 4513528130ed051b9bcc0b1b0832494baf1c2e04
+      SEALED_SHA: 19e9302a11decb08dda644fbf1018997cf138c3b
+      IMPL_SHA256: 2bf9d2fbfa7982e56227c8899f37a2a32ee4ff7f89326744f34d69ab2f077e12
+      TEST_SHA256: 3240362fcf9b3c86982ffa89e129b8c957616c9938871ca93c55a1da9ab323f0
+      PAYLOAD_BLOB: 3d26de023fb4cdaf6befafa0dbe11f448231d42a
+      EVAL_BLOB: eb5d862faf7a59704988da905c9b2a07bbadc22f
+      RECEIPT_BLOB: ad6dd94472e316e19113d1d5aed7f27b2bd47749
+      OUT: research/interpretation_authority_rc7b_a/post_reveal_evaluation
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Verify frozen A identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$IMPL_SHA256" research/interpretation_authority_rc7b_a/interpret.py | sha256sum -c -
+          printf '%s  %s\n' "$TEST_SHA256" research/interpretation_authority_rc7b_a/test_contract_sentinels.py | sha256sum -c -
+          git fetch --no-tags --depth=64 origin "+refs/heads/${BRANCH}:refs/remotes/origin/rc7b-a-governed"
+          git merge-base --is-ancestor "$FREEZE_SHA" "$GITHUB_SHA"
+          git diff --quiet "$FREEZE_SHA" "$GITHUB_SHA" -- research/interpretation_authority_rc7b_a/interpret.py research/interpretation_authority_rc7b_a/test_contract_sentinels.py
+
+      - name: Materialize exact sealed files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin "+${SEALED_SHA}:refs/rc7b-sealed-a"
+          ROOT=research/interpretation_authority_rc7b_reveal
+          test "$(git rev-parse "${SEALED_SHA}:${ROOT}/sealed_payload.py")" = "$PAYLOAD_BLOB"
+          test "$(git rev-parse "${SEALED_SHA}:${ROOT}/evaluate.py")" = "$EVAL_BLOB"
+          test "$(git rev-parse "${SEALED_SHA}:${ROOT}/SEALED_RECEIPT.json")" = "$RECEIPT_BLOB"
+          mkdir -p "$ROOT" "$OUT"
+          git show "${SEALED_SHA}:${ROOT}/sealed_payload.py" > "$ROOT/sealed_payload.py"
+          git show "${SEALED_SHA}:${ROOT}/evaluate.py" > "$ROOT/evaluate.py"
+          git show "${SEALED_SHA}:${ROOT}/SEALED_RECEIPT.json" > "$ROOT/SEALED_RECEIPT.json"
+
+      - name: Install exact governance-authorized transport repair
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > sitecustomize.py <<'PY'
+          import base64 as _base64
+          import hashlib as _hashlib
+          import json as _json
+          import zlib as _zlib
+          _orig=_base64.b64decode
+          def _semantic_sha256(plain):
+              obj=_json.loads(plain.decode())
+              canon=_json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+              return _hashlib.sha256(canon).hexdigest()
+          def _decode(s,altchars=None,validate=False):
+              raw=s.encode('ascii') if isinstance(s,str) else bytes(s)
+              if altchars is not None or validate or len(raw)!=12787 or not raw.startswith(b'eN'):
+                  return _orig(s,altchars=altchars,validate=validate)
+              repaired=raw[:3168]+b'I'+raw[3168:]
+              compressed=_orig(repaired,altchars=altchars,validate=validate)
+              if _hashlib.sha256(compressed).hexdigest()!='4f3ea5c6f00e85dfc60b833eac397626503338311c9305a81cc3ef6672af6aa2':
+                  raise RuntimeError('repaired compressed hash mismatch')
+              plain=_zlib.decompress(compressed)
+              if _semantic_sha256(plain)!='35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a':
+                  raise RuntimeError('repaired semantic hash mismatch')
+              return compressed
+          _base64.b64decode=_decode
+          PY
+          cat > "$OUT/GOVERNED_TRANSPORT_REPAIR.json" <<'JSON'
+          {
+            "repair_kind": "non_semantic_sealed_transport_repair",
+            "insert_position": 3168,
+            "insert_character": "I",
+            "repaired_compressed_sha256": "4f3ea5c6f00e85dfc60b833eac397626503338311c9305a81cc3ef6672af6aa2",
+            "presealed_semantic_sha256": "35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a",
+            "sealed_files_modified": false
+          }
+          JSON
+
+      - name: Run unchanged sealed evaluator
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -f "$OUT/RESULTS.json" "$OUT/PREDICTIONS.json" "$OUT/MUTATIONS.json" "$OUT/COUNTEREXAMPLES.json"
+          PYTHONPATH=. python -m research.interpretation_authority_rc7b_reveal.evaluate --implementation-module research.interpretation_authority_rc7b_a.interpret --output-dir "$OUT"
+          test -f "$OUT/RESULTS.json"
+          test -f "$OUT/PREDICTIONS.json"
+          test -f "$OUT/MUTATIONS.json"
+          test -f "$OUT/COUNTEREXAMPLES.json"
+          rm -f sitecustomize.py
+
+      - name: Upload evaluator outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: interpretation-authority-rc7b-a-governed-evaluation-${{ github.sha }}
+          path: |
+            ${{ env.OUT }}/RESULTS.json
+            ${{ env.OUT }}/PREDICTIONS.json
+            ${{ env.OUT }}/MUTATIONS.json
+            ${{ env.OUT }}/COUNTEREXAMPLES.json
+            ${{ env.OUT }}/GOVERNED_TRANSPORT_REPAIR.json
+            ${{ env.OUT }}/POST_REVEAL_APPARATUS_FAILURE_RECEIPT.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Commit preserved scientific outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf research/interpretation_authority_rc7b_reveal
+          rm -f sitecustomize.py
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$OUT/RESULTS.json" "$OUT/PREDICTIONS.json" "$OUT/MUTATIONS.json" "$OUT/COUNTEREXAMPLES.json" "$OUT/GOVERNED_TRANSPORT_REPAIR.json"
+          git commit -m "RC7B A: preserve governed sealed evaluation outputs"
+          git push origin "HEAD:${BRANCH}"
