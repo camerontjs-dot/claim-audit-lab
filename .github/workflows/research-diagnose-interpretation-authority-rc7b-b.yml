@@ -1,0 +1,109 @@
+name: Research Diagnose — Interpretation Authority RC7B B Transport
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7b-b-fresh-20260830
+    paths:
+      - .github/workflows/research-diagnose-interpretation-authority-rc7b-b.yml
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: research-infra/interpretation-authority-rc7b-b-fresh-20260830
+      FREEZE_SHA: 074363bf243717a502cb2e3269309cc94ddf5106
+      SEALED_SHA: 19e9302a11decb08dda644fbf1018997cf138c3b
+      INTERPRET_SHA256: 8d897b291ef7a89f9a7e1a3a321c4229bdb3396cc294fcb0de846e1806d3ed6e
+      SENTINEL_SHA256: cbd39ba43cfa77785e29290aac2e77446e1f20a070dbc2bba49aad8e40ae3411
+      SEALED_PAYLOAD_BLOB: 3d26de023fb4cdaf6befafa0dbe11f448231d42a
+      SEALED_EVALUATE_BLOB: eb5d862faf7a59704988da905c9b2a07bbadc22f
+
+    steps:
+      - name: Exact diagnostic-head checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Verify frozen identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s  %s\n' "$INTERPRET_SHA256" research/interpretation_authority_rc7b_b/interpret.py | sha256sum -c -
+          printf '%s  %s\n' "$SENTINEL_SHA256" research/interpretation_authority_rc7b_b/test_contract_sentinels.py | sha256sum -c -
+          git fetch --no-tags --depth=32 origin "+refs/heads/${BRANCH}:refs/remotes/origin/rc7b-b-diagnostic"
+          git merge-base --is-ancestor "$FREEZE_SHA" "$GITHUB_SHA"
+          git diff --quiet "$FREEZE_SHA" "$GITHUB_SHA" -- \
+            research/interpretation_authority_rc7b_b/interpret.py \
+            research/interpretation_authority_rc7b_b/test_contract_sentinels.py
+
+      - name: Materialize authorized sealed files only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin "+${SEALED_SHA}:refs/rc7b-sealed-diagnostic"
+          test "$(git rev-parse "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/sealed_payload.py")" = "$SEALED_PAYLOAD_BLOB"
+          test "$(git rev-parse "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/evaluate.py")" = "$SEALED_EVALUATE_BLOB"
+          mkdir -p research/interpretation_authority_rc7b_reveal
+          git show "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/sealed_payload.py" > research/interpretation_authority_rc7b_reveal/sealed_payload.py
+          git show "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/evaluate.py" > research/interpretation_authority_rc7b_reveal/evaluate.py
+          git show "${SEALED_SHA}:research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json" > research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json
+
+      - name: Diagnose transport without revealing corpus contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import ast, base64, hashlib, json, zlib
+          from pathlib import Path
+
+          path=Path('research/interpretation_authority_rc7b_reveal/sealed_payload.py')
+          tree=ast.parse(path.read_text(encoding='utf-8'))
+          vals={}
+          for node in tree.body:
+              if isinstance(node, ast.Assign) and len(node.targets)==1 and isinstance(node.targets[0], ast.Name):
+                  name=node.targets[0].id
+                  if name in {'PAYLOAD_B64','PAYLOAD_SHA256'}:
+                      vals[name]=ast.literal_eval(node.value)
+          raw=vals['PAYLOAD_B64'].encode('ascii')
+          padded=raw+b'='*((-len(raw))%4)
+          decoded=base64.b64decode(padded)
+          print('b64_length=',len(raw))
+          print('b64_mod4=',len(raw)%4)
+          print('decoded_length=',len(decoded))
+          print('decoded_sha256=',hashlib.sha256(decoded).hexdigest())
+          print('decoded_header_hex=',decoded[:2].hex())
+          print('decoded_tail8_hex=',decoded[-8:].hex())
+          inflater=zlib.decompressobj(wbits=-15)
+          try:
+              plain=inflater.decompress(decoded[2:])+inflater.flush()
+              print('raw_deflate_exception=none')
+          except Exception as exc:
+              plain=b''
+              print('raw_deflate_exception=',type(exc).__name__+': '+str(exc))
+          print('raw_deflate_eof=',inflater.eof)
+          print('raw_deflate_unused_data_length=',len(inflater.unused_data))
+          print('raw_deflate_unconsumed_tail_length=',len(inflater.unconsumed_tail))
+          print('plain_length=',len(plain))
+          print('plain_sha256=',hashlib.sha256(plain).hexdigest())
+          try:
+              obj=json.loads(plain.decode())
+              canon=json.dumps(obj,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+              got=hashlib.sha256(canon).hexdigest()
+              print('plain_json_parse=true')
+              print('plain_canonical_sha256=',got)
+              print('plain_matches_sealed_semantic_sha256=',got==vals['PAYLOAD_SHA256'])
+          except Exception as exc:
+              print('plain_json_parse=false')
+              print('plain_json_exception=',type(exc).__name__+': '+str(exc))
+          try:
+              zlib.decompress(decoded)
+              print('wrapped_zlib_decompress=true')
+          except Exception as exc:
+              print('wrapped_zlib_decompress=false')
+              print('wrapped_zlib_exception=',type(exc).__name__+': '+str(exc))
+          PY
