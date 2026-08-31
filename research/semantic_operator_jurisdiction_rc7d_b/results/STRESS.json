@@ -1,0 +1,38 @@
+[
+  {
+    "authorized_false_dimension_count": 0,
+    "authorized_semantic_dimension_recall": 0.23275862068965517,
+    "authorized_unsafe_atom_count": 0,
+    "authorized_unsafe_case_rate": 0.0,
+    "bank_size": 2,
+    "proposal_dimension_precision": 1.0,
+    "proposal_false_dimension_count": 0
+  },
+  {
+    "authorized_false_dimension_count": 0,
+    "authorized_semantic_dimension_recall": 0.4051724137931034,
+    "authorized_unsafe_atom_count": 9,
+    "authorized_unsafe_case_rate": 0.12162162162162163,
+    "bank_size": 4,
+    "proposal_dimension_precision": 1.0,
+    "proposal_false_dimension_count": 0
+  },
+  {
+    "authorized_false_dimension_count": 0,
+    "authorized_semantic_dimension_recall": 0.5172413793103449,
+    "authorized_unsafe_atom_count": 10,
+    "authorized_unsafe_case_rate": 0.13513513513513514,
+    "bank_size": 6,
+    "proposal_dimension_precision": 1.0,
+    "proposal_false_dimension_count": 0
+  },
+  {
+    "authorized_false_dimension_count": 1,
+    "authorized_semantic_dimension_recall": 0.6120689655172413,
+    "authorized_unsafe_atom_count": 11,
+    "authorized_unsafe_case_rate": 0.14864864864864866,
+    "bank_size": 8,
+    "proposal_dimension_precision": 0.9880952380952381,
+    "proposal_false_dimension_count": 1
+  }
+]
