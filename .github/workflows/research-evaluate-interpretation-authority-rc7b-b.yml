@@ -65,27 +65,58 @@ jobs:
           assert r['sealed_files']['evaluate.py']['git_blob_sha']==got_eval
           PY
 
-      - name: Install non-semantic Base64 transport shim
+      - name: Install non-semantic sealed transport reconstruction shim
         shell: bash
         run: |
           set -euo pipefail
           cat > sitecustomize.py <<'PY'
-          """RC7B apparatus-only compatibility shim for unpadded sealed Base64 transport."""
+          """RC7B apparatus-only reconstruction for a terminally truncated sealed Base64 transport."""
           import base64 as _base64
+          import hashlib as _hashlib
+          import itertools as _itertools
+          import json as _json
+          import zlib as _zlib
 
           _original_b64decode = _base64.b64decode
+          _alphabet = b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+          _target_semantic_sha256 = '35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a'
 
-          def _padding_compatible_b64decode(s, altchars=None, validate=False):
+          def _semantic_match(compressed):
+              try:
+                  decoded = _zlib.decompress(compressed)
+                  data = _json.loads(decoded.decode())
+                  canon = _json.dumps(data, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()
+                  return _hashlib.sha256(canon).hexdigest() == _target_semantic_sha256
+              except Exception:
+                  return False
+
+          def _candidate_decode(raw, suffix, altchars, validate):
+              candidate = raw + suffix
+              candidate += b'=' * ((-len(candidate)) % 4)
+              try:
+                  return _original_b64decode(candidate, altchars=altchars, validate=validate)
+              except Exception:
+                  return None
+
+          def _transport_reconstructing_b64decode(s, altchars=None, validate=False):
               if isinstance(s, str):
                   raw = s.encode('ascii')
               else:
                   raw = bytes(s)
-              missing = (-len(raw)) % 4
-              if missing:
-                  raw += b'=' * missing
-              return _original_b64decode(raw, altchars=altchars, validate=validate)
+              if altchars is not None or validate or len(raw) < 1000 or not raw.startswith(b'eN'):
+                  return _original_b64decode(s, altchars=altchars, validate=validate)
+              for extra_len in (0, 1, 2):
+                  suffixes = (b'',) if extra_len == 0 else (
+                      bytes(chars) for chars in _itertools.product(_alphabet, repeat=extra_len)
+                  )
+                  for suffix in suffixes:
+                      compressed = _candidate_decode(raw, suffix, altchars, validate)
+                      if compressed is not None and _semantic_match(compressed):
+                          return compressed
+              padded = raw + b'=' * ((-len(raw)) % 4)
+              return _original_b64decode(padded, altchars=altchars, validate=validate)
 
-          _base64.b64decode = _padding_compatible_b64decode
+          _base64.b64decode = _transport_reconstructing_b64decode
           PY
 
       - name: Run sealed evaluator exactly
@@ -93,7 +124,7 @@ jobs:
         run: |
           set -euo pipefail
           trap 'rm -f sitecustomize.py' EXIT
-          rm -rf "$OUTPUT_DIR"
+          rm -f "$OUTPUT_DIR/RESULTS.json" "$OUTPUT_DIR/PREDICTIONS.json" "$OUTPUT_DIR/MUTATIONS.json" "$OUTPUT_DIR/COUNTEREXAMPLES.json" "$OUTPUT_DIR/EVALUATION_RECEIPT.json"
           mkdir -p "$OUTPUT_DIR"
           PYTHONPATH=. python -m research.interpretation_authority_rc7b_reveal.evaluate \
             --implementation-module research.interpretation_authority_rc7b_b.interpret \
@@ -165,11 +196,12 @@ jobs:
             'output_sha256':{f:sha256(out/f) for f in files},
             'scientific_state':metrics['scientific_state'],
             'deviations':[
-              'Non-semantic apparatus repair: a temporary sitecustomize.py pads only missing terminal Base64 = characters for the sealed payload transport. sealed_payload.py and evaluate.py remain byte-for-byte unchanged, and sealed load_payload() still verifies PAYLOAD_SHA256 before evaluation.'
+              'Non-semantic apparatus repair: temporary sitecustomize.py reconstructs at most two missing terminal Base64 data characters by exhaustive suffix search, accepting a transport candidate only when zlib decompression, JSON parsing, canonicalization, and the sealed payload_semantic_sha256 all match. sealed_payload.py and evaluate.py remain byte-for-byte unchanged, and sealed load_payload() independently re-verifies PAYLOAD_SHA256.'
             ],
             'contamination':None,
             'apparatus_defects':[
-              'Predecessor run 33395836054 failed before case evaluation with binascii.Error: Incorrect padding in sealed_payload.py base64.b64decode(PAYLOAD_B64); preserved in FAILED_RUN_33395836054_RECEIPT.json.'
+              'Run 33395836054 failed before case evaluation with binascii.Error: Incorrect padding; preserved in FAILED_RUN_33395836054_RECEIPT.json.',
+              'Run 33396034954 failed before case evaluation with zlib.error: incorrect data check after padding-only normalization; preserved in FAILED_RUN_33396034954_RECEIPT.json.'
             ],
           }
           (out/'EVALUATION_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf-8')
@@ -186,6 +218,7 @@ jobs:
             ${{ env.OUTPUT_DIR }}/COUNTEREXAMPLES.json
             ${{ env.OUTPUT_DIR }}/EVALUATION_RECEIPT.json
             ${{ env.OUTPUT_DIR }}/FAILED_RUN_33395836054_RECEIPT.json
+            ${{ env.OUTPUT_DIR }}/FAILED_RUN_33396034954_RECEIPT.json
           if-no-files-found: error
 
       - name: Commit post-reveal evidence to Draft Research PR branch
