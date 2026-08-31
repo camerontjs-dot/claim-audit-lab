@@ -1,0 +1,91 @@
+name: Research Evaluate - Semantic Operator Jurisdiction RC7D-B
+
+on:
+  push:
+    branches:
+      - research-infra/semantic-operator-jurisdiction-rc7d-b-20260831
+    paths-ignore:
+      - research/semantic_operator_jurisdiction_rc7d_b/results/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen inputs and boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git merge-base --is-ancestor f57ffeb839f831d32d3e2b0bea1b34d5e73ac0e3 HEAD
+          git merge-base --is-ancestor 198213ef7c2104181be7226e2f33751c50fcef42 HEAD
+          git merge-base --is-ancestor 2e070cbcc48d80384ec71075998c142240a9042c HEAD
+          git merge-base --is-ancestor 461f644d8abce19c9e7a9b2a60134d2bef2481bd HEAD
+          git diff --exit-code f57ffeb839f831d32d3e2b0bea1b34d5e73ac0e3 HEAD -- research/semantic_operator_jurisdiction_rc7d/candidate.py
+          git diff --exit-code f57ffeb839f831d32d3e2b0bea1b34d5e73ac0e3 HEAD -- research/semantic_operator_jurisdiction_rc7d/cohort.py
+          git diff --exit-code 2e070cbcc48d80384ec71075998c142240a9042c HEAD -- research/semantic_operator_jurisdiction_rc7d_b/validator.py
+          git diff --exit-code 461f644d8abce19c9e7a9b2a60134d2bef2481bd HEAD -- research/semantic_operator_jurisdiction_rc7d_b/evaluate.py
+          git diff --exit-code 80c2d2f8c96025ea62e8552ecfd4621cd81ea1f4 HEAD -- src/
+          python -m py_compile research/semantic_operator_jurisdiction_rc7d_b/validator.py research/semantic_operator_jurisdiction_rc7d_b/evaluate.py
+
+      - name: Run RC7D-B evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research/semantic_operator_jurisdiction_rc7d_b/results
+          PYTHONPATH=. python -m research.semantic_operator_jurisdiction_rc7d_b.evaluate \
+            --output-dir research/semantic_operator_jurisdiction_rc7d_b/results \
+            > research/semantic_operator_jurisdiction_rc7d_b/results/STDOUT.json
+
+      - name: Write receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root=Path('research/semantic_operator_jurisdiction_rc7d_b/results')
+          names=['RESULTS.json','BROADCAST_ROWS.json','SINGLE_ROWS.json','COUNTEREXAMPLES.json','STRESS.json','REPORT.md','STDOUT.json']
+          hashes={n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in names}
+          result=json.loads((root/'RESULTS.json').read_text())
+          receipt={
+            'classification':'post_reveal_diagnostic_hardening',
+            'context_free':False,
+            'llm_used':False,
+            'production_authorization':False,
+            'rc7d_evidence_commit':'f57ffeb839f831d32d3e2b0bea1b34d5e73ac0e3',
+            'preregistration_commit':'198213ef7c2104181be7226e2f33751c50fcef42',
+            'validator_freeze_commit':'2e070cbcc48d80384ec71075998c142240a9042c',
+            'evaluator_freeze_commit':'461f644d8abce19c9e7a9b2a60134d2bef2481bd',
+            'analysis_head_sha':os.environ['GITHUB_SHA'],
+            'workflow_run_id':int(os.environ['GITHUB_RUN_ID']),
+            'scientific_state':result['scientific_state'],
+            'case_count':result['case_count'],
+            'output_sha256':hashes,
+            'deviations':['reused preserved RC7D cohort count-assertion in-memory repair; no cohort semantics changed'],
+          }
+          (root/'RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          PY
+
+      - name: Upload evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: semantic-operator-jurisdiction-rc7d-b-${{ github.sha }}
+          path: research/semantic_operator_jurisdiction_rc7d_b/results/
+          if-no-files-found: error
+
+      - name: Commit evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/semantic_operator_jurisdiction_rc7d_b/results/
+          git commit -m "Research evidence: RC7D-B proposal-authority separation"
+          git push origin HEAD:research-infra/semantic-operator-jurisdiction-rc7d-b-20260831
