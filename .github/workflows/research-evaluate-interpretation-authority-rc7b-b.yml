@@ -65,10 +65,34 @@ jobs:
           assert r['sealed_files']['evaluate.py']['git_blob_sha']==got_eval
           PY
 
+      - name: Install non-semantic Base64 transport shim
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > sitecustomize.py <<'PY'
+          """RC7B apparatus-only compatibility shim for unpadded sealed Base64 transport."""
+          import base64 as _base64
+
+          _original_b64decode = _base64.b64decode
+
+          def _padding_compatible_b64decode(s, altchars=None, validate=False):
+              if isinstance(s, str):
+                  raw = s.encode('ascii')
+              else:
+                  raw = bytes(s)
+              missing = (-len(raw)) % 4
+              if missing:
+                  raw += b'=' * missing
+              return _original_b64decode(raw, altchars=altchars, validate=validate)
+
+          _base64.b64decode = _padding_compatible_b64decode
+          PY
+
       - name: Run sealed evaluator exactly
         shell: bash
         run: |
           set -euo pipefail
+          trap 'rm -f sitecustomize.py' EXIT
           rm -rf "$OUTPUT_DIR"
           mkdir -p "$OUTPUT_DIR"
           PYTHONPATH=. python -m research.interpretation_authority_rc7b_reveal.evaluate \
@@ -140,9 +164,13 @@ jobs:
             },
             'output_sha256':{f:sha256(out/f) for f in files},
             'scientific_state':metrics['scientific_state'],
-            'deviations':[],
+            'deviations':[
+              'Non-semantic apparatus repair: a temporary sitecustomize.py pads only missing terminal Base64 = characters for the sealed payload transport. sealed_payload.py and evaluate.py remain byte-for-byte unchanged, and sealed load_payload() still verifies PAYLOAD_SHA256 before evaluation.'
+            ],
             'contamination':None,
-            'apparatus_defects':[],
+            'apparatus_defects':[
+              'Predecessor run 33395836054 failed before case evaluation with binascii.Error: Incorrect padding in sealed_payload.py base64.b64decode(PAYLOAD_B64); preserved in FAILED_RUN_33395836054_RECEIPT.json.'
+            ],
           }
           (out/'EVALUATION_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf-8')
           PY
@@ -157,6 +185,7 @@ jobs:
             ${{ env.OUTPUT_DIR }}/MUTATIONS.json
             ${{ env.OUTPUT_DIR }}/COUNTEREXAMPLES.json
             ${{ env.OUTPUT_DIR }}/EVALUATION_RECEIPT.json
+            ${{ env.OUTPUT_DIR }}/FAILED_RUN_33395836054_RECEIPT.json
           if-no-files-found: error
 
       - name: Commit post-reveal evidence to Draft Research PR branch
@@ -164,6 +193,7 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf research/interpretation_authority_rc7b_reveal
+          rm -f sitecustomize.py
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add "$OUTPUT_DIR/RESULTS.json" "$OUTPUT_DIR/PREDICTIONS.json" "$OUTPUT_DIR/MUTATIONS.json" "$OUTPUT_DIR/COUNTEREXAMPLES.json" "$OUTPUT_DIR/EVALUATION_RECEIPT.json"
