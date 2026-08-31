@@ -1,0 +1,126 @@
+{
+  "implementation_id": "A",
+  "branch": "research-infra/interpretation-authority-rc7b-a-fresh-20260830",
+  "draft_pr": 54,
+  "immutable_implementation_freeze_sha": "4513528130ed051b9bcc0b1b0832494baf1c2e04",
+  "post_reveal_evaluation_infrastructure_head": "4d6a030cb4d380a8e792374f7255b2a871da065b",
+  "sealed_evaluator_commit": "19e9302a11decb08dda644fbf1018997cf138c3b",
+  "exact_reveal_files_materialized": [
+    "research/interpretation_authority_rc7b_reveal/sealed_payload.py",
+    "research/interpretation_authority_rc7b_reveal/evaluate.py",
+    "research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json"
+  ],
+  "reveal_git_blob_identities": {
+    "sealed_payload.py": "3d26de023fb4cdaf6befafa0dbe11f448231d42a",
+    "evaluate.py": "eb5d862faf7a59704988da905c9b2a07bbadc22f",
+    "SEALED_RECEIPT.json": "ad6dd94472e316e19113d1d5aed7f27b2bd47749"
+  },
+  "reveal_sha256_observations": {
+    "sealed_payload.py": {
+      "materialized_sha256": "77b1154443a4a4af395c0050cb9c50cbd7e803d6d1b21cf697ee4eeb8700d5f2",
+      "SEALED_RECEIPT_declared_sha256": "9aee1f007d6c6dddd3bf1a289874ab4738d6dfff0648830d01f0f4da7ff99e13",
+      "match": false
+    },
+    "evaluate.py": {
+      "materialized_sha256": "924be0c1d9038a5edc78c7171f007231013041964ceab4bf3514757e94f1436e",
+      "SEALED_RECEIPT_declared_sha256": "b02bb5f6b2ca995262841a038df24255983a8bcc66651e5a56d31b138e56d03a",
+      "match": false
+    },
+    "SEALED_RECEIPT.json": {
+      "materialized_sha256": "8b8ab755a0f5c4171c1aaa0588b93cd7b325caeaaede351441ef96d9f599ce51",
+      "SEALED_RECEIPT_declared_sha256": null
+    }
+  },
+  "frozen_sha256_reverified": {
+    "research/interpretation_authority_rc7b_a/interpret.py": "2bf9d2fbfa7982e56227c8899f37a2a32ee4ff7f89326744f34d69ab2f077e12",
+    "research/interpretation_authority_rc7b_a/test_contract_sentinels.py": "3240362fcf9b3c86982ffa89e129b8c957616c9938871ca93c55a1da9ab323f0"
+  },
+  "frozen_files_modified_post_freeze": false,
+  "failed_runs": [
+    {
+      "run_id": 33395869271,
+      "evaluation_head_sha": "6898b4b158f538dde1a01cd2e3752ca3a21ab416",
+      "workflow_conclusion": "failure",
+      "phase": "reveal identity verification",
+      "evaluator_executed": false,
+      "exact_failure": "sealed_payload.py sha256 mismatch: 77b1154443a4a4af395c0050cb9c50cbd7e803d6d1b21cf697ee4eeb8700d5f2 != 9aee1f007d6c6dddd3bf1a289874ab4738d6dfff0648830d01f0f4da7ff99e13",
+      "classification": "evaluation_infrastructure_overconstraint",
+      "receipt_sha256": "4022d9bb587112f542a74a919b155a4ae83712e6d7aa6c442440d71f2f27b809",
+      "raw_artifact": {
+        "id": 9759279800,
+        "name": "rc7b-a-evaluation-results-33395869271",
+        "digest": "sha256:0f1109769680de462be3a268ccd186a4e096257f8982853bb2bac201523ca0e2"
+      },
+      "evidence_artifact": {
+        "id": 9759280545,
+        "name": "rc7b-a-evaluation-evidence-33395869271",
+        "digest": "sha256:45d6656a4ef3c162ea5ad99aca5cb4a091fb8c36f1a42fb4e5cda8bd4a43ad0b"
+      }
+    },
+    {
+      "run_id": 33396045057,
+      "evaluation_head_sha": "233056dcc13557dd7c34a69fcb5800134e42af99",
+      "workflow_conclusion": "failure",
+      "phase": "sealed evaluator payload load",
+      "evaluator_executed": true,
+      "exact_failure": "binascii.Error: Incorrect padding",
+      "classification": "sealed_evaluator_apparatus_defect",
+      "receipt_sha256": "5ee58fa703f5b8fc20619435fcafcc5d21529b1fadfad919d8ab5f7a6be5eacd",
+      "evaluator_stderr_sha256": "8407b5eb8978adf2ce9004040e90bdc569fee610b5e139e5ca1827349fb083a1",
+      "raw_artifact": {
+        "id": 9759345466,
+        "name": "rc7b-a-evaluation-results-33396045057",
+        "digest": "sha256:c1472302ef2797d6f8562d372dbd36de0d7a7d634897f0b5055e45370f24cb14"
+      },
+      "evidence_artifact": {
+        "id": 9759345924,
+        "name": "rc7b-a-evaluation-evidence-33396045057",
+        "digest": "sha256:4a87db7be94248c6737d6e9791fc1d68329a814f83d0c2c523afb337a05cd550"
+      }
+    },
+    {
+      "run_id": 33396472380,
+      "evaluation_head_sha": "4d6a030cb4d380a8e792374f7255b2a871da065b",
+      "workflow_conclusion": "failure",
+      "phase": "bounded non-semantic apparatus-repair proof",
+      "evaluator_executed": false,
+      "exact_failure": "apparatus repair cannot recover sealed payload: error: Error -3 while decompressing data: incorrect data check",
+      "classification": "sealed_payload_not_recoverable_by_terminal_base64_padding_only",
+      "receipt_sha256": "6e66857ee5819ceb318c08ec26ff2bac321e783353fccce6f2187d643e578a07",
+      "raw_artifact": {
+        "id": 9759503292,
+        "name": "rc7b-a-evaluation-results-33396472380",
+        "digest": "sha256:a00d7cb703c47d465f7b80852b1ad059c5b510814c4cf20cb7d57cf381a66987"
+      },
+      "evidence_artifact": {
+        "id": 9759503743,
+        "name": "rc7b-a-evaluation-evidence-33396472380",
+        "digest": "sha256:2356a505d9a1cb5485bfeaa17b66649253b35d3c8f1e945559d1aabd9bbf7a69"
+      }
+    }
+  ],
+  "required_evaluator_outputs": {
+    "RESULTS.json": null,
+    "PREDICTIONS.json": null,
+    "MUTATIONS.json": null,
+    "COUNTEREXAMPLES.json": null
+  },
+  "scientific_state": null,
+  "scientific_failure_observed": false,
+  "apparatus_defect": {
+    "status": "UNRESOLVED",
+    "summary": "The exact authorized sealed_payload.py Git blob cannot load its Base64/zlib payload. The sealed evaluator first raises Incorrect padding. Adding only the mathematically minimal terminal Base64 padding changes that failure to a zlib incorrect-data-check error, so the defect is not safely repairable as omitted Base64 terminal padding.",
+    "safe_repair_attempted": "terminal Base64 padding only, gated on exact canonical PAYLOAD_SHA256 identity",
+    "safe_repair_succeeded": false,
+    "further_in_thread_repair_permitted": false,
+    "reason_further_repair_stopped": "Any further byte reconstruction or corpus change could alter sealed corpus semantics and therefore requires governance review under the reveal authorization."
+  },
+  "deviations": [
+    "Run 33395869271 incorrectly treated SEALED_RECEIPT auxiliary SHA-256 metadata as a hard gate even though the required Git blob identities matched; the failure was preserved and the check was narrowed without changing evaluator or corpus bytes.",
+    "The exact sealed_payload.py and evaluate.py Git blobs have SHA-256 values different from the auxiliary SHA-256 values recorded in SEALED_RECEIPT.json.",
+    "A bounded runtime-only repair was considered and rejected because terminal Base64 padding did not recover a zlib stream whose canonical payload could be verified against PAYLOAD_SHA256. No repair was applied to the sealed files or corpus."
+  ],
+  "contamination": null,
+  "terminal_status": "SEALED_EVALUATOR_APPARATUS_DEFECT_REQUIRES_GOVERNANCE_REVIEW",
+  "non_authorization": "This evaluation does not authorize production parser changes, model changes, semantic-operator changes, Contract C changes, aggregation changes, downstream policy changes, merging either research implementation, or production promotion."
+}
