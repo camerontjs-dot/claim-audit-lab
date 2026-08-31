@@ -1,0 +1,98 @@
+name: Research Compare - Interpretation Authority RC7B
+
+on:
+  push:
+    branches:
+      - research-infra/interpretation-authority-rc7b-cross-governance-20260831
+    paths:
+      - .github/workflows/research-compare-interpretation-authority-rc7b.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    env:
+      A_EVIDENCE: fc1b3ff7a7ca273d732ef6202c10fb3f24b12750
+      B_EVIDENCE: ec1d50e685e1081fa12765b1c012da0138e12263
+      SEALED: 19e9302a11decb08dda644fbf1018997cf138c3b
+      COMPARE_BLOB: 56aad27cd1fb52a411b43ef94874a1be7fd772d4
+      OUT: research/interpretation_authority_rc7b_cross_governance
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Materialize exact frozen evidence and comparator
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin "+${A_EVIDENCE}:refs/rc7b-a-evidence"
+          git fetch --no-tags --depth=1 origin "+${B_EVIDENCE}:refs/rc7b-b-evidence"
+          git fetch --no-tags --depth=1 origin "+${SEALED}:refs/rc7b-sealed-cross"
+          test "$(git rev-parse "${SEALED}:research/interpretation_authority_rc7b_reveal/compare_two.py")" = "$COMPARE_BLOB"
+          mkdir -p /tmp/rc7b-cross "$OUT"
+          git show "${A_EVIDENCE}:research/interpretation_authority_rc7b_a/post_reveal_evaluation/RESULTS.json" > /tmp/rc7b-cross/a-results.json
+          git show "${A_EVIDENCE}:research/interpretation_authority_rc7b_a/post_reveal_evaluation/PREDICTIONS.json" > /tmp/rc7b-cross/a-predictions.json
+          git show "${A_EVIDENCE}:research/interpretation_authority_rc7b_a/post_reveal_evaluation/MUTATIONS.json" > /tmp/rc7b-cross/a-mutations.json
+          git show "${B_EVIDENCE}:research/interpretation_authority_rc7b_b/post_reveal_evaluation/RESULTS.json" > /tmp/rc7b-cross/b-results.json
+          git show "${B_EVIDENCE}:research/interpretation_authority_rc7b_b/post_reveal_evaluation/PREDICTIONS.json" > /tmp/rc7b-cross/b-predictions.json
+          git show "${B_EVIDENCE}:research/interpretation_authority_rc7b_b/post_reveal_evaluation/MUTATIONS.json" > /tmp/rc7b-cross/b-mutations.json
+          git show "${SEALED}:research/interpretation_authority_rc7b_reveal/compare_two.py" > /tmp/rc7b-cross/compare_two.py
+
+      - name: Run presealed pairwise comparator
+        shell: bash
+        run: |
+          set -euo pipefail
+          python /tmp/rc7b-cross/compare_two.py \
+            --a-results /tmp/rc7b-cross/a-results.json \
+            --a-predictions /tmp/rc7b-cross/a-predictions.json \
+            --a-mutations /tmp/rc7b-cross/a-mutations.json \
+            --b-results /tmp/rc7b-cross/b-results.json \
+            --b-predictions /tmp/rc7b-cross/b-predictions.json \
+            --b-mutations /tmp/rc7b-cross/b-mutations.json \
+            --output "$OUT/CROSS_IMPLEMENTATION_RESULTS.json"
+
+      - name: Write comparison receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          out=Path(os.environ['OUT'])
+          result=out/'CROSS_IMPLEMENTATION_RESULTS.json'
+          receipt={
+            'implementation_a_evidence_commit':os.environ['A_EVIDENCE'],
+            'implementation_b_evidence_commit':os.environ['B_EVIDENCE'],
+            'sealed_comparator_commit':os.environ['SEALED'],
+            'sealed_compare_two_blob':os.environ['COMPARE_BLOB'],
+            'comparison_result_sha256':hashlib.sha256(result.read_bytes()).hexdigest(),
+            'cross_implementation_state':json.loads(result.read_text())['cross_implementation_state'],
+            'workflow_run_id':int(os.environ['GITHUB_RUN_ID']),
+            'production_authorization':False,
+          }
+          (out/'CROSS_IMPLEMENTATION_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          PY
+
+      - name: Upload cross-implementation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: interpretation-authority-rc7b-cross-comparison-${{ github.sha }}
+          path: ${{ env.OUT }}/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Commit cross-implementation evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add "$OUT/CROSS_IMPLEMENTATION_RESULTS.json" "$OUT/CROSS_IMPLEMENTATION_RECEIPT.json"
+          git commit -m "RC7B: preserve presealed cross-implementation comparison"
+          git push origin HEAD:research-infra/interpretation-authority-rc7b-cross-governance-20260831
