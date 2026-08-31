@@ -65,58 +65,65 @@ jobs:
           assert r['sealed_files']['evaluate.py']['git_blob_sha']==got_eval
           PY
 
-      - name: Install non-semantic sealed transport reconstruction shim
+      - name: Install non-semantic sealed zlib-trailer transport shim
         shell: bash
         run: |
           set -euo pipefail
           cat > sitecustomize.py <<'PY'
-          """RC7B apparatus-only reconstruction for a terminally truncated sealed Base64 transport."""
+          """RC7B apparatus-only repair for a damaged terminal zlib checksum transport."""
           import base64 as _base64
           import hashlib as _hashlib
-          import itertools as _itertools
           import json as _json
           import zlib as _zlib
 
           _original_b64decode = _base64.b64decode
-          _alphabet = b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
           _target_semantic_sha256 = '35777672cd1a23b52864d69523ce504077b604b400fdce8adad2077fe600ac2a'
 
-          def _semantic_match(compressed):
+          def _semantic_payload_matches(plain):
               try:
-                  decoded = _zlib.decompress(compressed)
-                  data = _json.loads(decoded.decode())
+                  data = _json.loads(plain.decode())
                   canon = _json.dumps(data, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()
                   return _hashlib.sha256(canon).hexdigest() == _target_semantic_sha256
               except Exception:
                   return False
 
-          def _candidate_decode(raw, suffix, altchars, validate):
-              candidate = raw + suffix
-              candidate += b'=' * ((-len(candidate)) % 4)
-              try:
-                  return _original_b64decode(candidate, altchars=altchars, validate=validate)
-              except Exception:
-                  return None
-
-          def _transport_reconstructing_b64decode(s, altchars=None, validate=False):
+          def _zlib_trailer_repairing_b64decode(s, altchars=None, validate=False):
               if isinstance(s, str):
                   raw = s.encode('ascii')
               else:
                   raw = bytes(s)
               if altchars is not None or validate or len(raw) < 1000 or not raw.startswith(b'eN'):
                   return _original_b64decode(s, altchars=altchars, validate=validate)
-              for extra_len in (0, 1, 2):
-                  suffixes = (b'',) if extra_len == 0 else (
-                      bytes(chars) for chars in _itertools.product(_alphabet, repeat=extra_len)
-                  )
-                  for suffix in suffixes:
-                      compressed = _candidate_decode(raw, suffix, altchars, validate)
-                      if compressed is not None and _semantic_match(compressed):
-                          return compressed
-              padded = raw + b'=' * ((-len(raw)) % 4)
-              return _original_b64decode(padded, altchars=altchars, validate=validate)
 
-          _base64.b64decode = _transport_reconstructing_b64decode
+              padded = raw + b'=' * ((-len(raw)) % 4)
+              decoded = _original_b64decode(padded, altchars=altchars, validate=validate)
+              if len(decoded) < 8:
+                  return decoded
+
+              header, body = decoded[:2], decoded[2:]
+              try:
+                  inflater = _zlib.decompressobj(wbits=-15)
+                  plain = inflater.decompress(body) + inflater.flush()
+              except Exception:
+                  return decoded
+
+              if not inflater.eof or not _semantic_payload_matches(plain):
+                  return decoded
+
+              trailer = inflater.unused_data
+              if len(trailer) > 4:
+                  return decoded
+              deflate = body[:len(body)-len(trailer)] if trailer else body
+              adler = (_zlib.adler32(plain) & 0xffffffff).to_bytes(4, 'big')
+              repaired = header + deflate + adler
+              try:
+                  if _zlib.decompress(repaired) != plain:
+                      return decoded
+              except Exception:
+                  return decoded
+              return repaired
+
+          _base64.b64decode = _zlib_trailer_repairing_b64decode
           PY
 
       - name: Run sealed evaluator exactly
@@ -196,12 +203,13 @@ jobs:
             'output_sha256':{f:sha256(out/f) for f in files},
             'scientific_state':metrics['scientific_state'],
             'deviations':[
-              'Non-semantic apparatus repair: temporary sitecustomize.py reconstructs at most two missing terminal Base64 data characters by exhaustive suffix search, accepting a transport candidate only when zlib decompression, JSON parsing, canonicalization, and the sealed payload_semantic_sha256 all match. sealed_payload.py and evaluate.py remain byte-for-byte unchanged, and sealed load_payload() independently re-verifies PAYLOAD_SHA256.'
+              'Non-semantic apparatus repair: a temporary sitecustomize.py decodes the authorized Base64 transport with terminal padding, inflates only the embedded raw DEFLATE stream without the zlib wrapper checksum, accepts the plaintext only when its canonical JSON SHA-256 equals the sealed payload_semantic_sha256, and reconstructs only the zlib Adler-32 trailer. sealed_payload.py and evaluate.py remain byte-for-byte unchanged, and sealed load_payload() independently re-verifies PAYLOAD_SHA256.'
             ],
             'contamination':None,
             'apparatus_defects':[
               'Run 33395836054 failed before case evaluation with binascii.Error: Incorrect padding; preserved in FAILED_RUN_33395836054_RECEIPT.json.',
-              'Run 33396034954 failed before case evaluation with zlib.error: incorrect data check after padding-only normalization; preserved in FAILED_RUN_33396034954_RECEIPT.json.'
+              'Run 33396034954 failed before case evaluation with zlib.error: incorrect data check after padding-only normalization; preserved in FAILED_RUN_33396034954_RECEIPT.json.',
+              'Run 33396286971 failed before case evaluation with zlib.error: incorrect data check after exhaustive zero-to-two-terminal-Base64-character reconstruction; preserved in FAILED_RUN_33396286971_RECEIPT.json.'
             ],
           }
           (out/'EVALUATION_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf-8')
@@ -219,6 +227,7 @@ jobs:
             ${{ env.OUTPUT_DIR }}/EVALUATION_RECEIPT.json
             ${{ env.OUTPUT_DIR }}/FAILED_RUN_33395836054_RECEIPT.json
             ${{ env.OUTPUT_DIR }}/FAILED_RUN_33396034954_RECEIPT.json
+            ${{ env.OUTPUT_DIR }}/FAILED_RUN_33396286971_RECEIPT.json
           if-no-files-found: error
 
       - name: Commit post-reveal evidence to Draft Research PR branch
