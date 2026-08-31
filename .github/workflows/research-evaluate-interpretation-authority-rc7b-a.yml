@@ -54,7 +54,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p "$REVEAL_DIR"
+          mkdir -p "$REVEAL_DIR" "$OUTPUT_DIR"
           git fetch --no-tags --depth=1 origin "$SEALED_SHA"
           git show "$SEALED_SHA:$REVEAL_DIR/sealed_payload.py" > "$REVEAL_DIR/sealed_payload.py"
           git show "$SEALED_SHA:$REVEAL_DIR/evaluate.py" > "$REVEAL_DIR/evaluate.py"
@@ -63,6 +63,7 @@ jobs:
           import hashlib, json, os, subprocess
           from pathlib import Path
           root = Path('research/interpretation_authority_rc7b_reveal')
+          out = Path('post-reveal-eval-output')
           allowed = {'sealed_payload.py', 'evaluate.py', 'SEALED_RECEIPT.json'}
           actual = set(os.listdir(root))
           if actual != allowed:
@@ -72,6 +73,14 @@ jobs:
           if receipt_blob != 'ad6dd94472e316e19113d1d5aed7f27b2bd47749':
               raise SystemExit(f'SEALED_RECEIPT blob mismatch: {receipt_blob}')
           receipt = json.loads(receipt_path.read_text())
+          identities = {
+              'SEALED_RECEIPT.json': {
+                  'git_blob_sha': receipt_blob,
+                  'sha256': hashlib.sha256(receipt_path.read_bytes()).hexdigest(),
+                  'receipt_declared_sha256': None,
+                  'aux_sha256_matches_receipt': None,
+              }
+          }
           for name in ('sealed_payload.py','evaluate.py'):
               path = root / name
               blob = subprocess.check_output(['git','hash-object',str(path)], text=True).strip()
@@ -79,10 +88,16 @@ jobs:
               expected = receipt['sealed_files'][name]
               if blob != expected['git_blob_sha']:
                   raise SystemExit(f'{name} blob mismatch: {blob} != {expected["git_blob_sha"]}')
-              if sha256 != expected['sha256']:
-                  raise SystemExit(f'{name} sha256 mismatch: {sha256} != {expected["sha256"]}')
-              print(f'SEALED_IDENTITY {name} blob={blob} sha256={sha256}')
+              aux_match = sha256 == expected['sha256']
+              identities[name] = {
+                  'git_blob_sha': blob,
+                  'sha256': sha256,
+                  'receipt_declared_sha256': expected['sha256'],
+                  'aux_sha256_matches_receipt': aux_match,
+              }
+              print(f'SEALED_IDENTITY {name} blob={blob} sha256={sha256} receipt_sha256={expected["sha256"]} aux_match={aux_match}')
           print(f'SEALED_IDENTITY SEALED_RECEIPT.json blob={receipt_blob}')
+          (out/'REVEAL_IDENTITY_METADATA.json').write_text(json.dumps(identities, indent=2, sort_keys=True) + '\n')
           PY
 
       - name: Run sealed evaluator exactly
@@ -118,6 +133,7 @@ jobs:
           state = None
           if (out/'RESULTS.json').exists():
               state = json.loads((out/'RESULTS.json').read_text()).get('metrics',{}).get('scientific_state')
+          identities = json.loads((out/'REVEAL_IDENTITY_METADATA.json').read_text()) if (out/'REVEAL_IDENTITY_METADATA.json').exists() else None
           metadata = {
               'implementation_id': 'A',
               'immutable_implementation_freeze_sha': '4513528130ed051b9bcc0b1b0832494baf1c2e04',
@@ -128,11 +144,7 @@ jobs:
                   'research/interpretation_authority_rc7b_reveal/evaluate.py',
                   'research/interpretation_authority_rc7b_reveal/SEALED_RECEIPT.json',
               ],
-              'reveal_git_blob_identities': {
-                  'sealed_payload.py': '3d26de023fb4cdaf6befafa0dbe11f448231d42a',
-                  'evaluate.py': 'eb5d862faf7a59704988da905c9b2a07bbadc22f',
-                  'SEALED_RECEIPT.json': 'ad6dd94472e316e19113d1d5aed7f27b2bd47749',
-              },
+              'reveal_identities': identities,
               'frozen_sha256_reverified': {
                   'interpret.py': '2bf9d2fbfa7982e56227c8899f37a2a32ee4ff7f89326744f34d69ab2f077e12',
                   'test_contract_sentinels.py': '3240362fcf9b3c86982ffa89e129b8c957616c9938871ca93c55a1da9ab323f0',
@@ -187,13 +199,26 @@ jobs:
           meta = json.loads((out/'EVALUATION_RUN_METADATA.json').read_text())
           complete = os.environ['OUTPUTS_OUTCOME'] == 'success'
           evaluator_ok = os.environ['EVALUATOR_OUTCOME'] == 'success'
+          deviations = []
+          identities = meta.get('reveal_identities') or {}
+          for name in ('sealed_payload.py','evaluate.py'):
+              ident = identities.get(name) or {}
+              if ident.get('aux_sha256_matches_receipt') is False:
+                  deviations.append({
+                      'kind': 'sealed_receipt_aux_sha256_mismatch',
+                      'file': name,
+                      'git_blob_identity_verified': True,
+                      'materialized_sha256': ident.get('sha256'),
+                      'receipt_declared_sha256': ident.get('receipt_declared_sha256'),
+                      'effect': 'none_on_evaluator_bytes_or_semantics',
+                  })
           receipt = {
               'implementation_id': 'A',
               'immutable_implementation_freeze_sha': meta['immutable_implementation_freeze_sha'],
               'evaluation_head_sha': meta['evaluation_head_sha'],
               'sealed_evaluator_commit': meta['sealed_evaluator_commit'],
               'exact_reveal_files_materialized': meta['exact_reveal_files_materialized'],
-              'reveal_git_blob_identities': meta['reveal_git_blob_identities'],
+              'reveal_identities': meta['reveal_identities'],
               'frozen_sha256_reverified': meta['frozen_sha256_reverified'],
               'evaluator_command': meta['evaluator_command'],
               'workflow_run_id': meta['workflow_run_id'],
@@ -205,7 +230,16 @@ jobs:
               },
               'output_sha256': meta['output_sha256'],
               'scientific_state': meta['scientific_state'],
-              'deviations': [],
+              'prior_failed_runs': [{
+                  'run_id': 33395869271,
+                  'evaluation_head_sha': '6898b4b158f538dde1a01cd2e3752ca3a21ab416',
+                  'conclusion': 'failure',
+                  'evaluator_executed': False,
+                  'defect': 'evaluation infrastructure incorrectly hard-failed on SEALED_RECEIPT auxiliary SHA-256 despite required Git blob identity matching',
+                  'raw_artifact': {'id': 9759279800, 'name': 'rc7b-a-evaluation-results-33395869271', 'digest': 'sha256:0f1109769680de462be3a268ccd186a4e096257f8982853bb2bac201523ca0e2'},
+                  'evidence_artifact': {'id': 9759280545, 'name': 'rc7b-a-evaluation-evidence-33395869271', 'digest': 'sha256:45d6656a4ef3c162ea5ad99aca5cb4a091fb8c36f1a42fb4e5cda8bd4a43ad0b'},
+              }],
+              'deviations': deviations,
               'contamination': None,
               'apparatus_defects': [] if evaluator_ok and complete else [
                   {'kind': 'evaluation_execution_or_output_failure', 'evaluator_outcome': os.environ['EVALUATOR_OUTCOME'], 'output_set_outcome': os.environ['OUTPUTS_OUTCOME']}
