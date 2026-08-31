@@ -1,0 +1,28 @@
+{
+  "dimensions": [
+    {"authorized_recall": 0.0, "auth_hit": 0, "dimension": "attribution", "false_auth": 0, "false_prop": 0, "gold": 3, "proposal_hit": 3, "proposal_recall": 1.0, "state": "OBSERVABLE_ONLY"},
+    {"authorized_recall": 0.0, "auth_hit": 0, "dimension": "comparison", "false_auth": 0, "false_prop": 0, "gold": 4, "proposal_hit": 0, "proposal_recall": 0.0, "state": "UNOBSERVED"},
+    {"authorized_recall": 0.0, "auth_hit": 0, "dimension": "conditional", "false_auth": 0, "false_prop": 0, "gold": 4, "proposal_hit": 4, "proposal_recall": 1.0, "state": "OBSERVABLE_ONLY"},
+    {"authorized_recall": 0.0, "auth_hit": 0, "dimension": "coreference", "false_auth": 0, "false_prop": 3, "gold": 4, "proposal_hit": 4, "proposal_recall": 1.0, "state": "OBSERVABLE_ONLY"},
+    {"authorized_recall": 0.0, "auth_hit": 0, "dimension": "event_ordering", "false_auth": 0, "false_prop": 0, "gold": 4, "proposal_hit": 0, "proposal_recall": 0.0, "state": "UNOBSERVED"},
+    {"authorized_recall": 1.0, "auth_hit": 10, "dimension": "exception", "false_auth": 0, "false_prop": 0, "gold": 10, "proposal_hit": 10, "proposal_recall": 1.0, "state": "SUPPORTED_AT_DIMENSION_LEVEL"},
+    {"authorized_recall": 0.5555555555555556, "auth_hit": 10, "dimension": "permission", "false_auth": 0, "false_prop": 0, "gold": 18, "proposal_hit": 13, "proposal_recall": 0.7222222222222222, "state": "PARTIAL"},
+    {"authorized_recall": 1.0, "auth_hit": 8, "dimension": "probability", "false_auth": 0, "false_prop": 1, "gold": 8, "proposal_hit": 8, "proposal_recall": 1.0, "state": "SUPPORTED_AT_DIMENSION_LEVEL"},
+    {"authorized_recall": 0.9375, "auth_hit": 15, "dimension": "quantifier", "false_auth": 0, "false_prop": 0, "gold": 16, "proposal_hit": 16, "proposal_recall": 1.0, "state": "PARTIAL"},
+    {"authorized_recall": 0.7857142857142857, "auth_hit": 11, "dimension": "quantitative", "false_auth": 0, "false_prop": 3, "gold": 14, "proposal_hit": 14, "proposal_recall": 1.0, "state": "PARTIAL"},
+    {"authorized_recall": 0.92, "auth_hit": 23, "dimension": "role_binding", "false_auth": 20, "false_prop": 53, "gold": 25, "proposal_hit": 25, "proposal_recall": 1.0, "state": "SCOPE_UNSAFE"},
+    {"authorized_recall": 1.0, "auth_hit": 8, "dimension": "subclass", "false_auth": 0, "false_prop": 0, "gold": 8, "proposal_hit": 8, "proposal_recall": 1.0, "state": "SUPPORTED_AT_DIMENSION_LEVEL"},
+    {"authorized_recall": 1.0, "auth_hit": 8, "dimension": "temporal", "false_auth": 0, "false_prop": 1, "gold": 8, "proposal_hit": 8, "proposal_recall": 1.0, "state": "SUPPORTED_AT_DIMENSION_LEVEL"}
+  ],
+  "evidence": {
+    "apparatus_freeze": "05f6570cbfc46aad7941b791aa7345209494da69",
+    "artifact": 9779020469,
+    "artifact_digest": "sha256:983de37ca9c9f0c55a8b610e526d84e186f333311ed7529494974b212f090459",
+    "evidence_commit": "34e9bcafad2c63c9b0761ffc456532344bc75b88",
+    "run": 33448511982,
+    "run_head": "0ba6a30d4168f92198cd18443ce290b666761987"
+  },
+  "priority": ["SAFETY", "EXPLICIT_UNRESOLVED", "RECALL"],
+  "status": "POST_HOC_ANALYSIS_OF_FROZEN_EVIDENCE",
+  "successors": ["RC7F-A_ASSERTION_SCOPE", "RC7F-B_COMPARISON", "RC7F-C_EVENT_ORDERING", "RC7F-D_DEONTIC_COMPOSITION"]
+}
