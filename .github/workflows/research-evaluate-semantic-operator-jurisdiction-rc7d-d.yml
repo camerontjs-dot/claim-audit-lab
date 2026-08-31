@@ -1,0 +1,75 @@
+name: Research Evaluate - Semantic Operator Jurisdiction RC7D-D
+
+on:
+  push:
+    branches:
+      - research-infra/semantic-operator-jurisdiction-rc7d-d-20260831
+    paths-ignore:
+      - research/semantic_operator_jurisdiction_rc7d_d/results/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify frozen apparatus and production boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor b2573ed031109215622796287312ee7699270363 HEAD
+          git merge-base --is-ancestor 300efc0ef3961f7d8dcc0ad651f4faf060377793 HEAD
+          git merge-base --is-ancestor ae11de6da6a7346e6cf2d9dbfbfd3d636676156a HEAD
+          git merge-base --is-ancestor a8832e114a435907d5b2af24fadda24c9d08dfc2 HEAD
+          git diff --exit-code 300efc0ef3961f7d8dcc0ad651f4faf060377793 HEAD -- research/semantic_operator_jurisdiction_rc7d_d/multi_readers.py research/semantic_operator_jurisdiction_rc7d_d/validator_v3.py research/semantic_operator_jurisdiction_rc7d_d/role_reader_v2.py research/semantic_operator_jurisdiction_rc7d_d/validator_v3_final.py
+          git diff --exit-code ae11de6da6a7346e6cf2d9dbfbfd3d636676156a HEAD -- research/semantic_operator_jurisdiction_rc7d_d/cohort.py research/semantic_operator_jurisdiction_rc7d_d/cohort_final.py research/semantic_operator_jurisdiction_rc7d_d/COHORT_APPARATUS_NOTE.md
+          git diff --exit-code a8832e114a435907d5b2af24fadda24c9d08dfc2 HEAD -- research/semantic_operator_jurisdiction_rc7d_d/evaluate.py
+          git diff --exit-code 6f0fa7dfc1b8417664a602f36b802a62428dffc1 HEAD -- research/semantic_operator_jurisdiction_rc7d/candidate.py research/semantic_operator_jurisdiction_rc7d_c/equivalence.py research/semantic_operator_jurisdiction_rc7d_c/validator_v2.py
+          git diff --exit-code 80c2d2f8c96025ea62e8552ecfd4621cd81ea1f4 HEAD -- src/
+          python -m py_compile research/semantic_operator_jurisdiction_rc7d_d/multi_readers.py research/semantic_operator_jurisdiction_rc7d_d/validator_v3.py research/semantic_operator_jurisdiction_rc7d_d/role_reader_v2.py research/semantic_operator_jurisdiction_rc7d_d/validator_v3_final.py research/semantic_operator_jurisdiction_rc7d_d/cohort_final.py research/semantic_operator_jurisdiction_rc7d_d/evaluate.py
+      - name: Run evaluation
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research/semantic_operator_jurisdiction_rc7d_d/results
+          PYTHONPATH=. python -m research.semantic_operator_jurisdiction_rc7d_d.evaluate --output-dir research/semantic_operator_jurisdiction_rc7d_d/results > research/semantic_operator_jurisdiction_rc7d_d/results/STDOUT.json
+      - name: Write receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib,json,os
+          from pathlib import Path
+          root=Path('research/semantic_operator_jurisdiction_rc7d_d/results')
+          names=['RESULTS.json','DISAGREEMENTS.json','COUNTEREXAMPLES.json','COMPOSITION.json','REPORT.md','STDOUT.json']
+          result=json.loads((root/'RESULTS.json').read_text())
+          receipt={
+            'classification':'post_reveal_diagnostic_hardening','context_free':False,'llm_used':False,'learned_model_used':False,'production_authorization':False,
+            'preregistration_commit':'b2573ed031109215622796287312ee7699270363',
+            'candidate_validator_freeze_commit':'300efc0ef3961f7d8dcc0ad651f4faf060377793',
+            'cohort_freeze_commit':'ae11de6da6a7346e6cf2d9dbfbfd3d636676156a',
+            'evaluator_freeze_commit':'a8832e114a435907d5b2af24fadda24c9d08dfc2',
+            'analysis_head_sha':os.environ['GITHUB_SHA'],'workflow_run_id':int(os.environ['GITHUB_RUN_ID']),
+            'scientific_state':result['scientific_state'],'case_count':result['case_count'],
+            'output_sha256':{n:hashlib.sha256((root/n).read_bytes()).hexdigest() for n in names},
+            'deviations':['initial held-out cohort file had a pre-run count/novelty assertion defect; preserved and corrected by frozen cohort_final.py before evaluator construction or scientific execution']}
+          (root/'RUN_RECEIPT.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: semantic-operator-jurisdiction-rc7d-d-${{ github.sha }}
+          path: research/semantic_operator_jurisdiction_rc7d_d/results/
+          if-no-files-found: error
+      - name: Commit evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/semantic_operator_jurisdiction_rc7d_d/results/
+          git commit -m "Research evidence: RC7D-D deterministic multi-reader evaluation"
+          git push origin HEAD:research-infra/semantic-operator-jurisdiction-rc7d-d-20260831
