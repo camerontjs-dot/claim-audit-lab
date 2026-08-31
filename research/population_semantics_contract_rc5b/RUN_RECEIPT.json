@@ -1,0 +1,58 @@
+{
+  "classification": "Research Infrastructure / semantic-authority sufficiency reproduction",
+  "disposition": "CONTRACT_SUFFICIENT",
+  "production_authorization": false,
+  "accepted_science": {
+    "head_sha": "c623af35bee3b5f685c9a44e6d91ced006b2d690",
+    "run_id": 33325279730,
+    "artifact_id": 9736040270,
+    "artifact_digest": "sha256:fa9ab58cfae77f7eb114ccbce5051c42e47d0e0c833bf214c6d11b66550b0104",
+    "results_sha256": "f3c391eb6b953567f6ce134cb4f1ec5988b4808e2f32abd162b7bf5234ffaabd"
+  },
+  "frozen_inputs": {
+    "pre_execution_rc5b_source_sha": "c9dc89631047cfedf6868324a455014783a6cf24",
+    "corrected_corpus_sha256": "92721e5144aa582ff00c10c4fc3666d43c05c5cd77e4a7669d10545c23395308",
+    "case_count": 460,
+    "ablation_witness_count": 13,
+    "metamorphic_pair_count": 8,
+    "possible_world_oracle": "unchanged from RC5",
+    "non_subclass_consumer_rules": "unchanged from RC5",
+    "rc5b_consumer_change": "valid negative membership inheritance down a directed subset edge only"
+  },
+  "measurements": {
+    "oracle_consumer_disagreements": 0,
+    "valid_ablation_witnesses": 13,
+    "passing_metamorphic_pairs": 8,
+    "subclass_direction_sentinels_passed": 4,
+    "three_way_sufficient_for_modeled_cases": true,
+    "relation_vocabulary": [
+      "contradiction",
+      "entailment",
+      "neutral"
+    ]
+  },
+  "preserved_predecessor_failures": [
+    {
+      "stage": "RC5",
+      "run_id": 33324874888,
+      "result": "apparatus failure before semantic comparison",
+      "cause": "internally inconsistent only-permission authority states plus non-semantic metadata in ablation collision projection"
+    },
+    {
+      "stage": "RC5A",
+      "run_id": 33325104519,
+      "result": "CONTRACT_INCOMPLETE",
+      "oracle_consumer_disagreements": 2,
+      "counterexamples": [
+        "S-009",
+        "S-016"
+      ],
+      "cause": "direct consumer omitted valid negative non-membership inheritance down directed subset edge"
+    }
+  ],
+  "terminal_boundary": {
+    "accepted_science_head_is_immutable_reference": true,
+    "later_commits_are_documentation_only": true,
+    "principal_unresolved_boundary": "natural-language to typed-authority extraction and abstention/unknown behavior"
+  }
+}

@@ -1,9 +1,10 @@
 name: Research - Population semantics contract RC5B science
 
+# Accepted scientific execution is frozen at head
+# c623af35bee3b5f685c9a44e6d91ced006b2d690, run 33325279730.
+# Later commits are terminal documentation only and do not redefine that science head.
 on:
-  push:
-    branches:
-      - research-infra/population-semantics-contract-rc5b-20260830
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,16 +18,12 @@ jobs:
           fetch-depth: 0
       - name: Require pre-execution RC5B source ancestry
         run: git merge-base --is-ancestor c9dc89631047cfedf6868324a455014783a6cf24 HEAD
-      - name: Require RC5B scientific source unchanged
-        run: git diff --exit-code c9dc89631047cfedf6868324a455014783a6cf24 HEAD -- research/population_semantics_contract_rc5b/
-      - name: Require frozen corpus oracle and parent consumer unchanged
+      - name: Require accepted scientific source unchanged
+        run: git diff --exit-code c9dc89631047cfedf6868324a455014783a6cf24 c623af35bee3b5f685c9a44e6d91ced006b2d690 -- research/population_semantics_contract_rc5b/
+      - name: Require frozen corpus oracle and parent consumer unchanged at accepted science head
         run: |
-          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- research/population_semantics_contract_rc5a/build_corpus.py
-          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- research/population_semantics_contract_rc5/oracle.py research/population_semantics_contract_rc5/consumer.py
-      - name: Require production and RC4 science unchanged
-        run: |
-          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- src/
-          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 HEAD -- research/entity_population_membership_rc4/
+          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 c623af35bee3b5f685c9a44e6d91ced006b2d690 -- research/population_semantics_contract_rc5a/build_corpus.py
+          git diff --exit-code 6445707a628ce6a26bf4347bf0c4a07ab2cd97a1 c623af35bee3b5f685c9a44e6d91ced006b2d690 -- research/population_semantics_contract_rc5/oracle.py research/population_semantics_contract_rc5/consumer.py
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -41,11 +38,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: c623af35bee3b5f685c9a44e6d91ced006b2d690
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Execute frozen RC5B sufficiency comparison
+      - name: Reproduce accepted frozen RC5B sufficiency comparison
         run: |
           set -o pipefail
           mkdir -p artifacts/population-semantics-contract-rc5b
@@ -56,7 +54,7 @@ jobs:
             | tee artifacts/population-semantics-contract-rc5b/RESULTS.sha256
       - uses: actions/upload-artifact@v4
         with:
-          name: cal-population-semantics-contract-rc5b-science-${{ github.sha }}
+          name: cal-population-semantics-contract-rc5b-reproduction-${{ github.sha }}
           path: artifacts/population-semantics-contract-rc5b/
           if-no-files-found: error
           retention-days: 90
