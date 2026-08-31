@@ -44,3 +44,21 @@ def test_jurisdiction_disagreement_preserves_both_states():
 
 def test_both_inactive_not_compared():
     assert compare_receipts(rec(status="NOT_APPLICABLE"), rec(status="UNRESOLVED")) is None
+
+
+def main():
+    tests = [
+        test_exact_agreement_is_not_authority,
+        test_semantic_equivalence_ignores_determiner_only,
+        test_scope_material_is_not_treated_as_slot_noise,
+        test_operator_value_disagreement,
+        test_jurisdiction_disagreement_preserves_both_states,
+        test_both_inactive_not_compared,
+    ]
+    for test in tests:
+        test()
+    print(f"{len(tests)} taxonomy controls passed")
+
+
+if __name__ == "__main__":
+    main()
