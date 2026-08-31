@@ -1,0 +1,368 @@
+{
+  "agreement_authorized": [
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "sign certificate",
+        "quantifier": "every"
+      },
+      "case_id": "D-QE-12",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "It was not the case that all reviewers signed the certificate; Hugo was exempt."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "auditors may well have",
+        "predicate": "sign release",
+        "quantifier": "some"
+      },
+      "case_id": "D-QP-09",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Some auditors may well have signed the release."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "inspector",
+        "predicate": "review record",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-10",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "It seems doubtful that every inspector reviewed the record."
+    }
+  ],
+  "multi_authorized": [
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "inspectors",
+        "predicate": "review record with rowan left out",
+        "quantifier": "none"
+      },
+      "case_id": "D-QE-04",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "None of the inspectors reviewed the record with Rowan left out."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the inspectors",
+        "predicate": "review record with rowan left out",
+        "quantifier": "none"
+      },
+      "case_id": "D-QE-04",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "None of the inspectors reviewed the record with Rowan left out."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "analysts",
+        "predicate": "approve sample but not nia",
+        "quantifier": "some"
+      },
+      "case_id": "D-QE-05",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "At least one of the analysts approved the sample but not Nia."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the analysts",
+        "predicate": "approve sample but not nia",
+        "quantifier": "some"
+      },
+      "case_id": "D-QE-05",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "At least one of the analysts approved the sample but not Nia."
+    },
+    {
+      "atom": {
+        "kind": "event",
+        "object": "sample but not nia",
+        "polarity": "positive",
+        "predicate": "approve",
+        "subject": "of the analysts"
+      },
+      "case_id": "D-QE-05",
+      "dimension": "role_binding",
+      "group": "quantifier_exception",
+      "raw_source": "At least one of the analysts approved the sample but not Nia."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "sign certificate",
+        "quantifier": "every"
+      },
+      "case_id": "D-QE-12",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "It was not the case that all reviewers signed the certificate; Hugo was exempt."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the technicians",
+        "predicate": "inspect vessel",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-01",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Perhaps all of the technicians inspected the vessel."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "reviewers quite likely",
+        "predicate": "approve packet",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-02",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Every one of the reviewers quite likely approved the packet."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "auditors probably",
+        "predicate": "sign release",
+        "quantifier": "some"
+      },
+      "case_id": "D-QP-03",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Some of the auditors probably signed the release."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "inspectors conceivably",
+        "predicate": "review record",
+        "quantifier": "not_every"
+      },
+      "case_id": "D-QP-04",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Not all of the inspectors conceivably reviewed the record."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the inspectors conceivably",
+        "predicate": "review record",
+        "quantifier": "not_every"
+      },
+      "case_id": "D-QP-04",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Not all of the inspectors conceivably reviewed the record."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "analysts were likely to have",
+        "predicate": "approve sample",
+        "quantifier": "none"
+      },
+      "case_id": "D-QP-05",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "None of the analysts were likely to have approved the sample."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "one of the reviewers",
+        "predicate": "sign certificate",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-06",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "There is a real chance that every one of the reviewers signed the certificate."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "auditors may well have",
+        "predicate": "sign release",
+        "quantifier": "some"
+      },
+      "case_id": "D-QP-09",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Some auditors may well have signed the release."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "inspector",
+        "predicate": "review record",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-10",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "It seems doubtful that every inspector reviewed the record."
+    },
+    {
+      "atom": {
+        "kind": "necessary_permission_condition",
+        "population": "inspectors",
+        "predicate": "sign record with nia left out"
+      },
+      "case_id": "D-PE-05",
+      "dimension": "permission",
+      "group": "permission_exception",
+      "raw_source": "Inspectors alone may sign the record with Nia left out."
+    },
+    {
+      "atom": {
+        "entity": "hugo",
+        "kind": "explicit_permission",
+        "predicate": "release batch a after the deadline",
+        "value": "permitted"
+      },
+      "case_id": "D-PT-02",
+      "dimension": "permission",
+      "group": "permission_temporal",
+      "raw_source": "Inspectors alone may release batch a. Hugo has permission to release batch a after the deadline."
+    },
+    {
+      "atom": {
+        "entity": "ada",
+        "kind": "membership",
+        "population": "reviewers prior to the cutoff",
+        "value": "member"
+      },
+      "case_id": "D-PT-03",
+      "dimension": "permission",
+      "group": "permission_temporal",
+      "raw_source": "Approve the packet is reserved for reviewers. Ada falls within reviewers prior to the cutoff."
+    },
+    {
+      "atom": {
+        "entity": "nia",
+        "kind": "explicit_permission",
+        "predicate": "approve dossier until the cutoff",
+        "value": "permitted"
+      },
+      "case_id": "D-PT-05",
+      "dimension": "permission",
+      "group": "permission_temporal",
+      "raw_source": "Release officers alone may approve the dossier. Nia has permission to approve the dossier until the cutoff."
+    }
+  ],
+  "single_authorized": [
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the inspectors",
+        "predicate": "review record with rowan left out",
+        "quantifier": "none"
+      },
+      "case_id": "D-QE-04",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "None of the inspectors reviewed the record with Rowan left out."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the analysts",
+        "predicate": "approve sample but not nia",
+        "quantifier": "some"
+      },
+      "case_id": "D-QE-05",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "At least one of the analysts approved the sample but not Nia."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "reviewers",
+        "predicate": "sign certificate",
+        "quantifier": "every"
+      },
+      "case_id": "D-QE-12",
+      "dimension": "quantifier",
+      "group": "quantifier_exception",
+      "raw_source": "It was not the case that all reviewers signed the certificate; Hugo was exempt."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the technicians",
+        "predicate": "inspect vessel",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-01",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Perhaps all of the technicians inspected the vessel."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "of the inspectors conceivably",
+        "predicate": "review record",
+        "quantifier": "not_every"
+      },
+      "case_id": "D-QP-04",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Not all of the inspectors conceivably reviewed the record."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "one of the reviewers",
+        "predicate": "sign certificate",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-06",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "There is a real chance that every one of the reviewers signed the certificate."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "auditors may well have",
+        "predicate": "sign release",
+        "quantifier": "some"
+      },
+      "case_id": "D-QP-09",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "Some auditors may well have signed the release."
+    },
+    {
+      "atom": {
+        "kind": "quantifier",
+        "population": "inspector",
+        "predicate": "review record",
+        "quantifier": "every"
+      },
+      "case_id": "D-QP-10",
+      "dimension": "quantifier",
+      "group": "quantifier_probability",
+      "raw_source": "It seems doubtful that every inspector reviewed the record."
+    }
+  ]
+}

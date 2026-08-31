@@ -1,0 +1,214 @@
+{
+  "agreement_only": {
+    "agreement_cases": 9,
+    "authorized": {
+      "case_count": 84,
+      "dimension_precision": 1.0,
+      "false_dimension_count": 0,
+      "mixed_semantic_dimension_recall": 0.0546875,
+      "semantic_dimension_recall": 0.05,
+      "typed_atom_precision": 0.5714285714285714,
+      "typed_atom_recall": 0.027777777777777776,
+      "unsafe_atom_count": 3
+    },
+    "disagreement_cases": 17,
+    "error_rate_when_agree": 0.5555555555555556,
+    "error_rate_when_disagree": 0.9411764705882353
+  },
+  "case_count": 84,
+  "claim_boundary": {
+    "context_free": false,
+    "learned_model_used": false,
+    "llm_used": false,
+    "production_authorization": false
+  },
+  "composition_oracle": {
+    "accuracy": 1.0,
+    "count": 68
+  },
+  "identities": {
+    "candidate_freeze": "300efc0ef3961f7d8dcc0ad651f4faf060377793",
+    "cohort_freeze": "ae11de6da6a7346e6cf2d9dbfbfd3d636676156a",
+    "preregistration": "b2573ed031109215622796287312ee7699270363"
+  },
+  "multi_reader": {
+    "authorized": {
+      "case_count": 84,
+      "dimension_precision": 0.9886363636363636,
+      "false_dimension_count": 1,
+      "mixed_semantic_dimension_recall": 0.6328125,
+      "semantic_dimension_recall": 0.6214285714285714,
+      "typed_atom_precision": 0.8041237113402062,
+      "typed_atom_recall": 0.5416666666666666,
+      "unsafe_atom_count": 19
+    },
+    "authorized_recall_gain": 0.35000000000000003,
+    "proposal": {
+      "case_count": 84,
+      "dimension_precision": 0.9565217391304348,
+      "false_dimension_count": 4,
+      "mixed_semantic_dimension_recall": 0.640625,
+      "semantic_dimension_recall": 0.6285714285714286,
+      "typed_atom_precision": 0.6842105263157895,
+      "typed_atom_recall": 0.5416666666666666,
+      "unsafe_atom_count": 36
+    },
+    "proposal_recall_gain": 0.3142857142857143
+  },
+  "raw_source_preservation": 1.0,
+  "reader_count_stress": [
+    {
+      "authorized": {
+        "case_count": 84,
+        "dimension_precision": 1.0,
+        "false_dimension_count": 0,
+        "mixed_semantic_dimension_recall": 0.2734375,
+        "semantic_dimension_recall": 0.2714285714285714,
+        "typed_atom_precision": 0.7894736842105263,
+        "typed_atom_recall": 0.20833333333333334,
+        "unsafe_atom_count": 8
+      },
+      "extra_readers": 0,
+      "proposal": {
+        "case_count": 84,
+        "dimension_precision": 0.9361702127659575,
+        "false_dimension_count": 3,
+        "mixed_semantic_dimension_recall": 0.3203125,
+        "semantic_dimension_recall": 0.3142857142857143,
+        "typed_atom_precision": 0.6122448979591837,
+        "typed_atom_recall": 0.20833333333333334,
+        "unsafe_atom_count": 19
+      },
+      "total_readers": 8
+    },
+    {
+      "authorized": {
+        "case_count": 84,
+        "dimension_precision": 1.0,
+        "false_dimension_count": 0,
+        "mixed_semantic_dimension_recall": 0.3515625,
+        "semantic_dimension_recall": 0.36428571428571427,
+        "typed_atom_precision": 0.7818181818181819,
+        "typed_atom_recall": 0.2986111111111111,
+        "unsafe_atom_count": 12
+      },
+      "extra_readers": 2,
+      "proposal": {
+        "case_count": 84,
+        "dimension_precision": 0.9393939393939394,
+        "false_dimension_count": 4,
+        "mixed_semantic_dimension_recall": 0.4375,
+        "semantic_dimension_recall": 0.44285714285714284,
+        "typed_atom_precision": 0.5972222222222222,
+        "typed_atom_recall": 0.2986111111111111,
+        "unsafe_atom_count": 29
+      },
+      "total_readers": 10
+    },
+    {
+      "authorized": {
+        "case_count": 84,
+        "dimension_precision": 1.0,
+        "false_dimension_count": 0,
+        "mixed_semantic_dimension_recall": 0.5,
+        "semantic_dimension_recall": 0.5,
+        "typed_atom_precision": 0.7721518987341772,
+        "typed_atom_recall": 0.4236111111111111,
+        "unsafe_atom_count": 18
+      },
+      "extra_readers": 4,
+      "proposal": {
+        "case_count": 84,
+        "dimension_precision": 0.95,
+        "false_dimension_count": 4,
+        "mixed_semantic_dimension_recall": 0.546875,
+        "semantic_dimension_recall": 0.5428571428571428,
+        "typed_atom_precision": 0.6354166666666666,
+        "typed_atom_recall": 0.4236111111111111,
+        "unsafe_atom_count": 35
+      },
+      "total_readers": 12
+    },
+    {
+      "authorized": {
+        "case_count": 84,
+        "dimension_precision": 1.0,
+        "false_dimension_count": 0,
+        "mixed_semantic_dimension_recall": 0.5546875,
+        "semantic_dimension_recall": 0.55,
+        "typed_atom_precision": 0.7906976744186046,
+        "typed_atom_recall": 0.4722222222222222,
+        "unsafe_atom_count": 18
+      },
+      "extra_readers": 6,
+      "proposal": {
+        "case_count": 84,
+        "dimension_precision": 0.9540229885057471,
+        "false_dimension_count": 4,
+        "mixed_semantic_dimension_recall": 0.6015625,
+        "semantic_dimension_recall": 0.5928571428571429,
+        "typed_atom_precision": 0.6601941747572816,
+        "typed_atom_recall": 0.4722222222222222,
+        "unsafe_atom_count": 35
+      },
+      "total_readers": 14
+    },
+    {
+      "authorized": {
+        "case_count": 84,
+        "dimension_precision": 0.9886363636363636,
+        "false_dimension_count": 1,
+        "mixed_semantic_dimension_recall": 0.6328125,
+        "semantic_dimension_recall": 0.6214285714285714,
+        "typed_atom_precision": 0.8041237113402062,
+        "typed_atom_recall": 0.5416666666666666,
+        "unsafe_atom_count": 19
+      },
+      "extra_readers": 8,
+      "proposal": {
+        "case_count": 84,
+        "dimension_precision": 0.9565217391304348,
+        "false_dimension_count": 4,
+        "mixed_semantic_dimension_recall": 0.640625,
+        "semantic_dimension_recall": 0.6285714285714286,
+        "typed_atom_precision": 0.6842105263157895,
+        "typed_atom_recall": 0.5416666666666666,
+        "unsafe_atom_count": 36
+      },
+      "total_readers": 16
+    }
+  ],
+  "scientific_state": "MULTI_READER_OVERCLAIM",
+  "single_reader": {
+    "authorized": {
+      "case_count": 84,
+      "dimension_precision": 1.0,
+      "false_dimension_count": 0,
+      "mixed_semantic_dimension_recall": 0.2734375,
+      "semantic_dimension_recall": 0.2714285714285714,
+      "typed_atom_precision": 0.7894736842105263,
+      "typed_atom_recall": 0.20833333333333334,
+      "unsafe_atom_count": 8
+    },
+    "proposal": {
+      "case_count": 84,
+      "dimension_precision": 0.9361702127659575,
+      "false_dimension_count": 3,
+      "mixed_semantic_dimension_recall": 0.3203125,
+      "semantic_dimension_recall": 0.3142857142857143,
+      "typed_atom_precision": 0.6122448979591837,
+      "typed_atom_recall": 0.20833333333333334,
+      "unsafe_atom_count": 19
+    }
+  },
+  "zero_authority": {
+    "case_count": 84,
+    "dimension_precision": 0.0,
+    "false_dimension_count": 0,
+    "mixed_semantic_dimension_recall": 0.0,
+    "semantic_dimension_recall": 0.0,
+    "typed_atom_precision": 0.0,
+    "typed_atom_recall": 0.0,
+    "unsafe_atom_count": 0
+  }
+}
