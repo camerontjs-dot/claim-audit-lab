@@ -10,6 +10,8 @@
 
 **Audit whether draft claims are actually carried by the evidence supplied with them.**
 
+Related work: [Evidence Bundler](https://github.com/camerontjs-dot/evidence-bundler) prepares reviewed evidence bundles; [Apparatus Contracts](https://github.com/camerontjs-dot/apparatus-contracts) holds the shared contract authority; [Decision Engine](https://github.com/camerontjs-dot/decision-engine) consumes Contract C and emits Contract D.
+
 Claim Audit Lab retrieves candidate passages, asks an NLI model whether they entail the
 claim, and then decides under a frozen, versioned rule set. A language model contributes a
 signal; deterministic code makes the decision. Deterministic bundle/report paths reproduce
