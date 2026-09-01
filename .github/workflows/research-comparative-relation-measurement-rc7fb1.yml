@@ -1,0 +1,70 @@
+name: Research - RC7F-B1 comparative relation measurement
+on:
+  push:
+    branches: [research-infra/comparative-relation-measurement-rc7f-b1-20260831]
+  workflow_dispatch:
+    inputs:
+      phase:
+        required: true
+        type: choice
+        options: [qualification, scientific]
+        default: qualification
+permissions:
+  contents: read
+env:
+  PYTHONHASHSEED: "0"
+jobs:
+  rc7fb1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Resolve bounded phase
+        id: phase
+        shell: bash
+        run: |
+          ROOT=research/comparative_relation_measurement_rc7fb1
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then phase='${{ inputs.phase }}'
+          elif [[ -f "$ROOT/results/RESULTS.json" ]]; then phase='skip'
+          elif [[ -f "$ROOT/cohort.py" ]]; then phase='scientific'
+          else phase='qualification'; fi
+          echo "phase=$phase" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v5
+        if: ${{ steps.phase.outputs.phase != 'skip' }}
+        with: {python-version: "3.11"}
+      - name: Verify production source unchanged from exact RC7F-B parent
+        if: ${{ steps.phase.outputs.phase != 'skip' }}
+        run: |
+          git cat-file -e 3009da45e98dac099c4758c1d41ff42cf2a56eae^{commit}
+          git diff --exit-code 3009da45e98dac099c4758c1d41ff42cf2a56eae -- src/
+      - name: Run pre-held-out qualification
+        if: ${{ steps.phase.outputs.phase == 'qualification' }}
+        run: python -m research.comparative_relation_measurement_rc7fb1.qualification
+      - name: Guard scientific cohort
+        if: ${{ steps.phase.outputs.phase == 'scientific' }}
+        run: |
+          python - <<'PY'
+          from research.comparative_relation_measurement_rc7fb1.cohort import CASES,COHORT_FREEZE_EXPECTED
+          from research.comparative_relation_measurement_rc7fb1.evaluator import validate_cohort
+          assert CASES and COHORT_FREEZE_EXPECTED; validate_cohort(CASES); print(len(CASES),COHORT_FREEZE_EXPECTED)
+          PY
+      - name: Run scientific experiment
+        if: ${{ steps.phase.outputs.phase == 'scientific' }}
+        run: python -m research.comparative_relation_measurement_rc7fb1.run_scientific
+      - name: Write receipt
+        if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
+        run: |
+          mkdir -p research/comparative_relation_measurement_rc7fb1/results
+          python -VV > research/comparative_relation_measurement_rc7fb1/results/PYTHON.txt || true
+          git rev-parse HEAD > research/comparative_relation_measurement_rc7fb1/results/RUN_HEAD.txt
+          git status --short > research/comparative_relation_measurement_rc7fb1/results/GIT_STATUS.txt
+          printf '%s\n' '${{ steps.phase.outputs.phase }}' > research/comparative_relation_measurement_rc7fb1/results/PHASE.txt
+          cd research/comparative_relation_measurement_rc7fb1/results
+          find . -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt || true
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
+        with:
+          name: rc7fb1-${{ steps.phase.outputs.phase }}-${{ github.run_id }}
+          path: research/comparative_relation_measurement_rc7fb1/results/
+          retention-days: 90
