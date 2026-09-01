@@ -1,0 +1,47 @@
+name: Research - RC7F-C explicit event ordering
+on:
+  push:
+    branches: [research-infra/event-ordering-measurement-rc7f-c-20260831]
+permissions: {contents: read}
+env: {PYTHONHASHSEED: "0"}
+jobs:
+  rc7fc:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - id: phase
+        run: |
+          R=research/event_ordering_measurement_rc7fc
+          if [[ -f "$R/results/RESULTS.json" ]]; then p=skip; elif [[ -f "$R/cohort.py" ]]; then p=scientific; else p=qualification; fi
+          echo "phase=$p" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-python@v5
+        if: ${{ steps.phase.outputs.phase != 'skip' }}
+        with: {python-version: "3.11"}
+      - name: Guard production source
+        if: ${{ steps.phase.outputs.phase != 'skip' }}
+        run: |
+          git cat-file -e 34e9bcafad2c63c9b0761ffc456532344bc75b88^{commit}
+          git diff --exit-code 34e9bcafad2c63c9b0761ffc456532344bc75b88 -- src/
+      - name: Qualification
+        if: ${{ steps.phase.outputs.phase == 'qualification' }}
+        run: python -m research.event_ordering_measurement_rc7fc.qualification
+      - name: Cohort guard
+        if: ${{ steps.phase.outputs.phase == 'scientific' }}
+        run: |
+          python - <<'PY'
+          from research.event_ordering_measurement_rc7fc.cohort import CASES,COHORT_FREEZE_EXPECTED
+          from research.event_ordering_measurement_rc7fc.evaluator import validate_cohort
+          assert CASES and COHORT_FREEZE_EXPECTED; validate_cohort(CASES)
+          PY
+      - name: Scientific
+        if: ${{ steps.phase.outputs.phase == 'scientific' }}
+        run: python -m research.event_ordering_measurement_rc7fc.run_scientific
+      - name: Receipts
+        if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
+        run: |
+          R=research/event_ordering_measurement_rc7fc/results; mkdir -p "$R"; python -VV > "$R/PYTHON.txt" || true; git rev-parse HEAD > "$R/RUN_HEAD.txt"; git status --short > "$R/GIT_STATUS.txt"; printf '%s\n' '${{ steps.phase.outputs.phase }}' > "$R/PHASE.txt"; cd "$R"; find . -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt || true
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
+        with: {name: "rc7fc-${{ steps.phase.outputs.phase }}-${{ github.run_id }}", path: research/event_ordering_measurement_rc7fc/results/, retention-days: 90}
