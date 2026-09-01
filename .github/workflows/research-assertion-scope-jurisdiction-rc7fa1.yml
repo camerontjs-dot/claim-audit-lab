@@ -1,0 +1,90 @@
+name: Research - RC7F-A1 stacked scope warrant hardening
+
+on:
+  push:
+    branches:
+      - research-infra/assertion-scope-jurisdiction-rc7f-a1-20260831
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: "qualification before held-out, or scientific after cohort freeze"
+        required: true
+        type: choice
+        options: [qualification, scientific]
+        default: qualification
+
+permissions:
+  contents: read
+
+env:
+  PYTHONHASHSEED: "0"
+
+jobs:
+  rc7fa1:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Resolve bounded phase
+        id: phase
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT=research/assertion_scope_jurisdiction_rc7fa1
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then phase='${{ inputs.phase }}'
+          elif [[ -f "$ROOT/results/RESULTS.json" ]]; then phase='skip'
+          elif [[ -f "$ROOT/cohort.py" ]]; then phase='scientific'
+          else phase='qualification'; fi
+          echo "phase=$phase" >> "$GITHUB_OUTPUT"
+          echo "Resolved RC7F-A1 phase: $phase"
+      - uses: actions/setup-python@v5
+        if: ${{ steps.phase.outputs.phase != 'skip' }}
+        with:
+          python-version: "3.11"
+      - name: Verify production source unchanged from exact RC7F-A evidence parent
+        if: ${{ steps.phase.outputs.phase != 'skip' }}
+        shell: bash
+        run: |
+          set -euxo pipefail
+          git cat-file -e 120268d34247f8dd448ba3af22420d3ecbe7c8de^{commit}
+          git diff --exit-code 120268d34247f8dd448ba3af22420d3ecbe7c8de -- src/
+      - name: Run pre-held-out qualification
+        if: ${{ steps.phase.outputs.phase == 'qualification' }}
+        run: python -m research.assertion_scope_jurisdiction_rc7fa1.qualification
+      - name: Guard scientific cohort
+        if: ${{ steps.phase.outputs.phase == 'scientific' }}
+        run: |
+          python - <<'PY'
+          from research.assertion_scope_jurisdiction_rc7fa1.cohort import CASES, COHORT_FREEZE_EXPECTED
+          from research.assertion_scope_jurisdiction_rc7fa1.evaluator import validate_cohort
+          assert CASES and COHORT_FREEZE_EXPECTED
+          validate_cohort(CASES)
+          print({"cases":len(CASES),"cohort":COHORT_FREEZE_EXPECTED})
+          PY
+      - name: Run scientific scope experiment
+        if: ${{ steps.phase.outputs.phase == 'scientific' }}
+        run: python -m research.assertion_scope_jurisdiction_rc7fa1.run_scientific
+      - name: Write environment receipt
+        if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
+        shell: bash
+        run: |
+          mkdir -p research/assertion_scope_jurisdiction_rc7fa1/results
+          python -VV > research/assertion_scope_jurisdiction_rc7fa1/results/PYTHON.txt || true
+          git rev-parse HEAD > research/assertion_scope_jurisdiction_rc7fa1/results/RUN_HEAD.txt
+          git status --short > research/assertion_scope_jurisdiction_rc7fa1/results/GIT_STATUS.txt
+          printf '%s\n' '${{ steps.phase.outputs.phase }}' > research/assertion_scope_jurisdiction_rc7fa1/results/PHASE.txt
+      - name: Hash evidence payload
+        if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
+        shell: bash
+        run: |
+          cd research/assertion_scope_jurisdiction_rc7fa1/results
+          find . -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt || true
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() && steps.phase.outputs.phase != 'skip' }}
+        with:
+          name: rc7fa1-${{ steps.phase.outputs.phase }}-${{ github.run_id }}
+          path: research/assertion_scope_jurisdiction_rc7fa1/results/
+          retention-days: 90
+          if-no-files-found: warn
