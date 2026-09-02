@@ -5,7 +5,7 @@ from .rc8f_heldout_cohort import ATOM_A, ATOM_B, SOURCE_A, SOURCE_B, build_rc8f_
 
 def test_rc8f_heldout_structure_is_candidate_blind() -> None:
     cases = build_rc8f_heldout_cases()
-    assert len(cases) == 20
+    assert len(cases) == 21
     ids = [case["case_id"] for case in cases]
     assert len(ids) == len(set(ids))
 
