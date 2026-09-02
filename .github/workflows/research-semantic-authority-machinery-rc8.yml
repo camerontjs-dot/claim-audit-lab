@@ -29,11 +29,17 @@ jobs:
         run: |
           set -euo pipefail
           git diff --exit-code b628f8c35fe803ea6fba99449af5de313f0e2935 -- src schema
+      - name: Verify frozen candidate bytes unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6  research/semantic_authority_machinery_rc8/authority_contract.py' | sha256sum --check --strict
+          git diff --exit-code 61d605902cd79ddfd9f6da4e3f1e93173a8d4257 -- research/semantic_authority_machinery_rc8/authority_contract.py
       - name: Run model-free apparatus qualification
         shell: bash
         run: |
           set -euo pipefail
-          python -m pytest -q research/semantic_authority_machinery_rc8/test_apparatus.py
+          python -m pytest -q research/semantic_authority_machinery_rc8/test_apparatus.py research/semantic_authority_machinery_rc8/test_heldout_apparatus.py
           python -m research.semantic_authority_machinery_rc8.evaluate --mode qualify --out QUALIFICATION.json
       - uses: actions/upload-artifact@v4
         if: always()
