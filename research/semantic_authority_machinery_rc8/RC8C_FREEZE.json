@@ -23,11 +23,25 @@
     "apparatus_identity_verification": "success",
     "candidate_blind_structural_tests": "success"
   },
-  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8B",
+  "reveal": {
+    "workflow_commit": "f672d93450ac7adc426516ef397901f744a94ba5",
+    "run_id": 33651630044,
+    "job_id": 100319905772,
+    "candidate_and_apparatus_integrity": "success",
+    "evaluation_step": "success",
+    "hard_safety_step": "failure",
+    "artifact_id": 9855007368,
+    "artifact_digest": "sha256:e7d395ce577cc1720627388d3f0d70d8f2d8146123aafa87ef1643ffdc0d8583",
+    "status_exact_count": 1,
+    "reason_exact_count": 1,
+    "unsafe_warranted_atoms": 2,
+    "scientific_state": "RC8B_FALSIFIED_BY_MISSING_EVIDENCE_SOURCE_ANCHOR"
+  },
+  "terminal_state": "FALSIFIED",
   "notes": [
-    "The frozen RC8B candidate has already completed its own prospective RC8B science and will not be modified for RC8C.",
-    "The RC8C structural test does not import or execute the RC8B candidate.",
-    "The raw-source substitution changes evidence identity only; semantic proposal and authority receipt content remain fixed.",
-    "The pre-reveal workflow verified all frozen identities before any RC8C candidate execution."
+    "The frozen RC8B candidate was not modified for RC8C.",
+    "The positive control warranted correctly.",
+    "Both the raw-source substitution and missing-raw-source cases were incorrectly warranted.",
+    "The failure localizes absence of an evidence-source anchor and does not negate RC8B's narrower partial-receipt consistency result."
   ]
 }
