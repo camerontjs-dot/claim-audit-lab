@@ -39,7 +39,7 @@ INSTRUMENT_EVIDENCE = {
 
 # Preserved falsifier. The assertion/scope line did not meet the zero-false-
 # permit requirement, so this integration track may not use it as warrant.
-ASSERTION_SCOPE_FALSIFIER = "ead5a6b795298be09fa99fef7b5f796565304840"
+ASSERTION_SCOPE_FALSIFIER = "ead5a6b068c17aefea0c2fc6b0b54b78ced26729"
 
 
 class AuthorityBoundaryError(RuntimeError):
