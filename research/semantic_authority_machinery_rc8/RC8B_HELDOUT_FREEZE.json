@@ -19,10 +19,19 @@
     "support_span_not_unsafe == support_span_case_count",
     "all bank_invariance values are true"
   ],
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8B_CANDIDATE",
+  "pre_reveal_qualification": {
+    "workflow_commit": "dba342d8a2f722fe7db732297e1306eb22591e68",
+    "run_id": 33650759366,
+    "job_id": 100316980681,
+    "candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8B_CANDIDATE",
   "notes": [
     "The candidate was frozen before these files existed.",
     "The structural apparatus test imports only the held-out cohort and does not import or execute the RC8B candidate.",
+    "The pre-reveal job verified all frozen identities and executed only candidate-blind structural checks.",
     "Any candidate modification after this apparatus freeze invalidates RC8B prospective independence for this cohort.",
     "No production or contract surface is authorized by this freeze."
   ]
