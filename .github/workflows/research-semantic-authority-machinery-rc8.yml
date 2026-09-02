@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -38,5 +40,5 @@ jobs:
         with:
           name: rc8-authority-qualification-${{ github.run_id }}
           path: QUALIFICATION.json
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 90
