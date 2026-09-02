@@ -1,0 +1,41 @@
+{
+  "experiment": "RC8J prospective claim-bound Contract-B authority heldout",
+  "candidate_freeze": {
+    "declaration_commit": "8e75c6782bb95c3763d06230b9c5df2b6af44054",
+    "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract_rc8j.py",
+    "candidate_git_blob": "f55156e43e0c1b4a7868bc8339585b8892edda38",
+    "rc8h_git_blob": "4b872e455d52d7a682bb719889860d2cac7909a7",
+    "rc8f_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "contract_b_authority": {
+    "repository": "camerontjs-dot/apparatus-contracts",
+    "commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "handoff_spec_blob": "3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26",
+    "factual_context_extension_blob": "77645a6adac664892866f3fdf8abf66cd1d0dd10"
+  },
+  "apparatus_freeze_head": "b135f10e7112aa7fcf73ae9ad1a92e09ee1d574c",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8j_heldout_cohort.py": "bf1ec5bd1086163460a38e4ccf0ac044fe34c148",
+    "research/semantic_authority_machinery_rc8/rc8j_heldout_evaluate.py": "1ff6db92d5df1e01540cea79207015cc4f97893a",
+    "research/semantic_authority_machinery_rc8/test_rc8j_heldout_apparatus.py": "1a2764ace6674abe02f5ebcba66aea257f5950f2"
+  },
+  "case_count": 28,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "claim_binding_not_unsafe == claim_binding_case_count",
+    "all bank_invariance values are true"
+  ],
+  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8J_CANDIDATE",
+  "notes": [
+    "RC8J was frozen before this cohort existed.",
+    "The fresh cohort uses new source, bundle, passage, claim, and atom identities.",
+    "The cross-claim transplant preserves source/bundle/passage/span/atom and all semantic authority material while changing authority claim identity; reader/instrument bank changes remain explicitly non-authoritative noise.",
+    "The structural test imports only the fresh cohort and does not import or execute RC8J.",
+    "Any candidate, predecessor, cohort, evaluator, expected-label, or Contract-B authority-byte change after this freeze invalidates prospective independence.",
+    "No production or contract surface is authorized."
+  ]
+}
