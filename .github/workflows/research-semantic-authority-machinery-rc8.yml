@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  rc8f-pre-reveal:
+  rc8f-prospective-science:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,14 +22,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install structural-test dependency
-        run: python -m pip install 'pytest>=8,<10'
       - name: Verify production semantic surface unchanged
         shell: bash
         run: |
           set -euo pipefail
           git diff --exit-code b628f8c35fe803ea6fba99449af5de313f0e2935 -- src schema
-      - name: Verify frozen RC8F candidate, predecessors, and heldout apparatus identities
+      - name: Reverify frozen RC8F candidate, predecessors, and heldout apparatus
         shell: bash
         run: |
           set -euo pipefail
@@ -42,8 +40,28 @@ jobs:
           git diff --exit-code 3097f9d5b8a45a3fa06ffeb84e725a8b329413c4 -- research/semantic_authority_machinery_rc8/authority_contract_rc8f.py research/semantic_authority_machinery_rc8/authority_contract_rc8d.py research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
           git diff --exit-code 9e1f01d56a04f48232f039083a167e0cebded546 -- research/semantic_authority_machinery_rc8/rc8f_heldout_cohort.py research/semantic_authority_machinery_rc8/rc8f_heldout_evaluate.py
           git diff --exit-code 1f8464df3f356d2a3716f546e218474b60e5a0f6 -- research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py
-      - name: Run candidate-blind RC8F apparatus checks
+      - name: Execute frozen RC8F on prospective heldout
         shell: bash
         run: |
           set -euo pipefail
-          python -m pytest -q research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py
+          python -m research.semantic_authority_machinery_rc8.rc8f_heldout_evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8f-prospective-heldout-${{ github.run_id }}
+          path: RC8F_HELDOUT_RESULTS.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce RC8F hard criteria
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r = json.load(open('RC8F_HELDOUT_RESULTS.json'))
+          assert r['unsafe_warranted_atoms'] == 0, r['unsafe_rows']
+          assert r['status_exact_count'] == r['case_count'], (r['status_exact_count'], r['case_count'])
+          assert r['reason_exact_count'] == r['case_count'], (r['reason_exact_count'], r['case_count'])
+          assert r['source_atom_binding_not_unsafe'] == r['source_atom_binding_case_count']
+          assert all(r['bank_invariance'].values()), r['bank_invariance']
+          PY
