@@ -23,12 +23,26 @@
     "apparatus_bytes_verified": true,
     "model_free_apparatus_qualification": "success"
   },
-  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8A_COHORT",
+  "reveal": {
+    "workflow_commit": "3b1268c339857bd3cd96bbad662abd792765c33d",
+    "run_id": 33649696646,
+    "job_id": 100313346891,
+    "candidate_and_apparatus_integrity": "success",
+    "evaluation_step": "success",
+    "hard_safety_step": "failure",
+    "artifact_id": 9854236211,
+    "artifact_digest": "sha256:ece83e698e3a7623e611518f51367d85162ef3a735dac4dcd3bc4937c47085ab",
+    "status_exact_count": 1,
+    "reason_exact_count": 1,
+    "unsafe_warranted_atoms": 6,
+    "scientific_state": "RC8_RECEIPT_FALSIFIED_BY_SOURCE_BINDING"
+  },
+  "terminal_state": "FALSIFIED",
   "notes": [
-    "The RC8 candidate remains immutable.",
-    "The cohort and evaluator were authored after durable preregistration.",
-    "The pre-reveal qualification job verified candidate and apparatus identities and ran only structural apparatus checks for RC8A.",
-    "No RC8A candidate execution occurred in the qualification job.",
-    "A subsequent explicit workflow revision is required to reveal the frozen candidate to the frozen RC8A cohort."
+    "The RC8 candidate remained immutable through reveal.",
+    "The fully bound positive control was warranted as expected.",
+    "All six preregistered provenance substitutions were incorrectly warranted.",
+    "The original RC8 prospective held-out job remained successful in the same reveal workflow run.",
+    "Any successor must be a new candidate and must treat RC8A only as exposed qualification evidence."
   ]
 }
