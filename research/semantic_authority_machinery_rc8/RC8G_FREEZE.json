@@ -32,13 +32,31 @@
     "apparatus_identity_verification": "success",
     "candidate_blind_structural_tests": "success"
   },
-  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8F",
+  "reveal_result": {
+    "workflow_commit": "8215fb3405baa35af6a269a3c604006c0b15e952",
+    "run_id": 33661676676,
+    "job_id": 100353445570,
+    "contract_b_authority_reverification": "success",
+    "parent_and_apparatus_reverification": "success",
+    "evaluator_execution": "success",
+    "artifact_id": 9858915634,
+    "artifact_digest": "sha256:71f75e4ccf526448aec5ea933495fb64e44a32460d8b23fe51a33c0335917a6b",
+    "hard_criterion": "failure",
+    "case_count": 17,
+    "status_exact_count": 9,
+    "reason_exact_count": 8,
+    "unsafe_warranted_atoms": 8,
+    "segment_binding_not_unsafe": 1,
+    "segment_binding_case_count": 9,
+    "scientific_state": "RC8F_CONTRACT_B_SEGMENT_BINDING_FALSIFIED_OR_REGRESSED"
+  },
+  "terminal_state": "FALSIFIED",
   "notes": [
-    "The parent RC8F/RC8D/RC8B candidates are frozen and will not be modified for RC8G.",
-    "The structural apparatus test imports only RC8G cohort data and does not import or execute RC8F.",
-    "The two span falsifiers remain inside operator governance while crossing only the admitted Contract B passage extent.",
-    "Contract B passage and bundle hashes remain upstream integrity authority; RC8G does not introduce duplicate hash authority.",
-    "The pre-reveal workflow checked out and verified the exact frozen Contract B authority before any RC8G candidate execution.",
+    "The parent RC8F/RC8D/RC8B candidates remained unchanged throughout RC8G.",
+    "The exact frozen Contract B authority was reverified before reveal execution.",
+    "Eight bundle/passage/span mutations were unsafely warranted.",
+    "The combined source mismatch still dominated passage mismatch; passage mismatch did not dominate atom mismatch because the missing segment layer was absent.",
+    "Contract B passage and bundle hashes remain upstream integrity authority; RC8G does not justify duplicate hash authority.",
     "No production or contract surface is authorized by this experiment."
   ]
 }
