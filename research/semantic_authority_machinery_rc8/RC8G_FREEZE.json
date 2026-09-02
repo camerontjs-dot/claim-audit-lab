@@ -22,12 +22,23 @@
   },
   "case_count": 17,
   "hard_criterion": "unsafe_warranted_atoms == 0",
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8F",
+  "pre_reveal_qualification": {
+    "workflow_commit": "edad08ce49ca71e4356c7ae7245e256890665f34",
+    "run_id": 33661436137,
+    "job_id": 100352658124,
+    "production_surface_verification": "success",
+    "contract_b_authority_checkout_and_blob_verification": "success",
+    "parent_candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8F",
   "notes": [
     "The parent RC8F/RC8D/RC8B candidates are frozen and will not be modified for RC8G.",
     "The structural apparatus test imports only RC8G cohort data and does not import or execute RC8F.",
     "The two span falsifiers remain inside operator governance while crossing only the admitted Contract B passage extent.",
     "Contract B passage and bundle hashes remain upstream integrity authority; RC8G does not introduce duplicate hash authority.",
+    "The pre-reveal workflow checked out and verified the exact frozen Contract B authority before any RC8G candidate execution.",
     "No production or contract surface is authorized by this experiment."
   ]
 }
