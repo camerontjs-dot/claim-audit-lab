@@ -28,12 +28,24 @@
     "binding_not_unsafe == binding_case_count",
     "all bank_invariance values are true"
   ],
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8H_CANDIDATE",
+  "pre_reveal_qualification": {
+    "workflow_head": "eed1ecfe1a4acc67d0cd23598abcc1b8e2bd7d85",
+    "run_id": 33669658081,
+    "job_id": 100379823463,
+    "production_surface_verification": "success",
+    "contract_b_authority_verification": "success",
+    "candidate_and_parent_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success",
+    "candidate_execution": "not_performed"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8H_CANDIDATE",
   "notes": [
     "RC8H was frozen before this cohort existed.",
     "The structural test imports only the fresh cohort and does not import or execute RC8H.",
     "The cohort uses fresh source, bundle, passage, and atom identities and exercises exact admitted-passage boundary conditions.",
     "Proposal/field passage-boundary falsifiers remain inside operator governance to isolate Contract-B segment binding.",
+    "The accepted pre-reveal run is the exact-head push run and performed no held-out candidate execution.",
     "Any candidate, predecessor, cohort, evaluator, expected-label, or Contract-B authority-byte change after this freeze invalidates prospective independence.",
     "No production or contract surface is authorized."
   ]
