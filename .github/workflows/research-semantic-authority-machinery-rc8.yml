@@ -38,9 +38,10 @@ jobs:
           test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8b.py)" = 'edf84bb5aae0dd217e3f780e7a49767440b7c1e5'
           test "$(git hash-object research/semantic_authority_machinery_rc8/rc8f_heldout_cohort.py)" = '2f9ea59ccae3ccfd3aa89d0c3c708a2d954778b6'
           test "$(git hash-object research/semantic_authority_machinery_rc8/rc8f_heldout_evaluate.py)" = '466398e3c316feb43ff62fe03b74bb5b09e2a8d2'
-          test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py)" = '9cad03570b6bdcedba1ccfe9df591cad8a06b117'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py)" = '8b414c427ccc6786cbdad4a08797f052df4c936f'
           git diff --exit-code 3097f9d5b8a45a3fa06ffeb84e725a8b329413c4 -- research/semantic_authority_machinery_rc8/authority_contract_rc8f.py research/semantic_authority_machinery_rc8/authority_contract_rc8d.py research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
-          git diff --exit-code 9e1f01d56a04f48232f039083a167e0cebded546 -- research/semantic_authority_machinery_rc8/rc8f_heldout_cohort.py research/semantic_authority_machinery_rc8/rc8f_heldout_evaluate.py research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py
+          git diff --exit-code 9e1f01d56a04f48232f039083a167e0cebded546 -- research/semantic_authority_machinery_rc8/rc8f_heldout_cohort.py research/semantic_authority_machinery_rc8/rc8f_heldout_evaluate.py
+          git diff --exit-code 1f8464df3f356d2a3716f546e218474b60e5a0f6 -- research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py
       - name: Run candidate-blind RC8F apparatus checks
         shell: bash
         run: |
