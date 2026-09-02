@@ -21,11 +21,21 @@
     "subordinate_binding_not_unsafe == subordinate_binding_case_count",
     "all bank_invariance values are true"
   ],
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8D_CANDIDATE",
+  "pre_reveal_qualification": {
+    "workflow_commit": "4597627ac70aeaf757cdbb3f83ad90e0a3d5d393",
+    "run_id": 33659515300,
+    "job_id": 100346314941,
+    "production_surface_verification": "success",
+    "candidate_and_dependency_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8D_CANDIDATE",
   "notes": [
     "The RC8D candidate and its RC8B dependency were frozen before the prospective cohort existed.",
     "The structural apparatus test imports only the prospective cohort and does not import or execute either candidate.",
     "Any candidate, dependency, cohort, evaluator, or expected-label change after this freeze invalidates prospective independence for this cohort.",
+    "The pre-reveal workflow verified all frozen identities and candidate-blind structure before any RC8D held-out execution.",
     "No production or contract surface is authorized by this freeze."
   ]
 }
