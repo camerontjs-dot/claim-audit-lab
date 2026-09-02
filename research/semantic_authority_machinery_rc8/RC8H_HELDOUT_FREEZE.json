@@ -1,0 +1,40 @@
+{
+  "experiment": "RC8H prospective Contract-B segment-bound authority heldout",
+  "candidate_freeze": {
+    "declaration_commit": "1d1fec29ad5e08e28d3b9751534b85121221b17c",
+    "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract_rc8h.py",
+    "candidate_git_blob": "4b872e455d52d7a682bb719889860d2cac7909a7",
+    "rc8f_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "contract_b_authority": {
+    "repository": "camerontjs-dot/apparatus-contracts",
+    "commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "handoff_spec_blob": "3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26",
+    "factual_context_extension_blob": "77645a6adac664892866f3fdf8abf66cd1d0dd10"
+  },
+  "apparatus_freeze_head": "a39e2fc1c91821e42c842e367bd532d190e32ce2",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8h_heldout_cohort.py": "29711c381dbf5170b0157c0cd00aa121182af58e",
+    "research/semantic_authority_machinery_rc8/rc8h_heldout_evaluate.py": "c7441b080f5e395eacbd8ecfbb1d79969f045843",
+    "research/semantic_authority_machinery_rc8/test_rc8h_heldout_apparatus.py": "1dca40b48120ec422e858dda274b52a8ccb69105"
+  },
+  "case_count": 26,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "binding_not_unsafe == binding_case_count",
+    "all bank_invariance values are true"
+  ],
+  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8H_CANDIDATE",
+  "notes": [
+    "RC8H was frozen before this cohort existed.",
+    "The structural test imports only the fresh cohort and does not import or execute RC8H.",
+    "The cohort uses fresh source, bundle, passage, and atom identities and exercises exact admitted-passage boundary conditions.",
+    "Proposal/field passage-boundary falsifiers remain inside operator governance to isolate Contract-B segment binding.",
+    "Any candidate, predecessor, cohort, evaluator, expected-label, or Contract-B authority-byte change after this freeze invalidates prospective independence.",
+    "No production or contract surface is authorized."
+  ]
+}
