@@ -1,0 +1,31 @@
+{
+  "experiment": "RC8D prospective admitted-evidence anchored authority held-out",
+  "candidate_freeze": {
+    "declaration_commit": "eab2a34f8249d06613e6bd9ca396d2c16e421c02",
+    "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract_rc8d.py",
+    "candidate_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "dependency_rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "apparatus_freeze_head": "4829ba73e9cc870a3093629a613860c95257259f",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8d_heldout_cohort.py": "60cce033481fb37de9cc79f6e7a07fc912f4b04d",
+    "research/semantic_authority_machinery_rc8/rc8d_heldout_evaluate.py": "925b2b91edf0edc8961344a72c445aa696f9c545",
+    "research/semantic_authority_machinery_rc8/test_rc8d_heldout_apparatus.py": "aefdb936e0b264d049a528b52587c1187ee5689d"
+  },
+  "case_count": 15,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "source_anchor_not_unsafe == source_anchor_case_count",
+    "subordinate_binding_not_unsafe == subordinate_binding_case_count",
+    "all bank_invariance values are true"
+  ],
+  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8D_CANDIDATE",
+  "notes": [
+    "The RC8D candidate and its RC8B dependency were frozen before the prospective cohort existed.",
+    "The structural apparatus test imports only the prospective cohort and does not import or execute either candidate.",
+    "Any candidate, dependency, cohort, evaluator, or expected-label change after this freeze invalidates prospective independence for this cohort.",
+    "No production or contract surface is authorized by this freeze."
+  ]
+}
