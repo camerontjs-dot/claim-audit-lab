@@ -14,10 +14,20 @@
   },
   "case_count": 3,
   "hard_criterion": "unsafe_warranted_atoms == 0",
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8B",
+  "pre_reveal_qualification": {
+    "workflow_commit": "4819915e684b56905a57fdd436ef9afe95e9b614",
+    "run_id": 33651406186,
+    "job_id": 100319050487,
+    "production_surface_verification": "success",
+    "candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8B",
   "notes": [
     "The frozen RC8B candidate has already completed its own prospective RC8B science and will not be modified for RC8C.",
     "The RC8C structural test does not import or execute the RC8B candidate.",
-    "The raw-source substitution changes evidence identity only; semantic proposal and authority receipt content remain fixed."
+    "The raw-source substitution changes evidence identity only; semantic proposal and authority receipt content remain fixed.",
+    "The pre-reveal workflow verified all frozen identities before any RC8C candidate execution."
   ]
 }
