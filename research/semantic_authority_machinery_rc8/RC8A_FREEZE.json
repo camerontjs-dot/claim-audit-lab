@@ -1,0 +1,25 @@
+{
+  "experiment": "RC8A authority-subject binding falsifier",
+  "preregistration_commit": "77ecd0bba476f5606be31db471648f053d86ea65",
+  "candidate": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract.py",
+    "freeze_commit": "61d605902cd79ddfd9f6da4e3f1e93173a8d4257",
+    "git_blob": "628a3ba1676b48fc4572b949df0db7d4ad5a1696",
+    "sha256": "69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6"
+  },
+  "apparatus_freeze_head": "89cc7d6e68d265c0306c3e7e9a863e12acbcd56c",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8a_cohort.py": "cae175a1a01e1b308c811ad7cebe5193e3b8b844",
+    "research/semantic_authority_machinery_rc8/rc8a_evaluate.py": "786f04805120d035b0cdfe58f6141c3735e7cced",
+    "research/semantic_authority_machinery_rc8/test_rc8a_apparatus.py": "7d3e61f4c16f6f4916fc31a6e265f3603b831079"
+  },
+  "case_count": 7,
+  "hard_criterion": "unsafe_warranted_atoms == 0",
+  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_CANDIDATE",
+  "notes": [
+    "The RC8 candidate remains immutable.",
+    "The cohort and evaluator were authored after durable preregistration.",
+    "No RC8A candidate execution is authorized by this freeze record alone.",
+    "A separate workflow change must first qualify the apparatus structure, then explicitly reveal the frozen candidate to this cohort."
+  ]
+}
