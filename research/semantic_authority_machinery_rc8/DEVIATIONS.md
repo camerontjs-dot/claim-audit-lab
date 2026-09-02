@@ -1,15 +1,74 @@
-# RC8 Deviations
+# RC8 Deviations and Procedural Notes
 
-## Pre-preregistration local prototype execution
+This file records deviations in experiment execution or apparatus handling. Scientific falsifications are preserved in their own result records and in the aggregate `RESULTS.md`; they are not reclassified as procedural deviations.
 
-Before the durable GitHub preregistration, the research lead executed a local prototype of the candidate gate against the open qualification mutation fixtures while developing the apparatus.
+## 1. Pre-preregistration local prototype execution
+
+Before the durable GitHub preregistration, the research lead executed a local prototype of the original candidate gate against open qualification mutation fixtures while developing the apparatus.
 
 Consequence:
 
-- the qualification fixture result is not blind evidence;
-- it must be used only to establish that the evaluator catches intentionally weak architectures and that the apparatus runs;
-- no scientific claim may count the local result;
-- the candidate must be frozen before any fresh prospective held-out cohort is added or executed;
-- candidate repair after held-out reveal is prohibited.
+- the original qualification fixture result is not blind evidence;
+- it is usable only to establish that the evaluator catches intentionally weak architectures and that the apparatus runs;
+- no scientific claim counts the local prototype result as prospective evidence;
+- later candidates were frozen before their fresh prospective cohorts were added or executed;
+- candidate repair after held-out reveal was prohibited for each frozen experiment.
 
-This deviation does not contaminate a future clean-room reproduction because RC8 does not claim independent implementation. If independent consumability later matters, a sanitized aperture and separate context-free implementation are required.
+This deviation does not establish independent implementation. A future independent-recoverability result requires a sanitized aperture and separate context-free implementation.
+
+## 2. RC8F pre-reveal structural cardinality correction
+
+The first RC8F pre-reveal workflow attempt asserted that the frozen cohort contained 20 cases. The cohort actually contained 21.
+
+Preserved failed attempt:
+
+- workflow head: `245c8b04cfc460449ae562be10f3e11f4b74b4e5`;
+- run: `33660585742`;
+- job: `100349865177`;
+- failure: model-free structural assertion `len(cases) == 20` while the frozen cohort returned 21.
+
+Before this failure:
+
+- candidate and predecessor blob checks passed;
+- prospective cohort/evaluator identities passed;
+- the candidate was **not executed** on the prospective cohort.
+
+Correction:
+
+- only the candidate-blind structural count assertion changed from 20 to 21;
+- candidate bytes did not change;
+- semantic cohort did not change;
+- evaluator did not change;
+- expected labels did not change.
+
+The corrected pre-reveal run `33660759984` / job `100350433412` passed, after which the frozen candidate was revealed once. The failed first attempt remains part of the record.
+
+## 3. Duplicate push / pull-request workflow instances
+
+GitHub Actions generated both push-triggered and pull-request-triggered workflow instances for some commits.
+
+Handling rule used throughout the later programme:
+
+- scientific records identify one exact-head **push** run as the accepted pre-reveal or reveal execution;
+- duplicate PR-triggered instances are not counted as additional independent evidence;
+- run IDs and exact head SHAs are recorded in the corresponding freeze/result files.
+
+This is workflow duplication, not replication.
+
+## 4. Documentation commits after reveal
+
+Once a prospective cohort had been revealed and terminalized, subsequent documentation changes could retrigger the research workflow because the workflow watches the research directory.
+
+Such post-reveal reruns are regression/verification activity only. They do not regain prospective status and must not be counted as additional held-out evidence.
+
+## 5. Independence boundary
+
+This entire RC8 through RC8J programme was conducted in one normal-context research thread with accumulated knowledge of prior failures and successor designs.
+
+Therefore:
+
+- the programme provides sequential falsification and prospective successor evidence;
+- it does **not** provide fresh independent implementation evidence for the terminal architecture;
+- this context is contaminated for any experiment whose scientific claim depends on independent recovery from specification alone.
+
+A fresh independent reproduction must start in a separate clean context with a frozen information aperture. The current thread may prepare that packet but must not execute the independent implementation and count it as independent evidence.
