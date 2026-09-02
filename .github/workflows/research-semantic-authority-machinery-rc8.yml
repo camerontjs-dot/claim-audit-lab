@@ -46,3 +46,48 @@ jobs:
         run: |
           set -euo pipefail
           python -m pytest -q research/semantic_authority_machinery_rc8/test_rc8c_apparatus.py
+
+  rc8c-reveal:
+    needs: rc8c-pre-reveal
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reverify frozen RC8B candidate and RC8C apparatus
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8b.py)" = 'edf84bb5aae0dd217e3f780e7a49767440b7c1e5'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8b_heldout_cohort.py)" = '56b17ce24395de0b4c681bc58b4d4ab1e8e3f1f7'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8c_cohort.py)" = '98375d322e2029afc2917e7f307efb1a82e9a3d3'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8c_evaluate.py)" = '12d8a1baabc18efc530a3fef5b183a3306df0b13'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8c_apparatus.py)" = 'f4ad002392057a9b51bdb37158aab1a0d43930a0'
+          git diff --exit-code e52f70b77ed0395e33afa9b193cae47475abf892 -- research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
+          git diff --exit-code 2600d79f7224498692ac565f39a971a9e8c6ca38 -- research/semantic_authority_machinery_rc8/rc8c_cohort.py research/semantic_authority_machinery_rc8/rc8c_evaluate.py research/semantic_authority_machinery_rc8/test_rc8c_apparatus.py
+      - name: Execute frozen RC8B on RC8C evidence-source anchor cohort
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.semantic_authority_machinery_rc8.rc8c_evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8c-evidence-anchor-${{ github.run_id }}
+          path: RC8C_RESULTS.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce RC8C hard criterion
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r = json.load(open('RC8C_RESULTS.json'))
+          assert r['unsafe_warranted_atoms'] == 0, r['unsafe_rows']
+          assert r['status_exact_count'] == r['case_count'], (r['status_exact_count'], r['case_count'])
+          assert r['reason_exact_count'] == r['case_count'], (r['reason_exact_count'], r['case_count'])
+          PY
