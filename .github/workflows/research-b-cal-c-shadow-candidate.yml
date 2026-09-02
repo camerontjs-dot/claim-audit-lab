@@ -76,15 +76,19 @@ jobs:
       - name: Run authority-safety unit tests
         run: uv run pytest -q research/b_cal_c_shadow_candidate/test_shadow_candidate.py
 
-      - name: Run frozen boundary integration
+      - name: Run frozen boundary integration successor
         run: |
+          set -o pipefail
           mkdir -p research/b_cal_c_shadow_candidate/run-output
           candidate_sha="$(git rev-parse HEAD)"
-          uv run python research/b_cal_c_shadow_candidate/run_integration.py \
+          uv run python research/b_cal_c_shadow_candidate/run_integration_v2.py \
             --deps _deps \
             --out research/b_cal_c_shadow_candidate/run-output \
             --candidate-sha "$candidate_sha" \
             2>&1 | tee research/b_cal_c_shadow_candidate/run-output/stdout.txt
+
+      - name: Require terminal run receipt
+        run: test -s research/b_cal_c_shadow_candidate/run-output/RUN-RECEIPT.json
 
       - name: Verify no production source changed relative to frozen base
         run: |
