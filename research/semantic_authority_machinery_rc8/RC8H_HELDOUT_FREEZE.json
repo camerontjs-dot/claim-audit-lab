@@ -39,14 +39,37 @@
     "candidate_blind_structural_tests": "success",
     "candidate_execution": "not_performed"
   },
-  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8H_CANDIDATE",
+  "prospective_result": {
+    "workflow_head": "bd04c0b261a383acac2832dcf9fc07ed9168f0f1",
+    "run_id": 33669801805,
+    "job_id": 100380304314,
+    "artifact_id": 9862018646,
+    "artifact_digest": "sha256:26dc1521b651e773b5be8684f4e22538cf63db98edc077ef231ba4a76077c43f",
+    "case_count": 26,
+    "status_exact_count": 26,
+    "reason_exact_count": 26,
+    "unsafe_warranted_atoms": 0,
+    "binding_case_count": 13,
+    "binding_not_unsafe": 13,
+    "bank_invariance": {
+      "warranted": true,
+      "unresolved": true
+    },
+    "expected_state_counts": {
+      "WARRANTED": 5,
+      "REJECTED": 10,
+      "UNRESOLVED": 10,
+      "NO_ASSESSMENT": 1
+    }
+  },
+  "terminal_state": "SUPPORTED_WITH_BOUNDS",
+  "scientific_state": "CONTRACT_B_SEGMENT_BOUND_SOURCE_ATOM_GATE_SUPPORTED_WITHIN_PROSPECTIVE_ENVELOPE",
   "notes": [
     "RC8H was frozen before this cohort existed.",
-    "The structural test imports only the fresh cohort and does not import or execute RC8H.",
-    "The cohort uses fresh source, bundle, passage, and atom identities and exercises exact admitted-passage boundary conditions.",
-    "Proposal/field passage-boundary falsifiers remain inside operator governance to isolate Contract-B segment binding.",
-    "The accepted pre-reveal run is the exact-head push run and performed no held-out candidate execution.",
-    "Any candidate, predecessor, cohort, evaluator, expected-label, or Contract-B authority-byte change after this freeze invalidates prospective independence.",
+    "The accepted pre-reveal run performed no held-out candidate execution.",
+    "The fresh prospective run reverified Contract B authority bytes and all frozen CAL candidate/apparatus blobs before reveal.",
+    "Exact admitted-passage boundaries, left/right passage crossings, malformed admitted spans, parent-delegated field failures, precedence controls, composition/aperture, and bank invariance all matched the preregistered behavior.",
+    "This result establishes only the tested Contract-B coordinate and receipt-consistency envelope. It does not establish claim-identity binding, canonical atom-ID generation, source-text interpretation, independent recoverability, production readiness, or Contract C projection.",
     "No production or contract surface is authorized."
   ]
 }
