@@ -23,11 +23,23 @@
   },
   "case_count": 14,
   "hard_criterion": "unsafe_warranted_atoms == 0",
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8H",
+  "pre_reveal_qualification": {
+    "workflow_head": "d3809f6edb05f1fc220a14721be0779cecd0e9e7",
+    "run_id": 33670140258,
+    "job_id": 100381420904,
+    "production_surface_verification": "success",
+    "contract_b_authority_verification": "success",
+    "parent_candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success",
+    "candidate_execution": "not_performed"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8H",
   "notes": [
     "The whole-receipt transplant keeps source, bundle, passage, admitted span, atom, proposal, assertion, operator, field warrants, composition, aperture, and semantic values unchanged while changing only claim identity.",
     "The structural apparatus test imports only the RC8I cohort and does not import or execute RC8H.",
     "RC8H and all frozen parents remain immutable for this falsifier.",
+    "The accepted pre-reveal run is the exact-head push run and performed no candidate execution.",
     "No production or contract surface is authorized."
   ]
 }
