@@ -1,0 +1,107 @@
+name: Research B-CAL-C shadow candidate
+
+on:
+  push:
+    branches:
+      - research-infra/b-cal-c-shadow-candidate-20260902
+  pull_request:
+    paths:
+      - "research/b_cal_c_shadow_candidate/**"
+      - ".github/workflows/research-b-cal-c-shadow-candidate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  shadow-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout frozen Contract B authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c314e53bd91c0736aa4370a364673b069aceb43e
+          path: _deps/apparatus-b
+
+      - name: Checkout frozen Contract C authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          path: _deps/apparatus-c
+
+      - name: Checkout Evidence Bundler production pin
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: c8189c31adbab11729c31430c2070126224a2d42
+          path: _deps/evidence-bundler
+
+      - name: Checkout RC7F-B1 comparison instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 0ecdedc5cea970485a635508255f3670ab231c33
+          path: _deps/rc7fb1
+
+      - name: Checkout RC7F-C event-ordering instrument
+        uses: actions/checkout@v4
+        with:
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/rc7fc
+
+      - name: Checkout RC7F-D permission-composition instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 9e1f28c3e4f217561e4364e1560539bdf4870298
+          path: _deps/rc7fd
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL and Evidence Bundler
+        run: |
+          uv sync --all-extras
+          uv pip install --editable _deps/evidence-bundler
+
+      - name: Run authority-safety unit tests
+        run: uv run pytest -q research/b_cal_c_shadow_candidate/test_shadow_candidate.py
+
+      - name: Run frozen boundary integration fixture-writer successor
+        run: |
+          set -o pipefail
+          mkdir -p research/b_cal_c_shadow_candidate/run-output
+          candidate_sha="$(git rev-parse HEAD)"
+          uv run python research/b_cal_c_shadow_candidate/run_integration_v5.py \
+            --deps _deps \
+            --out research/b_cal_c_shadow_candidate/run-output \
+            --candidate-sha "$candidate_sha" \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/stdout.txt
+
+      - name: Require terminal run receipt
+        run: test -s research/b_cal_c_shadow_candidate/run-output/RUN-RECEIPT.json
+
+      - name: Verify no production source changed relative to frozen base
+        run: |
+          if git diff --name-only 53f0885b111676794d1bd20e10b91aa58b07e9d4...HEAD -- src/ | grep -q .; then
+            echo "Production src/ changed in a shadow-only experiment" >&2
+            git diff --name-only 53f0885b111676794d1bd20e10b91aa58b07e9d4...HEAD -- src/ >&2
+            exit 1
+          fi
+
+      - name: Upload immutable run evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b-cal-c-shadow-${{ github.run_id }}
+          path: research/b_cal_c_shadow_candidate/run-output
+          if-no-files-found: warn
