@@ -15,11 +15,20 @@
   },
   "case_count": 7,
   "hard_criterion": "unsafe_warranted_atoms == 0",
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_CANDIDATE",
+  "pre_reveal_qualification": {
+    "workflow_commit": "97a682e442efdcee8daf866c7902e5fe9085dbf6",
+    "run_id": 33649562809,
+    "qualification_job_id": 100312813127,
+    "candidate_bytes_verified": true,
+    "apparatus_bytes_verified": true,
+    "model_free_apparatus_qualification": "success"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8A_COHORT",
   "notes": [
     "The RC8 candidate remains immutable.",
     "The cohort and evaluator were authored after durable preregistration.",
-    "No RC8A candidate execution is authorized by this freeze record alone.",
-    "A separate workflow change must first qualify the apparatus structure, then explicitly reveal the frozen candidate to this cohort."
+    "The pre-reveal qualification job verified candidate and apparatus identities and ran only structural apparatus checks for RC8A.",
+    "No RC8A candidate execution occurred in the qualification job.",
+    "A subsequent explicit workflow revision is required to reveal the frozen candidate to the frozen RC8A cohort."
   ]
 }
