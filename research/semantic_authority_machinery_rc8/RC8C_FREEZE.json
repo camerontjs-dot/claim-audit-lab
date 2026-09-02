@@ -1,0 +1,23 @@
+{
+  "experiment": "RC8C admitted-evidence source anchor falsifier",
+  "preregistration_commit": "2f5bc984db1ebe691b91462c6d497b3420e59c5d",
+  "parent_candidate": {
+    "name": "RC8B",
+    "freeze_commit": "e52f70b77ed0395e33afa9b193cae47475abf892",
+    "git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "apparatus_freeze_head": "2600d79f7224498692ac565f39a971a9e8c6ca38",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8c_cohort.py": "98375d322e2029afc2917e7f307efb1a82e9a3d3",
+    "research/semantic_authority_machinery_rc8/rc8c_evaluate.py": "12d8a1baabc18efc530a3fef5b183a3306df0b13",
+    "research/semantic_authority_machinery_rc8/test_rc8c_apparatus.py": "f4ad002392057a9b51bdb37158aab1a0d43930a0"
+  },
+  "case_count": 3,
+  "hard_criterion": "unsafe_warranted_atoms == 0",
+  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8B",
+  "notes": [
+    "The frozen RC8B candidate has already completed its own prospective RC8B science and will not be modified for RC8C.",
+    "The RC8C structural test does not import or execute the RC8B candidate.",
+    "The raw-source substitution changes evidence identity only; semantic proposal and authority receipt content remain fixed."
+  ]
+}
