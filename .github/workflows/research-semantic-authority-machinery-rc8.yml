@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  rc8g-reveal:
+  rc8h-qualification:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,43 +34,29 @@ jobs:
         run: |
           set -euo pipefail
           git diff --exit-code b628f8c35fe803ea6fba99449af5de313f0e2935 -- src schema
-      - name: Reverify frozen Contract B authority bytes
+      - name: Verify frozen Contract B authority bytes
         shell: bash
         run: |
           set -euo pipefail
           test "$(git -C _authority/apparatus-contracts rev-parse HEAD)" = 'c314e53bd91c0736aa4370a364673b069aceb43e'
           test "$(git -C _authority/apparatus-contracts hash-object handoff-contract-v1.0.0.md)" = '3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26'
           test "$(git -C _authority/apparatus-contracts hash-object contract-b-factual-context-extension-v1.2.0.md)" = '77645a6adac664892866f3fdf8abf66cd1d0dd10'
-      - name: Reverify frozen RC8F parent and RC8G apparatus
+      - name: Verify frozen predecessor candidates unchanged
         shell: bash
         run: |
           set -euo pipefail
           test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8f.py)" = 'efc50481be3179332cecb449c3c9c91da7c3dfaa'
           test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8d.py)" = 'f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1'
           test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8b.py)" = 'edf84bb5aae0dd217e3f780e7a49767440b7c1e5'
-          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8g_cohort.py)" = 'b90cc718e2359249b9c54d7e4dad3a8e8bd07889'
-          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8g_evaluate.py)" = '6b5b19a6e2c0295bcaa421e8f6e6d3eadb392dda'
-          test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8g_apparatus.py)" = '741d7c09ca5ff282b34674fa77edc14aac8d5939'
-          git diff --exit-code 3097f9d5b8a45a3fa06ffeb84e725a8b329413c4 -- research/semantic_authority_machinery_rc8/authority_contract_rc8f.py research/semantic_authority_machinery_rc8/authority_contract_rc8d.py research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
-          git diff --exit-code faeca1130146129df7a9a31804dfa094850b06d7 -- research/semantic_authority_machinery_rc8/rc8g_cohort.py research/semantic_authority_machinery_rc8/rc8g_evaluate.py research/semantic_authority_machinery_rc8/test_rc8g_apparatus.py
-      - name: Execute frozen RC8F on RC8G evidence segment falsifier
+      - name: Execute exposed RC8H qualification
         shell: bash
         run: |
           set -euo pipefail
-          python -m research.semantic_authority_machinery_rc8.rc8g_evaluate
+          python -m research.semantic_authority_machinery_rc8.rc8h_qualification
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rc8g-contract-b-segment-${{ github.run_id }}
-          path: RC8G_RESULTS.json
+          name: rc8h-exposed-qualification-${{ github.run_id }}
+          path: RC8H_QUALIFICATION.json
           if-no-files-found: error
           retention-days: 90
-      - name: Enforce RC8G hard criterion
-        shell: bash
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          import json
-          r = json.load(open('RC8G_RESULTS.json'))
-          assert r['unsafe_warranted_atoms'] == 0, r['unsafe_rows']
-          PY
