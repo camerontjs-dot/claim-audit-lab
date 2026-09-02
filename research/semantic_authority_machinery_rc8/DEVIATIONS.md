@@ -72,3 +72,26 @@ Therefore:
 - this context is contaminated for any experiment whose scientific claim depends on independent recovery from specification alone.
 
 A fresh independent reproduction must start in a separate clean context with a frozen information aperture. The current thread may prepare that packet but must not execute the independent implementation and count it as independent evidence.
+
+## 6. Terminal comparator self-check loader deviation
+
+After RC8J and the independent-reproduction package were already frozen, terminal regression workflow run `33671895951` / job `100387261565` failed only at `Self-check post-freeze comparator against frozen reference`.
+
+Observed before that failure:
+
+- production semantic-surface verification passed;
+- frozen Contract B and terminal research byte verification passed;
+- the 268-case exposed RC8J regression passed;
+- the 28-case prospective RC8J regression passed.
+
+The self-check invoked the frozen comparator with `authority_contract_rc8j.py` supplied through the comparator's **external implementation file** loader. That reference module uses package-relative imports and is not itself a valid standalone external implementation file. The intended independent implementation interface is standalone, so the self-check invocation exercised the wrong loading shape.
+
+Handling:
+
+- the failed run remains preserved;
+- the frozen comparator `0a3ca098c3aa41ee9a8962969b927ad8e8219890` is not changed;
+- the frozen reference `f55156e43e0c1b4a7868bc8339585b8892edda38` is not changed;
+- the frozen specification and reveal packets are not changed;
+- only the terminal regression workflow may use a temporary standalone adapter that imports the frozen package reference and re-exports `assess_authority` through the comparator's intended external-file interface.
+
+This is a post-terminal harness self-check defect, not evidence against RC8J or against the independent reproduction. It must not be hidden or counted as a scientific disagreement.
