@@ -94,7 +94,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          allowed='^(research/b_cal_c_shadow_candidate/(RC8J_CONSUMPTION_PREREGISTRATION\.md|authority_consumption_rc1\.py|test_authority_consumption_rc1\.py|run_authority_consumption_rc1\.py)|\.github/workflows/research-b-cal-c-rc8j-consumption\.yml)$'
+          allowed='^(research/b_cal_c_shadow_candidate/(RC8J_CONSUMPTION_PREREGISTRATION\.md|authority_consumption_rc1\.py|test_authority_consumption_rc1\.py|run_authority_consumption_rc1\.py|RC8J_C_PROJECTION_PREREGISTRATION\.md|run_rc8j_c_projection_falsifier\.py)|\.github/workflows/(research-b-cal-c-rc8j-consumption\.yml|research-b-cal-c-rc8j-projection\.yml))$'
           unexpected="$(git diff --name-only 5d799218f54a97da80713727709563fe91cc9291...HEAD | grep -Ev "$allowed" || true)"
           if [ -n "$unexpected" ]; then
             echo "Successor modified files outside its preregistered surface:" >&2
