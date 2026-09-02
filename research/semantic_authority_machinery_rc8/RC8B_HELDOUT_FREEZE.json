@@ -27,12 +27,29 @@
     "apparatus_identity_verification": "success",
     "candidate_blind_structural_tests": "success"
   },
-  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8B_CANDIDATE",
+  "reveal": {
+    "workflow_commit": "67421ac98abf46f3149ed6cf04954fcabd45ef96",
+    "run_id": 33650949918,
+    "job_id": 100317656073,
+    "candidate_and_apparatus_integrity": "success",
+    "evaluation_step": "success",
+    "hard_safety_step": "success",
+    "artifact_id": 9854745739,
+    "artifact_digest": "sha256:9b6c9b24ed7eff15ac726b68d5f27000fed796015ae19bf22600291311fb6293",
+    "status_exact_count": 50,
+    "reason_exact_count": 50,
+    "unsafe_warranted_atoms": 0,
+    "explicit_mismatch_exact_rejections": "11/11",
+    "missing_binding_not_warranted": "7/7",
+    "bank_invariance": true,
+    "scientific_state": "BOUND_RECEIPT_GATE_SUPPORTED_WITHIN_PROSPECTIVE_ENVELOPE"
+  },
+  "terminal_state": "SUPPORTED_WITH_BOUNDS",
   "notes": [
-    "The candidate was frozen before these files existed.",
-    "The structural apparatus test imports only the held-out cohort and does not import or execute the RC8B candidate.",
-    "The pre-reveal job verified all frozen identities and executed only candidate-blind structural checks.",
-    "Any candidate modification after this apparatus freeze invalidates RC8B prospective independence for this cohort.",
-    "No production or contract surface is authorized by this freeze."
+    "The candidate was frozen before the prospective files existed.",
+    "The candidate and apparatus remained immutable through reveal.",
+    "The prospective hard criteria all passed.",
+    "This result establishes receipt-fragment subject consistency within the tested envelope, not that the opaque subject token is correctly anchored to raw_source_id.",
+    "No production or contract surface is authorized by this result."
   ]
 }
