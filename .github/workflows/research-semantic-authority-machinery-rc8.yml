@@ -100,3 +100,46 @@ jobs:
           assert r['status_exact_count'] == r['case_count'], (r['status_exact_count'], r['case_count'])
           assert r['authority_monotonicity_violations'] == 0, r['authority_monotonicity_violations']
           PY
+
+  rc8a-source-binding:
+    needs: qualification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify frozen RC8 candidate and RC8A apparatus
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6  research/semantic_authority_machinery_rc8/authority_contract.py' | sha256sum --check --strict
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8a_cohort.py)" = 'cae175a1a01e1b308c811ad7cebe5193e3b8b844'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8a_evaluate.py)" = '786f04805120d035b0cdfe58f6141c3735e7cced'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8a_apparatus.py)" = '7d3e61f4c16f6f4916fc31a6e265f3603b831079'
+          git diff --exit-code 61d605902cd79ddfd9f6da4e3f1e93173a8d4257 -- research/semantic_authority_machinery_rc8/authority_contract.py
+          git diff --exit-code 89cc7d6e68d265c0306c3e7e9a863e12acbcd56c -- research/semantic_authority_machinery_rc8/rc8a_cohort.py research/semantic_authority_machinery_rc8/rc8a_evaluate.py research/semantic_authority_machinery_rc8/test_rc8a_apparatus.py
+      - name: Execute RC8A authority-subject binding falsifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.semantic_authority_machinery_rc8.rc8a_evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8a-source-binding-${{ github.run_id }}
+          path: RC8A_RESULTS.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce RC8A hard safety criterion
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r = json.load(open('RC8A_RESULTS.json'))
+          assert r['unsafe_warranted_atoms'] == 0, r['unsafe_rows']
+          assert r['status_exact_count'] == r['case_count'], (r['status_exact_count'], r['case_count'])
+          PY
