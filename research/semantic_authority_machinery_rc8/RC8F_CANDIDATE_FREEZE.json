@@ -1,0 +1,31 @@
+{
+  "experiment": "RC8F source-and-whole-atom anchored authority receipt",
+  "preregistration_commit": "87fe59b74f9f81a870ed90eed1608a9de12d2da5",
+  "candidate": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract_rc8f.py",
+    "introduced_commit": "077bfd9e91116ae98070e1150d542d308f3a7520",
+    "qualified_head": "1b60519b76ce384aead09f1ee6cfab5135364082",
+    "git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "frozen_rc8d_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "frozen_rc8b_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "exposed_qualification": {
+    "run_id": 33660212788,
+    "job_id": 100348634706,
+    "artifact_id": 9858355736,
+    "artifact_digest": "sha256:e600dec6ca3c28df88c36aa345e684a89979610cfa72855d18d005e27212d913",
+    "case_count": 190,
+    "status_exact_count": 190,
+    "reason_exact_count": 190,
+    "unsafe_warranted_atoms": 0,
+    "evidence_class": "EXPOSED_QUALIFICATION_ONLY"
+  },
+  "freeze_state": "FROZEN_BEFORE_PROSPECTIVE_RC8F_COHORT",
+  "freeze_rule": "The RC8F candidate and its frozen RC8D/RC8B dependencies must not change after prospective RC8F apparatus is authored or revealed. Any such change creates a new successor.",
+  "notes": [
+    "No fresh RC8F prospective cohort existed when this freeze declaration was created.",
+    "RC8E is exposed causal evidence only for RC8F.",
+    "The candidate adds only target-atom versus authority-bundle atom identity binding after frozen source anchoring and before frozen subordinate semantic checks.",
+    "This freeze does not authorize production, contract changes, or clean-room independence claims."
+  ]
+}
