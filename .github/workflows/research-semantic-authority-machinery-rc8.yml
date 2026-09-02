@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  rc8j-pre-reveal:
+  rc8j-prospective-science:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,21 +29,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install structural-test dependency
-        run: python -m pip install 'pytest>=8,<10'
       - name: Verify production semantic surface unchanged
         shell: bash
         run: |
           set -euo pipefail
           git diff --exit-code b628f8c35fe803ea6fba99449af5de313f0e2935 -- src schema
-      - name: Verify frozen Contract B authority bytes
+      - name: Reverify frozen Contract B authority bytes
         shell: bash
         run: |
           set -euo pipefail
           test "$(git -C _authority/apparatus-contracts rev-parse HEAD)" = 'c314e53bd91c0736aa4370a364673b069aceb43e'
           test "$(git -C _authority/apparatus-contracts hash-object handoff-contract-v1.0.0.md)" = '3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26'
           test "$(git -C _authority/apparatus-contracts hash-object contract-b-factual-context-extension-v1.2.0.md)" = '77645a6adac664892866f3fdf8abf66cd1d0dd10'
-      - name: Verify frozen RC8J candidate, parents, and heldout apparatus identities
+      - name: Reverify frozen RC8J candidate, parents, and heldout apparatus
         shell: bash
         run: |
           set -euo pipefail
@@ -57,8 +55,28 @@ jobs:
           test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8j_heldout_apparatus.py)" = '1a2764ace6674abe02f5ebcba66aea257f5950f2'
           git diff --exit-code 8e75c6782bb95c3763d06230b9c5df2b6af44054 -- research/semantic_authority_machinery_rc8/authority_contract_rc8j.py research/semantic_authority_machinery_rc8/authority_contract_rc8h.py research/semantic_authority_machinery_rc8/authority_contract_rc8f.py research/semantic_authority_machinery_rc8/authority_contract_rc8d.py research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
           git diff --exit-code b135f10e7112aa7fcf73ae9ad1a92e09ee1d574c -- research/semantic_authority_machinery_rc8/rc8j_heldout_cohort.py research/semantic_authority_machinery_rc8/rc8j_heldout_evaluate.py research/semantic_authority_machinery_rc8/test_rc8j_heldout_apparatus.py
-      - name: Run candidate-blind RC8J apparatus checks
+      - name: Execute frozen RC8J on prospective heldout
         shell: bash
         run: |
           set -euo pipefail
-          python -m pytest -q research/semantic_authority_machinery_rc8/test_rc8j_heldout_apparatus.py
+          python -m research.semantic_authority_machinery_rc8.rc8j_heldout_evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8j-prospective-heldout-${{ github.run_id }}
+          path: RC8J_HELDOUT_RESULTS.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce RC8J hard criteria
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          data = json.load(open('RC8J_HELDOUT_RESULTS.json'))
+          assert data['unsafe_warranted_atoms'] == 0, data['unsafe_rows']
+          assert data['status_exact_count'] == data['case_count']
+          assert data['reason_exact_count'] == data['case_count']
+          assert data['claim_binding_not_unsafe'] == data['claim_binding_case_count']
+          assert all(data['bank_invariance'].values())
+          PY
