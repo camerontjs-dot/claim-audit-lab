@@ -1,0 +1,153 @@
+name: Research RC8J Contract C projection falsifier
+
+on:
+  push:
+    branches:
+      - research-infra/rc8j-contract-c-projection-falsifier-20260902
+  pull_request:
+    paths:
+      - "research/b_cal_c_shadow_candidate/RC8J_C_PROJECTION_PREREGISTRATION.md"
+      - "research/b_cal_c_shadow_candidate/run_rc8j_c_projection_falsifier.py"
+      - ".github/workflows/research-b-cal-c-rc8j-projection.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  projection-falsifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout projection successor
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout frozen Contract B authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c314e53bd91c0736aa4370a364673b069aceb43e
+          path: _deps/apparatus-b
+
+      - name: Checkout frozen Contract C authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          path: _deps/apparatus-c
+
+      - name: Checkout Evidence Bundler production pin
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: c8189c31adbab11729c31430c2070126224a2d42
+          path: _deps/evidence-bundler
+
+      - name: Checkout RC7F-B1 comparison instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 0ecdedc5cea970485a635508255f3670ab231c33
+          path: _deps/rc7fb1
+
+      - name: Checkout RC7F-C event-ordering instrument
+        uses: actions/checkout@v4
+        with:
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/rc7fc
+
+      - name: Checkout RC7F-D permission-composition instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 9e1f28c3e4f217561e4364e1560539bdf4870298
+          path: _deps/rc7fd
+
+      - name: Checkout frozen RC8J authority candidate
+        uses: actions/checkout@v4
+        with:
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL and Evidence Bundler
+        run: |
+          set -euo pipefail
+          uv sync --all-extras
+          uv pip install --editable _deps/evidence-bundler
+
+      - name: Verify frozen Contract C evidence
+        run: |
+          set -euo pipefail
+          test "$(git -C _deps/apparatus-c rev-parse HEAD)" = '5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1'
+          test "$(git -C _deps/apparatus-c hash-object contract-c-v1.0.0.md)" = '8c15f2e5f4047ccd17e204fb23aee1168781b9d5'
+          test "$(git -C _deps/apparatus-c hash-object fixtures/contract-c/1.0.0/valid-canonical.json)" = '38b2271fc31ffa7683c09a486a8919572fc2f1a4'
+
+      - name: Re-run parent v5 integration
+        run: |
+          set -euo pipefail
+          mkdir -p research/b_cal_c_shadow_candidate/run-output
+          candidate_sha="$(git rev-parse HEAD)"
+          uv run python research/b_cal_c_shadow_candidate/run_integration_v5.py \
+            --deps _deps \
+            --out research/b_cal_c_shadow_candidate/run-output \
+            --candidate-sha "$candidate_sha" \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/stdout.txt
+
+      - name: Re-run frozen RC8J consumption seam
+        run: |
+          set -euo pipefail
+          uv run python research/b_cal_c_shadow_candidate/run_authority_consumption_rc1.py \
+            --run-output research/b_cal_c_shadow_candidate/run-output \
+            --rc8j-root _deps/rc8j \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/rc8j-consumption-stdout.txt
+
+      - name: Execute projection falsifier
+        run: |
+          set -euo pipefail
+          uv run python research/b_cal_c_shadow_candidate/run_rc8j_c_projection_falsifier.py \
+            --run-output research/b_cal_c_shadow_candidate/run-output \
+            --apparatus-c _deps/apparatus-c \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/rc8j-c-projection-stdout.txt
+
+      - name: Enforce projection disposition
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          p = 'research/b_cal_c_shadow_candidate/run-output/RC8J-C-PROJECTION-FALSIFIER.json'
+          r = json.load(open(p))
+          assert r['falsifiers']['direct_authority_field']['observed'] == 'REJECTED_BY_FROZEN_C'
+          assert r['falsifiers']['performed_positive_semantic_validity']['observed'] == 'REJECTED_BY_FROZEN_C'
+          assert r['existing_c_capacity_control']['frozen_fixture_validator'] == 'PASS'
+          assert r['existing_c_capacity_control']['assessed_proposition_count'] > 0
+          assert r['existing_c_capacity_control']['generic_positive_stage_token_required'] is False
+          assert r['rc8j_authority_result']['status'] == 'WARRANTED'
+          assert len(r['rc8j_authority_result']['missing_contract_c_conclusion_information']) == 6
+          assert r['safe_parent_projection']['frozen_validator'] == 'PASS'
+          assert r['safe_parent_projection']['positive_projection_attempted'] is False
+          assert r['contract_c_successor_justified'] is False
+          assert r['next_blocker'] == 'CAL_INTERNAL_AUTHORITY_TO_PROPOSITION_CONCLUSION_SEMANTICS'
+          PY
+
+      - name: Verify no production source changes
+        run: |
+          set -euo pipefail
+          if git diff --name-only 53f0885b111676794d1bd20e10b91aa58b07e9d4...HEAD -- src/ | grep -q .; then
+            echo "Production src/ changed in projection falsifier" >&2
+            exit 1
+          fi
+
+      - name: Upload projection evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rc8j-c-projection-${{ github.run_id }}
+          path: research/b_cal_c_shadow_candidate/run-output
+          if-no-files-found: error
+          retention-days: 90
