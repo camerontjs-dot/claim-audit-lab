@@ -1,0 +1,14 @@
+{
+  "candidate_commit": "61d605902cd79ddfd9f6da4e3f1e93173a8d4257",
+  "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract.py",
+  "candidate_git_blob_sha": "628a3ba1676b48fc4572b949df0db7d4ad5a1696",
+  "candidate_sha256": "69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6",
+  "qualification_head": "dc8f7f4eaa1e0398ba1a06acf7c9c89e37574ca5",
+  "qualification_run": 33636001584,
+  "qualification_artifact": 9848801430,
+  "qualification_artifact_digest": "sha256:5d2fe7fd489a95468360dc0e3537530b0e2ca2fd166fec0001929bd93819b6dc",
+  "preserved_failed_qualification_run": 33635923109,
+  "held_out_cohort_present_at_candidate_freeze": false,
+  "candidate_repair_after_held_out_reveal_allowed": false,
+  "independence_claim": false
+}
