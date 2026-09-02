@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  rc8d-pre-reveal:
+  rc8d-prospective-science:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,14 +22,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install structural-test dependency
-        run: python -m pip install 'pytest>=8,<10'
       - name: Verify production semantic surface unchanged
         shell: bash
         run: |
           set -euo pipefail
           git diff --exit-code b628f8c35fe803ea6fba99449af5de313f0e2935 -- src schema
-      - name: Verify frozen RC8D candidate, dependency, and heldout apparatus identities
+      - name: Reverify frozen RC8D candidate, dependency, and heldout apparatus
         shell: bash
         run: |
           set -euo pipefail
@@ -40,8 +38,29 @@ jobs:
           test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8d_heldout_apparatus.py)" = 'aefdb936e0b264d049a528b52587c1187ee5689d'
           git diff --exit-code eab2a34f8249d06613e6bd9ca396d2c16e421c02 -- research/semantic_authority_machinery_rc8/authority_contract_rc8d.py research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
           git diff --exit-code 4829ba73e9cc870a3093629a613860c95257259f -- research/semantic_authority_machinery_rc8/rc8d_heldout_cohort.py research/semantic_authority_machinery_rc8/rc8d_heldout_evaluate.py research/semantic_authority_machinery_rc8/test_rc8d_heldout_apparatus.py
-      - name: Run candidate-blind RC8D apparatus checks
+      - name: Execute frozen RC8D on prospective heldout
         shell: bash
         run: |
           set -euo pipefail
-          python -m pytest -q research/semantic_authority_machinery_rc8/test_rc8d_heldout_apparatus.py
+          python -m research.semantic_authority_machinery_rc8.rc8d_heldout_evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8d-prospective-heldout-${{ github.run_id }}
+          path: RC8D_HELDOUT_RESULTS.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce RC8D hard criteria
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r = json.load(open('RC8D_HELDOUT_RESULTS.json'))
+          assert r['unsafe_warranted_atoms'] == 0, r['unsafe_rows']
+          assert r['status_exact_count'] == r['case_count'], (r['status_exact_count'], r['case_count'])
+          assert r['reason_exact_count'] == r['case_count'], (r['reason_exact_count'], r['case_count'])
+          assert r['source_anchor_not_unsafe'] == r['source_anchor_case_count']
+          assert r['subordinate_binding_not_unsafe'] == r['subordinate_binding_case_count']
+          assert all(r['bank_invariance'].values()), r['bank_invariance']
+          PY
