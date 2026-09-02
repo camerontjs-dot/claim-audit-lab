@@ -29,12 +29,24 @@
     "claim_binding_not_unsafe == claim_binding_case_count",
     "all bank_invariance values are true"
   ],
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8J_CANDIDATE",
+  "pre_reveal_qualification": {
+    "workflow_head": "f1d7285750a8d9593e2feea1da70f49fc45d8153",
+    "run_id": 33670888377,
+    "job_id": 100383924982,
+    "production_surface_verification": "success",
+    "contract_b_authority_verification": "success",
+    "candidate_and_parent_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success",
+    "candidate_execution": "not_performed"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8J_CANDIDATE",
   "notes": [
     "RC8J was frozen before this cohort existed.",
     "The fresh cohort uses new source, bundle, passage, claim, and atom identities.",
     "The cross-claim transplant preserves source/bundle/passage/span/atom and all semantic authority material while changing authority claim identity; reader/instrument bank changes remain explicitly non-authoritative noise.",
     "The structural test imports only the fresh cohort and does not import or execute RC8J.",
+    "The accepted pre-reveal run is the exact-head push run and performed no held-out candidate execution.",
     "Any candidate, predecessor, cohort, evaluator, expected-label, or Contract-B authority-byte change after this freeze invalidates prospective independence.",
     "No production or contract surface is authorized."
   ]
