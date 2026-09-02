@@ -15,11 +15,21 @@
   },
   "case_count": 10,
   "hard_criterion": "unsafe_warranted_atoms == 0",
-  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8D",
+  "pre_reveal_qualification": {
+    "workflow_commit": "ca2fb672fe39d592d0d058cc11c3b81bb0f04802",
+    "run_id": 33659920378,
+    "job_id": 100347660622,
+    "production_surface_verification": "success",
+    "parent_candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8D",
   "notes": [
     "The parent RC8D candidate and dependency are frozen and will not be modified for this falsifier.",
     "The RC8E structural test imports only the cohort and does not import or execute RC8D.",
     "The primary transplantation case keeps admitted source, source span, semantic values, operator domain, governed span, and field warrant values identical while changing only target atom identity versus authority bundle atom identity.",
+    "The pre-reveal workflow verified all frozen identities and candidate-blind structure before any RC8E execution.",
     "No production or contract surface is authorized by this experiment."
   ]
 }
