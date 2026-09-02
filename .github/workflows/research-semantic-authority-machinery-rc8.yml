@@ -48,3 +48,45 @@ jobs:
           path: QUALIFICATION.json
           if-no-files-found: warn
           retention-days: 90
+
+  heldout-science:
+    needs: qualification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify frozen candidate and held-out apparatus
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6  research/semantic_authority_machinery_rc8/authority_contract.py' | sha256sum --check --strict
+          echo 'bd6a69205026a13e4f4b06d83d790a4d3a14320e4598b49cd7d312e275d951cb  research/semantic_authority_machinery_rc8/heldout_cohort.py' | sha256sum --check --strict
+          echo '4918f18aab69b9ffea3b38baaeec59717dccabfed9369c14a69a9547eec5e125  research/semantic_authority_machinery_rc8/heldout_evaluate.py' | sha256sum --check --strict
+          git diff --exit-code 61d605902cd79ddfd9f6da4e3f1e93173a8d4257 -- research/semantic_authority_machinery_rc8/authority_contract.py
+      - name: Execute prospective held-out authority falsifier
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.semantic_authority_machinery_rc8.heldout_evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8-authority-heldout-${{ github.run_id }}
+          path: HELDOUT_RESULTS.json
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Enforce hard safety criterion
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r = json.load(open('HELDOUT_RESULTS.json'))
+          assert r['unsafe_warranted_atoms'] == 0, r['unsafe_rows']
+          assert r['status_exact_count'] == r['case_count'], (r['status_exact_count'], r['case_count'])
+          assert r['authority_monotonicity_violations'] == 0, r['authority_monotonicity_violations']
+          PY
