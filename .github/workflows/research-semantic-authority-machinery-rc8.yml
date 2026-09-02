@@ -64,9 +64,11 @@ jobs:
         run: |
           set -euo pipefail
           echo '69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6  research/semantic_authority_machinery_rc8/authority_contract.py' | sha256sum --check --strict
-          echo 'bd6a69205026a13e4f4b06d83d790a4d3a14320e4598b49cd7d312e275d951cb  research/semantic_authority_machinery_rc8/heldout_cohort.py' | sha256sum --check --strict
-          echo '4918f18aab69b9ffea3b38baaeec59717dccabfed9369c14a69a9547eec5e125  research/semantic_authority_machinery_rc8/heldout_evaluate.py' | sha256sum --check --strict
+          test "$(git hash-object research/semantic_authority_machinery_rc8/heldout_cohort.py)" = '23586b65b7d439f5279da3d540eb0c2641d3510c'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/heldout_evaluate.py)" = '2e97e3b8c26fc61b80044b8eb4916b985c4455e4'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/test_heldout_apparatus.py)" = 'e95406dd2e384ba0743c4617067a3b6b0e1eca13'
           git diff --exit-code 61d605902cd79ddfd9f6da4e3f1e93173a8d4257 -- research/semantic_authority_machinery_rc8/authority_contract.py
+          git diff --exit-code c2f15b58f8ed7a7efa90d3e859e3e6cb794bfa8e -- research/semantic_authority_machinery_rc8/heldout_cohort.py research/semantic_authority_machinery_rc8/heldout_evaluate.py research/semantic_authority_machinery_rc8/test_heldout_apparatus.py
       - name: Execute prospective held-out authority falsifier
         shell: bash
         run: |
