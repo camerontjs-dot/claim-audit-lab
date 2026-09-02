@@ -1,0 +1,31 @@
+{
+  "experiment": "RC8F prospective source-and-whole-atom anchored authority heldout",
+  "candidate_freeze": {
+    "declaration_commit": "3097f9d5b8a45a3fa06ffeb84e725a8b329413c4",
+    "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract_rc8f.py",
+    "candidate_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "frozen_rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "frozen_rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "apparatus_freeze_head": "9e1f01d56a04f48232f039083a167e0cebded546",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8f_heldout_cohort.py": "2f9ea59ccae3ccfd3aa89d0c3c708a2d954778b6",
+    "research/semantic_authority_machinery_rc8/rc8f_heldout_evaluate.py": "466398e3c316feb43ff62fe03b74bb5b09e2a8d2",
+    "research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py": "9cad03570b6bdcedba1ccfe9df591cad8a06b117"
+  },
+  "case_count": 20,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "source_atom_binding_not_unsafe == source_atom_binding_case_count",
+    "all bank_invariance values are true"
+  ],
+  "pre_reveal_state": "FROZEN_NOT_EXECUTED_AGAINST_RC8F_CANDIDATE",
+  "notes": [
+    "RC8F and all frozen predecessor candidates were frozen before this prospective cohort existed.",
+    "The structural apparatus test imports only the prospective cohort and does not import or execute RC8F.",
+    "Any candidate, predecessor, cohort, evaluator, or expected-label change after this freeze invalidates prospective independence for this cohort.",
+    "No production or contract surface is authorized by this freeze."
+  ]
+}
