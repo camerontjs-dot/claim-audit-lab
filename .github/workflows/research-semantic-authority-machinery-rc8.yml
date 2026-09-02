@@ -13,7 +13,7 @@ permissions:
   contents: read
 
 jobs:
-  rc8j-qualification:
+  rc8j-pre-reveal:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -29,6 +29,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install structural-test dependency
+        run: python -m pip install 'pytest>=8,<10'
       - name: Verify production semantic surface unchanged
         shell: bash
         run: |
@@ -41,7 +43,7 @@ jobs:
           test "$(git -C _authority/apparatus-contracts rev-parse HEAD)" = 'c314e53bd91c0736aa4370a364673b069aceb43e'
           test "$(git -C _authority/apparatus-contracts hash-object handoff-contract-v1.0.0.md)" = '3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26'
           test "$(git -C _authority/apparatus-contracts hash-object contract-b-factual-context-extension-v1.2.0.md)" = '77645a6adac664892866f3fdf8abf66cd1d0dd10'
-      - name: Verify frozen predecessors and RC8J qualification bytes
+      - name: Verify frozen RC8J candidate, parents, and heldout apparatus identities
         shell: bash
         run: |
           set -euo pipefail
@@ -50,16 +52,13 @@ jobs:
           test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8f.py)" = 'efc50481be3179332cecb449c3c9c91da7c3dfaa'
           test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8d.py)" = 'f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1'
           test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8b.py)" = 'edf84bb5aae0dd217e3f780e7a49767440b7c1e5'
-          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8j_qualification.py)" = '7a5e33c291e1e0613600d0e2bf39b781b27e021a'
-      - name: Execute exposed RC8J qualification
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8j_heldout_cohort.py)" = 'bf1ec5bd1086163460a38e4ccf0ac044fe34c148'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8j_heldout_evaluate.py)" = '1ff6db92d5df1e01540cea79207015cc4f97893a'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8j_heldout_apparatus.py)" = '1a2764ace6674abe02f5ebcba66aea257f5950f2'
+          git diff --exit-code 8e75c6782bb95c3763d06230b9c5df2b6af44054 -- research/semantic_authority_machinery_rc8/authority_contract_rc8j.py research/semantic_authority_machinery_rc8/authority_contract_rc8h.py research/semantic_authority_machinery_rc8/authority_contract_rc8f.py research/semantic_authority_machinery_rc8/authority_contract_rc8d.py research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
+          git diff --exit-code b135f10e7112aa7fcf73ae9ad1a92e09ee1d574c -- research/semantic_authority_machinery_rc8/rc8j_heldout_cohort.py research/semantic_authority_machinery_rc8/rc8j_heldout_evaluate.py research/semantic_authority_machinery_rc8/test_rc8j_heldout_apparatus.py
+      - name: Run candidate-blind RC8J apparatus checks
         shell: bash
         run: |
           set -euo pipefail
-          python -m research.semantic_authority_machinery_rc8.rc8j_qualification
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: rc8j-exposed-qualification-${{ github.run_id }}
-          path: RC8J_QUALIFICATION.json
-          if-no-files-found: error
-          retention-days: 90
+          python -m pytest -q research/semantic_authority_machinery_rc8/test_rc8j_heldout_apparatus.py
