@@ -40,14 +40,37 @@
     "candidate_blind_structural_tests": "success",
     "candidate_execution": "not_performed"
   },
-  "pre_reveal_state": "FROZEN_AND_QUALIFIED_NOT_EXECUTED_AGAINST_RC8J_CANDIDATE",
+  "prospective_result": {
+    "workflow_head": "a8832039543918e6e21f17cc82a8f7efb958dd38",
+    "run_id": 33670993492,
+    "job_id": 100384271951,
+    "artifact_id": 9862475745,
+    "artifact_digest": "sha256:0f377934b1e4adb8e813fd6d5a7c7d2e679cf37ca882d21979ca5889b98141d0",
+    "case_count": 28,
+    "status_exact_count": 28,
+    "reason_exact_count": 28,
+    "unsafe_warranted_atoms": 0,
+    "claim_binding_case_count": 5,
+    "claim_binding_not_unsafe": 5,
+    "bank_invariance": {
+      "warranted": true,
+      "unresolved": true
+    },
+    "expected_state_counts": {
+      "WARRANTED": 3,
+      "REJECTED": 12,
+      "UNRESOLVED": 12,
+      "NO_ASSESSMENT": 1
+    }
+  },
+  "terminal_state": "SUPPORTED_WITH_BOUNDS",
+  "scientific_state": "CLAIM_BOUND_CONTRACT_B_AUTHORITY_GATE_SUPPORTED_WITHIN_PROSPECTIVE_ENVELOPE",
   "notes": [
     "RC8J was frozen before this cohort existed.",
-    "The fresh cohort uses new source, bundle, passage, claim, and atom identities.",
-    "The cross-claim transplant preserves source/bundle/passage/span/atom and all semantic authority material while changing authority claim identity; reader/instrument bank changes remain explicitly non-authoritative noise.",
-    "The structural test imports only the fresh cohort and does not import or execute RC8J.",
-    "The accepted pre-reveal run is the exact-head push run and performed no held-out candidate execution.",
-    "Any candidate, predecessor, cohort, evaluator, expected-label, or Contract-B authority-byte change after this freeze invalidates prospective independence.",
-    "No production or contract surface is authorized."
+    "The accepted pre-reveal run performed no held-out candidate execution.",
+    "The fresh prospective run reverified Contract B authority bytes and all frozen CAL candidate/apparatus blobs before reveal.",
+    "The source > bundle > passage > claim > atom precedence chain, passage containment, field failures, composition/aperture, semantic unresolved controls, cross-claim transplant, and bank invariance all matched preregistered behavior.",
+    "This supports only the tested typed authority and Contract-B coordinate-consistency envelope. It does not establish canonical atom-ID generation, honest opaque-ID generation, source-text interpretation correctness, proposition truth, independent recoverability, Contract C projection, or production readiness.",
+    "No production CAL, Contract B, Contract C, release, merge, or promotion is authorized."
   ]
 }
