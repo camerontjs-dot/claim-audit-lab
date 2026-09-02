@@ -65,8 +65,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          cat > /tmp/rc8_reference_adapter.py <<'PY'
+          from research.semantic_authority_machinery_rc8.authority_contract_rc8j import assess_authority
+          PY
           python -m research.semantic_authority_machinery_rc8.independent_reproduction_compare \
-            --implementation research/semantic_authority_machinery_rc8/authority_contract_rc8j.py \
+            --implementation /tmp/rc8_reference_adapter.py \
             --output COMPARATOR_SELF_CHECK.json
       - name: Enforce terminal regression invariants
         shell: bash
