@@ -156,3 +156,51 @@ jobs:
         run: |
           set -euo pipefail
           python -m pytest -q research/semantic_authority_machinery_rc8/test_rc8b_heldout_apparatus.py
+
+  rc8b-prospective-science:
+    needs: rc8b-pre-reveal
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Reverify frozen RC8B candidate and held-out apparatus
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8b.py)" = 'edf84bb5aae0dd217e3f780e7a49767440b7c1e5'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8b_heldout_cohort.py)" = '56b17ce24395de0b4c681bc58b4d4ab1e8e3f1f7'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8b_heldout_evaluate.py)" = 'e08834ce48d0f18892c54bc3bcdb514b8e997daa'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/test_rc8b_heldout_apparatus.py)" = '792551aa936c0ca16db2ffcfb80c1b15c4dd67d7'
+          git diff --exit-code e52f70b77ed0395e33afa9b193cae47475abf892 -- research/semantic_authority_machinery_rc8/authority_contract_rc8b.py
+          git diff --exit-code 4a4046c921f70156e270cc9c036cfb49ffe23b8f -- research/semantic_authority_machinery_rc8/rc8b_heldout_cohort.py research/semantic_authority_machinery_rc8/rc8b_heldout_evaluate.py research/semantic_authority_machinery_rc8/test_rc8b_heldout_apparatus.py
+      - name: Execute frozen RC8B prospective held-out
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.semantic_authority_machinery_rc8.rc8b_heldout_evaluate
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8b-prospective-heldout-${{ github.run_id }}
+          path: RC8B_HELDOUT_RESULTS.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce RC8B prospective hard criteria
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          r = json.load(open('RC8B_HELDOUT_RESULTS.json'))
+          assert r['unsafe_warranted_atoms'] == 0, r['unsafe_rows']
+          assert r['status_exact_count'] == r['case_count'], (r['status_exact_count'], r['case_count'])
+          assert r['reason_exact_count'] == r['case_count'], (r['reason_exact_count'], r['case_count'])
+          assert r['explicit_mismatch_exact_rejections'] == r['explicit_mismatch_case_count']
+          assert r['missing_binding_not_warranted'] == r['missing_binding_case_count']
+          assert r['support_span_not_unsafe'] == r['support_span_case_count']
+          assert all(r['bank_invariance'].values()), r['bank_invariance']
+          PY
