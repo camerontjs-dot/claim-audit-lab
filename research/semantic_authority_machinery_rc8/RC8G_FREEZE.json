@@ -1,0 +1,62 @@
+{
+  "experiment": "RC8G Contract-B evidence segment binding falsifier",
+  "preregistration_commit": "aafa3fe6daff055c8f53d1ea183f493b33112818",
+  "contract_b_authority": {
+    "repository": "camerontjs-dot/apparatus-contracts",
+    "commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "handoff_spec_blob": "3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26",
+    "factual_context_extension_blob": "77645a6adac664892866f3fdf8abf66cd1d0dd10"
+  },
+  "parent_candidate": {
+    "name": "RC8F",
+    "candidate_freeze": "3097f9d5b8a45a3fa06ffeb84e725a8b329413c4",
+    "candidate_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "frozen_rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "frozen_rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "apparatus_freeze_head": "faeca1130146129df7a9a31804dfa094850b06d7",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8g_cohort.py": "b90cc718e2359249b9c54d7e4dad3a8e8bd07889",
+    "research/semantic_authority_machinery_rc8/rc8g_evaluate.py": "6b5b19a6e2c0295bcaa421e8f6e6d3eadb392dda",
+    "research/semantic_authority_machinery_rc8/test_rc8g_apparatus.py": "741d7c09ca5ff282b34674fa77edc14aac8d5939"
+  },
+  "case_count": 17,
+  "hard_criterion": "unsafe_warranted_atoms == 0",
+  "pre_reveal_qualification": {
+    "workflow_commit": "edad08ce49ca71e4356c7ae7245e256890665f34",
+    "run_id": 33661436137,
+    "job_id": 100352658124,
+    "production_surface_verification": "success",
+    "contract_b_authority_checkout_and_blob_verification": "success",
+    "parent_candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "reveal_result": {
+    "workflow_commit": "8215fb3405baa35af6a269a3c604006c0b15e952",
+    "run_id": 33661676676,
+    "job_id": 100353445570,
+    "contract_b_authority_reverification": "success",
+    "parent_and_apparatus_reverification": "success",
+    "evaluator_execution": "success",
+    "artifact_id": 9858915634,
+    "artifact_digest": "sha256:71f75e4ccf526448aec5ea933495fb64e44a32460d8b23fe51a33c0335917a6b",
+    "hard_criterion": "failure",
+    "case_count": 17,
+    "status_exact_count": 9,
+    "reason_exact_count": 8,
+    "unsafe_warranted_atoms": 8,
+    "segment_binding_not_unsafe": 1,
+    "segment_binding_case_count": 9,
+    "scientific_state": "RC8F_CONTRACT_B_SEGMENT_BINDING_FALSIFIED_OR_REGRESSED"
+  },
+  "terminal_state": "FALSIFIED",
+  "notes": [
+    "The parent RC8F/RC8D/RC8B candidates remained unchanged throughout RC8G.",
+    "The exact frozen Contract B authority was reverified before reveal execution.",
+    "Eight bundle/passage/span mutations were unsafely warranted.",
+    "The combined source mismatch still dominated passage mismatch; passage mismatch did not dominate atom mismatch because the missing segment layer was absent.",
+    "Contract B passage and bundle hashes remain upstream integrity authority; RC8G does not justify duplicate hash authority.",
+    "No production or contract surface is authorized by this experiment."
+  ]
+}

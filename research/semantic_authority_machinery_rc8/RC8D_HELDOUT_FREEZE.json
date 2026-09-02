@@ -1,0 +1,53 @@
+{
+  "experiment": "RC8D prospective admitted-evidence anchored authority held-out",
+  "candidate_freeze": {
+    "declaration_commit": "eab2a34f8249d06613e6bd9ca396d2c16e421c02",
+    "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract_rc8d.py",
+    "candidate_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "dependency_rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "apparatus_freeze_head": "4829ba73e9cc870a3093629a613860c95257259f",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8d_heldout_cohort.py": "60cce033481fb37de9cc79f6e7a07fc912f4b04d",
+    "research/semantic_authority_machinery_rc8/rc8d_heldout_evaluate.py": "925b2b91edf0edc8961344a72c445aa696f9c545",
+    "research/semantic_authority_machinery_rc8/test_rc8d_heldout_apparatus.py": "aefdb936e0b264d049a528b52587c1187ee5689d"
+  },
+  "case_count": 15,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "source_anchor_not_unsafe == source_anchor_case_count",
+    "subordinate_binding_not_unsafe == subordinate_binding_case_count",
+    "all bank_invariance values are true"
+  ],
+  "pre_reveal_qualification": {
+    "workflow_commit": "4597627ac70aeaf757cdbb3f83ad90e0a3d5d393",
+    "run_id": 33659515300,
+    "job_id": 100346314941,
+    "production_surface_verification": "success",
+    "candidate_and_dependency_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "prospective_result": {
+    "workflow_commit": "c7b1d5eb68f14da39cf8b2fba56e0621e01fc486",
+    "run_id": 33659589125,
+    "job_id": 100346564947,
+    "artifact_id": 9858115501,
+    "artifact_digest": "sha256:b09536e5c1fdf526c94d9a6a34030051adb7be479171956d8e33f6ddab94fe55",
+    "case_count": 15,
+    "status_exact_count": 15,
+    "reason_exact_count": 15,
+    "unsafe_warranted_atoms": 0,
+    "scientific_state": "ADMITTED_EVIDENCE_ANCHORED_GATE_SUPPORTED_WITHIN_PROSPECTIVE_ENVELOPE"
+  },
+  "terminal_state": "PROSPECTIVE_ENVELOPE_SUPPORTED_WITH_BOUNDS",
+  "notes": [
+    "The RC8D candidate and its RC8B dependency were frozen before the prospective cohort existed.",
+    "The structural apparatus test imported only the prospective cohort and did not import or execute either candidate.",
+    "The reveal workflow reverified all frozen identities before executing RC8D on the cohort.",
+    "This result does not establish whole-atom identity binding within the same source, receipt authenticity, natural-language recovery, production readiness, or contract projection.",
+    "No production or contract surface is authorized by this result."
+  ]
+}

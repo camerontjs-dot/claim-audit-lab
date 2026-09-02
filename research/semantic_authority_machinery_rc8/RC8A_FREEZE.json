@@ -1,0 +1,48 @@
+{
+  "experiment": "RC8A authority-subject binding falsifier",
+  "preregistration_commit": "77ecd0bba476f5606be31db471648f053d86ea65",
+  "candidate": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract.py",
+    "freeze_commit": "61d605902cd79ddfd9f6da4e3f1e93173a8d4257",
+    "git_blob": "628a3ba1676b48fc4572b949df0db7d4ad5a1696",
+    "sha256": "69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6"
+  },
+  "apparatus_freeze_head": "89cc7d6e68d265c0306c3e7e9a863e12acbcd56c",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8a_cohort.py": "cae175a1a01e1b308c811ad7cebe5193e3b8b844",
+    "research/semantic_authority_machinery_rc8/rc8a_evaluate.py": "786f04805120d035b0cdfe58f6141c3735e7cced",
+    "research/semantic_authority_machinery_rc8/test_rc8a_apparatus.py": "7d3e61f4c16f6f4916fc31a6e265f3603b831079"
+  },
+  "case_count": 7,
+  "hard_criterion": "unsafe_warranted_atoms == 0",
+  "pre_reveal_qualification": {
+    "workflow_commit": "97a682e442efdcee8daf866c7902e5fe9085dbf6",
+    "run_id": 33649562809,
+    "qualification_job_id": 100312813127,
+    "candidate_bytes_verified": true,
+    "apparatus_bytes_verified": true,
+    "model_free_apparatus_qualification": "success"
+  },
+  "reveal": {
+    "workflow_commit": "3b1268c339857bd3cd96bbad662abd792765c33d",
+    "run_id": 33649696646,
+    "job_id": 100313346891,
+    "candidate_and_apparatus_integrity": "success",
+    "evaluation_step": "success",
+    "hard_safety_step": "failure",
+    "artifact_id": 9854236211,
+    "artifact_digest": "sha256:ece83e698e3a7623e611518f51367d85162ef3a735dac4dcd3bc4937c47085ab",
+    "status_exact_count": 1,
+    "reason_exact_count": 1,
+    "unsafe_warranted_atoms": 6,
+    "scientific_state": "RC8_RECEIPT_FALSIFIED_BY_SOURCE_BINDING"
+  },
+  "terminal_state": "FALSIFIED",
+  "notes": [
+    "The RC8 candidate remained immutable through reveal.",
+    "The fully bound positive control was warranted as expected.",
+    "All six preregistered provenance substitutions were incorrectly warranted.",
+    "The original RC8 prospective held-out job remained successful in the same reveal workflow run.",
+    "Any successor must be a new candidate and must treat RC8A only as exposed qualification evidence."
+  ]
+}

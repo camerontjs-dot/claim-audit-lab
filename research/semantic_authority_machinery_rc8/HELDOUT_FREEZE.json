@@ -1,0 +1,29 @@
+{
+  "pre_reveal_head": "c2f15b58f8ed7a7efa90d3e859e3e6cb794bfa8e",
+  "candidate_commit": "61d605902cd79ddfd9f6da4e3f1e93173a8d4257",
+  "candidate_sha256": "69dd93ec6f42ac99bfcb824353cdd4e8159263b5a9409d66ab681ef07fe47ff6",
+  "heldout_cohort_path": "research/semantic_authority_machinery_rc8/heldout_cohort.py",
+  "heldout_cohort_git_blob_sha": "23586b65b7d439f5279da3d540eb0c2641d3510c",
+  "heldout_evaluator_git_blob_sha": "2e97e3b8c26fc61b80044b8eb4916b985c4455e4",
+  "heldout_structure_test_git_blob_sha": "e95406dd2e384ba0743c4617067a3b6b0e1eca13",
+  "heldout_case_count": 68,
+  "semantic_families": [
+    "population_membership",
+    "comparison",
+    "event_ordering",
+    "permission_composition"
+  ],
+  "pre_reveal_qualification_run": 33636426045,
+  "failed_first_reveal_run": 33636552034,
+  "failed_first_reveal_stage": "integrity_verification_before_candidate_execution",
+  "candidate_executed_on_heldout_in_failed_reveal": false,
+  "integrity_repair": "Replace three manually recorded unverified SHA-256 values for held-out apparatus files with Git blob identities read directly from the frozen pre-reveal commit. No candidate, cohort, evaluator, expected label, or structural test bytes changed.",
+  "superseded_unverified_sha256_values": {
+    "heldout_cohort_sha256": "bd6a69205026a13e4f4b06d83d790a4d3a14320e4598b49cd7d312e275d951cb",
+    "heldout_evaluator_sha256": "4918f18aab69b9ffea3b38baaeec59717dccabfed9369c14a69a9547eec5e125",
+    "heldout_structure_test_sha256": "e927c73bb2c272f54c80ba5eee13839d01dc7dba6ca97aa09983738fbfa8fa28"
+  },
+  "candidate_executed_on_heldout_before_freeze": false,
+  "candidate_repair_after_reveal_allowed": false,
+  "independence_claim": false
+}

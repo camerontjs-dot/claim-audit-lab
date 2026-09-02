@@ -1,0 +1,29 @@
+{
+  "experiment": "Frozen Authority Gate Specification v1 fresh independent reproduction",
+  "reveal_package_commit": "475147da9c1789886951623a14b5b7cb39fb9dbd",
+  "pre_freeze_specification": {
+    "path": "research/semantic_authority_machinery_rc8/FROZEN_AUTHORITY_GATE_SPEC.md",
+    "git_blob": "0f0981744646ab22a62d46a4e6535be0e7cdf773"
+  },
+  "post_freeze_packet": {
+    "path": "research/semantic_authority_machinery_rc8/INDEPENDENT_REPRODUCTION_POST_FREEZE_REVEAL.md",
+    "git_blob": "bcac462f97f995a1e3458e7c2888e58d5e0f49b0"
+  },
+  "comparator": {
+    "path": "research/semantic_authority_machinery_rc8/independent_reproduction_compare.py",
+    "git_blob": "0a3ca098c3aa41ee9a8962969b927ad8e8219890",
+    "comparison_case_count": 296
+  },
+  "reference": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract_rc8j.py",
+    "git_blob": "f55156e43e0c1b4a7868bc8339585b8892edda38"
+  },
+  "primary_frozen_case_sources": {
+    "rc8j_qualification_blob": "7a5e33c291e1e0613600d0e2bf39b781b27e021a",
+    "rc8j_heldout_cohort_blob": "bf1ec5bd1086163460a38e4ccf0ac044fe34c148",
+    "rc8j_heldout_evaluator_blob": "1ff6db92d5df1e01540cea79207015cc4f97893a"
+  },
+  "reveal_rule": "Do not disclose or consume this package before the independent implementation and self-authored prereveal tests are externally verified as frozen.",
+  "immutability_rule": "Run the comparator against the original frozen independent implementation. Post-reveal repairs require a separately preserved follow-up and do not replace the independent result.",
+  "non_authorization": "The reproduction evaluates recoverability only and does not authorize production, contract, merge, release, or promotion changes."
+}

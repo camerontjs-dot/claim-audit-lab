@@ -1,0 +1,75 @@
+{
+  "experiment": "RC8H prospective Contract-B segment-bound authority heldout",
+  "candidate_freeze": {
+    "declaration_commit": "1d1fec29ad5e08e28d3b9751534b85121221b17c",
+    "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract_rc8h.py",
+    "candidate_git_blob": "4b872e455d52d7a682bb719889860d2cac7909a7",
+    "rc8f_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "contract_b_authority": {
+    "repository": "camerontjs-dot/apparatus-contracts",
+    "commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "handoff_spec_blob": "3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26",
+    "factual_context_extension_blob": "77645a6adac664892866f3fdf8abf66cd1d0dd10"
+  },
+  "apparatus_freeze_head": "a39e2fc1c91821e42c842e367bd532d190e32ce2",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8h_heldout_cohort.py": "29711c381dbf5170b0157c0cd00aa121182af58e",
+    "research/semantic_authority_machinery_rc8/rc8h_heldout_evaluate.py": "c7441b080f5e395eacbd8ecfbb1d79969f045843",
+    "research/semantic_authority_machinery_rc8/test_rc8h_heldout_apparatus.py": "1dca40b48120ec422e858dda274b52a8ccb69105"
+  },
+  "case_count": 26,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "binding_not_unsafe == binding_case_count",
+    "all bank_invariance values are true"
+  ],
+  "pre_reveal_qualification": {
+    "workflow_head": "eed1ecfe1a4acc67d0cd23598abcc1b8e2bd7d85",
+    "run_id": 33669658081,
+    "job_id": 100379823463,
+    "production_surface_verification": "success",
+    "contract_b_authority_verification": "success",
+    "candidate_and_parent_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success",
+    "candidate_execution": "not_performed"
+  },
+  "prospective_result": {
+    "workflow_head": "bd04c0b261a383acac2832dcf9fc07ed9168f0f1",
+    "run_id": 33669801805,
+    "job_id": 100380304314,
+    "artifact_id": 9862018646,
+    "artifact_digest": "sha256:26dc1521b651e773b5be8684f4e22538cf63db98edc077ef231ba4a76077c43f",
+    "case_count": 26,
+    "status_exact_count": 26,
+    "reason_exact_count": 26,
+    "unsafe_warranted_atoms": 0,
+    "binding_case_count": 13,
+    "binding_not_unsafe": 13,
+    "bank_invariance": {
+      "warranted": true,
+      "unresolved": true
+    },
+    "expected_state_counts": {
+      "WARRANTED": 5,
+      "REJECTED": 10,
+      "UNRESOLVED": 10,
+      "NO_ASSESSMENT": 1
+    }
+  },
+  "terminal_state": "SUPPORTED_WITH_BOUNDS",
+  "scientific_state": "CONTRACT_B_SEGMENT_BOUND_SOURCE_ATOM_GATE_SUPPORTED_WITHIN_PROSPECTIVE_ENVELOPE",
+  "notes": [
+    "RC8H was frozen before this cohort existed.",
+    "The accepted pre-reveal run performed no held-out candidate execution.",
+    "The fresh prospective run reverified Contract B authority bytes and all frozen CAL candidate/apparatus blobs before reveal.",
+    "Exact admitted-passage boundaries, left/right passage crossings, malformed admitted spans, parent-delegated field failures, precedence controls, composition/aperture, and bank invariance all matched the preregistered behavior.",
+    "This result establishes only the tested Contract-B coordinate and receipt-consistency envelope. It does not establish claim-identity binding, canonical atom-ID generation, source-text interpretation, independent recoverability, production readiness, or Contract C projection.",
+    "No production or contract surface is authorized."
+  ]
+}

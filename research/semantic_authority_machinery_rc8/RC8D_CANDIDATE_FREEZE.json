@@ -1,0 +1,30 @@
+{
+  "experiment": "RC8D admitted-evidence anchored authority receipt",
+  "preregistration_commit": "e5e77206eafa525ce220f95e5e3d20a364b65298",
+  "candidate": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract_rc8d.py",
+    "introduced_commit": "09b92ef0df264f2eb6a5e5cdbe8ab83ff39e370b",
+    "qualified_head": "34e35e12b5913e9184b4df7edad458769ed6d33f",
+    "git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "frozen_dependency_rc8b_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "exposed_qualification": {
+    "run_id": 33651910441,
+    "job_id": 100320765893,
+    "artifact_id": 9855105199,
+    "artifact_digest": "sha256:eeb9b52a465fa0749c993a9598b6fbcb32b01d1df96329e3cada8d2cdc885218",
+    "case_count": 165,
+    "status_exact_count": 165,
+    "reason_exact_count": 165,
+    "unsafe_warranted_atoms": 0,
+    "evidence_class": "EXPOSED_QUALIFICATION_ONLY"
+  },
+  "freeze_state": "FROZEN_BEFORE_PROSPECTIVE_RC8D_COHORT",
+  "freeze_rule": "Neither this candidate blob nor its frozen RC8B dependency may change after any prospective RC8D held-out is authored or revealed. Any such change creates a new successor.",
+  "notes": [
+    "No fresh RC8D prospective cohort existed when this freeze declaration was created.",
+    "RC8C is exposed qualification evidence only for RC8D.",
+    "The new candidate adds only an admitted-evidence source anchor before delegating to frozen RC8B.",
+    "This freeze does not authorize production or establish clean-room independence."
+  ]
+}

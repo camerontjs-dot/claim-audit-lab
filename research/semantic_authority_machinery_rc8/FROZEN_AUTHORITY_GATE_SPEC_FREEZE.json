@@ -1,0 +1,16 @@
+{
+  "specification": "Frozen Authority Gate Specification v1",
+  "path": "research/semantic_authority_machinery_rc8/FROZEN_AUTHORITY_GATE_SPEC.md",
+  "freeze_commit": "0a3d863580050751d8f87c5a73cfca82d4376901",
+  "git_blob": "0f0981744646ab22a62d46a4e6535be0e7cdf773",
+  "source_research_candidate": {
+    "name": "RC8J",
+    "candidate_blob": "f55156e43e0c1b4a7868bc8339585b8892edda38",
+    "prospective_run": 33670993492,
+    "prospective_artifact": 9862475745,
+    "prospective_artifact_digest": "sha256:0f377934b1e4adb8e813fd6d5a7c7d2e679cf37ca882d21979ca5889b98141d0"
+  },
+  "intended_use": "exclusive normative semantic input for a future fresh independent implementation before evaluator/reference reveal",
+  "immutability_rule": "Any semantic change to the specification requires a new specification version and invalidates comparison to an implementation frozen under this version.",
+  "non_authorization": "This freeze does not authorize production adoption, Contract changes, merge, release, or promotion."
+}

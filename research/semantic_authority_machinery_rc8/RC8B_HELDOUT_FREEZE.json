@@ -1,0 +1,55 @@
+{
+  "experiment": "RC8B prospective bound-receipt held-out",
+  "preregistration_commit": "330c48dd11c6b685229671eca1731d8aaab3c3d4",
+  "candidate_freeze_commit": "e52f70b77ed0395e33afa9b193cae47475abf892",
+  "candidate_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5",
+  "apparatus_freeze_head": "4a4046c921f70156e270cc9c036cfb49ffe23b8f",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8b_heldout_cohort.py": "56b17ce24395de0b4c681bc58b4d4ab1e8e3f1f7",
+    "research/semantic_authority_machinery_rc8/rc8b_heldout_evaluate.py": "e08834ce48d0f18892c54bc3bcdb514b8e997daa",
+    "research/semantic_authority_machinery_rc8/test_rc8b_heldout_apparatus.py": "792551aa936c0ca16db2ffcfb80c1b15c4dd67d7"
+  },
+  "case_count": 50,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "explicit_mismatch_exact_rejections == explicit_mismatch_case_count",
+    "missing_binding_not_warranted == missing_binding_case_count",
+    "support_span_not_unsafe == support_span_case_count",
+    "all bank_invariance values are true"
+  ],
+  "pre_reveal_qualification": {
+    "workflow_commit": "dba342d8a2f722fe7db732297e1306eb22591e68",
+    "run_id": 33650759366,
+    "job_id": 100316980681,
+    "candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "reveal": {
+    "workflow_commit": "67421ac98abf46f3149ed6cf04954fcabd45ef96",
+    "run_id": 33650949918,
+    "job_id": 100317656073,
+    "candidate_and_apparatus_integrity": "success",
+    "evaluation_step": "success",
+    "hard_safety_step": "success",
+    "artifact_id": 9854745739,
+    "artifact_digest": "sha256:9b6c9b24ed7eff15ac726b68d5f27000fed796015ae19bf22600291311fb6293",
+    "status_exact_count": 50,
+    "reason_exact_count": 50,
+    "unsafe_warranted_atoms": 0,
+    "explicit_mismatch_exact_rejections": "11/11",
+    "missing_binding_not_warranted": "7/7",
+    "bank_invariance": true,
+    "scientific_state": "BOUND_RECEIPT_GATE_SUPPORTED_WITHIN_PROSPECTIVE_ENVELOPE"
+  },
+  "terminal_state": "SUPPORTED_WITH_BOUNDS",
+  "notes": [
+    "The candidate was frozen before the prospective files existed.",
+    "The candidate and apparatus remained immutable through reveal.",
+    "The prospective hard criteria all passed.",
+    "This result establishes receipt-fragment subject consistency within the tested envelope, not that the opaque subject token is correctly anchored to raw_source_id.",
+    "No production or contract surface is authorized by this result."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "experiment": "RC8H Contract-B segment-bound source/atom authority successor",
+  "preregistration_blob": "9cc9e7c9dcc12162dc45893c2c52421ed4d860ef",
+  "candidate": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract_rc8h.py",
+    "git_blob": "4b872e455d52d7a682bb719889860d2cac7909a7"
+  },
+  "frozen_parent_stack": {
+    "rc8f_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "contract_b_authority": {
+    "repository": "camerontjs-dot/apparatus-contracts",
+    "commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "handoff_spec_blob": "3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26",
+    "factual_context_extension_blob": "77645a6adac664892866f3fdf8abf66cd1d0dd10"
+  },
+  "exposed_qualification": {
+    "workflow_head": "325f13d447137393bf91c107daaf25e45d363460",
+    "run_id": 33661990038,
+    "job_id": 100354478015,
+    "qualification_apparatus_blob": "c4cf75b2a6890799a9dbea09b364214891cfde5c",
+    "artifact_id": 9859037742,
+    "artifact_digest": "sha256:7eb6e4ab7e64e12bdf53c5a19d37a58ee42b8219a0c5c63e9562c80760492a78",
+    "case_count": 228,
+    "status_exact_count": 228,
+    "reason_exact_count": 228,
+    "unsafe_warranted_atoms": 0
+  },
+  "freeze_state": "FROZEN_BEFORE_FRESH_RC8H_HELDOUT",
+  "notes": [
+    "No fresh RC8H prospective cohort existed at this freeze declaration.",
+    "RC8H assumes Contract B intake has already validated bundle/passage integrity and binds only to those validated coordinates.",
+    "The candidate does not duplicate Contract B hashes and does not modify semantic interpretation, confidence, reader-count, or instrument-count authority.",
+    "Any candidate or frozen-parent change after this declaration invalidates prospective RC8H evidence.",
+    "No production CAL, Contract B, Contract C, release, merge, or promotion is authorized."
+  ]
+}

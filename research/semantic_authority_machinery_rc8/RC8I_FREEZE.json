@@ -1,0 +1,68 @@
+{
+  "experiment": "RC8I Contract-B claim identity binding falsifier",
+  "preregistration_commit": "52e6f170628ed953207cf9006df58867c2d602f3",
+  "parent_candidate": {
+    "name": "RC8H",
+    "candidate_freeze": "1d1fec29ad5e08e28d3b9751534b85121221b17c",
+    "candidate_git_blob": "4b872e455d52d7a682bb719889860d2cac7909a7",
+    "rc8f_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "contract_b_authority": {
+    "repository": "camerontjs-dot/apparatus-contracts",
+    "commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "handoff_spec_blob": "3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26",
+    "factual_context_extension_blob": "77645a6adac664892866f3fdf8abf66cd1d0dd10"
+  },
+  "apparatus_freeze_head": "5c66f7ed5b47ec5d40252fc4808a62bd54073ca2",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8i_claim_cohort.py": "d66b2642df223dbce6f250d7f567be35bfc43675",
+    "research/semantic_authority_machinery_rc8/rc8i_claim_evaluate.py": "9bd5884da54c542b86f2b8e84da46c8651843b2b",
+    "research/semantic_authority_machinery_rc8/test_rc8i_claim_apparatus.py": "3ec42f0ecd8b6831963cd2ce84a89a6ece3246ce"
+  },
+  "case_count": 14,
+  "hard_criterion": "unsafe_warranted_atoms == 0",
+  "pre_reveal_qualification": {
+    "workflow_head": "d3809f6edb05f1fc220a14721be0779cecd0e9e7",
+    "run_id": 33670140258,
+    "job_id": 100381420904,
+    "production_surface_verification": "success",
+    "contract_b_authority_verification": "success",
+    "parent_candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success",
+    "candidate_execution": "not_performed"
+  },
+  "reveal_result": {
+    "workflow_head": "8d6d9188a0c8f8b2927997246ca7b8e31e28b996",
+    "run_id": 33670225461,
+    "job_id": 100381701360,
+    "artifact_id": 9862180423,
+    "artifact_digest": "sha256:35bba3e564869d4ec4750c15e49e620cd09274e0fbfd8952c76f8816a1972fae",
+    "case_count": 14,
+    "status_exact_count": 10,
+    "reason_exact_count": 9,
+    "unsafe_warranted_atoms": 4,
+    "unsafe_case_ids": [
+      "I-RAW-CLAIM-MISSING",
+      "I-SUBJECT-CLAIM-MISSING",
+      "I-CLAIM-MISMATCH",
+      "I-WHOLE-RECEIPT-TRANSPLANT"
+    ],
+    "precedence_disagreement": {
+      "case_id": "I-CLAIM-ATOM-PREC",
+      "expected": "AUTHORITY_CLAIM_MISMATCH",
+      "observed": "AUTHORITY_ATOM_IDENTITY_MISMATCH"
+    }
+  },
+  "terminal_state": "FALSIFIED",
+  "scientific_state": "RC8H_FALSIFIED_BY_MISSING_CONTRACT_B_CLAIM_IDENTITY_BINDING",
+  "notes": [
+    "The whole-receipt transplant kept source, bundle, passage, admitted span, atom, proposal, assertion, operator, field warrants, composition, aperture, and semantic values unchanged while changing only claim identity.",
+    "Four claim-binding mutations reached WARRANTED and therefore falsified RC8H as a sufficient claim-specific authority gate.",
+    "The claim-plus-atom mutation rejected only at atom identity, showing the current parent lacks the preregistered claim-before-atom precedence.",
+    "This does not negate RC8H's narrower Contract-B source/bundle/passage/span/atom result.",
+    "No production or contract surface is authorized."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "experiment": "RC8J claim-bound Contract-B authority successor",
+  "preregistration_commit": "407d0b8ca51fa4cac5e2cc371ce08ac4b25bd535",
+  "candidate": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract_rc8j.py",
+    "git_blob": "f55156e43e0c1b4a7868bc8339585b8892edda38"
+  },
+  "frozen_parent_stack": {
+    "rc8h_git_blob": "4b872e455d52d7a682bb719889860d2cac7909a7",
+    "rc8f_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "contract_b_authority": {
+    "repository": "camerontjs-dot/apparatus-contracts",
+    "commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "handoff_spec_blob": "3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26",
+    "factual_context_extension_blob": "77645a6adac664892866f3fdf8abf66cd1d0dd10"
+  },
+  "exposed_qualification": {
+    "workflow_head": "8aa332944c2400b843f07a54ada57dbba21fc867",
+    "run_id": 33670472654,
+    "job_id": 100382540151,
+    "qualification_apparatus_blob": "7a5e33c291e1e0613600d0e2bf39b781b27e021a",
+    "artifact_id": 9862279058,
+    "artifact_digest": "sha256:bc38b62b93734ab7dbd183228cb82240f5f58f5044d2c174149ad248eafeaa4d",
+    "case_count": 268,
+    "status_exact_count": 268,
+    "reason_exact_count": 268,
+    "unsafe_warranted_atoms": 0
+  },
+  "freeze_state": "FROZEN_BEFORE_FRESH_RC8J_HELDOUT",
+  "notes": [
+    "No fresh RC8J prospective cohort existed at this freeze declaration.",
+    "RC8J adds only Contract B claim-identity binding after validated source/bundle/passage/span checks and before whole-atom identity.",
+    "The candidate does not add hashes, confidence thresholds, reader voting, instrument voting, or new semantic inference.",
+    "Any candidate or frozen-parent change after this declaration invalidates prospective RC8J evidence.",
+    "No production CAL, Contract B, Contract C, release, merge, or promotion is authorized."
+  ]
+}

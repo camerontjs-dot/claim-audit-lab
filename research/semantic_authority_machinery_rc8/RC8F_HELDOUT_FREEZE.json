@@ -1,0 +1,70 @@
+{
+  "experiment": "RC8F prospective source-and-whole-atom anchored authority heldout",
+  "candidate_freeze": {
+    "declaration_commit": "3097f9d5b8a45a3fa06ffeb84e725a8b329413c4",
+    "candidate_path": "research/semantic_authority_machinery_rc8/authority_contract_rc8f.py",
+    "candidate_git_blob": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+    "frozen_rc8d_git_blob": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+    "frozen_rc8b_git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "apparatus_freeze_head": "1f8464df3f356d2a3716f546e218474b60e5a0f6",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8f_heldout_cohort.py": "2f9ea59ccae3ccfd3aa89d0c3c708a2d954778b6",
+    "research/semantic_authority_machinery_rc8/rc8f_heldout_evaluate.py": "466398e3c316feb43ff62fe03b74bb5b09e2a8d2",
+    "research/semantic_authority_machinery_rc8/test_rc8f_heldout_apparatus.py": "8b414c427ccc6786cbdad4a08797f052df4c936f"
+  },
+  "case_count": 21,
+  "hard_criteria": [
+    "unsafe_warranted_atoms == 0",
+    "status_exact_count == case_count",
+    "reason_exact_count == case_count",
+    "source_atom_binding_not_unsafe == source_atom_binding_case_count",
+    "all bank_invariance values are true"
+  ],
+  "superseded_pre_reveal_attempt": {
+    "workflow_commit": "245c8b04cfc460449ae562be10f3e11f4b74b4e5",
+    "run_id": 33660585742,
+    "job_id": 100349865177,
+    "candidate_and_blob_integrity": "success",
+    "candidate_execution": "not_performed",
+    "failure": "candidate-blind structural test asserted case_count 20 while frozen cohort contains 21 cases",
+    "superseded_test_blob": "9cad03570b6bdcedba1ccfe9df591cad8a06b117",
+    "semantic_cohort_changed": false,
+    "evaluator_changed": false,
+    "expected_labels_changed": false,
+    "candidate_changed": false
+  },
+  "pre_reveal_qualification": {
+    "workflow_commit": "1a741a6c93a844cc46ded252897ba42f51af505b",
+    "run_id": 33660759984,
+    "job_id": 100350433412,
+    "production_surface_verification": "success",
+    "candidate_and_predecessor_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "prospective_result": {
+    "workflow_commit": "6be59f5315d5dbaa845d0946d1d9e2d51dbfd924",
+    "run_id": 33660865221,
+    "job_id": 100350778677,
+    "artifact_id": 9858610711,
+    "artifact_digest": "sha256:e2610637dec8ef2e95d84bd1850d7a3c03fb41b47dfc520b41c1289b920349d2",
+    "case_count": 21,
+    "status_exact_count": 21,
+    "reason_exact_count": 21,
+    "unsafe_warranted_atoms": 0,
+    "source_atom_binding_not_unsafe": 7,
+    "source_atom_binding_case_count": 7,
+    "bank_invariance": {"warranted": true, "unresolved": true},
+    "scientific_state": "SOURCE_AND_ATOM_ANCHORED_GATE_SUPPORTED_WITHIN_PROSPECTIVE_ENVELOPE"
+  },
+  "terminal_state": "PROSPECTIVE_ENVELOPE_SUPPORTED_WITH_BOUNDS",
+  "notes": [
+    "RC8F and all frozen predecessor candidates were frozen before this prospective cohort existed.",
+    "The first pre-reveal attempt failed only on a model-free case-count assertion before any candidate execution.",
+    "The correction changed only structural test cardinality from 20 to the actual frozen cohort size 21; cohort, evaluator, expected labels, and candidates are unchanged.",
+    "The reveal workflow reverified all frozen identities before executing RC8F on the cohort.",
+    "This result does not establish source-content/span binding, atom-ID authenticity, natural-language recovery, production readiness, contract projection, or independent recoverability.",
+    "No production or contract surface is authorized by this result."
+  ]
+}

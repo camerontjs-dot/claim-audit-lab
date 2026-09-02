@@ -1,0 +1,32 @@
+{
+  "experiment": "RC8B bound authority-receipt successor",
+  "preregistration_commit": "330c48dd11c6b685229671eca1731d8aaab3c3d4",
+  "candidate": {
+    "path": "research/semantic_authority_machinery_rc8/authority_contract_rc8b.py",
+    "introduced_commit": "927d0ece78c0665ef7c126180674c78ad336dbcc",
+    "qualified_head": "0190f8537be9d1fc2fe5ad496652a8ba8b0785f8",
+    "git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "exposed_qualification": {
+    "run_id": 33650127191,
+    "job_id": 100314883140,
+    "artifact_id": 9854423436,
+    "artifact_digest": "sha256:7bb08c9579143de1924e90da6214e3099e8f197bc265a5f1b306ef3fd019a2dc",
+    "case_count": 112,
+    "status_exact_count": 112,
+    "reason_exact_count": 112,
+    "unsafe_warranted_atoms": 0,
+    "evidence_class": "EXPOSED_QUALIFICATION_ONLY"
+  },
+  "historical_rc8_regression": {
+    "same_run_job_id": 100314883294,
+    "conclusion": "success"
+  },
+  "freeze_state": "FROZEN_BEFORE_PROSPECTIVE_RC8B_COHORT",
+  "freeze_rule": "The candidate blob above must not change after any prospective RC8B held-out cohort is authored or revealed. Any later candidate modification creates a new successor and forfeits RC8B independence for that cohort.",
+  "notes": [
+    "No prospective RC8B held-out source-binding cohort existed when this freeze declaration was created.",
+    "RC8 and RC8A cohorts are exposed qualification evidence for RC8B and are not counted as prospective RC8B science.",
+    "This freeze establishes byte identity, not production authorization or clean-room independence."
+  ]
+}

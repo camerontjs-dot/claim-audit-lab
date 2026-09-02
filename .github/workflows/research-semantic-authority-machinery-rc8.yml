@@ -1,0 +1,108 @@
+name: Research semantic authority machinery RC8
+
+on:
+  pull_request:
+    paths:
+      - 'research/semantic_authority_machinery_rc8/**'
+      - '.github/workflows/research-semantic-authority-machinery-rc8.yml'
+  push:
+    branches:
+      - 'research-infra/semantic-authority-machinery-rc8-20260902'
+
+permissions:
+  contents: read
+
+jobs:
+  terminal-regression-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Checkout frozen Contract B authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c314e53bd91c0736aa4370a364673b069aceb43e
+          path: _authority/apparatus-contracts
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify production semantic surface unchanged
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code b628f8c35fe803ea6fba99449af5de313f0e2935 -- src schema
+      - name: Verify frozen authorities and terminal research bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _authority/apparatus-contracts rev-parse HEAD)" = 'c314e53bd91c0736aa4370a364673b069aceb43e'
+          test "$(git -C _authority/apparatus-contracts hash-object handoff-contract-v1.0.0.md)" = '3e49901dff567ff5bbad55a2d6ccdc3ed36a7a26'
+          test "$(git -C _authority/apparatus-contracts hash-object contract-b-factual-context-extension-v1.2.0.md)" = '77645a6adac664892866f3fdf8abf66cd1d0dd10'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8j.py)" = 'f55156e43e0c1b4a7868bc8339585b8892edda38'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8h.py)" = '4b872e455d52d7a682bb719889860d2cac7909a7'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8f.py)" = 'efc50481be3179332cecb449c3c9c91da7c3dfaa'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8d.py)" = 'f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8b.py)" = 'edf84bb5aae0dd217e3f780e7a49767440b7c1e5'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/FROZEN_AUTHORITY_GATE_SPEC.md)" = '0f0981744646ab22a62d46a4e6535be0e7cdf773'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/independent_reproduction_compare.py)" = '0a3ca098c3aa41ee9a8962969b927ad8e8219890'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8j_qualification.py)" = '7a5e33c291e1e0613600d0e2bf39b781b27e021a'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8j_heldout_cohort.py)" = 'bf1ec5bd1086163460a38e4ccf0ac044fe34c148'
+          test "$(git hash-object research/semantic_authority_machinery_rc8/rc8j_heldout_evaluate.py)" = '1ff6db92d5df1e01540cea79207015cc4f97893a'
+      - name: Run terminal exposed qualification regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.semantic_authority_machinery_rc8.rc8j_qualification
+      - name: Run terminal prospective-corpus regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m research.semantic_authority_machinery_rc8.rc8j_heldout_evaluate
+      - name: Self-check post-freeze comparator against frozen reference
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/rc8_reference_adapter.py <<'PY'
+          from research.semantic_authority_machinery_rc8.authority_contract_rc8j import assess_authority
+          PY
+          python -m research.semantic_authority_machinery_rc8.independent_reproduction_compare \
+            --implementation /tmp/rc8_reference_adapter.py \
+            --output COMPARATOR_SELF_CHECK.json
+      - name: Enforce terminal regression invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          q = json.load(open('RC8J_QUALIFICATION.json'))
+          h = json.load(open('RC8J_HELDOUT_RESULTS.json'))
+          c = json.load(open('COMPARATOR_SELF_CHECK.json'))
+          assert q['case_count'] == 268
+          assert q['status_exact_count'] == 268
+          assert q['reason_exact_count'] == 268
+          assert q['unsafe_warranted_atoms'] == 0
+          assert h['case_count'] == 28
+          assert h['status_exact_count'] == 28
+          assert h['reason_exact_count'] == 28
+          assert h['unsafe_warranted_atoms'] == 0
+          assert c['case_count'] == 296
+          assert c['independent_status_exact_count'] == 296
+          assert c['independent_reason_exact_count'] == 296
+          assert c['reference_status_exact_count'] == 296
+          assert c['reference_reason_exact_count'] == 296
+          assert c['independent_reference_exact_count'] == 296
+          assert c['unsafe_warranted_atoms'] == 0
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc8-terminal-regression-${{ github.run_id }}
+          path: |
+            RC8J_QUALIFICATION.json
+            RC8J_HELDOUT_RESULTS.json
+            COMPARATOR_SELF_CHECK.json
+          if-no-files-found: error
+          retention-days: 90

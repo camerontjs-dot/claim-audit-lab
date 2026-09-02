@@ -1,0 +1,47 @@
+{
+  "experiment": "RC8C admitted-evidence source anchor falsifier",
+  "preregistration_commit": "2f5bc984db1ebe691b91462c6d497b3420e59c5d",
+  "parent_candidate": {
+    "name": "RC8B",
+    "freeze_commit": "e52f70b77ed0395e33afa9b193cae47475abf892",
+    "git_blob": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+  },
+  "apparatus_freeze_head": "2600d79f7224498692ac565f39a971a9e8c6ca38",
+  "apparatus": {
+    "research/semantic_authority_machinery_rc8/rc8c_cohort.py": "98375d322e2029afc2917e7f307efb1a82e9a3d3",
+    "research/semantic_authority_machinery_rc8/rc8c_evaluate.py": "12d8a1baabc18efc530a3fef5b183a3306df0b13",
+    "research/semantic_authority_machinery_rc8/test_rc8c_apparatus.py": "f4ad002392057a9b51bdb37158aab1a0d43930a0"
+  },
+  "case_count": 3,
+  "hard_criterion": "unsafe_warranted_atoms == 0",
+  "pre_reveal_qualification": {
+    "workflow_commit": "4819915e684b56905a57fdd436ef9afe95e9b614",
+    "run_id": 33651406186,
+    "job_id": 100319050487,
+    "production_surface_verification": "success",
+    "candidate_identity_verification": "success",
+    "apparatus_identity_verification": "success",
+    "candidate_blind_structural_tests": "success"
+  },
+  "reveal": {
+    "workflow_commit": "f672d93450ac7adc426516ef397901f744a94ba5",
+    "run_id": 33651630044,
+    "job_id": 100319905772,
+    "candidate_and_apparatus_integrity": "success",
+    "evaluation_step": "success",
+    "hard_safety_step": "failure",
+    "artifact_id": 9855007368,
+    "artifact_digest": "sha256:e7d395ce577cc1720627388d3f0d70d8f2d8146123aafa87ef1643ffdc0d8583",
+    "status_exact_count": 1,
+    "reason_exact_count": 1,
+    "unsafe_warranted_atoms": 2,
+    "scientific_state": "RC8B_FALSIFIED_BY_MISSING_EVIDENCE_SOURCE_ANCHOR"
+  },
+  "terminal_state": "FALSIFIED",
+  "notes": [
+    "The frozen RC8B candidate was not modified for RC8C.",
+    "The positive control warranted correctly.",
+    "Both the raw-source substitution and missing-raw-source cases were incorrectly warranted.",
+    "The failure localizes absence of an evidence-source anchor and does not negate RC8B's narrower partial-receipt consistency result."
+  ]
+}
