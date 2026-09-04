@@ -1,0 +1,152 @@
+name: Research RC8J categorical relation RC1A replay
+
+on:
+  push:
+    branches:
+      - research-infra/rc8j-categorical-warranted-relation-rc1a-replay-falsifier-20260904
+  pull_request:
+    paths:
+      - "research/b_cal_c_shadow_candidate/RC8J_CATEGORICAL_WARRANTED_RELATION_RC1A_REPLAY_PREREGISTRATION.md"
+      - "research/b_cal_c_shadow_candidate/run_categorical_warranted_relation_rc1a_replay_falsifier.py"
+      - ".github/workflows/research-rc8j-categorical-warranted-relation-rc1a-replay.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authority-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout RC1A successor
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout frozen Contract B authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c314e53bd91c0736aa4370a364673b069aceb43e
+          path: _deps/apparatus-b
+
+      - name: Checkout frozen Contract C authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          path: _deps/apparatus-c
+
+      - name: Checkout Evidence Bundler production pin
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: c8189c31adbab11729c31430c2070126224a2d42
+          path: _deps/evidence-bundler
+
+      - name: Checkout RC7F-B1 comparison instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 0ecdedc5cea970485a635508255f3670ab231c33
+          path: _deps/rc7fb1
+
+      - name: Checkout RC7F-C event-ordering instrument
+        uses: actions/checkout@v4
+        with:
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/rc7fc
+
+      - name: Checkout RC7F-D permission-composition instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 9e1f28c3e4f217561e4364e1560539bdf4870298
+          path: _deps/rc7fd
+
+      - name: Checkout frozen RC8J authority candidate
+        uses: actions/checkout@v4
+        with:
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL and Evidence Bundler
+        run: |
+          set -euo pipefail
+          uv sync --all-extras
+          uv pip install --editable _deps/evidence-bundler
+
+      - name: Verify frozen parent and RC8J
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse 598968205a5371323989f972442fb9820ba19b35^{commit})" = '598968205a5371323989f972442fb9820ba19b35'
+          test "$(git -C _deps/rc8j rev-parse HEAD)" = '8e75c6782bb95c3763d06230b9c5df2b6af44054'
+          test "$(git -C _deps/rc8j hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8j.py)" = 'f55156e43e0c1b4a7868bc8339585b8892edda38'
+
+      - name: Re-run frozen valid-B parent corpus
+        run: |
+          set -euo pipefail
+          mkdir -p research/b_cal_c_shadow_candidate/run-output
+          candidate_sha="$(git rev-parse HEAD)"
+          uv run python research/b_cal_c_shadow_candidate/run_integration_v5.py \
+            --deps _deps \
+            --out research/b_cal_c_shadow_candidate/run-output \
+            --candidate-sha "$candidate_sha" \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/stdout.txt
+
+      - name: Execute frozen-RC1 authority replay falsifier
+        run: |
+          set -euo pipefail
+          uv run python research/b_cal_c_shadow_candidate/run_categorical_warranted_relation_rc1a_replay_falsifier.py \
+            --run-output research/b_cal_c_shadow_candidate/run-output \
+            --rc8j-root _deps/rc8j \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/rc1a-replay-stdout.txt
+
+      - name: Require a valid replay disposition
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          p = 'research/b_cal_c_shadow_candidate/run-output/RC8J-CATEGORICAL-WARRANTED-RELATION-RC1A-REPLAY.json'
+          r = json.load(open(p))
+          allowed = {
+              'FALSIFIED_AUTHORITY_RECEIPT_REPLAY',
+              'SURVIVED_AUTHORITY_RECEIPT_REPLAY_CONTROL',
+              'INCONCLUSIVE_MUTATION_REMAINED_WARRANTED',
+              'INCONCLUSIVE_REPLAY_ACCEPTED_BUT_NONDECIDING',
+          }
+          assert r['research_disposition'] in allowed
+          assert r['base_case']['authority'] == {
+              'status': 'WARRANTED',
+              'reason': 'ALL_REQUIRED_WARRANT_ESTABLISHED',
+          }
+          assert r['production_promotion_authorized'] is False
+          PY
+
+      - name: Verify only RC1A research apparatus changed
+        run: |
+          set -euo pipefail
+          allowed='^(research/b_cal_c_shadow_candidate/(RC8J_CATEGORICAL_WARRANTED_RELATION_RC1A_REPLAY_PREREGISTRATION\.md|run_categorical_warranted_relation_rc1a_replay_falsifier\.py)|\.github/workflows/research-rc8j-categorical-warranted-relation-rc1a-replay\.yml)$'
+          unexpected="$(git diff --name-only 598968205a5371323989f972442fb9820ba19b35...HEAD | grep -Ev "$allowed" || true)"
+          if [ -n "$unexpected" ]; then
+            printf 'Unexpected RC1A changes:\n%s\n' "$unexpected" >&2
+            exit 1
+          fi
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo 'Production src/ changed' >&2
+            exit 1
+          fi
+
+      - name: Upload replay evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rc8j-categorical-replay-${{ github.run_id }}
+          path: research/b_cal_c_shadow_candidate/run-output
+          if-no-files-found: error
+          retention-days: 90
