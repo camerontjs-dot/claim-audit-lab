@@ -1,0 +1,169 @@
+name: Research RC8J categorical warranted relation
+
+on:
+  push:
+    branches:
+      - research-infra/rc8j-categorical-warranted-relation-rc1-20260904
+  pull_request:
+    paths:
+      - "research/b_cal_c_shadow_candidate/RC8J_CATEGORICAL_WARRANTED_RELATION_PREREGISTRATION.md"
+      - "research/b_cal_c_shadow_candidate/categorical_warranted_relation_rc1.py"
+      - "research/b_cal_c_shadow_candidate/test_categorical_warranted_relation_rc1.py"
+      - "research/b_cal_c_shadow_candidate/run_categorical_warranted_relation_rc1.py"
+      - ".github/workflows/research-rc8j-categorical-warranted-relation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  categorical-relation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout categorical successor
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout frozen Contract B authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c314e53bd91c0736aa4370a364673b069aceb43e
+          path: _deps/apparatus-b
+
+      - name: Checkout frozen Contract C authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          path: _deps/apparatus-c
+
+      - name: Checkout Evidence Bundler production pin
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: c8189c31adbab11729c31430c2070126224a2d42
+          path: _deps/evidence-bundler
+
+      - name: Checkout RC7F-B1 comparison instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 0ecdedc5cea970485a635508255f3670ab231c33
+          path: _deps/rc7fb1
+
+      - name: Checkout RC7F-C event-ordering instrument
+        uses: actions/checkout@v4
+        with:
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/rc7fc
+
+      - name: Checkout RC7F-D permission-composition instrument
+        uses: actions/checkout@v4
+        with:
+          ref: 9e1f28c3e4f217561e4364e1560539bdf4870298
+          path: _deps/rc7fd
+
+      - name: Checkout frozen RC8J authority candidate
+        uses: actions/checkout@v4
+        with:
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL and Evidence Bundler
+        run: |
+          set -euo pipefail
+          uv sync --all-extras
+          uv pip install --editable _deps/evidence-bundler
+
+      - name: Verify frozen parent and authority surfaces
+        run: |
+          set -euo pipefail
+          test "$(git hash-object src/claim_audit_lab/v1/decision_model.py)" = 'f0d9d3bc061d966ed9c8c16b3424b3dd5c3bb339'
+          test "$(git -C _deps/rc8j rev-parse HEAD)" = '8e75c6782bb95c3763d06230b9c5df2b6af44054'
+          test "$(git -C _deps/rc8j hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8j.py)" = 'f55156e43e0c1b4a7868bc8339585b8892edda38'
+
+      - name: Run categorical unit and metamorphic controls
+        run: |
+          set -euo pipefail
+          uv run pytest -q research/b_cal_c_shadow_candidate/test_categorical_warranted_relation_rc1.py
+
+      - name: Re-run frozen valid-B parent corpus
+        run: |
+          set -euo pipefail
+          mkdir -p research/b_cal_c_shadow_candidate/run-output
+          candidate_sha="$(git rev-parse HEAD)"
+          uv run python research/b_cal_c_shadow_candidate/run_integration_v5.py \
+            --deps _deps \
+            --out research/b_cal_c_shadow_candidate/run-output \
+            --candidate-sha "$candidate_sha" \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/stdout.txt
+
+      - name: Execute categorical warranted-relation experiment
+        run: |
+          set -euo pipefail
+          uv run python research/b_cal_c_shadow_candidate/run_categorical_warranted_relation_rc1.py \
+            --run-output research/b_cal_c_shadow_candidate/run-output \
+            --rc8j-root _deps/rc8j \
+            2>&1 | tee research/b_cal_c_shadow_candidate/run-output/rc8j-categorical-relation-stdout.txt
+
+      - name: Enforce preregistered categorical disposition
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          p = 'research/b_cal_c_shadow_candidate/run-output/RC8J-CATEGORICAL-WARRANTED-RELATION-RC1.json'
+          r = json.load(open(p))
+          assert r['rc8j']['freeze_commit'] == '8e75c6782bb95c3763d06230b9c5df2b6af44054'
+          assert r['rc8j']['candidate_blob'] == 'f55156e43e0c1b4a7868bc8339585b8892edda38'
+          assert r['frozen_decision_model_blob'] == 'f0d9d3bc061d966ed9c8c16b3424b3dd5c3bb339'
+          assert r['semantic_values_inferred_from_text'] is False
+          assert r['caller_supplied_polarity_used'] is False
+          assert r['scalar_decision_strength_used'] is False
+          assert r['threshold_used'] is False
+          cases = {row['case_id']: row for row in r['cases']}
+          assert cases['C1-SUPPORT']['derived_relation']['relation'] == 'SUPPORTS'
+          assert cases['C1-SUPPORT']['scoreless_conclusion']['verdict'] == 'supported'
+          assert cases['C2-REFUTE']['derived_relation']['relation'] == 'REFUTES'
+          assert cases['C2-REFUTE']['scoreless_conclusion']['verdict'] == 'contradicted'
+          assert cases['C3-MIXED']['scoreless_conclusion']['reason_code'] == 'mixed_categorical_relations'
+          assert cases['C3-MIXED']['order_invariant'] is True
+          assert cases['C4-IRRELEVANT']['derived_relation']['relation'] == 'IRRELEVANT'
+          assert cases['C4-IRRELEVANT']['scoreless_conclusion']['disposition'] == 'abstained'
+          assert cases['C5-UNRESOLVED-SEMANTIC-RELATION']['derived_relation']['relation'] == 'UNRESOLVED'
+          assert cases['C5-UNRESOLVED-SEMANTIC-RELATION']['scoreless_conclusion']['reason_code'] == 'unresolved_categorical_relation'
+          assert cases['C6-SUPPORT-PLUS-IRRELEVANT']['scoreless_conclusion']['verdict'] == 'supported'
+          assert cases['C7-SUPPORT-PLUS-UNRESOLVED']['scoreless_conclusion']['reason_code'] == 'unresolved_categorical_relation'
+          assert cases['C8-SWAPPED-SEMANTIC-EQUIVALENCE']['derived_relation']['relation'] == 'SUPPORTS'
+          assert cases['C10-DIAGNOSTIC-METADATA-INVARIANCE']['relation_unchanged'] is True
+          assert cases['C10-DIAGNOSTIC-METADATA-INVARIANCE']['conclusion_unchanged'] is True
+          assert r['authority_negative_control']['categorical_relation_construction_refused'] is True
+          assert all(r['forbidden_input_controls'].values())
+          assert r['forbidden_scalar_or_polarity_surface_present'] is False
+          assert r['research_disposition'] == 'SUPPORTED_WITH_BOUNDS'
+          assert r['production_promotion_authorized'] is False
+          PY
+
+      - name: Verify no production source changes
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "Production src/ changed in categorical warranted-relation experiment" >&2
+            exit 1
+          fi
+
+      - name: Upload categorical-relation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rc8j-categorical-warranted-relation-${{ github.run_id }}
+          path: research/b_cal_c_shadow_candidate/run-output
+          if-no-files-found: error
+          retention-days: 90
