@@ -1,0 +1,1 @@
+{"cases":{"PIPELINE_SMOKE_001":{"PIPELINE_SMOKE_001:child:1":{"accepted":["PIPE-P1"],"needs-review":[],"rejected":["PIPE-P3"]},"PIPELINE_SMOKE_001:child:2":{"accepted":["PIPE-P2"],"needs-review":[],"rejected":[]}}},"reviewer":{"id":"cal-pipeline-integration-fixture","type":"human_research_fixture"},"schema":"research-eb-rc0-admission-v1"}

@@ -1,0 +1,149 @@
+name: CAL Pipeline RC0 integration
+
+on:
+  push:
+    branches:
+      - integration/cal-pipeline-rc0-20260907
+  pull_request:
+    paths:
+      - "pipeline/cal_rc0/**"
+      - ".github/workflows/cal-pipeline-rc0-integration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  end-to-end:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact pipeline dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
+          git -C _deps/evidence-bundler checkout 50270b9bfcf6b5112c6ec88c02c7cdd7215e0ff4
+
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install integration dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv sync
+          uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+
+      - name: Verify inherited and external identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/cal_research_profile_rc0/runtime.py)" = b36dacf39d158601368b89df8fa66431ce1b4a07
+          test "$(git hash-object research/cal_research_profile_rc0a_span_anchoring/span_anchor.py)" = 7dd0b1d0077682d121aaa386067531cca3b742d8
+          test "$(git -C _deps/evidence-bundler rev-parse HEAD)" = 50270b9bfcf6b5112c6ec88c02c7cdd7215e0ff4
+          test "$(git -C _deps/evidence-bundler hash-object research/cal_rc0_contract_b_handoff/RESEARCH_EB_PROFILE.json)" = b7fe64d019ae4304294a51e8e658d43d412955d0
+          test "$(git -C _deps/rc7fb1 hash-object research/comparative_relation_measurement_rc7fb1/comparator.py)" = 33820f55e2a87c4de6336fca6b5e5b93a2bccde3
+          test "$(git -C _deps/rc8j hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8j.py)" = f55156e43e0c1b4a7868bc8339585b8892edda38
+          test "$(git -C _deps/apparatus-b rev-parse HEAD)" = c314e53bd91c0736aa4370a364673b069aceb43e
+          test "$(git -C _deps/apparatus-c rev-parse HEAD)" = 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+
+      - name: Execute A to B to CAL to C vertical
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python pipeline/cal_rc0/run_pipeline.py \
+            --cal-root . \
+            --cal-head "$GITHUB_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 \
+            --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b \
+            --apparatus-c _deps/apparatus-c \
+            --cohort pipeline/cal_rc0/fixtures/cohort.json \
+            --admission pipeline/cal_rc0/fixtures/admission.json \
+            --targets pipeline/cal_rc0/fixtures/cal_targets.json \
+            --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$GITHUB_SHA" \
+            --test-keys \
+            --out-dir pipeline/cal_rc0/run-output \
+            | tee pipeline/cal_rc0/PIPELINE-STDOUT.json
+
+      - name: Assert integration acceptance conditions
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          receipt = json.loads(
+              Path("pipeline/cal_rc0/run-output/PIPELINE-RECEIPT.json").read_text()
+          )
+          assert receipt["pipeline_status"] == "PASS"
+          assert receipt["contract_b"]["validation"]["status"] == "PASS"
+          assert receipt["evidence_bundler"]["root_diagnostic_rescue_enabled"] is False
+          assert receipt["evidence_bundler"]["parent_child_flattened"] is False
+          assert receipt["root_composition"]["state"] == "NOT_COMPOSED"
+          assert receipt["operational_authorization"]["state"] == "NOT_EVALUATED"
+          assert receipt["production_promotion_authorized"] is False
+
+          children = {
+              row["proposition_id"]: row for row in receipt["cal"]["children"]
+          }
+          assert set(children) == {
+              "PIPELINE_SMOKE_001:child:1",
+              "PIPELINE_SMOKE_001:child:2",
+          }
+          for row in children.values():
+              assert row["internal_cal_conclusion"]["disposition"] == "decided"
+              assert row["internal_cal_conclusion"]["verdict"] == "supported"
+              assert row["contract_c_validation"]["status"] == "PASS"
+              assert row["contract_c_projection"]["contract_c_reported_verdict"] == "supported"
+
+          overlap = children["PIPELINE_SMOKE_001:child:1"]
+          assert overlap["admitted_passage_ids"] == ["PIPE-P1"]
+          assert overlap["stages"][0]["typed_atom"]["rhs_span"] == [14, 17]
+          assert overlap["stages"][0]["categorical_relation"]["relation"] == "SUPPORTS"
+          assert "PIPE-P3" not in overlap["admitted_passage_ids"]
+          print("CAL_PIPELINE_RC0_INTEGRATION_PASS")
+          PY
+
+      - name: Confirm no production source mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "integration build modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Upload pipeline receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-pipeline-rc0-${{ github.run_id }}
+          path: |
+            pipeline/cal_rc0/run-output
+            pipeline/cal_rc0/PIPELINE-STDOUT.json
+          if-no-files-found: warn
+          retention-days: 90
