@@ -1,0 +1,139 @@
+name: CAL runnable claim RC0
+
+on:
+  push:
+    branches:
+      - research-infra/cal-runnable-claim-rc0-20260907
+  pull_request:
+    paths:
+      - "pipeline/cal_rc0/run_claim.py"
+      - "pipeline/cal_rc0/examples/**"
+      - ".github/workflows/cal-runnable-claim-rc0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runnable-claim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install CAL base dependencies
+        run: uv sync
+
+      - name: Run supported, contradicted, and not-checkable claims through CAL
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pipeline/cal_rc0/runnable-output
+
+          uv run python pipeline/cal_rc0/run_claim.py \
+            pipeline/cal_rc0/examples/runnable_claim.json \
+            --deps-dir _deps/cal-runnable \
+            --out-dir pipeline/cal_rc0/runnable-output/supported \
+            | tee pipeline/cal_rc0/RUNNABLE-CLAIM-SUPPORTED-STDOUT.json
+
+          uv run python pipeline/cal_rc0/run_claim.py \
+            pipeline/cal_rc0/examples/runnable_claim_contradicted.json \
+            --deps-dir _deps/cal-runnable \
+            --out-dir pipeline/cal_rc0/runnable-output/contradicted \
+            | tee pipeline/cal_rc0/RUNNABLE-CLAIM-CONTRADICTED-STDOUT.json
+
+          uv run python pipeline/cal_rc0/run_claim.py \
+            pipeline/cal_rc0/examples/runnable_claim_not_checkable.json \
+            --deps-dir _deps/cal-runnable \
+            --out-dir pipeline/cal_rc0/runnable-output/not-checkable \
+            | tee pipeline/cal_rc0/RUNNABLE-CLAIM-NOT-CHECKABLE-STDOUT.json
+
+      - name: Assert runnable CAL verdict surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path("pipeline/cal_rc0/runnable-output")
+
+          supported = json.loads((root / "supported" / "CAL-AUDIT-RESULT.json").read_text())
+          assert supported["execution_status"] == "PASS"
+          assert supported["reported_verdict"] == "supported"
+          assert supported["conclusion"]["disposition"] == "decided"
+          assert supported["conclusion"]["reason_code"] == "categorical_support"
+          assert supported["evidence_world"]["admitted_passage_ids"] == ["CAL-RUN-P1"]
+          assert supported["evidence_world"]["nonadmitted"][0]["passage_id"] == "CAL-RUN-P2"
+          assert supported["stages"][0]["typed_atom"]["rhs_span"] == [14, 17]
+          assert supported["stages"][0]["categorical_relation"]["relation"] == "SUPPORTS"
+
+          contradicted = json.loads(
+              (root / "contradicted" / "CAL-AUDIT-RESULT.json").read_text()
+          )
+          assert contradicted["execution_status"] == "PASS"
+          assert contradicted["reported_verdict"] == "contradicted"
+          assert contradicted["conclusion"]["disposition"] == "decided"
+          assert contradicted["conclusion"]["reason_code"] == "categorical_refutation"
+          assert contradicted["stages"][0]["warrant_status"]["authority_status"] == "WARRANTED"
+          assert contradicted["stages"][0]["categorical_relation"]["relation"] == "REFUTES"
+
+          not_checkable = json.loads(
+              (root / "not-checkable" / "CAL-AUDIT-RESULT.json").read_text()
+          )
+          assert not_checkable["execution_status"] == "PASS"
+          assert not_checkable["reported_verdict"] == "not_checkable"
+          assert not_checkable["conclusion"]["disposition"] == "abstained"
+          assert not_checkable["conclusion"]["reason_code"] == "unresolved_categorical_relation"
+          assert not_checkable["stages"][0]["measurement"]["status"] == "NOT_APPLICABLE"
+          assert not_checkable["stages"][0]["failure_category"] == "MEASUREMENT_MISS_SAFE"
+          assert not_checkable["stages"][0]["categorical_relation"]["relation"] == "UNRESOLVED"
+
+          for result in (supported, contradicted, not_checkable):
+              assert result["boundaries"]["raw_claim_to_typed_target_inference"] == "NOT_PERFORMED"
+              assert result["boundaries"]["evidence_discovery_or_retrieval"] == "NOT_PERFORMED"
+              assert result["boundaries"]["operational_authorization"] == "NOT_EVALUATED"
+              assert result["boundaries"]["production_release_authorized"] is False
+
+          print("CAL_RUNNABLE_CLAIM_RC0_VERDICT_SURFACE_PASS")
+          PY
+
+      - name: Confirm production source remains untouched
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only 4b9d69936d8ecdbaac0217561be7a3a821b70522...HEAD -- src/ | grep -q .; then
+            echo "runnable CAL build modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Pack runnable CAL receipts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test -d pipeline/cal_rc0/runnable-output; then
+            tar -czf pipeline/cal_rc0/CAL-RUNNABLE-CLAIM-RC0.tgz \
+              -C pipeline/cal_rc0 \
+              runnable-output \
+              RUNNABLE-CLAIM-SUPPORTED-STDOUT.json \
+              RUNNABLE-CLAIM-CONTRADICTED-STDOUT.json \
+              RUNNABLE-CLAIM-NOT-CHECKABLE-STDOUT.json
+          fi
+
+      - name: Upload runnable CAL receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-runnable-claim-rc0-${{ github.run_id }}
+          path: pipeline/cal_rc0/CAL-RUNNABLE-CLAIM-RC0.tgz
+          if-no-files-found: warn
+          retention-days: 90

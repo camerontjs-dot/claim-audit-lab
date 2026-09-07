@@ -1,0 +1,25 @@
+{
+  "schema": "cal-runnable-claim-rc0-v1",
+  "claim_id": "CAL-RUNNABLE-SMOKE-001",
+  "claim_text": "Women trailed Men by 11 percentage points.",
+  "target": {
+    "family": "strict_comparison",
+    "lhs_entity": "Women",
+    "rhs_entity": "Men",
+    "comparison_direction": "less_than"
+  },
+  "evidence": [
+    {
+      "source_id": "CAL-RUN-S1",
+      "passage_id": "CAL-RUN-P1",
+      "text": "Women trailed Men by 11 percentage points.",
+      "admission": "accepted"
+    },
+    {
+      "source_id": "CAL-RUN-S2",
+      "passage_id": "CAL-RUN-P2",
+      "text": "Women and Men both appeared in the annual report.",
+      "admission": "rejected"
+    }
+  ]
+}
