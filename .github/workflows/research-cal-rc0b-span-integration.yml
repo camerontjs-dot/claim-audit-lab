@@ -49,6 +49,7 @@ jobs:
           test "$(git hash-object research/cal_research_profile_rc0/runtime.py)" = b36dacf39d158601368b89df8fa66431ce1b4a07
           test "$(git hash-object research/cal_research_profile_rc0/smoke_runner.py)" = a53d427095876e18fa65a67993f259f8672f1650
           test "$(git hash-object research/cal_research_profile_rc0a_span_anchoring/span_anchor.py)" = 7dd0b1d0077682d121aaa386067531cca3b742d8
+          test "$(git hash-object research/cal_research_profile_rc0b_span_integration/integration_runner.py)" = 3afa334a693426175c2c1df5b6c17470365fcc01
           test "$(git -C _deps/rc7fb1 rev-parse HEAD)" = 0ecdedc5cea970485a635508255f3670ab231c33
           test "$(git -C _deps/rc7fb1 hash-object research/comparative_relation_measurement_rc7fb1/comparator.py)" = 33820f55e2a87c4de6336fca6b5e5b93a2bccde3
           test "$(git -C _deps/rc8j rev-parse HEAD)" = 8e75c6782bb95c3763d06230b9c5df2b6af44054
@@ -71,11 +72,11 @@ jobs:
             --rc8j-root _deps/rc8j \
             --out research/cal_research_profile_rc0b_span_integration/run-output/PARENT-SEAM-RESULTS.json
 
-      - name: Execute frozen RC0B integration evaluator
+      - name: Execute frozen RC0B integration evaluator through path-only repair
         shell: bash
         run: |
           set -euo pipefail
-          uv run python research/cal_research_profile_rc0b_span_integration/integration_runner.py \
+          uv run python research/cal_research_profile_rc0b_span_integration/integration_runner_r1.py \
             --rc7fb1-root _deps/rc7fb1 \
             --rc8j-root _deps/rc8j \
             --apparatus-b _deps/apparatus-b \
@@ -105,8 +106,10 @@ jobs:
           name: cal-rc0b-span-integration-${{ github.run_id }}
           path: |
             research/cal_research_profile_rc0b_span_integration/PREREGISTRATION.md
+            research/cal_research_profile_rc0b_span_integration/PRE_SCIENCE_APPARATUS_NOTES.md
             research/cal_research_profile_rc0b_span_integration/CASES.json
             research/cal_research_profile_rc0b_span_integration/integration_adapter.py
             research/cal_research_profile_rc0b_span_integration/integration_runner.py
+            research/cal_research_profile_rc0b_span_integration/integration_runner_r1.py
             research/cal_research_profile_rc0b_span_integration/run-output
           retention-days: 90
