@@ -1,0 +1,203 @@
+{
+  "schema": "cal-research-profile-rc0-naturalistic-cohort-v1",
+  "cohort_id": "cal-rc0-naturalistic-smoke-20260906-v1",
+  "created_after_profile_manifest_freeze": true,
+  "profile_manifest_freeze_commit": "7b7764ffd3799aa653cd3115a6a92532eea6792f",
+  "profile_manifest_blob": "6ab252bbe534828a9c121d9f9ef495543f98b0c6",
+  "case_count": 8,
+  "source_policy": "Public source-grounded comparisons. Deciding surfaces are minimally normalized into the already-frozen RC7F-B1 bounded grammar with transformations recorded; raw/qualified/scope-bearing surfaces are preserved in cases intended to test safe abstention. No candidate output was observed before cohort creation.",
+  "cases": [
+    {
+      "case_id": "NAT-01-SYLC-SUPPORT",
+      "claim": {
+        "claim_id": "clm-nat-01",
+        "text": "SYLC exceeded SP500 in the reported comparison.",
+        "family": "strict_comparison",
+        "lhs_entity": "sylc",
+        "rhs_entity": "sp500",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "syntax-largecap-q2-2026",
+          "source_title": "Stratified LargeCap Q2 2026 Overview",
+          "source_url": "https://www.syntaxdata.com/research/stratified-largecap-q2-2026-overview",
+          "source_locator": "Market and Performance Overview; year-to-date comparison published 2026-08-12",
+          "passage_id": "pass-nat-01",
+          "text": "SYLC exceeded SP500 by 1.92 percentage points.",
+          "text_mode": "source_grounded_bounded_normalization",
+          "transformation_record": "Preserves source direction and 1.92-percentage-point delta; canonicalizes the benchmark label S&P 500 to SP500 and collapses possessive return phrasing to the frozen RC7F-B1 verb surface.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    },
+    {
+      "case_id": "NAT-02-PURCHASES-REFUTE",
+      "claim": {
+        "claim_id": "clm-nat-02",
+        "text": "Purchases exceeded SP500 in the one-year comparison.",
+        "family": "strict_comparison",
+        "lhs_entity": "purchases",
+        "rhs_entity": "sp500",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "equibles-congress-trades-2026",
+          "source_title": "Do Congressional Stock Trades Beat the Market?",
+          "source_url": "https://equibles.com/research/what-happens-after-congress-buys-or-sells-a-stock-evidence-from-17-859-disclosures",
+          "source_locator": "Summary and one-year results published 2026-08-24",
+          "passage_id": "pass-nat-02",
+          "text": "Purchases trailed SP500 by 5.36 percentage points.",
+          "text_mode": "source_grounded_bounded_normalization",
+          "transformation_record": "Preserves the source's typical-purchase direction and 5.36-percentage-point one-year deficit; canonicalizes S&P 500 to SP500 and collapses event/return phrasing.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    },
+    {
+      "case_id": "NAT-03-SWAPPED-REVERSAL-SUPPORT",
+      "claim": {
+        "claim_id": "clm-nat-03",
+        "text": "SP500 exceeded Sales in the one-year comparison.",
+        "family": "strict_comparison",
+        "lhs_entity": "sp500",
+        "rhs_entity": "sales",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "equibles-congress-trades-2026",
+          "source_title": "Do Congressional Stock Trades Beat the Market?",
+          "source_url": "https://equibles.com/research/what-happens-after-congress-buys-or-sells-a-stock-evidence-from-17-859-disclosures",
+          "source_locator": "Summary and one-year results published 2026-08-24",
+          "passage_id": "pass-nat-03",
+          "text": "Sales trailed SP500 by 6.39 percentage points.",
+          "text_mode": "source_grounded_bounded_normalization",
+          "transformation_record": "Preserves the source's typical-sale direction and 6.39-percentage-point one-year deficit; canonicalizes S&P 500 to SP500 and collapses event/return phrasing.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    },
+    {
+      "case_id": "NAT-04-INSUFFICIENT-COMPARATIVE-SURFACE",
+      "claim": {
+        "claim_id": "clm-nat-04",
+        "text": "Buys exceeded Sells.",
+        "family": "strict_comparison",
+        "lhs_entity": "buys",
+        "rhs_entity": "sells",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "equibles-congress-trades-2026",
+          "source_title": "Do Congressional Stock Trades Beat the Market?",
+          "source_url": "https://equibles.com/research/what-happens-after-congress-buys-or-sells-a-stock-evidence-from-17-859-disclosures",
+          "source_locator": "Summary statement published 2026-08-24",
+          "passage_id": "pass-nat-04",
+          "text": "Buys did not reliably beat sells.",
+          "text_mode": "source_clause_sentencecase",
+          "transformation_record": "Short source clause retained with only sentence-case normalization. The unsupported verb 'beat' and explicit negation are intentionally not rewritten into RC7F-B1 grammar.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    },
+    {
+      "case_id": "NAT-05-IRRELEVANT-ENTITY-PAIR",
+      "claim": {
+        "claim_id": "clm-nat-05",
+        "text": "SYLC exceeded SP500.",
+        "family": "strict_comparison",
+        "lhs_entity": "sylc",
+        "rhs_entity": "sp500",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "oman-observer-ai-gender-2026",
+          "source_title": "Duqm Summer Series opens with focus on intelligent machines",
+          "source_url": "https://www.omanobserver.om/article/1194562/business/economy/duqm-summer-series-opens-with-focus-on-intelligent-machines",
+          "source_locator": "Pew-derived 2024 chatbot-use comparison reported 2026-08-16",
+          "passage_id": "pass-nat-05",
+          "text": "Women trailed Men by 11 percentage points.",
+          "text_mode": "source_grounded_bounded_normalization",
+          "transformation_record": "Extracts the source's 2024 comparison clause and sentence-cases both entity labels; direction and 11-percentage-point delta are unchanged. The evidence intentionally concerns a foreign entity pair.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    },
+    {
+      "case_id": "NAT-06-GENDER-REFUTE",
+      "claim": {
+        "claim_id": "clm-nat-06",
+        "text": "Women exceeded Men in the reported 2024 comparison.",
+        "family": "strict_comparison",
+        "lhs_entity": "women",
+        "rhs_entity": "men",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "oman-observer-ai-gender-2026",
+          "source_title": "Duqm Summer Series opens with focus on intelligent machines",
+          "source_url": "https://www.omanobserver.om/article/1194562/business/economy/duqm-summer-series-opens-with-focus-on-intelligent-machines",
+          "source_locator": "Pew-derived 2024 chatbot-use comparison reported 2026-08-16",
+          "passage_id": "pass-nat-06",
+          "text": "Women trailed Men by 11 percentage points.",
+          "text_mode": "source_grounded_bounded_normalization",
+          "transformation_record": "Extracts the source's 2024 comparison clause and sentence-cases both entity labels; direction and 11-percentage-point delta are unchanged.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    },
+    {
+      "case_id": "NAT-07-QUALIFIED-TRAILING-YEAR",
+      "claim": {
+        "claim_id": "clm-nat-07",
+        "text": "SYLC exceeded SP500 over the trailing year.",
+        "family": "strict_comparison",
+        "lhs_entity": "sylc",
+        "rhs_entity": "sp500",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "syntax-largecap-q2-2026",
+          "source_title": "Stratified LargeCap Q2 2026 Overview",
+          "source_url": "https://www.syntaxdata.com/research/stratified-largecap-q2-2026-overview",
+          "source_locator": "Trailing-year comparison published 2026-08-12",
+          "passage_id": "pass-nat-07",
+          "text": "SYLC trailed SP500 by roughly two percentage points over the trailing year.",
+          "text_mode": "source_grounded_scope_preserving_normalization",
+          "transformation_record": "Preserves the source's 'roughly two percentage points' qualifier and trailing-year scope while canonicalizing S&P 500 to SP500. The qualifier/scope are intentionally not stripped to make the sentence fit the measurement grammar.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    },
+    {
+      "case_id": "NAT-08-SCOPE-BEARING-1980",
+      "claim": {
+        "claim_id": "clm-nat-08",
+        "text": "Women exceeded Men in 1980 B.A. degree completion.",
+        "family": "strict_comparison",
+        "lhs_entity": "women",
+        "rhs_entity": "men",
+        "comparison_direction": "greater_than"
+      },
+      "evidence": [
+        {
+          "source_id": "nea-education-attainment",
+          "source_title": "Educational Attainment, Income and Earnings, and Unemployment",
+          "source_url": "https://www.nea.org/resource-library/educational-attainment-income-and-earnings-and-unemployment",
+          "source_locator": "Completion of at least four years of college / B.A. comparison",
+          "passage_id": "pass-nat-08",
+          "text": "Women trailed Men in 1980 by 1 percentage point.",
+          "text_mode": "source_clause_scope_preserving",
+          "transformation_record": "Preserves the source's 1980 temporal attachment inside the comparison; only sentence-cases the right entity label. The temporal material is intentionally not removed to fit the frozen grammar.",
+          "semantic_family": "strict_comparison"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schema": "cal-research-profile-manifest-v1",
+  "profile_id": "cal-research-profile-rc0-strict-comparison",
+  "status": "FROZEN_RESEARCH_PROFILE_PRE_NATURALISTIC_REVEAL",
+  "cal_production_base_sha": "32275a239b68af383a56bca843e28cbc1e343976",
+  "rc0_research_sha": "ad9e47a2102202450238bf780eb69c4b01a7cd3d",
+  "semantic_engine_identity": {
+    "entry_point": "research/cal_research_profile_rc0/runtime.py:execute_rc0_case",
+    "runtime_path": "research/cal_research_profile_rc0/runtime.py",
+    "runtime_blob": "b36dacf39d158601368b89df8fa66431ce1b4a07",
+    "profile_preregistration_path": "research/cal_research_profile_rc0/PREREGISTRATION.md",
+    "profile_preregistration_blob": "b9b04099364337bf5488739f45681b4516f32d05",
+    "workflow_path": ".github/workflows/research-cal-profile-rc0-strict-comparison.yml",
+    "workflow_blob": "9dc8f09e78d1113241a88e4db16b41f421964463",
+    "note": "A commit alone is not the semantic-engine identity; the runtime entry point/blob plus the immutable external dependency set below define this bounded research engine."
+  },
+  "contract_b": {
+    "version": "1.2.0",
+    "authority_repository": "camerontjs-dot/apparatus-contracts",
+    "authority_commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "validator_path": "validators/verify_contract_integrity.py",
+    "validator_blob": "a2d5db218adb1c26d029ee9b8ef85329ea5c36a0"
+  },
+  "contract_c": {
+    "version": "1.0.0",
+    "authority_repository": "camerontjs-dot/apparatus-contracts",
+    "authority_commit": "5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1",
+    "validator_path": "validators/contract_c.py",
+    "validator_blob": "9c75ccfbf2223578a8d1a7bf0c39673b394fbea4"
+  },
+  "comparison_measurement": {
+    "identity": "RC7F-B1",
+    "repository": "camerontjs-dot/claim-audit-lab",
+    "commit": "0ecdedc5cea970485a635508255f3670ab231c33",
+    "path": "research/comparative_relation_measurement_rc7fb1/comparator.py",
+    "blob": "33820f55e2a87c4de6336fca6b5e5b93a2bccde3",
+    "reported_version": "rc7fb1-comparator-1",
+    "authority": "bounded explicit comparison measurement only; not semantic warrant"
+  },
+  "rc8j_authority": {
+    "repository": "camerontjs-dot/claim-audit-lab",
+    "commit": "8e75c6782bb95c3763d06230b9c5df2b6af44054",
+    "path": "research/semantic_authority_machinery_rc8/authority_contract_rc8j.py",
+    "blob": "f55156e43e0c1b4a7868bc8339585b8892edda38",
+    "parent_blobs": {
+      "rc8h": "4b872e455d52d7a682bb719889860d2cac7909a7",
+      "rc8f": "efc50481be3179332cecb449c3c9c91da7c3dfaa",
+      "rc8d": "f04f2dc529d3f1a7666d39a3bf9c8a9df87842d1",
+      "rc8b": "edf84bb5aae0dd217e3f780e7a49767440b7c1e5"
+    },
+    "authority": "typed authority only over the exact already-constructed atom inside the frozen tested envelope"
+  },
+  "atom_bound_receipt": {
+    "implementation": "research/cal_research_profile_rc0/runtime.py:issue_atom_warrant+verify_atom_warrant",
+    "implementation_blob": "b36dacf39d158601368b89df8fa66431ce1b4a07",
+    "lineage": {
+      "pr": 83,
+      "commit": "3f13b162d4b0d0cc837c99b9ad830c4c47707270"
+    },
+    "binding": "authenticated receipt binds exact authority-subject projection, claim and atom identity",
+    "security_scope": "bounded research HMAC trust model; not a production authorization/security protocol"
+  },
+  "proposition_binding": {
+    "implementation": "research/cal_research_profile_rc0/runtime.py:issue_proposition_binding+verify_proposition_binding",
+    "implementation_blob": "b36dacf39d158601368b89df8fa66431ce1b4a07",
+    "lineage": {
+      "pr": 84,
+      "commit": "2e4f42df8486684832944ddb314294d5979398a3"
+    },
+    "rc0_successor_delta": "bind exact claim_text_sha256 in addition to typed strict-comparison proposition projection, so same-id content substitution fails closed"
+  },
+  "categorical_relation_and_composition": {
+    "implementation": "research/cal_research_profile_rc0/runtime.py:derive_categorical_relation+compose_categorical_relations",
+    "implementation_blob": "b36dacf39d158601368b89df8fa66431ce1b4a07",
+    "lineage": {
+      "pr": 82,
+      "commit": "0c324a6a866f1bc0ce678c78d6502c6b314386c2"
+    },
+    "terminal_relations": [
+      "SUPPORTS",
+      "REFUTES",
+      "IRRELEVANT",
+      "UNRESOLVED"
+    ],
+    "selection": "scoreless fail-closed categorical composition"
+  },
+  "preserved_falsifier_lineage": {
+    "stale_warrant_replay": {
+      "pr": 81,
+      "commit": "6a01e5be07c0b2ddc11aeeb3974f3221eccc9c0e"
+    },
+    "scalar_shortcut": {
+      "pr": 78,
+      "commit": "884405755eee6e71434c43ccae0d95d5fa1fd517"
+    },
+    "contract_c_direct_projection": {
+      "pr": 77,
+      "commit": "57e59d8e5c565ff5e280357b322980e5c86b4cf2"
+    }
+  },
+  "deciding_semantic_families": [
+    "strict_comparison"
+  ],
+  "measurement_only_semantic_families": [
+    "event_ordering",
+    "permission_composition"
+  ],
+  "measurement_only_execution_in_rc0_smoke": "disabled; retained as non-deciding research lineage only",
+  "unsupported_family_behavior": "UNRESOLVED with no released-CAL fallback",
+  "text_to_atom_rule": "Every material strict-comparison field consumed by RC8J must be established inside the bounded admitted-passage measurement grammar; missing, ambiguous or qualified material yields UNRESOLVED and cannot be repaired by scalar/count metadata.",
+  "released_cal_baseline": {
+    "distribution": "0.5.0",
+    "engine": "v1-retrieve-entail",
+    "rules": "cal-rules-v1.13.0",
+    "role": "diagnostic only",
+    "causal_influence": false,
+    "execution_policy": "may be omitted when optional v1 inference dependencies are not already inexpensive/available; omission must be recorded"
+  },
+  "models": [],
+  "thresholds": [],
+  "forbidden_terminal_influences": [
+    "confidence",
+    "score",
+    "reader_count",
+    "agreement_count",
+    "model_count",
+    "retrieval_rank"
+  ],
+  "evaluator": {
+    "identity": "cal-research-profile-rc0-seam-falsifier-v1",
+    "path": "research/cal_research_profile_rc0/seam_suite.py",
+    "blob": "3a6db315aa579718f48d40931024f479a8ad3f3b",
+    "case_count": 12,
+    "freeze_run": {
+      "github_actions_run_id": 34078950387,
+      "head_sha": "ad9e47a2102202450238bf780eb69c4b01a7cd3d",
+      "result": "12/12 PASS; 0 unsafe results",
+      "artifact_id": 10003028317,
+      "artifact_digest": "sha256:d74e1f8a9dfa8c96e0dc95740df4785160cbaeda6e6a261a7f44e66d3e1ca17f"
+    }
+  },
+  "naturalistic_smoke_binding": {
+    "order_constraint": "The cohort and gold MUST be created/revealed only after this profile manifest is frozen. Therefore their concrete identities cannot exist inside this pre-reveal manifest without violating the experiment order.",
+    "cohort_identity": "DEFERRED_POST_PROFILE_FREEZE",
+    "gold_identity": "DEFERRED_POST_PROFILE_FREEZE",
+    "required_binding_surface": "research/cal_research_profile_rc0/SMOKE-EXECUTION-MANIFEST.json",
+    "required_state_before_execution": "SMOKE-EXECUTION-MANIFEST.json must bind this exact profile-manifest blob plus exact cohort and gold blobs before the first naturalistic candidate execution"
+  },
+  "production_boundary": {
+    "src_mutation_allowed": false,
+    "release_or_tag_allowed": false,
+    "merge_allowed": false,
+    "contract_mutation_allowed": false,
+    "decision_engine_or_contract_d_allowed": false,
+    "contract_e_or_operational_authorization_allowed": false,
+    "generic_entailment_claim_allowed": false,
+    "independent_rc8j_recoverability_claim_allowed": false
+  }
+}

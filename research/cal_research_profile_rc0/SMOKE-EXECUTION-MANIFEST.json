@@ -1,0 +1,29 @@
+{
+  "schema": "cal-research-profile-rc0-smoke-execution-manifest-v1",
+  "execution_id": "cal-rc0-naturalistic-smoke-execution-20260907-v1",
+  "status": "FROZEN_PREEXECUTION_BINDING",
+  "frozen_from_branch_head": "a92109340f8eeb257e582d110733938131042218",
+  "bindings": {
+    "profile_manifest_blob": "6ab252bbe534828a9c121d9f9ef495543f98b0c6",
+    "cohort_blob": "c8477fb6b857a6b1d49856290cd60c2147552607",
+    "gold_blob": "91966208085e65bab0838e5cac6d7459cf3644c7",
+    "runtime_blob": "b36dacf39d158601368b89df8fa66431ce1b4a07",
+    "smoke_runner_blob": "a53d427095876e18fa65a67993f259f8672f1650"
+  },
+  "authority": {
+    "contract_b_commit": "c314e53bd91c0736aa4370a364673b069aceb43e",
+    "contract_c_commit": "5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1",
+    "comparison_measurement_commit": "0ecdedc5cea970485a635508255f3670ab231c33",
+    "rc8j_commit": "8e75c6782bb95c3763d06230b9c5df2b6af44054"
+  },
+  "execution_policy": {
+    "one_shot_candidate_execution": true,
+    "repair_after_reveal_forbidden": true,
+    "hard_stop_on_unsafe_result": true,
+    "released_cal_baseline_causal_influence": false,
+    "production_src_changes_forbidden": true
+  },
+  "known_evidence_debt": [
+    "SMOKE-GOLD.json is supervisor preexecution adjudication, not independent human review."
+  ]
+}
