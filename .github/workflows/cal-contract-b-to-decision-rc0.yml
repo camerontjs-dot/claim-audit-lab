@@ -65,7 +65,7 @@ jobs:
         run: |
           set -euo pipefail
           uv sync
-          uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+          uv pip install --python .venv/bin/python -e "_deps/evidence-bundler[dev]"
           uv pip install --python .venv/bin/python -e _deps/apparatus-d
 
       - name: Recheck qualified Evidence Bundler boundary tests
@@ -257,13 +257,21 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          tar -czf pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz \
-            -C pipeline/cal_rc0 \
+          staging="pipeline/cal_rc0/_receipt-pack"
+          rm -rf "$staging"
+          mkdir -p "$staging"
+          for item in \
             full-pipeline-seed \
             bundle-to-decision-output \
             matrix-output \
             FULL-PIPELINE-SEED-STDOUT.json \
-            BUNDLE-TO-DECISION-STDOUT.json
+            BUNDLE-TO-DECISION-STDOUT.json; do
+            if [ -e "pipeline/cal_rc0/$item" ]; then
+              cp -a "pipeline/cal_rc0/$item" "$staging/"
+            fi
+          done
+          tar -czf pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz \
+            -C "$staging" .
 
       - name: Upload full-pipeline receipts
         if: always()
