@@ -1,0 +1,1 @@
+{"cases":{"SHARED_DIRECTION":{"SHARED_DIRECTION:child:1":{"accepted":["SHARED-DIR-P1"],"needs-review":[],"rejected":[]},"SHARED_DIRECTION:child:2":{"accepted":["SHARED-DIR-P1"],"needs-review":[],"rejected":[]}}},"reviewer":{"id":"cal-pipeline-data-campaign","type":"human_research_fixture"},"schema":"research-eb-rc0-admission-v1"}
