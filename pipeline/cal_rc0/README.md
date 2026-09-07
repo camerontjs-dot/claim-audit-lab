@@ -18,7 +18,8 @@ Contract A 2.0 declared propositions
   -> exact Contract B validation
   -> admitted strict-comparison evidence only
   -> frozen RC7F-B1 measurement
-  -> RC0A exact lexical-boundary span anchoring
+  -> RC0A exact lexical-boundary anchoring for lhs/rhs entities only
+  -> frozen RC0 anchoring for measure/quantity/unit spans
   -> frozen RC8J authority assessment
   -> authenticated atom warrant + proposition binding
   -> proposition-relative categorical relation
@@ -43,15 +44,25 @@ CAL consumes only evidence that Contract B factual-context history records as
 The semantic path uses the frozen RC0 runtime blob
 `b36dacf39d158601368b89df8fa66431ce1b4a07`, plus the supported RC0A
 lexical-boundary resolver blob `7dd0b1d0077682d121aaa386067531cca3b742d8`.
-The adapter changes only the span-resolution seam. Frozen RC7F-B1 and RC8J
-dependencies are checked by exact commit and blob identity before execution.
+`entity_scoped_entrypoint.py` applies the RC0A resolver only to the lhs/rhs entity
+lookups performed by the frozen atom completer. Measure, quantity, and unit
+lookups continue to use the frozen RC0 helper. This avoids converting an
+entity-anchoring result into a broader untested span-resolution change.
+
+Frozen RC7F-B1 and RC8J dependencies are checked by exact commit and blob
+identity before execution.
+
+An unpublished RC0B apparatus branch was inspected during live-state
+reconciliation because it touched the same integration seam. Its run stopped
+before the decisive cohort at pre-science apparatus verification, so this build
+does not treat RC0B as supporting research evidence.
 
 No confidence, retrieval score, model score, threshold, reader count, or caller
 support/refutation polarity can decide a proposition.
 
 ## Inputs
 
-`run_pipeline.py` takes four logical inputs:
+The executable takes four logical inputs:
 
 - a Contract A 2.0 cohort;
 - explicit Evidence Bundler admission decisions;
@@ -93,7 +104,7 @@ The integration workflow checks out all frozen dependencies at exact identities
 and runs:
 
 ```bash
-python pipeline/cal_rc0/run_pipeline.py \
+python pipeline/cal_rc0/entity_scoped_entrypoint.py \
   --cal-head <exact current CAL commit> \
   --evidence-bundler-root <EB checkout> \
   --rc7fb1-root <RC7F-B1 checkout> \
