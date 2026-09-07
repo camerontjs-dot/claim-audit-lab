@@ -11,8 +11,8 @@ import json
 import sys
 from typing import Any
 
-import pipeline.cal_rc0.entity_scoped_entrypoint as scoped  # noqa: F401
-import pipeline.cal_rc0.run_pipeline as base
+import entity_scoped_entrypoint as scoped  # noqa: F401
+import run_pipeline as base
 
 EB_QUALIFIED_HEAD = "dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05"
 CARRIER_SCHEMA = "research-contract-b-1.2-compatibility-carrier-v1"
@@ -47,7 +47,13 @@ def _execute_with_qualified_eb(args: Any) -> dict[str, Any]:
 
     original_build = qualified_handoff.build_all_contract_b_qualified
 
-    def carrier_bound_build(*, cohort: dict[str, Any], receipt: dict[str, Any], profile: dict[str, Any], out_dir: Any) -> list[dict[str, Any]]:
+    def carrier_bound_build(
+        *,
+        cohort: dict[str, Any],
+        receipt: dict[str, Any],
+        profile: dict[str, Any],
+        out_dir: Any,
+    ) -> list[dict[str, Any]]:
         return original_build(
             cohort=cohort,
             receipt=receipt,
