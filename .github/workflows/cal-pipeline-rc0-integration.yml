@@ -137,13 +137,20 @@ jobs:
             exit 1
           fi
 
+      - name: Pack pipeline receipts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          if test -d pipeline/cal_rc0/run-output; then
+            tar -czf pipeline/cal_rc0/CAL-PIPELINE-RC0-RECEIPTS.tgz -C pipeline/cal_rc0 run-output PIPELINE-STDOUT.json
+          fi
+
       - name: Upload pipeline receipts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cal-pipeline-rc0-${{ github.run_id }}
-          path: |
-            pipeline/cal_rc0/run-output
-            pipeline/cal_rc0/PIPELINE-STDOUT.json
+          path: pipeline/cal_rc0/CAL-PIPELINE-RC0-RECEIPTS.tgz
           if-no-files-found: warn
           retention-days: 90
