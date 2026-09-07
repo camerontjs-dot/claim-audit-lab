@@ -1,0 +1,71 @@
+name: Research CAL RC0A exact span anchoring
+
+on:
+  push:
+    branches:
+      - research-infra/cal-rc0a-exact-span-anchoring-20260907
+  pull_request:
+    paths:
+      - 'research/cal_research_profile_rc0a_span_anchoring/**'
+      - '.github/workflows/research-cal-rc0a-span-anchoring.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen RC0 parent runtime identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/cal_research_profile_rc0/runtime.py)" = "b36dacf39d158601368b89df8fa66431ce1b4a07"
+
+      - name: Verify successor does not mutate frozen RC0 or production src
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only 8c52a00b93c7c33c159a484c47944faf9d97f7f1...HEAD | grep -E '^(src/|research/cal_research_profile_rc0/|\.github/workflows/research-cal-profile-rc0-strict-comparison\.yml$)'; then
+            echo "Forbidden frozen/production mutation detected"
+            exit 1
+          fi
+
+      - name: Execute frozen span evaluator
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/cal_research_profile_rc0a_span_anchoring/evaluator.py \
+            | tee research/cal_research_profile_rc0a_span_anchoring/RESULTS.json
+
+      - name: Validate receipt shape
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('research/cal_research_profile_rc0a_span_anchoring/RESULTS.json')
+          r = json.loads(p.read_text())
+          assert r['experiment'] == 'cal-rc0a-exact-entity-span-anchoring'
+          assert r['case_count'] == 16
+          assert r['research_disposition'] in {'SUPPORTED_WITH_BOUNDS', 'FALSIFIED'}
+          assert r['production_promotion_authorized'] is False
+          print(r['research_disposition'])
+          PY
+
+      - name: Upload research receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-rc0a-span-anchoring-${{ github.run_id }}
+          path: |
+            research/cal_research_profile_rc0a_span_anchoring/PREREGISTRATION.md
+            research/cal_research_profile_rc0a_span_anchoring/CASES.json
+            research/cal_research_profile_rc0a_span_anchoring/span_anchor.py
+            research/cal_research_profile_rc0a_span_anchoring/evaluator.py
+            research/cal_research_profile_rc0a_span_anchoring/RESULTS.json
