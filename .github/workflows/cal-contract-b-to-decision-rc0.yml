@@ -31,33 +31,25 @@ jobs:
           set -euo pipefail
           git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
           git -C _deps/evidence-bundler checkout dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05
-
           git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
           git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
-
           git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
           git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
-
           git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
           git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
-
           git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
           git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
-
           git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-d
           git -C _deps/apparatus-d checkout 298a1a0f7b7b6d7712e11200d04faec3e1ca169b
-
           git clone --no-checkout https://github.com/camerontjs-dot/decision-engine.git _deps/decision-engine
           git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
 
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-
       - uses: astral-sh/setup-uv@v6
 
       - name: Install integration dependencies
@@ -70,11 +62,12 @@ jobs:
 
       - name: Recheck qualified Evidence Bundler boundary tests
         shell: bash
+        working-directory: _deps/evidence-bundler
         run: |
           set -euo pipefail
-          uv run pytest -q \
-            _deps/evidence-bundler/tests/test_research_cal_rc0_handoff_compatibility_carrier.py \
-            _deps/evidence-bundler/tests/test_research_cal_rc0_handoff_qualified_build.py
+          ../../.venv/bin/python -m pytest -q \
+            tests/test_research_cal_rc0_handoff_compatibility_carrier.py \
+            tests/test_research_cal_rc0_handoff_qualified_build.py
 
       - name: Recheck pinned Decision Engine maintained regressions
         shell: bash
@@ -93,19 +86,15 @@ jobs:
           set -euo pipefail
           CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
           uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
-            --cal-root . \
-            --cal-head "$CAL_CHECKOUT_SHA" \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
             --evidence-bundler-root _deps/evidence-bundler \
-            --rc7fb1-root _deps/rc7fb1 \
-            --rc8j-root _deps/rc8j \
-            --apparatus-b _deps/apparatus-b \
-            --apparatus-c _deps/apparatus-c \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
             --cohort pipeline/cal_rc0/fixtures/cohort.json \
             --admission pipeline/cal_rc0/fixtures/admission.json \
             --targets pipeline/cal_rc0/fixtures/cal_targets.json \
             --eb-profile pipeline/cal_rc0/eb_profile.json \
-            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" \
-            --test-keys \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
             --out-dir pipeline/cal_rc0/full-pipeline-seed \
             > pipeline/cal_rc0/FULL-PIPELINE-SEED-STDOUT.json
 
@@ -117,16 +106,11 @@ jobs:
           uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
             pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001 \
             --targets pipeline/cal_rc0/fixtures/cal_targets.json \
-            --cal-root . \
-            --cal-head "$CAL_CHECKOUT_SHA" \
-            --rc7fb1-root _deps/rc7fb1 \
-            --rc8j-root _deps/rc8j \
-            --apparatus-b _deps/apparatus-b \
-            --apparatus-c _deps/apparatus-c \
-            --apparatus-d _deps/apparatus-d \
-            --decision-engine-root _deps/decision-engine \
-            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" \
-            --test-keys \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
             --out-dir pipeline/cal_rc0/bundle-to-decision-output \
             | tee pipeline/cal_rc0/BUNDLE-TO-DECISION-STDOUT.json
 
@@ -145,39 +129,23 @@ jobs:
             root="pipeline/cal_rc0/fixtures/matrix/$scenario"
             seed="pipeline/cal_rc0/matrix-output/$scenario/seed"
             decision="pipeline/cal_rc0/matrix-output/$scenario/decision"
-
             uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
-              --cal-root . \
-              --cal-head "$CAL_CHECKOUT_SHA" \
+              --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
               --evidence-bundler-root _deps/evidence-bundler \
-              --rc7fb1-root _deps/rc7fb1 \
-              --rc8j-root _deps/rc8j \
-              --apparatus-b _deps/apparatus-b \
-              --apparatus-c _deps/apparatus-c \
-              --cohort "$root/cohort.json" \
-              --admission "$root/admission.json" \
-              --targets "$root/targets.json" \
-              --eb-profile pipeline/cal_rc0/eb_profile.json \
-              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" \
-              --test-keys \
-              --out-dir "$seed" \
-              > "pipeline/cal_rc0/matrix-output/$scenario/seed-stdout.json"
-
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --cohort "$root/cohort.json" --admission "$root/admission.json" \
+              --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$seed" > "pipeline/cal_rc0/matrix-output/$scenario/seed-stdout.json"
             uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
               "$seed/evidence-bundler/contract_b/$case_id" \
-              --targets "$root/targets.json" \
-              --cal-root . \
-              --cal-head "$CAL_CHECKOUT_SHA" \
-              --rc7fb1-root _deps/rc7fb1 \
-              --rc8j-root _deps/rc8j \
-              --apparatus-b _deps/apparatus-b \
-              --apparatus-c _deps/apparatus-c \
-              --apparatus-d _deps/apparatus-d \
-              --decision-engine-root _deps/decision-engine \
-              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" \
-              --test-keys \
-              --out-dir "$decision" \
-              > "pipeline/cal_rc0/matrix-output/$scenario/decision-stdout.json"
+              --targets "$root/targets.json" --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$decision" > "pipeline/cal_rc0/matrix-output/$scenario/decision-stdout.json"
           done
 
       - name: Assert outcome matrix and qualified EB seam
@@ -187,20 +155,16 @@ jobs:
           uv run python - <<'PY'
           import json
           from pathlib import Path
-
           EB_HEAD = "dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05"
-
           seed = json.loads(Path("pipeline/cal_rc0/full-pipeline-seed/PIPELINE-RECEIPT.json").read_text())
           assert seed["pins"]["evidence_bundler_head"] == EB_HEAD
-          carrier = seed["evidence_bundler"]["contract_b_compatibility_carrier"]
-          assert carrier == {
+          assert seed["evidence_bundler"]["contract_b_compatibility_carrier"] == {
               "schema": "research-contract-b-1.2-compatibility-carrier-v1",
               "actual_upstream_contract": "contract-a-v2.0.0",
               "semantic_use_authorized": False,
           }
           manifest = Path("pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001/bundle_manifest.yaml").read_text()
           assert "contract_b_legacy_compatibility_carrier" in manifest
-
           supported = json.loads(Path("pipeline/cal_rc0/bundle-to-decision-output/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
           assert supported["pipeline_status"] == "PASS"
           assert supported["authorization"]["state"] == "NOT_EVALUATED"
@@ -211,12 +175,7 @@ jobs:
               assert row["cal_conclusion"]["verdict"] == "supported"
               assert row["contract_c"]["validation"] == "PASS"
               assert row["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
-              assert row["decision_engine"]["effect"] == {
-                  "type": "knowledge.add_verified_tag",
-                  "version": "1",
-                  "params": {"scope": "claim"},
-              }
-
+              assert row["decision_engine"]["effect"] == {"type": "knowledge.add_verified_tag", "version": "1", "params": {"scope": "claim"}}
           expected = {
               "contradicted": {"verdict": "contradicted", "accepted": ["MATRIX-C-P1"]},
               "not_checkable": {"verdict": "not_checkable", "accepted": ["MATRIX-N-P1"]},
@@ -237,9 +196,7 @@ jobs:
               else:
                   assert verdict != "supported", (scenario, verdict)
               assert row["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
-              reasons = row["decision_engine"]["metadata"]["reason_codes"]
-              assert "contract_c_reported_verdict_not_supported" in reasons, (scenario, reasons)
-
+              assert "contract_c_reported_verdict_not_supported" in row["decision_engine"]["metadata"]["reason_codes"]
           print("CAL_TO_DECISION_OUTCOME_MATRIX_PASS")
           PY
 
@@ -260,18 +217,10 @@ jobs:
           staging="pipeline/cal_rc0/_receipt-pack"
           rm -rf "$staging"
           mkdir -p "$staging"
-          for item in \
-            full-pipeline-seed \
-            bundle-to-decision-output \
-            matrix-output \
-            FULL-PIPELINE-SEED-STDOUT.json \
-            BUNDLE-TO-DECISION-STDOUT.json; do
-            if [ -e "pipeline/cal_rc0/$item" ]; then
-              cp -a "pipeline/cal_rc0/$item" "$staging/"
-            fi
+          for item in full-pipeline-seed bundle-to-decision-output matrix-output FULL-PIPELINE-SEED-STDOUT.json BUNDLE-TO-DECISION-STDOUT.json; do
+            if [ -e "pipeline/cal_rc0/$item" ]; then cp -a "pipeline/cal_rc0/$item" "$staging/"; fi
           done
-          tar -czf pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz \
-            -C "$staging" .
+          tar -czf pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz -C "$staging" .
 
       - name: Upload full-pipeline receipts
         if: always()
