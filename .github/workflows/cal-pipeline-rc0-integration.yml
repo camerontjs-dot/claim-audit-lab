@@ -71,9 +71,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          test -n "$CAL_CHECKOUT_SHA"
           uv run python pipeline/cal_rc0/entity_scoped_entrypoint.py \
             --cal-root . \
-            --cal-head "$GITHUB_SHA" \
+            --cal-head "$CAL_CHECKOUT_SHA" \
             --evidence-bundler-root _deps/evidence-bundler \
             --rc7fb1-root _deps/rc7fb1 \
             --rc8j-root _deps/rc8j \
@@ -83,7 +85,7 @@ jobs:
             --admission pipeline/cal_rc0/fixtures/admission.json \
             --targets pipeline/cal_rc0/fixtures/cal_targets.json \
             --eb-profile pipeline/cal_rc0/eb_profile.json \
-            --semantic-implementation-sha "$GITHUB_SHA" \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" \
             --test-keys \
             --out-dir pipeline/cal_rc0/run-output \
             | tee pipeline/cal_rc0/PIPELINE-STDOUT.json
