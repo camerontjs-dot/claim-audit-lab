@@ -1,0 +1,19 @@
+{
+  "schema": "cal-runnable-claim-rc0-v1",
+  "claim_id": "CAL-RUNNABLE-SMOKE-CONTRADICTED",
+  "claim_text": "Women exceeded Men.",
+  "target": {
+    "family": "strict_comparison",
+    "lhs_entity": "Women",
+    "rhs_entity": "Men",
+    "comparison_direction": "greater_than"
+  },
+  "evidence": [
+    {
+      "source_id": "CAL-RUN-S1",
+      "passage_id": "CAL-RUN-P1",
+      "text": "Women trailed Men by 11 percentage points.",
+      "admission": "accepted"
+    }
+  ]
+}
