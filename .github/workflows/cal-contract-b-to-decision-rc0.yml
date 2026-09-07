@@ -13,6 +13,10 @@ on:
       - ".github/workflows/cal-contract-b-to-decision-rc0.yml"
   workflow_dispatch:
 
+concurrency:
+  group: cal-contract-b-to-decision-rc0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -156,6 +160,7 @@ jobs:
           uv run python - <<'PY'
           import json
           from pathlib import Path
+
           EB_HEAD = "dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05"
           seed = json.loads(Path("pipeline/cal_rc0/full-pipeline-seed/PIPELINE-RECEIPT.json").read_text())
           assert seed["pins"]["evidence_bundler_head"] == EB_HEAD
@@ -166,6 +171,7 @@ jobs:
           }
           manifest = Path("pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001/bundle_manifest.yaml").read_text()
           assert "contract_b_legacy_compatibility_carrier" in manifest
+
           supported = json.loads(Path("pipeline/cal_rc0/bundle-to-decision-output/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
           assert supported["pipeline_status"] == "PASS"
           assert supported["authorization"]["state"] == "NOT_EVALUATED"
@@ -177,27 +183,57 @@ jobs:
               assert row["contract_c"]["validation"] == "PASS"
               assert row["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
               assert row["decision_engine"]["effect"] == {"type": "knowledge.add_verified_tag", "version": "1", "params": {"scope": "claim"}}
+
           expected = {
-              "contradicted": {"verdict": "contradicted", "accepted": ["MATRIX-C-P1"]},
-              "not_checkable": {"verdict": "not_checkable", "accepted": ["MATRIX-N-P1"]},
-              "admission_gap": {"verdict": None, "accepted": []},
+              "contradicted": {
+                  "negative_id": "MATRIX_CONTRADICTED:child:1",
+                  "negative_verdict": "contradicted",
+                  "negative_admitted": ["MATRIX-C-P1"],
+                  "positive_id": "MATRIX_CONTRADICTED:child:2",
+                  "positive_admitted": ["MATRIX-C-P2"],
+              },
+              "not_checkable": {
+                  "negative_id": "MATRIX_NOT_CHECKABLE:child:1",
+                  "negative_verdict": "not_checkable",
+                  "negative_admitted": ["MATRIX-N-P1"],
+                  "positive_id": "MATRIX_NOT_CHECKABLE:child:2",
+                  "positive_admitted": ["MATRIX-N-P2"],
+              },
+              "admission_gap": {
+                  "negative_id": "MATRIX_ADMISSION_GAP:child:1",
+                  "negative_verdict": None,
+                  "negative_admitted": [],
+                  "positive_id": "MATRIX_ADMISSION_GAP:child:2",
+                  "positive_admitted": ["MATRIX-A-P2"],
+              },
           }
           for scenario, spec in expected.items():
               receipt = json.loads(Path(f"pipeline/cal_rc0/matrix-output/{scenario}/decision/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
               assert receipt["pipeline_status"] == "PASS"
               assert receipt["authorization"]["state"] == "NOT_EVALUATED"
               assert receipt["production_promotion_authorized"] is False
-              assert len(receipt["results"]) == 1
-              row = receipt["results"][0]
-              assert row["contract_c"]["validation"] == "PASS"
-              assert row["admitted_passage_ids"] == spec["accepted"]
-              verdict = row["cal_conclusion"]["verdict"]
-              if spec["verdict"] is not None:
-                  assert verdict == spec["verdict"], (scenario, verdict)
+              assert len(receipt["results"]) == 2
+              rows = {row["proposition_id"]: row for row in receipt["results"]}
+
+              negative = rows[spec["negative_id"]]
+              assert negative["contract_c"]["validation"] == "PASS"
+              assert negative["admitted_passage_ids"] == spec["negative_admitted"]
+              negative_verdict = negative["cal_conclusion"]["verdict"]
+              if spec["negative_verdict"] is not None:
+                  assert negative_verdict == spec["negative_verdict"], (scenario, negative_verdict)
               else:
-                  assert verdict != "supported", (scenario, verdict)
-              assert row["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
-              assert "contract_c_reported_verdict_not_supported" in row["decision_engine"]["metadata"]["reason_codes"]
+                  assert negative_verdict != "supported", (scenario, negative_verdict)
+              assert negative["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
+              assert "contract_c_reported_verdict_not_supported" in negative["decision_engine"]["metadata"]["reason_codes"]
+
+              positive = rows[spec["positive_id"]]
+              assert positive["contract_c"]["validation"] == "PASS"
+              assert positive["admitted_passage_ids"] == spec["positive_admitted"]
+              assert positive["cal_conclusion"]["disposition"] == "decided"
+              assert positive["cal_conclusion"]["verdict"] == "supported"
+              assert positive["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+              assert positive["decision_engine"]["effect"] == {"type": "knowledge.add_verified_tag", "version": "1", "params": {"scope": "claim"}}
+
           print("CAL_TO_DECISION_OUTCOME_MATRIX_PASS")
           PY
 
