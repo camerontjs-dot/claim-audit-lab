@@ -1,0 +1,171 @@
+name: CAL Contract B to Decision RC0
+
+on:
+  push:
+    branches:
+      - integration/cal-contract-b-to-decision-rc0-20260907
+  pull_request:
+    paths:
+      - "pipeline/cal_rc0/run_evidence_bundle.py"
+      - ".github/workflows/cal-contract-b-to-decision-rc0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  full-pipeline-to-decision:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact pipeline and Decision dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
+          git -C _deps/evidence-bundler checkout 50270b9bfcf6b5112c6ec88c02c7cdd7215e0ff4
+
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-d
+          git -C _deps/apparatus-d checkout 298a1a0f7b7b6d7712e11200d04faec3e1ca169b
+
+          git clone --no-checkout https://github.com/camerontjs-dot/decision-engine.git _deps/decision-engine
+          git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install integration dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv sync
+          uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+
+      - name: Build Evidence Bundler Contract B from Contract A fixture
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          uv run python pipeline/cal_rc0/entity_scoped_entrypoint.py \
+            --cal-root . \
+            --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 \
+            --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b \
+            --apparatus-c _deps/apparatus-c \
+            --cohort pipeline/cal_rc0/fixtures/cohort.json \
+            --admission pipeline/cal_rc0/fixtures/admission.json \
+            --targets pipeline/cal_rc0/fixtures/cal_targets.json \
+            --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" \
+            --test-keys \
+            --out-dir pipeline/cal_rc0/full-pipeline-seed \
+            > pipeline/cal_rc0/FULL-PIPELINE-SEED-STDOUT.json
+
+      - name: Feed Contract B into CAL and emit Decision Engine Contract D
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          uv run python pipeline/cal_rc0/run_evidence_bundle.py \
+            pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001 \
+            --targets pipeline/cal_rc0/fixtures/cal_targets.json \
+            --cal-root . \
+            --cal-head "$CAL_CHECKOUT_SHA" \
+            --rc7fb1-root _deps/rc7fb1 \
+            --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b \
+            --apparatus-c _deps/apparatus-c \
+            --apparatus-d _deps/apparatus-d \
+            --decision-engine-root _deps/decision-engine \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" \
+            --test-keys \
+            --out-dir pipeline/cal_rc0/bundle-to-decision-output \
+            | tee pipeline/cal_rc0/BUNDLE-TO-DECISION-STDOUT.json
+
+      - name: Assert full pipeline reaches canonical Decision output
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          receipt = json.loads(
+              Path("pipeline/cal_rc0/bundle-to-decision-output/BUNDLE-TO-DECISION-RECEIPT.json").read_text()
+          )
+          assert receipt["pipeline_status"] == "PASS"
+          assert receipt["input_contract_b"]["contract_version"] == "1.2.0"
+          assert receipt["authorization"]["state"] == "NOT_EVALUATED"
+          assert receipt["production_promotion_authorized"] is False
+          assert len(receipt["results"]) == 2
+
+          for row in receipt["results"]:
+              assert row["cal_conclusion"]["disposition"] == "decided"
+              assert row["cal_conclusion"]["verdict"] == "supported"
+              assert row["contract_c"]["validation"] == "PASS"
+              evaluation = row["decision_engine"]["evaluation"]
+              assert evaluation == {"state": "completed", "disposition": "clear"}
+              effect = row["decision_engine"]["effect"]
+              assert effect == {
+                  "type": "knowledge.add_verified_tag",
+                  "version": "1",
+                  "params": {"scope": "claim"},
+              }
+              d_path = Path("pipeline/cal_rc0/bundle-to-decision-output") / row["decision_engine"]["contract_d_path"]
+              decision = json.loads(d_path.read_text())
+              assert decision["contract_d_version"] == "1.0.0"
+              assert decision["evaluation"]["disposition"] == "clear"
+
+          print("CAL_CONTRACT_B_TO_DECISION_RC0_PASS")
+          PY
+
+      - name: Confirm no production source mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "integration build modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Pack full-pipeline receipts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -czf pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz \
+            -C pipeline/cal_rc0 \
+            full-pipeline-seed \
+            bundle-to-decision-output \
+            FULL-PIPELINE-SEED-STDOUT.json \
+            BUNDLE-TO-DECISION-STDOUT.json
+
+      - name: Upload full-pipeline receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-contract-b-to-decision-rc0-${{ github.run_id }}
+          path: pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz
+          if-no-files-found: warn
+          retention-days: 90
