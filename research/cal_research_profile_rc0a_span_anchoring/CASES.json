@@ -1,0 +1,22 @@
+{
+  "cohort_id": "cal-rc0a-span-anchor-preregistered-v1",
+  "parent_head": "8c52a00b93c7c33c159a484c47944faf9d97f7f1",
+  "cases": [
+    {"id":"OVERLAP-WOMEN-MEN","text":"Women trailed Men by 11 percentage points.","surface":"Men","expected_span":[14,17]},
+    {"id":"OVERLAP-WOMAN-MAN","text":"Woman trailed Man by 3 units.","surface":"Man","expected_span":[14,17]},
+    {"id":"EMBEDDED-US-RUSSIA","text":"Russia trailed US by 2 units.","surface":"US","expected_span":[15,17]},
+    {"id":"PUNCTUATION-DELIMITED","text":"(Acme) exceeded Beta by 4 units.","surface":"Acme","expected_span":[1,5]},
+    {"id":"POSSESSIVE","text":"Acme's output exceeded Beta's by 4 units.","surface":"Acme","expected_span":[0,4]},
+    {"id":"CASE-INSENSITIVE","text":"ALPHA exceeded beta by 4 units.","surface":"Alpha","expected_span":[0,5]},
+    {"id":"DIGIT-PREFIX-COLLISION","text":"Model 20 trailed Model 2 by 4 units.","surface":"Model 2","expected_span":[17,24]},
+    {"id":"LETTER-PREFIX-COLLISION","text":"Plan AB trailed Plan A by 4 units.","surface":"Plan A","expected_span":[16,22]},
+    {"id":"REPEATED-LHS","text":"Alpha exceeded Beta after Alpha recovered.","surface":"Alpha","expected_span":null},
+    {"id":"REPEATED-RHS","text":"Alpha exceeded Beta, although Beta later recovered.","surface":"Beta","expected_span":null},
+    {"id":"MULTIWORD-COMPONENT-AMBIGUOUS","text":"New York trailed York by 4 units.","surface":"York","expected_span":null},
+    {"id":"ORG-COMPONENT-AMBIGUOUS","text":"New York Times exceeded Times by 4 units.","surface":"Times","expected_span":null},
+    {"id":"UNICODE-QUOTES","text":"“Alpha” exceeded Beta by 4 units.","surface":"Alpha","expected_span":[1,6]},
+    {"id":"HYPHENATED-ENTITY","text":"Alpha-Co exceeded Beta Group by 4 units.","surface":"Alpha-Co","expected_span":[0,8]},
+    {"id":"MULTIWORD-ENTITY","text":"Alpha Group exceeded Beta Group by 4 units.","surface":"Beta Group","expected_span":[21,31]},
+    {"id":"EMPTY-SURFACE","text":"Alpha exceeded Beta by 4 units.","surface":"   ","expected_span":null}
+  ]
+}
