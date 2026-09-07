@@ -1,0 +1,112 @@
+name: Research CAL RC0B span integration
+
+on:
+  push:
+    branches:
+      - research-infra/cal-rc0b-span-integration-20260907
+  pull_request:
+    paths:
+      - 'research/cal_research_profile_rc0b_span_integration/**'
+      - '.github/workflows/research-cal-rc0b-span-integration.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout exact frozen dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install bounded dependencies
+        run: uv sync
+
+      - name: Verify frozen identities and mutation boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/cal_research_profile_rc0/runtime.py)" = b36dacf39d158601368b89df8fa66431ce1b4a07
+          test "$(git hash-object research/cal_research_profile_rc0/smoke_runner.py)" = a53d427095876e18fa65a67993f259f8672f1650
+          test "$(git hash-object research/cal_research_profile_rc0a_span_anchoring/span_anchor.py)" = 7dd0b1d0077682d121aaa386067531cca3b742d8
+          test "$(git -C _deps/rc7fb1 rev-parse HEAD)" = 0ecdedc5cea970485a635508255f3670ab231c33
+          test "$(git -C _deps/rc7fb1 hash-object research/comparative_relation_measurement_rc7fb1/comparator.py)" = 33820f55e2a87c4de6336fca6b5e5b93a2bccde3
+          test "$(git -C _deps/rc8j rev-parse HEAD)" = 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          test "$(git -C _deps/rc8j hash-object research/semantic_authority_machinery_rc8/authority_contract_rc8j.py)" = f55156e43e0c1b4a7868bc8339585b8892edda38
+          test "$(git -C _deps/apparatus-b rev-parse HEAD)" = c314e53bd91c0736aa4370a364673b069aceb43e
+          test "$(git -C _deps/apparatus-c rev-parse HEAD)" = 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          test "$(git -C _deps/apparatus-c hash-object validators/contract_c.py)" = 9c75ccfbf2223578a8d1a7bf0c39673b394fbea4
+          if git diff --name-only 9baa981d9e5209c08911b992effbce5c59604884...HEAD | grep -E '^(src/|research/cal_research_profile_rc0/|research/cal_research_profile_rc0a_span_anchoring/)'; then
+            echo 'Frozen parent or production mutation detected'
+            exit 1
+          fi
+
+      - name: Rerun frozen RC0 seam suite
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p research/cal_research_profile_rc0b_span_integration/run-output
+          uv run python research/cal_research_profile_rc0/seam_suite.py \
+            --rc7fb1-root _deps/rc7fb1 \
+            --rc8j-root _deps/rc8j \
+            --out research/cal_research_profile_rc0b_span_integration/run-output/PARENT-SEAM-RESULTS.json
+
+      - name: Execute frozen RC0B integration evaluator
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python research/cal_research_profile_rc0b_span_integration/integration_runner.py \
+            --rc7fb1-root _deps/rc7fb1 \
+            --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b \
+            --apparatus-c _deps/apparatus-c \
+            --out research/cal_research_profile_rc0b_span_integration/run-output/RESULTS.json
+
+      - name: Validate research receipt shape
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('research/cal_research_profile_rc0b_span_integration/run-output/RESULTS.json')
+          r = json.loads(p.read_text())
+          assert r['experiment'] == 'cal-rc0b-span-integration'
+          assert r.get('research_disposition') in {'SUPPORTED_WITH_BOUNDS','FALSIFIED_OR_INCONCLUSIVE'}
+          assert r.get('production_promotion_authorized') is False
+          assert r.get('case_count') == 10
+          print(r['research_disposition'])
+          PY
+
+      - name: Upload RC0B evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-rc0b-span-integration-${{ github.run_id }}
+          path: |
+            research/cal_research_profile_rc0b_span_integration/PREREGISTRATION.md
+            research/cal_research_profile_rc0b_span_integration/CASES.json
+            research/cal_research_profile_rc0b_span_integration/integration_adapter.py
+            research/cal_research_profile_rc0b_span_integration/integration_runner.py
+            research/cal_research_profile_rc0b_span_integration/run-output
+          retention-days: 90

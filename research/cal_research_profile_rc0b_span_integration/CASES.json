@@ -1,0 +1,66 @@
+{
+  "cohort_id": "cal-rc0b-span-integration-controlled-v1",
+  "case_count": 10,
+  "cases": [
+    {
+      "id": "RC0B-01-WOMEN-MEN-REFUTE",
+      "claim": {"claim_id":"rc0b-01","text":"Women exceeded Men.","lhs_entity":"women","rhs_entity":"men","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-01","passage_id":"rc0b-p-01","text":"Women trailed Men by 11 percentage points.","source_url":"https://example.com/cal-rc0b/01","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"REFUTES","expected_disposition":"decided","expected_verdict":"contradicted","expected_c_verdict":"contradicted"
+    },
+    {
+      "id": "RC0B-02-MEN-WOMEN-SUPPORT",
+      "claim": {"claim_id":"rc0b-02","text":"Men exceeded Women.","lhs_entity":"men","rhs_entity":"women","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-02","passage_id":"rc0b-p-02","text":"Women trailed Men by 11 percentage points.","source_url":"https://example.com/cal-rc0b/02","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"SUPPORTS","expected_disposition":"decided","expected_verdict":"supported","expected_c_verdict":"supported"
+    },
+    {
+      "id": "RC0B-03-FOREIGN-PAIR-IRRELEVANT",
+      "claim": {"claim_id":"rc0b-03","text":"Alpha exceeded Beta.","lhs_entity":"alpha","rhs_entity":"beta","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-03","passage_id":"rc0b-p-03","text":"Women trailed Men by 11 percentage points.","source_url":"https://example.com/cal-rc0b/03","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"IRRELEVANT","expected_disposition":"abstained","expected_verdict":null,"expected_c_verdict":"not_checkable"
+    },
+    {
+      "id": "RC0B-04-RUSSIA-US-SUPPORT",
+      "claim": {"claim_id":"rc0b-04","text":"US exceeded Russia.","lhs_entity":"us","rhs_entity":"russia","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-04","passage_id":"rc0b-p-04","text":"Russia trailed US by 2 units.","source_url":"https://example.com/cal-rc0b/04","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"SUPPORTS","expected_disposition":"decided","expected_verdict":"supported","expected_c_verdict":"supported"
+    },
+    {
+      "id": "RC0B-05-MODEL-PREFIX-SUPPORT",
+      "claim": {"claim_id":"rc0b-05","text":"Model 2 exceeded Model 20.","lhs_entity":"model 2","rhs_entity":"model 20","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-05","passage_id":"rc0b-p-05","text":"Model 20 trailed Model 2 by 4 units.","source_url":"https://example.com/cal-rc0b/05","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"SUPPORTS","expected_disposition":"decided","expected_verdict":"supported","expected_c_verdict":"supported"
+    },
+    {
+      "id": "RC0B-06-PLAN-PREFIX-SUPPORT",
+      "claim": {"claim_id":"rc0b-06","text":"Plan A exceeded Plan AB.","lhs_entity":"plan a","rhs_entity":"plan ab","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-06","passage_id":"rc0b-p-06","text":"Plan AB trailed Plan A by 4 units.","source_url":"https://example.com/cal-rc0b/06","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"SUPPORTS","expected_disposition":"decided","expected_verdict":"supported","expected_c_verdict":"supported"
+    },
+    {
+      "id": "RC0B-07-CASE-INSENSITIVE-SUPPORT",
+      "claim": {"claim_id":"rc0b-07","text":"Alpha exceeded Beta.","lhs_entity":"alpha","rhs_entity":"beta","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-07","passage_id":"rc0b-p-07","text":"ALPHA exceeded Beta by 4 units.","source_url":"https://example.com/cal-rc0b/07","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"SUPPORTS","expected_disposition":"decided","expected_verdict":"supported","expected_c_verdict":"supported"
+    },
+    {
+      "id": "RC0B-08-WOMAN-MAN-SUPPORT",
+      "claim": {"claim_id":"rc0b-08","text":"Man exceeded Woman.","lhs_entity":"man","rhs_entity":"woman","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-08","passage_id":"rc0b-p-08","text":"Woman trailed Man by 3 units.","source_url":"https://example.com/cal-rc0b/08","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered controlled comparison"}],
+      "expected_relation":"SUPPORTS","expected_disposition":"decided","expected_verdict":"supported","expected_c_verdict":"supported"
+    },
+    {
+      "id": "RC0B-09-NEW-YORK-YORK-AMBIGUOUS",
+      "claim": {"claim_id":"rc0b-09","text":"York exceeded New York.","lhs_entity":"york","rhs_entity":"new york","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-09","passage_id":"rc0b-p-09","text":"New York trailed York by 4 units.","source_url":"https://example.com/cal-rc0b/09","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered lexical-component ambiguity"}],
+      "expected_relation":"UNRESOLVED","expected_disposition":"abstained","expected_verdict":null,"expected_c_verdict":"not_checkable"
+    },
+    {
+      "id": "RC0B-10-GROUP-COMPONENT-AMBIGUOUS",
+      "claim": {"claim_id":"rc0b-10","text":"Group exceeded Beta Group.","lhs_entity":"group","rhs_entity":"beta group","comparison_direction":"greater_than"},
+      "evidence": [{"source_id":"rc0b-src-10","passage_id":"rc0b-p-10","text":"Beta Group trailed Group by 4 units.","source_url":"https://example.com/cal-rc0b/10","source_locator":"controlled integration fixture","text_mode":"synthetic_control","transformation_record":"preregistered lexical-component ambiguity"}],
+      "expected_relation":"UNRESOLVED","expected_disposition":"abstained","expected_verdict":null,"expected_c_verdict":"not_checkable"
+    }
+  ]
+}
