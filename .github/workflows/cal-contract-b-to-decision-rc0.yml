@@ -60,6 +60,7 @@ jobs:
           set -euo pipefail
           uv sync
           uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+          uv pip install --python .venv/bin/python -e _deps/apparatus-d
 
       - name: Build Evidence Bundler Contract B from Contract A fixture
         shell: bash
