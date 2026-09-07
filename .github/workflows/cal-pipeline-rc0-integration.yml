@@ -71,7 +71,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          uv run python pipeline/cal_rc0/run_pipeline.py \
+          uv run python pipeline/cal_rc0/entity_scoped_entrypoint.py \
             --cal-root . \
             --cal-head "$GITHUB_SHA" \
             --evidence-bundler-root _deps/evidence-bundler \
@@ -106,6 +106,9 @@ jobs:
           assert receipt["root_composition"]["state"] == "NOT_COMPOSED"
           assert receipt["operational_authorization"]["state"] == "NOT_EVALUATED"
           assert receipt["production_promotion_authorized"] is False
+          assert receipt["cal"]["span_resolver"] == "rc0a_entity_only_unique_exact_lexical_boundary"
+          assert receipt["cal"]["entity_span_scope"] == ["lhs_entity", "rhs_entity"]
+          assert receipt["cal"]["non_entity_span_resolver"] == "frozen_rc0_unique_casefold_span"
 
           children = {
               row["proposition_id"]: row for row in receipt["cal"]["children"]
@@ -122,7 +125,11 @@ jobs:
 
           overlap = children["PIPELINE_SMOKE_001:child:1"]
           assert overlap["admitted_passage_ids"] == ["PIPE-P1"]
-          assert overlap["stages"][0]["typed_atom"]["rhs_span"] == [14, 17]
+          atom = overlap["stages"][0]["typed_atom"]
+          assert atom["lhs_span"] == [0, 5]
+          assert atom["rhs_span"] == [14, 17]
+          assert atom["quantity_span"] == [21, 23]
+          assert atom["unit_span"] == [24, 41]
           assert overlap["stages"][0]["categorical_relation"]["relation"] == "SUPPORTS"
           assert "PIPE-P3" not in overlap["admitted_passage_ids"]
           print("CAL_PIPELINE_RC0_INTEGRATION_PASS")
