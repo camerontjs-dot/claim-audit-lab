@@ -129,6 +129,7 @@ jobs:
             root="pipeline/cal_rc0/fixtures/matrix/$scenario"
             seed="pipeline/cal_rc0/matrix-output/$scenario/seed"
             decision="pipeline/cal_rc0/matrix-output/$scenario/decision"
+            mkdir -p "pipeline/cal_rc0/matrix-output/$scenario"
             uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
               --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
               --evidence-bundler-root _deps/evidence-bundler \
