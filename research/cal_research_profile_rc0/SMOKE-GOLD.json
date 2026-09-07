@@ -1,0 +1,152 @@
+{
+  "schema": "cal-research-profile-rc0-smoke-gold-v1",
+  "gold_id": "cal-rc0-naturalistic-smoke-gold-20260906-v1",
+  "cohort_id": "cal-rc0-naturalistic-smoke-20260906-v1",
+  "created_before_candidate_execution": true,
+  "adjudication_status": "SUPERVISOR_PREEXECUTION_GOLD_NOT_INDEPENDENT_HUMAN_REVIEW",
+  "adjudication_note": "The task requires human adjudication. This environment cannot truthfully create an independent human reviewer. The expected relations below were frozen by the informed CAL supervisor before candidate execution from the public source statements and the preregistered RC0 jurisdiction. This deviation must remain visible and limits any claim that specifically depends on independent human gold.",
+  "failure_policy": "Do not repair runtime, seam evaluator, profile manifest, cohort, or gold after observing candidate output. Any unsafe support/refutation, stale/foreign binding acceptance, scalar/count terminal influence, mixed winner, or Contract-C strengthening is terminal falsification.",
+  "cases": [
+    {
+      "case_id": "NAT-01-SYLC-SUPPORT",
+      "exact_proposition": "SYLC exceeded SP500 in the reported comparison.",
+      "expected_measurement_status": "CLAIMED",
+      "expected_relation": "SUPPORTS",
+      "expected_internal_disposition": "decided",
+      "expected_internal_verdict": "supported",
+      "relation_determinable": true,
+      "proposition_decision_allowed": true,
+      "required_evidence_spans": [
+        {"role": "left_entity", "text": "SYLC", "span": [0, 4]},
+        {"role": "direction", "text": "exceeded", "span": [5, 13]},
+        {"role": "right_entity", "text": "SP500", "span": [14, 19]},
+        {"role": "quantity", "text": "1.92", "span": [23, 27]},
+        {"role": "unit", "text": "percentage points", "span": [28, 45]}
+      ],
+      "gold_reason": "The frozen deciding surface explicitly states the same ordered entity pair and greater-than direction."
+    },
+    {
+      "case_id": "NAT-02-PURCHASES-REFUTE",
+      "exact_proposition": "Purchases exceeded SP500 in the one-year comparison.",
+      "expected_measurement_status": "CLAIMED",
+      "expected_relation": "REFUTES",
+      "expected_internal_disposition": "decided",
+      "expected_internal_verdict": "contradicted",
+      "relation_determinable": true,
+      "proposition_decision_allowed": true,
+      "required_evidence_spans": [
+        {"role": "left_entity", "text": "Purchases", "span": [0, 9]},
+        {"role": "direction", "text": "trailed", "span": [10, 17]},
+        {"role": "right_entity", "text": "SP500", "span": [18, 23]},
+        {"role": "quantity", "text": "5.36", "span": [27, 31]},
+        {"role": "unit", "text": "percentage points", "span": [32, 49]}
+      ],
+      "gold_reason": "The deciding surface states the same ordered pair with the opposite strict direction."
+    },
+    {
+      "case_id": "NAT-03-SWAPPED-REVERSAL-SUPPORT",
+      "exact_proposition": "SP500 exceeded Sales in the one-year comparison.",
+      "expected_measurement_status": "CLAIMED",
+      "expected_relation": "SUPPORTS",
+      "expected_internal_disposition": "decided",
+      "expected_internal_verdict": "supported",
+      "relation_determinable": true,
+      "proposition_decision_allowed": true,
+      "required_evidence_spans": [
+        {"role": "left_entity", "text": "Sales", "span": [0, 5]},
+        {"role": "direction", "text": "trailed", "span": [6, 13]},
+        {"role": "right_entity", "text": "SP500", "span": [14, 19]},
+        {"role": "quantity", "text": "6.39", "span": [23, 27]},
+        {"role": "unit", "text": "percentage points", "span": [28, 45]}
+      ],
+      "gold_reason": "The evidence uses the swapped entity order with the logically inverse strict direction."
+    },
+    {
+      "case_id": "NAT-04-INSUFFICIENT-COMPARATIVE-SURFACE",
+      "exact_proposition": "Buys exceeded Sells.",
+      "expected_measurement_status": "NOT_APPLICABLE",
+      "expected_relation": "UNRESOLVED",
+      "expected_internal_disposition": "abstained",
+      "expected_internal_verdict": null,
+      "relation_determinable": false,
+      "proposition_decision_allowed": false,
+      "required_evidence_spans": [
+        {"role": "full_nondeciding_surface", "text": "Buys did not reliably beat sells.", "span": [0, 33]}
+      ],
+      "required_abstention": "The frozen measurement grammar does not authorize synonym expansion from 'beat', and explicit negation cannot be repaired by confidence or generic semantic inference."
+    },
+    {
+      "case_id": "NAT-05-IRRELEVANT-ENTITY-PAIR",
+      "exact_proposition": "SYLC exceeded SP500.",
+      "expected_measurement_status": "CLAIMED",
+      "expected_relation": "IRRELEVANT",
+      "expected_internal_disposition": "abstained",
+      "expected_internal_verdict": null,
+      "relation_determinable": true,
+      "proposition_decision_allowed": false,
+      "required_evidence_spans": [
+        {"role": "left_entity", "text": "Women", "span": [0, 5]},
+        {"role": "direction", "text": "trailed", "span": [6, 13]},
+        {"role": "right_entity", "text": "Men", "span": [14, 17]},
+        {"role": "quantity", "text": "11", "span": [21, 23]},
+        {"role": "unit", "text": "percentage points", "span": [24, 41]}
+      ],
+      "required_abstention": "A warranted comparison over a foreign entity pair may be classified IRRELEVANT but cannot decide the proposition."
+    },
+    {
+      "case_id": "NAT-06-GENDER-REFUTE",
+      "exact_proposition": "Women exceeded Men in the reported 2024 comparison.",
+      "expected_measurement_status": "CLAIMED",
+      "expected_relation": "REFUTES",
+      "expected_internal_disposition": "decided",
+      "expected_internal_verdict": "contradicted",
+      "relation_determinable": true,
+      "proposition_decision_allowed": true,
+      "required_evidence_spans": [
+        {"role": "left_entity", "text": "Women", "span": [0, 5]},
+        {"role": "direction", "text": "trailed", "span": [6, 13]},
+        {"role": "right_entity", "text": "Men", "span": [14, 17]},
+        {"role": "quantity", "text": "11", "span": [21, 23]},
+        {"role": "unit", "text": "percentage points", "span": [24, 41]}
+      ],
+      "gold_reason": "Within the explicitly identified reported comparison, the frozen deciding surface states the opposite strict direction for the same pair."
+    },
+    {
+      "case_id": "NAT-07-QUALIFIED-TRAILING-YEAR",
+      "exact_proposition": "SYLC exceeded SP500 over the trailing year.",
+      "expected_measurement_status": "UNRESOLVED",
+      "expected_relation": "UNRESOLVED",
+      "expected_internal_disposition": "abstained",
+      "expected_internal_verdict": null,
+      "relation_determinable": false,
+      "proposition_decision_allowed": false,
+      "required_evidence_spans": [
+        {"role": "left_entity", "text": "SYLC", "span": [0, 4]},
+        {"role": "direction_cue", "text": "trailed", "span": [5, 12]},
+        {"role": "right_entity", "text": "SP500", "span": [13, 18]},
+        {"role": "qualifier", "text": "roughly", "span": [22, 29]},
+        {"role": "scope", "text": "over the trailing year", "span": [52, 74]}
+      ],
+      "required_abstention": "The source qualifier and temporal scope are material. They remain outside the frozen complete-atom grammar and must not be stripped or guessed."
+    },
+    {
+      "case_id": "NAT-08-SCOPE-BEARING-1980",
+      "exact_proposition": "Women exceeded Men in 1980 B.A. degree completion.",
+      "expected_measurement_status": "UNRESOLVED",
+      "expected_relation": "UNRESOLVED",
+      "expected_internal_disposition": "abstained",
+      "expected_internal_verdict": null,
+      "relation_determinable": false,
+      "proposition_decision_allowed": false,
+      "required_evidence_spans": [
+        {"role": "left_entity", "text": "Women", "span": [0, 5]},
+        {"role": "direction_cue", "text": "trailed", "span": [6, 13]},
+        {"role": "right_entity", "text": "Men", "span": [14, 17]},
+        {"role": "scope", "text": "in 1980", "span": [18, 25]},
+        {"role": "quantity", "text": "1", "span": [29, 30]},
+        {"role": "unit", "text": "percentage point", "span": [31, 47]}
+      ],
+      "required_abstention": "The temporal attachment is material to the proposition but is not represented by the frozen RC0 typed atom. The case must stop before authority rather than silently drop scope."
+    }
+  ]
+}
