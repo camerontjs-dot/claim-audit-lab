@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - "pipeline/cal_rc0/run_evidence_bundle.py"
+      - "pipeline/cal_rc0/bundle_to_decision_entrypoint.py"
       - ".github/workflows/cal-contract-b-to-decision-rc0.yml"
   workflow_dispatch:
 
@@ -87,7 +88,7 @@ jobs:
         run: |
           set -euo pipefail
           CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
-          uv run python pipeline/cal_rc0/run_evidence_bundle.py \
+          uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
             pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001 \
             --targets pipeline/cal_rc0/fixtures/cal_targets.json \
             --cal-root . \
@@ -115,7 +116,11 @@ jobs:
               Path("pipeline/cal_rc0/bundle-to-decision-output/BUNDLE-TO-DECISION-RECEIPT.json").read_text()
           )
           assert receipt["pipeline_status"] == "PASS"
+          assert receipt["input_target_case_id"] == "PIPELINE_SMOKE_001"
           assert receipt["input_contract_b"]["contract_version"] == "1.2.0"
+          assert receipt["input_contract_b"]["bundle_id"] != receipt["input_target_case_id"]
+          assert receipt["identity_namespaces"]["cal_target_case_id"] == "upstream_case_identity"
+          assert receipt["identity_namespaces"]["contract_b_bundle_id"] == "contract_b_immutable_bundle_identity"
           assert receipt["authorization"]["state"] == "NOT_EVALUATED"
           assert receipt["production_promotion_authorized"] is False
           assert len(receipt["results"]) == 2
