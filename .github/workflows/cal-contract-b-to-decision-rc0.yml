@@ -2,8 +2,7 @@ name: CAL Contract B to Decision RC0
 
 on:
   push:
-    branches:
-      - integration/cal-contract-b-to-decision-rc0-draft-pr-20260907
+    branches: [integration/cal-contract-b-to-decision-rc0-draft-pr-20260907]
   pull_request:
     paths:
       - "pipeline/cal_rc0/run_evidence_bundle.py"
@@ -49,15 +48,12 @@ jobs:
           git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
 
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+        with: {python-version: "3.11"}
       - uses: actions/setup-node@v4
-        with:
-          node-version: "22"
+        with: {node-version: "22"}
       - uses: astral-sh/setup-uv@v6
 
       - name: Install integration dependencies
-        shell: bash
         run: |
           set -euo pipefail
           uv sync
@@ -65,7 +61,6 @@ jobs:
           uv pip install --python .venv/bin/python -e _deps/apparatus-d
 
       - name: Recheck qualified Evidence Bundler boundary tests
-        shell: bash
         working-directory: _deps/evidence-bundler
         run: |
           set -euo pipefail
@@ -74,7 +69,6 @@ jobs:
             tests/test_research_cal_rc0_handoff_qualified_build.py
 
       - name: Recheck pinned Decision Engine maintained regressions
-        shell: bash
         working-directory: _deps/decision-engine
         run: |
           set -euo pipefail
@@ -85,7 +79,6 @@ jobs:
           node research/contract-c-seam-shadow/validate-fixtures.mjs
 
       - name: Build qualified Evidence Bundler Contract B from Contract A fixture
-        shell: bash
         run: |
           set -euo pipefail
           CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
@@ -103,7 +96,6 @@ jobs:
             > pipeline/cal_rc0/FULL-PIPELINE-SEED-STDOUT.json
 
       - name: Feed supported Contract B into CAL and Decision Engine
-        shell: bash
         run: |
           set -euo pipefail
           CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
@@ -119,7 +111,6 @@ jobs:
             | tee pipeline/cal_rc0/BUNDLE-TO-DECISION-STDOUT.json
 
       - name: Run negative and uncertain end-to-end matrix
-        shell: bash
         run: |
           set -euo pipefail
           CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
@@ -154,7 +145,6 @@ jobs:
           done
 
       - name: Assert outcome matrix and qualified EB seam
-        shell: bash
         run: |
           set -euo pipefail
           uv run python - <<'PY'
@@ -169,8 +159,9 @@ jobs:
               "actual_upstream_contract": "contract-a-v2.0.0",
               "semantic_use_authorized": False,
           }
-          manifest = Path("pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001/bundle_manifest.yaml").read_text()
-          assert "contract_b_legacy_compatibility_carrier" in manifest
+          assert "contract_b_legacy_compatibility_carrier" in Path(
+              "pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001/bundle_manifest.yaml"
+          ).read_text()
 
           supported = json.loads(Path("pipeline/cal_rc0/bundle-to-decision-output/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
           assert supported["pipeline_status"] == "PASS"
@@ -178,37 +169,50 @@ jobs:
           assert supported["production_promotion_authorized"] is False
           assert len(supported["results"]) == 2
           for row in supported["results"]:
+              assert row["cal_conclusion"] | {"basis_relation_ids": row["cal_conclusion"]["basis_relation_ids"], "claim_id": row["cal_conclusion"]["claim_id"]}
               assert row["cal_conclusion"]["disposition"] == "decided"
               assert row["cal_conclusion"]["verdict"] == "supported"
               assert row["contract_c"]["validation"] == "PASS"
               assert row["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
-              assert row["decision_engine"]["effect"] == {"type": "knowledge.add_verified_tag", "version": "1", "params": {"scope": "claim"}}
+              assert row["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
 
           expected = {
               "contradicted": {
                   "negative_id": "MATRIX_CONTRADICTED:child:1",
-                  "negative_verdict": "contradicted",
                   "negative_admitted": ["MATRIX-C-P1"],
+                  "negative_disposition": "decided",
+                  "negative_verdict": "contradicted",
+                  "negative_reason": "categorical_refutation",
+                  "de_reason": "contract_c_reported_verdict_not_supported",
                   "positive_id": "MATRIX_CONTRADICTED:child:2",
                   "positive_admitted": ["MATRIX-C-P2"],
               },
               "not_checkable": {
                   "negative_id": "MATRIX_NOT_CHECKABLE:child:1",
-                  "negative_verdict": "not_checkable",
                   "negative_admitted": ["MATRIX-N-P1"],
+                  "negative_disposition": "abstained",
+                  "negative_verdict": None,
+                  "negative_reason": "unresolved_categorical_relation",
+                  "de_reason": "contract_c_proposition_not_checkable",
                   "positive_id": "MATRIX_NOT_CHECKABLE:child:2",
                   "positive_admitted": ["MATRIX-N-P2"],
               },
               "admission_gap": {
                   "negative_id": "MATRIX_ADMISSION_GAP:child:1",
-                  "negative_verdict": None,
                   "negative_admitted": [],
+                  "negative_disposition": "abstained",
+                  "negative_verdict": None,
+                  "negative_reason": "unresolved_categorical_relation",
+                  "de_reason": "contract_c_proposition_not_checkable",
                   "positive_id": "MATRIX_ADMISSION_GAP:child:2",
                   "positive_admitted": ["MATRIX-A-P2"],
               },
           }
+
           for scenario, spec in expected.items():
-              receipt = json.loads(Path(f"pipeline/cal_rc0/matrix-output/{scenario}/decision/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
+              receipt = json.loads(Path(
+                  f"pipeline/cal_rc0/matrix-output/{scenario}/decision/BUNDLE-TO-DECISION-RECEIPT.json"
+              ).read_text())
               assert receipt["pipeline_status"] == "PASS"
               assert receipt["authorization"]["state"] == "NOT_EVALUATED"
               assert receipt["production_promotion_authorized"] is False
@@ -216,29 +220,27 @@ jobs:
               rows = {row["proposition_id"]: row for row in receipt["results"]}
 
               negative = rows[spec["negative_id"]]
-              assert negative["contract_c"]["validation"] == "PASS"
               assert negative["admitted_passage_ids"] == spec["negative_admitted"]
-              negative_verdict = negative["cal_conclusion"]["verdict"]
-              if spec["negative_verdict"] is not None:
-                  assert negative_verdict == spec["negative_verdict"], (scenario, negative_verdict)
-              else:
-                  assert negative_verdict != "supported", (scenario, negative_verdict)
+              assert negative["cal_conclusion"]["disposition"] == spec["negative_disposition"]
+              assert negative["cal_conclusion"]["verdict"] == spec["negative_verdict"]
+              assert negative["cal_conclusion"]["reason_code"] == spec["negative_reason"]
+              assert negative["contract_c"]["validation"] == "PASS"
               assert negative["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
-              assert "contract_c_reported_verdict_not_supported" in negative["decision_engine"]["metadata"]["reason_codes"]
+              assert negative["decision_engine"]["metadata"]["reason_codes"] == [spec["de_reason"]]
 
               positive = rows[spec["positive_id"]]
-              assert positive["contract_c"]["validation"] == "PASS"
               assert positive["admitted_passage_ids"] == spec["positive_admitted"]
               assert positive["cal_conclusion"]["disposition"] == "decided"
               assert positive["cal_conclusion"]["verdict"] == "supported"
+              assert positive["cal_conclusion"]["reason_code"] == "categorical_support"
+              assert positive["contract_c"]["validation"] == "PASS"
               assert positive["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
-              assert positive["decision_engine"]["effect"] == {"type": "knowledge.add_verified_tag", "version": "1", "params": {"scope": "claim"}}
+              assert positive["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
 
           print("CAL_TO_DECISION_OUTCOME_MATRIX_PASS")
           PY
 
       - name: Confirm no production source mutation
-        shell: bash
         run: |
           set -euo pipefail
           if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
@@ -248,7 +250,6 @@ jobs:
 
       - name: Pack full-pipeline receipts
         if: always()
-        shell: bash
         run: |
           set -euo pipefail
           staging="pipeline/cal_rc0/_receipt-pack"
