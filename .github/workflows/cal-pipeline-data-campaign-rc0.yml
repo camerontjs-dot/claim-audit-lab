@@ -57,6 +57,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          mkdir -p pipeline/cal_rc0/data-campaign-output/shared-direction
           CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
           uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
             --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
