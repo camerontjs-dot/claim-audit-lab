@@ -1,0 +1,251 @@
+name: CAL Pipeline Data Campaign RC0
+
+on:
+  push:
+    branches:
+      - research/cal-pipeline-data-campaign-rc0-20260907
+  workflow_dispatch:
+
+concurrency:
+  group: cal-pipeline-data-campaign-rc0
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  data-campaign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
+          git -C _deps/evidence-bundler checkout dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-d
+          git -C _deps/apparatus-d checkout 298a1a0f7b7b6d7712e11200d04faec3e1ca169b
+          git clone --no-checkout https://github.com/camerontjs-dot/decision-engine.git _deps/decision-engine
+          git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install experiment dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv sync
+          uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+          uv pip install --python .venv/bin/python -e _deps/apparatus-d
+
+      - name: Build Contract B for shared evidence world
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p pipeline/cal_rc0/data-campaign-output/shared-direction
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort pipeline/cal_rc0/data_campaign/shared_direction/cohort.json \
+            --admission pipeline/cal_rc0/data_campaign/shared_direction/admission.json \
+            --targets pipeline/cal_rc0/data_campaign/shared_direction/targets.json \
+            --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir pipeline/cal_rc0/data-campaign-output/shared-direction/seed \
+            > pipeline/cal_rc0/data-campaign-output/shared-direction/seed-stdout.json
+
+      - name: Run shared evidence through CAL and Decision Engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+            pipeline/cal_rc0/data-campaign-output/shared-direction/seed/evidence-bundler/contract_b/SHARED_DIRECTION \
+            --targets pipeline/cal_rc0/data_campaign/shared_direction/targets.json \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir pipeline/cal_rc0/data-campaign-output/shared-direction/decision \
+            > pipeline/cal_rc0/data-campaign-output/shared-direction/decision-stdout.json
+
+      - name: Assert proposition-relative binding and polarity
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          out = Path("pipeline/cal_rc0/data-campaign-output/shared-direction/decision")
+          receipt = json.loads((out / "BUNDLE-TO-DECISION-RECEIPT.json").read_text())
+          assert receipt["pipeline_status"] == "PASS"
+          assert receipt["authorization"]["state"] == "NOT_EVALUATED"
+          assert receipt["production_promotion_authorized"] is False
+          rows = {row["proposition_id"]: row for row in receipt["results"]}
+          assert set(rows) == {"SHARED_DIRECTION:child:1", "SHARED_DIRECTION:child:2"}
+          support = rows["SHARED_DIRECTION:child:1"]
+          refute = rows["SHARED_DIRECTION:child:2"]
+          assert support["admitted_passage_ids"] == ["SHARED-DIR-P1"]
+          assert refute["admitted_passage_ids"] == ["SHARED-DIR-P1"]
+          assert support["contract_c"]["validation"] == "PASS"
+          assert refute["contract_c"]["validation"] == "PASS"
+          assert support["cal_conclusion"] == {
+              "basis_relation_ids": support["cal_conclusion"]["basis_relation_ids"],
+              "claim_id": "SHARED_DIRECTION:child:1",
+              "disposition": "decided",
+              "reason_code": "categorical_support",
+              "verdict": "supported",
+          }
+          assert refute["cal_conclusion"] == {
+              "basis_relation_ids": refute["cal_conclusion"]["basis_relation_ids"],
+              "claim_id": "SHARED_DIRECTION:child:2",
+              "disposition": "decided",
+              "reason_code": "categorical_refutation",
+              "verdict": "contradicted",
+          }
+          assert support["cal_conclusion"]["basis_relation_ids"] != refute["cal_conclusion"]["basis_relation_ids"]
+          assert support["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+          assert support["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
+          assert refute["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
+          assert refute["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_reported_verdict_not_supported"]
+          print("SHARED_EVIDENCE_DIRECTION_BINDING_PASS")
+          PY
+
+      - name: Build admission mutation pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/fixtures/matrix/admission_gap"
+          base="pipeline/cal_rc0/data-campaign-output/admission-flip"
+          mkdir -p "$base/review" "$base/accepted"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort "$root/cohort.json" --admission "$root/admission.json" \
+            --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir "$base/review/seed" > "$base/review/seed-stdout.json"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort "$root/cohort.json" --admission pipeline/cal_rc0/data_campaign/admission_flip/accepted_admission.json \
+            --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir "$base/accepted/seed" > "$base/accepted/seed-stdout.json"
+
+      - name: Run admission mutation pair through CAL and Decision Engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/fixtures/matrix/admission_gap"
+          base="pipeline/cal_rc0/data-campaign-output/admission-flip"
+          for side in review accepted; do
+            uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+              "$base/$side/seed/evidence-bundler/contract_b/MATRIX_ADMISSION_GAP" \
+              --targets "$root/targets.json" --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$base/$side/decision" > "$base/$side/decision-stdout.json"
+          done
+
+      - name: Assert admission is causally discriminating
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          base = Path("pipeline/cal_rc0/data-campaign-output/admission-flip")
+          review_eb = json.loads((base / "review/seed/EVIDENCE-BUNDLER-RECEIPT.json").read_text())["cases"][0]
+          accepted_eb = json.loads((base / "accepted/seed/EVIDENCE-BUNDLER-RECEIPT.json").read_text())["cases"][0]
+          assert review_eb["candidate_pool"] == accepted_eb["candidate_pool"]
+          assert review_eb["retained"] == accepted_eb["retained"]
+
+          review = json.loads((base / "review/decision/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
+          accepted = json.loads((base / "accepted/decision/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
+          assert review["pipeline_status"] == accepted["pipeline_status"] == "PASS"
+          assert review["authorization"]["state"] == accepted["authorization"]["state"] == "NOT_EVALUATED"
+          rr = {r["proposition_id"]: r for r in review["results"]}
+          ar = {r["proposition_id"]: r for r in accepted["results"]}
+
+          review_target = rr["MATRIX_ADMISSION_GAP:child:1"]
+          accepted_target = ar["MATRIX_ADMISSION_GAP:child:1"]
+          assert review_target["admitted_passage_ids"] == []
+          assert review_target["cal_conclusion"]["disposition"] == "abstained"
+          assert review_target["cal_conclusion"]["verdict"] is None
+          assert review_target["cal_conclusion"]["reason_code"] == "unresolved_categorical_relation"
+          assert review_target["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
+          assert review_target["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_proposition_not_checkable"]
+
+          assert accepted_target["admitted_passage_ids"] == ["MATRIX-A-P1"]
+          assert accepted_target["cal_conclusion"]["disposition"] == "decided"
+          assert accepted_target["cal_conclusion"]["verdict"] == "supported"
+          assert accepted_target["cal_conclusion"]["reason_code"] == "categorical_support"
+          assert accepted_target["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+          assert accepted_target["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
+
+          for rows in (rr, ar):
+              control = rows["MATRIX_ADMISSION_GAP:child:2"]
+              assert control["admitted_passage_ids"] == ["MATRIX-A-P2"]
+              assert control["cal_conclusion"]["verdict"] == "supported"
+              assert control["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+          print("ADMISSION_STATE_MUTATION_PASS")
+          PY
+
+      - name: Confirm no production source mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "data campaign modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Pack experiment receipts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -czf pipeline/cal_rc0/CAL-PIPELINE-DATA-CAMPAIGN-RC0.tgz \
+            -C pipeline/cal_rc0 data-campaign-output data_campaign
+
+      - name: Upload experiment receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-pipeline-data-campaign-rc0-${{ github.run_id }}
+          path: pipeline/cal_rc0/CAL-PIPELINE-DATA-CAMPAIGN-RC0.tgz
+          retention-days: 90

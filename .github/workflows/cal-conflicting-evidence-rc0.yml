@@ -1,0 +1,143 @@
+name: CAL Conflicting Evidence RC0
+
+on:
+  push:
+    branches:
+      - research/cal-pipeline-data-campaign-rc0-20260907
+    paths:
+      - "pipeline/cal_rc0/data_campaign/conflicting_evidence/**"
+      - ".github/workflows/cal-conflicting-evidence-rc0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conflicting-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
+          git -C _deps/evidence-bundler checkout dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-d
+          git -C _deps/apparatus-d checkout 298a1a0f7b7b6d7712e11200d04faec3e1ca169b
+          git clone --no-checkout https://github.com/camerontjs-dot/decision-engine.git _deps/decision-engine
+          git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install experiment dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv sync
+          uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+          uv pip install --python .venv/bin/python -e _deps/apparatus-d
+
+      - name: Build conflicting-evidence Contract B
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="pipeline/cal_rc0/conflicting-evidence-output"
+          root="pipeline/cal_rc0/data_campaign/conflicting_evidence"
+          mkdir -p "$base"
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort "$root/cohort.json" --admission "$root/admission.json" \
+            --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir "$base/seed" > "$base/seed-stdout.json" 2> "$base/seed-stderr.txt"
+
+      - name: Run conflicting evidence through CAL and Decision
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="pipeline/cal_rc0/conflicting-evidence-output"
+          root="pipeline/cal_rc0/data_campaign/conflicting_evidence"
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          set +e
+          uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+            "$base/seed/evidence-bundler/contract_b/CONFLICTING_EVIDENCE" \
+            --targets "$root/targets.json" --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir "$base/decision" > "$base/decision-stdout.json" 2> "$base/decision-stderr.txt"
+          rc=$?
+          set -e
+          printf '%s\n' "$rc" > "$base/decision-exit-code.txt"
+
+      - name: Summarize observed conflict behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('pipeline/cal_rc0/conflicting-evidence-output')
+          eb=json.loads((base/'seed/EVIDENCE-BUNDLER-RECEIPT.json').read_text())['cases'][0]
+          rc=int((base/'decision-exit-code.txt').read_text().strip())
+          summary={'schema':'cal-conflicting-evidence-rc0-result-v1','decision_run_exit_code':rc,
+                   'child1_candidate_pool':[x for x in eb['candidate_pool'] if x['proposition_id']=='CONFLICTING_EVIDENCE:child:1'],
+                   'child1_admission':[x for x in eb['admission'] if x['proposition_id']=='CONFLICTING_EVIDENCE:child:1']}
+          rp=base/'decision/BUNDLE-TO-DECISION-RECEIPT.json'
+          if rp.exists():
+              rec=json.loads(rp.read_text())
+              rows={r['proposition_id']:r for r in rec['results']}
+              for pid,row in rows.items():
+                  summary[pid]={'admitted_passage_ids':row['admitted_passage_ids'],'cal_conclusion':row['cal_conclusion'],'contract_c_validation':row['contract_c']['validation'],'decision_evaluation':row['decision_engine']['evaluation'],'decision_reason_codes':row['decision_engine']['metadata']['reason_codes']}
+          (base/'CONFLICT-SUMMARY.json').write_text(json.dumps(summary,indent=2,sort_keys=True)+'\n')
+          print(json.dumps(summary,indent=2,sort_keys=True))
+          PY
+
+      - name: Confirm no production source mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "conflict experiment modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Pack conflicting-evidence receipts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -czf pipeline/cal_rc0/CAL-CONFLICTING-EVIDENCE-RC0.tgz \
+            -C pipeline/cal_rc0 conflicting-evidence-output data_campaign/conflicting_evidence
+
+      - name: Upload conflicting-evidence receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-conflicting-evidence-rc0-${{ github.run_id }}
+          path: pipeline/cal_rc0/CAL-CONFLICTING-EVIDENCE-RC0.tgz
+          retention-days: 90
