@@ -6,11 +6,15 @@ on:
       - research/cal-pipeline-data-campaign-rc0-20260907
   workflow_dispatch:
 
+concurrency:
+  group: cal-pipeline-data-campaign-rc0
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
 jobs:
-  shared-evidence-direction:
+  data-campaign:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -72,7 +76,7 @@ jobs:
             --out-dir pipeline/cal_rc0/data-campaign-output/shared-direction/seed \
             > pipeline/cal_rc0/data-campaign-output/shared-direction/seed-stdout.json
 
-      - name: Run Contract B through CAL and Decision Engine
+      - name: Run shared evidence through CAL and Decision Engine
         shell: bash
         run: |
           set -euo pipefail
@@ -101,31 +105,124 @@ jobs:
           assert receipt["pipeline_status"] == "PASS"
           assert receipt["authorization"]["state"] == "NOT_EVALUATED"
           assert receipt["production_promotion_authorized"] is False
-
           rows = {row["proposition_id"]: row for row in receipt["results"]}
           assert set(rows) == {"SHARED_DIRECTION:child:1", "SHARED_DIRECTION:child:2"}
           support = rows["SHARED_DIRECTION:child:1"]
           refute = rows["SHARED_DIRECTION:child:2"]
-
           assert support["admitted_passage_ids"] == ["SHARED-DIR-P1"]
           assert refute["admitted_passage_ids"] == ["SHARED-DIR-P1"]
           assert support["contract_c"]["validation"] == "PASS"
           assert refute["contract_c"]["validation"] == "PASS"
-
-          assert support["cal_conclusion"]["disposition"] == "decided"
-          assert support["cal_conclusion"]["verdict"] == "supported"
-          assert support["cal_conclusion"]["reason_code"] == "categorical_support"
+          assert support["cal_conclusion"] == {
+              "basis_relation_ids": support["cal_conclusion"]["basis_relation_ids"],
+              "claim_id": "SHARED_DIRECTION:child:1",
+              "disposition": "decided",
+              "reason_code": "categorical_support",
+              "verdict": "supported",
+          }
+          assert refute["cal_conclusion"] == {
+              "basis_relation_ids": refute["cal_conclusion"]["basis_relation_ids"],
+              "claim_id": "SHARED_DIRECTION:child:2",
+              "disposition": "decided",
+              "reason_code": "categorical_refutation",
+              "verdict": "contradicted",
+          }
+          assert support["cal_conclusion"]["basis_relation_ids"] != refute["cal_conclusion"]["basis_relation_ids"]
           assert support["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
           assert support["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
-
-          assert refute["cal_conclusion"]["disposition"] == "decided"
-          assert refute["cal_conclusion"]["verdict"] == "contradicted"
-          assert refute["cal_conclusion"]["reason_code"] == "categorical_refutation"
           assert refute["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
           assert refute["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_reported_verdict_not_supported"]
-
-          assert support["cal_conclusion"]["basis_relation_ids"] != refute["cal_conclusion"]["basis_relation_ids"]
           print("SHARED_EVIDENCE_DIRECTION_BINDING_PASS")
+          PY
+
+      - name: Build admission mutation pair
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/fixtures/matrix/admission_gap"
+          base="pipeline/cal_rc0/data-campaign-output/admission-flip"
+          mkdir -p "$base/review" "$base/accepted"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort "$root/cohort.json" --admission "$root/admission.json" \
+            --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir "$base/review/seed" > "$base/review/seed-stdout.json"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort "$root/cohort.json" --admission pipeline/cal_rc0/data_campaign/admission_flip/accepted_admission.json \
+            --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir "$base/accepted/seed" > "$base/accepted/seed-stdout.json"
+
+      - name: Run admission mutation pair through CAL and Decision Engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/fixtures/matrix/admission_gap"
+          base="pipeline/cal_rc0/data-campaign-output/admission-flip"
+          for side in review accepted; do
+            uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+              "$base/$side/seed/evidence-bundler/contract_b/MATRIX_ADMISSION_GAP" \
+              --targets "$root/targets.json" --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$base/$side/decision" > "$base/$side/decision-stdout.json"
+          done
+
+      - name: Assert admission is causally discriminating
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          base = Path("pipeline/cal_rc0/data-campaign-output/admission-flip")
+          review_eb = json.loads((base / "review/seed/EVIDENCE-BUNDLER-RECEIPT.json").read_text())["cases"][0]
+          accepted_eb = json.loads((base / "accepted/seed/EVIDENCE-BUNDLER-RECEIPT.json").read_text())["cases"][0]
+          assert review_eb["candidate_pool"] == accepted_eb["candidate_pool"]
+          assert review_eb["retained"] == accepted_eb["retained"]
+
+          review = json.loads((base / "review/decision/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
+          accepted = json.loads((base / "accepted/decision/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
+          assert review["pipeline_status"] == accepted["pipeline_status"] == "PASS"
+          assert review["authorization"]["state"] == accepted["authorization"]["state"] == "NOT_EVALUATED"
+          rr = {r["proposition_id"]: r for r in review["results"]}
+          ar = {r["proposition_id"]: r for r in accepted["results"]}
+
+          review_target = rr["MATRIX_ADMISSION_GAP:child:1"]
+          accepted_target = ar["MATRIX_ADMISSION_GAP:child:1"]
+          assert review_target["admitted_passage_ids"] == []
+          assert review_target["cal_conclusion"]["disposition"] == "abstained"
+          assert review_target["cal_conclusion"]["verdict"] is None
+          assert review_target["cal_conclusion"]["reason_code"] == "unresolved_categorical_relation"
+          assert review_target["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
+          assert review_target["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_proposition_not_checkable"]
+
+          assert accepted_target["admitted_passage_ids"] == ["MATRIX-A-P1"]
+          assert accepted_target["cal_conclusion"]["disposition"] == "decided"
+          assert accepted_target["cal_conclusion"]["verdict"] == "supported"
+          assert accepted_target["cal_conclusion"]["reason_code"] == "categorical_support"
+          assert accepted_target["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+          assert accepted_target["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
+
+          for rows in (rr, ar):
+              control = rows["MATRIX_ADMISSION_GAP:child:2"]
+              assert control["admitted_passage_ids"] == ["MATRIX-A-P2"]
+              assert control["cal_conclusion"]["verdict"] == "supported"
+              assert control["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+          print("ADMISSION_STATE_MUTATION_PASS")
           PY
 
       - name: Confirm no production source mutation
