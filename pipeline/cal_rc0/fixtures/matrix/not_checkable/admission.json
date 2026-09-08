@@ -1,0 +1,1 @@
+{"cases":{"MATRIX_NOT_CHECKABLE":{"MATRIX_NOT_CHECKABLE:child:1":{"accepted":["MATRIX-N-P1"],"needs-review":[],"rejected":[]},"MATRIX_NOT_CHECKABLE:child:2":{"accepted":["MATRIX-N-P2"],"needs-review":[],"rejected":[]}}},"reviewer":{"id":"cal-pipeline-integration-matrix","type":"human_research_fixture"},"schema":"research-eb-rc0-admission-v1"}

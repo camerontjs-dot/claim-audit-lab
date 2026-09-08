@@ -1,0 +1,270 @@
+name: CAL Contract B to Decision RC0
+
+on:
+  push:
+    branches: [integration/cal-contract-b-to-decision-rc0-draft-pr-20260907]
+  pull_request:
+    paths:
+      - "pipeline/cal_rc0/run_evidence_bundle.py"
+      - "pipeline/cal_rc0/bundle_to_decision_entrypoint.py"
+      - "pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py"
+      - "pipeline/cal_rc0/fixtures/matrix/**"
+      - ".github/workflows/cal-contract-b-to-decision-rc0.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: cal-contract-b-to-decision-rc0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  full-pipeline-to-decision:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact pipeline and Decision dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
+          git -C _deps/evidence-bundler checkout dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-d
+          git -C _deps/apparatus-d checkout 298a1a0f7b7b6d7712e11200d04faec3e1ca169b
+          git clone --no-checkout https://github.com/camerontjs-dot/decision-engine.git _deps/decision-engine
+          git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
+
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install integration dependencies
+        run: |
+          set -euo pipefail
+          uv sync
+          uv pip install --python .venv/bin/python -e "_deps/evidence-bundler[dev]"
+          uv pip install --python .venv/bin/python -e _deps/apparatus-d
+
+      - name: Recheck qualified Evidence Bundler boundary tests
+        working-directory: _deps/evidence-bundler
+        run: |
+          set -euo pipefail
+          ../../.venv/bin/python -m pytest -q \
+            tests/test_research_cal_rc0_handoff_compatibility_carrier.py \
+            tests/test_research_cal_rc0_handoff_qualified_build.py
+
+      - name: Recheck pinned Decision Engine maintained regressions
+        working-directory: _deps/decision-engine
+        run: |
+          set -euo pipefail
+          node tests/engine.sweep.mjs
+          node tests/output-quality.sweep.mjs
+          node tests/combination-matrix.sweep.mjs
+          node --test tests/gateHead.test.mjs
+          node research/contract-c-seam-shadow/validate-fixtures.mjs
+
+      - name: Build qualified Evidence Bundler Contract B from Contract A fixture
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort pipeline/cal_rc0/fixtures/cohort.json \
+            --admission pipeline/cal_rc0/fixtures/admission.json \
+            --targets pipeline/cal_rc0/fixtures/cal_targets.json \
+            --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir pipeline/cal_rc0/full-pipeline-seed \
+            > pipeline/cal_rc0/FULL-PIPELINE-SEED-STDOUT.json
+
+      - name: Feed supported Contract B into CAL and Decision Engine
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+            pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001 \
+            --targets pipeline/cal_rc0/fixtures/cal_targets.json \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir pipeline/cal_rc0/bundle-to-decision-output \
+            | tee pipeline/cal_rc0/BUNDLE-TO-DECISION-STDOUT.json
+
+      - name: Run negative and uncertain end-to-end matrix
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          mkdir -p pipeline/cal_rc0/matrix-output
+          for scenario in contradicted not_checkable admission_gap; do
+            case "$scenario" in
+              contradicted) case_id=MATRIX_CONTRADICTED ;;
+              not_checkable) case_id=MATRIX_NOT_CHECKABLE ;;
+              admission_gap) case_id=MATRIX_ADMISSION_GAP ;;
+            esac
+            root="pipeline/cal_rc0/fixtures/matrix/$scenario"
+            seed="pipeline/cal_rc0/matrix-output/$scenario/seed"
+            decision="pipeline/cal_rc0/matrix-output/$scenario/decision"
+            mkdir -p "pipeline/cal_rc0/matrix-output/$scenario"
+            uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+              --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+              --evidence-bundler-root _deps/evidence-bundler \
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --cohort "$root/cohort.json" --admission "$root/admission.json" \
+              --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$seed" > "pipeline/cal_rc0/matrix-output/$scenario/seed-stdout.json"
+            uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+              "$seed/evidence-bundler/contract_b/$case_id" \
+              --targets "$root/targets.json" --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$decision" > "pipeline/cal_rc0/matrix-output/$scenario/decision-stdout.json"
+          done
+
+      - name: Assert outcome matrix and qualified EB seam
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          EB_HEAD = "dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05"
+          seed = json.loads(Path("pipeline/cal_rc0/full-pipeline-seed/PIPELINE-RECEIPT.json").read_text())
+          assert seed["pins"]["evidence_bundler_head"] == EB_HEAD
+          assert seed["evidence_bundler"]["contract_b_compatibility_carrier"] == {
+              "schema": "research-contract-b-1.2-compatibility-carrier-v1",
+              "actual_upstream_contract": "contract-a-v2.0.0",
+              "semantic_use_authorized": False,
+          }
+          assert "contract_b_legacy_compatibility_carrier" in Path(
+              "pipeline/cal_rc0/full-pipeline-seed/evidence-bundler/contract_b/PIPELINE_SMOKE_001/bundle_manifest.yaml"
+          ).read_text()
+
+          supported = json.loads(Path("pipeline/cal_rc0/bundle-to-decision-output/BUNDLE-TO-DECISION-RECEIPT.json").read_text())
+          assert supported["pipeline_status"] == "PASS"
+          assert supported["authorization"]["state"] == "NOT_EVALUATED"
+          assert supported["production_promotion_authorized"] is False
+          assert len(supported["results"]) == 2
+          for row in supported["results"]:
+              assert row["cal_conclusion"] | {"basis_relation_ids": row["cal_conclusion"]["basis_relation_ids"], "claim_id": row["cal_conclusion"]["claim_id"]}
+              assert row["cal_conclusion"]["disposition"] == "decided"
+              assert row["cal_conclusion"]["verdict"] == "supported"
+              assert row["contract_c"]["validation"] == "PASS"
+              assert row["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+              assert row["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
+
+          expected = {
+              "contradicted": {
+                  "negative_id": "MATRIX_CONTRADICTED:child:1",
+                  "negative_admitted": ["MATRIX-C-P1"],
+                  "negative_disposition": "decided",
+                  "negative_verdict": "contradicted",
+                  "negative_reason": "categorical_refutation",
+                  "de_reason": "contract_c_reported_verdict_not_supported",
+                  "positive_id": "MATRIX_CONTRADICTED:child:2",
+                  "positive_admitted": ["MATRIX-C-P2"],
+              },
+              "not_checkable": {
+                  "negative_id": "MATRIX_NOT_CHECKABLE:child:1",
+                  "negative_admitted": ["MATRIX-N-P1"],
+                  "negative_disposition": "abstained",
+                  "negative_verdict": None,
+                  "negative_reason": "unresolved_categorical_relation",
+                  "de_reason": "contract_c_proposition_not_checkable",
+                  "positive_id": "MATRIX_NOT_CHECKABLE:child:2",
+                  "positive_admitted": ["MATRIX-N-P2"],
+              },
+              "admission_gap": {
+                  "negative_id": "MATRIX_ADMISSION_GAP:child:1",
+                  "negative_admitted": [],
+                  "negative_disposition": "abstained",
+                  "negative_verdict": None,
+                  "negative_reason": "unresolved_categorical_relation",
+                  "de_reason": "contract_c_proposition_not_checkable",
+                  "positive_id": "MATRIX_ADMISSION_GAP:child:2",
+                  "positive_admitted": ["MATRIX-A-P2"],
+              },
+          }
+
+          for scenario, spec in expected.items():
+              receipt = json.loads(Path(
+                  f"pipeline/cal_rc0/matrix-output/{scenario}/decision/BUNDLE-TO-DECISION-RECEIPT.json"
+              ).read_text())
+              assert receipt["pipeline_status"] == "PASS"
+              assert receipt["authorization"]["state"] == "NOT_EVALUATED"
+              assert receipt["production_promotion_authorized"] is False
+              assert len(receipt["results"]) == 2
+              rows = {row["proposition_id"]: row for row in receipt["results"]}
+
+              negative = rows[spec["negative_id"]]
+              assert negative["admitted_passage_ids"] == spec["negative_admitted"]
+              assert negative["cal_conclusion"]["disposition"] == spec["negative_disposition"]
+              assert negative["cal_conclusion"]["verdict"] == spec["negative_verdict"]
+              assert negative["cal_conclusion"]["reason_code"] == spec["negative_reason"]
+              assert negative["contract_c"]["validation"] == "PASS"
+              assert negative["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "hold"}
+              assert negative["decision_engine"]["metadata"]["reason_codes"] == [spec["de_reason"]]
+
+              positive = rows[spec["positive_id"]]
+              assert positive["admitted_passage_ids"] == spec["positive_admitted"]
+              assert positive["cal_conclusion"]["disposition"] == "decided"
+              assert positive["cal_conclusion"]["verdict"] == "supported"
+              assert positive["cal_conclusion"]["reason_code"] == "categorical_support"
+              assert positive["contract_c"]["validation"] == "PASS"
+              assert positive["decision_engine"]["evaluation"] == {"state": "completed", "disposition": "clear"}
+              assert positive["decision_engine"]["metadata"]["reason_codes"] == ["contract_c_supported"]
+
+          print("CAL_TO_DECISION_OUTCOME_MATRIX_PASS")
+          PY
+
+      - name: Confirm no production source mutation
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "integration build modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Pack full-pipeline receipts
+        if: always()
+        run: |
+          set -euo pipefail
+          staging="pipeline/cal_rc0/_receipt-pack"
+          rm -rf "$staging"
+          mkdir -p "$staging"
+          for item in full-pipeline-seed bundle-to-decision-output matrix-output FULL-PIPELINE-SEED-STDOUT.json BUNDLE-TO-DECISION-STDOUT.json; do
+            if [ -e "pipeline/cal_rc0/$item" ]; then cp -a "pipeline/cal_rc0/$item" "$staging/"; fi
+          done
+          tar -czf pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz -C "$staging" .
+
+      - name: Upload full-pipeline receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-contract-b-to-decision-rc0-${{ github.run_id }}
+          path: pipeline/cal_rc0/CAL-CONTRACT-B-TO-DECISION-RC0.tgz
+          if-no-files-found: warn
+          retention-days: 90

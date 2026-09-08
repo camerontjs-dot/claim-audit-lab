@@ -1,0 +1,155 @@
+name: CAL Naturalistic NASA RC0
+
+on:
+  push:
+    branches: [integration/cal-contract-b-to-decision-rc0-draft-pr-20260907]
+  workflow_dispatch:
+
+concurrency:
+  group: cal-naturalistic-nasa-rc0-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  naturalistic-nasa-to-decision:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact pipeline dependencies
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
+          git -C _deps/evidence-bundler checkout dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-d
+          git -C _deps/apparatus-d checkout 298a1a0f7b7b6d7712e11200d04faec3e1ca169b
+          git clone --no-checkout https://github.com/camerontjs-dot/decision-engine.git _deps/decision-engine
+          git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
+
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install integration dependencies
+        run: |
+          set -euo pipefail
+          uv sync
+          uv pip install --python .venv/bin/python -e "_deps/evidence-bundler[dev]"
+          uv pip install --python .venv/bin/python -e _deps/apparatus-d
+
+      - name: Build Contract B from fresh NASA evidence world
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/fixtures/naturalistic_nasa_jupiter_earth"
+          uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+            --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --evidence-bundler-root _deps/evidence-bundler \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --cohort "$root/cohort.json" --admission "$root/admission.json" \
+            --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir pipeline/cal_rc0/naturalistic-nasa/seed \
+            > pipeline/cal_rc0/naturalistic-nasa-seed-stdout.json
+
+      - name: Run fresh NASA Contract B through CAL and Decision Engine
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/fixtures/naturalistic_nasa_jupiter_earth"
+          uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+            pipeline/cal_rc0/naturalistic-nasa/seed/evidence-bundler/contract_b/NATURALISTIC_NASA_JUPITER_EARTH_001 \
+            --targets "$root/targets.json" --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+            --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+            --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+            --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+            --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+            --out-dir pipeline/cal_rc0/naturalistic-nasa/decision \
+            | tee pipeline/cal_rc0/naturalistic-nasa-decision-stdout.json
+
+      - name: Assert only structural safety conditions and record observed semantics
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          receipt_path = Path("pipeline/cal_rc0/naturalistic-nasa/decision/BUNDLE-TO-DECISION-RECEIPT.json")
+          receipt = json.loads(receipt_path.read_text())
+          assert receipt["pipeline_status"] == "PASS"
+          assert receipt["authorization"]["state"] == "NOT_EVALUATED"
+          assert receipt["production_promotion_authorized"] is False
+          assert len(receipt["results"]) == 2
+
+          observed = []
+          for row in receipt["results"]:
+              assert row["contract_c"]["validation"] == "PASS"
+              evaluation = row["decision_engine"]["evaluation"]
+              assert evaluation["state"] == "completed"
+              assert evaluation["disposition"] in {"clear", "hold", "reject"}
+              observed.append({
+                  "proposition_id": row["proposition_id"],
+                  "admitted_passage_ids": row["admitted_passage_ids"],
+                  "cal_conclusion": row["cal_conclusion"],
+                  "decision_evaluation": evaluation,
+                  "decision_reason_codes": row["decision_engine"]["metadata"]["reason_codes"],
+                  "decision_effect": row["decision_engine"]["effect"],
+              })
+
+          summary = {
+              "schema": "cal-naturalistic-nasa-rc0-observation-v1",
+              "precommitted_expected_semantic_verdict": None,
+              "source": "NASA SVS 3609",
+              "source_content_sha256": "sha256:e0073d1ba58b85e7da0648c53319eae51228c7f80e21e98b5b320128c53721c1",
+              "observed": observed,
+              "authorization": "NOT_EVALUATED",
+              "production_promotion_authorized": False,
+          }
+          Path("pipeline/cal_rc0/NATURALISTIC-NASA-OBSERVATION.json").write_text(
+              json.dumps(summary, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(summary, indent=2, sort_keys=True))
+          PY
+
+      - name: Confirm no production source mutation
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "naturalistic research run modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Pack naturalistic receipts
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p pipeline/cal_rc0/_naturalistic-pack
+          cp -a pipeline/cal_rc0/fixtures/naturalistic_nasa_jupiter_earth pipeline/cal_rc0/_naturalistic-pack/input
+          for item in naturalistic-nasa naturalistic-nasa-seed-stdout.json naturalistic-nasa-decision-stdout.json NATURALISTIC-NASA-OBSERVATION.json; do
+            if [ -e "pipeline/cal_rc0/$item" ]; then cp -a "pipeline/cal_rc0/$item" pipeline/cal_rc0/_naturalistic-pack/; fi
+          done
+          tar -czf pipeline/cal_rc0/CAL-NATURALISTIC-NASA-RC0.tgz -C pipeline/cal_rc0/_naturalistic-pack .
+
+      - name: Upload naturalistic receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-naturalistic-nasa-rc0-${{ github.run_id }}
+          path: pipeline/cal_rc0/CAL-NATURALISTIC-NASA-RC0.tgz
+          retention-days: 90
