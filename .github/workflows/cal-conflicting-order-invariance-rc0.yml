@@ -1,0 +1,154 @@
+name: CAL Conflict Order Invariance RC0
+
+on:
+  push:
+    branches:
+      - research/cal-pipeline-data-campaign-rc0-20260907
+    paths:
+      - "pipeline/cal_rc0/data_campaign/conflicting_evidence/reversed_admission.json"
+      - ".github/workflows/cal-conflicting-order-invariance-rc0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  order-invariance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --no-checkout https://github.com/camerontjs-dot/evidence-bundler.git _deps/evidence-bundler
+          git -C _deps/evidence-bundler checkout dd4fb2b89f351fbdcd8b08e48dd9d7d1f10c2d05
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc7fb1
+          git -C _deps/rc7fb1 checkout 0ecdedc5cea970485a635508255f3670ab231c33
+          git clone --no-checkout https://github.com/camerontjs-dot/claim-audit-lab.git _deps/rc8j
+          git -C _deps/rc8j checkout 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-b
+          git -C _deps/apparatus-b checkout c314e53bd91c0736aa4370a364673b069aceb43e
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-c
+          git -C _deps/apparatus-c checkout 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          git clone --no-checkout https://github.com/camerontjs-dot/apparatus-contracts.git _deps/apparatus-d
+          git -C _deps/apparatus-d checkout 298a1a0f7b7b6d7712e11200d04faec3e1ca169b
+          git clone --no-checkout https://github.com/camerontjs-dot/decision-engine.git _deps/decision-engine
+          git -C _deps/decision-engine checkout a4425f8eb47449ff6c683222921bbea9483742e2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv sync
+          uv pip install --python .venv/bin/python -e _deps/evidence-bundler
+          uv pip install --python .venv/bin/python -e _deps/apparatus-d
+
+      - name: Build original and reversed admission bundles
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/data_campaign/conflicting_evidence"
+          base="pipeline/cal_rc0/conflict-order-output"
+          mkdir -p "$base/original" "$base/reversed"
+          for side in original reversed; do
+            admission="$root/admission.json"
+            if [ "$side" = "reversed" ]; then admission="$root/reversed_admission.json"; fi
+            uv run python pipeline/cal_rc0/qualified_eb_entity_scoped_entrypoint.py \
+              --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+              --evidence-bundler-root _deps/evidence-bundler \
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --cohort "$root/cohort.json" --admission "$admission" \
+              --targets "$root/targets.json" --eb-profile pipeline/cal_rc0/eb_profile.json \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$base/$side/seed" > "$base/$side/seed-stdout.json"
+          done
+
+      - name: Run both bundles through CAL and Decision
+        shell: bash
+        run: |
+          set -euo pipefail
+          CAL_CHECKOUT_SHA="$(git rev-parse HEAD)"
+          root="pipeline/cal_rc0/data_campaign/conflicting_evidence"
+          base="pipeline/cal_rc0/conflict-order-output"
+          for side in original reversed; do
+            uv run python pipeline/cal_rc0/bundle_to_decision_entrypoint.py \
+              "$base/$side/seed/evidence-bundler/contract_b/CONFLICTING_EVIDENCE" \
+              --targets "$root/targets.json" --cal-root . --cal-head "$CAL_CHECKOUT_SHA" \
+              --rc7fb1-root _deps/rc7fb1 --rc8j-root _deps/rc8j \
+              --apparatus-b _deps/apparatus-b --apparatus-c _deps/apparatus-c \
+              --apparatus-d _deps/apparatus-d --decision-engine-root _deps/decision-engine \
+              --semantic-implementation-sha "$CAL_CHECKOUT_SHA" --test-keys \
+              --out-dir "$base/$side/decision" > "$base/$side/decision-stdout.json"
+          done
+
+      - name: Assert metamorphic order invariance
+        shell: bash
+        run: |
+          set -euo pipefail
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('pipeline/cal_rc0/conflict-order-output')
+          def load(side):
+              eb=json.loads((base/side/'seed/EVIDENCE-BUNDLER-RECEIPT.json').read_text())['cases'][0]
+              rec=json.loads((base/side/'decision/BUNDLE-TO-DECISION-RECEIPT.json').read_text())
+              rows={r['proposition_id']:r for r in rec['results']}
+              return eb,rows
+          oe,orows=load('original'); re,rrows=load('reversed')
+          assert oe['candidate_pool']==re['candidate_pool']
+          assert oe['retained']==re['retained']
+          a=orows['CONFLICTING_EVIDENCE:child:1']; b=rrows['CONFLICTING_EVIDENCE:child:1']
+          assert set(a['admitted_passage_ids'])==set(b['admitted_passage_ids'])=={'CONFLICT-P1','CONFLICT-P2'}
+          assert a['cal_conclusion']['disposition']==b['cal_conclusion']['disposition']=='abstained'
+          assert a['cal_conclusion']['verdict'] is None and b['cal_conclusion']['verdict'] is None
+          assert a['cal_conclusion']['reason_code']==b['cal_conclusion']['reason_code']=='mixed_categorical_relations'
+          assert set(a['cal_conclusion']['basis_relation_ids'])==set(b['cal_conclusion']['basis_relation_ids'])
+          assert a['decision_engine']['evaluation']==b['decision_engine']['evaluation']=={'state':'completed','disposition':'hold'}
+          assert a['decision_engine']['metadata']['reason_codes']==b['decision_engine']['metadata']['reason_codes']==['contract_c_proposition_not_checkable']
+          ca=orows['CONFLICTING_EVIDENCE:child:2']; cb=rrows['CONFLICTING_EVIDENCE:child:2']
+          assert ca['cal_conclusion']==cb['cal_conclusion']
+          assert ca['decision_engine']['evaluation']==cb['decision_engine']['evaluation']=={'state':'completed','disposition':'clear'}
+          summary={'schema':'cal-conflict-order-invariance-rc0-result-v1','original_bundle':orows['CONFLICTING_EVIDENCE:child:1']['contract_c'],'reversed_bundle':rrows['CONFLICTING_EVIDENCE:child:1']['contract_c'],'conflict_conclusion':a['cal_conclusion'],'decision':a['decision_engine']['evaluation']}
+          (base/'ORDER-INVARIANCE-SUMMARY.json').write_text(json.dumps(summary,indent=2,sort_keys=True)+'\n')
+          print('CONFLICT_ORDER_INVARIANCE_PASS')
+          PY
+
+      - name: Confirm no production source mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --name-only 32275a239b68af383a56bca843e28cbc1e343976...HEAD -- src/ | grep -q .; then
+            echo "order experiment modified production src/" >&2
+            exit 1
+          fi
+
+      - name: Pack receipts
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -czf pipeline/cal_rc0/CAL-CONFLICT-ORDER-INVARIANCE-RC0.tgz \
+            -C pipeline/cal_rc0 conflict-order-output data_campaign/conflicting_evidence
+
+      - name: Upload receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-conflict-order-invariance-rc0-${{ github.run_id }}
+          path: pipeline/cal_rc0/CAL-CONFLICT-ORDER-INVARIANCE-RC0.tgz
+          retention-days: 90
