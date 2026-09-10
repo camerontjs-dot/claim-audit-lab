@@ -1,0 +1,107 @@
+name: CAL Measurement Envelope RC0
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/cal-measurement-envelope-rc0-20260909
+    paths:
+      - research/cal_measurement_envelope_rc0/**
+      - .github/workflows/cal-measurement-envelope-rc0.yml
+  pull_request:
+    paths:
+      - research/cal_measurement_envelope_rc0/**
+      - .github/workflows/cal-measurement-envelope-rc0.yml
+
+permissions:
+  contents: read
+
+jobs:
+  decisive-envelope:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen strict-comparison instrument
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 0ecdedc5cea970485a635508255f3670ab231c33
+          path: _deps/strict
+
+      - name: Checkout frozen event-order instrument
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/event
+
+      - name: Verify candidate is research-only
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 7a46d61585f868a2e904f870528f605fb06772ea...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -q '^src/'; then
+            echo 'production src mutation detected' >&2
+            exit 1
+          fi
+
+      - name: Compile candidate
+        run: python -m compileall -q research/cal_measurement_envelope_rc0
+
+      - name: Execute preregistered envelope evaluator
+        run: |
+          python research/cal_measurement_envelope_rc0/evaluate.py \
+            --strict-root _deps/strict \
+            --event-root _deps/event \
+            --out build/cal-measurement-envelope-rc0/EVALUATION.json
+
+      - name: Assert terminal receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('build/cal-measurement-envelope-rc0/EVALUATION.json')
+          data = json.loads(p.read_text())
+          assert data['research_disposition'] == 'SUPPORTED_WITH_BOUNDS'
+          assert data['positive_controls']['same_full_context_binding'] is True
+          assert data['positive_controls']['different_consumed_context'] is True
+          assert data['positive_controls']['deterministic_repeat'] is True
+          assert data['positive_controls']['ledger_order_invariant'] is True
+          assert data['positive_controls']['common_family_neutral_schema'] is True
+          assert data['positive_controls']['event_authority_state'] == 'NOT_EVALUATED'
+          assert data['interpretation']['measurement_envelope_grants_authority'] is False
+          assert data['interpretation']['event_ordering_warrant_established'] is False
+          assert data['interpretation']['terminal_verdict_surface_present'] is False
+          assert data['interpretation']['released_cal_v1_causal_role'] is False
+          assert data['interpretation']['production_promotion_authorized'] is False
+          for name, result in data['falsifiers'].items():
+              assert result['pass'] is True, name
+          print(json.dumps({
+              'research_disposition': data['research_disposition'],
+              'audit_context_sha256': data['candidate']['audit_context_sha256'],
+              'ledger_sha256': data['candidate']['ledger_sha256'],
+              'falsifiers_passed': len(data['falsifiers']),
+          }, sort_keys=True))
+          PY
+
+      - name: Package receipt
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/cal-measurement-envelope-rc0
+          cp research/cal_measurement_envelope_rc0/PREREGISTRATION.md build/cal-measurement-envelope-rc0/PREREGISTRATION.md
+          tar -czf cal-measurement-envelope-rc0-${GITHUB_RUN_ID}.tar.gz -C build cal-measurement-envelope-rc0
+
+      - name: Upload receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-measurement-envelope-rc0-${{ github.run_id }}
+          path: cal-measurement-envelope-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
