@@ -60,8 +60,10 @@ jobs:
           path: _deps/decision
           fetch-depth: 0
 
-      - name: Install exact Contract C authority dependencies
-        run: python -m pip install --disable-pip-version-check -e _deps/contract-c
+      - name: Install exact Contract C and Contract D authority dependencies
+        run: |
+          python -m pip install --disable-pip-version-check -e _deps/contract-c
+          python -m pip install --disable-pip-version-check -e _deps/contract-d
 
       - name: Verify research boundary and exact consumers
         shell: bash
