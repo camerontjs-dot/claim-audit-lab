@@ -64,7 +64,7 @@ jobs:
 
       - name: Execute preregistered event-authority experiment
         run: |
-          python research/cal_event_order_authority_rc0/evaluate.py \
+          python -m research.cal_event_order_authority_rc0.evaluate \
             --repo-root . \
             --event-root _deps/event \
             --rc8j-root _deps/rc8j \
