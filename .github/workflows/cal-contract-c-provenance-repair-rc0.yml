@@ -1,0 +1,107 @@
+name: CAL Contract C Provenance Repair RC0
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/cal-contract-c-provenance-repair-rc0-20260910
+    paths:
+      - research/cal_contract_c_provenance_repair_rc0/**
+      - .github/workflows/cal-contract-c-provenance-repair-rc0.yml
+
+permissions:
+  contents: read
+
+jobs:
+  repair-comparison:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repair research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen RC7F-C
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/event
+
+      - name: Checkout frozen RC8J
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - name: Verify exact parent and research-only mutation surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only dc6898fd6ab06e3e2fc95d89e4818ea55c5a4689...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -q '^src/'; then
+            echo 'production CAL src mutation detected' >&2
+            exit 1
+          fi
+          test "$(git hash-object research/cal_temporal_contract_c_decision_rc0/bound_relation.py)" = "94b44f3b0b2b3f077c17ca55eb944117ffa22b77"
+          test "$(git hash-object research/cal_temporal_contract_c_decision_rc0/bound_projection.py)" = "77fed3e7a7273b13e6dfb89e0ffee7fce1503c6c"
+          test "$(git hash-object research/cal_contract_c_unresolved_provenance_rc0/independent_consumer.py)" = "$(git show dc6898fd6ab06e3e2fc95d89e4818ea55c5a4689:research/cal_contract_c_unresolved_provenance_rc0/independent_consumer.py | git hash-object --stdin)"
+
+      - name: Prove repair consumer has no CAL semantic imports
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -Eq '^\s*(from|import)\s+research\.|^\s*(from|import)\s+src\.' research/cal_contract_c_provenance_repair_rc0/consumer.py
+          ! grep -Eqi 'temporal|event_order|bound_projection|bound_relation' research/cal_contract_c_provenance_repair_rc0/consumer.py
+
+      - name: Compile research comparison apparatus
+        run: python -m compileall -q research/cal_contract_c_provenance_repair_rc0
+
+      - name: Execute preregistered repair comparison
+        run: |
+          python -m research.cal_contract_c_provenance_repair_rc0.evaluate \
+            --repo-root . \
+            --event-root _deps/event \
+            --rc8j-root _deps/rc8j \
+            --out build/cal-contract-c-provenance-repair-rc0
+
+      - name: Verify terminal comparison receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/cal-contract-c-provenance-repair-rc0/EVALUATION.json').read_text())
+          assert data['research_disposition'] in {
+              'NO_UNIQUE_REPAIR_SELECTED',
+              'UNIQUE_REPAIR_CANDIDATE_SELECTED',
+              'ALL_REPAIR_CANDIDATES_FALSIFIED',
+          }
+          assert data['support_control_unchanged_reconstructable'] is True
+          assert data['comparison_inference']['byte_count_used_as_selection_gate'] is False
+          assert data['comparison_inference']['contract_c_change_authorized'] is False
+          assert data['comparison_inference']['production_promotion_authorized'] is False
+          print(json.dumps({
+              'research_disposition': data['research_disposition'],
+              'scientifically_viable_candidates': data['scientifically_viable_candidates'],
+              'unique_selected_candidate': data['unique_selected_candidate'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package comparison evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/cal-contract-c-provenance-repair-rc0
+          cp research/cal_contract_c_provenance_repair_rc0/PREREGISTRATION.md build/cal-contract-c-provenance-repair-rc0/
+          tar -czf cal-contract-c-provenance-repair-rc0-${GITHUB_RUN_ID}.tar.gz -C build cal-contract-c-provenance-repair-rc0
+
+      - name: Upload comparison evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-contract-c-provenance-repair-rc0-${{ github.run_id }}
+          path: cal-contract-c-provenance-repair-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
