@@ -1,0 +1,52 @@
+{
+  "schema": "cal-event-order-authority-rc0-cohort-v1",
+  "candidate_freeze_before_cohort": "634837fe368accbd9add2c9483dfff6722f5dfc7",
+  "positive_controls": [
+    {
+      "case_id": "EO-P01-BEFORE",
+      "source": "Alice reviewed dossier before Bob archived dossier."
+    },
+    {
+      "case_id": "EO-P02-AFTER",
+      "source": "Alice reviewed dossier after Bob archived dossier."
+    },
+    {
+      "case_id": "EO-P03-LEFT-NEGATIVE",
+      "source": "Alice did not review dossier before Bob archived dossier."
+    },
+    {
+      "case_id": "EO-P04-RIGHT-NEGATIVE",
+      "source": "Alice reviewed dossier before Bob did not archive dossier."
+    },
+    {
+      "case_id": "EO-P05-TWO-TOKEN-SUBJECTS",
+      "source": "North Team approved batch before South Team released batch."
+    }
+  ],
+  "direct_assertion_falsifiers": [
+    {
+      "case_id": "EO-N01-REPORTING-PREFIX",
+      "source": "The report stated Alice reviewed dossier before Bob archived dossier.",
+      "measurement_expected": "CLAIMED",
+      "candidate_expected": "DIRECT_ASSERTION_GRAMMAR_REFUSED"
+    },
+    {
+      "case_id": "EO-N02-EXTRA-EVENT-CLAUSE",
+      "source": "Alice reviewed dossier before Bob archived dossier and Carol signed log.",
+      "measurement_expected": "CLAIMED",
+      "candidate_expected": "DIRECT_ASSERTION_GRAMMAR_REFUSED"
+    },
+    {
+      "case_id": "EO-N03-REPORTING-SUFFIX-IN-OBJECT",
+      "source": "Alice reviewed dossier before Bob archived dossier in report.",
+      "measurement_expected": "CLAIMED",
+      "candidate_expected": "DIRECT_ASSERTION_GRAMMAR_REFUSED"
+    },
+    {
+      "case_id": "EO-N04-MULTIPLE-CUES",
+      "source": "Alice reviewed dossier before Bob archived dossier after Carol signed log.",
+      "measurement_expected": "UNRESOLVED",
+      "candidate_expected": "DIRECT_ASSERTION_GRAMMAR_REFUSED"
+    }
+  ]
+}
