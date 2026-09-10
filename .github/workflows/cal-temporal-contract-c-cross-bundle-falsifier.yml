@@ -1,0 +1,104 @@
+name: CAL Temporal Contract C Cross-Bundle Falsifier
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/cal-temporal-contract-c-decision-rc0-20260909
+    paths:
+      - research/cal_temporal_contract_c_decision_rc0/cross_bundle_falsifier.py
+      - .github/workflows/cal-temporal-contract-c-cross-bundle-falsifier.yml
+
+permissions:
+  contents: read
+
+jobs:
+  cross-bundle-falsifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout projector branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen RC7F-C
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/event
+
+      - name: Checkout frozen RC8J
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - name: Checkout exact Contract C 1.0 authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          path: _deps/contract-c
+          fetch-depth: 0
+
+      - name: Install exact authority dependencies
+        run: python -m pip install --disable-pip-version-check -e _deps/contract-c
+
+      - name: Verify frozen first projector
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 75242634cc6c638f961035d2f2dc3f8570308090 HEAD
+          test "$(git hash-object research/cal_temporal_contract_c_decision_rc0/projection.py)" = "57d389f8b39d458388a6aed7c99c620ea165354a"
+          test "$(git -C _deps/contract-c rev-parse HEAD)" = "5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1"
+          test "$(git -C _deps/contract-c hash-object validators/contract_c.py)" = "9c75ccfbf2223578a8d1a7bf0c39673b394fbea4"
+
+      - name: Execute post-freeze cross-bundle falsifier
+        run: |
+          python -m research.cal_temporal_contract_c_decision_rc0.cross_bundle_falsifier \
+            --repo-root . \
+            --event-root _deps/event \
+            --rc8j-root _deps/rc8j \
+            --contract-c-root _deps/contract-c \
+            --out build/cal-temporal-contract-c-cross-bundle
+
+      - name: Assert discriminating control executed
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/cal-temporal-contract-c-cross-bundle/CROSS-BUNDLE-FALSIFIER.json').read_text())
+          assert data['research_disposition'] in {
+              'FALSIFIED_CROSS_BUNDLE_PROVENANCE_BINDING',
+              'CROSS_BUNDLE_ATTACK_REFUSED',
+          }
+          assert data['projector_freeze']=='75242634cc6c638f961035d2f2dc3f8570308090'
+          assert data['interpretation']['contract_c_defect_established'] is False
+          assert data['interpretation']['phase3_relation_semantics_falsified'] is False
+          assert data['interpretation']['production_promotion_authorized'] is False
+          print(json.dumps({
+              'research_disposition': data['research_disposition'],
+              'attack_succeeded': data['attack_succeeded'],
+              'source_bundle': data['source_authority_bundle_id'],
+              'projected_bundle': data['forged_contract_c_bundle_id'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package falsifier evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/cal-temporal-contract-c-cross-bundle
+          cp research/cal_temporal_contract_c_decision_rc0/PREREGISTRATION.md build/cal-temporal-contract-c-cross-bundle/PREREGISTRATION.md
+          tar -czf cal-temporal-contract-c-cross-bundle-${GITHUB_RUN_ID}.tar.gz -C build cal-temporal-contract-c-cross-bundle
+
+      - name: Upload falsifier evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-temporal-contract-c-cross-bundle-${{ github.run_id }}
+          path: cal-temporal-contract-c-cross-bundle-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
