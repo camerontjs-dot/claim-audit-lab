@@ -1,0 +1,90 @@
+{
+  "schema": "cal-event-order-relation-rc0-cohort-v1",
+  "candidate_freeze_before_cohort": "94ea0c7531aeb852520f34bd56393b63a4b5ac75",
+  "base_source": "Alice reviewed dossier before Bob archived dossier.",
+  "base_proposition": {
+    "left_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "positive"},
+    "relation": "BEFORE",
+    "right_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"}
+  },
+  "relation_controls": [
+    {
+      "case_id": "TR-P01-SAME-SUPPORT",
+      "source": "Alice reviewed dossier before Bob archived dossier.",
+      "proposition": {
+        "left_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "positive"},
+        "relation": "BEFORE",
+        "right_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"}
+      },
+      "expected_relation": "SUPPORTS",
+      "expected_disposition": "decided",
+      "expected_verdict": "supported"
+    },
+    {
+      "case_id": "TR-P02-SAME-REFUTE",
+      "source": "Alice reviewed dossier before Bob archived dossier.",
+      "proposition": {
+        "left_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "positive"},
+        "relation": "AFTER",
+        "right_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"}
+      },
+      "expected_relation": "REFUTES",
+      "expected_disposition": "decided",
+      "expected_verdict": "contradicted"
+    },
+    {
+      "case_id": "TR-P03-SWAPPED-INVERSE-SUPPORT",
+      "source": "Alice reviewed dossier before Bob archived dossier.",
+      "proposition": {
+        "left_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"},
+        "relation": "AFTER",
+        "right_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "positive"}
+      },
+      "expected_relation": "SUPPORTS",
+      "expected_disposition": "decided",
+      "expected_verdict": "supported"
+    },
+    {
+      "case_id": "TR-P04-SWAPPED-SAME-REFUTE",
+      "source": "Alice reviewed dossier before Bob archived dossier.",
+      "proposition": {
+        "left_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"},
+        "relation": "BEFORE",
+        "right_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "positive"}
+      },
+      "expected_relation": "REFUTES",
+      "expected_disposition": "decided",
+      "expected_verdict": "contradicted"
+    },
+    {
+      "case_id": "TR-P05-IRRELEVANT-PAIR",
+      "source": "Alice reviewed dossier before Bob archived dossier.",
+      "proposition": {
+        "left_event": {"subject": "carol", "predicate": "sign", "object": "log", "polarity": "positive"},
+        "relation": "BEFORE",
+        "right_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"}
+      },
+      "expected_relation": "IRRELEVANT",
+      "expected_disposition": "abstained",
+      "expected_verdict": null
+    },
+    {
+      "case_id": "TR-P06-NEGATIVE-UNRESOLVED",
+      "source": "Alice did not review dossier before Bob archived dossier.",
+      "proposition": {
+        "left_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "negative"},
+        "relation": "BEFORE",
+        "right_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"}
+      },
+      "expected_relation": "UNRESOLVED",
+      "expected_disposition": "abstained",
+      "expected_verdict": null
+    }
+  ],
+  "composition_sources": {
+    "support": "Alice reviewed dossier before Bob archived dossier.",
+    "refute": "Alice reviewed dossier after Bob archived dossier.",
+    "irrelevant": "Carol signed log before Dan released batch.",
+    "unresolved": "Alice did not review dossier before Bob archived dossier."
+  }
+}
