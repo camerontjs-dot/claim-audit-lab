@@ -1,0 +1,115 @@
+name: CAL Bound Temporal Evidence World RC0
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/cal-temporal-contract-c-decision-rc0-20260909
+    paths:
+      - research/cal_temporal_contract_c_decision_rc0/BOUND-COHORT.json
+      - research/cal_temporal_contract_c_decision_rc0/evaluate_bound_successor.py
+      - .github/workflows/cal-bound-temporal-world-rc0.yml
+
+permissions:
+  contents: read
+
+jobs:
+  bound-temporal-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout successor branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen RC7F-C
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/event
+
+      - name: Checkout frozen RC8J
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - name: Checkout exact Contract C 1.0 authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1
+          path: _deps/contract-c
+          fetch-depth: 0
+
+      - name: Install Contract C authority dependencies
+        run: python -m pip install --disable-pip-version-check -e _deps/contract-c
+
+      - name: Verify research boundary and successor freeze
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 1fe223979a866ec10428ff696bb373739728d461...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -q '^src/'; then
+            echo 'production src mutation detected' >&2
+            exit 1
+          fi
+          git merge-base --is-ancestor 10ce0894a56f265434b24963bf0543765c453996 HEAD
+          test "$(git hash-object research/cal_temporal_contract_c_decision_rc0/bound_relation.py)" = "94b44f3b0b2b3f077c17ca55eb944117ffa22b77"
+          test "$(git hash-object research/cal_temporal_contract_c_decision_rc0/bound_projection.py)" = "77fed3e7a7273b13e6dfb89e0ffee7fce1503c6c"
+          test "$(git hash-object research/cal_temporal_contract_c_decision_rc0/projection.py)" = "57d389f8b39d458388a6aed7c99c620ea165354a"
+          test "$(git -C _deps/contract-c rev-parse HEAD)" = "5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1"
+          test "$(git -C _deps/contract-c hash-object validators/contract_c.py)" = "9c75ccfbf2223578a8d1a7bf0c39673b394fbea4"
+
+      - name: Compile successor and evaluator
+        run: python -m compileall -q research/cal_temporal_contract_c_decision_rc0 research/cal_event_order_relation_rc0 research/cal_event_order_authority_rc0 research/cal_measurement_envelope_rc0
+
+      - name: Execute preregistered successor cohort
+        run: |
+          python -m research.cal_temporal_contract_c_decision_rc0.evaluate_bound_successor \
+            --repo-root . \
+            --event-root _deps/event \
+            --rc8j-root _deps/rc8j \
+            --contract-c-root _deps/contract-c \
+            --cohort research/cal_temporal_contract_c_decision_rc0/BOUND-COHORT.json \
+            --out build/cal-bound-temporal-world-rc0
+
+      - name: Verify terminal scientific receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/cal-bound-temporal-world-rc0/BOUND-EVALUATION.json').read_text())
+          assert data['research_disposition'] in {
+              'SUPPORTED_WITH_BOUNDS_AND_CONTRACT_C_PROVENANCE_GAP',
+              'FALSIFIED_BOUND_TEMPORAL_WORLD_SUCCESSOR',
+          }
+          assert data['candidate_freeze']=='10ce0894a56f265434b24963bf0543765c453996'
+          assert data['interpretation']['contract_c_unresolved_evidence_provenance_lossless'] is False
+          assert data['interpretation']['decision_engine_conformance_established'] is False
+          assert data['interpretation']['contract_e_authorization_evaluated'] is False
+          assert data['interpretation']['production_promotion_authorized'] is False
+          print(json.dumps({'research_disposition': data['research_disposition'], **data['summary']}, sort_keys=True))
+          PY
+
+      - name: Package successor evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/cal-bound-temporal-world-rc0
+          cp research/cal_temporal_contract_c_decision_rc0/BOUND-SUCCESSOR-PREREGISTRATION.md build/cal-bound-temporal-world-rc0/
+          cp research/cal_temporal_contract_c_decision_rc0/BOUND-COHORT.json build/cal-bound-temporal-world-rc0/
+          cp research/cal_temporal_contract_c_decision_rc0/FALSIFIERS.md build/cal-bound-temporal-world-rc0/
+          tar -czf cal-bound-temporal-world-rc0-${GITHUB_RUN_ID}.tar.gz -C build cal-bound-temporal-world-rc0
+
+      - name: Upload successor evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-bound-temporal-world-rc0-${{ github.run_id }}
+          path: cal-bound-temporal-world-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error

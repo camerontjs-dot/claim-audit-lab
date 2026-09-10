@@ -1,0 +1,41 @@
+{
+  "schema": "cal-bound-temporal-world-rc0-cohort-v1",
+  "candidate_freeze_before_cohort": "10ce0894a56f265434b24963bf0543765c453996",
+  "proposition": {
+    "claim_id": "TEMP-BOUND-WORLD-001",
+    "left_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "positive"},
+    "relation": "BEFORE",
+    "right_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"}
+  },
+  "single_support": {
+    "bundle_id": "bundle-bound-support",
+    "passages": [
+      {"passage_id": "BOUND-S-P1", "source_id": "source-bound-s", "text": "Alice reviewed dossier before Bob archived dossier."}
+    ]
+  },
+  "single_refute": {
+    "bundle_id": "bundle-bound-refute",
+    "passages": [
+      {"passage_id": "BOUND-R-P1", "source_id": "source-bound-r", "text": "Alice reviewed dossier after Bob archived dossier."}
+    ]
+  },
+  "same_world_mixed": {
+    "bundle_id": "bundle-bound-mixed",
+    "passages": [
+      {"passage_id": "BOUND-M-P1", "source_id": "source-bound-m-support", "text": "Alice reviewed dossier before Bob archived dossier."},
+      {"passage_id": "BOUND-M-P2", "source_id": "source-bound-m-refute", "text": "Alice reviewed dossier after Bob archived dossier."}
+    ]
+  },
+  "single_unresolved": {
+    "bundle_id": "bundle-bound-unresolved",
+    "proposition": {
+      "claim_id": "TEMP-BOUND-UNRESOLVED-001",
+      "left_event": {"subject": "alice", "predicate": "review", "object": "dossier", "polarity": "negative"},
+      "relation": "BEFORE",
+      "right_event": {"subject": "bob", "predicate": "archive", "object": "dossier", "polarity": "positive"}
+    },
+    "passages": [
+      {"passage_id": "BOUND-U-P1", "source_id": "source-bound-u", "text": "Alice did not review dossier before Bob archived dossier."}
+    ]
+  }
+}
