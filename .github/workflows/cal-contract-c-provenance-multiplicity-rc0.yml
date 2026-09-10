@@ -1,0 +1,101 @@
+name: CAL Contract C Provenance Multiplicity RC0
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/cal-contract-c-provenance-repair-rc0-20260910
+    paths:
+      - research/cal_contract_c_provenance_multiplicity_rc0/**
+      - .github/workflows/cal-contract-c-provenance-multiplicity-rc0.yml
+
+permissions:
+  contents: read
+
+jobs:
+  multiplicity-pressure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen RC7F-C
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/event
+
+      - name: Checkout frozen RC8J
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - name: Verify frozen repair candidates and research-only boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object research/cal_contract_c_provenance_repair_rc0/candidates.py)" = "a7934b3c242dcf1c33a28121b3b141c9c6adc203"
+          changed="$(git diff --name-only bd1e0a0b171eed8a74445052202f938e3b734f74...HEAD)"
+          if printf '%s\n' "$changed" | grep -q '^src/'; then
+            echo 'production CAL src mutation detected' >&2
+            exit 1
+          fi
+
+      - name: Prove multiplicity consumer has no CAL semantic import
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -Eqi 'cal_temporal|event_order|bound_projection|bound_relation' research/cal_contract_c_provenance_multiplicity_rc0/multiplicity_consumer.py
+
+      - name: Compile pressure-test apparatus
+        run: python -m compileall -q research/cal_contract_c_provenance_multiplicity_rc0
+
+      - name: Execute multiplicity pressure test
+        run: |
+          python -m research.cal_contract_c_provenance_multiplicity_rc0.evaluate \
+            --repo-root . \
+            --event-root _deps/event \
+            --rc8j-root _deps/rc8j \
+            --out build/cal-contract-c-provenance-multiplicity-rc0
+
+      - name: Verify terminal receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/cal-contract-c-provenance-multiplicity-rc0/EVALUATION.json').read_text())
+          assert data['research_disposition'] in {
+              'UNIQUE_MULTIPLICITY_PRESERVING_REPAIR_CANDIDATE',
+              'NO_UNIQUE_MULTIPLICITY_PRESERVING_REPAIR_CANDIDATE',
+              'ALL_FROZEN_REPAIR_CANDIDATES_FAIL_MULTIPLICITY',
+          }
+          assert data['upstream_observation']['independent_sufficiency_observed_by_ablation'] is True
+          assert data['interpretation']['unique_candidate_is_contract_change_authorization'] is False
+          assert data['interpretation']['production_promotion_authorized'] is False
+          print(json.dumps({
+              'research_disposition': data['research_disposition'],
+              'surviving_candidates': data['surviving_candidates'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/cal-contract-c-provenance-multiplicity-rc0
+          cp research/cal_contract_c_provenance_multiplicity_rc0/PREREGISTRATION.md build/cal-contract-c-provenance-multiplicity-rc0/
+          tar -czf cal-contract-c-provenance-multiplicity-rc0-${GITHUB_RUN_ID}.tar.gz -C build cal-contract-c-provenance-multiplicity-rc0
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-contract-c-provenance-multiplicity-rc0-${{ github.run_id }}
+          path: cal-contract-c-provenance-multiplicity-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
