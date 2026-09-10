@@ -1,0 +1,118 @@
+name: CAL Event-Ordering Authority RC0
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/cal-event-order-authority-rc0-20260909
+    paths:
+      - research/cal_event_order_authority_rc0/**
+      - .github/workflows/cal-event-order-authority-rc0.yml
+  pull_request:
+    paths:
+      - research/cal_event_order_authority_rc0/**
+      - .github/workflows/cal-event-order-authority-rc0.yml
+
+permissions:
+  contents: read
+
+jobs:
+  event-authority:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen RC7F-C event measurement
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e8d33913db66ad21027dffdf731d50f7a0977c8f
+          path: _deps/event
+
+      - name: Checkout frozen RC8J authority evaluator
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 8e75c6782bb95c3763d06230b9c5df2b6af44054
+          path: _deps/rc8j
+
+      - name: Verify research-only boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only 6cb12e81698b21d3bed82f0f31d592ab6e5f1500...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -q '^src/'; then
+            echo 'production src mutation detected' >&2
+            exit 1
+          fi
+
+      - name: Verify candidate freeze precedes cohort
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor 634837fe368accbd9add2c9483dfff6722f5dfc7 HEAD
+          test "$(git hash-object research/cal_event_order_authority_rc0/event_authority.py)" = "88df954235069e98582e731f48e46e5b257da93f"
+          test "$(git hash-object research/cal_event_order_authority_rc0/candidate.py)" = "36a8d1fbd9e52ec743757f750f744ad4553b5698"
+          test "$(git hash-object research/cal_measurement_envelope_rc0/envelope.py)" = "f8ce6362f6ccc165cdad29f314721bb26a21f871"
+
+      - name: Compile research candidate
+        run: python -m compileall -q research/cal_event_order_authority_rc0 research/cal_measurement_envelope_rc0
+
+      - name: Execute preregistered event-authority experiment
+        run: |
+          python -m research.cal_event_order_authority_rc0.evaluate \
+            --repo-root . \
+            --event-root _deps/event \
+            --rc8j-root _deps/rc8j \
+            --cohort research/cal_event_order_authority_rc0/COHORT.json \
+            --out build/cal-event-order-authority-rc0/EVALUATION.json
+
+      - name: Verify terminal scientific receipt
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('build/cal-event-order-authority-rc0/EVALUATION.json')
+          data=json.loads(p.read_text())
+          allowed={
+              'SUPPORTED_WITH_BOUNDS',
+              'FALSIFIED_EVENT_ORDER_AUTHORITY_CANDIDATE',
+              'INCONCLUSIVE_SETUP_INVALID',
+              'INCONCLUSIVE_WEAK_CONTROL_NOT_DISCRIMINATING',
+          }
+          assert data['research_disposition'] in allowed
+          assert data['candidate_freeze']=='634837fe368accbd9add2c9483dfff6722f5dfc7'
+          assert data['interpretation']['event_order_measurement_is_authority'] is False
+          assert data['interpretation']['rc8j_parses_source_language'] is False
+          assert data['interpretation']['proposition_relative_temporal_relation_established'] is False
+          assert data['interpretation']['released_cal_v1_causal_role'] is False
+          assert data['interpretation']['production_promotion_authorized'] is False
+          print(json.dumps({
+              'research_disposition': data['research_disposition'],
+              'weak_control_valid': data['weak_control']['control_valid'],
+              **data['summary'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package evidence record
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/cal-event-order-authority-rc0
+          cp research/cal_event_order_authority_rc0/PREREGISTRATION.md build/cal-event-order-authority-rc0/PREREGISTRATION.md
+          cp research/cal_event_order_authority_rc0/COHORT.json build/cal-event-order-authority-rc0/COHORT.json
+          cp research/cal_event_order_authority_rc0/DEVELOPMENT_NOTES.md build/cal-event-order-authority-rc0/DEVELOPMENT_NOTES.md
+          tar -czf cal-event-order-authority-rc0-${GITHUB_RUN_ID}.tar.gz -C build cal-event-order-authority-rc0
+
+      - name: Upload evidence record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-event-order-authority-rc0-${{ github.run_id }}
+          path: cal-event-order-authority-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
