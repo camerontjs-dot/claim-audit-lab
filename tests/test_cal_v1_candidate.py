@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import hashlib
+import json
 from dataclasses import replace
 
 import pytest
@@ -20,9 +22,21 @@ from claim_audit_lab.cal_v1_candidate.authority import (
     AuthorityRefusal,
     complete_and_warrant,
 )
+from claim_audit_lab.cal_v1_candidate.cli import context_from_packet
 from claim_audit_lab.cal_v1_candidate.engine import PassageTrace, compose
 from claim_audit_lab.cal_v1_candidate.measurements import measure_strict_comparison
 from claim_audit_lab.cal_v1_candidate.relations import derive_relation
+
+
+_SEMANTIC_SHA = "a" * 40
+
+
+def _hex(value: str) -> str:
+    return hashlib.sha256(value.encode()).hexdigest()
+
+
+def _tagged(value: str) -> str:
+    return f"sha256:{_hex(value)}"
 
 
 def _context(
@@ -37,9 +51,14 @@ def _context(
         for index, text in enumerate(texts, start=1)
     )
     world = EvidenceWorld(
-        "1.2.0", bundle_id, f"hash-{bundle_id}", passages, "declared"
+        "1.2.0", bundle_id, _tagged(bundle_id), passages, "declared"
     )
-    proposition = TypedProposition.create("claim-1", family, fields)
+    proposition = TypedProposition.create(
+        "claim-1",
+        family,
+        fields,
+        text_sha256=_hex("typed claim"),
+    )
     return AuditContext("typed claim", proposition, world)
 
 
@@ -132,6 +151,7 @@ def test_proposition_substitution_changes_binding() -> None:
                 "rhs_entity": "Men",
                 "comparison_direction": "LESS_THAN",
             },
+            text_sha256=ctx.proposition.text_sha256,
         ),
         ctx.evidence_world,
     )
@@ -201,7 +221,7 @@ def test_direct_event_order_support_refute_and_scope_refusal() -> None:
     assert audit(scoped).conclusion is Conclusion.NOT_CHECKABLE
 
 
-def test_unsupported_family_does_not_fall_back_to_legacy_rules() -> None:
+def test_unsupported_family_does_not_fall_back_and_preserves_evidence() -> None:
     ctx = _context(
         SemanticFamily.PERMISSION_EXCEPTION,
         {"actor": "alice"},
@@ -210,9 +230,10 @@ def test_unsupported_family_does_not_fall_back_to_legacy_rules() -> None:
     result = audit(ctx)
     assert result.conclusion is Conclusion.NOT_CHECKABLE
     assert result.failure_code is FailureCode.UNSUPPORTED_SEMANTIC_FAMILY
+    assert result.non_deciding_passage_ids == ("p1",)
 
 
-def test_projection_preserves_non_deciding_without_laundering() -> None:
+def test_projection_matches_qualified_contract_c_shadow_shape() -> None:
     fields = {
         "lhs_entity": "Women",
         "rhs_entity": "Men",
@@ -224,10 +245,72 @@ def test_projection_preserves_non_deciding_without_laundering() -> None:
         ["Women appeared in the report.", "Women had a higher rate than Men."],
     )
     result = audit(ctx)
-    payload = project_contract_c_successor(ctx, result)
+    payload = project_contract_c_successor(
+        ctx, result, semantic_implementation_sha=_SEMANTIC_SHA
+    )
+    assert payload["contract_c_version"] == "research-non-deciding-rc0"
+    assert set(payload) == {
+        "contract_c_version",
+        "input",
+        "producer",
+        "execution",
+        "propositions",
+        "result_set_id",
+    }
+    proposition = payload["propositions"][0]
     channels = {
         item["evidence_ref"]["passage_id"]: item["channel"]
-        for item in payload["contributions"]
+        for item in proposition["contributions"]
     }
     assert channels["p1"] == "non_deciding"
     assert channels["p2"] == "support"
+    assert proposition["conclusion"]["reported_verdict"] == "supported"
+    assert proposition["conclusion"]["causal_form"] == "single_necessary"
+    assert proposition["conclusion"]["residual_contribution_ids"]
+    assert payload["result_set_id"].startswith("result-set:")
+    canonical = json.dumps(
+        {key: value for key, value in payload.items() if key != "result_set_id"},
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ) + "\n"
+    assert payload["result_set_id"] == "result-set:" + hashlib.sha256(
+        canonical.encode()
+    ).hexdigest()
+
+
+def test_exact_intake_rejects_changed_passage_under_stale_hash() -> None:
+    text = "Women had a higher rate than Men."
+    packet = {
+        "original_claim": "typed claim",
+        "proposition": {
+            "proposition_id": "claim-1",
+            "text_sha256": _hex("typed claim"),
+            "semantic_family": "strict_comparison",
+            "fields": {
+                "lhs_entity": "Women",
+                "rhs_entity": "Men",
+                "comparison_direction": "MORE_THAN",
+            },
+        },
+        "evidence_world": {
+            "contract_b_version": "1.2.0",
+            "bundle_id": "bundle-1",
+            "bundle_hash": _tagged("bundle-1"),
+            "aperture_state": "declared",
+            "admitted_passages": [
+                {
+                    "passage_id": "p1",
+                    "source_id": "source-1",
+                    "text": text,
+                    "text_sha256": _tagged(text),
+                    "source_sha256": _tagged("source-1"),
+                }
+            ],
+        },
+    }
+    assert context_from_packet(packet).evidence_world.passage("p1").text == text
+    changed = json.loads(json.dumps(packet))
+    changed["evidence_world"]["admitted_passages"][0]["text"] = "changed"
+    with pytest.raises(ValueError, match="passage hash mismatch"):
+        context_from_packet(changed)
