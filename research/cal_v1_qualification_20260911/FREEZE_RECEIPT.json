@@ -1,0 +1,75 @@
+{
+  "schema": "cal-v1-candidate-freeze-receipt-v1",
+  "status": "FROZEN_PRE_QUALIFICATION",
+  "candidate": {
+    "repository": "camerontjs-dot/claim-audit-lab",
+    "commit_sha": "dca2ec7f2c117cc0b4d6c543ab5049cac7994298",
+    "tree_sha": "e48de79a38e3d0472892117b78c8619f78d45094",
+    "production_base_sha": "32275a239b68af383a56bca843e28cbc1e343976",
+    "source_root": "src/claim_audit_lab/cal_v1_candidate",
+    "source_blobs": {
+      "__init__.py": "a5c32a7d022ae2d1e059587c4c936e27f27b9fb9",
+      "authority.py": "3cfcfb8cc3b3a8860e119edfbe22a4d684650a86",
+      "cli.py": "aeb85e9467f2fbdbb5004d130873188256485549",
+      "engine.py": "636734fd1341d2ae721ae9697c7ac7652b89eecc",
+      "measurements.py": "aa26d34a94488901d8a838824e0d7a23c6655f4c",
+      "models.py": "4710923e62ef62b472abb21b9e075b177ebb7413",
+      "projection.py": "9bc152275759304be03b84014c56bd434549a64a",
+      "relations.py": "23548bc9c463f42f2849b7697c2c4fd4614e2474",
+      "report.py": "7435c96e93e5acaf7efbb1ee8599b427e3d992ff"
+    },
+    "development_test_blob": "f5d203b27c15ab48356029b970535f22706813c1"
+  },
+  "pre_freeze_gate": {
+    "workflow": "Public suite",
+    "run_id": 34611283117,
+    "job_id": 103302509641,
+    "conclusion": "success",
+    "required_checks": {
+      "pytest": "success",
+      "ruff_check": "success",
+      "ruff_format_check": "success",
+      "mypy": "success"
+    },
+    "pytest_observed": "976 passed, 5 skipped, 48 deselected"
+  },
+  "contracts": {
+    "contract_b": {
+      "version": "1.2.0",
+      "authority_commit": "c314e53bd91c0736aa4370a364673b069aceb43e"
+    },
+    "contract_c_released": {
+      "version": "1.0.0",
+      "authority_commit": "5fe55f9ed5d0ee9f026ca1b077e9d70ce0487ea1"
+    },
+    "contract_c_research_projection": {
+      "wire_sentinel": "research-non-deciding-rc0",
+      "production_authority": false
+    }
+  },
+  "semantic_profile": {
+    "profile_id": "cal-v1-candidate-2026-09",
+    "deciding_families": [
+      "strict_comparison",
+      "direct_event_order"
+    ],
+    "measurement_only_or_deferred_families": [
+      "permission_exception"
+    ],
+    "unsupported_policy": "fail_closed_no_legacy_fallback",
+    "root_all_of": "NOT_COMPOSED",
+    "terminal_relation_model": "scoreless_categorical",
+    "learned_nli_terminal_authority": false
+  },
+  "freeze_rules": {
+    "candidate_source_may_change_after_freeze": false,
+    "qualification_failure_requires_successor_candidate": true,
+    "qualification_files_may_be_added_outside_candidate_source_root": true,
+    "production_merge_release_or_promotion_authorized": false
+  },
+  "notes": [
+    "Identity-bearing str, Enum classes were preserved rather than mechanically converted to StrEnum during CI repair.",
+    "This receipt freezes the candidate before fresh qualification material is introduced.",
+    "Contract C research projection remains non-canonical and research-only."
+  ]
+}
