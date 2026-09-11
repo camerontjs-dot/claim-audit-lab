@@ -1,0 +1,57 @@
+name: CAL V1 fresh qualification
+
+on:
+  push:
+    branches:
+      - qualify/cal-v1-candidate-dca2ec7-20260911
+    paths:
+      - "research/cal_v1_qualification_20260911/**"
+      - ".github/workflows/cal-v1-fresh-qualification.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Execute frozen qualification
+        id: qualification
+        continue-on-error: true
+        env:
+          PYTHONPATH: src
+        run: |
+          python research/cal_v1_qualification_20260911/run_qualification.py
+
+      - name: Hash qualification evidence
+        if: always()
+        run: |
+          cd research/cal_v1_qualification_20260911
+          sha256sum FREEZE_RECEIPT.json cohort.json gold.json run_qualification.py qualification_receipt.json > SHA256SUMS.txt
+
+      - name: Upload qualification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-v1-fresh-qualification-${{ github.sha }}
+          path: |
+            research/cal_v1_qualification_20260911/FREEZE_RECEIPT.json
+            research/cal_v1_qualification_20260911/cohort.json
+            research/cal_v1_qualification_20260911/gold.json
+            research/cal_v1_qualification_20260911/run_qualification.py
+            research/cal_v1_qualification_20260911/qualification_receipt.json
+            research/cal_v1_qualification_20260911/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Enforce qualification disposition
+        if: always()
+        run: |
+          test "${{ steps.qualification.outcome }}" = "success"
