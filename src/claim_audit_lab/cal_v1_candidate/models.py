@@ -99,14 +99,24 @@ class AdmittedPassage:
     source_id: str
     text: str
     text_sha256: str
+    source_sha256: str
 
     @classmethod
-    def create(cls, passage_id: str, source_id: str, text: str) -> AdmittedPassage:
-        return cls(passage_id, source_id, text, sha256_hex(text.encode()))
+    def create(
+        cls,
+        passage_id: str,
+        source_id: str,
+        text: str,
+        source_sha256: str | None = None,
+    ) -> AdmittedPassage:
+        text_hash = sha256_hex(text.encode())
+        return cls(passage_id, source_id, text, text_hash, source_sha256 or text_hash)
 
     def verify(self) -> None:
         if self.text_sha256 != sha256_hex(self.text.encode()):
             raise ValueError(f"passage hash mismatch: {self.passage_id}")
+        if not self.source_sha256:
+            raise ValueError(f"source hash missing: {self.source_id}")
 
 
 @dataclass(frozen=True, slots=True)
@@ -141,6 +151,7 @@ class EvidenceWorld:
                     "passage_id": passage.passage_id,
                     "source_id": passage.source_id,
                     "text_sha256": passage.text_sha256,
+                    "source_sha256": passage.source_sha256,
                 }
                 for passage in self.admitted_passages
             ],
