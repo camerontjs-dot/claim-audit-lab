@@ -82,11 +82,11 @@ jobs:
             research/eb_v1_structural_consumer/producer.py \
             --out artifacts/EB-V1-PACKAGE.json
 
-      - name: Independently validate and reconstruct CAL ingress structure
+      - name: Independently validate and attack CAL ingress structure
         shell: bash
         run: |
           set -euo pipefail
-          python research/eb_v1_structural_consumer/consumer.py \
+          python research/eb_v1_structural_consumer/evaluator.py \
             artifacts/EB-V1-PACKAGE.json \
             --out artifacts/CAL-EB-V1-STRUCTURAL-CONSUMER.json
 
@@ -94,7 +94,8 @@ jobs:
         run: |
           python -m py_compile \
             research/eb_v1_structural_consumer/producer.py \
-            research/eb_v1_structural_consumer/consumer.py
+            research/eb_v1_structural_consumer/consumer.py \
+            research/eb_v1_structural_consumer/evaluator.py
 
       - name: Upload evidence record
         if: always()
