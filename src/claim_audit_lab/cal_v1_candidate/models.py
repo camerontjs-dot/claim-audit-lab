@@ -1,10 +1,15 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
-from enum import Enum
 import hashlib
 import json
+import re
+from dataclasses import dataclass
+from enum import Enum
 from typing import Any, Mapping
+
+
+_HEX64 = re.compile(r"^[0-9a-f]{64}$")
+_SHA256_TAGGED = re.compile(r"^sha256:[0-9a-f]{64}$")
 
 
 class SemanticFamily(str, Enum):
@@ -52,6 +57,10 @@ def sha256_hex(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
 
+def tagged_sha256(value: bytes) -> str:
+    return f"sha256:{sha256_hex(value)}"
+
+
 def stable_id(namespace: str, value: Any) -> str:
     return f"{namespace}:{sha256_hex(canonical_json_bytes(value))}"
 
@@ -63,6 +72,7 @@ def _frozen_fields(fields: Mapping[str, str]) -> tuple[tuple[str, str], ...]:
 @dataclass(frozen=True, slots=True)
 class TypedProposition:
     proposition_id: str
+    text_sha256: str
     semantic_family: SemanticFamily
     fields: tuple[tuple[str, str], ...]
 
@@ -72,20 +82,26 @@ class TypedProposition:
         proposition_id: str,
         semantic_family: SemanticFamily,
         fields: Mapping[str, str],
+        *,
+        text_sha256: str,
     ) -> TypedProposition:
         if not proposition_id.strip():
             raise ValueError("proposition_id must be non-empty")
-        return cls(proposition_id, semantic_family, _frozen_fields(fields))
+        if _HEX64.fullmatch(text_sha256) is None:
+            raise ValueError("proposition text_sha256 must be 64 lowercase hex characters")
+        return cls(proposition_id, text_sha256, semantic_family, _frozen_fields(fields))
 
     def field_map(self) -> dict[str, str]:
         return dict(self.fields)
 
     @property
     def sha256(self) -> str:
+        """CAL binding identity for exact typed proposition semantics."""
         return sha256_hex(
             canonical_json_bytes(
                 {
                     "proposition_id": self.proposition_id,
+                    "text_sha256": self.text_sha256,
                     "semantic_family": self.semantic_family.value,
                     "fields": dict(self.fields),
                 }
@@ -109,14 +125,22 @@ class AdmittedPassage:
         text: str,
         source_sha256: str | None = None,
     ) -> AdmittedPassage:
-        text_hash = sha256_hex(text.encode())
-        return cls(passage_id, source_id, text, text_hash, source_sha256 or text_hash)
+        passage_hash = tagged_sha256(text.encode())
+        return cls(
+            passage_id,
+            source_id,
+            text,
+            passage_hash,
+            source_sha256 or passage_hash,
+        )
 
     def verify(self) -> None:
-        if self.text_sha256 != sha256_hex(self.text.encode()):
+        if not self.passage_id or not self.source_id:
+            raise ValueError("passage_id and source_id must be non-empty")
+        if self.text_sha256 != tagged_sha256(self.text.encode()):
             raise ValueError(f"passage hash mismatch: {self.passage_id}")
-        if not self.source_sha256:
-            raise ValueError(f"source hash missing: {self.source_id}")
+        if _SHA256_TAGGED.fullmatch(self.source_sha256) is None:
+            raise ValueError(f"source hash invalid: {self.source_id}")
 
 
 @dataclass(frozen=True, slots=True)
@@ -130,8 +154,12 @@ class EvidenceWorld:
     child_id: str | None = None
 
     def verify(self) -> None:
-        if not self.contract_b_version or not self.bundle_id or not self.bundle_hash:
-            raise ValueError("Contract B version, bundle_id, and bundle_hash are required")
+        if not self.contract_b_version or not self.bundle_id:
+            raise ValueError("Contract B version and bundle_id are required")
+        if _SHA256_TAGGED.fullmatch(self.bundle_hash) is None:
+            raise ValueError("bundle_hash must be sha256:<64 lowercase hex>")
+        if not self.aperture_state:
+            raise ValueError("aperture_state must be non-empty")
         seen: set[str] = set()
         for passage in self.admitted_passages:
             passage.verify()
