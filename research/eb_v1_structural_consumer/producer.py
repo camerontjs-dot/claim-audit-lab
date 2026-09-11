@@ -37,7 +37,27 @@ def contract_a_fixture() -> dict[str, object]:
         {
             "source_id": "CAL-EB-V1-S3",
             "media_type": "text/plain; charset=utf-8",
-            "content": "A distractor discusses Alpha and Delta but states no comparison.",
+            "content": "Alpha and Beta appear in a calibration note with units but no deciding comparison.",
+        },
+        {
+            "source_id": "CAL-EB-V1-S4",
+            "media_type": "text/plain; charset=utf-8",
+            "content": "Gamma and Delta appear in a calibration note with units but no deciding comparison.",
+        },
+        {
+            "source_id": "CAL-EB-V1-S5",
+            "media_type": "text/plain; charset=utf-8",
+            "content": "Alpha Beta Gamma Delta units context is recorded for retrieval pressure only.",
+        },
+        {
+            "source_id": "CAL-EB-V1-S6",
+            "media_type": "text/plain; charset=utf-8",
+            "content": "Beta and Alpha units are listed in an unrelated reference table description.",
+        },
+        {
+            "source_id": "CAL-EB-V1-S7",
+            "media_type": "text/plain; charset=utf-8",
+            "content": "Delta and Gamma units are listed in an unrelated reference table description.",
         },
     ]
     for source in sources:
@@ -120,6 +140,8 @@ def main() -> int:
         decisions[(proposition_id, str(matches[0]["passage_id"]))] = "accepted"
 
     package = build_package(contract_a=contract_a, config=config, admission=decisions)
+    if not any(row["selection_state"] == "not_retained" for row in package["candidates"]):
+        raise RuntimeError("fixture must expose at least one non-retained candidate")
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(
         json.dumps(package, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n",
