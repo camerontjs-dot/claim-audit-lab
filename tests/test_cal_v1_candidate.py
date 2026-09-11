@@ -39,19 +39,32 @@ def _tagged(value: str) -> str:
     return f"sha256:{_hex(value)}"
 
 
+def _aperture(label: str = "fixture") -> dict[str, object]:
+    return {
+        "search_scope": {"corpus": label},
+        "outcome": {"state": "unknown", "value": None},
+        "limitations": [],
+    }
+
+
 def _context(
     family: SemanticFamily,
     fields: dict[str, str],
     texts: list[str],
     *,
     bundle_id: str = "bundle-1",
+    aperture: dict[str, object] | None = None,
 ) -> AuditContext:
     passages = tuple(
         AdmittedPassage.create(f"p{index}", "source-1", text)
         for index, text in enumerate(texts, start=1)
     )
-    world = EvidenceWorld(
-        "1.2.0", bundle_id, _tagged(bundle_id), passages, "declared"
+    world = EvidenceWorld.create(
+        "1.2.0",
+        bundle_id,
+        _tagged(bundle_id),
+        passages,
+        aperture or _aperture(),
     )
     proposition = TypedProposition.create(
         "claim-1",
@@ -189,6 +202,34 @@ def test_cross_world_relation_composition_fails_closed() -> None:
         compose(one, traces)
 
 
+def test_aperture_observation_is_preserved_but_non_deciding() -> None:
+    fields = {
+        "lhs_entity": "Women",
+        "rhs_entity": "Men",
+        "comparison_direction": "MORE_THAN",
+    }
+    unknown = _context(
+        SemanticFamily.STRICT_COMPARISON,
+        fields,
+        ["Women had a higher rate than Men."],
+        aperture=_aperture("small-search"),
+    )
+    limited = _context(
+        SemanticFamily.STRICT_COMPARISON,
+        fields,
+        ["Women had a higher rate than Men."],
+        aperture={
+            "search_scope": {"corpus": "different-search"},
+            "outcome": {"state": "known", "value": "limited"},
+            "limitations": ["one source family omitted"],
+        },
+    )
+    assert unknown.evidence_world.aperture_observation() != limited.evidence_world.aperture_observation()
+    assert unknown.evidence_world.evidence_world_sha256 != limited.evidence_world.evidence_world_sha256
+    assert audit(unknown).conclusion is Conclusion.SUPPORTED
+    assert audit(limited).conclusion is Conclusion.SUPPORTED
+
+
 def test_direct_event_order_support_refute_and_scope_refusal() -> None:
     fields = {
         "left_subject": "alice",
@@ -297,7 +338,7 @@ def test_exact_intake_rejects_changed_passage_under_stale_hash() -> None:
             "contract_b_version": "1.2.0",
             "bundle_id": "bundle-1",
             "bundle_hash": _tagged("bundle-1"),
-            "aperture_state": "declared",
+            "aperture_observation": _aperture(),
             "admitted_passages": [
                 {
                     "passage_id": "p1",
