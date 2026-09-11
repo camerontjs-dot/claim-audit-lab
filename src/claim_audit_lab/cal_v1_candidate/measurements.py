@@ -147,9 +147,7 @@ def measure_strict_comparison(context: AuditContext, passage_id: str) -> Measure
             text,
         )
         if verb is not None:
-            relation = (
-                "MORE_THAN" if verb.group("verb").casefold() == "exceeded" else "LESS_THAN"
-            )
+            relation = "MORE_THAN" if verb.group("verb").casefold() == "exceeded" else "LESS_THAN"
             proposal = {
                 "left": _norm(verb.group("left")),
                 "relation": relation,
