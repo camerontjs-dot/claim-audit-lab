@@ -8,7 +8,6 @@ from typing import Any, cast
 
 from .models import AuditContext, SemanticFamily, stable_id
 
-
 STRICT_INSTRUMENT_ID = "rc7fb1-strict-comparison"
 STRICT_INSTRUMENT_VERSION = "rc7fb1-comparator-1"
 EVENT_INSTRUMENT_ID = "rc7fc-event-order"
