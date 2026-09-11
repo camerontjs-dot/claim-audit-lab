@@ -103,7 +103,11 @@ def _derive_event(context: AuditContext, fields: dict[str, str]) -> CategoricalR
         normalized = "AFTER" if atom_relation == "BEFORE" else "BEFORE"
     else:
         return CategoricalRelation.IRRELEVANT
-    return CategoricalRelation.SUPPORTS if normalized == target_relation else CategoricalRelation.REFUTES  # noqa: E501
+    return (
+        CategoricalRelation.SUPPORTS
+        if normalized == target_relation
+        else CategoricalRelation.REFUTES
+    )  # noqa: E501
 
 
 def derive_relation(context: AuditContext, authority: AuthorityReceipt) -> BoundRelation:
