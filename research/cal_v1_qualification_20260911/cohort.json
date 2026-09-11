@@ -1,0 +1,112 @@
+{
+  "schema": "cal-v1-fresh-qualification-cohort-v1",
+  "cohort_id": "cal-v1-fresh-qualification-20260911-15",
+  "candidate_commit": "dca2ec7f2c117cc0b4d6c543ab5049cac7994298",
+  "cases": [
+    {
+      "case_id": "Q01_STRICT_SUPPORT",
+      "original_claim": "North Site had a higher yield than South Site.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "North Site", "rhs_entity": "South Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Site recorded a higher yield than South Site."]
+    },
+    {
+      "case_id": "Q02_STRICT_REFUTE",
+      "original_claim": "North Site had a higher yield than South Site.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "North Site", "rhs_entity": "South Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Site recorded a lower yield than South Site."]
+    },
+    {
+      "case_id": "Q03_STRICT_INVERSE_PROPOSITION",
+      "original_claim": "South Site had a higher yield than North Site.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "South Site", "rhs_entity": "North Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Site recorded a higher yield than South Site."]
+    },
+    {
+      "case_id": "Q04_STRICT_IRRELEVANT_COMPARISON",
+      "original_claim": "North Site had a higher yield than South Site.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "North Site", "rhs_entity": "South Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["East Site recorded a higher yield than West Site."]
+    },
+    {
+      "case_id": "Q05_STRICT_RELEVANT_NONDECIDING",
+      "original_claim": "North Site had a higher yield than South Site.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "North Site", "rhs_entity": "South Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Site and South Site were both included in the quarterly table."]
+    },
+    {
+      "case_id": "Q06_STRICT_MIXED",
+      "original_claim": "North Site had a higher yield than South Site.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "North Site", "rhs_entity": "South Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Site recorded a higher yield than South Site.", "North Site recorded a lower yield than South Site."]
+    },
+    {
+      "case_id": "Q07_STRICT_EXCEEDED",
+      "original_claim": "Alpha Plant exceeded Beta Plant.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "Alpha Plant", "rhs_entity": "Beta Plant", "comparison_direction": "MORE_THAN"},
+      "passages": ["Alpha Plant exceeded Beta Plant by 12 units."]
+    },
+    {
+      "case_id": "Q08_STRICT_TRAILED",
+      "original_claim": "Alpha Plant exceeded Beta Plant.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "Alpha Plant", "rhs_entity": "Beta Plant", "comparison_direction": "MORE_THAN"},
+      "passages": ["Alpha Plant trailed Beta Plant by 4 units."]
+    },
+    {
+      "case_id": "Q09_STRICT_QUALIFIED_SURFACE",
+      "original_claim": "North Site had a higher yield than South Site after adjustment.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "North Site", "rhs_entity": "South Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Site, after seasonal adjustment, recorded a higher yield than South Site."]
+    },
+    {
+      "case_id": "Q10_STRICT_SUPPORT_PLUS_IRRELEVANT",
+      "original_claim": "North Site had a higher yield than South Site.",
+      "semantic_family": "strict_comparison",
+      "fields": {"lhs_entity": "North Site", "rhs_entity": "South Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["East Site recorded a higher yield than West Site.", "North Site recorded a higher yield than South Site."]
+    },
+    {
+      "case_id": "Q11_EVENT_SUPPORT",
+      "original_claim": "Maria inspected Batch7 before David released Batch7.",
+      "semantic_family": "direct_event_order",
+      "fields": {"left_subject": "maria", "left_predicate": "inspect", "left_object": "batch7", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "david", "right_predicate": "release", "right_object": "batch7", "right_polarity": "positive"},
+      "passages": ["Maria inspected Batch7 before David released Batch7."]
+    },
+    {
+      "case_id": "Q12_EVENT_REFUTE",
+      "original_claim": "Maria inspected Batch7 before David released Batch7.",
+      "semantic_family": "direct_event_order",
+      "fields": {"left_subject": "maria", "left_predicate": "inspect", "left_object": "batch7", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "david", "right_predicate": "release", "right_object": "batch7", "right_polarity": "positive"},
+      "passages": ["Maria inspected Batch7 after David released Batch7."]
+    },
+    {
+      "case_id": "Q13_EVENT_REPORTED_SCOPE",
+      "original_claim": "Maria inspected Batch7 before David released Batch7.",
+      "semantic_family": "direct_event_order",
+      "fields": {"left_subject": "maria", "left_predicate": "inspect", "left_object": "batch7", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "david", "right_predicate": "release", "right_object": "batch7", "right_polarity": "positive"},
+      "passages": ["Report says Maria inspected Batch7 before David released Batch7."]
+    },
+    {
+      "case_id": "Q14_PERMISSION_UNSUPPORTED",
+      "original_claim": "Operator may release Batch7.",
+      "semantic_family": "permission_exception",
+      "fields": {"actor": "operator", "action": "release", "object": "batch7"},
+      "passages": ["Operator may release Batch7 after review."]
+    },
+    {
+      "case_id": "Q15_ASSERTION_SCOPE_UNSUPPORTED",
+      "original_claim": "The threshold was exceeded.",
+      "semantic_family": "assertion_scope",
+      "fields": {"proposition": "threshold exceeded"},
+      "passages": ["The report states that the threshold was exceeded."]
+    }
+  ]
+}
