@@ -8,7 +8,6 @@ from dataclasses import dataclass
 from enum import Enum
 from typing import Any
 
-
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
 _SHA256_TAGGED = re.compile(r"^sha256:[0-9a-f]{64}$")
 
