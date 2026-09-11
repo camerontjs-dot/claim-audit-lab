@@ -1,0 +1,105 @@
+name: Research - EB V1 structural consumer
+
+on:
+  push:
+    branches:
+      - research-infra/eb-v1-structural-consumer-20260911
+    paths:
+      - "research/eb_v1_structural_consumer/**"
+      - ".github/workflows/eb-v1-structural-consumer.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "research/eb_v1_structural_consumer/**"
+      - ".github/workflows/eb-v1-structural-consumer.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  structural-consumer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Checkout exact frozen Evidence Bundler candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --no-checkout \
+            https://github.com/camerontjs-dot/evidence-bundler.git _eb
+          git -C _eb checkout --quiet c4e3f97ec8f0bd36180954c3aa382418925bf947
+          test "$(git -C _eb rev-parse HEAD)" = \
+            "c4e3f97ec8f0bd36180954c3aa382418925bf947"
+
+      - name: Install only producer-side EB runtime dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install \
+            'click>=8.1,<9' \
+            'pydantic>=2.6,<3' \
+            'PyYAML>=6.0,<7' \
+            'pypdf>=4.0,<7' \
+            'pdfminer.six>=20231228,<20270000'
+          python -m pip install --no-deps -e ./_eb
+
+      - name: Verify independent consumer import aperture
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+
+          path = Path('research/eb_v1_structural_consumer/consumer.py')
+          tree = ast.parse(path.read_text(encoding='utf-8'))
+          allowed = {'argparse', 'hashlib', 'json', 'copy', 'pathlib', 'typing', '__future__'}
+          observed = set()
+          for node in ast.walk(tree):
+              if isinstance(node, ast.Import):
+                  observed.update(alias.name.split('.')[0] for alias in node.names)
+              elif isinstance(node, ast.ImportFrom):
+                  observed.add((node.module or '').split('.')[0])
+          unexpected = sorted(observed - allowed)
+          if unexpected:
+              raise SystemExit(f'unexpected consumer imports: {unexpected}')
+          print('consumer import aperture PASS', sorted(observed))
+          PY
+
+      - name: Produce exact EB V1 package
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH="_eb/src" python \
+            research/eb_v1_structural_consumer/producer.py \
+            --out artifacts/EB-V1-PACKAGE.json
+
+      - name: Independently validate and reconstruct CAL ingress structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/eb_v1_structural_consumer/consumer.py \
+            artifacts/EB-V1-PACKAGE.json \
+            --out artifacts/CAL-EB-V1-STRUCTURAL-CONSUMER.json
+
+      - name: Compile research apparatus
+        run: |
+          python -m py_compile \
+            research/eb_v1_structural_consumer/producer.py \
+            research/eb_v1_structural_consumer/consumer.py
+
+      - name: Upload evidence record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eb-v1-structural-consumer-${{ github.run_id }}
+          path: artifacts/
+          if-no-files-found: warn
+          retention-days: 90
