@@ -1,0 +1,77 @@
+{
+  "schema": "cal-v1-fresh-qualification-observation-v1",
+  "cohort_id": "cal-v1-fresh-q0-20260911",
+  "frozen_candidate_sha": "dca2ec7f2c117cc0b4d6c543ab5049cac7994298",
+  "evaluator_commit": "12bc49d19f74eb756f40484223129fea11583db0",
+  "workflow_run_id": 34649638396,
+  "workflow_job_id": 103428588427,
+  "workflow_merge_sha": "143d934804fc099feb6a2e56876c918fef02db0e",
+  "pytest_result": "1 failed, 976 passed, 5 skipped, 48 deselected",
+  "case_count": 16,
+  "matched_gold_count": 15,
+  "failed_gold_count": 1,
+  "unsafe_result_count": 1,
+  "hard_safety_failures": [
+    {
+      "case_id": "Q12_TAMPERED_AUTHORITY_IDENTITY",
+      "gold": "REJECT",
+      "observed_outcome": "ACCEPTED",
+      "observed_categorical_relation": "SUPPORTS",
+      "stale_authority_id": "semantic-authority:256d89e3df06acec6f03fe9226e2985bab239db50af787390534772cc54e579e",
+      "stale_atom_id": "semantic-atom:1f6077e33c4c1ed438ba169d02d5c37c15797640169b6f764570228796c7fe52",
+      "mutation": "authority and atom audit-context/evidence-world binding fields were replaced with the target context/world while the original content-derived authority_id and atom_id were retained",
+      "interpretation": "lower-level relation derivation accepted a rebound authority object without revalidating the stale content-derived authority/atom identities"
+    }
+  ],
+  "observations": {
+    "Q01_STRICT_SUPPORT": {"outcome": "RETURNED", "conclusion": "supported", "failure_code": null, "trace_failure_codes": [null]},
+    "Q02_STRICT_REFUTE": {"outcome": "RETURNED", "conclusion": "contradicted", "failure_code": null, "trace_failure_codes": [null]},
+    "Q03_STRICT_INVERSE_SUPPORT": {"outcome": "RETURNED", "conclusion": "supported", "failure_code": null, "trace_failure_codes": [null]},
+    "Q04_STRICT_SAFE_ABSTENTION": {"outcome": "RETURNED", "conclusion": "not_checkable", "failure_code": "RELATION_UNRESOLVED", "trace_failure_codes": ["MEASUREMENT_NOT_APPLICABLE"]},
+    "Q05_EVENT_SUPPORT": {"outcome": "RETURNED", "conclusion": "supported", "failure_code": null, "trace_failure_codes": [null]},
+    "Q06_EVENT_REFUTE": {"outcome": "RETURNED", "conclusion": "contradicted", "failure_code": null, "trace_failure_codes": [null]},
+    "Q07_EVENT_SCOPE_REFUSAL": {"outcome": "RETURNED", "conclusion": "not_checkable", "failure_code": "RELATION_UNRESOLVED", "trace_failure_codes": ["MEASUREMENT_MISS"]},
+    "Q08_UNSUPPORTED_FAMILY": {"outcome": "RETURNED", "conclusion": "not_checkable", "failure_code": "UNSUPPORTED_SEMANTIC_FAMILY", "trace_failure_codes": ["UNSUPPORTED_SEMANTIC_FAMILY"]},
+    "Q09_SAME_ID_PROPOSITION_SUBSTITUTION": {"outcome": "REJECTED", "exception": "RelationRefusal", "exception_is_value_error": true},
+    "Q10_PASSAGE_SUBSTITUTION_STALE_HASH": {"outcome": "REJECTED", "exception": "ValueError", "exception_is_value_error": true, "detail": "passage hash mismatch: q10-p1"},
+    "Q11_STALE_AUTHORITY_WORLD": {"outcome": "REJECTED", "exception": "RelationRefusal", "exception_is_value_error": true},
+    "Q12_TAMPERED_AUTHORITY_IDENTITY": {"outcome": "ACCEPTED", "categorical_relation": "SUPPORTS", "authority_id": "semantic-authority:256d89e3df06acec6f03fe9226e2985bab239db50af787390534772cc54e579e", "atom_id": "semantic-atom:1f6077e33c4c1ed438ba169d02d5c37c15797640169b6f764570228796c7fe52"},
+    "Q13_MIXED_SUPPORT_REFUTATION": {"outcome": "RETURNED", "conclusion": "not_checkable", "failure_code": "MIXED_RELATIONS", "trace_failure_codes": [null, null]},
+    "Q14_NON_DECIDING_ATTRIBUTION": {"outcome": "RETURNED", "conclusion": "supported", "failure_code": null, "contract_c_version": "research-non-deciding-rc0", "reported_verdict": "supported", "channels": ["non_deciding", "support"], "causal_form": "single_necessary", "result_set_id": "result-set:9241e9bb2f19285fbcfdffe9314ce3a683f24e658885c2ff727a9fabf697d954"},
+    "Q15_PROJECTION_SAFE_ABSTENTION": {"outcome": "RETURNED", "conclusion": "not_checkable", "failure_code": "RELATION_UNRESOLVED", "contract_c_version": "research-non-deciding-rc0", "reported_verdict": "not_checkable", "channels": ["non_deciding"], "causal_form": "redundant_non_deciding", "result_set_id": "result-set:4d28f7bc31bb1f99fa930ff2dbceb00394ce8e53c05a8ce1b830cd48b38c92ed"},
+    "Q16_NO_SCALAR_WINNER": {"outcome": "RETURNED", "conclusion": "not_checkable", "failure_code": "MIXED_RELATIONS", "contract_c_version": "research-non-deciding-rc0", "reported_verdict": "not_checkable", "channels": ["support", "counterevidence"], "causal_form": "jointly_sufficient", "result_set_id": "result-set:915552182fd4b4af0b5cef02af7c7918bb2c66dc6c9f5ca53fbb9d18c2801a97", "forbidden_scalar_or_winner_keys_observed": []}
+  },
+  "family_summary": {
+    "strict_comparison": {
+      "status": "FAILED_HARD_SAFETY",
+      "deciding_support_refutation_and_inverse": "matched gold",
+      "safe_abstention": "matched gold",
+      "same_id_proposition_substitution": "rejected as required",
+      "stale_passage_hash": "rejected as required",
+      "ordinary_stale_world_authority": "rejected as required",
+      "tampered_authority_identity": "UNSAFE ACCEPTANCE",
+      "mixed_support_refutation": "not_checkable as required",
+      "scalar_winner_selection": "none observed"
+    },
+    "direct_event_order": {
+      "status": "MATCHED_GOLD",
+      "support": "matched gold",
+      "refutation": "matched gold",
+      "outside_supported_reporting_scope": "safe abstention matched gold"
+    },
+    "unsupported_family": {
+      "status": "MATCHED_GOLD",
+      "legacy_fallback": "none observed",
+      "result": "not_checkable / UNSUPPORTED_SEMANTIC_FAMILY"
+    }
+  },
+  "contract_c_projection_summary": {
+    "status": "MATCHED_GOLD",
+    "semantic_strengthening_observed": false,
+    "non_deciding_attribution": "matched gold",
+    "safe_abstention_projection": "matched gold",
+    "mixed_relation_projection": "not_checkable with support + counterevidence and no scalar winner keys"
+  },
+  "actions_artifact": null,
+  "note": "The Public suite did not upload a GitHub Actions artifact. This committed observation and the workflow job log are the durable qualification result records."
+}
