@@ -37,7 +37,10 @@ def render_markdown(context: AuditContext, result: AuditResult) -> str:
         f"- Contract B bundle hash: `{context.evidence_world.bundle_hash}`",
         f"- Evidence-world SHA-256: `{result.evidence_world_sha256}`",
         "- Limitation: supported only by the admitted evidence under this CAL profile.",
-        "- Aperture note: the upstream observation below is audit state, not a CAL completeness conclusion.",
+        (
+            "- Aperture note: the upstream observation below is audit state, "
+            "not a CAL completeness conclusion."
+        ),
         "",
         "## Upstream aperture observation",
         "",
@@ -82,7 +85,8 @@ def render_markdown(context: AuditContext, result: AuditResult) -> str:
                     else "Semantic authority: not established."
                 ),
                 (
-                    f"Proposition-relative relation: `{trace.relation.categorical_relation.value}` / "
+                    "Proposition-relative relation: "
+                    f"`{trace.relation.categorical_relation.value}` / "
                     f"`{trace.relation.relation_id}`."
                     if trace.relation is not None
                     else "Proposition-relative relation: unresolved/not derived."
