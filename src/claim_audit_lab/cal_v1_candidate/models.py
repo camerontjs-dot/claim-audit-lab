@@ -3,16 +3,18 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Mapping
+from typing import Any
 
 
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
 _SHA256_TAGGED = re.compile(r"^sha256:[0-9a-f]{64}$")
 
-
-class SemanticFamily(str, Enum):
+# Preserve the existing str+Enum representation because enum string behavior is
+# part of canonical serialization, receipt identity, and hash-bearing state.
+class SemanticFamily(str, Enum):  # noqa: UP042
     STRICT_COMPARISON = "strict_comparison"
     DIRECT_EVENT_ORDER = "direct_event_order"
     PERMISSION_EXCEPTION = "permission_exception"
@@ -20,21 +22,21 @@ class SemanticFamily(str, Enum):
     UNSUPPORTED = "unsupported"
 
 
-class CategoricalRelation(str, Enum):
+class CategoricalRelation(str, Enum):  # noqa: UP042
     SUPPORTS = "SUPPORTS"
     REFUTES = "REFUTES"
     IRRELEVANT = "IRRELEVANT"
     UNRESOLVED = "UNRESOLVED"
 
 
-class Conclusion(str, Enum):
+class Conclusion(str, Enum):  # noqa: UP042
     SUPPORTED = "supported"
     CONTRADICTED = "contradicted"
     NOT_CHECKABLE = "not_checkable"
     NOT_COMPOSED = "not_composed"
 
 
-class FailureCode(str, Enum):
+class FailureCode(str, Enum):  # noqa: UP042
     UPSTREAM_APERTURE_INSUFFICIENT = "UPSTREAM_APERTURE_INSUFFICIENT"
     EVIDENCE_NOT_ADMITTED = "EVIDENCE_NOT_ADMITTED"
     MEASUREMENT_NOT_APPLICABLE = "MEASUREMENT_NOT_APPLICABLE"
