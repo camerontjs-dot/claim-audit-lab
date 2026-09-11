@@ -1,0 +1,159 @@
+{
+  "schema": "cal-v1-fresh-qualification-cohort-v1",
+  "cohort_id": "cal-v1-fresh-q0-20260911",
+  "frozen_candidate_sha": "dca2ec7f2c117cc0b4d6c543ab5049cac7994298",
+  "created_after_freeze": true,
+  "cases": [
+    {
+      "id": "Q01_STRICT_SUPPORT",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q01",
+      "proposition_text": "North Plant had a higher yield than South Plant.",
+      "fields": {"lhs_entity": "North Plant", "rhs_entity": "South Plant", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Plant recorded a higher yield than South Plant."]
+    },
+    {
+      "id": "Q02_STRICT_REFUTE",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q02",
+      "proposition_text": "North Plant had a higher yield than South Plant.",
+      "fields": {"lhs_entity": "North Plant", "rhs_entity": "South Plant", "comparison_direction": "MORE_THAN"},
+      "passages": ["North Plant recorded a lower yield than South Plant."]
+    },
+    {
+      "id": "Q03_STRICT_INVERSE_SUPPORT",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q03",
+      "proposition_text": "Cedar Team scored higher than Maple Team.",
+      "fields": {"lhs_entity": "Cedar Team", "rhs_entity": "Maple Team", "comparison_direction": "MORE_THAN"},
+      "passages": ["Maple Team recorded a lower score than Cedar Team."]
+    },
+    {
+      "id": "Q04_STRICT_SAFE_ABSTENTION",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q04",
+      "proposition_text": "Delta Line had a higher count than Echo Line.",
+      "fields": {"lhs_entity": "Delta Line", "rhs_entity": "Echo Line", "comparison_direction": "MORE_THAN"},
+      "passages": ["Delta Line and Echo Line were both reviewed this quarter."]
+    },
+    {
+      "id": "Q05_EVENT_SUPPORT",
+      "kind": "audit",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "q05",
+      "proposition_text": "Nora reviewed batch before Liam archived batch.",
+      "fields": {"left_subject": "nora", "left_predicate": "review", "left_object": "batch", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "liam", "right_predicate": "archive", "right_object": "batch", "right_polarity": "positive"},
+      "passages": ["Nora reviewed batch before Liam archived batch."]
+    },
+    {
+      "id": "Q06_EVENT_REFUTE",
+      "kind": "audit",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "q06",
+      "proposition_text": "Nora reviewed batch before Liam archived batch.",
+      "fields": {"left_subject": "nora", "left_predicate": "review", "left_object": "batch", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "liam", "right_predicate": "archive", "right_object": "batch", "right_polarity": "positive"},
+      "passages": ["Nora reviewed batch after Liam archived batch."]
+    },
+    {
+      "id": "Q07_EVENT_SCOPE_REFUSAL",
+      "kind": "audit",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "q07",
+      "proposition_text": "Nora reviewed batch before Liam archived batch.",
+      "fields": {"left_subject": "nora", "left_predicate": "review", "left_object": "batch", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "liam", "right_predicate": "archive", "right_object": "batch", "right_polarity": "positive"},
+      "passages": ["According to Memo Nora reviewed batch before Liam archived batch."]
+    },
+    {
+      "id": "Q08_UNSUPPORTED_FAMILY",
+      "kind": "audit",
+      "semantic_family": "permission_exception",
+      "proposition_id": "q08",
+      "proposition_text": "Rina may release batch.",
+      "fields": {"actor": "rina"},
+      "passages": ["Rina may release batch."]
+    },
+    {
+      "id": "Q09_SAME_ID_PROPOSITION_SUBSTITUTION",
+      "kind": "same_id_proposition_substitution",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q09",
+      "proposition_text": "Harbor Lab had a higher rate than Valley Lab.",
+      "fields": {"lhs_entity": "Harbor Lab", "rhs_entity": "Valley Lab", "comparison_direction": "MORE_THAN"},
+      "substituted_fields": {"lhs_entity": "Harbor Lab", "rhs_entity": "Valley Lab", "comparison_direction": "LESS_THAN"},
+      "passages": ["Harbor Lab recorded a higher rate than Valley Lab."]
+    },
+    {
+      "id": "Q10_PASSAGE_SUBSTITUTION_STALE_HASH",
+      "kind": "passage_substitution_stale_hash",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q10",
+      "proposition_text": "Orchid Unit had a higher count than Birch Unit.",
+      "fields": {"lhs_entity": "Orchid Unit", "rhs_entity": "Birch Unit", "comparison_direction": "MORE_THAN"},
+      "passages": ["Orchid Unit recorded a higher count than Birch Unit."],
+      "substituted_passage": "Orchid Unit recorded a lower count than Birch Unit."
+    },
+    {
+      "id": "Q11_STALE_AUTHORITY_WORLD",
+      "kind": "stale_authority_world",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q11",
+      "proposition_text": "Atlas Lab had a higher rate than Beacon Lab.",
+      "fields": {"lhs_entity": "Atlas Lab", "rhs_entity": "Beacon Lab", "comparison_direction": "MORE_THAN"},
+      "passages": ["Atlas Lab recorded a higher rate than Beacon Lab."],
+      "source_bundle": "q11-world-a",
+      "target_bundle": "q11-world-b"
+    },
+    {
+      "id": "Q12_TAMPERED_AUTHORITY_IDENTITY",
+      "kind": "tampered_authority_identity",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q12",
+      "proposition_text": "Quartz Lab had a higher rate than Flint Lab.",
+      "fields": {"lhs_entity": "Quartz Lab", "rhs_entity": "Flint Lab", "comparison_direction": "MORE_THAN"},
+      "passages": ["Quartz Lab recorded a higher rate than Flint Lab."],
+      "source_bundle": "q12-world-a",
+      "target_bundle": "q12-world-b",
+      "mutation": "replace authority and atom context/world binding fields while retaining stale atom_id and authority_id"
+    },
+    {
+      "id": "Q13_MIXED_SUPPORT_REFUTATION",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q13",
+      "proposition_text": "Copper Site had a higher output than Silver Site.",
+      "fields": {"lhs_entity": "Copper Site", "rhs_entity": "Silver Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["Copper Site recorded a higher output than Silver Site.", "Copper Site recorded a lower output than Silver Site."]
+    },
+    {
+      "id": "Q14_NON_DECIDING_ATTRIBUTION",
+      "kind": "projection",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q14",
+      "proposition_text": "Amber Group had a higher score than Cobalt Group.",
+      "fields": {"lhs_entity": "Amber Group", "rhs_entity": "Cobalt Group", "comparison_direction": "MORE_THAN"},
+      "passages": ["Amber Group appeared in the quarterly appendix.", "Amber Group recorded a higher score than Cobalt Group."]
+    },
+    {
+      "id": "Q15_PROJECTION_SAFE_ABSTENTION",
+      "kind": "projection",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "q15",
+      "proposition_text": "Mira inspected lot before Owen released lot.",
+      "fields": {"left_subject": "mira", "left_predicate": "inspect", "left_object": "lot", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "owen", "right_predicate": "release", "right_object": "lot", "right_polarity": "positive"},
+      "passages": ["Study reports Mira inspected lot before Owen released lot."]
+    },
+    {
+      "id": "Q16_NO_SCALAR_WINNER",
+      "kind": "projection",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "q16",
+      "proposition_text": "Pine Ward had a higher count than Oak Ward.",
+      "fields": {"lhs_entity": "Pine Ward", "rhs_entity": "Oak Ward", "comparison_direction": "MORE_THAN"},
+      "passages": ["Pine Ward recorded a higher count than Oak Ward.", "Pine Ward recorded a lower count than Oak Ward."]
+    }
+  ]
+}
