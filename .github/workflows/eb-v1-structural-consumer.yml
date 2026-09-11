@@ -47,7 +47,8 @@ jobs:
             'pydantic>=2.6,<3' \
             'PyYAML>=6.0,<7' \
             'pypdf>=4.0,<7' \
-            'pdfminer.six>=20231228,<20270000'
+            'pdfminer.six>=20231228,<20270000' \
+            'rank-bm25>=0.2.2,<0.3'
           python -m pip install --no-deps -e ./_eb
 
       - name: Verify independent consumer import aperture
