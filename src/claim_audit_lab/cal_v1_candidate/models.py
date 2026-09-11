@@ -53,6 +53,10 @@ def canonical_json_bytes(value: Any) -> bytes:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
 
 
+def canonical_json_text(value: Any) -> str:
+    return canonical_json_bytes(value).decode("utf-8")
+
+
 def sha256_hex(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
 
@@ -149,17 +153,46 @@ class EvidenceWorld:
     bundle_id: str
     bundle_hash: str
     admitted_passages: tuple[AdmittedPassage, ...]
-    aperture_state: str
+    aperture_observation_json: str
     root_id: str | None = None
     child_id: str | None = None
+
+    @classmethod
+    def create(
+        cls,
+        contract_b_version: str,
+        bundle_id: str,
+        bundle_hash: str,
+        admitted_passages: tuple[AdmittedPassage, ...],
+        aperture_observation: Mapping[str, Any],
+        *,
+        root_id: str | None = None,
+        child_id: str | None = None,
+    ) -> EvidenceWorld:
+        return cls(
+            contract_b_version=contract_b_version,
+            bundle_id=bundle_id,
+            bundle_hash=bundle_hash,
+            admitted_passages=admitted_passages,
+            aperture_observation_json=canonical_json_text(dict(aperture_observation)),
+            root_id=root_id,
+            child_id=child_id,
+        )
+
+    def aperture_observation(self) -> dict[str, Any]:
+        value: Any = json.loads(self.aperture_observation_json)
+        if not isinstance(value, dict):
+            raise ValueError("aperture observation must decode to an object")
+        if canonical_json_text(value) != self.aperture_observation_json:
+            raise ValueError("aperture observation must use canonical JSON")
+        return value
 
     def verify(self) -> None:
         if not self.contract_b_version or not self.bundle_id:
             raise ValueError("Contract B version and bundle_id are required")
         if _SHA256_TAGGED.fullmatch(self.bundle_hash) is None:
             raise ValueError("bundle_hash must be sha256:<64 lowercase hex>")
-        if not self.aperture_state:
-            raise ValueError("aperture_state must be non-empty")
+        self.aperture_observation()
         seen: set[str] = set()
         for passage in self.admitted_passages:
             passage.verify()
@@ -183,7 +216,7 @@ class EvidenceWorld:
                 }
                 for passage in self.admitted_passages
             ],
-            "aperture_state": self.aperture_state,
+            "aperture_observation": self.aperture_observation(),
             "root_id": self.root_id,
             "child_id": self.child_id,
         }
