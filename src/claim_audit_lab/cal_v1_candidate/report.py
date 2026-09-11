@@ -5,7 +5,6 @@ import json
 from .engine import AuditResult
 from .models import AuditContext, CategoricalRelation
 
-
 PROFILE = "cal-v1-candidate-2026-09"
 
 
