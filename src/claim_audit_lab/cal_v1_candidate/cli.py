@@ -44,10 +44,7 @@ def context_from_packet(packet: Mapping[str, Any]) -> AuditContext:
         _string(proposition_raw.get("semantic_family"), "proposition.semantic_family")
     )
     fields_raw = _object(proposition_raw.get("fields"), "proposition.fields")
-    fields = {
-        str(key): _string(value, f"proposition.fields.{key}")
-        for key, value in fields_raw.items()
-    }
+    fields = {str(key): _string(value, f"proposition.fields.{key}") for key, value in fields_raw.items()}  # noqa: E501
     proposition = TypedProposition.create(
         _string(proposition_raw.get("proposition_id"), "proposition.proposition_id"),
         family,
