@@ -34,9 +34,7 @@ def _comparison_sign(value: str) -> int | None:
     return mapping.get(value.upper())
 
 
-def _derive_comparison(
-    context: AuditContext, fields: dict[str, str]
-) -> CategoricalRelation:
+def _derive_comparison(context: AuditContext, fields: dict[str, str]) -> CategoricalRelation:
     target = context.proposition.field_map()
     required = {"lhs_entity", "rhs_entity", "comparison_direction"}
     if not required.issubset(target):
@@ -48,9 +46,7 @@ def _derive_comparison(
     expected = _comparison_sign(target["comparison_direction"])
     observed = _comparison_sign(fields.get("relation", ""))
     if expected is None:
-        raise RelationRefusal(
-            "PROPOSITION_BINDING_FAILED", "unsupported comparison direction"
-        )
+        raise RelationRefusal("PROPOSITION_BINDING_FAILED", "unsupported comparison direction")
     if observed is None:
         return CategoricalRelation.UNRESOLVED
     left = fields.get("left", "").casefold().strip()
@@ -61,11 +57,7 @@ def _derive_comparison(
         normalized = -observed
     else:
         return CategoricalRelation.IRRELEVANT
-    return (
-        CategoricalRelation.SUPPORTS
-        if normalized == expected
-        else CategoricalRelation.REFUTES
-    )
+    return CategoricalRelation.SUPPORTS if normalized == expected else CategoricalRelation.REFUTES
 
 
 def _event_tuple(fields: dict[str, str], side: str) -> tuple[str, str, str, str]:
@@ -104,20 +96,14 @@ def _derive_event(context: AuditContext, fields: dict[str, str]) -> CategoricalR
         "BEFORE",
         "AFTER",
     }:
-        raise RelationRefusal(
-            "PROPOSITION_BINDING_FAILED", "unsupported temporal relation"
-        )
+        raise RelationRefusal("PROPOSITION_BINDING_FAILED", "unsupported temporal relation")
     if (atom_left, atom_right) == (target_left, target_right):
         normalized = atom_relation
     elif (atom_left, atom_right) == (target_right, target_left):
         normalized = "AFTER" if atom_relation == "BEFORE" else "BEFORE"
     else:
         return CategoricalRelation.IRRELEVANT
-    return (
-        CategoricalRelation.SUPPORTS
-        if normalized == target_relation
-        else CategoricalRelation.REFUTES
-    )
+    return CategoricalRelation.SUPPORTS if normalized == target_relation else CategoricalRelation.REFUTES
 
 
 def derive_relation(context: AuditContext, authority: AuthorityReceipt) -> BoundRelation:
@@ -136,9 +122,7 @@ def derive_relation(context: AuditContext, authority: AuthorityReceipt) -> Bound
     elif context.proposition.semantic_family is SemanticFamily.DIRECT_EVENT_ORDER:
         relation = _derive_event(context, fields)
     else:
-        raise RelationRefusal(
-            "PROPOSITION_BINDING_FAILED", "unsupported proposition family"
-        )
+        raise RelationRefusal("PROPOSITION_BINDING_FAILED", "unsupported proposition family")
     material = {
         "categorical_relation": relation.value,
         "audit_context_sha256": context.context_sha256,
