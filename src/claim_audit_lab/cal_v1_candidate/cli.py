@@ -81,16 +81,17 @@ def context_from_packet(packet: Mapping[str, Any]) -> AuditContext:
     child_value = world_raw.get("child_id")
     root_id = None if root_value is None else _string(root_value, "evidence_world.root_id")
     child_id = None if child_value is None else _string(child_value, "evidence_world.child_id")
-    world = EvidenceWorld(
+    aperture_observation = _object(
+        world_raw.get("aperture_observation"), "evidence_world.aperture_observation"
+    )
+    world = EvidenceWorld.create(
         contract_b_version=_string(
             world_raw.get("contract_b_version"), "evidence_world.contract_b_version"
         ),
         bundle_id=_string(world_raw.get("bundle_id"), "evidence_world.bundle_id"),
         bundle_hash=_string(world_raw.get("bundle_hash"), "evidence_world.bundle_hash"),
         admitted_passages=tuple(passages),
-        aperture_state=_string(
-            world_raw.get("aperture_state"), "evidence_world.aperture_state"
-        ),
+        aperture_observation=aperture_observation,
         root_id=root_id,
         child_id=child_id,
     )
@@ -155,6 +156,7 @@ def result_dict(
         "failure_code": None if result.failure_code is None else result.failure_code.value,
         "audit_context_sha256": result.audit_context_sha256,
         "evidence_world_sha256": result.evidence_world_sha256,
+        "aperture_observation": context.evidence_world.aperture_observation(),
         "traces": traces,
         "contract_c_candidate": project_contract_c_successor(
             context,
