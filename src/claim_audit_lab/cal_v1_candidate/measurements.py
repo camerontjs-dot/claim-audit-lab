@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from dataclasses import dataclass
 import json
 import re
-from typing import Any, Mapping, cast
+from collections.abc import Mapping
+from dataclasses import dataclass
+from typing import Any, cast
 
 from .models import AuditContext, SemanticFamily, stable_id
 
