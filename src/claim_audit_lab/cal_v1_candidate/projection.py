@@ -111,9 +111,7 @@ def project_contract_c_successor(
     residual_ids: list[str] = []
     for trace in result.traces:
         passage = context.evidence_world.passage(trace.passage_id)
-        relation = (
-            trace.relation.categorical_relation if trace.relation is not None else None
-        )
+        relation = trace.relation.categorical_relation if trace.relation is not None else None
         if relation is CategoricalRelation.SUPPORTS:
             channel = "support"
         elif relation is CategoricalRelation.REFUTES:
