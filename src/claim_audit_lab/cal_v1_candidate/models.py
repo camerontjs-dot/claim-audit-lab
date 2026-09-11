@@ -11,6 +11,7 @@ from typing import Any
 _HEX64 = re.compile(r"^[0-9a-f]{64}$")
 _SHA256_TAGGED = re.compile(r"^sha256:[0-9a-f]{64}$")
 
+
 # Preserve the existing str+Enum representation because enum string behavior is
 # part of canonical serialization, receipt identity, and hash-bearing state.
 class SemanticFamily(str, Enum):  # noqa: UP042
