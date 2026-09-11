@@ -22,6 +22,7 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Topic :: Software Development :: Quality Assurance",
     "Topic :: Text Processing",
+    # The package ships py.typed and is mypy --strict clean over every source file.
     "Typing :: Typed",
 ]
 dependencies = [
@@ -73,7 +74,6 @@ ui = [
 
 [project.scripts]
 claim-audit = "claim_audit_lab.cli:app"
-claim-audit-v1-candidate = "claim_audit_lab.cal_v1_candidate.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
