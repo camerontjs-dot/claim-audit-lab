@@ -9,9 +9,9 @@ from .engine import AuditResult, audit
 from .models import (
     AdmittedPassage,
     AuditContext,
+    EvidenceWorld,
     SemanticFamily,
     TypedProposition,
-    EvidenceWorld,
 )
 from .projection import project_contract_c_successor
 from .report import render_markdown
@@ -29,17 +29,31 @@ def _string(value: Any, label: str) -> str:
     return value
 
 
+def semantic_implementation_sha_from_packet(packet: Mapping[str, Any]) -> str:
+    producer = _object(packet.get("producer"), "producer")
+    return _string(
+        producer.get("semantic_implementation_sha"),
+        "producer.semantic_implementation_sha",
+    )
+
+
 def context_from_packet(packet: Mapping[str, Any]) -> AuditContext:
     proposition_raw = _object(packet.get("proposition"), "proposition")
     family = SemanticFamily(
         _string(proposition_raw.get("semantic_family"), "proposition.semantic_family")
     )
     fields_raw = _object(proposition_raw.get("fields"), "proposition.fields")
-    fields = {str(key): _string(value, f"proposition.fields.{key}") for key, value in fields_raw.items()}
+    fields = {
+        str(key): _string(value, f"proposition.fields.{key}")
+        for key, value in fields_raw.items()
+    }
     proposition = TypedProposition.create(
         _string(proposition_raw.get("proposition_id"), "proposition.proposition_id"),
         family,
         fields,
+        text_sha256=_string(
+            proposition_raw.get("text_sha256"), "proposition.text_sha256"
+        ),
     )
 
     world_raw = _object(packet.get("evidence_world"), "evidence_world")
@@ -89,7 +103,12 @@ def context_from_packet(packet: Mapping[str, Any]) -> AuditContext:
     return context
 
 
-def result_dict(context: AuditContext, result: AuditResult) -> dict[str, Any]:
+def result_dict(
+    context: AuditContext,
+    result: AuditResult,
+    *,
+    semantic_implementation_sha: str,
+) -> dict[str, Any]:
     traces: list[dict[str, Any]] = []
     for trace in result.traces:
         relation = None
@@ -129,6 +148,7 @@ def result_dict(context: AuditContext, result: AuditResult) -> dict[str, Any]:
         "profile": "cal-v1-candidate-2026-09",
         "original_claim": context.original_claim,
         "proposition_id": context.proposition.proposition_id,
+        "proposition_text_sha256": context.proposition.text_sha256,
         "proposition_sha256": result.proposition_sha256,
         "semantic_family": result.semantic_family.value,
         "conclusion": result.conclusion.value,
@@ -136,13 +156,20 @@ def result_dict(context: AuditContext, result: AuditResult) -> dict[str, Any]:
         "audit_context_sha256": result.audit_context_sha256,
         "evidence_world_sha256": result.evidence_world_sha256,
         "traces": traces,
-        "contract_c_candidate": project_contract_c_successor(context, result),
+        "contract_c_candidate": project_contract_c_successor(
+            context,
+            result,
+            semantic_implementation_sha=semantic_implementation_sha,
+        ),
     }
 
 
-def run_packet(packet: Mapping[str, Any]) -> tuple[AuditContext, AuditResult]:
+def run_packet(
+    packet: Mapping[str, Any],
+) -> tuple[AuditContext, AuditResult, str]:
+    semantic_sha = semantic_implementation_sha_from_packet(packet)
     context = context_from_packet(packet)
-    return context, audit(context)
+    return context, audit(context), semantic_sha
 
 
 def main() -> None:
@@ -156,11 +183,20 @@ def main() -> None:
 
     raw: Any = json.loads(args.packet.read_text(encoding="utf-8"))
     packet = _object(raw, "packet")
-    context, result = run_packet(packet)
+    context, result, semantic_sha = run_packet(packet)
     args.json_out.parent.mkdir(parents=True, exist_ok=True)
     args.report_out.parent.mkdir(parents=True, exist_ok=True)
     args.json_out.write_text(
-        json.dumps(result_dict(context, result), indent=2, sort_keys=True) + "\n",
+        json.dumps(
+            result_dict(
+                context,
+                result,
+                semantic_implementation_sha=semantic_sha,
+            ),
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
         encoding="utf-8",
     )
     args.report_out.write_text(render_markdown(context, result), encoding="utf-8")
