@@ -27,7 +27,6 @@ from claim_audit_lab.cal_v1_candidate.engine import PassageTrace, compose
 from claim_audit_lab.cal_v1_candidate.measurements import measure_strict_comparison
 from claim_audit_lab.cal_v1_candidate.relations import derive_relation
 
-
 _SEMANTIC_SHA = "a" * 40
 
 
