@@ -1,0 +1,38 @@
+{
+  "schema": "cal-v1-fresh-qualification-gold-v1",
+  "cohort_id": "cal-v1-fresh-qualification-20260911-15",
+  "adjudication_status": "FROZEN_BEFORE_EXECUTION",
+  "cases": {
+    "Q01_STRICT_SUPPORT": {"expected_conclusion": "supported", "expected_failure_code": null, "decision_expected": true},
+    "Q02_STRICT_REFUTE": {"expected_conclusion": "contradicted", "expected_failure_code": null, "decision_expected": true},
+    "Q03_STRICT_INVERSE_PROPOSITION": {"expected_conclusion": "contradicted", "expected_failure_code": null, "decision_expected": true},
+    "Q04_STRICT_IRRELEVANT_COMPARISON": {"expected_conclusion": "not_checkable", "expected_failure_code": "RELATION_UNRESOLVED", "decision_expected": false},
+    "Q05_STRICT_RELEVANT_NONDECIDING": {"expected_conclusion": "not_checkable", "expected_failure_code": "RELATION_UNRESOLVED", "decision_expected": false},
+    "Q06_STRICT_MIXED": {"expected_conclusion": "not_checkable", "expected_failure_code": "MIXED_RELATIONS", "decision_expected": false},
+    "Q07_STRICT_EXCEEDED": {"expected_conclusion": "supported", "expected_failure_code": null, "decision_expected": true},
+    "Q08_STRICT_TRAILED": {"expected_conclusion": "contradicted", "expected_failure_code": null, "decision_expected": true},
+    "Q09_STRICT_QUALIFIED_SURFACE": {"expected_conclusion": "supported", "expected_failure_code": null, "decision_expected": true},
+    "Q10_STRICT_SUPPORT_PLUS_IRRELEVANT": {"expected_conclusion": "supported", "expected_failure_code": null, "decision_expected": true},
+    "Q11_EVENT_SUPPORT": {"expected_conclusion": "supported", "expected_failure_code": null, "decision_expected": true},
+    "Q12_EVENT_REFUTE": {"expected_conclusion": "contradicted", "expected_failure_code": null, "decision_expected": true},
+    "Q13_EVENT_REPORTED_SCOPE": {"expected_conclusion": "not_checkable", "expected_failure_code": "RELATION_UNRESOLVED", "decision_expected": false},
+    "Q14_PERMISSION_UNSUPPORTED": {"expected_conclusion": "not_checkable", "expected_failure_code": "UNSUPPORTED_SEMANTIC_FAMILY", "decision_expected": false},
+    "Q15_ASSERTION_SCOPE_UNSUPPORTED": {"expected_conclusion": "not_checkable", "expected_failure_code": "UNSUPPORTED_SEMANTIC_FAMILY", "decision_expected": false}
+  },
+  "hard_safety_policy": {
+    "unsafe_when_expected_not_checkable": ["supported", "contradicted"],
+    "unsafe_opposite_decision": true,
+    "safe_miss_when_decision_expected_but_not_checkable": true,
+    "stale_or_mismatched_authority_must_reject": true,
+    "same_id_proposition_substitution_must_reject": true,
+    "cross_evidence_world_composition_must_reject": true,
+    "unsupported_family_must_not_fallback": true,
+    "contract_c_projection_must_not_strengthen": true,
+    "scalar_or_confidence_must_not_exist_as_terminal_decision_surface": true
+  },
+  "notes": [
+    "Gold judges the bounded CAL V1 profile, not proposition truth outside the supplied admitted evidence world.",
+    "Safe abstention on an otherwise decidable case is recorded as a miss but is not equivalent to an unsafe conclusion.",
+    "Permission/exception and assertion/scope are intentionally outside deciding V1 authority."
+  ]
+}
