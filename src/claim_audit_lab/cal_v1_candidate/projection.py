@@ -14,7 +14,6 @@ from .models import (
     stable_id,
 )
 
-
 CONTRACT_C_RESEARCH_SENTINEL = "research-non-deciding-rc0"
 PROFILE = "cal-v1-candidate-2026-09"
 _SEMANTIC_SHA = re.compile(r"^[0-9a-f]{40}$")
