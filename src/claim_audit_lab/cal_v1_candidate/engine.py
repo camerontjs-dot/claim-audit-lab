@@ -87,13 +87,9 @@ def compose(context: AuditContext, traces: tuple[PassageTrace, ...]) -> AuditRes
     relations = tuple(trace.relation for trace in traces if trace.relation is not None)
     for relation in relations:
         if relation.audit_context_sha256 != context.context_sha256:
-            raise RelationRefusal(
-                "PROPOSITION_BINDING_FAILED", "relation/context mismatch"
-            )
+            raise RelationRefusal("PROPOSITION_BINDING_FAILED", "relation/context mismatch")
         if relation.proposition_sha256 != context.proposition.sha256:
-            raise RelationRefusal(
-                "PROPOSITION_BINDING_FAILED", "relation/proposition mismatch"
-            )
+            raise RelationRefusal("PROPOSITION_BINDING_FAILED", "relation/proposition mismatch")
         if relation.evidence_world_sha256 != context.evidence_world.evidence_world_sha256:
             raise RelationRefusal(
                 "COMMON_EVIDENCE_WORLD_MISMATCH", "cross-world relation composition"
@@ -190,7 +186,5 @@ def audit(context: AuditContext) -> AuditResult:
                 )
             )
             continue
-        traces.append(
-            PassageTrace(passage.passage_id, receipt, authority, relation, None, None)
-        )
+        traces.append(PassageTrace(passage.passage_id, receipt, authority, relation, None, None))
     return compose(context, tuple(traces))
