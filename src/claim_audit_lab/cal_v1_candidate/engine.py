@@ -61,6 +61,17 @@ def _failure_from_authority(code: str) -> FailureCode:
 
 
 def _unsupported_result(context: AuditContext) -> AuditResult:
+    traces = tuple(
+        PassageTrace(
+            passage_id=passage.passage_id,
+            measurement=None,
+            authority=None,
+            relation=None,
+            failure_code=FailureCode.UNSUPPORTED_SEMANTIC_FAMILY,
+            detail=context.proposition.semantic_family.value,
+        )
+        for passage in context.evidence_world.admitted_passages
+    )
     return AuditResult(
         conclusion=Conclusion.NOT_CHECKABLE,
         failure_code=FailureCode.UNSUPPORTED_SEMANTIC_FAMILY,
@@ -68,7 +79,7 @@ def _unsupported_result(context: AuditContext) -> AuditResult:
         audit_context_sha256=context.context_sha256,
         evidence_world_sha256=context.evidence_world.evidence_world_sha256,
         proposition_sha256=context.proposition.sha256,
-        traces=(),
+        traces=traces,
     )
 
 
