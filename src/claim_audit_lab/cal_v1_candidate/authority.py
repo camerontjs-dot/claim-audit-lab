@@ -202,9 +202,7 @@ def _event_source_fields(text: str) -> dict[str, str]:
         )
     cues = list(re.finditer(r"\b(before|after)\b", body, re.I))
     if len(cues) != 1:
-        raise AuthorityRefusal(
-            "SOURCE_COMPLETION_FAILED", "requires exactly one before/after cue"
-        )
+        raise AuthorityRefusal("SOURCE_COMPLETION_FAILED", "requires exactly one before/after cue")
     cue = cues[0]
     left = _source_event_side(body[: cue.start()])
     right = _source_event_side(body[cue.end() :])
@@ -219,11 +217,7 @@ def _measurement_fields(receipt: MeasurementReceipt) -> dict[str, str]:
     if raw.get("status") != "CLAIMED":
         raise AuthorityRefusal("SEMANTIC_AUTHORITY_UNRESOLVED", str(raw.get("status")))
     proposals = raw.get("proposals")
-    if (
-        not isinstance(proposals, list)
-        or len(proposals) != 1
-        or not isinstance(proposals[0], dict)
-    ):
+    if not isinstance(proposals, list) or len(proposals) != 1 or not isinstance(proposals[0], dict):
         raise AuthorityRefusal("SEMANTIC_AUTHORITY_UNRESOLVED", "one proposal required")
     proposal = proposals[0]
     if receipt.semantic_family is SemanticFamily.STRICT_COMPARISON:
@@ -289,9 +283,7 @@ def complete_and_warrant(
             )
         completed = _event_source_fields(passage.text)
     else:
-        raise AuthorityRefusal(
-            "SEMANTIC_AUTHORITY_UNRESOLVED", "unsupported semantic family"
-        )
+        raise AuthorityRefusal("SEMANTIC_AUTHORITY_UNRESOLVED", "unsupported semantic family")
     if measured != completed:
         raise AuthorityRefusal(
             "SOURCE_COMPLETION_FAILED",
