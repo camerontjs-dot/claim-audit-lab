@@ -224,8 +224,14 @@ def test_aperture_observation_is_preserved_but_non_deciding() -> None:
             "limitations": ["one source family omitted"],
         },
     )
-    assert unknown.evidence_world.aperture_observation() != limited.evidence_world.aperture_observation()
-    assert unknown.evidence_world.evidence_world_sha256 != limited.evidence_world.evidence_world_sha256
+    assert (
+        unknown.evidence_world.aperture_observation()
+        != limited.evidence_world.aperture_observation()
+    )
+    assert (
+        unknown.evidence_world.evidence_world_sha256
+        != limited.evidence_world.evidence_world_sha256
+    )
     assert audit(unknown).conclusion is Conclusion.SUPPORTED
     assert audit(limited).conclusion is Conclusion.SUPPORTED
 
