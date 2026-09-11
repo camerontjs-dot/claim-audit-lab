@@ -44,17 +44,12 @@ def context_from_packet(packet: Mapping[str, Any]) -> AuditContext:
         _string(proposition_raw.get("semantic_family"), "proposition.semantic_family")
     )
     fields_raw = _object(proposition_raw.get("fields"), "proposition.fields")
-    fields = {
-        str(key): _string(value, f"proposition.fields.{key}")
-        for key, value in fields_raw.items()
-    }
+    fields = {str(key): _string(value, f"proposition.fields.{key}") for key, value in fields_raw.items()}
     proposition = TypedProposition.create(
         _string(proposition_raw.get("proposition_id"), "proposition.proposition_id"),
         family,
         fields,
-        text_sha256=_string(
-            proposition_raw.get("text_sha256"), "proposition.text_sha256"
-        ),
+        text_sha256=_string(proposition_raw.get("text_sha256"), "proposition.text_sha256"),
     )
 
     world_raw = _object(packet.get("evidence_world"), "evidence_world")
@@ -68,12 +63,8 @@ def context_from_packet(packet: Mapping[str, Any]) -> AuditContext:
             passage_id=_string(row.get("passage_id"), f"passages[{index}].passage_id"),
             source_id=_string(row.get("source_id"), f"passages[{index}].source_id"),
             text=_string(row.get("text"), f"passages[{index}].text"),
-            text_sha256=_string(
-                row.get("text_sha256"), f"passages[{index}].text_sha256"
-            ),
-            source_sha256=_string(
-                row.get("source_sha256"), f"passages[{index}].source_sha256"
-            ),
+            text_sha256=_string(row.get("text_sha256"), f"passages[{index}].text_sha256"),
+            source_sha256=_string(row.get("source_sha256"), f"passages[{index}].source_sha256"),
         )
         passage.verify()
         passages.append(passage)
@@ -136,13 +127,9 @@ def result_dict(
                     if trace.measurement is None
                     else list(trace.measurement.consumed_passage_ids)
                 ),
-                "authority_id": (
-                    None if trace.authority is None else trace.authority.authority_id
-                ),
+                "authority_id": (None if trace.authority is None else trace.authority.authority_id),
                 "relation": relation,
-                "failure_code": (
-                    None if trace.failure_code is None else trace.failure_code.value
-                ),
+                "failure_code": (None if trace.failure_code is None else trace.failure_code.value),
                 "detail": trace.detail,
             }
         )
