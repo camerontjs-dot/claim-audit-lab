@@ -6,7 +6,13 @@ import re
 from typing import Any
 
 from .engine import AuditResult, PassageTrace
-from .models import AuditContext, CategoricalRelation, Conclusion, FailureCode, stable_id
+from .models import (
+    AuditContext,
+    CategoricalRelation,
+    Conclusion,
+    FailureCode,
+    stable_id,
+)
 
 
 CONTRACT_C_RESEARCH_SENTINEL = "research-non-deciding-rc0"
