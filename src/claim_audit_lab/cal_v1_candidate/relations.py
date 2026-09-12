@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from .authority import AuthorityReceipt
+from .authority_validation import AuthorityIntegrityRefusal, verify_authority_for_relation
 from .models import AuditContext, CategoricalRelation, SemanticFamily, stable_id
 
 
@@ -111,6 +112,11 @@ def _derive_event(context: AuditContext, fields: dict[str, str]) -> CategoricalR
 
 
 def derive_relation(context: AuditContext, authority: AuthorityReceipt) -> BoundRelation:
+    try:
+        verify_authority_for_relation(context, authority)
+    except AuthorityIntegrityRefusal as exc:
+        raise RelationRefusal(exc.code, exc.detail) from exc
+
     if authority.status != "WARRANTED":
         raise RelationRefusal("SEMANTIC_AUTHORITY_UNRESOLVED", authority.status)
     if authority.audit_context_sha256 != context.context_sha256:
