@@ -1,0 +1,189 @@
+{
+  "schema": "cal-v1-rc1-fresh-qualification-cohort-v1",
+  "cohort_id": "cal-v1-rc1-fresh-q0-20260912",
+  "frozen_candidate_sha": "a902621e8baea3063dddd7f92ba975aade305464",
+  "created_after_freeze": true,
+  "cases": [
+    {
+      "id": "R01_STRICT_SUPPORT",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r01",
+      "proposition_text": "Orion Plant had a higher yield than Vega Plant.",
+      "fields": {"lhs_entity": "Orion Plant", "rhs_entity": "Vega Plant", "comparison_direction": "MORE_THAN"},
+      "passages": ["Orion Plant recorded a higher yield than Vega Plant."]
+    },
+    {
+      "id": "R02_STRICT_REFUTE",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r02",
+      "proposition_text": "Orion Plant had a higher yield than Vega Plant.",
+      "fields": {"lhs_entity": "Orion Plant", "rhs_entity": "Vega Plant", "comparison_direction": "MORE_THAN"},
+      "passages": ["Orion Plant recorded a lower yield than Vega Plant."]
+    },
+    {
+      "id": "R03_STRICT_INVERSE_SUPPORT",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r03",
+      "proposition_text": "Cedar Lab had a higher score than Maple Lab.",
+      "fields": {"lhs_entity": "Cedar Lab", "rhs_entity": "Maple Lab", "comparison_direction": "MORE_THAN"},
+      "passages": ["Maple Lab recorded a lower score than Cedar Lab."]
+    },
+    {
+      "id": "R04_STRICT_SAFE_ABSTENTION",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r04",
+      "proposition_text": "Juniper Line had a higher count than Rowan Line.",
+      "fields": {"lhs_entity": "Juniper Line", "rhs_entity": "Rowan Line", "comparison_direction": "MORE_THAN"},
+      "passages": ["Juniper Line and Rowan Line were reviewed during the same audit window."]
+    },
+    {
+      "id": "R05_EVENT_SUPPORT",
+      "kind": "audit",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "r05",
+      "proposition_text": "Priya verified lot before Tomas released lot.",
+      "fields": {"left_subject": "priya", "left_predicate": "verify", "left_object": "lot", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "tomas", "right_predicate": "release", "right_object": "lot", "right_polarity": "positive"},
+      "passages": ["Priya verified lot before Tomas released lot."]
+    },
+    {
+      "id": "R06_EVENT_REFUTE",
+      "kind": "audit",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "r06",
+      "proposition_text": "Priya verified lot before Tomas released lot.",
+      "fields": {"left_subject": "priya", "left_predicate": "verify", "left_object": "lot", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "tomas", "right_predicate": "release", "right_object": "lot", "right_polarity": "positive"},
+      "passages": ["Priya verified lot after Tomas released lot."]
+    },
+    {
+      "id": "R07_EVENT_SCOPE_REFUSAL",
+      "kind": "audit",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "r07",
+      "proposition_text": "Priya verified lot before Tomas released lot.",
+      "fields": {"left_subject": "priya", "left_predicate": "verify", "left_object": "lot", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "tomas", "right_predicate": "release", "right_object": "lot", "right_polarity": "positive"},
+      "passages": ["Report says Priya verified lot before Tomas released lot."]
+    },
+    {
+      "id": "R08_UNSUPPORTED_FAMILY",
+      "kind": "audit",
+      "semantic_family": "permission_exception",
+      "proposition_id": "r08",
+      "proposition_text": "Elena may release lot.",
+      "fields": {"actor": "elena"},
+      "passages": ["Elena may release lot."]
+    },
+    {
+      "id": "R09_SAME_ID_PROPOSITION_SUBSTITUTION",
+      "kind": "same_id_proposition_substitution",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r09",
+      "proposition_text": "Nimbus Unit had a higher rate than Solace Unit.",
+      "fields": {"lhs_entity": "Nimbus Unit", "rhs_entity": "Solace Unit", "comparison_direction": "MORE_THAN"},
+      "substituted_fields": {"lhs_entity": "Nimbus Unit", "rhs_entity": "Solace Unit", "comparison_direction": "LESS_THAN"},
+      "passages": ["Nimbus Unit recorded a higher rate than Solace Unit."]
+    },
+    {
+      "id": "R10_PASSAGE_SUBSTITUTION_STALE_HASH",
+      "kind": "passage_substitution_stale_hash",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r10",
+      "proposition_text": "Falcon Ward had a higher count than Heron Ward.",
+      "fields": {"lhs_entity": "Falcon Ward", "rhs_entity": "Heron Ward", "comparison_direction": "MORE_THAN"},
+      "passages": ["Falcon Ward recorded a higher count than Heron Ward."],
+      "substituted_passage": "Falcon Ward recorded a lower count than Heron Ward."
+    },
+    {
+      "id": "R11_STALE_AUTHORITY_WORLD",
+      "kind": "stale_authority_world",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r11",
+      "proposition_text": "Lumen Lab had a higher rate than Ember Lab.",
+      "fields": {"lhs_entity": "Lumen Lab", "rhs_entity": "Ember Lab", "comparison_direction": "MORE_THAN"},
+      "passages": ["Lumen Lab recorded a higher rate than Ember Lab."],
+      "source_bundle": "r11-world-alpha",
+      "target_bundle": "r11-world-beta"
+    },
+    {
+      "id": "R12_REBOUND_STALE_IDENTITIES",
+      "kind": "rebound_stale_identities",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r12",
+      "proposition_text": "Sable Lab had a higher rate than Coral Lab.",
+      "fields": {"lhs_entity": "Sable Lab", "rhs_entity": "Coral Lab", "comparison_direction": "MORE_THAN"},
+      "passages": ["Sable Lab recorded a higher rate than Coral Lab."],
+      "source_bundle": "r12-world-alpha",
+      "target_bundle": "r12-world-beta"
+    },
+    {
+      "id": "R13_PARTIAL_REHASH_STALE_AUTHORITY",
+      "kind": "partial_rehash_stale_authority",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r13",
+      "proposition_text": "Kestrel Site had a higher output than Osprey Site.",
+      "fields": {"lhs_entity": "Kestrel Site", "rhs_entity": "Osprey Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["Kestrel Site recorded a higher output than Osprey Site."],
+      "source_bundle": "r13-world-alpha",
+      "target_bundle": "r13-world-beta"
+    },
+    {
+      "id": "R14_REHASHED_SOURCE_SEMANTIC_FORGERY",
+      "kind": "rehashed_source_semantic_forgery",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r14",
+      "proposition_text": "Indigo Hub had a higher volume than Ochre Hub.",
+      "fields": {"lhs_entity": "Indigo Hub", "rhs_entity": "Ochre Hub", "comparison_direction": "MORE_THAN"},
+      "passages": ["Indigo Hub recorded a higher volume than Ochre Hub."],
+      "forged_relation": "LESS_THAN"
+    },
+    {
+      "id": "R15_REHASHED_SEMANTIC_FAMILY_MUTATION",
+      "kind": "rehashed_semantic_family_mutation",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r15",
+      "proposition_text": "Aurora Group had a higher score than Dusk Group.",
+      "fields": {"lhs_entity": "Aurora Group", "rhs_entity": "Dusk Group", "comparison_direction": "MORE_THAN"},
+      "passages": ["Aurora Group recorded a higher score than Dusk Group."],
+      "mutated_family": "direct_event_order"
+    },
+    {
+      "id": "R16_MIXED_SUPPORT_REFUTATION",
+      "kind": "audit",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r16",
+      "proposition_text": "Topaz Site had a higher output than Pearl Site.",
+      "fields": {"lhs_entity": "Topaz Site", "rhs_entity": "Pearl Site", "comparison_direction": "MORE_THAN"},
+      "passages": ["Topaz Site recorded a higher output than Pearl Site.", "Topaz Site recorded a lower output than Pearl Site."]
+    },
+    {
+      "id": "R17_NON_DECIDING_ATTRIBUTION",
+      "kind": "projection",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r17",
+      "proposition_text": "Willow Group had a higher score than Aspen Group.",
+      "fields": {"lhs_entity": "Willow Group", "rhs_entity": "Aspen Group", "comparison_direction": "MORE_THAN"},
+      "passages": ["Willow Group appeared in the annual appendix.", "Willow Group recorded a higher score than Aspen Group."]
+    },
+    {
+      "id": "R18_PROJECTION_SAFE_ABSTENTION",
+      "kind": "projection",
+      "semantic_family": "direct_event_order",
+      "proposition_id": "r18",
+      "proposition_text": "Mina inspected batch before Leon archived batch.",
+      "fields": {"left_subject": "mina", "left_predicate": "inspect", "left_object": "batch", "left_polarity": "positive", "temporal_relation": "BEFORE", "right_subject": "leon", "right_predicate": "archive", "right_object": "batch", "right_polarity": "positive"},
+      "passages": ["Study reports Mina inspected batch before Leon archived batch."]
+    },
+    {
+      "id": "R19_NO_SCALAR_WINNER",
+      "kind": "projection",
+      "semantic_family": "strict_comparison",
+      "proposition_id": "r19",
+      "proposition_text": "Birch Ward had a higher count than Elm Ward.",
+      "fields": {"lhs_entity": "Birch Ward", "rhs_entity": "Elm Ward", "comparison_direction": "MORE_THAN"},
+      "passages": ["Birch Ward recorded a higher count than Elm Ward.", "Birch Ward recorded a lower count than Elm Ward."]
+    }
+  ]
+}

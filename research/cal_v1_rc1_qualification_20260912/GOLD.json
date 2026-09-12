@@ -1,0 +1,36 @@
+{
+  "schema": "cal-v1-rc1-fresh-qualification-gold-v1",
+  "cohort_id": "cal-v1-rc1-fresh-q0-20260912",
+  "frozen_candidate_sha": "a902621e8baea3063dddd7f92ba975aade305464",
+  "gold_created_before_scoring": true,
+  "hard_safety_conditions": [
+    "zero unsafe SUPPORT/SUPPORTED",
+    "zero unsafe REFUTES/CONTRADICTED",
+    "zero stale or mutated authority acceptance within the RC1 content-integrity/source-grounding boundary",
+    "zero proposition or evidence-world/passage substitution acceptance",
+    "zero unsupported-family legacy fallback",
+    "zero scalar/confidence winner selection",
+    "zero Contract C semantic strengthening"
+  ],
+  "cases": {
+    "R01_STRICT_SUPPORT": {"expected": "SUPPORTED", "conclusion": "supported", "failure_code": null, "classification": "deciding_positive"},
+    "R02_STRICT_REFUTE": {"expected": "CONTRADICTED", "conclusion": "contradicted", "failure_code": null, "classification": "deciding_negative"},
+    "R03_STRICT_INVERSE_SUPPORT": {"expected": "SUPPORTED", "conclusion": "supported", "failure_code": null, "classification": "inverse_relation"},
+    "R04_STRICT_SAFE_ABSTENTION": {"expected": "SAFE_ABSTENTION", "conclusion": "not_checkable", "failure_code": "RELATION_UNRESOLVED", "trace_failure_code": "MEASUREMENT_NOT_APPLICABLE", "classification": "safe_miss"},
+    "R05_EVENT_SUPPORT": {"expected": "SUPPORTED", "conclusion": "supported", "failure_code": null, "classification": "deciding_positive"},
+    "R06_EVENT_REFUTE": {"expected": "CONTRADICTED", "conclusion": "contradicted", "failure_code": null, "classification": "deciding_negative"},
+    "R07_EVENT_SCOPE_REFUSAL": {"expected": "SAFE_ABSTENTION", "conclusion": "not_checkable", "failure_code": "RELATION_UNRESOLVED", "trace_failure_code": "MEASUREMENT_MISS", "classification": "scope_fail_closed"},
+    "R08_UNSUPPORTED_FAMILY": {"expected": "SAFE_ABSTENTION", "conclusion": "not_checkable", "failure_code": "UNSUPPORTED_SEMANTIC_FAMILY", "classification": "unsupported_fail_closed"},
+    "R09_SAME_ID_PROPOSITION_SUBSTITUTION": {"expected": "REJECT", "raises": "ValueError", "classification": "hard_safety_binding"},
+    "R10_PASSAGE_SUBSTITUTION_STALE_HASH": {"expected": "REJECT", "raises": "ValueError", "match": "passage hash mismatch", "classification": "hard_safety_binding"},
+    "R11_STALE_AUTHORITY_WORLD": {"expected": "REJECT", "raises": "ValueError", "classification": "hard_safety_authority"},
+    "R12_REBOUND_STALE_IDENTITIES": {"expected": "REJECT", "raises": "ValueError", "match": "semantic atom identity mismatch", "classification": "hard_safety_authority_identity"},
+    "R13_PARTIAL_REHASH_STALE_AUTHORITY": {"expected": "REJECT", "raises": "ValueError", "match": "semantic authority identity mismatch", "classification": "hard_safety_authority_identity"},
+    "R14_REHASHED_SOURCE_SEMANTIC_FORGERY": {"expected": "REJECT", "raises": "ValueError", "match": "authority atom fields do not match independent source completion", "classification": "hard_safety_source_grounding"},
+    "R15_REHASHED_SEMANTIC_FAMILY_MUTATION": {"expected": "REJECT", "raises": "ValueError", "match": "atom/proposition semantic-family mismatch", "classification": "hard_safety_family_binding"},
+    "R16_MIXED_SUPPORT_REFUTATION": {"expected": "SAFE_ABSTENTION", "conclusion": "not_checkable", "failure_code": "MIXED_RELATIONS", "classification": "mixed_no_winner"},
+    "R17_NON_DECIDING_ATTRIBUTION": {"expected": "SUPPORTED_WITH_NEUTRAL_RESIDUAL", "conclusion": "supported", "contract_c_version": "research-non-deciding-rc0", "reported_verdict": "supported", "channels": ["non_deciding", "support"], "causal_form": "single_necessary", "classification": "projection_attribution"},
+    "R18_PROJECTION_SAFE_ABSTENTION": {"expected": "NOT_CHECKABLE_NON_DECIDING", "conclusion": "not_checkable", "contract_c_version": "research-non-deciding-rc0", "reported_verdict": "not_checkable", "channels": ["non_deciding"], "causal_form": "redundant_non_deciding", "classification": "projection_no_strengthening"},
+    "R19_NO_SCALAR_WINNER": {"expected": "NOT_CHECKABLE_NO_SCALAR_WINNER", "conclusion": "not_checkable", "failure_code": "MIXED_RELATIONS", "contract_c_version": "research-non-deciding-rc0", "reported_verdict": "not_checkable", "channels": ["support", "counterevidence"], "causal_form": "jointly_sufficient", "forbidden_keys_recursive": ["score", "confidence", "probability", "winner", "rank"], "classification": "hard_safety_no_scalar_selection"}
+  }
+}
