@@ -95,6 +95,7 @@ def _canonical_bytes(value: dict[str, Any]) -> bytes:
 
 
 def _load_candidate_validator(apparatus_root: Path):
+    sys.path.insert(0, str(apparatus_root.resolve()))
     path = apparatus_root / "research" / "contract_c_successor_candidate_rc0" / "validator.py"
     spec = importlib.util.spec_from_file_location("apparatus_contract_c_candidate", path)
     if spec is None or spec.loader is None:
