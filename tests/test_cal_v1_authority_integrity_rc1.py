@@ -139,7 +139,11 @@ def test_self_consistent_fabricated_atom_semantics_are_source_refused() -> None:
     authority = _authority(context)
     forged_atom = replace(
         authority.atom,
-        fields=(("left", "quartz lab"), ("relation", "LESS_THAN"), ("right", "flint lab")),
+        fields=(
+            ("left", "quartz lab"),
+            ("relation", "LESS_THAN"),
+            ("right", "flint lab"),
+        ),
     )
     forged_atom = replace(
         forged_atom,
