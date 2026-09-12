@@ -53,8 +53,8 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git -C _apparatus rev-parse HEAD)" = "$APPARATUS_CANDIDATE"
-          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_rc0/validator.py")" = "f94894c96593ac488f3da9485fb965d6454a2824"
-          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_rc0/schema-delta.json")" = "a7d3dff7a092fe23b1baf7d659b1aa34ca25e28c"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_rc0/validator.py")" = "bbab0e94d56f2983ed6d5cc510bf26efa4a55e21"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_rc0/schema-delta.json")" = "bdd511aac6a26fd0bdaa07c353a29757b478b283"
 
       - uses: actions/setup-python@v5
         with:
