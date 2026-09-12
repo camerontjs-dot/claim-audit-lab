@@ -70,9 +70,7 @@ def _source_grounded_fields(context: AuditContext, atom: SemanticAtom) -> dict[s
     )
 
 
-def verify_authority_for_relation(
-    context: AuditContext, authority: AuthorityReceipt
-) -> None:
+def verify_authority_for_relation(context: AuditContext, authority: AuthorityReceipt) -> None:
     """Revalidate authority integrity and source grounding before relation use.
 
     This is deliberately stronger than checking supplied context/world fields alone.
@@ -86,9 +84,7 @@ def verify_authority_for_relation(
             "authority status/reason is not the warranted terminal state",
         )
     if authority.audit_context_sha256 != context.context_sha256:
-        raise AuthorityIntegrityRefusal(
-            "PROPOSITION_BINDING_FAILED", "authority/context mismatch"
-        )
+        raise AuthorityIntegrityRefusal("PROPOSITION_BINDING_FAILED", "authority/context mismatch")
     if authority.evidence_world_sha256 != context.evidence_world.evidence_world_sha256:
         raise AuthorityIntegrityRefusal(
             "COMMON_EVIDENCE_WORLD_MISMATCH", "authority/world mismatch"
@@ -121,9 +117,7 @@ def verify_authority_for_relation(
             "SEMANTIC_AUTHORITY_UNRESOLVED", "semantic atom identity mismatch"
         )
 
-    expected_authority_id = stable_id(
-        "semantic-authority", _authority_material(authority)
-    )
+    expected_authority_id = stable_id("semantic-authority", _authority_material(authority))
     if authority.authority_id != expected_authority_id:
         raise AuthorityIntegrityRefusal(
             "SEMANTIC_AUTHORITY_UNRESOLVED", "semantic authority identity mismatch"
