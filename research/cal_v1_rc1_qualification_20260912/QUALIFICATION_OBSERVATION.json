@@ -1,0 +1,66 @@
+{
+  "schema": "cal-v1-rc1-fresh-qualification-observation-v1",
+  "cohort_id": "cal-v1-rc1-fresh-q0-20260912",
+  "frozen_candidate_sha": "a902621e8baea3063dddd7f92ba975aade305464",
+  "freeze_receipt_commit": "7e7356f8b4746288d1a0254a253adbb77fd30626",
+  "freeze_receipt_blob": "d10dbb9b8091c6ea045f4bc20d20cf597307b326",
+  "cohort_commit": "f73ba1d2a15aafa5b9c8b2bc5c5dd73f86687ee7",
+  "cohort_blob": "8dbf1c6b6cd83b4fab5f3ee827caad366b8d0e8d",
+  "gold_commit": "0e5cbdbc0de13111451c1b48218b7664b1fdd78b",
+  "gold_blob": "c1484518d1e765800681f2d6c2fac38138db00d9",
+  "evaluator_commit": "3830411fdd88889d61db6a21e6a1ef8998bab68d",
+  "evaluator_blob": "017d21060d60a2c296b3139a9f293fb8a1b7561d",
+  "workflow_run_id": 34675244077,
+  "workflow_job_id": 103503854205,
+  "workflow_merge_sha": "60233672df59a6dea039f8f116d430dba3d9e246",
+  "pytest_result": "981 passed, 5 skipped, 48 deselected",
+  "ruff_lint": "PASS",
+  "ruff_format": "PASS: 62 files already formatted",
+  "mypy": "PASS: no issues found in 61 source files",
+  "case_count": 19,
+  "matched_gold_count": 19,
+  "failed_gold_count": 0,
+  "unsafe_result_count": 0,
+  "qualification_result": "SUPPORTED_BOUNDED_RC1_QUALIFICATION",
+  "observation_basis": "The frozen evaluator accumulates every case mismatch and asserts the mismatch map is empty. The authoritative Public suite completed successfully, so all compared case observations matched frozen GOLD.json. Passing stdout is captured by pytest and was not separately uploaded as an Actions artifact.",
+  "authority_integrity": {
+    "ordinary_stale_world_authority": "REJECTED_AS_REQUIRED",
+    "rebound_stale_atom_and_authority_identities": "REJECTED_AS_REQUIRED: semantic atom identity mismatch",
+    "recomputed_atom_identity_with_stale_authority_identity": "REJECTED_AS_REQUIRED: semantic authority identity mismatch",
+    "fully_rehashed_source_semantic_forgery": "REJECTED_AS_REQUIRED: authority atom fields do not match independent source completion",
+    "fully_rehashed_semantic_family_mutation": "REJECTED_AS_REQUIRED: atom/proposition semantic-family mismatch",
+    "same_id_proposition_substitution": "REJECTED_AS_REQUIRED",
+    "stale_passage_hash": "REJECTED_AS_REQUIRED"
+  },
+  "semantic_family_summary": {
+    "strict_comparison": {
+      "status": "MATCHED_FROZEN_GOLD",
+      "support": "matched",
+      "refutation": "matched",
+      "inverse_relation": "matched",
+      "safe_abstention": "matched",
+      "mixed_support_refutation": "not_checkable as required"
+    },
+    "direct_event_order": {
+      "status": "MATCHED_FROZEN_GOLD",
+      "support": "matched",
+      "refutation": "matched",
+      "reporting_scope_refusal": "safe abstention matched"
+    },
+    "unsupported_family": {
+      "status": "MATCHED_FROZEN_GOLD",
+      "legacy_fallback": "none observed",
+      "result": "not_checkable / UNSUPPORTED_SEMANTIC_FAMILY"
+    }
+  },
+  "contract_c_projection_summary": {
+    "status": "MATCHED_FROZEN_GOLD",
+    "semantic_strengthening_observed": false,
+    "non_deciding_attribution": "matched",
+    "safe_abstention_projection": "matched",
+    "mixed_relation_projection": "not_checkable with support + counterevidence",
+    "scalar_or_winner_selection_observed": false
+  },
+  "actions_artifact": null,
+  "authority_boundary_nonclaim": "RC1 revalidates content identities and source grounding. It does not establish cryptographic origin authentication for arbitrary externally reconstructed authority receipts."
+}
