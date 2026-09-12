@@ -1,0 +1,119 @@
+name: Contract C Successor Producer Conformance RC0
+
+on:
+  push:
+    branches:
+      - research/contract-c-successor-producer-conformance-20260912
+    paths:
+      - research/contract_c_successor_producer_conformance_rc0/**
+      - .github/workflows/contract-c-successor-producer-conformance-rc0.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CAL_BASE: a902621e8baea3063dddd7f92ba975aade305464
+  APPARATUS_CANDIDATE: 242351af7214c23dce76edd06299f55c038cd3f0
+
+jobs:
+  producer-conformance:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout CAL research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen CAL producer and bounded research mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "$CAL_BASE" HEAD
+          test "$(git hash-object src/claim_audit_lab/cal_v1_candidate/projection.py)" = "9bc152275759304be03b84014c56bd434549a64a"
+          test "$(git hash-object src/claim_audit_lab/cal_v1_candidate/engine.py)" = "636734fd1341d2ae721ae9697c7ac7652b89eecc"
+          test "$(git hash-object src/claim_audit_lab/cal_v1_candidate/relations.py)" = "e9e9401c92ee11d25a50dbc36e80aeb4c4cd220d"
+          changed="$(git diff --name-only "$CAL_BASE"...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ev '^(research/contract_c_successor_producer_conformance_rc0/|\.github/workflows/contract-c-successor-producer-conformance-rc0\.yml$)' | grep -q .; then
+            echo 'producer conformance mutation escaped bounded research surface' >&2
+            exit 1
+          fi
+
+      - name: Checkout exact Apparatus successor candidate
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: ${{ env.APPARATUS_CANDIDATE }}
+          path: _apparatus
+          fetch-depth: 0
+
+      - name: Verify exact Apparatus candidate authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _apparatus rev-parse HEAD)" = "$APPARATUS_CANDIDATE"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_rc0/validator.py")" = "bbab0e94d56f2983ed6d5cc510bf26efa4a55e21"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_rc0/schema-delta.json")" = "bdd511aac6a26fd0bdaa07c353a29757b478b283"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install exact repository dependencies
+        run: |
+          python -m pip install -e '.[dev]'
+          python -m pip install -e '_apparatus[dev]'
+
+      - name: Re-run frozen CAL RC1 producer controls
+        run: pytest -q tests/test_cal_v1_candidate.py tests/test_cal_v1_authority_integrity_rc1.py
+
+      - name: Compile research evaluator
+        run: python -m py_compile research/contract_c_successor_producer_conformance_rc0/evaluate.py
+
+      - name: Execute preregistered producer conformance
+        shell: bash
+        run: |
+          mkdir -p build/contract-c-successor-producer-conformance-rc0
+          python research/contract_c_successor_producer_conformance_rc0/evaluate.py \
+            _apparatus \
+            build/contract-c-successor-producer-conformance-rc0/EVALUATION.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('build/contract-c-successor-producer-conformance-rc0/EVALUATION.json').read_text())
+          assert data['research_disposition'] in {
+              'SUPPORTED FOR PROMOTION', 'FALSIFIED', 'INCONCLUSIVE', 'SUPERSEDED'
+          }
+          assert data['checks']['single_plus_residual_candidate_valid'] is True
+          assert data['checks']['projection_deterministic'] is True
+          assert data['checks']['two_support_independent_ablation'] is True
+          assert data['checks']['minimal_mixed_joint_ablation'] is True
+          assert data['checks']['mixed_redundant_candidate_structurally_valid'] is True
+          assert data['checks']['mixed_redundant_ablation_proves_duplicate_support_not_necessary'] is True
+          assert data['interpretation']['production_promotion_authorized'] is False
+          print(json.dumps({
+              'research_disposition': data['research_disposition'],
+              'failures': data['failures'],
+              'mixed_redundant_falsifier': data['observations']['mixed_redundant_falsifier'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/contract-c-successor-producer-conformance-rc0
+          cp research/contract_c_successor_producer_conformance_rc0/PREREGISTRATION.md \
+            build/contract-c-successor-producer-conformance-rc0/
+          git rev-parse HEAD > build/contract-c-successor-producer-conformance-rc0/CAL_SHA.txt
+          git -C _apparatus rev-parse HEAD > build/contract-c-successor-producer-conformance-rc0/APPARATUS_SHA.txt
+          tar -czf contract-c-successor-producer-conformance-rc0-${GITHUB_RUN_ID}.tar.gz \
+            -C build contract-c-successor-producer-conformance-rc0
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: contract-c-successor-producer-conformance-rc0-${{ github.run_id }}
+          path: contract-c-successor-producer-conformance-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
