@@ -49,7 +49,9 @@ def _trace_dict(result: AuditResult) -> list[dict[str, Any]]:
                     if trace.measurement is None
                     else list(trace.measurement.consumed_passage_ids)
                 ),
-                "authority_id": None if trace.authority is None else trace.authority.authority_id,
+                "authority_id": (
+                    None if trace.authority is None else trace.authority.authority_id
+                ),
                 "relation": relation,
                 "failure_code": None if trace.failure_code is None else trace.failure_code.value,
                 "detail": trace.detail,
@@ -104,7 +106,9 @@ def result_record(
     }
 
 
-def run_packet(packet: Mapping[str, Any], *, packet_sha256: str) -> tuple[AuditContext, AuditResult, dict[str, Any]]:
+def run_packet(
+    packet: Mapping[str, Any], *, packet_sha256: str
+) -> tuple[AuditContext, AuditResult, dict[str, Any]]:
     context = context_from_packet(packet)
     result = audit(context)
     return context, result, result_record(context, result, packet_sha256=packet_sha256)
