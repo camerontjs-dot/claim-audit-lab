@@ -11,7 +11,7 @@ permissions:
 jobs:
   qualify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Checkout prototype
         uses: actions/checkout@v4
@@ -36,43 +36,49 @@ jobs:
             exit 1
           fi
 
-      - name: Set up Python
+      - name: Set up Python 3.11
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
-      - name: Install development dependencies
-        run: python -m pip install -e '.[dev]'
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Mirror canonical CAL dependency environment
+        run: uv sync --all-extras
+
+      - name: Install canonical spaCy model
+        run: uv run python -m spacy download en_core_web_sm
 
       - name: Run frozen candidate regression and prototype tests
         run: |
-          pytest -q tests/test_cal_v1_candidate.py tests/test_cal_v1_authority_integrity_rc1.py tests/test_cal_v1_frozen_prototype.py
+          uv run python -m pytest -q tests/test_cal_v1_candidate.py tests/test_cal_v1_authority_integrity_rc1.py tests/test_cal_v1_frozen_prototype.py
 
-      - name: Run full public suite
-        run: pytest -q
+      - name: Run canonical public suite
+        run: uv run python -m pytest -q
 
-      - name: Static quality
+      - name: Canonical static quality
         run: |
-          ruff check src tests
-          ruff format --check src tests
-          mypy src
+          uv run python -m ruff check src tests
+          uv run python -m ruff format --check src
+          uv run python -m mypy
 
       - name: Execute fixture twice and require deterministic output
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p build/cal-v1-frozen-prototype-rc0/run1 build/cal-v1-frozen-prototype-rc0/run2
-          python -m claim_audit_lab.cal_v1_candidate.prototype \
+          uv run python -m claim_audit_lab.cal_v1_candidate.prototype \
             prototype/cal_v1_frozen_app_rc0/fixture-strict-support.json \
             --json-out build/cal-v1-frozen-prototype-rc0/run1/result.json \
             --report-out build/cal-v1-frozen-prototype-rc0/run1/report.md
-          python -m claim_audit_lab.cal_v1_candidate.prototype \
+          uv run python -m claim_audit_lab.cal_v1_candidate.prototype \
             prototype/cal_v1_frozen_app_rc0/fixture-strict-support.json \
             --json-out build/cal-v1-frozen-prototype-rc0/run2/result.json \
             --report-out build/cal-v1-frozen-prototype-rc0/run2/report.md
           cmp build/cal-v1-frozen-prototype-rc0/run1/result.json build/cal-v1-frozen-prototype-rc0/run2/result.json
           cmp build/cal-v1-frozen-prototype-rc0/run1/report.md build/cal-v1-frozen-prototype-rc0/run2/report.md
-          python - <<'PY'
+          uv run python - <<'PY'
           import json
           from pathlib import Path
           result = json.loads(Path('build/cal-v1-frozen-prototype-rc0/run1/result.json').read_text())
@@ -88,7 +94,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python -m build
+          uv run python -m build
           python -m venv build/prototype-wheel-venv
           build/prototype-wheel-venv/bin/python -m pip install dist/*.whl
           build/prototype-wheel-venv/bin/python -m claim_audit_lab.cal_v1_candidate.prototype \
@@ -106,6 +112,7 @@ jobs:
           git rev-parse a902621e8baea3063dddd7f92ba975aade305464 > "$out/SEMANTIC_BASE.txt"
           git rev-parse HEAD:src/claim_audit_lab/cal_v1_candidate/prototype.py > "$out/PROTOTYPE_RUNNER_BLOB.txt"
           git rev-parse HEAD:tests/test_cal_v1_frozen_prototype.py > "$out/PROTOTYPE_TEST_BLOB.txt"
+          git rev-parse HEAD:.github/workflows/cal-v1-frozen-prototype-rc0.yml > "$out/WORKFLOW_BLOB.txt"
           sha256sum prototype/cal_v1_frozen_app_rc0/fixture-strict-support.json > "$out/FIXTURE_SHA256.txt"
           sha256sum "$out/run1/result.json" > "$out/RESULT_SHA256.txt"
 
