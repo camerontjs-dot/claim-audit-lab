@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/camerontjs-dot/claim-audit-lab/schemas/cal-v1-manifest-v1.schema.json",
+  "title": "CAL V1 Production Run Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "distribution_version",
+    "profile",
+    "semantic_implementation_sha",
+    "input_packet_sha256",
+    "result_sha256",
+    "report_sha256",
+    "packet_schema_sha256",
+    "result_schema_sha256",
+    "files"
+  ],
+  "properties": {
+    "schema": {"const": "cal-v1-manifest-v1"},
+    "distribution_version": {"const": "0.6.0"},
+    "profile": {"const": "cal-v1-production-v1"},
+    "semantic_implementation_sha": {
+      "const": "a902621e8baea3063dddd7f92ba975aade305464"
+    },
+    "input_packet_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "result_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "report_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "packet_schema_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "result_schema_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input.packet.json", "result.json", "report.md"],
+      "properties": {
+        "input.packet.json": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "result.json": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "report.md": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

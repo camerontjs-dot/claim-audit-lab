@@ -22,7 +22,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from functools import cache
-from typing import cast
 
 from sentence_transformers import SentenceTransformer
 
@@ -35,10 +34,8 @@ enforce_cpu_determinism()
 @cache
 def _load_model(model_id: str, revision_sha: str) -> SentenceTransformer:
     """Load (and cache) the pinned ``SentenceTransformer`` on CPU."""
-    return cast(
-        SentenceTransformer,
-        SentenceTransformer(model_id, revision=revision_sha, device="cpu"),
-    )
+    model: SentenceTransformer = SentenceTransformer(model_id, revision=revision_sha, device="cpu")
+    return model
 
 
 @dataclass(frozen=True)

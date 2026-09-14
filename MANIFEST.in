@@ -15,6 +15,7 @@ include tests/fixtures/cb/evidence-bundle-minimal/CONTRACT_VERSION
 recursive-include src/claim_audit_lab/examples *.md *.yml
 recursive-include src/claim_audit_lab/assets *.css
 recursive-include src/claim_audit_lab/schema .contract-version *.yaml
+recursive-include src/claim_audit_lab/production_v1/schema *.json
 recursive-include validation *.md
 
 include schema/vocabulary.yaml

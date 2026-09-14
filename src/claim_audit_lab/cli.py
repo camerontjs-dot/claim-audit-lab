@@ -70,6 +70,74 @@ def main() -> None:
     """Run the Claim Audit Lab command group."""
 
 
+@app.command(name="run")
+def run_production(
+    packet: Annotated[
+        Path,
+        typer.Argument(help="One typed CAL V1 production packet JSON.", metavar="PACKET.json"),
+    ],
+    out_dir: Annotated[
+        Path,
+        typer.Option(
+            "--out-dir",
+            help="New or empty directory for the immutable CAL result.",
+            metavar="RUN_DIR",
+        ),
+    ],
+) -> None:
+    """Run exactly one packet through the qualified CAL V1 production implementation."""
+    from claim_audit_lab.production_v1.execution import OutputSafetyError, run_packet_file
+    from claim_audit_lab.production_v1.packet import PacketValidationError
+
+    try:
+        run_packet_file(packet, out_dir)
+    except (PacketValidationError, OutputSafetyError) as exc:
+        typer.echo(f"run rejected: {exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    except Exception as exc:
+        typer.echo(f"run failed: {exc}", err=True)
+        raise typer.Exit(code=70) from exc
+    typer.echo(f"Wrote CAL V1 production run: {out_dir}")
+
+
+@app.command(name="validate")
+def validate_production(
+    packet: Annotated[
+        Path,
+        typer.Argument(help="CAL V1 production packet JSON to validate.", metavar="PACKET.json"),
+    ],
+) -> None:
+    """Validate packet shape and evidence integrity without running CAL semantics."""
+    from claim_audit_lab.production_v1.packet import PacketValidationError, load_packet
+
+    try:
+        load_packet(packet)
+    except PacketValidationError as exc:
+        typer.echo(f"validate rejected: {exc}", err=True)
+        raise typer.Exit(code=2) from exc
+    typer.echo("VALID")
+
+
+@app.command(name="inspect")
+def inspect_production(
+    json_output: Annotated[
+        bool,
+        typer.Option("--json", help="Emit deterministic JSON runtime authority information."),
+    ] = False,
+) -> None:
+    """Show the deterministic CAL V1 production runtime identity."""
+    if not json_output:
+        typer.echo("inspect requires --json", err=True)
+        raise typer.Exit(code=2)
+    from claim_audit_lab.production_v1.execution import inspect_record
+
+    try:
+        typer.echo(json.dumps(inspect_record(), sort_keys=True, separators=(",", ":")))
+    except Exception as exc:
+        typer.echo(f"inspect failed: {exc}", err=True)
+        raise typer.Exit(code=70) from exc
+
+
 @app.command()
 def audit(
     draft: Annotated[Path, typer.Argument(help="Markdown or plain text draft to audit.")],
