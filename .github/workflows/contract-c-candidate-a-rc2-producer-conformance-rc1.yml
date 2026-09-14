@@ -1,0 +1,155 @@
+name: Contract C Candidate A RC2 Producer Conformance RC1
+
+on:
+  push:
+    branches:
+      - research/contract-c-candidate-a-rc2-producer-conformance-rc1-20260913
+    paths:
+      - research/contract_c_candidate_a_rc2_producer_conformance_rc1/**
+      - .github/workflows/contract-c-candidate-a-rc2-producer-conformance-rc1.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CAL_BASE: a902621e8baea3063dddd7f92ba975aade305464
+  APPARATUS_RC2: 3e1c44d6e264e2baa37324b66f78165b15a927f1
+  APPARATUS_RC2_RECORD: 13c34ab04da9b332f8d6db11e2d77b389172ba86
+
+jobs:
+  producer-conformance:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout CAL research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact CAL authority and bounded mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse "$CAL_BASE:src/claim_audit_lab/cal_v1_candidate/engine.py")" = "636734fd1341d2ae721ae9697c7ac7652b89eecc"
+          test "$(git rev-parse "$CAL_BASE:src/claim_audit_lab/cal_v1_candidate/relations.py")" = "e9e9401c92ee11d25a50dbc36e80aeb4c4cd220d"
+          test "$(git hash-object research/contract_c_candidate_a_rc2_producer_conformance_rc1/PREREGISTRATION.md)" = "4f1026b5d6e230611056dab2a24586280d46300a"
+          test "$(git hash-object research/contract_c_candidate_a_rc2_producer_conformance_rc1/materialize.py)" = "f9b22abff561081fb22ade8d5d7227dbdb870d72"
+          test "$(git hash-object research/contract_c_candidate_a_rc2_producer_conformance_rc1/evaluate.py)" = "510618e62755270888d4f342e18106ea5d49385b"
+          changed="$(git diff --name-only "$CAL_BASE"...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ev '^(research/contract_c_candidate_a_rc2_producer_conformance_rc1/|\.github/workflows/contract-c-candidate-a-rc2-producer-conformance-rc1\.yml$)' | grep -q .; then
+            echo 'RC2 producer-conformance mutation escaped bounded research surface' >&2
+            exit 1
+          fi
+
+      - name: Verify compose-only materializer boundary
+        shell: bash
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          path = Path('research/contract_c_candidate_a_rc2_producer_conformance_rc1/materialize.py')
+          tree = ast.parse(path.read_text())
+          allowed = {
+              'AuditContext', 'AuditResult', 'CategoricalRelation', 'Conclusion',
+              'FailureCode', 'PassageTrace', 'compose'
+          }
+          imported = set()
+          for node in ast.walk(tree):
+              if isinstance(node, ast.ImportFrom) and node.module == 'claim_audit_lab.cal_v1_candidate':
+                  imported.update(alias.name for alias in node.names)
+          assert imported == allowed, (imported, allowed)
+          banned = {
+              'audit', 'measure_strict_comparison', 'measure_direct_event_order',
+              'complete_and_warrant', 'derive_relation', 'project_contract_c_successor'
+          }
+          names = {node.id for node in ast.walk(tree) if isinstance(node, ast.Name)}
+          assert not (names & banned), names & banned
+          print({'compose_only_imports': sorted(imported)})
+          PY
+
+      - name: Checkout exact Apparatus RC2 candidate
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: ${{ env.APPARATUS_RC2 }}
+          path: _apparatus
+          fetch-depth: 0
+
+      - name: Checkout exact Apparatus RC2 qualification record
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: ${{ env.APPARATUS_RC2_RECORD }}
+          path: _apparatus_record
+          fetch-depth: 0
+
+      - name: Verify exact RC2 authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _apparatus rev-parse HEAD)" = "$APPARATUS_RC2"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_RC2:research/contract_c_successor_candidate_a_rc2_20260913/candidate_a_rc2.py")" = "ad5ed3ac71a8f8680188beb363c9d952c9922b15"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_RC2:research/contract_c_successor_candidate_a_rc2_20260913/candidate_a_rc2.schema.json")" = "45ebaa1e5b7342422b4d6a19f897e72de4bb148f"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_RC2:research/contract_c_successor_ground_up_20260913/phase2_bakeoff.py")" = "9f00cd332ad366b878f60d13440af639360928de"
+          test "$(git -C _apparatus_record rev-parse HEAD)" = "$APPARATUS_RC2_RECORD"
+          grep -Fq 'QUALIFIED_FOR_CAL_PRODUCER_CONFORMANCE_RESEARCH' _apparatus_record/research/contract_c_successor_candidate_a_rc2_20260913/TERMINAL_RECORD.md
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install exact CAL dependencies
+        run: python -m pip install -e '.[dev]'
+
+      - name: Replay frozen CAL RC1 controls
+        run: pytest -q tests/test_cal_v1_candidate.py tests/test_cal_v1_authority_integrity_rc1.py
+
+      - name: Compile frozen research apparatus
+        run: |
+          python -m py_compile research/contract_c_candidate_a_rc2_producer_conformance_rc1/materialize.py
+          python -m py_compile research/contract_c_candidate_a_rc2_producer_conformance_rc1/evaluate.py
+
+      - name: Execute preregistered RC2 producer conformance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/contract-c-candidate-a-rc2-producer-conformance-rc1
+          python research/contract_c_candidate_a_rc2_producer_conformance_rc1/evaluate.py \
+            _apparatus \
+            build/contract-c-candidate-a-rc2-producer-conformance-rc1/EVALUATION.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('build/contract-c-candidate-a-rc2-producer-conformance-rc1/EVALUATION.json').read_text())
+          assert result['research_disposition'] in {
+              'SUPPORTED_RC2_PRODUCER_CONFORMANCE', 'FALSIFIED', 'INCONCLUSIVE', 'SUPERSEDED'
+          }
+          assert result['checks']['weak_flat_control_killed'] is True
+          assert result['checks']['weak_reason_alias_control_killed'] is True
+          assert result['interpretation']['independent_consumer_gate_satisfied'] is False
+          assert result['interpretation']['production_promotion_authorized'] is False
+          print(json.dumps({
+              'research_disposition': result['research_disposition'],
+              'failures': result['failures'],
+              'producer_gate_satisfied': result['interpretation']['producer_gate_satisfied'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/contract-c-candidate-a-rc2-producer-conformance-rc1
+          cp research/contract_c_candidate_a_rc2_producer_conformance_rc1/PREREGISTRATION.md build/contract-c-candidate-a-rc2-producer-conformance-rc1/
+          cp research/contract_c_candidate_a_rc2_producer_conformance_rc1/FREEZE_RECEIPT.md build/contract-c-candidate-a-rc2-producer-conformance-rc1/
+          git rev-parse HEAD > build/contract-c-candidate-a-rc2-producer-conformance-rc1/CAL_SHA.txt
+          git -C _apparatus rev-parse HEAD > build/contract-c-candidate-a-rc2-producer-conformance-rc1/APPARATUS_SHA.txt
+          tar -czf contract-c-candidate-a-rc2-producer-conformance-rc1-${GITHUB_RUN_ID}.tar.gz -C build contract-c-candidate-a-rc2-producer-conformance-rc1
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: contract-c-candidate-a-rc2-producer-conformance-rc1-${{ github.run_id }}
+          path: contract-c-candidate-a-rc2-producer-conformance-rc1-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
