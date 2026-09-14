@@ -5,6 +5,10 @@ on:
     branches:
       - prototype/cal-v1-frozen-app-rc0-20260914
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
