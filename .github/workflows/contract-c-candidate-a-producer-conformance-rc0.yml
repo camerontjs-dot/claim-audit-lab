@@ -1,0 +1,149 @@
+name: Contract C Candidate A Producer Conformance RC0
+
+on:
+  push:
+    branches:
+      - research/contract-c-candidate-a-producer-conformance-rc0-20260913
+    paths:
+      - research/contract_c_candidate_a_producer_conformance_rc0/**
+      - .github/workflows/contract-c-candidate-a-producer-conformance-rc0.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CAL_BASE: a902621e8baea3063dddd7f92ba975aade305464
+  APPARATUS_CANDIDATE: ba5f55b0fb6ca54e0461a688813b66fd81bf8c4c
+
+jobs:
+  producer-conformance:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout CAL research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify exact frozen CAL authority and bounded mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse "$CAL_BASE:src/claim_audit_lab/cal_v1_candidate/engine.py")" = "636734fd1341d2ae721ae9697c7ac7652b89eecc"
+          test "$(git rev-parse "$CAL_BASE:src/claim_audit_lab/cal_v1_candidate/relations.py")" = "e9e9401c92ee11d25a50dbc36e80aeb4c4cd220d"
+          test "$(git rev-parse "$CAL_BASE:src/claim_audit_lab/cal_v1_candidate/projection.py")" = "9bc152275759304be03b84014c56bd434549a64a"
+          test "$(git hash-object research/contract_c_candidate_a_producer_conformance_rc0/PREREGISTRATION.md)" = "3d438270cff832545dd2809fc5f53bd87f93e467"
+          test "$(git hash-object research/contract_c_candidate_a_producer_conformance_rc0/materialize.py)" = "08a4968a7999d05dfd65084c062adb552e127265"
+          test "$(git hash-object research/contract_c_candidate_a_producer_conformance_rc0/evaluate.py)" = "a8f9d9888abcda13ade50e46e8774ae642a955c1"
+          changed="$(git diff --name-only "$CAL_BASE"...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ev '^(research/contract_c_candidate_a_producer_conformance_rc0/|\.github/workflows/contract-c-candidate-a-producer-conformance-rc0\.yml$)' | grep -q .; then
+            echo 'producer conformance mutation escaped bounded research surface' >&2
+            exit 1
+          fi
+
+      - name: Verify materializer uses compose-only CAL semantic operation
+        shell: bash
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          path = Path('research/contract_c_candidate_a_producer_conformance_rc0/materialize.py')
+          tree = ast.parse(path.read_text())
+          allowed = {
+              'AuditContext', 'AuditResult', 'CategoricalRelation', 'Conclusion',
+              'FailureCode', 'PassageTrace', 'compose'
+          }
+          imported = set()
+          for node in ast.walk(tree):
+              if isinstance(node, ast.ImportFrom) and node.module == 'claim_audit_lab.cal_v1_candidate':
+                  imported.update(alias.name for alias in node.names)
+          assert imported == allowed, (imported, allowed)
+          banned = {
+              'audit', 'measure_strict_comparison', 'measure_direct_event_order',
+              'complete_and_warrant', 'derive_relation', 'project_contract_c_successor'
+          }
+          names = {node.id for node in ast.walk(tree) if isinstance(node, ast.Name)}
+          assert not (names & banned), names & banned
+          print({'compose_only_imports': sorted(imported), 'banned_names_present': []})
+          PY
+
+      - name: Checkout exact Apparatus Candidate A RC1
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: ${{ env.APPARATUS_CANDIDATE }}
+          path: _apparatus
+          fetch-depth: 0
+
+      - name: Verify exact Candidate A and frozen semantic authorities
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _apparatus rev-parse HEAD)" = "$APPARATUS_CANDIDATE"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_a_rc1_20260913/CANDIDATE_A_RC1.md")" = "0ab62b7ceea1d56d6bc3b7cf8528769dd440ab7c"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_a_rc1_20260913/candidate_a_rc1.schema.json")" = "0de83032e6d989225cf014d9a70035f634a5e003"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_candidate_a_rc1_20260913/candidate_a_rc1.py")" = "03dbb5b774af523d8e6235bca86b18af5ddad5b0"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_ground_up_20260913/SEMANTIC_SPECIMEN_CORPUS.md")" = "0ff4f66bca00924755d42ed7f944c4dae8d10f66"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_ground_up_20260913/phase2_bakeoff.py")" = "9f00cd332ad366b878f60d13440af639360928de"
+          test "$(git -C _apparatus rev-parse "$APPARATUS_CANDIDATE:research/contract_c_successor_ground_up_20260913/PHASE_1_5_POLICY_RESOLVER.json")" = "6926bf8bf0c80a339983e91c9e8cc69cdf5aaad8"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install exact CAL dependencies
+        run: python -m pip install -e '.[dev]'
+
+      - name: Replay frozen CAL RC1 controls
+        run: pytest -q tests/test_cal_v1_candidate.py tests/test_cal_v1_authority_integrity_rc1.py
+
+      - name: Compile frozen research apparatus
+        run: |
+          python -m py_compile research/contract_c_candidate_a_producer_conformance_rc0/materialize.py
+          python -m py_compile research/contract_c_candidate_a_producer_conformance_rc0/evaluate.py
+
+      - name: Execute preregistered producer conformance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/contract-c-candidate-a-producer-conformance-rc0
+          python research/contract_c_candidate_a_producer_conformance_rc0/evaluate.py \
+            _apparatus \
+            build/contract-c-candidate-a-producer-conformance-rc0/EVALUATION.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('build/contract-c-candidate-a-producer-conformance-rc0/EVALUATION.json').read_text())
+          assert result['research_disposition'] in {
+              'SUPPORTED FOR PROMOTION', 'FALSIFIED', 'INCONCLUSIVE', 'SUPERSEDED'
+          }
+          assert result['checks']['weak_flat_control_killed'] is True
+          assert result['checks']['sp10_exact_alt_joint_basis'] is True
+          assert result['checks']['sp11_exact_symmetric_alt_joint_basis'] is True
+          assert result['interpretation']['production_promotion_authorized'] is False
+          print(json.dumps({
+              'research_disposition': result['research_disposition'],
+              'failures': result['failures'],
+              'unsupported_family_boundary': result['observations']['unsupported_family_boundary'],
+              'basis_materialization': result['interpretation']['basis_groups_derived_from_existing_relations_plus_compose_only'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p build/contract-c-candidate-a-producer-conformance-rc0
+          cp research/contract_c_candidate_a_producer_conformance_rc0/PREREGISTRATION.md build/contract-c-candidate-a-producer-conformance-rc0/
+          cp research/contract_c_candidate_a_producer_conformance_rc0/FREEZE_RECEIPT.md build/contract-c-candidate-a-producer-conformance-rc0/
+          git rev-parse HEAD > build/contract-c-candidate-a-producer-conformance-rc0/CAL_SHA.txt
+          git -C _apparatus rev-parse HEAD > build/contract-c-candidate-a-producer-conformance-rc0/APPARATUS_SHA.txt
+          tar -czf contract-c-candidate-a-producer-conformance-rc0-${GITHUB_RUN_ID}.tar.gz -C build contract-c-candidate-a-producer-conformance-rc0
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: contract-c-candidate-a-producer-conformance-rc0-${{ github.run_id }}
+          path: contract-c-candidate-a-producer-conformance-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
