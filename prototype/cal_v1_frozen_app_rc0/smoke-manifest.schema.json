@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/camerontjs-dot/claim-audit-lab/prototype/cal-v1-frozen-app-rc0/smoke-manifest.schema.json",
+  "title": "CAL V1 Frozen Prototype RC0 10-Claim Smoke Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "prototype_head",
+    "semantic_implementation_sha",
+    "packet_schema_blob",
+    "result_schema_blob",
+    "created_at",
+    "claims"
+  ],
+  "properties": {
+    "schema": {"const": "cal-v1-frozen-prototype-smoke-manifest-v1"},
+    "prototype_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "semantic_implementation_sha": {"const": "a902621e8baea3063dddd7f92ba975aade305464"},
+    "packet_schema_blob": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "result_schema_blob": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "claims": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "packet_path", "packet_sha256"],
+        "properties": {
+          "claim_id": {"type": "string", "minLength": 1},
+          "packet_path": {"type": "string", "minLength": 1},
+          "packet_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}

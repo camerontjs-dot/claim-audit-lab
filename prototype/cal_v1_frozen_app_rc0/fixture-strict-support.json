@@ -1,0 +1,37 @@
+{
+  "evidence_world": {
+    "admitted_passages": [
+      {
+        "passage_id": "p1",
+        "source_id": "source-1",
+        "source_sha256": "sha256:ffa6a744d78d28386438b4a8e8ee32f56718633735057b1b5ddfb5d224d45d98",
+        "text": "Women had a higher rate than Men.",
+        "text_sha256": "sha256:c908adfeb438839c5de5264952b9cd8e5eb68dd51c7e57be7c9bb060e35934f2"
+      }
+    ],
+    "aperture_observation": {
+      "limitations": [],
+      "outcome": {
+        "state": "unknown",
+        "value": null
+      },
+      "search_scope": {
+        "corpus": "prototype-fixture"
+      }
+    },
+    "bundle_hash": "sha256:f39d94812331e748f39cb62e68104d276d483fbbad044b48c41c3ee46a988f37",
+    "bundle_id": "prototype-bundle-1",
+    "contract_b_version": "1.2.0"
+  },
+  "original_claim": "Women had a higher rate than Men.",
+  "proposition": {
+    "fields": {
+      "comparison_direction": "MORE_THAN",
+      "lhs_entity": "Women",
+      "rhs_entity": "Men"
+    },
+    "proposition_id": "claim-1",
+    "semantic_family": "strict_comparison",
+    "text_sha256": "c908adfeb438839c5de5264952b9cd8e5eb68dd51c7e57be7c9bb060e35934f2"
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/camerontjs-dot/claim-audit-lab/prototype/cal-v1-frozen-app-rc0/result.schema.json",
+  "title": "CAL V1 Frozen Prototype RC0 Result Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "prototype_profile",
+    "semantic_implementation_sha",
+    "input_packet_sha256",
+    "original_claim",
+    "proposition",
+    "evidence_world",
+    "result",
+    "contract_c_handoff",
+    "authorization"
+  ],
+  "properties": {
+    "schema": {"const": "cal-v1-frozen-prototype-result-v1"},
+    "prototype_profile": {"const": "cal-v1-frozen-prototype-rc0"},
+    "semantic_implementation_sha": {"const": "a902621e8baea3063dddd7f92ba975aade305464"},
+    "input_packet_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "original_claim": {"type": "string", "minLength": 1},
+    "proposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposition_id", "text_sha256", "semantic_family", "proposition_sha256"],
+      "properties": {
+        "proposition_id": {"type": "string", "minLength": 1},
+        "text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "semantic_family": {
+          "enum": ["strict_comparison", "direct_event_order", "permission_exception", "assertion_scope", "unsupported"]
+        },
+        "proposition_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "evidence_world": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_b_version",
+        "bundle_id",
+        "bundle_hash",
+        "evidence_world_sha256",
+        "audit_context_sha256",
+        "aperture_observation",
+        "admitted_passage_ids"
+      ],
+      "properties": {
+        "contract_b_version": {"type": "string", "minLength": 1},
+        "bundle_id": {"type": "string", "minLength": 1},
+        "bundle_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "evidence_world_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "audit_context_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "aperture_observation": {"type": "object"},
+        "admitted_passage_ids": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conclusion", "failure_code", "non_deciding_passage_ids", "traces"],
+      "properties": {
+        "conclusion": {"enum": ["supported", "contradicted", "not_checkable", "not_composed"]},
+        "failure_code": {
+          "type": ["string", "null"],
+          "enum": [
+            null,
+            "UPSTREAM_APERTURE_INSUFFICIENT",
+            "EVIDENCE_NOT_ADMITTED",
+            "MEASUREMENT_NOT_APPLICABLE",
+            "MEASUREMENT_MISS",
+            "SOURCE_COMPLETION_FAILED",
+            "SEMANTIC_AUTHORITY_UNRESOLVED",
+            "PROPOSITION_BINDING_FAILED",
+            "RELATION_UNRESOLVED",
+            "MIXED_RELATIONS",
+            "COMMON_EVIDENCE_WORLD_MISMATCH",
+            "UNSUPPORTED_SEMANTIC_FAMILY",
+            "RESULT_PROJECTION_FAILED"
+          ]
+        },
+        "non_deciding_passage_ids": {"type": "array", "items": {"type": "string"}},
+        "traces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "passage_id",
+              "measurement_receipt_id",
+              "available_passage_ids",
+              "consumed_passage_ids",
+              "authority_id",
+              "relation",
+              "failure_code",
+              "detail"
+            ],
+            "properties": {
+              "passage_id": {"type": "string", "minLength": 1},
+              "measurement_receipt_id": {"type": ["string", "null"]},
+              "available_passage_ids": {"type": "array", "items": {"type": "string"}},
+              "consumed_passage_ids": {"type": "array", "items": {"type": "string"}},
+              "authority_id": {"type": ["string", "null"]},
+              "relation": {
+                "oneOf": [
+                  {"type": "null"},
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["relation_id", "categorical_relation", "authority_id"],
+                    "properties": {
+                      "relation_id": {"type": "string"},
+                      "categorical_relation": {"enum": ["SUPPORTS", "REFUTES", "IRRELEVANT", "UNRESOLVED"]},
+                      "authority_id": {"type": "string"}
+                    }
+                  }
+                ]
+              },
+              "failure_code": {"type": ["string", "null"]},
+              "detail": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "contract_c_handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "reason"],
+      "properties": {
+        "state": {"const": "not_emitted"},
+        "reason": {"const": "canonical_contract_c_2_authority_not_frozen_in_this_prototype"}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "automatic_action_allowed"],
+      "properties": {
+        "state": {"const": "not_evaluated"},
+        "automatic_action_allowed": {"const": false}
+      }
+    }
+  }
+}
