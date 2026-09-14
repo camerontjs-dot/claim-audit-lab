@@ -1,0 +1,156 @@
+name: Contract C 2.0 Promotion Producer Conformance RC0
+
+on:
+  push:
+    branches:
+      - research/contract-c-2.0-promotion-producer-conformance-rc0-20260913
+    paths:
+      - 'research/contract_c_2_0_promotion_producer_conformance_rc0/**'
+      - '.github/workflows/contract-c-2.0-promotion-producer-conformance-rc0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CAL_BASE: a902621e8baea3063dddd7f92ba975aade305464
+  APPARATUS_PROMOTION: b42c827acb0a9fe65353354d709add0e27bab307
+
+jobs:
+  producer-conformance:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout CAL research gate
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen CAL experiment authority and bounded mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse "$CAL_BASE:src/claim_audit_lab/cal_v1_candidate/engine.py")" = "636734fd1341d2ae721ae9697c7ac7652b89eecc"
+          test "$(git rev-parse "$CAL_BASE:src/claim_audit_lab/cal_v1_candidate/relations.py")" = "e9e9401c92ee11d25a50dbc36e80aeb4c4cd220d"
+          test "$(git hash-object research/contract_c_2_0_promotion_producer_conformance_rc0/PREREGISTRATION.md)" = "1a4cfec752ac4180308f08f19f4aa822653b7b6f"
+          test "$(git hash-object research/contract_c_2_0_promotion_producer_conformance_rc0/materialize.py)" = "f9b22abff561081fb22ade8d5d7227dbdb870d72"
+          test "$(git hash-object research/contract_c_2_0_promotion_producer_conformance_rc0/evaluate.py)" = "a3a6073645819cdb8d58fbbd55a3213c2eff780e"
+          test "$(git hash-object research/contract_c_2_0_promotion_producer_conformance_rc0/FREEZE_RECEIPT.md)" = "ae935f10af2adfc4b8dc1ac41fd67c53d924ddca"
+          changed="$(git diff --name-only "$CAL_BASE"...HEAD)"
+          printf '%s\n' "$changed"
+          if printf '%s\n' "$changed" | grep -Ev '^(research/contract_c_2_0_promotion_producer_conformance_rc0/|\.github/workflows/contract-c-2\.0-promotion-producer-conformance-rc0\.yml$)' | grep -q .; then
+            echo 'C2 promotion producer gate escaped bounded research surface' >&2
+            exit 1
+          fi
+
+      - name: Verify unchanged compose-only materializer boundary
+        shell: bash
+        run: |
+          python - <<'PY'
+          import ast
+          from pathlib import Path
+          path = Path('research/contract_c_2_0_promotion_producer_conformance_rc0/materialize.py')
+          tree = ast.parse(path.read_text())
+          allowed = {
+              'AuditContext', 'AuditResult', 'CategoricalRelation', 'Conclusion',
+              'FailureCode', 'PassageTrace', 'compose'
+          }
+          imported = set()
+          for node in ast.walk(tree):
+              if isinstance(node, ast.ImportFrom) and node.module == 'claim_audit_lab.cal_v1_candidate':
+                  imported.update(alias.name for alias in node.names)
+          assert imported == allowed, (imported, allowed)
+          banned = {
+              'measure_strict_comparison', 'measure_direct_event_order',
+              'complete_and_warrant', 'derive_relation', 'project_contract_c_successor'
+          }
+          names = {node.id for node in ast.walk(tree) if isinstance(node, ast.Name)}
+          assert not (names & banned), names & banned
+          print({'compose_only_imports': sorted(imported)})
+          PY
+
+      - name: Checkout exact locally-qualified Apparatus C2 promotion head
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: ${{ env.APPARATUS_PROMOTION }}
+          path: _apparatus
+          fetch-depth: 0
+
+      - name: Verify exact production candidate authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _apparatus rev-parse HEAD)" = "$APPARATUS_PROMOTION"
+          test "$(git -C _apparatus hash-object schema/contract-c/2.0.0/wire-spec.md)" = "960df40619f0fbeb630c4ea8b1042ed3a293a7a3"
+          test "$(git -C _apparatus hash-object schema/contract-c/2.0.0/schema.json)" = "45ebaa1e5b7342422b4d6a19f897e72de4bb148f"
+          test "$(git -C _apparatus hash-object schema/contract-c/2.0.0/reference/candidate_a_rc1.py)" = "03dbb5b774af523d8e6235bca86b18af5ddad5b0"
+          test "$(git -C _apparatus hash-object schema/contract-c/2.0.0/reference/candidate_a_rc2.py)" = "ad5ed3ac71a8f8680188beb363c9d952c9922b15"
+          test "$(git -C _apparatus hash-object validators/contract_c_rc1_frozen.py)" = "03dbb5b774af523d8e6235bca86b18af5ddad5b0"
+          test "$(git -C _apparatus hash-object validators/contract_c_rc2.py)" = "1d2ecd228cde807138013c33c8675c3003421d3c"
+          test "$(git -C _apparatus hash-object validators/contract_c_v2.py)" = "bb5a381f89828ddc92adfdedcc4e9d98069f436d"
+          test "$(git -C _apparatus hash-object schema/contract-c/versions.json)" = "6e805e274f8b1f491bf0c10735a46962ab91d2d4"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install exact CAL dependencies
+        run: python -m pip install -e '.[dev]'
+
+      - name: Replay frozen CAL RC1 controls
+        run: pytest -q tests/test_cal_v1_candidate.py tests/test_cal_v1_authority_integrity_rc1.py
+
+      - name: Compile frozen promotion-gate apparatus
+        run: |
+          python -m py_compile research/contract_c_2_0_promotion_producer_conformance_rc0/materialize.py
+          python -m py_compile research/contract_c_2_0_promotion_producer_conformance_rc0/evaluate.py
+
+      - name: Execute preregistered C2 production-profile producer conformance
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/contract-c-2.0-promotion-producer-conformance-rc0
+          python research/contract_c_2_0_promotion_producer_conformance_rc0/evaluate.py \
+            _apparatus \
+            build/contract-c-2.0-promotion-producer-conformance-rc0/EVALUATION.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('build/contract-c-2.0-promotion-producer-conformance-rc0/EVALUATION.json').read_text())
+          assert result['research_disposition'] == 'SUPPORTED_C2_PROMOTION_PRODUCER_CONFORMANCE'
+          assert result['failures'] == []
+          assert all(result['checks'].values())
+          assert result['interpretation']['unchanged_materializer_preserved'] is True
+          assert result['interpretation']['new_cal_semantic_judgment_required'] is False
+          assert result['interpretation']['production_adapter_matches_frozen_rc2'] is True
+          assert result['interpretation']['producer_gate_satisfied'] is True
+          assert result['interpretation']['independent_consumer_gate_satisfied_against_production_head'] is False
+          assert result['interpretation']['contract_c_2_released'] is False
+          assert result['interpretation']['production_promotion_merge_authorized'] is False
+          print(json.dumps({
+              'research_disposition': result['research_disposition'],
+              'failures': result['failures'],
+              'producer_gate_satisfied': result['interpretation']['producer_gate_satisfied'],
+          }, sort_keys=True))
+          PY
+
+      - name: Package evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          out=build/contract-c-2.0-promotion-producer-conformance-rc0
+          mkdir -p "$out"
+          cp research/contract_c_2_0_promotion_producer_conformance_rc0/PREREGISTRATION.md "$out/"
+          cp research/contract_c_2_0_promotion_producer_conformance_rc0/FREEZE_RECEIPT.md "$out/"
+          git rev-parse HEAD > "$out/CAL_SHA.txt"
+          git -C _apparatus rev-parse HEAD > "$out/APPARATUS_SHA.txt"
+          printf '%s\n' '34804396671' > "$out/APPARATUS_LOCAL_GATE_RUN.txt"
+          tar -czf contract-c-2.0-promotion-producer-conformance-rc0-${GITHUB_RUN_ID}.tar.gz -C build contract-c-2.0-promotion-producer-conformance-rc0
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: contract-c-2.0-promotion-producer-conformance-rc0-${{ github.run_id }}
+          path: contract-c-2.0-promotion-producer-conformance-rc0-${{ github.run_id }}.tar.gz
+          if-no-files-found: error
