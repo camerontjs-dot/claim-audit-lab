@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/camerontjs-dot/claim-audit-lab/schemas/cal-v1-production-packet-v1.schema.json",
+  "title": "CAL V1 Production Claim Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["original_claim", "proposition", "evidence_world"],
+  "properties": {
+    "original_claim": {"type": "string", "minLength": 1},
+    "proposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposition_id", "text_sha256", "semantic_family", "fields"],
+      "properties": {
+        "proposition_id": {"type": "string", "minLength": 1},
+        "text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "semantic_family": {
+          "enum": [
+            "strict_comparison",
+            "direct_event_order",
+            "permission_exception",
+            "assertion_scope",
+            "unsupported"
+          ]
+        },
+        "fields": {
+          "type": "object",
+          "additionalProperties": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "evidence_world": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_b_version",
+        "bundle_id",
+        "bundle_hash",
+        "aperture_observation",
+        "admitted_passages"
+      ],
+      "properties": {
+        "contract_b_version": {"const": "1.2.0"},
+        "bundle_id": {"type": "string", "minLength": 1},
+        "bundle_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "root_id": {"type": ["string", "null"], "minLength": 1},
+        "child_id": {"type": ["string", "null"], "minLength": 1},
+        "aperture_observation": {"type": "object"},
+        "admitted_passages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["passage_id", "source_id", "text", "text_sha256", "source_sha256"],
+            "properties": {
+              "passage_id": {"type": "string", "minLength": 1},
+              "source_id": {"type": "string", "minLength": 1},
+              "text": {"type": "string", "minLength": 1},
+              "text_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+              "source_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

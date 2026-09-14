@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "claim-audit-lab"
-version = "0.5.0"
+version = "0.6.0"
 description = "Audit whether draft claims are supported by supplied evidence."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -88,6 +88,7 @@ claim_audit_lab = [
     "examples/drafts/*.md",
     "examples/evidence/*.yml",
     "v1/configs/*.yaml",
+    "production_v1/schema/*.json",
     # Inlined into every rendered HTML report so the artifact is one self-contained
     # file with no external requests.
     "assets/*.css",
