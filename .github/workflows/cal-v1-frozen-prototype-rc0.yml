@@ -31,7 +31,7 @@ jobs:
           test "$(git rev-parse "$BASE:src/claim_audit_lab/cal_v1_candidate/models.py")" = "$(git rev-parse HEAD:src/claim_audit_lab/cal_v1_candidate/models.py)"
           changed="$(git diff --name-only "$BASE"...HEAD)"
           printf '%s\n' "$changed"
-          if printf '%s\n' "$changed" | grep -Ev '^(src/claim_audit_lab/cal_v1_candidate/prototype.py|tests/test_cal_v1_frozen_prototype.py|prototype/cal_v1_frozen_app_rc0/|\.github/workflows/cal-v1-frozen-prototype-rc0.yml)$' | grep -q .; then
+          if printf '%s\n' "$changed" | grep -Ev '^(src/claim_audit_lab/cal_v1_candidate/prototype\.py|tests/test_cal_v1_frozen_prototype\.py|prototype/cal_v1_frozen_app_rc0/.*|\.github/workflows/cal-v1-frozen-prototype-rc0\.yml)$' | grep -q .; then
             echo 'prototype escaped bounded research surface' >&2
             exit 1
           fi
