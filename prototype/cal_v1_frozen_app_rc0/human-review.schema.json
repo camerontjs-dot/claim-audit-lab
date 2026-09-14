@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/camerontjs-dot/claim-audit-lab/prototype/cal-v1-frozen-app-rc0/human-review.schema.json",
+  "title": "CAL V1 Frozen Prototype RC0 Human Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "claim_id",
+    "input_packet_sha256",
+    "result_receipt_sha256",
+    "semantic_family_expected_by_operator",
+    "packet_typing_acceptable",
+    "evidence_world_acceptable",
+    "cal_conclusion_acceptable",
+    "failure_localization_useful",
+    "important_evidence_missed_by_cal",
+    "important_evidence_not_in_packet",
+    "operator_intervention",
+    "notes"
+  ],
+  "properties": {
+    "schema": {"const": "cal-v1-frozen-prototype-human-review-v1"},
+    "claim_id": {"type": "string", "minLength": 1},
+    "input_packet_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "result_receipt_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "semantic_family_expected_by_operator": {"type": ["string", "null"]},
+    "packet_typing_acceptable": {"enum": ["yes", "no", "uncertain"]},
+    "evidence_world_acceptable": {"enum": ["yes", "no", "uncertain"]},
+    "cal_conclusion_acceptable": {"enum": ["yes", "no", "uncertain"]},
+    "failure_localization_useful": {"enum": ["yes", "no", "not_applicable"]},
+    "important_evidence_missed_by_cal": {"enum": ["yes", "no", "uncertain"]},
+    "important_evidence_not_in_packet": {"enum": ["yes", "no", "uncertain"]},
+    "operator_intervention": {"type": "string"},
+    "notes": {"type": "string"}
+  }
+}
