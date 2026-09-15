@@ -122,17 +122,24 @@ def test_inspect_json_is_deterministic_and_reports_runtime_authority() -> None:
     assert first.output == second.output
     record = json.loads(first.output)
     assert record["distribution_version"] == "0.6.0"
-    assert record["profile"] == "cal-v1-production-v1"
-    assert record["semantic_implementation_sha"] == ("a902621e8baea3063dddd7f92ba975aade305464")
+    assert record["profile"] == "cal-v1-integration-candidate-v1"
+    assert record["semantic_implementation_sha"] == (
+        "847cc970642bb648dc994b929c2053b5c9d4648c"
+    )
+    assert record["qualified_rc1_parent_sha"] == (
+        "a902621e8baea3063dddd7f92ba975aade305464"
+    )
     assert record["supported_semantic_families"] == [
         "strict_comparison",
         "direct_event_order",
     ]
     assert HEX64.fullmatch(record["packet_schema_sha256"].removeprefix("sha256:"))
+    assert HEX64.fullmatch(record["target_schema_sha256"].removeprefix("sha256:"))
     assert HEX64.fullmatch(record["result_schema_sha256"].removeprefix("sha256:"))
+    assert record["contract_b"]["canonical_execution_surface"] == "run-bundle"
     assert record["contract_c_handoff"] == {
         "owner": "apparatus-contracts",
-        "state": "separate_versioned_handoff",
+        "state": "separate_compose_only_versioned_handoff",
     }
     assert record["authorization"] == {"automatic_action_allowed": False}
 
@@ -239,28 +246,39 @@ def test_run_preserves_input_and_is_byte_deterministic(tmp_path: Path) -> None:
     assert _run(packet_path, first_dir).exit_code == 0
     assert _run(packet_path, second_dir).exit_code == 0
 
-    names = ("input.packet.json", "result.json", "report.md", "manifest.json")
+    names = (
+        "input.packet.json",
+        "audit_context.json",
+        "result.json",
+        "report.md",
+        "manifest.json",
+    )
     first_bytes = {name: (first_dir / name).read_bytes() for name in names}
     second_bytes = {name: (second_dir / name).read_bytes() for name in names}
     assert first_bytes == second_bytes
     assert first_bytes["input.packet.json"] == raw_packet
 
     manifest = json.loads(first_bytes["manifest.json"])
-    assert manifest["files"]["input.packet.json"] == (
-        "sha256:" + hashlib.sha256(raw_packet).hexdigest()
-    )
-    assert manifest["files"]["result.json"] == manifest["result_sha256"]
-    assert manifest["files"]["report.md"] == manifest["report_sha256"]
+    input_sha = "sha256:" + hashlib.sha256(raw_packet).hexdigest()
+    assert manifest["primary_input_sha256"] == input_sha
+    assert manifest["files"]["input.packet.json"] == input_sha
+    for name in ("audit_context.json", "result.json", "report.md"):
+        assert manifest["files"][name] == (
+            "sha256:" + hashlib.sha256(first_bytes[name]).hexdigest()
+        )
     record = json.loads(first_bytes["result.json"])
+    assert record["schema"] == "cal-v1-result-v2"
+    assert record["input"]["mode"] == "compatibility_packet"
     assert record["contract_c_handoff"] == {
         "state": "not_emitted",
         "owner": "apparatus-contracts",
-        "reason": "separate_versioned_handoff_layer",
+        "reason": "separate_compose_only_versioned_handoff_layer",
     }
     assert record["authorization"] == {
         "state": "not_evaluated",
         "automatic_action_allowed": False,
     }
+    assert record["composition"]["rule_id"] == "scoreless-categorical-v1"
     for _name, content in first_bytes.items():
         text = content.decode("utf-8")
         assert str(tmp_path) not in text
