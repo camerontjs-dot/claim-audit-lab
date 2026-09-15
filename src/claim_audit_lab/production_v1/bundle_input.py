@@ -75,9 +75,7 @@ def _validate_target(target: Mapping[str, Any]) -> None:
             raise BundleTargetValidationError(
                 f"proposition has unknown field(s): {', '.join(unexpected)}"
             )
-        raise BundleTargetValidationError(
-            f"proposition is missing field(s): {', '.join(missing)}"
-        )
+        raise BundleTargetValidationError(f"proposition is missing field(s): {', '.join(missing)}")
     proposition_id = _string(proposition.get("proposition_id"), "proposition.proposition_id")
     if proposition_id != claim_id:
         raise BundleTargetValidationError(
@@ -193,7 +191,9 @@ def _aperture_binding(intake: ContractBIntakeView, claim_id: str) -> dict[str, A
     if intake.intake_ledger is not None:
         rows = intake.intake_ledger.get("aperture")
         if isinstance(rows, list):
-            matching = [row for row in rows if isinstance(row, dict) and row.get("claim_id") == claim_id]
+            matching = [
+                row for row in rows if isinstance(row, dict) and row.get("claim_id") == claim_id
+            ]
             if len(matching) > 1:
                 raise BundleTargetValidationError(
                     f"claim_id occurs more than once in Contract B aperture ledger: {claim_id}"

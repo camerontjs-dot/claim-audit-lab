@@ -94,7 +94,10 @@ def test_unresolved_relation_prevents_support_winner() -> None:
 
     assert result.conclusion is Conclusion.NOT_CHECKABLE
     assert result.failure_code is FailureCode.RELATION_UNRESOLVED
-    assert {trace.relation.categorical_relation.value for trace in result.traces if trace.relation} == {
+    categories = {
+        trace.relation.categorical_relation.value for trace in result.traces if trace.relation
+    }
+    assert categories == {
         "SUPPORTS",
         "UNRESOLVED",
     }
