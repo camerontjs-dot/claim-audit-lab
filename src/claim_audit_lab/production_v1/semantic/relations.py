@@ -91,6 +91,19 @@ def _derive_event(context: AuditContext, fields: dict[str, str]) -> CategoricalR
     target_right = _event_tuple(target, "right")
     atom_left = _event_tuple(fields, "left")
     atom_right = _event_tuple(fields, "right")
+    polarities = {
+        target_left[3],
+        target_right[3],
+        atom_left[3],
+        atom_right[3],
+    }
+    if not polarities.issubset({"positive", "negative"}):
+        raise RelationRefusal("PROPOSITION_BINDING_FAILED", "unsupported event polarity")
+    # PR #97 established no deciding semantics for negative event polarity.
+    # Preserve that bounded result explicitly rather than allowing tuple matching
+    # to turn a negative-event atom into SUPPORTS or REFUTES.
+    if "negative" in polarities:
+        return CategoricalRelation.UNRESOLVED
     target_relation = target["temporal_relation"].upper()
     atom_relation = fields.get("temporal_relation", "").upper()
     if target_relation not in {"BEFORE", "AFTER"} or atom_relation not in {
