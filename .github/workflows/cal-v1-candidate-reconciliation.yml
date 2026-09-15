@@ -1,0 +1,68 @@
+name: CAL V1 candidate reconciliation
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/cal-v1-candidate-reconciliation.yml"
+      - "research/cal_v1_candidate_reconciliation_20260914/**"
+  workflow_dispatch:
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reconciliation apparatus with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+
+      - name: Materialize exact frozen candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          CANDIDATE=4d1b8909f7e2e52c33cf99632be8565f2685f948
+          EXPECTED_TREE=cb51b4e1e20292af2890257e995a8cd199f88a20
+          BASE=32275a239b68af383a56bca843e28cbc1e343976
+          git fetch --no-tags origin "$CANDIDATE" "$BASE"
+          test "$(git rev-parse "$CANDIDATE^{tree}")" = "$EXPECTED_TREE"
+          git cat-file -e "$BASE^{commit}"
+          git worktree add --detach "$RUNNER_TEMP/cal-v1-candidate" "$CANDIDATE"
+          cd "$RUNNER_TEMP/cal-v1-candidate"
+          test "$(git rev-parse HEAD)" = "$CANDIDATE"
+          test "$(git rev-parse HEAD^{tree})" = "$EXPECTED_TREE"
+          git cat-file -e "$BASE^{commit}"
+          git show "$BASE:tests/v1/fixtures/traces/01-supported-verbatim.json" >/dev/null
+
+      - name: Install exact candidate environment
+        working-directory: ${{ runner.temp }}/cal-v1-candidate
+        run: |
+          uv sync --all-extras
+          uv run python -m spacy download en_core_web_sm
+
+      - name: Reproduce formerly failing migration test with required history
+        working-directory: ${{ runner.temp }}/cal-v1-candidate
+        run: uv run python -m pytest -q tests/production/test_historical_golden_version_migration.py
+
+      - name: Run canonical public pytest suite
+        working-directory: ${{ runner.temp }}/cal-v1-candidate
+        run: uv run python -m pytest -q
+
+      - name: Ruff lint
+        working-directory: ${{ runner.temp }}/cal-v1-candidate
+        run: uv run python -m ruff check src tests
+
+      - name: Ruff format
+        working-directory: ${{ runner.temp }}/cal-v1-candidate
+        run: uv run python -m ruff format --check src
+
+      - name: Mypy
+        working-directory: ${{ runner.temp }}/cal-v1-candidate
+        run: uv run python -m mypy
