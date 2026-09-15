@@ -1,0 +1,36 @@
+{
+  "schema": "cal-v1-integration-candidate-record-v1",
+  "status": "CAL_V1_INTEGRATION_CANDIDATE_FROZEN",
+  "profile": "cal-v1-integration-candidate-v1",
+  "failed_exact_subject": {
+    "branch": "promotion/cal-v1-integration-candidate-20260915",
+    "commit": "f851489a96b6cf89e662ba821303651c89307c11",
+    "tree": "a2daeb8f00052e3d2f3ce1a0f4412e42c8fd9331",
+    "reason": "ci_equivalent_ruff_check_and_format_failed"
+  },
+  "frozen_implementation": {
+    "repository": "camerontjs-dot/claim-audit-lab",
+    "branch": "promotion/cal-v1-integration-candidate-20260915-ruff-successor",
+    "commit": "80835a57e121c66d22c68f349abf8e318de0e232",
+    "tree": "e6b218109233a2908e2cd558c714fb05cf9ac254"
+  },
+  "semantic_implementation_sha": "847cc970642bb648dc994b929c2053b5c9d4648c",
+  "qualified_rc1_parent_sha": "a902621e8baea3063dddd7f92ba975aade305464",
+  "contract_b": {
+    "version": "1.2.0",
+    "production_lock": "c314e53bd91c0736aa4370a364673b069aceb43e"
+  },
+  "supported_semantic_families": [
+    "strict_comparison",
+    "direct_event_order"
+  ],
+  "hosted_ci": "NOT_RUN_RUNNER_QUOTA_UNAVAILABLE",
+  "production_release": false,
+  "merge_authorized": false,
+  "automatic_action_authorized": false,
+  "contract_c": {
+    "state": "separate_compose_only_versioned_handoff",
+    "inherited_rc1_producer_conformance": false,
+    "requalification": "required_against_this_successor"
+  }
+}

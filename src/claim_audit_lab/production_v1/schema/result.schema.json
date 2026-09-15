@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/camerontjs-dot/claim-audit-lab/schemas/cal-v1-result-v1.schema.json",
+  "title": "CAL V1 Production Result Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "profile",
+    "distribution_version",
+    "semantic_implementation_sha",
+    "input_packet_sha256",
+    "original_claim",
+    "proposition",
+    "evidence_world",
+    "result",
+    "contract_c_handoff",
+    "authorization"
+  ],
+  "properties": {
+    "schema": {"const": "cal-v1-result-v1"},
+    "profile": {"const": "cal-v1-production-v1"},
+    "distribution_version": {"const": "0.6.0"},
+    "semantic_implementation_sha": {
+      "const": "a902621e8baea3063dddd7f92ba975aade305464"
+    },
+    "input_packet_sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "original_claim": {"type": "string", "minLength": 1},
+    "proposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposition_id", "text_sha256", "semantic_family", "proposition_sha256"],
+      "properties": {
+        "proposition_id": {"type": "string", "minLength": 1},
+        "text_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "semantic_family": {
+          "enum": [
+            "strict_comparison",
+            "direct_event_order",
+            "permission_exception",
+            "assertion_scope",
+            "unsupported"
+          ]
+        },
+        "proposition_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "evidence_world": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_b_version",
+        "bundle_id",
+        "bundle_hash",
+        "evidence_world_sha256",
+        "audit_context_sha256",
+        "aperture_observation",
+        "admitted_passage_ids"
+      ],
+      "properties": {
+        "contract_b_version": {"const": "1.2.0"},
+        "bundle_id": {"type": "string", "minLength": 1},
+        "bundle_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "evidence_world_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "audit_context_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "aperture_observation": {"type": "object"},
+        "admitted_passage_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "conclusion",
+        "failure_code",
+        "deciding_passage_ids",
+        "non_deciding_passage_ids",
+        "traces"
+      ],
+      "properties": {
+        "conclusion": {"enum": ["supported", "contradicted", "not_checkable", "not_composed"]},
+        "failure_code": {
+          "type": ["string", "null"],
+          "enum": [
+            null,
+            "UPSTREAM_APERTURE_INSUFFICIENT",
+            "EVIDENCE_NOT_ADMITTED",
+            "MEASUREMENT_NOT_APPLICABLE",
+            "MEASUREMENT_MISS",
+            "SOURCE_COMPLETION_FAILED",
+            "SEMANTIC_AUTHORITY_UNRESOLVED",
+            "PROPOSITION_BINDING_FAILED",
+            "RELATION_UNRESOLVED",
+            "MIXED_RELATIONS",
+            "COMMON_EVIDENCE_WORLD_MISMATCH",
+            "UNSUPPORTED_SEMANTIC_FAMILY",
+            "RESULT_PROJECTION_FAILED"
+          ]
+        },
+        "deciding_passage_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "non_deciding_passage_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        },
+        "traces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "passage_id",
+              "measurement",
+              "authority",
+              "relation",
+              "failure_code",
+              "detail"
+            ],
+            "properties": {
+              "passage_id": {"type": "string", "minLength": 1},
+              "measurement": {
+                "oneOf": [
+                  {"type": "null"},
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "receipt_id",
+                      "instrument_id",
+                      "instrument_version",
+                      "available_passage_ids",
+                      "consumed_passage_ids",
+                      "raw_measurement",
+                      "diagnostics"
+                    ],
+                    "properties": {
+                      "receipt_id": {"type": "string", "minLength": 1},
+                      "instrument_id": {"type": "string", "minLength": 1},
+                      "instrument_version": {"type": "string", "minLength": 1},
+                      "available_passage_ids": {"type": "array", "items": {"type": "string"}},
+                      "consumed_passage_ids": {"type": "array", "items": {"type": "string"}},
+                      "raw_measurement": {"type": "object"},
+                      "diagnostics": {
+                        "type": "object",
+                        "additionalProperties": {"type": "string"}
+                      }
+                    }
+                  }
+                ]
+              },
+              "authority": {
+                "oneOf": [
+                  {"type": "null"},
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "authority_id",
+                      "audit_context_sha256",
+                      "evidence_world_sha256",
+                      "status",
+                      "reason",
+                      "atom"
+                    ],
+                    "properties": {
+                      "authority_id": {"type": "string", "minLength": 1},
+                      "audit_context_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                      "evidence_world_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                      "status": {"type": "string", "minLength": 1},
+                      "reason": {"type": "string", "minLength": 1},
+                      "atom": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "atom_id",
+                          "semantic_family",
+                          "audit_context_sha256",
+                          "evidence_world_sha256",
+                          "passage_id",
+                          "source_id",
+                          "fields",
+                          "measurement_receipt_id"
+                        ],
+                        "properties": {
+                          "atom_id": {"type": "string", "minLength": 1},
+                          "semantic_family": {"type": "string", "minLength": 1},
+                          "audit_context_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                          "evidence_world_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                          "passage_id": {"type": "string", "minLength": 1},
+                          "source_id": {"type": "string", "minLength": 1},
+                          "fields": {
+                            "type": "object",
+                            "additionalProperties": {"type": "string"}
+                          },
+                          "measurement_receipt_id": {"type": "string", "minLength": 1}
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "relation": {
+                "oneOf": [
+                  {"type": "null"},
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "relation_id",
+                      "categorical_relation",
+                      "audit_context_sha256",
+                      "evidence_world_sha256",
+                      "proposition_sha256",
+                      "authority_id",
+                      "passage_id"
+                    ],
+                    "properties": {
+                      "relation_id": {"type": "string", "minLength": 1},
+                      "categorical_relation": {
+                        "enum": ["SUPPORTS", "REFUTES", "IRRELEVANT", "UNRESOLVED"]
+                      },
+                      "audit_context_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                      "evidence_world_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                      "proposition_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+                      "authority_id": {"type": "string", "minLength": 1},
+                      "passage_id": {"type": "string", "minLength": 1}
+                    }
+                  }
+                ]
+              },
+              "failure_code": {"type": ["string", "null"], "minLength": 1},
+              "detail": {"type": ["string", "null"]}
+            }
+          }
+        }
+      }
+    },
+    "contract_c_handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "owner", "reason"],
+      "properties": {
+        "state": {"const": "not_emitted"},
+        "owner": {"const": "apparatus-contracts"},
+        "reason": {"const": "separate_versioned_handoff_layer"}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "automatic_action_allowed"],
+      "properties": {
+        "state": {"const": "not_evaluated"},
+        "automatic_action_allowed": {"const": false}
+      }
+    }
+  }
+}
