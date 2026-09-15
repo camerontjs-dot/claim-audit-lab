@@ -65,7 +65,7 @@ def _validate_target(target: Mapping[str, Any]) -> None:
                 f"target has unknown field(s): {', '.join(unexpected)}"
             )
         raise BundleTargetValidationError(f"target is missing field(s): {', '.join(missing)}")
-    _string(target.get("claim_id"), "claim_id")
+    claim_id = _string(target.get("claim_id"), "claim_id")
     proposition = _object(target.get("proposition"), "proposition")
     required = {"proposition_id", "text_sha256", "semantic_family", "fields"}
     if set(proposition) != required:
@@ -79,6 +79,10 @@ def _validate_target(target: Mapping[str, Any]) -> None:
             f"proposition is missing field(s): {', '.join(missing)}"
         )
     proposition_id = _string(proposition.get("proposition_id"), "proposition.proposition_id")
+    if proposition_id != claim_id:
+        raise BundleTargetValidationError(
+            "proposition.proposition_id must equal the exact Contract B claim_id"
+        )
     text_sha256 = _string(proposition.get("text_sha256"), "proposition.text_sha256")
     family_value = _string(proposition.get("semantic_family"), "proposition.semantic_family")
     try:
