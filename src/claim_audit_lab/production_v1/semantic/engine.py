@@ -83,6 +83,24 @@ def _unsupported_result(context: AuditContext) -> AuditResult:
     )
 
 
+def _failure_without_relation(traces: tuple[PassageTrace, ...]) -> FailureCode:
+    """Localize the deepest observed stage failure when no relation was derived."""
+    observed = {trace.failure_code for trace in traces if trace.failure_code is not None}
+    for code in (
+        FailureCode.PROPOSITION_BINDING_FAILED,
+        FailureCode.COMMON_EVIDENCE_WORLD_MISMATCH,
+        FailureCode.SEMANTIC_AUTHORITY_UNRESOLVED,
+        FailureCode.SOURCE_COMPLETION_FAILED,
+        FailureCode.MEASUREMENT_MISS,
+        FailureCode.MEASUREMENT_NOT_APPLICABLE,
+        FailureCode.EVIDENCE_NOT_ADMITTED,
+        FailureCode.UPSTREAM_APERTURE_INSUFFICIENT,
+    ):
+        if code in observed:
+            return code
+    return FailureCode.NO_DECIDING_RELATION
+
+
 def compose(context: AuditContext, traces: tuple[PassageTrace, ...]) -> AuditResult:
     relations = tuple(trace.relation for trace in traces if trace.relation is not None)
     for relation in relations:
@@ -95,7 +113,13 @@ def compose(context: AuditContext, traces: tuple[PassageTrace, ...]) -> AuditRes
                 "COMMON_EVIDENCE_WORLD_MISMATCH", "cross-world relation composition"
             )
     categories = {relation.categorical_relation for relation in relations}
-    if CategoricalRelation.SUPPORTS in categories and CategoricalRelation.REFUTES in categories:
+    # PR #97 established that any unresolved relation prevents a terminal
+    # support/refute conclusion. This check intentionally precedes conflict and
+    # support/refute selection so unresolved evidence cannot be silently ignored.
+    if CategoricalRelation.UNRESOLVED in categories:
+        conclusion = Conclusion.NOT_CHECKABLE
+        failure = FailureCode.RELATION_UNRESOLVED
+    elif CategoricalRelation.SUPPORTS in categories and CategoricalRelation.REFUTES in categories:
         conclusion = Conclusion.NOT_CHECKABLE
         failure = FailureCode.MIXED_RELATIONS
     elif CategoricalRelation.SUPPORTS in categories:
@@ -104,9 +128,12 @@ def compose(context: AuditContext, traces: tuple[PassageTrace, ...]) -> AuditRes
     elif CategoricalRelation.REFUTES in categories:
         conclusion = Conclusion.CONTRADICTED
         failure = None
+    elif relations:
+        conclusion = Conclusion.NOT_CHECKABLE
+        failure = FailureCode.NO_DECIDING_RELATION
     else:
         conclusion = Conclusion.NOT_CHECKABLE
-        failure = FailureCode.RELATION_UNRESOLVED
+        failure = _failure_without_relation(traces)
     return AuditResult(
         conclusion=conclusion,
         failure_code=failure,
