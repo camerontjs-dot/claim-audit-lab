@@ -131,6 +131,7 @@ def _view() -> ContractBIntakeView:
         content_hash=source_hash,
         retrieved_for=["claim-1"],
         retrieval_query=claim_text,
+        retrieval_rank=1,
         notes="fixture",
     )
     manifest = CBBundleManifest(
