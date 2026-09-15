@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, cast
 
+from claim_audit_lab.contracts.cb_models import CBClaim, CBPassage
 from claim_audit_lab.contracts.factual_context import ContractBIntakeView, load_contract_b_intake
 from claim_audit_lab.production_v1 import CONTRACT_B_VERSION
 from claim_audit_lab.production_v1.semantic.models import (
@@ -125,7 +126,7 @@ def target_sha256(raw_bytes: bytes) -> str:
     return f"sha256:{hashlib.sha256(raw_bytes).hexdigest()}"
 
 
-def _claim_for_target(intake: ContractBIntakeView, claim_id: str):
+def _claim_for_target(intake: ContractBIntakeView, claim_id: str) -> CBClaim:
     matches = [claim for claim in intake.bundle.claims if claim.claim_id == claim_id]
     if len(matches) != 1:
         raise BundleTargetValidationError(
@@ -134,8 +135,8 @@ def _claim_for_target(intake: ContractBIntakeView, claim_id: str):
     return matches[0]
 
 
-def _canonical_passages(intake: ContractBIntakeView) -> dict[str, Any]:
-    result: dict[str, Any] = {}
+def _canonical_passages(intake: ContractBIntakeView) -> dict[str, CBPassage]:
+    result: dict[str, CBPassage] = {}
     for rows in intake.bundle.passages.values():
         for passage in rows:
             if passage.passage_id in result:
@@ -170,8 +171,8 @@ def _extension_admitted_ids(intake: ContractBIntakeView, claim_id: str) -> tuple
     return tuple(ids)
 
 
-def _base_admitted_ids(claim: Any) -> tuple[str, ...]:
-    # Legacy/extension-absent fallback preserves canonical claim evidence links.
+def _base_admitted_ids(claim: CBClaim) -> tuple[str, ...]:
+    # Extension-absent fallback preserves canonical claim evidence links.
     # Absence is still carried explicitly in the aperture record and never means
     # a closed evidence world.
     ordered: list[str] = []
