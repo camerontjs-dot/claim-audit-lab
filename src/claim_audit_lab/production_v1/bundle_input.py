@@ -29,6 +29,7 @@ class PreparedContractBInput:
     context: AuditContext
     intake: ContractBIntakeView
     target: dict[str, Any]
+    target_bytes: bytes
     target_sha256: str
     intake_snapshot: dict[str, Any]
 
@@ -298,6 +299,7 @@ def prepare_contract_b_input(bundle_dir: Path, target_path: Path) -> PreparedCon
         context=context,
         intake=intake,
         target=target,
+        target_bytes=raw_target,
         target_sha256=target_sha256(raw_target),
         intake_snapshot=_intake_snapshot(intake),
     )
