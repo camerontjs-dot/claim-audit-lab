@@ -1,0 +1,101 @@
+name: Current CAL to Contract C2 producer conformance RC2
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/research-contract-c2-current-cal-producer-conformance-rc2.yml"
+      - "research/contract_c2_current_cal_producer_conformance_rc2/**"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Checkout exact Contract C2 authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: b42c827acb0a9fe65353354d709add0e27bab307
+          path: deps/c2
+      - name: Checkout independently frozen resolver authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 1d33e0612befcf8016816197c90c062373796df9
+          path: deps/resolver
+
+      - name: Install exact CAL research head
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+
+      - name: Verify fixed authority inputs
+        run: |
+          set -euo pipefail
+          test "$(git -C deps/c2 rev-parse HEAD)" = "b42c827acb0a9fe65353354d709add0e27bab307"
+          test "$(git -C deps/resolver rev-parse HEAD)" = "1d33e0612befcf8016816197c90c062373796df9"
+          test "$(git -C deps/resolver hash-object research/contract_c2_current_cal_resolver_successor_rc0/RESOLVER.json)" = "1a408246fd3bef0758a958ae716b44ea74bc0689"
+          test "$(git hash-object research/contract_c2_current_cal_producer_conformance_rc1/materialize.py)" = "ef32fa4fca52a2bb7fe2896b378f9b6fdef0dfde"
+          python - <<'PY'
+          from claim_audit_lab.production_v1 import SEMANTIC_IMPLEMENTATION_SHA
+          assert SEMANTIC_IMPLEMENTATION_SHA == "847cc970642bb648dc994b929c2053b5c9d4648c"
+          PY
+
+      - name: Reconfirm current semantic controls
+        run: |
+          python -m pytest -q \
+            tests/production/test_convergence_semantics.py \
+            tests/production/test_rc1_semantic_behavior.py \
+            tests/production/test_semantic_blob_identity.py
+
+      - name: Execute final producer-authority binding gate
+        run: |
+          set -euo pipefail
+          mkdir -p build/contract-c2-current-cal-producer-conformance-rc2
+          python research/contract_c2_current_cal_producer_conformance_rc2/evaluate.py \
+            --c2 deps/c2 \
+            --resolver deps/resolver \
+            --out build/contract-c2-current-cal-producer-conformance-rc2/EVALUATION.json
+
+      - name: Record final producer receipt
+        if: always()
+        run: |
+          mkdir -p build/contract-c2-current-cal-producer-conformance-rc2
+          python - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          out = Path("build/contract-c2-current-cal-producer-conformance-rc2")
+          def git(cwd, *args):
+              return subprocess.check_output(["git", "-C", cwd, *args], text=True).strip()
+          record = {
+              "schema": "current-cal-contract-c2-producer-conformance-rc2-execution-v1",
+              "cal_research_head": git(".", "rev-parse", "HEAD"),
+              "contract_c2_head": git("deps/c2", "rev-parse", "HEAD"),
+              "resolver_authority": git("deps/resolver", "rev-parse", "HEAD"),
+              "resolver_blob": git("deps/resolver", "hash-object", "research/contract_c2_current_cal_resolver_successor_rc0/RESOLVER.json"),
+              "materializer_blob": git(".", "hash-object", "research/contract_c2_current_cal_producer_conformance_rc1/materialize.py"),
+          }
+          p = out / "EVALUATION.json"
+          if p.exists():
+              record["evaluation_sha256"] = "sha256:" + hashlib.sha256(p.read_bytes()).hexdigest()
+          (out / "EXECUTION.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
+          PY
+
+      - name: Upload final producer evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: current-cal-contract-c2-producer-conformance-rc2
+          path: build/contract-c2-current-cal-producer-conformance-rc2
+          if-no-files-found: error
