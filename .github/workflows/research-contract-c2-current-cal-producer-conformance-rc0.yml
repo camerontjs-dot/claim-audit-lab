@@ -1,0 +1,109 @@
+name: Current CAL to Contract C2 producer conformance RC0
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/research-contract-c2-current-cal-producer-conformance-rc0.yml"
+      - "research/contract_c2_current_cal_producer_conformance_rc0/**"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Checkout exact Contract C2 promotion subject
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: b42c827acb0a9fe65353354d709add0e27bab307
+          path: deps/apparatus-c2
+
+      - name: Checkout exact immutable predecessor resolver
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 43b571464734325277374ee81098553fb7c1b944
+          path: deps/apparatus-resolver
+
+      - name: Install exact CAL candidate
+        run: |
+          set -euo pipefail
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+
+      - name: Verify frozen identities
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          test "$(git -C deps/apparatus-c2 rev-parse HEAD)" = "b42c827acb0a9fe65353354d709add0e27bab307"
+          test "$(git -C deps/apparatus-resolver rev-parse HEAD)" = "43b571464734325277374ee81098553fb7c1b944"
+          test "$(git hash-object research/contract_c2_current_cal_producer_conformance_rc0/materialize.py)" = "1824b48fc979f24219acf3edf76a2477d87eab22"
+          python - <<'PY'
+          from claim_audit_lab.production_v1 import SEMANTIC_IMPLEMENTATION_SHA
+          assert SEMANTIC_IMPLEMENTATION_SHA == "847cc970642bb648dc994b929c2053b5c9d4648c"
+          print(SEMANTIC_IMPLEMENTATION_SHA)
+          PY
+
+      - name: Reconfirm current CAL convergence controls
+        run: |
+          set -euo pipefail
+          python -m pytest -q \
+            tests/production/test_convergence_semantics.py \
+            tests/production/test_rc1_semantic_behavior.py \
+            tests/production/test_semantic_blob_identity.py
+
+      - name: Execute preregistered producer conformance
+        run: |
+          set -euo pipefail
+          mkdir -p build/contract-c2-current-cal-producer-conformance-rc0
+          python research/contract_c2_current_cal_producer_conformance_rc0/evaluate.py \
+            --apparatus deps/apparatus-c2 \
+            --resolver deps/apparatus-resolver \
+            --materializer-blob 1824b48fc979f24219acf3edf76a2477d87eab22 \
+            --out build/contract-c2-current-cal-producer-conformance-rc0/EVALUATION.json
+
+      - name: Record immutable execution identities
+        if: always()
+        run: |
+          mkdir -p build/contract-c2-current-cal-producer-conformance-rc0
+          python - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          out = Path("build/contract-c2-current-cal-producer-conformance-rc0")
+          def git(cwd, *args):
+              return subprocess.check_output(["git", "-C", cwd, *args], text=True).strip()
+          record = {
+              "schema": "current-cal-contract-c2-producer-conformance-rc0-execution-v1",
+              "cal_research_head": git(".", "rev-parse", "HEAD"),
+              "cal_tree": git(".", "rev-parse", "HEAD^{tree}"),
+              "contract_c2_head": git("deps/apparatus-c2", "rev-parse", "HEAD"),
+              "resolver_head": git("deps/apparatus-resolver", "rev-parse", "HEAD"),
+              "materializer_blob": git(".", "hash-object", "research/contract_c2_current_cal_producer_conformance_rc0/materialize.py"),
+          }
+          evaluation = out / "EVALUATION.json"
+          if evaluation.exists():
+              record["evaluation_sha256"] = "sha256:" + hashlib.sha256(evaluation.read_bytes()).hexdigest()
+          (out / "EXECUTION.json").write_text(json.dumps(record, sort_keys=True, indent=2) + "\n")
+          PY
+
+      - name: Upload conformance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: current-cal-contract-c2-producer-conformance-rc0
+          path: build/contract-c2-current-cal-producer-conformance-rc0
+          if-no-files-found: error
