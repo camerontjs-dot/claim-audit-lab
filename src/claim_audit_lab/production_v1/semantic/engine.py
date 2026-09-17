@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import TypeAlias
 
 from .authority import AuthorityReceipt, AuthorityRefusal
-from .measurement_ledger import MeasurementLedger, MeasurementLedgerRefusal
+from .measurement_ledger import MeasurementLedger
 from .measurements import MeasurementReceipt
 from .models import (
     AuditContext,
