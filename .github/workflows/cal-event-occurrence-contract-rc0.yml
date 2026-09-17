@@ -1,0 +1,31 @@
+name: Research - CAL event occurrence contract RC0
+on:
+  push:
+    branches: [research/cal-event-occurrence-contract-rc0-20260917]
+  pull_request:
+    paths: ["research/event_occurrence_contract_rc0/**", "tests/research/test_event_occurrence_contract_*", ".github/workflows/cal-event-occurrence-contract-rc0.yml"]
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify frozen apparatus
+        run: |
+          git cat-file -e 73b175a7c7fce5b08ca33243722246fd2c2373ed^{commit}
+          git diff --exit-code 73b175a7c7fce5b08ca33243722246fd2c2373ed -- research/event_occurrence_contract_rc0/PREREGISTRATION.md research/event_occurrence_contract_rc0/apparatus.py tests/research/test_event_occurrence_contract_apparatus_rc0.py tests/research/test_event_occurrence_contract_candidate_rc0.py
+          git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 -- src/
+      - run: uv run python -m pytest -q tests/research/test_event_occurrence_contract_apparatus_rc0.py
+      - run: uv run python -m pytest -q tests/research/test_event_occurrence_contract_candidate_rc0.py
+      - run: uv run python -m pytest -q
+      - run: uv run python -m ruff check research/event_occurrence_contract_rc0 tests/research/test_event_occurrence_contract_*.py
+      - run: uv run python -m ruff format --check research/event_occurrence_contract_rc0 tests/research/test_event_occurrence_contract_*.py
+      - run: uv run python -m mypy
