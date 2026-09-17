@@ -60,6 +60,8 @@ class MeasurementLedger:
         receipt: MeasurementReceipt,
     ) -> MeasurementLedger:
         self.verify(context)
+        if receipt.audit_context_sha256 != context.context_sha256:
+            raise MeasurementLedgerRefusal("measurement audit-context mismatch")
         try:
             verify_measurement_receipt(context, receipt)
         except ValueError as exc:
