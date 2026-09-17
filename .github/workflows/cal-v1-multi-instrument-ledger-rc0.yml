@@ -48,6 +48,7 @@ jobs:
           git cat-file -e a002ae6ccba7af544de978c0b55bc1a3c37fdb89^{commit}
           git cat-file -e 95ea3a73d2ec26ef36c7fb653b8eb56c4839413c^{commit}
           git cat-file -e bf1be56ae63a1891179018d05c56ab5d661dd3b9^{commit}
+          git cat-file -e 8af6664bcaff19677b8367641ac942acb8bbce94^{commit}
 
       - name: Run frozen multi-instrument ledger and authority falsifiers
         run: uv run python -m pytest -q tests/production/test_multi_instrument_ledger_rc0.py
