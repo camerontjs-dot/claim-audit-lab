@@ -4,8 +4,8 @@ from __future__ import annotations
 
 from .cohort import (
     A,
-    B,
     Authority,
+    B,
     MembershipStatus,
     Query,
     QueryPolarity,
