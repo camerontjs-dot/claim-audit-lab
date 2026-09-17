@@ -334,7 +334,7 @@ def spacy_dependency(text: str) -> Observation:
             return Observation.unresolved("missing subject")
         subject = "_".join(token.text.casefold() for token in candidates[0].subtree)
 
-    negated = any(child.dep_ == "neg" for child in root.children) or " not " in f" {compact.casefold()} "
+    negated = (\n        any(child.dep_ == "neg" for child in root.children)\n        or " not " in f" {compact.casefold()} "\n    )
     if modal.lower_ == "may" and negated:
         return Observation.unresolved("may-not ambiguity")
     if modal.lower_ in {"must", "shall"}:
