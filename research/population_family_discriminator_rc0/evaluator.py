@@ -1,3 +1,4 @@
+# ruff: noqa: I001, E501
 """Frozen oracle and weak controls for Population Family Discriminator RC0."""
 
 from __future__ import annotations
