@@ -1,0 +1,236 @@
+{
+  "cases": [
+    {
+      "case_id": "SC-01",
+      "claim_id": "claim-sc-01",
+      "claim_text": "Alpha reported a higher rate than Beta.",
+      "expected_family": "strict_comparison",
+      "expected_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "alpha",
+        "rhs_entity": "beta"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "SC-02",
+      "claim_id": "claim-sc-02",
+      "claim_text": "North Plant recorded a lower yield than South Plant.",
+      "expected_family": "strict_comparison",
+      "expected_fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "north plant",
+        "rhs_entity": "south plant"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "SC-03",
+      "claim_id": "claim-sc-03",
+      "claim_text": "Alpha exceeded Beta by 12 units.",
+      "expected_family": "strict_comparison",
+      "expected_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "alpha",
+        "rhs_entity": "beta"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "SC-04",
+      "claim_id": "claim-sc-04",
+      "claim_text": "Alpha trailed Beta by 2 points.",
+      "expected_family": "strict_comparison",
+      "expected_fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "alpha",
+        "rhs_entity": "beta"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "SC-05",
+      "claim_id": "claim-sc-05",
+      "claim_text": "Alpha produced fewer than Beta.",
+      "expected_family": "strict_comparison",
+      "expected_fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "alpha",
+        "rhs_entity": "beta"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "SC-06",
+      "claim_id": "claim-sc-06",
+      "claim_text": "Alpha   reported a higher rate than Beta.",
+      "expected_family": "strict_comparison",
+      "expected_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "alpha",
+        "rhs_entity": "beta"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "SC-07",
+      "claim_id": "claim-sc-07",
+      "claim_text": "Beta reported a lower rate than Alpha.",
+      "expected_family": "strict_comparison",
+      "expected_fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "beta",
+        "rhs_entity": "alpha"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "EV-01",
+      "claim_id": "claim-ev-01",
+      "claim_text": "Alice reviewed dossier before Bob signed release.",
+      "expected_family": "direct_event_order",
+      "expected_fields": {
+        "left_object": "dossier",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "alice",
+        "right_object": "release",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bob",
+        "temporal_relation": "BEFORE"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "EV-02",
+      "claim_id": "claim-ev-02",
+      "claim_text": "Bob signed release after Alice reviewed dossier.",
+      "expected_family": "direct_event_order",
+      "expected_fields": {
+        "left_object": "release",
+        "left_polarity": "positive",
+        "left_predicate": "sign",
+        "left_subject": "bob",
+        "right_object": "dossier",
+        "right_polarity": "positive",
+        "right_predicate": "review",
+        "right_subject": "alice",
+        "temporal_relation": "AFTER"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "EV-03",
+      "claim_id": "claim-ev-03",
+      "claim_text": "Alice did not review dossier before Bob signed release.",
+      "expected_family": "direct_event_order",
+      "expected_fields": {
+        "left_object": "dossier",
+        "left_polarity": "negative",
+        "left_predicate": "review",
+        "left_subject": "alice",
+        "right_object": "release",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bob",
+        "temporal_relation": "BEFORE"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "EV-04",
+      "claim_id": "claim-ev-04",
+      "claim_text": "North Team inspected batch after South Team verified record.",
+      "expected_family": "direct_event_order",
+      "expected_fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "inspect",
+        "left_subject": "north team",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "verify",
+        "right_subject": "south team",
+        "temporal_relation": "AFTER"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "EV-05",
+      "claim_id": "claim-ev-05",
+      "claim_text": "Alice reviewed dossier before Bob signed release",
+      "expected_family": "direct_event_order",
+      "expected_fields": {
+        "left_object": "dossier",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "alice",
+        "right_object": "release",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bob",
+        "temporal_relation": "BEFORE"
+      },
+      "expected_status": "ESTABLISHED"
+    },
+    {
+      "case_id": "UR-01",
+      "claim_id": "claim-ur-01",
+      "claim_text": "Alpha had a higher rate.",
+      "expected_family": null,
+      "expected_fields": null,
+      "expected_status": "EXTRACTION_UNRESOLVED"
+    },
+    {
+      "case_id": "UR-02",
+      "claim_id": "claim-ur-02",
+      "claim_text": "Alice reviewed dossier before the deadline.",
+      "expected_family": null,
+      "expected_fields": null,
+      "expected_status": "EXTRACTION_UNRESOLVED"
+    },
+    {
+      "case_id": "UR-03",
+      "claim_id": "claim-ur-03",
+      "claim_text": "Before Alice reviewed dossier, Bob signed release.",
+      "expected_family": null,
+      "expected_fields": null,
+      "expected_status": "EXTRACTION_UNRESOLVED"
+    },
+    {
+      "case_id": "UR-04",
+      "claim_id": "claim-ur-04",
+      "claim_text": "Alpha had a higher rate than Beta before Gamma signed report.",
+      "expected_family": null,
+      "expected_fields": null,
+      "expected_status": "EXTRACTION_UNRESOLVED"
+    },
+    {
+      "case_id": "OJ-01",
+      "claim_id": "claim-oj-01",
+      "claim_text": "The sky is blue.",
+      "expected_family": null,
+      "expected_fields": null,
+      "expected_status": "OUT_OF_JURISDICTION"
+    },
+    {
+      "case_id": "OJ-02",
+      "claim_id": "claim-oj-02",
+      "claim_text": "Mira may approve release.",
+      "expected_family": null,
+      "expected_fields": null,
+      "expected_status": "OUT_OF_JURISDICTION"
+    },
+    {
+      "case_id": "OJ-03",
+      "claim_id": "claim-oj-03",
+      "claim_text": "No inspectors may enter Zone C.",
+      "expected_family": null,
+      "expected_fields": null,
+      "expected_status": "OUT_OF_JURISDICTION"
+    }
+  ],
+  "frozen_before_implementation_run": true,
+  "schema": "cal-v1-claim-compiler-rc0-corpus-v1"
+}
