@@ -1,4 +1,5 @@
 """Direct consumer candidate for CAL Deontic Norm Family Contract RC0."""
+
 from __future__ import annotations
 
 from .cohort import Mode, Norm, Relation
