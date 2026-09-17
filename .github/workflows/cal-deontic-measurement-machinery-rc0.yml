@@ -46,11 +46,14 @@ jobs:
       - name: Run candidate machinery discrimination
         run: uv run python -m pytest -q tests/research/test_deontic_measurement_machinery_candidate_rc0.py
 
-      - name: Run focused Ruff
-        run: uv run python -m ruff check research/deontic_measurement_machinery_rc0 tests/research/test_deontic_measurement_machinery_apparatus_rc0.py tests/research/test_deontic_measurement_machinery_candidate_rc0.py
+      - name: Print candidate machinery comparison
+        run: uv run python -m research.deontic_measurement_machinery_rc0.report
+
+      - name: Run focused Ruff on newly exposed candidate code
+        run: uv run python -m ruff check research/deontic_measurement_machinery_rc0/candidate.py research/deontic_measurement_machinery_rc0/report.py
 
       - name: Run candidate format check
-        run: uv run python -m ruff format --check research/deontic_measurement_machinery_rc0/candidate.py
+        run: uv run python -m ruff format --check research/deontic_measurement_machinery_rc0/candidate.py research/deontic_measurement_machinery_rc0/report.py
 
       - name: Run strict mypy
         run: uv run python -m mypy
