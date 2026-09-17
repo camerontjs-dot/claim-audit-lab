@@ -1,0 +1,51 @@
+name: Research - CAL scalar value contract RC0
+
+on:
+  push:
+    branches:
+      - research/cal-scalar-value-contract-rc0-20260917
+  pull_request:
+    paths:
+      - "research/scalar_value_contract_rc0/**"
+      - "tests/research/test_scalar_value_contract_*"
+      - ".github/workflows/cal-scalar-value-contract-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify frozen apparatus
+        run: |
+          git cat-file -e 607ec560fd53bd56279193a8d39a48b6f80e1012^{commit}
+          git cat-file -e b622a46c652234987ce9842c6da8cf12401b13fd^{commit}
+          git diff --exit-code b622a46c652234987ce9842c6da8cf12401b13fd -- \
+            research/scalar_value_contract_rc0/PREREGISTRATION.md \
+            research/scalar_value_contract_rc0/apparatus.py \
+            tests/research/test_scalar_value_contract_apparatus_rc0.py \
+            tests/research/test_scalar_value_contract_candidate_rc0.py
+          git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 -- src/
+      - name: Run evaluator controls
+        run: uv run python -m pytest -q tests/research/test_scalar_value_contract_apparatus_rc0.py
+      - name: Run candidate falsifiers
+        run: uv run python -m pytest -q tests/research/test_scalar_value_contract_candidate_rc0.py
+      - name: Run full repository suite
+        run: uv run python -m pytest -q
+      - name: Ruff
+        run: uv run python -m ruff check research/scalar_value_contract_rc0 tests/research/test_scalar_value_contract_*.py
+      - name: Format
+        run: uv run python -m ruff format --check research/scalar_value_contract_rc0 tests/research/test_scalar_value_contract_*.py
+      - name: Mypy
+        run: uv run python -m mypy
