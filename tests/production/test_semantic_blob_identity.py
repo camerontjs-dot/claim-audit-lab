@@ -13,7 +13,7 @@ SEMANTIC_ROOT = PROJECT_ROOT / "src" / "claim_audit_lab" / "production_v1" / "se
 # Preserve the predecessor identity explicitly rather than rewriting its history.
 KERNEL_RC0_AUTHORITY_BLOB = "3cfcfb8cc3b3a8860e119edfbe22a4d684650a86"
 M3_AUTHORITY_SUCCESSOR_BLOB = "09761aab9e04deca724fd213a9295fc93cc3be52"
-M3_MEASUREMENT_LEDGER_BLOB = "967743ad1d38aff91f06aa7a693dbfaa26f0b7cf"
+M3_MEASUREMENT_LEDGER_BLOB = "5e01c0a3246a90fcc42219da78b7d8a1ed5d5f74"
 
 M3_SUCCESSOR_BLOBS = {
     "authority.py": M3_AUTHORITY_SUCCESSOR_BLOB,
