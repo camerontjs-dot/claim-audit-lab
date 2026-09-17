@@ -1,3 +1,4 @@
+# ruff: noqa: I001, E501
 from research.deontic_norm_contract_rc0.candidate import relate
 from research.deontic_norm_contract_rc0.cohort import CASES, CASE_BY_ID, METAMORPHIC_PAIRS
 from research.deontic_norm_contract_rc0.evaluator import oracle_relation
