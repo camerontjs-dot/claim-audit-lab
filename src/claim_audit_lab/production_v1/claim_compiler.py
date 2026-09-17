@@ -10,13 +10,13 @@ from __future__ import annotations
 import hashlib
 import re
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum
 from typing import Any
 
 from .semantic.models import SemanticFamily, TypedProposition, canonical_json_bytes, stable_id
 
 
-class CompilerStatus(str, Enum):
+class CompilerStatus(StrEnum):
     ESTABLISHED = "ESTABLISHED"
     AMBIGUOUS = "AMBIGUOUS"
     EXTRACTION_UNRESOLVED = "EXTRACTION_UNRESOLVED"
