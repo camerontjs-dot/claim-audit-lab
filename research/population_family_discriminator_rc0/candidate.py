@@ -34,9 +34,7 @@ def relate(authority: Authority, query: Query) -> Relation:
             and authority.status is MembershipStatus.MEMBER
         ):
             return (
-                Relation.SUPPORTS
-                if query.polarity is QueryPolarity.MEMBER_OF
-                else Relation.REFUTES
+                Relation.SUPPORTS if query.polarity is QueryPolarity.MEMBER_OF else Relation.REFUTES
             )
         if (
             authority.population == B
@@ -44,9 +42,7 @@ def relate(authority: Authority, query: Query) -> Relation:
             and authority.status is MembershipStatus.NON_MEMBER
         ):
             return (
-                Relation.REFUTES
-                if query.polarity is QueryPolarity.MEMBER_OF
-                else Relation.SUPPORTS
+                Relation.REFUTES if query.polarity is QueryPolarity.MEMBER_OF else Relation.SUPPORTS
             )
 
     if edge is SubsetEdge.B_SUB_A:
@@ -56,9 +52,7 @@ def relate(authority: Authority, query: Query) -> Relation:
             and authority.status is MembershipStatus.MEMBER
         ):
             return (
-                Relation.SUPPORTS
-                if query.polarity is QueryPolarity.MEMBER_OF
-                else Relation.REFUTES
+                Relation.SUPPORTS if query.polarity is QueryPolarity.MEMBER_OF else Relation.REFUTES
             )
         if (
             authority.population == A
@@ -66,9 +60,7 @@ def relate(authority: Authority, query: Query) -> Relation:
             and authority.status is MembershipStatus.NON_MEMBER
         ):
             return (
-                Relation.REFUTES
-                if query.polarity is QueryPolarity.MEMBER_OF
-                else Relation.SUPPORTS
+                Relation.REFUTES if query.polarity is QueryPolarity.MEMBER_OF else Relation.SUPPORTS
             )
 
     return Relation.UNRESOLVED
