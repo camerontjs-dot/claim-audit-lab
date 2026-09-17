@@ -1,0 +1,59 @@
+name: Research - CAL population measurement machinery RC0
+
+on:
+  push:
+    branches:
+      - research/cal-population-measurement-machinery-rc0-20260917
+  pull_request:
+    paths:
+      - "research/population_measurement_machinery_rc0/**"
+      - "tests/research/test_population_measurement_machinery_*"
+      - ".github/workflows/cal-population-measurement-machinery-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discriminate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install exact repository environment
+        run: uv sync --all-extras
+
+      - name: Install declared spaCy model
+        run: uv run python -m spacy download en_core_web_sm
+
+      - name: Verify Gate-0 parent and production-source isolation
+        run: |
+          git cat-file -e 2cc293e170bfbfd4ad0c64534114e900e5512995^{commit}
+          git cat-file -e 3abb817e6d6aeea4498a8495e3b4d5b54f984be6^{commit}
+          git diff --exit-code 2cc293e170bfbfd4ad0c64534114e900e5512995 -- src/
+
+      - name: Run frozen evaluator controls
+        run: uv run python -m pytest -q tests/research/test_population_measurement_machinery_apparatus_rc0.py
+
+      - name: Run candidate machinery discrimination
+        run: uv run python -m pytest -q tests/research/test_population_measurement_machinery_candidate_rc0.py
+
+      - name: Print candidate machinery comparison
+        run: uv run python -m research.population_measurement_machinery_rc0.report
+
+      - name: Run focused Ruff on candidate code
+        run: uv run python -m ruff check research/population_measurement_machinery_rc0/candidate.py research/population_measurement_machinery_rc0/report.py
+
+      - name: Run candidate format check
+        run: uv run python -m ruff format --check research/population_measurement_machinery_rc0/candidate.py research/population_measurement_machinery_rc0/report.py
+
+      - name: Run strict mypy
+        run: uv run python -m mypy
