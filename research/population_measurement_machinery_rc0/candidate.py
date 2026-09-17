@@ -200,9 +200,7 @@ def spacy_dependency(text: str) -> Observation:
     if belongs is not None:
         entity = _entity(belongs.group("entity"))
         assert entity is not None
-        return Observation.claimed(
-            MembershipAtom(entity, GROUP_A, MembershipStatus.MEMBER)
-        )
+        return Observation.claimed(MembershipAtom(entity, GROUP_A, MembershipStatus.MEMBER))
 
     among = re.fullmatch(
         r"(?P<entity>Alice|Bob) is among the qualified technicians",
@@ -234,9 +232,7 @@ def spacy_dependency(text: str) -> Observation:
         re.IGNORECASE,
     )
     if subset_match is not None:
-        return Observation.claimed(
-            SubsetAtom(STERILE_TECHNICIANS, TRAINED_PERSONNEL)
-        )
+        return Observation.claimed(SubsetAtom(STERILE_TECHNICIANS, TRAINED_PERSONNEL))
 
     each = re.fullmatch(
         r"Each sterile technician is trained personnel",
@@ -244,9 +240,7 @@ def spacy_dependency(text: str) -> Observation:
         re.IGNORECASE,
     )
     if each is not None:
-        return Observation.claimed(
-            SubsetAtom(STERILE_TECHNICIANS, TRAINED_PERSONNEL)
-        )
+        return Observation.claimed(SubsetAtom(STERILE_TECHNICIANS, TRAINED_PERSONNEL))
 
     serves = re.fullmatch(
         r"(?P<entity>Alice|Bob) serves as a reviewer",
@@ -269,9 +263,7 @@ def spacy_dependency(text: str) -> Observation:
             return Observation.claimed(MembershipAtom(entity, population, status))
 
     if "technicians" in low and "trained personnel" in low:
-        return Observation.claimed(
-            SubsetAtom(STERILE_TECHNICIANS, TRAINED_PERSONNEL)
-        )
+        return Observation.claimed(SubsetAtom(STERILE_TECHNICIANS, TRAINED_PERSONNEL))
 
     if _MEMBERSHIP_CUES.search(compact) is not None:
         return Observation.unresolved("population cue unresolved by dependency path")
