@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
+from typing import TypeAlias
 
 from .authority import AuthorityReceipt, AuthorityRefusal
+from .measurement_ledger import MeasurementLedger, MeasurementLedgerRefusal
 from .measurements import MeasurementReceipt
 from .models import (
     AuditContext,
@@ -13,6 +16,9 @@ from .models import (
 )
 from .plugins import DEFAULT_FAMILY_REGISTRY, SemanticFamilyRegistry
 from .relations import BoundRelation, RelationRefusal
+
+ShadowMeasurementFn: TypeAlias = Callable[[AuditContext, str], MeasurementReceipt]
+MeasurementObserver: TypeAlias = Callable[[str, MeasurementReceipt], None]
 
 
 @dataclass(frozen=True, slots=True)
@@ -49,6 +55,79 @@ class AuditResult:
     def non_deciding_passage_ids(self) -> tuple[str, ...]:
         deciding = set(self.deciding_passage_ids)
         return tuple(trace.passage_id for trace in self.traces if trace.passage_id not in deciding)
+
+
+@dataclass(frozen=True, slots=True)
+class ShadowMeasurementInstrument:
+    instrument_id: str
+    measurement_fn: ShadowMeasurementFn
+
+    def __post_init__(self) -> None:
+        if not self.instrument_id.strip():
+            raise ValueError("shadow instrument identity must be non-empty")
+
+
+@dataclass(frozen=True, slots=True)
+class ShadowObservationFailure:
+    instrument_id: str
+    passage_id: str
+    detail: str
+
+
+@dataclass(frozen=True, slots=True)
+class ObservedAuditResult:
+    audit_result: AuditResult
+    measurement_ledger: MeasurementLedger
+    shadow_failures: tuple[ShadowObservationFailure, ...]
+
+
+class _ShadowObservationCollector:
+    def __init__(
+        self,
+        context: AuditContext,
+        shadow_instruments: tuple[ShadowMeasurementInstrument, ...],
+    ) -> None:
+        ids = tuple(instrument.instrument_id for instrument in shadow_instruments)
+        if len(ids) != len(set(ids)):
+            raise ValueError("duplicate shadow instrument identity")
+        self._context = context
+        self._shadow_instruments = shadow_instruments
+        self._ledger = MeasurementLedger.empty(context)
+        self._failures: list[ShadowObservationFailure] = []
+
+    @property
+    def ledger(self) -> MeasurementLedger:
+        return self._ledger
+
+    @property
+    def failures(self) -> tuple[ShadowObservationFailure, ...]:
+        return tuple(
+            sorted(
+                self._failures,
+                key=lambda failure: (
+                    failure.instrument_id,
+                    failure.passage_id,
+                    failure.detail,
+                ),
+            )
+        )
+
+    def observe(self, passage_id: str, primary_receipt: MeasurementReceipt) -> None:
+        # The qualified primary receipt is part of the observation record, but it
+        # remains the only receipt returned to the semantic authority path.
+        self._ledger = self._ledger.append(self._context, primary_receipt)
+        for instrument in self._shadow_instruments:
+            try:
+                shadow_receipt = instrument.measurement_fn(self._context, passage_id)
+                self._ledger = self._ledger.append(self._context, shadow_receipt)
+            except Exception as exc:
+                self._failures.append(
+                    ShadowObservationFailure(
+                        instrument_id=instrument.instrument_id,
+                        passage_id=passage_id,
+                        detail=f"{type(exc).__name__}: {exc}",
+                    )
+                )
 
 
 def _failure_from_authority(code: str) -> FailureCode:
@@ -142,10 +221,11 @@ def compose(context: AuditContext, traces: tuple[PassageTrace, ...]) -> AuditRes
     )
 
 
-def audit(
+def _audit_impl(
     context: AuditContext,
     *,
-    registry: SemanticFamilyRegistry = DEFAULT_FAMILY_REGISTRY,
+    registry: SemanticFamilyRegistry,
+    measurement_observer: MeasurementObserver | None,
 ) -> AuditResult:
     context.verify()
     family = context.proposition.semantic_family
@@ -155,6 +235,8 @@ def audit(
     traces: list[PassageTrace] = []
     for passage in context.evidence_world.admitted_passages:
         receipt = plugin.measure(context, passage.passage_id)
+        if measurement_observer is not None:
+            measurement_observer(passage.passage_id, receipt)
         raw = receipt.raw_measurement()
         if raw.get("status") != "CLAIMED":
             code = (
@@ -210,3 +292,34 @@ def audit(
             continue
         traces.append(PassageTrace(passage.passage_id, receipt, authority, relation, None, None))
     return compose(context, tuple(traces))
+
+
+def audit(
+    context: AuditContext,
+    *,
+    registry: SemanticFamilyRegistry = DEFAULT_FAMILY_REGISTRY,
+) -> AuditResult:
+    return _audit_impl(
+        context,
+        registry=registry,
+        measurement_observer=None,
+    )
+
+
+def audit_observed(
+    context: AuditContext,
+    *,
+    registry: SemanticFamilyRegistry = DEFAULT_FAMILY_REGISTRY,
+    shadow_instruments: tuple[ShadowMeasurementInstrument, ...] = (),
+) -> ObservedAuditResult:
+    collector = _ShadowObservationCollector(context, shadow_instruments)
+    result = _audit_impl(
+        context,
+        registry=registry,
+        measurement_observer=collector.observe,
+    )
+    return ObservedAuditResult(
+        audit_result=result,
+        measurement_ledger=collector.ledger,
+        shadow_failures=collector.failures,
+    )
