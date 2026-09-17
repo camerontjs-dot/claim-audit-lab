@@ -1,0 +1,29 @@
+name: Research - CAL typed spatial relation discriminator RC0
+on:
+  push:
+    branches: [research/cal-typed-spatial-relation-discriminator-rc0-20260917]
+  pull_request:
+    paths: ["research/typed_spatial_relation_discriminator_rc0/**", "tests/research/test_typed_spatial_relation_discriminator_*", ".github/workflows/cal-typed-spatial-relation-discriminator-rc0.yml"]
+permissions: {contents: read}
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - run: |
+          git cat-file -e 2afa6b50052e56658fcd2e93c2919fa16980ba57^{commit}
+          git diff --exit-code 2afa6b50052e56658fcd2e93c2919fa16980ba57 -- research/typed_spatial_relation_discriminator_rc0/PREREGISTRATION.md research/typed_spatial_relation_discriminator_rc0/apparatus.py tests/research/test_typed_spatial_relation_discriminator_apparatus_rc0.py tests/research/test_typed_spatial_relation_discriminator_candidate_rc0.py
+          git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 -- src/
+      - run: uv run python -m pytest -q tests/research/test_typed_spatial_relation_discriminator_apparatus_rc0.py
+      - run: uv run python -m pytest -q tests/research/test_typed_spatial_relation_discriminator_candidate_rc0.py
+      - run: uv run python -m pytest -q
+      - run: uv run python -m ruff check research/typed_spatial_relation_discriminator_rc0 tests/research/test_typed_spatial_relation_discriminator_*.py
+      - run: uv run python -m ruff format --check research/typed_spatial_relation_discriminator_rc0 tests/research/test_typed_spatial_relation_discriminator_*.py
+      - run: uv run python -m mypy
