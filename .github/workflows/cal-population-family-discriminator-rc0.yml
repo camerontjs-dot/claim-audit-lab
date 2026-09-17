@@ -1,0 +1,82 @@
+name: Research - CAL population family discriminator RC0
+
+on:
+  push:
+    branches:
+      - research/cal-population-family-discriminator-rc0-20260917
+  pull_request:
+    paths:
+      - "research/population_family_discriminator_rc0/**"
+      - "tests/research/test_population_family_discriminator_*"
+      - ".github/workflows/cal-population-family-discriminator-rc0.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cal-population-family-discriminator-rc0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install exact repository environment
+        run: uv sync --all-extras
+
+      - name: Install declared spaCy model
+        run: uv run python -m spacy download en_core_web_sm
+
+      - name: Verify parent, historical authority, and frozen apparatus
+        shell: bash
+        run: |
+          set -euo pipefail
+          git cat-file -e 607ec560fd53bd56279193a8d39a48b6f80e1012^{commit}
+          git cat-file -e c623af35bee3b5f685c9a44e6d91ced006b2d690^{commit}
+          git cat-file -e 80522f9d7f53e4e0804c18f2551e2a2fcb146640^{commit}
+          git diff --exit-code 80522f9d7f53e4e0804c18f2551e2a2fcb146640 -- \
+            research/population_family_discriminator_rc0/PREREGISTRATION.md \
+            research/population_family_discriminator_rc0/cohort.py \
+            research/population_family_discriminator_rc0/evaluator.py \
+            tests/research/test_population_family_discriminator_apparatus_rc0.py \
+            tests/research/test_population_family_discriminator_candidate_rc0.py
+
+      - name: Guard production source
+        run: git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 -- src/
+
+      - name: Run frozen population evaluator controls
+        run: uv run python -m pytest -q tests/research/test_population_family_discriminator_apparatus_rc0.py
+
+      - name: Run frozen population candidate falsifiers
+        run: uv run python -m pytest -q tests/research/test_population_family_discriminator_candidate_rc0.py
+
+      - name: Run full repository pytest suite
+        run: uv run python -m pytest -q
+
+      - name: Run focused Ruff lint
+        run: >-
+          uv run python -m ruff check
+          research/population_family_discriminator_rc0
+          tests/research/test_population_family_discriminator_apparatus_rc0.py
+          tests/research/test_population_family_discriminator_candidate_rc0.py
+
+      - name: Run focused Ruff format
+        run: >-
+          uv run python -m ruff format --check
+          research/population_family_discriminator_rc0
+          tests/research/test_population_family_discriminator_apparatus_rc0.py
+          tests/research/test_population_family_discriminator_candidate_rc0.py
+
+      - name: Run mypy
+        run: uv run python -m mypy
