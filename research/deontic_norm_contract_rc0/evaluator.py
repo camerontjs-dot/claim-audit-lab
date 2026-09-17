@@ -1,3 +1,4 @@
+# ruff: noqa: I001
 """Frozen oracle and weak controls for Deontic Norm Family Contract RC0."""
 from __future__ import annotations
 
