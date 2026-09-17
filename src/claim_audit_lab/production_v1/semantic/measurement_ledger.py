@@ -67,9 +67,7 @@ class MeasurementLedger:
         except ValueError as exc:
             raise MeasurementLedgerRefusal(str(exc)) from exc
         if any(existing.receipt_id == receipt.receipt_id for existing in self.receipts):
-            raise MeasurementLedgerRefusal(
-                f"duplicate measurement receipt: {receipt.receipt_id}"
-            )
+            raise MeasurementLedgerRefusal(f"duplicate measurement receipt: {receipt.receipt_id}")
         receipts = _canonical_receipts((*self.receipts, receipt))
         material = _ledger_material(
             self.audit_context_sha256,
