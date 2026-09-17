@@ -1,0 +1,78 @@
+name: Research - CAL V1 shadow observation runtime RC0
+
+on:
+  push:
+    branches:
+      - research/cal-v1-shadow-observation-runtime-rc0-20260917
+  pull_request:
+    paths:
+      - "src/claim_audit_lab/production_v1/semantic/engine.py"
+      - "src/claim_audit_lab/production_v1/semantic/measurement_ledger.py"
+      - "tests/production/test_shadow_observation_runtime_rc0.py"
+      - "tests/production/test_semantic_blob_identity.py"
+      - "docs/research/CAL_V1_SHADOW_OBSERVATION_RUNTIME_RC0.md"
+      - ".github/workflows/cal-v1-shadow-observation-runtime-rc0.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cal-v1-shadow-observation-runtime-rc0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install exact repository environment
+        run: uv sync --all-extras
+
+      - name: Install declared spaCy model
+        run: uv run python -m spacy download en_core_web_sm
+
+      - name: Verify frozen M3 parent, preregistration, and M4 falsifier history
+        shell: bash
+        run: |
+          set -euo pipefail
+          git cat-file -e 5b16313855b83940f8b09ffaed4baccc15f4a51f^{commit}
+          git cat-file -e 72a8492b0cf9f6451304ec00c28908f23b33d8a2^{commit}
+          git cat-file -e e961f1fb3eaaca71d7a5266ddb377700e2d90951^{commit}
+
+      - name: Run frozen M4 shadow isolation falsifiers
+        run: uv run python -m pytest -q tests/production/test_shadow_observation_runtime_rc0.py
+
+      - name: Run inherited M1 M2 M3 semantic Contract B compiler and authority gates
+        run: >-
+          uv run python -m pytest -q
+          tests/production/test_semantic_plugin_registry.py
+          tests/production/test_semantic_blob_identity.py
+          tests/production/test_rc1_semantic_behavior.py
+          tests/production/test_rc1_authority_integrity.py
+          tests/production/test_convergence_semantics.py
+          tests/production/test_contract_b_integration_candidate.py
+          tests/production/test_target_identity_binding.py
+          tests/production/test_claim_compiler_rc0.py
+          tests/production/test_multi_instrument_ledger_rc0.py
+
+      - name: Run full repository pytest suite
+        run: uv run python -m pytest -q
+
+      - name: Run Ruff lint
+        run: uv run python -m ruff check src tests
+
+      - name: Run Ruff format check
+        run: uv run python -m ruff format --check src
+
+      - name: Run mypy
+        run: uv run python -m mypy
