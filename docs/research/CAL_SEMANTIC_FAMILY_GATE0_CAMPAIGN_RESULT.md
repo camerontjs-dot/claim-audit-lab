@@ -18,18 +18,36 @@ This synthesis updates the hypotheses in `CAL_SEMANTIC_FAMILY_ROADMAP_RC0.md` us
 | `event_occurrence` | SUPPORTED WITH BOUNDS | `eaef6c19dbe897e70af89b24d8599cfa05c335a1` | `35279644753` | keep occurrence separate from direct event order |
 | `attribute_state` | SUPPORTED WITH BOUNDS | `2b4ae5c52f301f16de50719cb11e61919766aa94` | `35279662121` | narrow closed functional-attribute family justified; reject generic SPO escape hatch |
 | `typed_binary_relation` | SUPPORTED WITH BOUNDS | `7463ada3358f24fa5bb53fe82631a69064346bf3` | `35279675459` | closed predicate contracts with explicit inverse/symmetry metadata are sufficient for tested atomic relations |
-| `spatial_relation` | SEPARATE FAMILY NOT JUSTIFIED in tested domain | `7463ada3358f24fa5bb53fe82631a69064346bf3` | `35279675459` | tested atomic spatial predicates collapse into `typed_binary_relation`; richer spatial algebra remains open |
+| `spatial_relation` | SEPARATE ATOMIC FAMILY NOT JUSTIFIED YET | `7463ada3358f24fa5bb53fe82631a69064346bf3` | `35279675459` | tested atomic spatial predicates collapse into `typed_binary_relation`; retain as a recombination/integration hypothesis for richer spatial cases |
 | `causal_relation` | SUPPORTED WITH STRONG BOUNDARY | `0bfcfe532bd7dcbe0d9049c0e73173f40d05a415` | `35279704215` | explicit typed causal assertions can form a family; causal inference from observations remains unqualified |
-| `quantitative_change` | ATOMIC FAMILY NOT JUSTIFIED in tested domain | `309f9ccbb91a24096f3f825e9dc2d8f8ee6aa88a` | `35279720507` | exact change derives from two scalar states + temporal order; prefer composition |
+| `quantitative_change` | SEPARATE ATOMIC FAMILY NOT JUSTIFIED YET | `309f9ccbb91a24096f3f825e9dc2d8f8ee6aa88a` | `35279720507` | exact change derives from two scalar states + temporal order; retain as a composition/integration hypothesis for richer change claims |
 
 ## What the campaign changed
 
-The initial roadmap was intentionally permissive. The campaign removed two proposed atomic families rather than merely confirming everything:
+The initial roadmap was intentionally permissive. The campaign reduced two proposed atomic-family hypotheses rather than merely confirming everything:
 
 1. `spatial_relation` did not require its own atomic plugin for the tested closed predicates. `ADJACENT_TO`, `NORTH_OF`/`SOUTH_OF`, and `IN`/`CONTAINS` were handled by the same typed-binary relation algebra using explicit predicate metadata.
 2. `quantitative_change` did not require its own atomic family for exact absolute increase/decrease/unchanged/delta. The semantics were reconstructable from two exact scalar states with matching bindings and temporal order.
 
-That is evidence for a smaller kernel than the initial candidate list.
+That is evidence for a smaller **atomic kernel under the tested bounds**. It is not evidence that the corresponding capabilities should be deleted, permanently excluded, or prevented from receiving specialized integration machinery.
+
+## Back-burner recombination and integration hypotheses
+
+Gate 0 tested isolated typed semantics. It did **not** test whether a phenomenon that is unnecessary as an atomic family becomes useful or necessary when propositions are combined, when derived results need their own provenance identity, or when downstream contracts require a first-class representation.
+
+Accordingly:
+
+- `spatial_relation` remains an active back-burner hypothesis for richer cases such as containment chains, topology, frames of reference, metric geometry, spatial-temporal combinations, and cross-relation composition. The next question is not "should spatial exist?" but "does a closed typed-binary relation plus composition remain sufficient once those cases are exercised?"
+- `quantitative_change` remains an active composition/integration hypothesis for percentage change, percentage-point change, ratios, rates, compound change, uncertainty propagation, approximate states, unit conversion, and multi-step temporal derivation. A dedicated composition operator, derived-proposition type, or provenance-bearing adapter may eventually be justified even if a standalone atomic family is not.
+- The same rule applies to every Gate-0 boundary. Combination tests may split a family, collapse two families, or justify specialized integration machinery without changing the atomic taxonomy.
+
+A capability therefore has three distinct possible homes:
+
+1. an **atomic semantic family** when it needs its own proposition contract and relation algebra;
+2. a **modifier/composition/integration module** when it combines or qualifies already-warranted atoms;
+3. a **deferred hypothesis** when current evidence cannot yet distinguish those options.
+
+"Not justified as a separate atomic family" must not be read as "ruled out."
 
 ## Cross-cutting modifier position remains unchanged
 
@@ -56,7 +74,7 @@ The campaign also preserved tooling failures rather than relabeling them as sema
 
 That last failure exposed a shared harness defect. The successor workflows retained exact `git diff` guards over frozen apparatus/tests while restricting Ruff/format to the newly exposed candidate. No evaluator material was reformatted to manufacture green results.
 
-No Gate-0 family candidate produced a preserved semantic counterexample against its final frozen contract. That is bounded evidence about these typed contracts, not evidence that natural language, source completion, or the full pipeline will behave equivalently.
+No Gate-0 family candidate produced a preserved semantic counterexample against its final frozen contract. That is bounded evidence about these typed contracts, not evidence that natural language, source completion, combinations, or the full pipeline will behave equivalently.
 
 ## Smallest next pressure-test stage
 
@@ -68,12 +86,14 @@ The next stage should test the smallest set of cross-family machinery that can f
 2. select a small representative set of supported families spanning different algebras: `deontic_norm`, `population_membership`, `scalar_value`, `event_occurrence`, `attribute_state`, and `typed_binary_relation`;
 3. for each, test source completion/warrant independently from the Gate-0 relation consumer;
 4. attack modifier binding with swaps, omissions, contradictions, nested scope, and unsupported language;
-5. use M4 shadow observation to test secondary measurements without granting them authority;
-6. only after warrant survives, wire one family at a time through plugin registration, claim compiler, Contract B intake, native CAL trace, Contract C, and Decision Engine;
-7. retain `causal_relation` behind a stronger gate because explicit assertion interpretation is far weaker than causal inference;
-8. treat quantitative change as a composition test over scalar receipts instead of a new family.
+5. run **paired combination discriminators** where the atomic result may be insufficient, including scalar + temporal → quantitative change, typed relation + containment/topology → spatial behavior, membership + deontic, occurrence + order, and state + temporal applicability;
+6. for each paired case, compare at least two architectures: generic composition over existing atoms versus a specialized family/module. Require a concrete loss, unsafe inference, or provenance/contract failure before promoting the specialized form;
+7. use M4 shadow observation to test secondary measurements without granting them authority;
+8. only after warrant and combination behavior survive, wire one family or composition module at a time through plugin registration, claim compiler, Contract B intake, native CAL trace, Contract C, and Decision Engine;
+9. retain `causal_relation` behind a stronger gate because explicit assertion interpretation is far weaker than causal inference;
+10. keep `spatial_relation` and `quantitative_change` on the active test backlog even while they remain outside the atomic production-family set.
 
-A later EDR can select the production taxonomy after these operational tests. Gate 0 alone is not that EDR.
+A later EDR can select the production taxonomy and integration modules after these operational and combination tests. Gate 0 alone is not that EDR.
 
 ## Terminal campaign state
 
@@ -91,4 +111,4 @@ The smallest evidence-supported atomic set after this campaign is:
 - `typed_binary_relation`;
 - explicit-assertion `causal_relation`, held behind a stronger downstream gate.
 
-`spatial_relation` and `quantitative_change` are not separate atomic families under the tested bounds.
+`spatial_relation` and `quantitative_change` are **not separate atomic families under the tested bounds**, but both remain active recombination/integration hypotheses for later pressure testing.
