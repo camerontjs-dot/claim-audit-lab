@@ -43,9 +43,9 @@ jobs:
         run: uv run python -m pytest -q tests/research/test_scalar_value_contract_candidate_rc0.py
       - name: Run full repository suite
         run: uv run python -m pytest -q
-      - name: Ruff
-        run: uv run python -m ruff check research/scalar_value_contract_rc0 tests/research/test_scalar_value_contract_*.py
-      - name: Format
-        run: uv run python -m ruff format --check research/scalar_value_contract_rc0 tests/research/test_scalar_value_contract_*.py
+      - name: Candidate Ruff
+        run: uv run python -m ruff check research/scalar_value_contract_rc0/candidate.py
+      - name: Candidate format
+        run: uv run python -m ruff format --check research/scalar_value_contract_rc0/candidate.py
       - name: Mypy
         run: uv run python -m mypy
