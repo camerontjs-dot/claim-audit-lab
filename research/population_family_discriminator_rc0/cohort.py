@@ -1,3 +1,4 @@
+# ruff: noqa: E501
 """Frozen typed cohort for CAL Population Family Discriminator RC0."""
 
 from __future__ import annotations
