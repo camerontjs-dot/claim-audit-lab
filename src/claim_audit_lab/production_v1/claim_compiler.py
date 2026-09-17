@@ -52,9 +52,7 @@ class CompilerObservation:
         return cls(instrument_id, family, "UNRESOLVED", (), detail)
 
     @classmethod
-    def not_applicable(
-        cls, instrument_id: str, family: SemanticFamily
-    ) -> CompilerObservation:
+    def not_applicable(cls, instrument_id: str, family: SemanticFamily) -> CompilerObservation:
         return cls(instrument_id, family, "NOT_APPLICABLE")
 
     def field_map(self) -> dict[str, str]:
@@ -230,9 +228,7 @@ def _comparison_tokens(text: str) -> CompilerObservation:
         try:
             than_i = lowered.index("than", cue_i + 1)
         except ValueError:
-            return CompilerObservation.unresolved(
-                instrument, family, "comparison cue missing than"
-            )
+            return CompilerObservation.unresolved(instrument, family, "comparison cue missing than")
         right_tokens = tokens[than_i + 1 :]
 
     right = _leading_entity(right_tokens)
@@ -285,9 +281,7 @@ def _event_side_regex(text: str) -> dict[str, str] | None:
     }
 
 
-def _event_fields(
-    left: dict[str, str], relation: str, right: dict[str, str]
-) -> dict[str, str]:
+def _event_fields(left: dict[str, str], relation: str, right: dict[str, str]) -> dict[str, str]:
     return {
         "left_subject": left["subject"],
         "left_predicate": left["predicate"],
@@ -333,11 +327,7 @@ def _event_side_tokens(tokens: list[str]) -> dict[str, str] | None:
         return None
     remainder = [token.casefold() for token in tokens[index:]]
     polarity = "positive"
-    if (
-        len(remainder) >= 3
-        and remainder[:2] == ["did", "not"]
-        and remainder[2] in _BASE_VERBS
-    ):
+    if len(remainder) >= 3 and remainder[:2] == ["did", "not"] and remainder[2] in _BASE_VERBS:
         predicate = remainder[2]
         index += 3
         polarity = "negative"
@@ -405,8 +395,7 @@ def _resolve_observations(
             if row.semantic_family.value == family_value and row.fields == fields
         ]
         other_family_signal = any(
-            row.semantic_family.value != family_value
-            and row.status in {"CANDIDATE", "UNRESOLVED"}
+            row.semantic_family.value != family_value and row.status in {"CANDIDATE", "UNRESOLVED"}
             for row in observations
         )
         if len(matching) == 2 and not other_family_signal and not unresolved:
