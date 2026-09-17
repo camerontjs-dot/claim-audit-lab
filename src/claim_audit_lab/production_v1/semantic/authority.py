@@ -257,6 +257,11 @@ def complete_and_warrant(
         verify_measurement_receipt(context, receipt)
     except ValueError as exc:
         raise AuthorityRefusal("SEMANTIC_AUTHORITY_UNRESOLVED", str(exc)) from exc
+    if receipt.semantic_family is not context.proposition.semantic_family:
+        raise AuthorityRefusal(
+            "SEMANTIC_AUTHORITY_UNRESOLVED",
+            "measurement/proposition semantic-family mismatch",
+        )
     if receipt.consumed_passage_ids != (passage_id,):
         raise AuthorityRefusal(
             "SEMANTIC_AUTHORITY_UNRESOLVED",
