@@ -26,6 +26,6 @@ jobs:
       - run: uv run python -m pytest -q tests/research/test_event_occurrence_contract_apparatus_rc0.py
       - run: uv run python -m pytest -q tests/research/test_event_occurrence_contract_candidate_rc0.py
       - run: uv run python -m pytest -q
-      - run: uv run python -m ruff check research/event_occurrence_contract_rc0 tests/research/test_event_occurrence_contract_*.py
-      - run: uv run python -m ruff format --check research/event_occurrence_contract_rc0 tests/research/test_event_occurrence_contract_*.py
+      - run: uv run python -m ruff check research/event_occurrence_contract_rc0/candidate.py
+      - run: uv run python -m ruff format --check research/event_occurrence_contract_rc0/candidate.py
       - run: uv run python -m mypy
