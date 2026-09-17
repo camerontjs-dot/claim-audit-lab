@@ -226,8 +226,14 @@ def test_tampered_shadow_receipt_is_quarantined_without_changing_result() -> Non
     assert observed.audit_result == baseline
     assert len(observed.shadow_failures) == len(context.evidence_world.admitted_passages)
     assert all(f.instrument_id == "tampered-shadow" for f in observed.shadow_failures)
-    assert all("measurement receipt identity mismatch" in f.detail for f in observed.shadow_failures)
-    assert all(r.instrument_id != "tampered-shadow" for r in observed.measurement_ledger.receipts)
+    assert all(
+        "measurement receipt identity mismatch" in f.detail
+        for f in observed.shadow_failures
+    )
+    assert all(
+        r.instrument_id != "tampered-shadow"
+        for r in observed.measurement_ledger.receipts
+    )
 
 
 def test_raising_shadow_is_quarantined_without_changing_result() -> None:
@@ -276,9 +282,9 @@ def test_same_family_unqualified_shadow_cannot_replace_primary_warrant_input() -
     }
     assert shadow_ids
     assert shadow_ids.isdisjoint(_primary_authority_measurement_ids(observed.audit_result))
-    assert _primary_authority_measurement_ids(observed.audit_result) == _primary_authority_measurement_ids(
-        baseline
-    )
+    assert _primary_authority_measurement_ids(
+        observed.audit_result
+    ) == _primary_authority_measurement_ids(baseline)
     assert _relation_ids(observed.audit_result) == _relation_ids(baseline)
 
 
