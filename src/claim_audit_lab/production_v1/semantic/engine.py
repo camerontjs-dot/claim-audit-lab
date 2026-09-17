@@ -2,12 +2,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from .authority import AuthorityReceipt, AuthorityRefusal, complete_and_warrant
-from .measurements import (
-    MeasurementReceipt,
-    measure_direct_event_order,
-    measure_strict_comparison,
-)
+from .authority import AuthorityReceipt, AuthorityRefusal
+from .measurements import MeasurementReceipt
 from .models import (
     AuditContext,
     CategoricalRelation,
@@ -15,7 +11,8 @@ from .models import (
     FailureCode,
     SemanticFamily,
 )
-from .relations import BoundRelation, RelationRefusal, derive_relation
+from .plugins import DEFAULT_FAMILY_REGISTRY, SemanticFamilyRegistry
+from .relations import BoundRelation, RelationRefusal
 
 
 @dataclass(frozen=True, slots=True)
@@ -145,21 +142,19 @@ def compose(context: AuditContext, traces: tuple[PassageTrace, ...]) -> AuditRes
     )
 
 
-def audit(context: AuditContext) -> AuditResult:
+def audit(
+    context: AuditContext,
+    *,
+    registry: SemanticFamilyRegistry = DEFAULT_FAMILY_REGISTRY,
+) -> AuditResult:
     context.verify()
     family = context.proposition.semantic_family
-    if family not in {
-        SemanticFamily.STRICT_COMPARISON,
-        SemanticFamily.DIRECT_EVENT_ORDER,
-    }:
+    plugin = registry.get(family)
+    if plugin is None:
         return _unsupported_result(context)
     traces: list[PassageTrace] = []
     for passage in context.evidence_world.admitted_passages:
-        receipt = (
-            measure_strict_comparison(context, passage.passage_id)
-            if family is SemanticFamily.STRICT_COMPARISON
-            else measure_direct_event_order(context, passage.passage_id)
-        )
+        receipt = plugin.measure(context, passage.passage_id)
         raw = receipt.raw_measurement()
         if raw.get("status") != "CLAIMED":
             code = (
@@ -179,7 +174,7 @@ def audit(context: AuditContext) -> AuditResult:
             )
             continue
         try:
-            authority = complete_and_warrant(context, receipt, passage.passage_id)
+            authority = plugin.warrant(context, receipt, passage.passage_id)
         except AuthorityRefusal as exc:
             traces.append(
                 PassageTrace(
@@ -193,7 +188,7 @@ def audit(context: AuditContext) -> AuditResult:
             )
             continue
         try:
-            relation = derive_relation(context, authority)
+            relation = plugin.relate(context, authority)
         except RelationRefusal as exc:
             code = (
                 FailureCode.PROPOSITION_BINDING_FAILED
