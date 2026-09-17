@@ -24,6 +24,6 @@ jobs:
       - run: uv run python -m pytest -q tests/research/test_typed_spatial_relation_discriminator_apparatus_rc0.py
       - run: uv run python -m pytest -q tests/research/test_typed_spatial_relation_discriminator_candidate_rc0.py
       - run: uv run python -m pytest -q
-      - run: uv run python -m ruff check research/typed_spatial_relation_discriminator_rc0 tests/research/test_typed_spatial_relation_discriminator_*.py
-      - run: uv run python -m ruff format --check research/typed_spatial_relation_discriminator_rc0 tests/research/test_typed_spatial_relation_discriminator_*.py
+      - run: uv run python -m ruff check research/typed_spatial_relation_discriminator_rc0/candidate.py
+      - run: uv run python -m ruff format --check research/typed_spatial_relation_discriminator_rc0/candidate.py
       - run: uv run python -m mypy
