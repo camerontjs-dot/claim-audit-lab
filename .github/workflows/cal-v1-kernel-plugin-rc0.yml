@@ -1,0 +1,72 @@
+name: Research - CAL V1 kernel plugin registry RC0
+
+on:
+  push:
+    branches:
+      - research/cal-v1-kernel-plugin-registry-20260917
+  pull_request:
+    paths:
+      - "src/claim_audit_lab/production_v1/semantic/**"
+      - "tests/production/test_semantic_plugin_registry.py"
+      - "tests/production/test_semantic_blob_identity.py"
+      - "docs/research/CAL_V1_KERNEL_PLUGIN_REGISTRY_RC0.md"
+      - ".github/workflows/cal-v1-kernel-plugin-rc0.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cal-v1-kernel-plugin-rc0-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install exact repository environment
+        run: uv sync --all-extras
+
+      - name: Install declared spaCy model
+        run: uv run python -m spacy download en_core_web_sm
+
+      - name: Verify qualification history and parent authority are available
+        shell: bash
+        run: |
+          set -euo pipefail
+          git cat-file -e 32275a239b68af383a56bca843e28cbc1e343976^{commit}
+          git cat-file -e d03d0e960ad82d889e6763fd4fb53cd24babd187^{commit}
+          git cat-file -e 80835a57e121c66d22c68f349abf8e318de0e232^{commit}
+
+      - name: Run focused kernel and inherited semantic gates
+        run: >-
+          uv run python -m pytest -q
+          tests/production/test_semantic_plugin_registry.py
+          tests/production/test_semantic_blob_identity.py
+          tests/production/test_rc1_semantic_behavior.py
+          tests/production/test_rc1_authority_integrity.py
+          tests/production/test_convergence_semantics.py
+          tests/production/test_contract_b_integration_candidate.py
+          tests/production/test_target_identity_binding.py
+
+      - name: Run full repository pytest suite
+        run: uv run python -m pytest -q
+
+      - name: Run Ruff lint
+        run: uv run python -m ruff check src tests
+
+      - name: Run Ruff format check
+        run: uv run python -m ruff format --check src
+
+      - name: Run mypy
+        run: uv run python -m mypy
