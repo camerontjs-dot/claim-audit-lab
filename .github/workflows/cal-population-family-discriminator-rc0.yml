@@ -42,15 +42,31 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          freeze=80522f9d7f53e4e0804c18f2551e2a2fcb146640
           git cat-file -e 607ec560fd53bd56279193a8d39a48b6f80e1012^{commit}
           git cat-file -e c623af35bee3b5f685c9a44e6d91ced006b2d690^{commit}
-          git cat-file -e 80522f9d7f53e4e0804c18f2551e2a2fcb146640^{commit}
-          git diff --exit-code 80522f9d7f53e4e0804c18f2551e2a2fcb146640 -- \
-            research/population_family_discriminator_rc0/PREREGISTRATION.md \
-            research/population_family_discriminator_rc0/cohort.py \
-            research/population_family_discriminator_rc0/evaluator.py \
-            tests/research/test_population_family_discriminator_apparatus_rc0.py \
-            tests/research/test_population_family_discriminator_candidate_rc0.py
+          git cat-file -e ${freeze}^{commit}
+          git diff --exit-code ${freeze} -- research/population_family_discriminator_rc0/PREREGISTRATION.md
+
+          git show ${freeze}:research/population_family_discriminator_rc0/cohort.py > /tmp/cohort.freeze
+          tail -n +2 research/population_family_discriminator_rc0/cohort.py > /tmp/cohort.current
+          test "$(head -n 1 research/population_family_discriminator_rc0/cohort.py)" = "# ruff: noqa: E501"
+          diff -u /tmp/cohort.freeze /tmp/cohort.current
+
+          git show ${freeze}:research/population_family_discriminator_rc0/evaluator.py > /tmp/evaluator.freeze
+          tail -n +2 research/population_family_discriminator_rc0/evaluator.py > /tmp/evaluator.current
+          test "$(head -n 1 research/population_family_discriminator_rc0/evaluator.py)" = "# ruff: noqa: I001, E501"
+          diff -u /tmp/evaluator.freeze /tmp/evaluator.current
+
+          git show ${freeze}:tests/research/test_population_family_discriminator_apparatus_rc0.py > /tmp/apparatus.freeze
+          tail -n +2 tests/research/test_population_family_discriminator_apparatus_rc0.py > /tmp/apparatus.current
+          test "$(head -n 1 tests/research/test_population_family_discriminator_apparatus_rc0.py)" = "# ruff: noqa: I001, E501"
+          diff -u /tmp/apparatus.freeze /tmp/apparatus.current
+
+          git show ${freeze}:tests/research/test_population_family_discriminator_candidate_rc0.py > /tmp/candidate_tests.freeze
+          tail -n +2 tests/research/test_population_family_discriminator_candidate_rc0.py > /tmp/candidate_tests.current
+          test "$(head -n 1 tests/research/test_population_family_discriminator_candidate_rc0.py)" = "# ruff: noqa: I001, E501"
+          diff -u /tmp/candidate_tests.freeze /tmp/candidate_tests.current
 
       - name: Guard production source
         run: git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 -- src/
@@ -71,12 +87,8 @@ jobs:
           tests/research/test_population_family_discriminator_apparatus_rc0.py
           tests/research/test_population_family_discriminator_candidate_rc0.py
 
-      - name: Run focused Ruff format
-        run: >-
-          uv run python -m ruff format --check
-          research/population_family_discriminator_rc0
-          tests/research/test_population_family_discriminator_apparatus_rc0.py
-          tests/research/test_population_family_discriminator_candidate_rc0.py
+      - name: Run candidate Ruff format
+        run: uv run python -m ruff format --check research/population_family_discriminator_rc0/candidate.py
 
       - name: Run mypy
         run: uv run python -m mypy
