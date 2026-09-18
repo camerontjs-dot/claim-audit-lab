@@ -1,0 +1,34 @@
+name: Research - CAL direct event order Gate-1B authority RC0
+
+on:
+  push:
+    branches: [research/cal-direct-event-order-gate1b-authority-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/direct_event_order_gate1b_authority_rc0/**"
+      - "tests/research/test_direct_event_order_gate1b_authority_rc0.py"
+      - ".github/workflows/cal-direct-event-order-gate1b-authority-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify exact frozen production subject
+        run: |
+          git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 -- src/
+      - name: Print all observations
+        run: uv run python -m research.direct_event_order_gate1b_authority_rc0.report
+      - name: Run Gate-1B discriminator
+        run: uv run python -m pytest -q tests/research/test_direct_event_order_gate1b_authority_rc0.py
+      - name: Static checks on apparatus only
+        run: uv run python -m ruff check research/direct_event_order_gate1b_authority_rc0 tests/research/test_direct_event_order_gate1b_authority_rc0.py
