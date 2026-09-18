@@ -1,13 +1,13 @@
-name: Research - CAL semantic family unseen pressure RC1
+name: Research - CAL semantic family unseen pressure regression RC2
 
 on:
   push:
-    branches: [research/cal-semantic-family-unseen-pressure-rc1-20260917]
+    branches: [research/cal-semantic-family-unseen-pressure-regression-rc2-20260917]
   pull_request:
     paths:
       - "research/semantic_family_unseen_pressure_rc1/**"
       - "tests/research/test_semantic_family_unseen_pressure_rc1_apparatus.py"
-      - ".github/workflows/cal-semantic-family-unseen-pressure-rc1.yml"
+      - ".github/workflows/cal-semantic-family-unseen-pressure-regression-rc2.yml"
 
 permissions:
   contents: read
