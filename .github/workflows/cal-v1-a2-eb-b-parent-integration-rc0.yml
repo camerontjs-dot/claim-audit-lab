@@ -1,0 +1,55 @@
+name: Research - CAL V1 A2 EB B parent integration RC0
+
+on:
+  push:
+    branches: [research/cal-v1-a2-eb-b-parent-integration-rc0-20260918]
+  pull_request:
+    paths:
+      - "tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py"
+      - "docs/research/CAL_V1_A2_EB_B_PARENT_INTEGRATION_RC0.md"
+      - ".github/workflows/cal-v1-a2-eb-b-parent-integration-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: 4e1f6fe00e7c350b28f52bfea14f1f8988847884
+          path: external/evidence-bundler
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv pip install -e external/evidence-bundler
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify preregistration and CAL freeze
+        run: |
+          git diff --exit-code 1647c56019442402a4d755ed9dc8cff1a036c6d4 --             docs/research/CAL_V1_A2_EB_B_PARENT_INTEGRATION_RC0.md
+          git diff --exit-code 795cd7c25795a6ad08b7cca343bf7c32210cc64b --             src/claim_audit_lab/production_v1/semantic             src/claim_audit_lab/production_v1/bundle_input.py             src/claim_audit_lab/production_v1/execution.py             src/claim_audit_lab/production_v1/render.py
+      - name: Verify exact Evidence Bundler subject
+        run: |
+          test "$(git -C external/evidence-bundler rev-parse HEAD)" =             "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          git -C external/evidence-bundler diff --exit-code
+      - name: Integrated four-case pressure and mutations
+        env:
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+        run: |
+          uv run python -m pytest -q             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py
+      - name: Frozen CAL architecture regressions
+        run: |
+          uv run python -m pytest -q             tests/production/test_decomposition_composer_rc0.py             tests/production/test_composition_registry_rc0.py             tests/production/test_semantic_plugin_registry.py
+      - name: Static checks
+        run: |
+          uv run python -m ruff check             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py
+          uv run python -m ruff format --check             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py
