@@ -5,9 +5,9 @@
     "qualification_run": "35298660511"
   },
   "direct_event_order": {
-    "branch": "research/cal-direct-event-order-gate1b-authority-rc2-20260917",
-    "sha": "2c9369144fecb3025bf28885ab6e322d895c3dbf",
-    "qualification_run": "35298592193"
+    "branch": "research/cal-direct-event-order-gate1b-authority-rc3-20260917",
+    "sha": "b163f0faf58c8fe7e2c74e8d9e8618aa2147a359",
+    "qualification_run": "35299574593"
   },
   "deontic_norm": {
     "branch": "research/cal-deontic-gate1b-authority-rc0-20260917",
