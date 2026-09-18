@@ -1,0 +1,46 @@
+name: Research - CAL V1 two-registry architecture RC0
+
+on:
+  push:
+    branches: [research/cal-v1-two-registry-architecture-rc0-20260918]
+  pull_request:
+    paths:
+      - "src/claim_audit_lab/production_v1/semantic/composition.py"
+      - "tests/production/test_composition_registry_rc0.py"
+      - "docs/research/CAL_V1_TWO_REGISTRY_ARCHITECTURE_RC0.md"
+      - ".github/workflows/cal-v1-two-registry-architecture-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify preregistration freeze
+        run: |
+          git diff --exit-code 8fbec89d5787ca7505c16d0d991c991de321e672 --             docs/research/CAL_V1_TWO_REGISTRY_ARCHITECTURE_RC0.md
+      - name: Verify inherited semantic files are unchanged
+        run: |
+          git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 --             src/claim_audit_lab/production_v1/semantic/engine.py             src/claim_audit_lab/production_v1/semantic/plugins.py             src/claim_audit_lab/production_v1/semantic/authority.py             src/claim_audit_lab/production_v1/semantic/measurements.py             src/claim_audit_lab/production_v1/semantic/relations.py             src/claim_audit_lab/production_v1/semantic/models.py
+      - name: Inherited atomic registry and shadow gates
+        run: |
+          uv run python -m pytest -q             tests/production/test_semantic_plugin_registry.py             tests/production/test_shadow_observation_runtime_rc0.py             tests/production/test_multi_instrument_ledger_rc0.py
+      - name: Composition registry falsifiers
+        run: uv run python -m pytest -q tests/production/test_composition_registry_rc0.py
+      - name: Full-history regression
+        run: uv run python -m pytest -q
+      - name: Static checks
+        run: |
+          uv run python -m ruff check             src/claim_audit_lab/production_v1/semantic/composition.py             tests/production/test_composition_registry_rc0.py
+          uv run python -m ruff format --check             src/claim_audit_lab/production_v1/semantic/composition.py             tests/production/test_composition_registry_rc0.py
+          uv run python -m mypy
