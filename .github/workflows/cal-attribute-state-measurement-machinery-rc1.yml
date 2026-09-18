@@ -1,0 +1,37 @@
+name: Research - CAL attribute state measurement machinery RC1
+
+on:
+  push:
+    branches: [research/cal-attribute-state-measurement-machinery-rc1-20260917]
+  pull_request:
+    paths:
+      - "research/attribute_state_measurement_machinery_rc1/**"
+      - "tests/research/test_attribute_state_measurement_machinery_rc1_*"
+      - ".github/workflows/cal-attribute-state-measurement-machinery-rc1.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discriminate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify lineage and source isolation
+        run: |
+          git cat-file -e f117698e6db3b47cc68af2024c7816cc8945b004^{commit}
+          git cat-file -e 2b4ae5c52f301f16de50719cb11e61919766aa94^{commit}
+          git diff --exit-code f117698e6db3b47cc68af2024c7816cc8945b004 -- src/
+      - run: uv run python -m pytest -q tests/research/test_attribute_state_measurement_machinery_rc1_apparatus.py
+      - run: uv run python -m pytest -q tests/research/test_attribute_state_measurement_machinery_rc1_candidate.py
+      - run: uv run python -m research.attribute_state_measurement_machinery_rc1.report
+      - run: uv run python -m ruff check research/attribute_state_measurement_machinery_rc1/candidate.py research/attribute_state_measurement_machinery_rc1/report.py
+      - run: uv run python -m ruff format --check research/attribute_state_measurement_machinery_rc1/candidate.py research/attribute_state_measurement_machinery_rc1/report.py
+      - run: uv run python -m mypy
