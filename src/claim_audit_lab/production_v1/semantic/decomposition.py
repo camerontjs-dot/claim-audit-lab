@@ -334,7 +334,7 @@ def recompose(
         return DecompositionResult(root_outcome.conclusion, receipt)
 
     if root_outcome is not None:
-        raise DecompositionRefusal("DECLARED_ALLOF_HAS_ROOT_RESULT", declaration.root.proposition_id)
+        raise DecompositionRefusal(\n            "DECLARED_ALLOF_HAS_ROOT_RESULT", declaration.root.proposition_id\n        )
 
     ordered = _ordered_declared_children(declaration, child_outcomes)
     conclusions = tuple(outcome.conclusion for outcome in ordered)
