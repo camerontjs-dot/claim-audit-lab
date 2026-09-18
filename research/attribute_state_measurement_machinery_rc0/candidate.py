@@ -147,9 +147,7 @@ def broad_copular_state(text: str) -> Observation:
     # the frozen fail-closed cohort can measure the resulting overreach.
     if any(token.lemma_.casefold() == "be" for token in doc):
         if "alice" in low and "reviewer" in low:
-            return Observation.claimed(
-                StateAtom("alice", "role", "roles", "reviewer", True)
-            )
+            return Observation.claimed(StateAtom("alice", "role", "roles", "reviewer", True))
         if "batch" in low and "released" in low:
             return _claim("batch", "status", "released")
         if "device" in low and "standby" in low:
@@ -172,10 +170,7 @@ def _safe_extension_surface(text: str) -> bool:
         r"The batch remains held",
         r"Device mode is maintenance",
     )
-    return any(
-        re.fullmatch(pattern, compact, re.IGNORECASE)
-        for pattern in patterns
-    )
+    return any(re.fullmatch(pattern, compact, re.IGNORECASE) for pattern in patterns)
 
 
 def conservative_state_hybrid(text: str) -> Observation:
