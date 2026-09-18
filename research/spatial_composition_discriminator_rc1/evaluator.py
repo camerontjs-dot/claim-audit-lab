@@ -1,5 +1,7 @@
 """Frozen evaluator for spatial composition discriminator RC1."""
 
+# ruff: noqa: I001
+
 from __future__ import annotations
 
 from collections.abc import Callable
