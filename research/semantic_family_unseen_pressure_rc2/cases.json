@@ -1,0 +1,428 @@
+[
+  {
+    "case_id": "VC01",
+    "class": "canonical",
+    "text": "Sector A had a lower score than Sector B.",
+    "allowed": [
+      "strict_comparison"
+    ]
+  },
+  {
+    "case_id": "VC02",
+    "class": "canonical",
+    "text": "Talia did not review packet u before Ravi signed ledger c.",
+    "allowed": [
+      "direct_event_order"
+    ]
+  },
+  {
+    "case_id": "VC03",
+    "class": "canonical",
+    "text": "Only qualified technicians may release the batch.",
+    "allowed": [
+      "deontic_norm"
+    ]
+  },
+  {
+    "case_id": "VC04",
+    "class": "canonical",
+    "text": "Alice belongs to Group A.",
+    "allowed": [
+      "population_membership"
+    ]
+  },
+  {
+    "case_id": "VC05",
+    "class": "canonical",
+    "text": "Batch yield was between 90% and 94%.",
+    "allowed": [
+      "scalar_value"
+    ]
+  },
+  {
+    "case_id": "VC06",
+    "class": "canonical",
+    "text": "QA quarantined the batch.",
+    "allowed": [
+      "event_occurrence"
+    ]
+  },
+  {
+    "case_id": "VC07",
+    "class": "canonical",
+    "text": "Other batch status is released.",
+    "allowed": [
+      "attribute_state"
+    ]
+  },
+  {
+    "case_id": "VC08",
+    "class": "canonical",
+    "text": "B belongs to A.",
+    "allowed": [
+      "typed_binary_relation"
+    ]
+  },
+  {
+    "case_id": "VC09",
+    "class": "canonical",
+    "text": "B is prevented by A.",
+    "allowed": [
+      "explicit_causal_assertion"
+    ]
+  },
+  {
+    "case_id": "VS01",
+    "class": "attribution",
+    "text": "Analysts think Sector A is higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VS02",
+    "class": "attribution",
+    "text": "Sector A is higher than Sector B, sources say.",
+    "allowed": []
+  },
+  {
+    "case_id": "VS03",
+    "class": "modifier",
+    "text": "Sector A is evidently higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VS04",
+    "class": "modifier",
+    "text": "Sector A was barely higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VS05",
+    "class": "modifier",
+    "text": "Sector A is not demonstrably higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VS06",
+    "class": "modifier",
+    "text": "Sector A supposedly remains higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE01",
+    "class": "coreference",
+    "text": "He reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE02",
+    "class": "coreference",
+    "text": "They reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE03",
+    "class": "coreference",
+    "text": "This team reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE04",
+    "class": "coreference",
+    "text": "Talia reviewed packet u before She signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE05",
+    "class": "coreference",
+    "text": "Talia reviewed packet u before Ravi signed her record.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE06",
+    "class": "coreference",
+    "text": "Talia reviewed packet u before Ravi signed his record.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE07",
+    "class": "coreference",
+    "text": "Talia reviewed packet u before Ravi signed their ledger.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE08",
+    "class": "coreference",
+    "text": "Talia reviewed this before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE09",
+    "class": "coreference",
+    "text": "Talia reviewed packet u before Ravi signed it.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE10",
+    "class": "attribution",
+    "text": "Talia reviewed packet u before Ravi signed ledger c, according to her.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE11",
+    "class": "attribution",
+    "text": "Sources say Talia reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "VE12",
+    "class": "paraphrase",
+    "text": "Talia reviewed packet u, then Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "VD01",
+    "class": "scope",
+    "text": "Qualified technicians may release the batch at QA's discretion.",
+    "allowed": []
+  },
+  {
+    "case_id": "VD02",
+    "class": "modifier",
+    "text": "Qualified technicians may perhaps release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VD03",
+    "class": "attribution",
+    "text": "The SOP says qualified technicians must release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VD04",
+    "class": "negation",
+    "text": "Qualified technicians must not necessarily release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VD05",
+    "class": "coreference",
+    "text": "Qualified technicians may release this batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VP01",
+    "class": "coreference",
+    "text": "She is a reviewer.",
+    "allowed": []
+  },
+  {
+    "case_id": "VP02",
+    "class": "attribution",
+    "text": "Alice reportedly belongs to Group A.",
+    "allowed": []
+  },
+  {
+    "case_id": "VP03",
+    "class": "temporal",
+    "text": "Alice is currently a reviewer.",
+    "allowed": []
+  },
+  {
+    "case_id": "VP04",
+    "class": "temporal",
+    "text": "Alice remains in Group A.",
+    "allowed": []
+  },
+  {
+    "case_id": "VP05",
+    "class": "composition",
+    "text": "Alice and Bob belong to Group A.",
+    "allowed": []
+  },
+  {
+    "case_id": "VQ01",
+    "class": "modifier",
+    "text": "Batch yield may be 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "VQ02",
+    "class": "attribution",
+    "text": "The report lists batch yield at 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "VQ03",
+    "class": "temporal",
+    "text": "Batch yield was 92% yesterday.",
+    "allowed": []
+  },
+  {
+    "case_id": "VQ04",
+    "class": "paraphrase",
+    "text": "Batch yield was about ninety-two percent.",
+    "allowed": []
+  },
+  {
+    "case_id": "VQ05",
+    "class": "uncertainty",
+    "text": "Batch yield was 92% ± 2%.",
+    "allowed": []
+  },
+  {
+    "case_id": "VO01",
+    "class": "coreference",
+    "text": "She approved the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VO02",
+    "class": "coreference",
+    "text": "QA approved this.",
+    "allowed": []
+  },
+  {
+    "case_id": "VO03",
+    "class": "modifier",
+    "text": "QA may have released the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VO04",
+    "class": "attribution",
+    "text": "According to QA, Ops released the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VO05",
+    "class": "temporal",
+    "text": "QA approved the batch before noon.",
+    "allowed": []
+  },
+  {
+    "case_id": "VA01",
+    "class": "coreference",
+    "text": "Its status is released.",
+    "allowed": []
+  },
+  {
+    "case_id": "VA02",
+    "class": "coreference",
+    "text": "This batch status is released.",
+    "allowed": []
+  },
+  {
+    "case_id": "VA03",
+    "class": "modifier",
+    "text": "Batch status is allegedly released.",
+    "allowed": []
+  },
+  {
+    "case_id": "VA04",
+    "class": "modifier",
+    "text": "Batch status seems released.",
+    "allowed": []
+  },
+  {
+    "case_id": "VA05",
+    "class": "attribution",
+    "text": "Batch status is released according to QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "VT01",
+    "class": "coreference",
+    "text": "It owns B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VT02",
+    "class": "coreference",
+    "text": "A owns it.",
+    "allowed": []
+  },
+  {
+    "case_id": "VT03",
+    "class": "attribution",
+    "text": "According to registry, A owns B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VT04",
+    "class": "coreference",
+    "text": "A is north of it.",
+    "allowed": []
+  },
+  {
+    "case_id": "VT05",
+    "class": "modifier",
+    "text": "A seems adjacent to B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VX01",
+    "class": "coreference",
+    "text": "It causes B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VX02",
+    "class": "coreference",
+    "text": "A causes it.",
+    "allowed": []
+  },
+  {
+    "case_id": "VX03",
+    "class": "attribution",
+    "text": "According to experts, A causes B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VX04",
+    "class": "modifier",
+    "text": "A probably causes B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VX05",
+    "class": "attribution",
+    "text": "A was said to cause B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VR01",
+    "class": "recombination",
+    "text": "She approved the batch before Ops released it.",
+    "allowed": []
+  },
+  {
+    "case_id": "VR02",
+    "class": "recombination",
+    "text": "The batch, which QA approved, was released before Ops signed the record.",
+    "allowed": []
+  },
+  {
+    "case_id": "VR03",
+    "class": "recombination",
+    "text": "Alice may release the batch because she is a qualified technician.",
+    "allowed": []
+  },
+  {
+    "case_id": "VR04",
+    "class": "recombination",
+    "text": "Batch yield was 92% before QA approved the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "VR05",
+    "class": "recombination",
+    "text": "Room is in Zone, and it is north of Area B.",
+    "allowed": []
+  },
+  {
+    "case_id": "VR06",
+    "class": "recombination",
+    "text": "A causes B after C prevents D.",
+    "allowed": []
+  }
+]
