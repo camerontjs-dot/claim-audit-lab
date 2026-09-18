@@ -1,13 +1,13 @@
-name: Research - CAL semantic family end-stage pressure RC0
+name: Research - CAL semantic family pressure regression RC1
 
 on:
   push:
-    branches: [research/cal-semantic-family-end-stage-pressure-rc0-20260917]
+    branches: [research/cal-semantic-family-pressure-regression-rc1-20260917]
   pull_request:
     paths:
       - "research/semantic_family_end_stage_pressure_rc0/**"
       - "tests/research/test_semantic_family_end_stage_pressure_rc0_apparatus.py"
-      - ".github/workflows/cal-semantic-family-end-stage-pressure-rc0.yml"
+      - ".github/workflows/cal-semantic-family-pressure-regression-rc1.yml"
 
 permissions:
   contents: read
