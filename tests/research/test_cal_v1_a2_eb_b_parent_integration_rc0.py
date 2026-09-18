@@ -41,8 +41,7 @@ C1_TEXT = "Alpha had a higher rate than Beta."
 C1_REFUTE_TEXT = "Alpha had a lower rate than Beta."
 C2_TEXT = "Alice reviewed dossier before Bob archived dossier."
 ROOT_TEXT = (
-    "Alpha had a higher rate than Beta, and "
-    "Alice reviewed dossier before Bob archived dossier."
+    "Alpha had a higher rate than Beta, and Alice reviewed dossier before Bob archived dossier."
 )
 
 SOURCES = (
@@ -403,8 +402,7 @@ def test_frozen_four_case_pipeline_matrix(case: Case, tmp_path: Path) -> None:
         nonretained = {
             row["passage_id"]
             for row in result["package"]["candidates"]
-            if row["proposition_id"] == proposition_id
-            and row["selection_state"] == "not_retained"
+            if row["proposition_id"] == proposition_id and row["selection_state"] == "not_retained"
         }
         assert not (set(record["evidence_world"]["admitted_passage_ids"]) & nonretained)
 
