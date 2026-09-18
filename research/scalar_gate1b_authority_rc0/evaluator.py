@@ -1,5 +1,7 @@
 """Frozen evaluator for scalar Gate-1B authority RC0."""
 
+# ruff: noqa: I001
+
 from __future__ import annotations
 
 from collections.abc import Callable
