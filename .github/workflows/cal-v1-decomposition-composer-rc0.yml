@@ -1,0 +1,47 @@
+name: Research - CAL V1 DecompositionComposer RC0
+
+on:
+  push:
+    branches: [research/cal-v1-decomposition-composer-rc0-20260918]
+  pull_request:
+    paths:
+      - "src/claim_audit_lab/production_v1/semantic/decomposition.py"
+      - "tests/production/test_decomposition_composer_rc0.py"
+      - "docs/research/CAL_V1_DECOMPOSITION_COMPOSER_RC0.md"
+      - ".github/workflows/cal-v1-decomposition-composer-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify preregistration freeze
+        run: |
+          git diff --exit-code f5bceb0ef9be328592a6c074f86fbfa70e3bcc31 --             docs/research/CAL_V1_DECOMPOSITION_COMPOSER_RC0.md
+      - name: Verify frozen two-registry subject
+        run: |
+          git diff --exit-code 35d7b69d2e920a24a187aad00d4877dda83c6d45 --             src/claim_audit_lab/production_v1/semantic/engine.py             src/claim_audit_lab/production_v1/semantic/plugins.py             src/claim_audit_lab/production_v1/semantic/authority.py             src/claim_audit_lab/production_v1/semantic/measurements.py             src/claim_audit_lab/production_v1/semantic/relations.py             src/claim_audit_lab/production_v1/semantic/models.py             src/claim_audit_lab/production_v1/semantic/composition.py
+      - name: DecompositionComposer falsifiers
+        run: uv run python -m pytest -q tests/production/test_decomposition_composer_rc0.py
+      - name: Frozen two-registry regression
+        run: |
+          uv run python -m pytest -q             tests/production/test_composition_registry_rc0.py             tests/production/test_semantic_plugin_registry.py             tests/production/test_shadow_observation_runtime_rc0.py             tests/production/test_multi_instrument_ledger_rc0.py
+      - name: Full-history regression
+        run: uv run python -m pytest -q
+      - name: Static checks
+        run: |
+          uv run python -m ruff check             src/claim_audit_lab/production_v1/semantic/decomposition.py             tests/production/test_decomposition_composer_rc0.py
+          uv run python -m ruff format --check             src/claim_audit_lab/production_v1/semantic/decomposition.py             tests/production/test_decomposition_composer_rc0.py
+          uv run python -m mypy
