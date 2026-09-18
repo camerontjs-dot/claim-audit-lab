@@ -1,0 +1,36 @@
+name: Research - CAL strict comparison hardening RC0
+
+on:
+  push:
+    branches: [research/cal-strict-comparison-hardening-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/strict_comparison_hardening_rc0/**"
+      - "tests/research/test_strict_comparison_hardening_rc0.py"
+      - ".github/workflows/cal-strict-comparison-hardening-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  harden:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify frozen subject and source isolation
+        run: |
+          test "$(git hash-object research/comparative_relation_measurement_rc7fb1/comparator.py)" = "33820f55e2a87c4de6336fca6b5e5b93a2bccde3"
+          git diff --exit-code 0ecdedc5cea970485a635508255f3670ab231c33 -- research/comparative_relation_measurement_rc7fb1/comparator.py
+          git diff --exit-code 0ecdedc5cea970485a635508255f3670ab231c33 -- src/
+      - name: Print all observations before acceptance
+        run: uv run python -m research.strict_comparison_hardening_rc0.report
+      - name: Run adversarial acceptance tests
+        run: uv run python -m pytest -q tests/research/test_strict_comparison_hardening_rc0.py
+      - name: Static checks on hardening apparatus
+        run: uv run python -m ruff check research/strict_comparison_hardening_rc0 tests/research/test_strict_comparison_hardening_rc0.py
