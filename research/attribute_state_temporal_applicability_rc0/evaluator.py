@@ -1,5 +1,7 @@
 """Frozen evaluator for attribute-state temporal applicability RC0."""
 
+# ruff: noqa: I001
+
 from __future__ import annotations
 
 from collections.abc import Callable
