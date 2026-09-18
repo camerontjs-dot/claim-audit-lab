@@ -205,10 +205,14 @@ def _retained_passage_id(
         and row["source_id"] == source_id
         and row["selection_state"] == "retained"
     ]
+    observed = [
+        (row["source_id"], row["nomination_rank"], row["selection_state"])
+        for row in package["candidates"]
+        if row["proposition_id"] == proposition_id
+    ]
     assert len(rows) == 1, (
-        f"preregistered decisive source was not uniquely retained: "
-        f"{proposition_id}/{source_id}; "
-        f"observed={[(row['source_id'], row['nomination_rank'], row['selection_state']) for row in package['candidates'] if row['proposition_id'] == proposition_id]}"
+        "preregistered decisive source was not uniquely retained: "
+        f"{proposition_id}/{source_id}; observed={observed}"
     )
     return str(rows[0]["passage_id"])
 
@@ -380,8 +384,9 @@ def test_frozen_four_case_pipeline_matrix(case: Case, tmp_path: Path) -> None:
     assert result["parent"].conclusion is case.expected_parent
 
     contract_a = result["contract_a"]
-    assert result["c1"].proposition_id == contract_a["decomposition"]["children"][0]["proposition_id"]
-    assert result["c2"].proposition_id == contract_a["decomposition"]["children"][1]["proposition_id"]
+    children = contract_a["decomposition"]["children"]
+    assert result["c1"].proposition_id == children[0]["proposition_id"]
+    assert result["c2"].proposition_id == children[1]["proposition_id"]
 
     for proposition_id, record in (
         ("C1", result["c1_record"]),
@@ -438,7 +443,7 @@ def test_nonretained_candidate_cannot_be_admitted(tmp_path: Path) -> None:
 
 
 def test_target_child_identity_swap_refuses_at_cal_boundary(tmp_path: Path) -> None:
-    base = _execute_case(CASES[0], tmp_path / "base")
+    _execute_case(CASES[0], tmp_path / "base")
     bundle = tmp_path / "base" / CASES[0].case_id / "eb" / "contract_b"
     target = _target("C1")
     target["claim_id"] = "C2"
