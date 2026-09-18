@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+# ruff: noqa: I001
+
 import hashlib
 import json
 import sys
@@ -55,8 +57,8 @@ def probe_strict(text: str) -> dict[str, str]:
         measure_strict_comparison,
     )
     from claim_audit_lab.production_v1.semantic.models import SemanticFamily
-    from research.strict_comparison_gate1b_authority_rc1.candidate import (
-        complete_and_warrant_strict,
+    from research.strict_comparison_gate1b_authority_rc2.candidate import (
+        complete_and_warrant_strict_rc2,
     )
 
     context = _context(text, SemanticFamily.STRICT_COMPARISON)
@@ -65,7 +67,7 @@ def probe_strict(text: str) -> dict[str, str]:
     if status != "CLAIMED":
         return _not_warranted("measurement", status)
     try:
-        complete_and_warrant_strict(context, receipt, "p1")
+        complete_and_warrant_strict_rc2(context, receipt, "p1")
     except Exception as exc:
         return _not_warranted("authority", f"{type(exc).__name__}: {exc}")
     return _warranted()
@@ -76,8 +78,8 @@ def probe_event_order(text: str) -> dict[str, str]:
         measure_direct_event_order,
     )
     from claim_audit_lab.production_v1.semantic.models import SemanticFamily
-    from research.direct_event_order_gate1b_authority_rc1.candidate import (
-        complete_and_warrant_event_order,
+    from research.direct_event_order_gate1b_authority_rc2.candidate import (
+        complete_and_warrant_event_order_rc2,
     )
 
     context = _context(text, SemanticFamily.DIRECT_EVENT_ORDER)
@@ -86,7 +88,7 @@ def probe_event_order(text: str) -> dict[str, str]:
     if status != "CLAIMED":
         return _not_warranted("measurement", status)
     try:
-        complete_and_warrant_event_order(context, receipt, "p1")
+        complete_and_warrant_event_order_rc2(context, receipt, "p1")
     except Exception as exc:
         return _not_warranted("authority", f"{type(exc).__name__}: {exc}")
     return _warranted()
