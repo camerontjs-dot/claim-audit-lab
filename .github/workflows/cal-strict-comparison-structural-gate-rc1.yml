@@ -1,0 +1,35 @@
+name: Research - CAL strict comparison structural gate RC1
+
+on:
+  push:
+    branches: [research/cal-strict-comparison-structural-gate-rc1-20260917]
+  pull_request:
+    paths:
+      - "research/strict_comparison_structural_gate_rc1/**"
+      - "tests/research/test_strict_comparison_structural_gate_rc1_*"
+      - ".github/workflows/cal-strict-comparison-structural-gate-rc1.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify parent and source isolation
+        run: |
+          test "$(git rev-parse a902621e8baea3063dddd7f92ba975aade305464^{commit})" = "a902621e8baea3063dddd7f92ba975aade305464"
+          git diff --exit-code a902621e8baea3063dddd7f92ba975aade305464 -- src/
+      - name: Run revealed development controls
+        run: uv run python -m pytest -q tests/research/test_strict_comparison_structural_gate_rc1_development.py
+      - name: Static checks
+        run: |
+          uv run python -m ruff check research/strict_comparison_structural_gate_rc1/candidate.py research/strict_comparison_structural_gate_rc1/development_controls.py
+          uv run python -m ruff format --check research/strict_comparison_structural_gate_rc1/candidate.py research/strict_comparison_structural_gate_rc1/development_controls.py
