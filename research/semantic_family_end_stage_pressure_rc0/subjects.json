@@ -1,13 +1,13 @@
 {
   "strict_comparison": {
-    "branch": "research/cal-strict-comparison-gate1b-authority-rc1-20260917",
-    "sha": "e085fbc0f74480a81e5b3bd4c11796a6543382e7",
-    "qualification_run": "35294781880"
+    "branch": "research/cal-strict-comparison-gate1b-authority-rc2-20260917",
+    "sha": "33cf39b1b2fabae2c867187bc097da396ffd7014",
+    "qualification_run": "35298660511"
   },
   "direct_event_order": {
-    "branch": "research/cal-direct-event-order-gate1b-authority-rc1-20260917",
-    "sha": "42fe25bd5a142277bd1903dbe65b7ea57bc94c1a",
-    "qualification_run": "35294988006"
+    "branch": "research/cal-direct-event-order-gate1b-authority-rc2-20260917",
+    "sha": "2c9369144fecb3025bf28885ab6e322d895c3dbf",
+    "qualification_run": "35298592193"
   },
   "deontic_norm": {
     "branch": "research/cal-deontic-gate1b-authority-rc0-20260917",
