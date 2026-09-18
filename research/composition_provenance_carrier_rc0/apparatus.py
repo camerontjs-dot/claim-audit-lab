@@ -279,7 +279,13 @@ def mutation_failures(strategy: Strategy) -> tuple[str, ...]:
                     else Relation.SUPPORTS
                 ),
             )),
-            ("inputs", replace(receipt, input_authority_ids=receipt.input_authority_ids + ("extra",))),
+            (
+                "inputs",
+                replace(
+                    receipt,
+                    input_authority_ids=receipt.input_authority_ids + ("extra",),
+                ),
+            ),
             ("semantic", replace(receipt, semantic_input_sha256="0" * 64)),
             ("modifier", replace(receipt, modifier_state_sha256="1" * 64)),
             ("query", replace(receipt, query_sha256="2" * 64)),
