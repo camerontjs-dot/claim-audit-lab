@@ -98,7 +98,10 @@ def _parse_event(text: str) -> dict[str, str]:
     positive = re.fullmatch(
         subject
         + r"\s+"
-        + r"(?P<verb>reviewed|signed|inspected|released|approved|archived|processed|verified|recorded)\s+"
+        + (
+            r"(?P<verb>reviewed|signed|inspected|released|approved|archived|"
+            r"processed|verified|recorded)\s+"
+        )
         + obj,
         segment,
     )
