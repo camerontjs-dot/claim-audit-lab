@@ -1,0 +1,320 @@
+[
+  {
+    "case_id": "XC01",
+    "class": "canonical",
+    "text": "Women had a higher rate than Men.",
+    "allowed": [
+      "strict_comparison"
+    ]
+  },
+  {
+    "case_id": "XC02",
+    "class": "canonical",
+    "text": "Talia reviewed packet u before Ravi signed ledger c.",
+    "allowed": [
+      "direct_event_order"
+    ]
+  },
+  {
+    "case_id": "XC03",
+    "class": "canonical",
+    "text": "Qualified technicians may release the batch.",
+    "allowed": [
+      "deontic_norm"
+    ]
+  },
+  {
+    "case_id": "XC04",
+    "class": "canonical",
+    "text": "Alice is a qualified technician.",
+    "allowed": [
+      "population_membership"
+    ]
+  },
+  {
+    "case_id": "XC05",
+    "class": "canonical",
+    "text": "Batch yield was 92%.",
+    "allowed": [
+      "scalar_value"
+    ]
+  },
+  {
+    "case_id": "XC06",
+    "class": "canonical",
+    "text": "QA approved the batch.",
+    "allowed": [
+      "event_occurrence"
+    ]
+  },
+  {
+    "case_id": "XC07",
+    "class": "canonical",
+    "text": "Batch status is released.",
+    "allowed": [
+      "attribute_state"
+    ]
+  },
+  {
+    "case_id": "XC08",
+    "class": "canonical",
+    "text": "A owns B.",
+    "allowed": [
+      "typed_binary_relation"
+    ]
+  },
+  {
+    "case_id": "XC09",
+    "class": "canonical",
+    "text": "A causes B.",
+    "allowed": [
+      "explicit_causal_assertion"
+    ]
+  },
+  {
+    "case_id": "XS01",
+    "class": "modifier",
+    "text": "Sector A was never higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XS02",
+    "class": "modifier",
+    "text": "Sector A appears higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XS03",
+    "class": "modifier",
+    "text": "Sector A is supposedly higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XS04",
+    "class": "attribution",
+    "text": "According to QA, Sector A is higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XE01",
+    "class": "attribution",
+    "text": "Allegedly Talia reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "XE02",
+    "class": "attribution",
+    "text": "Reportedly Talia reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "XE03",
+    "class": "attribution",
+    "text": "Talia reviewed packet u before Ravi signed ledger c according to QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "XE04",
+    "class": "attribution",
+    "text": "Talia reviewed packet u before Ravi signed ledger c reportedly.",
+    "allowed": []
+  },
+  {
+    "case_id": "XD01",
+    "class": "modifier",
+    "text": "Qualified technicians may generally release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "XD02",
+    "class": "condition",
+    "text": "Qualified technicians may release the batch when QA approves.",
+    "allowed": []
+  },
+  {
+    "case_id": "XD03",
+    "class": "attribution",
+    "text": "Qualified technicians are reportedly permitted to release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "XD04",
+    "class": "condition",
+    "text": "Qualified technicians may release the batch unless QA objects.",
+    "allowed": []
+  },
+  {
+    "case_id": "XP01",
+    "class": "modifier",
+    "text": "Alice is probably a qualified technician.",
+    "allowed": []
+  },
+  {
+    "case_id": "XP02",
+    "class": "temporal",
+    "text": "Alice is a former reviewer.",
+    "allowed": []
+  },
+  {
+    "case_id": "XP03",
+    "class": "attribution",
+    "text": "The report says Alice is a qualified technician.",
+    "allowed": []
+  },
+  {
+    "case_id": "XP04",
+    "class": "composition",
+    "text": "Alice and Bob are qualified technicians.",
+    "allowed": []
+  },
+  {
+    "case_id": "XQ01",
+    "class": "scalar-bound",
+    "text": "Batch yield was at least 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "XQ02",
+    "class": "modifier",
+    "text": "Batch yield was roughly 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "XQ03",
+    "class": "attribution",
+    "text": "Batch yield was reportedly 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "XQ04",
+    "class": "unit",
+    "text": "Batch yield was 0.92.",
+    "allowed": []
+  },
+  {
+    "case_id": "XO01",
+    "class": "attribution",
+    "text": "QA allegedly approved the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "XO02",
+    "class": "modifier",
+    "text": "QA apparently approved the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "XO03",
+    "class": "cardinality",
+    "text": "QA approved the batch twice.",
+    "allowed": []
+  },
+  {
+    "case_id": "XO04",
+    "class": "composition",
+    "text": "QA approved the batch at T1 and T2.",
+    "allowed": []
+  },
+  {
+    "case_id": "XA01",
+    "class": "modifier",
+    "text": "Batch status appears released.",
+    "allowed": []
+  },
+  {
+    "case_id": "XA02",
+    "class": "attribution",
+    "text": "Batch status is reportedly released.",
+    "allowed": []
+  },
+  {
+    "case_id": "XA03",
+    "class": "negation",
+    "text": "Batch status is not released.",
+    "allowed": []
+  },
+  {
+    "case_id": "XA04",
+    "class": "temporal",
+    "text": "Batch status is released today.",
+    "allowed": []
+  },
+  {
+    "case_id": "XT01",
+    "class": "attribution",
+    "text": "A reportedly owns B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XT02",
+    "class": "modifier",
+    "text": "A is approximately north of B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XT03",
+    "class": "modifier",
+    "text": "A owns B indirectly.",
+    "allowed": []
+  },
+  {
+    "case_id": "XT04",
+    "class": "attribution",
+    "text": "The article states A owns B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XX01",
+    "class": "attribution",
+    "text": "A allegedly causes B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XX02",
+    "class": "modifier",
+    "text": "A appears to cause B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XX03",
+    "class": "attribution",
+    "text": "A causes B according to the report.",
+    "allowed": []
+  },
+  {
+    "case_id": "XX04",
+    "class": "modifier",
+    "text": "A strongly correlates with B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XR01",
+    "class": "recombination",
+    "text": "Batch yield was 92% at T1 and 95% at T2.",
+    "allowed": []
+  },
+  {
+    "case_id": "XR02",
+    "class": "recombination",
+    "text": "Room is in Zone A, which is north of Zone B.",
+    "allowed": []
+  },
+  {
+    "case_id": "XR03",
+    "class": "recombination",
+    "text": "All qualified technicians may release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "XR04",
+    "class": "recombination",
+    "text": "QA approved the batch before Ops released it.",
+    "allowed": []
+  },
+  {
+    "case_id": "XR05",
+    "class": "recombination",
+    "text": "QA may approve the batch before Ops releases it.",
+    "allowed": []
+  }
+]
