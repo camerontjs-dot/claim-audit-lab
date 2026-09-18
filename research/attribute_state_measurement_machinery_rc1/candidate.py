@@ -55,9 +55,7 @@ def _hard_hazard(text: str) -> str | None:
 
 def _claim(entity: str, attribute: str, value: str) -> Observation:
     domain, functional = _DECLARED[(entity, attribute)]
-    return Observation.claimed(
-        StateAtom(entity, attribute, domain, value, functional)
-    )
+    return Observation.claimed(StateAtom(entity, attribute, domain, value, functional))
 
 
 def direct_declared_state_grammar(text: str) -> Observation:
@@ -146,9 +144,7 @@ def broad_copular_state(text: str) -> Observation:
 
     if any(token.lemma_.casefold() == "be" for token in doc):
         if "alice" in low and "reviewer" in low:
-            return Observation.claimed(
-                StateAtom("alice", "role", "roles", "reviewer", True)
-            )
+            return Observation.claimed(StateAtom("alice", "role", "roles", "reviewer", True))
         if "batch" in low and "released" in low:
             return _claim("batch", "status", "released")
         if "device" in low and "standby" in low:
