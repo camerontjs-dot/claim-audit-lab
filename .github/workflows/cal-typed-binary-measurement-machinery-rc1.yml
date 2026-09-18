@@ -1,0 +1,36 @@
+name: Research - CAL typed binary measurement machinery RC1
+
+on:
+  push:
+    branches: [research/cal-typed-binary-measurement-machinery-rc1-20260917]
+  pull_request:
+    paths:
+      - "research/typed_binary_measurement_machinery_rc1/**"
+      - "tests/research/test_typed_binary_measurement_machinery_rc1_*"
+      - ".github/workflows/cal-typed-binary-measurement-machinery-rc1.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discriminate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify lineage and source isolation
+        run: |
+          git cat-file -e 22bc5c1d97b78cfe6f9e2f57e52f69d528069b9a^{commit}
+          git cat-file -e 7463ada3358f24fa5bb53fe82631a69064346bf3^{commit}
+          git diff --exit-code 22bc5c1d97b78cfe6f9e2f57e52f69d528069b9a -- src/
+      - run: uv run python -m pytest -q tests/research/test_typed_binary_measurement_machinery_rc1_apparatus.py
+      - run: uv run python -m pytest -q tests/research/test_typed_binary_measurement_machinery_rc1_candidate.py
+      - run: uv run python -m research.typed_binary_measurement_machinery_rc1.report
+      - run: uv run python -m ruff check research/typed_binary_measurement_machinery_rc1/candidate.py research/typed_binary_measurement_machinery_rc1/report.py
+      - run: uv run python -m ruff format --check research/typed_binary_measurement_machinery_rc1/candidate.py research/typed_binary_measurement_machinery_rc1/report.py
+      - run: uv run python -m mypy
