@@ -1,0 +1,36 @@
+name: Research - CAL causal measurement machinery RC0
+
+on:
+  push:
+    branches: [research/cal-causal-measurement-machinery-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/causal_measurement_machinery_rc0/**"
+      - "tests/research/test_causal_measurement_machinery_*"
+      - ".github/workflows/cal-causal-measurement-machinery-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discriminate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify lineage and source isolation
+        run: |
+          git cat-file -e d08f3708e6ba2a1cc3a1705ad280ca4da92dd395^{commit}
+          git cat-file -e 0bfcfe532bd7dcbe0d9049c0e73173f40d05a415^{commit}
+          git diff --exit-code d08f3708e6ba2a1cc3a1705ad280ca4da92dd395 -- src/
+      - run: uv run python -m pytest -q tests/research/test_causal_measurement_machinery_apparatus_rc0.py
+      - run: uv run python -m pytest -q tests/research/test_causal_measurement_machinery_candidate_rc0.py
+      - run: uv run python -m research.causal_measurement_machinery_rc0.report
+      - run: uv run python -m ruff check research/causal_measurement_machinery_rc0/candidate.py research/causal_measurement_machinery_rc0/report.py
+      - run: uv run python -m ruff format --check research/causal_measurement_machinery_rc0/candidate.py research/causal_measurement_machinery_rc0/report.py
+      - run: uv run python -m mypy
