@@ -74,6 +74,7 @@ ui = [
 
 [project.scripts]
 claim-audit = "claim_audit_lab.cli:app"
+claim-audit-v1 = "claim_audit_lab.production_v1.bundle_cli:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -88,6 +89,7 @@ claim_audit_lab = [
     "examples/drafts/*.md",
     "examples/evidence/*.yml",
     "v1/configs/*.yaml",
+    "production_v1/schema/*.json",
     # Inlined into every rendered HTML report so the artifact is one self-contained
     # file with no external requests.
     "assets/*.css",
