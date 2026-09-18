@@ -38,9 +38,7 @@ def _hard_hazard(text: str) -> str | None:
 
 
 def _claim(cause: str, effect: str, kind: Kind) -> Observation:
-    return Observation.claimed(
-        CausalAtom(cause.casefold(), effect.casefold(), kind)
-    )
+    return Observation.claimed(CausalAtom(cause.casefold(), effect.casefold(), kind))
 
 
 def direct_kind_grammar(text: str) -> Observation:
