@@ -314,7 +314,7 @@ def weak_ignore_status(
         return Relation.UNRESOLVED
     if norm.norm.subject != membership.population:
         return Relation.UNRESOLVED
-    return Relation.SUPPORTS if query == _exact_applied(norm.norm, membership.entity) else Relation.UNRESOLVED
+    if query == _exact_applied(norm.norm, membership.entity):\n        return Relation.SUPPORTS\n    return Relation.UNRESOLVED
 
 
 def weak_ignore_subject_kind(
@@ -328,7 +328,7 @@ def weak_ignore_subject_kind(
         return Relation.UNRESOLVED
     if norm.norm.subject != membership.population:
         return Relation.UNRESOLVED
-    return Relation.SUPPORTS if query == _exact_applied(norm.norm, membership.entity) else Relation.UNRESOLVED
+    if query == _exact_applied(norm.norm, membership.entity):\n        return Relation.SUPPORTS\n    return Relation.UNRESOLVED
 
 
 def weak_drop_modifiers(
@@ -364,4 +364,4 @@ def weak_ignore_warrant(
         return Relation.UNRESOLVED
     if norm.norm.subject != membership.population:
         return Relation.UNRESOLVED
-    return Relation.SUPPORTS if query == _exact_applied(norm.norm, membership.entity) else Relation.UNRESOLVED
+    if query == _exact_applied(norm.norm, membership.entity):\n        return Relation.SUPPORTS\n    return Relation.UNRESOLVED
