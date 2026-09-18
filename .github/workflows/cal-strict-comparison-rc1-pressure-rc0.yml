@@ -1,0 +1,35 @@
+name: Research - CAL strict comparison RC1 pressure RC0
+
+on:
+  push:
+    branches: [research/cal-strict-comparison-rc1-pressure-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/strict_comparison_rc1_pressure_rc0/**"
+      - "tests/research/test_strict_comparison_rc1_pressure_rc0.py"
+      - ".github/workflows/cal-strict-comparison-rc1-pressure-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify frozen RC1 and source isolation
+        run: |
+          test "$(git rev-parse a902621e8baea3063dddd7f92ba975aade305464^{commit})" = "a902621e8baea3063dddd7f92ba975aade305464"
+          git diff --exit-code a902621e8baea3063dddd7f92ba975aade305464 -- src/
+      - name: Print observations before acceptance
+        run: uv run python -m research.strict_comparison_rc1_pressure_rc0.report
+      - name: Run hard gate
+        run: uv run python -m pytest -q tests/research/test_strict_comparison_rc1_pressure_rc0.py
+      - name: Static checks on pressure apparatus
+        run: uv run python -m ruff check research/strict_comparison_rc1_pressure_rc0 tests/research/test_strict_comparison_rc1_pressure_rc0.py
