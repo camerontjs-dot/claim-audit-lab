@@ -1,0 +1,43 @@
+name: Research - CAL semantic family end-stage pressure RC0
+
+on:
+  push:
+    branches: [research/cal-semantic-family-end-stage-pressure-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/semantic_family_end_stage_pressure_rc0/**"
+      - "tests/research/test_semantic_family_end_stage_pressure_rc0_apparatus.py"
+      - ".github/workflows/cal-semantic-family-end-stage-pressure-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Validate frozen pressure apparatus
+        run: uv run python -m pytest -q tests/research/test_semantic_family_end_stage_pressure_rc0_apparatus.py
+      - name: Reconstruct exact qualified subjects
+        run: |
+          uv run python research/semantic_family_end_stage_pressure_rc0/prepare_subjects.py             research/semantic_family_end_stage_pressure_rc0/subjects.json             /tmp/cal-semantic-pressure
+      - name: Run cross-family and adversarial pressure
+        run: |
+          uv run python research/semantic_family_end_stage_pressure_rc0/run_pressure.py             research/semantic_family_end_stage_pressure_rc0/subjects.json             research/semantic_family_end_stage_pressure_rc0/cases.json             /tmp/cal-semantic-pressure             /tmp/cal-semantic-pressure-report.json
+      - name: Upload pressure report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cal-semantic-family-end-stage-pressure-rc0
+          path: /tmp/cal-semantic-pressure-report.json
+      - name: Static checks
+        if: always()
+        run: uv run python -m ruff check research/semantic_family_end_stage_pressure_rc0 tests/research/test_semantic_family_end_stage_pressure_rc0_apparatus.py
