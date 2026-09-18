@@ -96,5 +96,5 @@ jobs:
       - name: Static gates
         run: |
           uv run python -m ruff check             src/claim_audit_lab             tests/production             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py             tests/research/test_cal_v1_final_semantic_closure_rc0.py
-          uv run python -m ruff format --check             src/claim_audit_lab             tests/production             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py             tests/research/test_cal_v1_final_semantic_closure_rc0.py
+          uv run python -m ruff format --check             src/claim_audit_lab             tests/production/test_decomposition_composer_rc0.py             tests/production/test_composition_registry_rc0.py             tests/production/test_semantic_plugin_registry.py             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py             tests/research/test_cal_v1_final_semantic_closure_rc0.py
           uv run python -m mypy
