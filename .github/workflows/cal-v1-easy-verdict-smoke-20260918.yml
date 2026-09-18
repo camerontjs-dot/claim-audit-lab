@@ -1,0 +1,49 @@
+name: Research - CAL V1 easy verdict smoke 20260918
+
+on:
+  push:
+    branches:
+      - research/cal-v1-easy-verdict-smoke-20260918
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install frozen candidate
+        run: uv sync --all-extras
+
+      - name: Verify semantic source is unchanged from frozen V1
+        run: |
+          git diff --exit-code 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48 -- src/claim_audit_lab
+
+      - name: Run one easy supported claim
+        run: |
+          rm -rf smoke-output
+          uv run python -m claim_audit_lab.cli run             tests/production/fixtures/strict-support.json             --out-dir smoke-output
+          cat smoke-output/result.json
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+
+          result = json.loads(Path("smoke-output/result.json").read_text())
+          conclusion = result["result"]["conclusion"]
+          failure = result["result"]["failure_code"]
+          print(f"SMOKE_CONCLUSION={conclusion}")
+          print(f"SMOKE_FAILURE_CODE={failure}")
+          assert conclusion == "supported", result
+          assert failure is None, result
+          PY
