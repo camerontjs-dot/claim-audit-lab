@@ -1,77 +1,44 @@
-# CAL Semantic Family End-Stage Pressure RC0 — Preregistration
+# CAL Semantic Family Pressure Regression RC1 — Preregistration
 
 Date: 2026-09-17
 
-Classification: Draft Research / adversarial post-qualification pressure test.
+Classification: Draft Research / known-corpus regression confirmation.
 
-## Question
+## Purpose
 
-After bounded Gate-1A measurement and Gate-1B independent source-completion/warrant qualification, do the nine frozen family machinery paths remain isolated on new claim surfaces, or can fresh modifiers, attribution, ambiguity, or cross-family composition still manufacture an unauthorized warrant?
+Re-run the exact frozen end-stage pressure RC0 corpus against the two repaired authority successors while leaving the other seven qualified family subjects unchanged.
 
-This is intentionally **post-qualification**, not a blinded candidate-selection study. All subjects are exact frozen commits and may not be repaired inside RC0.
+This is **not fresh hardening evidence**. The repaired strict-comparison and direct-event-order candidates were designed with the RC0 failures in view.
 
-## Exact subjects
+## Frozen corpus
 
-RC0 pins the exact qualified commits for:
+The pressure cases are byte-identical to RC0.
 
-1. strict comparison;
-2. direct event order;
-3. deontic norm;
-4. population/membership;
-5. scalar value;
-6. event occurrence;
-7. attribute state;
-8. typed binary relation;
-9. explicit causal assertion.
+- path: `research/semantic_family_end_stage_pressure_rc0/cases.json`
+- frozen blob SHA: `b6f87e66004a7b8bed52412dc9f3dd38dd9f1e78`
+- original pressure run: `35298162665`
 
-The workflow fetches each subject branch, detaches a worktree at the exact qualified SHA, and invokes only that frozen subject.
+No case additions, deletions, edits, or allowlist changes are permitted in RC1.
 
-## Pressure classes
+## Subject changes from RC0
 
-### Cross-family canonical isolation
+Only two subjects change:
 
-Nine canonical claims are each assigned exactly one permitted family. Every family processes every canonical claim.
+- strict comparison -> exact RC2 qualified candidate `33cf39b1b2fabae2c867187bc097da396ffd7014`;
+- direct event order -> exact RC2 qualified candidate `2c9369144fecb3025bf28885ab6e322d895c3dbf`.
 
-Acceptance requires:
-- the intended family warrants;
-- no other family warrants.
-
-### Fresh modifier / scope attacks
-
-New surfaces not used in the qualification cohorts attack:
-- unseen negation and epistemic modifiers;
-- attribution wrappers and tails;
-- historical/former state;
-- scalar lower-bound / unit ambiguity;
-- occurrence frequency;
-- relation uncertainty;
-- causal appearance language.
-
-These have no permitted atomic-family warrant.
-
-### Recombination boundary attacks
-
-New claims deliberately combine atomic concerns:
-- scalar + time;
-- containment/spatial relation;
-- membership + deontic;
-- event occurrence + order + coreference.
-
-These have no permitted atomic-family warrant in RC0. They are intended to remain unresolved until dedicated composition/recombination machinery is qualified.
+The other seven exact subject SHAs remain identical to RC0.
 
 ## Acceptance
 
-`SUPPORTED_END_STAGE_PRESSURE_RC0` requires:
+Regression closure requires:
 
-- all exact subject SHAs are reconstructed;
-- all canonical claims warrant in exactly their permitted family;
-- zero unauthorized family warrant on canonical claims;
-- zero atomic-family warrant on fresh modifier/scope attacks;
-- zero atomic-family warrant on recombination-boundary attacks;
-- no subject repository mutation.
+- exact reconstruction of all nine subject SHAs;
+- all nine canonical owner cases still warrant in exactly one family;
+- every RC0 noncanonical pressure case produces zero atomic-family warrants;
+- zero probe errors;
+- the frozen cases blob remains unchanged.
 
-Any unauthorized warrant is a semantic counterexample and makes RC0 fail. Do not patch a subject and recount inside this pressure study.
+A pass shows only that the known RC0 counterexamples are closed without breaking the earlier cross-family isolation result.
 
-## Non-claims
-
-A pass would not establish open-domain language understanding, production integration, compiler coverage for all families, or composition correctness. A failure identifies a concrete boundary that must be repaired in a fresh successor before promotion.
+A new unseen pressure corpus is required immediately afterward.
