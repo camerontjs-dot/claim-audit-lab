@@ -1,0 +1,40 @@
+name: Research - CAL occurrence order binding candidate RC0
+
+on:
+  push:
+    branches: [research/cal-occurrence-order-binding-discriminator-rc0-20260918]
+  pull_request:
+    paths:
+      - "research/occurrence_order_binding_discriminator_rc0/candidate.py"
+      - "research/occurrence_order_binding_discriminator_rc0/report.py"
+      - "tests/research/test_occurrence_order_binding_discriminator_rc0_candidate.py"
+      - ".github/workflows/cal-occurrence-order-binding-candidate-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify frozen apparatus bytes are unchanged
+        run: |
+          git diff --exit-code 08c70e209ae8640e5ba079fb895d7325183ab01c --             research/occurrence_order_binding_discriminator_rc0/PREREGISTRATION.md             research/occurrence_order_binding_discriminator_rc0/apparatus.py             research/occurrence_order_binding_discriminator_rc0/evaluator.py             tests/research/test_occurrence_order_binding_discriminator_rc0_apparatus.py             .github/workflows/cal-occurrence-order-binding-discriminator-rc0.yml
+      - name: Verify production semantics remain unchanged
+        run: git diff --exit-code b10adbb5f185c093bbe9b7e8e7759f666141cd0e -- src/
+      - name: Re-run frozen evaluator controls
+        run: uv run python -m pytest -q tests/research/test_occurrence_order_binding_discriminator_rc0_apparatus.py
+      - name: Candidate qualification
+        run: uv run python -m pytest -q tests/research/test_occurrence_order_binding_discriminator_rc0_candidate.py
+      - name: Report
+        run: uv run python -m research.occurrence_order_binding_discriminator_rc0.report
+      - name: Static checks
+        run: |
+          uv run python -m ruff check             research/occurrence_order_binding_discriminator_rc0/candidate.py             research/occurrence_order_binding_discriminator_rc0/report.py             tests/research/test_occurrence_order_binding_discriminator_rc0_candidate.py
