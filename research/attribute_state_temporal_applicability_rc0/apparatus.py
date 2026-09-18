@@ -1,5 +1,7 @@
 """Frozen apparatus for attribute-state temporal applicability RC0."""
 
+# ruff: noqa: E501
+
 from __future__ import annotations
 
 import hashlib
