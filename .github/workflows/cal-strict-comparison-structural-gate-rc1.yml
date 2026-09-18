@@ -29,7 +29,11 @@ jobs:
           git diff --exit-code a902621e8baea3063dddd7f92ba975aade305464 -- src/
       - name: Run revealed development controls
         run: uv run python -m pytest -q tests/research/test_strict_comparison_structural_gate_rc1_development.py
+      - name: Print fresh post-freeze observations
+        run: uv run python -m research.strict_comparison_structural_gate_rc1.fresh_evaluator
+      - name: Run fresh post-freeze pressure gate
+        run: uv run python -m pytest -q tests/research/test_strict_comparison_structural_gate_rc1_fresh.py
       - name: Static checks
         run: |
-          uv run python -m ruff check research/strict_comparison_structural_gate_rc1/candidate.py research/strict_comparison_structural_gate_rc1/development_controls.py
-          uv run python -m ruff format --check research/strict_comparison_structural_gate_rc1/candidate.py research/strict_comparison_structural_gate_rc1/development_controls.py
+          uv run python -m ruff check research/strict_comparison_structural_gate_rc1 tests/research/test_strict_comparison_structural_gate_rc1_development.py tests/research/test_strict_comparison_structural_gate_rc1_fresh.py
+          uv run python -m ruff format --check research/strict_comparison_structural_gate_rc1 tests/research/test_strict_comparison_structural_gate_rc1_development.py tests/research/test_strict_comparison_structural_gate_rc1_fresh.py
