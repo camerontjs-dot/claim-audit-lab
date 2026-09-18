@@ -1,0 +1,39 @@
+name: Research - CAL attribute-state temporal applicability candidate RC0
+
+on:
+  push:
+    branches: [research/cal-attribute-state-temporal-applicability-rc0-20260918]
+  pull_request:
+    paths:
+      - "research/attribute_state_temporal_applicability_rc0/candidate.py"
+      - "research/attribute_state_temporal_applicability_rc0/report.py"
+      - "tests/research/test_attribute_state_temporal_applicability_rc0_candidate.py"
+      - ".github/workflows/cal-attribute-state-temporal-applicability-candidate-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify frozen apparatus bytes
+        run: |
+          git diff --exit-code d6ef40df3de2fe44ca6104c2e5b434ca2b103abc -- research/attribute_state_temporal_applicability_rc0/PREREGISTRATION.md
+          git diff --exit-code d6ef40df3de2fe44ca6104c2e5b434ca2b103abc -- research/attribute_state_temporal_applicability_rc0/apparatus.py
+          git diff --exit-code d6ef40df3de2fe44ca6104c2e5b434ca2b103abc -- research/attribute_state_temporal_applicability_rc0/evaluator.py
+          git diff --exit-code d6ef40df3de2fe44ca6104c2e5b434ca2b103abc -- tests/research/test_attribute_state_temporal_applicability_rc0_apparatus.py
+          git diff --exit-code d6ef40df3de2fe44ca6104c2e5b434ca2b103abc -- src/
+      - name: Candidate qualification
+        run: uv run python -m pytest -q tests/research/test_attribute_state_temporal_applicability_rc0_candidate.py
+      - name: Report
+        run: uv run python -m research.attribute_state_temporal_applicability_rc0.report
+      - name: Static checks
+        run: uv run python -m ruff check research/attribute_state_temporal_applicability_rc0/candidate.py research/attribute_state_temporal_applicability_rc0/report.py tests/research/test_attribute_state_temporal_applicability_rc0_candidate.py
