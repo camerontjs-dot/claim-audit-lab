@@ -1,0 +1,39 @@
+name: Research - CAL composition provenance carrier candidate RC0
+
+on:
+  push:
+    branches: [research/cal-composition-provenance-carrier-rc0-20260918]
+  pull_request:
+    paths:
+      - "research/composition_provenance_carrier_rc0/candidate.py"
+      - "research/composition_provenance_carrier_rc0/report.py"
+      - "tests/research/test_composition_provenance_carrier_rc0_candidate.py"
+      - ".github/workflows/cal-composition-provenance-carrier-candidate-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify frozen apparatus bytes
+        run: |
+          git diff --exit-code 2eb07ecd3f32cc754ca7605faf6939d14b60d4b6 -- research/composition_provenance_carrier_rc0/PREREGISTRATION.md
+          git diff --exit-code 2eb07ecd3f32cc754ca7605faf6939d14b60d4b6 -- research/composition_provenance_carrier_rc0/apparatus.py
+          git diff --exit-code 2eb07ecd3f32cc754ca7605faf6939d14b60d4b6 -- research/composition_provenance_carrier_rc0/evaluator.py
+          git diff --exit-code 2eb07ecd3f32cc754ca7605faf6939d14b60d4b6 -- tests/research/test_composition_provenance_carrier_rc0_apparatus.py
+          git diff --exit-code 2eb07ecd3f32cc754ca7605faf6939d14b60d4b6 -- src/
+      - name: Candidate qualification and mutation verification
+        run: uv run python -m pytest -q tests/research/test_composition_provenance_carrier_rc0_candidate.py
+      - name: Report
+        run: uv run python -m research.composition_provenance_carrier_rc0.report
+      - name: Static checks
+        run: uv run python -m ruff check research/composition_provenance_carrier_rc0/candidate.py research/composition_provenance_carrier_rc0/report.py tests/research/test_composition_provenance_carrier_rc0_candidate.py
