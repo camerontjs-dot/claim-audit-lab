@@ -1,0 +1,37 @@
+name: Research - CAL direct event order Gate-1B authority RC3
+
+on:
+  push:
+    branches: [research/cal-direct-event-order-gate1b-authority-rc3-20260917]
+  pull_request:
+    paths:
+      - "research/direct_event_order_gate1b_authority_rc3/**"
+      - "tests/research/test_direct_event_order_gate1b_authority_rc3_*"
+      - ".github/workflows/cal-direct-event-order-gate1b-authority-rc3.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify predecessor isolation
+        run: |
+          git diff --exit-code 2c9369144fecb3025bf28885ab6e322d895c3dbf -- src/
+          git diff --exit-code 2c9369144fecb3025bf28885ab6e322d895c3dbf -- research/direct_event_order_gate1b_authority_rc2
+      - name: Frozen regression evaluator control
+        run: uv run python -m pytest -q tests/research/test_direct_event_order_gate1b_authority_rc3_apparatus.py
+      - name: Candidate regression closure
+        run: uv run python -m pytest -q tests/research/test_direct_event_order_gate1b_authority_rc3_candidate.py
+      - name: Report
+        run: uv run python -m research.direct_event_order_gate1b_authority_rc3.report
+      - name: Static checks
+        run: uv run python -m ruff check research/direct_event_order_gate1b_authority_rc3 tests/research/test_direct_event_order_gate1b_authority_rc3_*
