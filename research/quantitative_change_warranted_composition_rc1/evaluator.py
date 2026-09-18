@@ -1,12 +1,13 @@
 """Frozen evaluator for warranted quantitative-change composition RC1."""
 
+# ruff: noqa: I001
+
 from __future__ import annotations
 
 from collections.abc import Callable
 
 from .apparatus import (
     CASES,
-    Case,
     Contribution,
     Query,
     Relation,
