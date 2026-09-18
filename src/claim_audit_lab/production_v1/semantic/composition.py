@@ -8,7 +8,7 @@ from dataclasses import dataclass
 from enum import Enum
 from fractions import Fraction
 from types import MappingProxyType
-from typing import Any, TypeAlias
+from typing import TypeAlias
 
 from .models import CategoricalRelation, canonical_json_bytes
 
