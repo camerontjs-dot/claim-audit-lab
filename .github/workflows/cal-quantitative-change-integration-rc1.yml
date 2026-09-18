@@ -1,0 +1,33 @@
+name: Research - CAL quantitative change integration RC1
+
+on:
+  push:
+    branches: [research/cal-quantitative-change-integration-rc1-20260918]
+  pull_request:
+    paths:
+      - "research/quantitative_change_integration_rc1/**"
+      - "tests/research/test_quantitative_change_integration_rc1_*"
+      - ".github/workflows/cal-quantitative-change-integration-rc1.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify production isolation
+        run: git diff --exit-code 607ec560fd53bd56279193a8d39a48b6f80e1012 -- src/
+      - name: Frozen discriminator controls
+        run: uv run python -m pytest -q tests/research/test_quantitative_change_integration_rc1_apparatus.py
+      - name: Candidate qualification
+        run: uv run python -m pytest -q tests/research/test_quantitative_change_integration_rc1_candidate.py
+      - name: Static checks
+        run: uv run python -m ruff check research/quantitative_change_integration_rc1 tests/research/test_quantitative_change_integration_rc1_*
