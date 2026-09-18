@@ -1,0 +1,37 @@
+name: Research - CAL typed binary Gate-1B authority RC0
+
+on:
+  push:
+    branches: [research/cal-typed-binary-gate1b-authority-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/typed_binary_gate1b_authority_rc0/**"
+      - "tests/research/test_typed_binary_gate1b_authority_rc0_*"
+      - ".github/workflows/cal-typed-binary-gate1b-authority-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify Gate-1A parent isolation
+        run: |
+          git diff --exit-code a3f8c810116c13d04b21347885404bbb08347b8c -- research/typed_binary_measurement_machinery_rc1
+          git diff --exit-code a3f8c810116c13d04b21347885404bbb08347b8c -- src/
+      - name: Frozen evaluator control
+        run: uv run python -m pytest -q tests/research/test_typed_binary_gate1b_authority_rc0_apparatus.py
+      - name: Candidate qualification
+        run: uv run python -m pytest -q tests/research/test_typed_binary_gate1b_authority_rc0_candidate.py
+      - name: Report
+        run: uv run python -m research.typed_binary_gate1b_authority_rc0.report
+      - name: Static checks
+        run: uv run python -m ruff check research/typed_binary_gate1b_authority_rc0 tests/research/test_typed_binary_gate1b_authority_rc0_*
