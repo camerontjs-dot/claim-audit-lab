@@ -19,3 +19,4 @@ recursive-include validation *.md
 
 include schema/vocabulary.yaml
 include schema/.contract-version
+recursive-include src/claim_audit_lab/production_v1/schema *.json
