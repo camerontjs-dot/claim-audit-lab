@@ -98,7 +98,8 @@ def direct_event_grammar(text: str) -> Observation:
             time=negative.group("time"),
         )
 
-    if re.search(r"\b(approve|approved|release|released|sign|signed|record|recorded)\b", compact, re.I):
+    event_cue = r"\b(approve|approved|release|released|sign|signed|record|recorded)\b"
+    if re.search(event_cue, compact, re.I):
         return Observation.unresolved("event cue outside bounded direct grammar")
     return Observation.not_applicable("no event cue")
 
