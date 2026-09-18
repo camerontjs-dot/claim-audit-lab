@@ -1,3 +1,4 @@
+# ruff: noqa: I001
 """Revealed parent failures used only as successor development controls."""
 
 from .candidate import eligibility
