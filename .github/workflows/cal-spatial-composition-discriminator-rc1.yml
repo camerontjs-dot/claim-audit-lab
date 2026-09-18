@@ -1,0 +1,37 @@
+name: Research - CAL spatial composition discriminator RC1
+
+on:
+  push:
+    branches: [research/cal-spatial-composition-discriminator-rc1-20260917]
+  pull_request:
+    paths:
+      - "research/spatial_composition_discriminator_rc1/**"
+      - "tests/research/test_spatial_composition_discriminator_rc1_*"
+      - ".github/workflows/cal-spatial-composition-discriminator-rc1.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify typed-relation parent isolation
+        run: |
+          git diff --exit-code 1641d349e4740bf439e90e12953fffa7439ee986 -- src/
+          git diff --exit-code 1641d349e4740bf439e90e12953fffa7439ee986 -- research/typed_binary_gate1b_authority_rc1
+      - name: Frozen evaluator controls
+        run: uv run python -m pytest -q tests/research/test_spatial_composition_discriminator_rc1_apparatus.py
+      - name: Candidate qualification
+        run: uv run python -m pytest -q tests/research/test_spatial_composition_discriminator_rc1_candidate.py
+      - name: Report
+        run: uv run python -m research.spatial_composition_discriminator_rc1.report
+      - name: Static checks
+        run: uv run python -m ruff check research/spatial_composition_discriminator_rc1 tests/research/test_spatial_composition_discriminator_rc1_*
