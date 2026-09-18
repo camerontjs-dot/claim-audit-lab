@@ -5,8 +5,8 @@ from __future__ import annotations
 from collections.abc import Callable
 
 from .apparatus import (
-    CASES,
     AppliedNorm,
+    CASES,
     MembershipContribution,
     NormContribution,
     Relation,
@@ -16,7 +16,6 @@ from .apparatus import (
     weak_ignore_warrant,
     weak_string_only,
 )
-
 
 Candidate = Callable[
     [NormContribution, MembershipContribution, AppliedNorm],
