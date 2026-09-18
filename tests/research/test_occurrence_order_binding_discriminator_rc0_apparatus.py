@@ -1,9 +1,8 @@
 from __future__ import annotations
 
+import importlib
 import json
 from pathlib import Path
-
-import research.occurrence_order_binding_discriminator_rc0.evaluator as evaluator
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,6 +22,9 @@ def test_subject_pins_are_exact_terminal_authority_candidates() -> None:
 
 
 def test_frozen_evaluator_discriminates_weak_recombination_strategies() -> None:
+    evaluator = importlib.import_module(
+        "research.occurrence_order_binding_discriminator_rc0.evaluator"
+    )
     observed = evaluator.weak_failures()
     assert all(observed.values())
     assert any(item.startswith("OU01:") for item in observed["field_only"])
