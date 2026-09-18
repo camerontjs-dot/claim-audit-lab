@@ -1,0 +1,38 @@
+name: Research - CAL event occurrence Gate-1B authority RC0
+
+on:
+  push:
+    branches: [research/cal-event-occurrence-gate1b-authority-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/event_occurrence_gate1b_authority_rc0/**"
+      - "tests/research/test_event_occurrence_gate1b_authority_rc0_*"
+      - ".github/workflows/cal-event-occurrence-gate1b-authority-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify Gate-1A parent isolation
+        run: |
+          git diff --exit-code f69c1d82ef45fd8860c4c37f8e7555d4337afbfc -- research/event_occurrence_measurement_machinery_rc0
+          git diff --exit-code f69c1d82ef45fd8860c4c37f8e7555d4337afbfc -- src/
+      - name: Run frozen evaluator control
+        run: uv run python -m pytest -q tests/research/test_event_occurrence_gate1b_authority_rc0_apparatus.py
+      - name: Run candidate qualification
+        run: uv run python -m pytest -q tests/research/test_event_occurrence_gate1b_authority_rc0_candidate.py
+      - name: Print observations
+        run: uv run python -m research.event_occurrence_gate1b_authority_rc0.report
+      - name: Static checks
+        run: uv run python -m ruff check research/event_occurrence_gate1b_authority_rc0 tests/research/test_event_occurrence_gate1b_authority_rc0_*
