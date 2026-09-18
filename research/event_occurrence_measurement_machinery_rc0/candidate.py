@@ -129,9 +129,7 @@ def broad_dependency_event(text: str) -> Observation:
         re.IGNORECASE,
     )
     if passive is not None:
-        polarity = (
-            Polarity.DID_NOT_OCCUR if passive.group("neg") is not None else Polarity.OCCURRED
-        )
+        polarity = Polarity.DID_NOT_OCCUR if passive.group("neg") is not None else Polarity.OCCURRED
         return _event("qa", "approve", "batch", polarity)
 
     quarantine = re.fullmatch(r"QA quarantined the batch", compact, re.IGNORECASE)
