@@ -1,7 +1,5 @@
 """Conservative direct-assertion eligibility gate for strict comparison RC0."""
 
-from __future__ import annotations
-
 import re
 from dataclasses import dataclass
 
