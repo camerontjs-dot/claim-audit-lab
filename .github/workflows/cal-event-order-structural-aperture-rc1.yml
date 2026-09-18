@@ -1,0 +1,37 @@
+name: Research - CAL event order structural aperture RC1
+
+on:
+  push:
+    branches: [research/cal-event-order-structural-aperture-rc1-20260917]
+  pull_request:
+    paths:
+      - "research/cal_event_order_structural_aperture_rc1/**"
+      - "tests/research/test_cal_event_order_structural_aperture_rc1_*"
+      - ".github/workflows/cal-event-order-structural-aperture-rc1.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify frozen parent and source isolation
+        run: |
+          test "$(git hash-object research/cal_event_order_authority_rc0/candidate.py)" = "36a8d1fbd9e52ec743757f750f744ad4553b5698"
+          test "$(git hash-object research/cal_event_order_authority_rc0/event_authority.py)" = "88df954235069e98582e731f48e46e5b257da93f"
+          git diff --exit-code 3a4b5f24f813843eae3857ed3444fb12b1cb8182 -- research/cal_event_order_authority_rc0
+          git diff --exit-code 3a4b5f24f813843eae3857ed3444fb12b1cb8182 -- src/
+      - name: Run revealed development controls
+        run: uv run python -m pytest -q tests/research/test_cal_event_order_structural_aperture_rc1_development.py
+      - name: Static checks
+        run: |
+          uv run python -m ruff check research/cal_event_order_structural_aperture_rc1/candidate.py research/cal_event_order_structural_aperture_rc1/development_controls.py
+          uv run python -m ruff format --check research/cal_event_order_structural_aperture_rc1/candidate.py research/cal_event_order_structural_aperture_rc1/development_controls.py
