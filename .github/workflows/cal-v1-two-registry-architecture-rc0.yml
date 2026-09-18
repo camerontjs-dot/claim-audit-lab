@@ -26,6 +26,7 @@ jobs:
           python-version: "3.11"
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
       - name: Verify preregistration freeze
         run: |
           git diff --exit-code 8fbec89d5787ca7505c16d0d991c991de321e672 --             docs/research/CAL_V1_TWO_REGISTRY_ARCHITECTURE_RC0.md
