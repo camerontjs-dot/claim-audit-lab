@@ -128,7 +128,7 @@ def test_unknown_module_fails_closed() -> None:
 
 
 @pytest.mark.parametrize(
-    ("request", "expected"),
+    ("case_request", "expected"),
     [
         (_request(), CategoricalRelation.SUPPORTS),
         (
