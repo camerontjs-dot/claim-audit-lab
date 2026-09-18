@@ -1,4 +1,6 @@
-from research.direct_event_order_gate1b_authority_rc1.candidate import complete_and_warrant_event_order
+from research.direct_event_order_gate1b_authority_rc1.candidate import (
+    complete_and_warrant_event_order,
+)
 from research.direct_event_order_gate1b_authority_rc1.evaluator import failures
 
 
