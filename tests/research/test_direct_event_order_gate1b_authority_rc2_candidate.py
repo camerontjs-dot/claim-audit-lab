@@ -1,0 +1,8 @@
+from research.direct_event_order_gate1b_authority_rc2.candidate import (
+    complete_and_warrant_event_order_rc2,
+)
+from research.direct_event_order_gate1b_authority_rc2.evaluator import failures
+
+
+def test_candidate_closes_frozen_regressions() -> None:
+    assert failures(complete_and_warrant_event_order_rc2) == ()
