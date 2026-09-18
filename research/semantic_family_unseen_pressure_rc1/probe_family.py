@@ -72,8 +72,8 @@ def probe_strict(text: str) -> dict[str, str]:
 
 
 def probe_event_order(text: str) -> dict[str, str]:
-    from research.direct_event_order_gate1b_authority_rc2.candidate import (
-        complete_and_warrant_event_order_rc2,
+    from research.direct_event_order_gate1b_authority_rc3.candidate import (
+        complete_and_warrant_event_order_rc3,
     )
     from claim_audit_lab.production_v1.semantic.measurements import measure_direct_event_order
     from claim_audit_lab.production_v1.semantic.models import SemanticFamily
@@ -84,7 +84,7 @@ def probe_event_order(text: str) -> dict[str, str]:
     if status != "CLAIMED":
         return _no("measurement", status)
     try:
-        complete_and_warrant_event_order_rc2(context, receipt, "p1")
+        complete_and_warrant_event_order_rc3(context, receipt, "p1")
     except Exception as exc:
         return _no("authority", f"{type(exc).__name__}: {exc}")
     return _yes()
