@@ -1,3 +1,4 @@
+# ruff: noqa: I001
 """Conservative direct-assertion eligibility gate for strict comparison RC0."""
 
 import re
