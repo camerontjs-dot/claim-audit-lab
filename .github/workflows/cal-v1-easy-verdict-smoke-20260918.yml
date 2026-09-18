@@ -1,4 +1,4 @@
-name: Research - CAL V1 easy verdict smoke 20260918
+name: Research - CAL V1 easy contradiction smoke 20260918
 
 on:
   push:
@@ -30,20 +30,41 @@ jobs:
         run: |
           git diff --exit-code 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48 -- src/claim_audit_lab
 
-      - name: Run one easy supported claim
+      - name: Build reversed claim packet
         run: |
-          rm -rf smoke-output
-          uv run python -m claim_audit_lab.cli run             tests/production/fixtures/strict-support.json             --out-dir smoke-output
-          cat smoke-output/result.json
+          uv run python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          source = Path("tests/production/fixtures/strict-support.json")
+          packet = json.loads(source.read_text())
+          claim = "Women had a lower rate than Men."
+          packet["original_claim"] = claim
+          packet["proposition"]["text_sha256"] = hashlib.sha256(claim.encode()).hexdigest()
+          packet["proposition"]["fields"]["comparison_direction"] = "LESS_THAN"
+          Path("reverse-packet.json").write_text(
+              json.dumps(packet, indent=2, ensure_ascii=False) + "\n"
+          )
+          PY
+
+      - name: Run reversed claim against unchanged supporting evidence
+        run: |
+          rm -rf reverse-output
+          uv run python -m claim_audit_lab.cli run             reverse-packet.json             --out-dir reverse-output
+          cat reverse-output/result.json
           uv run python - <<'PY'
           import json
           from pathlib import Path
 
-          result = json.loads(Path("smoke-output/result.json").read_text())
+          result = json.loads(Path("reverse-output/result.json").read_text())
           conclusion = result["result"]["conclusion"]
           failure = result["result"]["failure_code"]
-          print(f"SMOKE_CONCLUSION={conclusion}")
-          print(f"SMOKE_FAILURE_CODE={failure}")
-          assert conclusion == "supported", result
+          relation_categories = result["composition"]["relation_categories"]
+          print(f"REVERSE_CONCLUSION={conclusion}")
+          print(f"REVERSE_FAILURE_CODE={failure}")
+          print(f"REVERSE_RELATIONS={relation_categories}")
+          assert conclusion == "contradicted", result
           assert failure is None, result
+          assert relation_categories == ["REFUTES"], result
           PY
