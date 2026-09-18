@@ -1,0 +1,38 @@
+name: Research - CAL event occurrence measurement machinery RC0
+
+on:
+  push:
+    branches:
+      - research/cal-event-occurrence-measurement-machinery-rc0-20260917
+  pull_request:
+    paths:
+      - "research/event_occurrence_measurement_machinery_rc0/**"
+      - "tests/research/test_event_occurrence_measurement_machinery_*"
+      - ".github/workflows/cal-event-occurrence-measurement-machinery-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discriminate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify lineage and source isolation
+        run: |
+          git cat-file -e 245cf7481b4340fc17b80f7000d1663c2769e012^{commit}
+          git cat-file -e eaef6c19dbe897e70af89b24d8599cfa05c335a1^{commit}
+          git diff --exit-code 245cf7481b4340fc17b80f7000d1663c2769e012 -- src/
+      - run: uv run python -m pytest -q tests/research/test_event_occurrence_measurement_machinery_apparatus_rc0.py
+      - run: uv run python -m pytest -q tests/research/test_event_occurrence_measurement_machinery_candidate_rc0.py
+      - run: uv run python -m research.event_occurrence_measurement_machinery_rc0.report
+      - run: uv run python -m ruff check research/event_occurrence_measurement_machinery_rc0/candidate.py research/event_occurrence_measurement_machinery_rc0/report.py
+      - run: uv run python -m ruff format --check research/event_occurrence_measurement_machinery_rc0/candidate.py research/event_occurrence_measurement_machinery_rc0/report.py
+      - run: uv run python -m mypy
