@@ -1,0 +1,100 @@
+name: Research - CAL V1 prototype freeze 20260918
+
+on:
+  push:
+    branches: [research/cal-v1-prototype-freeze-20260918]
+  pull_request:
+    paths:
+      - "research/cal_v1_prototype_freeze_20260918/**"
+      - "docs/research/CAL_V1_PROTOTYPE_FREEZE_20260918.md"
+      - ".github/workflows/cal-v1-prototype-freeze-20260918.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: 4e1f6fe00e7c350b28f52bfea14f1f8988847884
+          path: external/evidence-bundler
+          fetch-depth: 0
+
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 22bc5c1d97b78cfe6f9e2f57e52f69d528069b9a
+          path: external/typed-binary
+          fetch-depth: 0
+
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: f117698e6db3b47cc68af2024c7816cc8945b004
+          path: external/attribute-state
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install exact candidate environment
+        run: |
+          uv sync --all-extras
+          uv pip install -e external/evidence-bundler
+          uv run python -m spacy download en_core_web_sm
+
+      - name: Verify frozen CAL source identity
+        run: |
+          git diff --exit-code 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48 --             src/claim_audit_lab
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/plugins.py)" =             "a2b96f192a4acafb2471785f0b51d2c656e03afc"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/composition.py)" =             "8396f6756a06c7625aeb5264db3f620d62b04f95"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/decomposition.py)" =             "268d0dc4dd22ddde3848141d62b7d719e48d374d"
+
+      - name: Verify exact external authorities
+        run: |
+          test "$(git -C external/evidence-bundler rev-parse HEAD)" =             "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          test "$(git -C external/typed-binary rev-parse HEAD)" =             "22bc5c1d97b78cfe6f9e2f57e52f69d528069b9a"
+          test "$(git -C external/attribute-state rev-parse HEAD)" =             "f117698e6db3b47cc68af2024c7816cc8945b004"
+          test "$(git -C external/typed-binary hash-object research/typed_spatial_relation_discriminator_rc0/candidate.py)" =             "4dbbc3a94ce561ef71590c8ac900c87259ac361f"
+          test "$(git -C external/attribute-state hash-object research/attribute_state_contract_rc0/candidate.py)" =             "5d33fd1fd5259cd3d3176b9c7e748252a8eac646"
+
+      - name: Integrated upstream parent path
+        env:
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+        run: |
+          uv run python -m pytest -q             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py
+
+      - name: Final semantic closure
+        env:
+          CAL_TYPED_BINARY_REPO: ${{ github.workspace }}/external/typed-binary
+          CAL_ATTRIBUTE_STATE_REPO: ${{ github.workspace }}/external/attribute-state
+        run: |
+          uv run python -m pytest -q             tests/research/test_cal_v1_final_semantic_closure_rc0.py
+
+      - name: Frozen architecture gates
+        run: |
+          uv run python -m pytest -q             tests/production/test_decomposition_composer_rc0.py             tests/production/test_composition_registry_rc0.py             tests/production/test_semantic_plugin_registry.py             tests/production/test_shadow_observation_runtime_rc0.py             tests/production/test_multi_instrument_ledger_rc0.py
+
+      - name: Full-history repository regression
+        env:
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+          CAL_TYPED_BINARY_REPO: ${{ github.workspace }}/external/typed-binary
+          CAL_ATTRIBUTE_STATE_REPO: ${{ github.workspace }}/external/attribute-state
+        run: uv run python -m pytest -q
+
+      - name: Static gates
+        run: |
+          uv run python -m ruff check             src/claim_audit_lab             tests/production             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py             tests/research/test_cal_v1_final_semantic_closure_rc0.py
+          uv run python -m ruff format --check             src/claim_audit_lab             tests/production             tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py             tests/research/test_cal_v1_final_semantic_closure_rc0.py
+          uv run python -m mypy
