@@ -1,0 +1,47 @@
+{
+  "strict_comparison": {
+    "branch": "research/cal-strict-comparison-gate1b-authority-rc2-20260917",
+    "sha": "33cf39b1b2fabae2c867187bc097da396ffd7014",
+    "qualification_run": "35298660511"
+  },
+  "direct_event_order": {
+    "branch": "research/cal-direct-event-order-gate1b-authority-rc2-20260917",
+    "sha": "2c9369144fecb3025bf28885ab6e322d895c3dbf",
+    "qualification_run": "35298592193"
+  },
+  "deontic_norm": {
+    "branch": "research/cal-deontic-gate1b-authority-rc0-20260917",
+    "sha": "60298c99e8eb16cdad01f3c652cead83cad02992",
+    "qualification_run": "35295516172"
+  },
+  "population_membership": {
+    "branch": "research/cal-population-gate1b-authority-rc0-20260917",
+    "sha": "5d72475a65c3b6cf4190a048040fad8ee8b91156",
+    "qualification_run": "35295601528"
+  },
+  "scalar_value": {
+    "branch": "research/cal-scalar-gate1b-authority-rc0-20260917",
+    "sha": "c33b656819e91ac38a85c48921b84ea20ec090bc",
+    "qualification_run": "35297087952"
+  },
+  "event_occurrence": {
+    "branch": "research/cal-event-occurrence-gate1b-authority-rc0-20260917",
+    "sha": "7cd54f9fb28afa6f5fc0fa2d1e9905cd916e0efe",
+    "qualification_run": "35297288001"
+  },
+  "attribute_state": {
+    "branch": "research/cal-attribute-state-gate1b-authority-rc0-20260917",
+    "sha": "9f74ac0a2d0054cec1683cea96691b744bbb2067",
+    "qualification_run": "35297311335"
+  },
+  "typed_binary_relation": {
+    "branch": "research/cal-typed-binary-gate1b-authority-rc1-20260917",
+    "sha": "1641d349e4740bf439e90e12953fffa7439ee986",
+    "qualification_run": "35297750568"
+  },
+  "explicit_causal_assertion": {
+    "branch": "research/cal-causal-gate1b-authority-rc0-20260917",
+    "sha": "3653d4534ba8d6af22a54a593c30cafbd3b75725",
+    "qualification_run": "35297705826"
+  }
+}
