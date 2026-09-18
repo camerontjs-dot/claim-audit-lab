@@ -1,47 +1,35 @@
-# CAL Semantic Family Unseen Pressure RC1 — Preregistration
+# CAL Semantic Family Unseen Pressure Regression RC2 — Preregistration
 
 Date: 2026-09-17
 
-Classification: Draft Research / fresh post-repair adversarial pressure test.
+Classification: Draft Research / exact-corpus regression confirmation.
 
-## Question
+## Purpose
 
-Do the nine exact frozen family subjects, including strict-comparison RC2 and direct-event-order RC2, remain isolated on a second pressure corpus whose attack surfaces were not used to design either repair?
+Re-run the exact frozen 64-case unseen-pressure RC1 corpus against direct-event-order RC3 while leaving the other eight exact family subjects unchanged.
 
-## Independence from prior pressure
+This is not new hardening evidence.
 
-This corpus is distinct from end-stage pressure RC0.
+## Frozen corpus
 
-It does not reuse the RC0 failure strings. Fresh attack vocabulary and structures include:
-- belief and reporting frames such as `believes`, `claims`, `per QA`, and `as stated by`;
-- new comparison modifiers such as `hardly` and `almost`;
-- subject- and object-pronoun coreference;
-- new deontic conditions and scope residue;
-- historical/population paraphrases;
-- scalar bounds and aggregation;
-- occurrence cardinality;
-- state temporality;
-- relation paraphrases;
-- causal belief frames;
-- new cross-family recombinations.
+- path: `research/semantic_family_unseen_pressure_rc1/cases.json`
+- frozen blob SHA: `02aa68faf8d7344b41d0b5e95010569b9511e33a`
+- original unseen-pressure run: `35299285839`
 
-The nine canonical controls are qualified-family controls, not novel hardening cases.
+No case or allowlist mutation is permitted.
 
-## Exact subjects
+## Subject change
 
-The subject map pins exact qualified commits. No subject may be changed after this corpus is frozen.
+Only direct event order changes:
+
+- prior subject: `2c9369144fecb3025bf28885ab6e322d895c3dbf`
+- RC3 subject: `b163f0faf58c8fe7e2c74e8d9e8618aa2147a359`
+- RC3 qualification run: `35299574593`
+
+The other eight exact subject SHAs remain unchanged.
 
 ## Acceptance
 
-A pass requires:
-- all nine canonical controls warrant in exactly their permitted family;
-- zero unauthorized atomic-family warrants on every noncanonical case;
-- zero probe errors;
-- exact reconstruction of every subject SHA;
-- no subject mutation.
+All 64 claim-level expectations must pass, including the prior fresh counterexample `UE05`, with zero probe errors and exact subject reconstruction.
 
-Any unauthorized warrant is a fresh semantic counterexample. The run is terminal as failed; do not patch and recount inside RC1.
-
-## Non-claims
-
-A pass would support additional boundary hardening evidence, not open-domain semantic completeness, compiler coverage, composition correctness, or production promotion.
+A pass establishes only regression closure. A third unseen pressure corpus is still required.
