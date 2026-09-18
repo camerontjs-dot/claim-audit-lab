@@ -364,17 +364,13 @@ def compose_quantitative_change(request: object) -> CompositionResult:
 
     _require_authority_firewall(request.authorities)
     payloads = {
-        authority.authority_id: _scalar_payload(authority)
-        for authority in request.authorities
+        authority.authority_id: _scalar_payload(authority) for authority in request.authorities
     }
     bindings = _binding_map(request)
     if bindings is None:
         return _unresolved_result(request)
 
-    if any(
-        not binding.established or binding.rank is None
-        for binding in bindings.values()
-    ):
+    if any(not binding.established or binding.rank is None for binding in bindings.values()):
         return _unresolved_result(request)
     ranks = [binding.rank for binding in bindings.values()]
     labels = [binding.label for binding in bindings.values()]
@@ -480,9 +476,7 @@ def compose_quantitative_change(request: object) -> CompositionResult:
             modifier_state=modifier_state,
         )
 
-    relation = (
-        CategoricalRelation.SUPPORTS if truth else CategoricalRelation.REFUTES
-    )
+    relation = CategoricalRelation.SUPPORTS if truth else CategoricalRelation.REFUTES
     receipt = bind_composition_receipt(
         module_id=_QUANTITATIVE_MODULE_ID,
         relation=relation,
@@ -499,9 +493,7 @@ QUANTITATIVE_CHANGE_EXACT_MODULE = CompositionModule(
     compose_fn=compose_quantitative_change,
 )
 
-DEFAULT_COMPOSITION_REGISTRY = CompositionRegistry(
-    (QUANTITATIVE_CHANGE_EXACT_MODULE,)
-)
+DEFAULT_COMPOSITION_REGISTRY = CompositionRegistry((QUANTITATIVE_CHANGE_EXACT_MODULE,))
 
 
 __all__ = [
