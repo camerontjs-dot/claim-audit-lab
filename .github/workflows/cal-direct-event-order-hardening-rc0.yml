@@ -1,0 +1,36 @@
+name: Research - CAL direct event order hardening RC0
+
+on:
+  push:
+    branches: [research/cal-direct-event-order-hardening-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/direct_event_order_hardening_rc0/**"
+      - "tests/research/test_direct_event_order_hardening_rc0.py"
+      - ".github/workflows/cal-direct-event-order-hardening-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  harden:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify frozen subject and source isolation
+        run: |
+          test "$(git hash-object research/event_ordering_measurement_rc7fc/event_order.py)" = "3e29b0e2ec5d9ba2d873d1584e76635147e421aa"
+          git diff --exit-code e8d33913db66ad21027dffdf731d50f7a0977c8f -- research/event_ordering_measurement_rc7fc/event_order.py
+          git diff --exit-code e8d33913db66ad21027dffdf731d50f7a0977c8f -- src/
+      - name: Print all observations before acceptance
+        run: uv run python -m research.direct_event_order_hardening_rc0.report
+      - name: Run adversarial acceptance tests
+        run: uv run python -m pytest -q tests/research/test_direct_event_order_hardening_rc0.py
+      - name: Static checks on hardening apparatus
+        run: uv run python -m ruff check research/direct_event_order_hardening_rc0 tests/research/test_direct_event_order_hardening_rc0.py
