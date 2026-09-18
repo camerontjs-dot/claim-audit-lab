@@ -1,0 +1,56 @@
+name: Research - CAL scalar measurement machinery RC0
+
+on:
+  push:
+    branches:
+      - research/cal-scalar-measurement-machinery-rc0-20260917
+  pull_request:
+    paths:
+      - "research/scalar_measurement_machinery_rc0/**"
+      - "tests/research/test_scalar_measurement_machinery_*"
+      - ".github/workflows/cal-scalar-measurement-machinery-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  discriminate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install exact repository environment
+        run: uv sync --all-extras
+
+      - name: Verify Gate-0 parent and production-source isolation
+        run: |
+          git cat-file -e 43bd155f3dee17d4b7271412927466c904a7f2fd^{commit}
+          git cat-file -e c3b7e13d8940f20fcd476eb6b96f276e78e309ec^{commit}
+          git diff --exit-code 43bd155f3dee17d4b7271412927466c904a7f2fd -- src/
+
+      - name: Run frozen evaluator controls
+        run: uv run python -m pytest -q tests/research/test_scalar_measurement_machinery_apparatus_rc0.py
+
+      - name: Run candidate machinery discrimination
+        run: uv run python -m pytest -q tests/research/test_scalar_measurement_machinery_candidate_rc0.py
+
+      - name: Print candidate machinery comparison
+        run: uv run python -m research.scalar_measurement_machinery_rc0.report
+
+      - name: Run focused Ruff on candidate code
+        run: uv run python -m ruff check research/scalar_measurement_machinery_rc0/candidate.py research/scalar_measurement_machinery_rc0/report.py
+
+      - name: Run candidate format check
+        run: uv run python -m ruff format --check research/scalar_measurement_machinery_rc0/candidate.py research/scalar_measurement_machinery_rc0/report.py
+
+      - name: Run strict mypy
+        run: uv run python -m mypy
