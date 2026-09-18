@@ -1,0 +1,103 @@
+{
+  "schema": "cal-v1-prototype-freeze-v1",
+  "freeze_id": "cal-v1-prototype-20260918",
+  "official_release_version": null,
+  "classification": "research_prototype_freeze",
+  "exact_subjects": {
+    "cal_evidence_head": "647a25aed95088faf900ad2ccd8eafa0be2c91fe",
+    "cal_semantic_code_head": "7cf0d2e50562ec4ce4082d1e1c058a11025b1a48",
+    "two_registry_candidate": "7f093e954c2554c3bf21c8bd72d36550414bf54b",
+    "integrated_pipeline_candidate": "b695a1ca16051fde1c204987895b672e73225168"
+  },
+  "active_runtime": {
+    "semantic_family_registry": [
+      "strict_comparison",
+      "direct_event_order"
+    ],
+    "composition_registry": [
+      "quantitative_change_exact_v1"
+    ],
+    "decomposition_modes": [
+      "single",
+      "all_of"
+    ],
+    "notes": [
+      "quantitative_change_exact_v1 is registered but not wired through the ordinary A/B audit path because scalar_value atomic production authority is not active",
+      "DecompositionComposer is qualified and integrated by the research harness but is not yet one-command production orchestration"
+    ]
+  },
+  "qualified_extension_contracts": {
+    "atomic": [
+      "deontic_norm",
+      "population_membership",
+      "scalar_value",
+      "event_occurrence",
+      "attribute_state",
+      "typed_binary_relation",
+      "explicit_causal_assertion"
+    ],
+    "collapsed_specializations": [
+      "quantitative_change -> scalar_value + temporal binding + composition",
+      "bounded spatial composition -> typed_binary_relation",
+      "definition/equivalence -> typed_binary_relation with closed predicate metadata",
+      "entity existence -> attribute_state with closed functional existence domain"
+    ],
+    "composition_invariants": [
+      "warrant required",
+      "typed exact identity/role binding",
+      "modifier preservation",
+      "explicit event/temporal binding where needed",
+      "fail closed on mismatch or unknown",
+      "deterministic provenance receipt"
+    ]
+  },
+  "upstream": {
+    "contract_a": {
+      "version": "2.0.0",
+      "tag": "contract-a-v2.0.0",
+      "promotion_merge": "b59c2fbe38bae78a3a35699362c0e67d17152e4b"
+    },
+    "evidence_bundler": {
+      "pr": 79,
+      "frozen_head": "4e1f6fe00e7c350b28f52bfea14f1f8988847884",
+      "profile": "eb-v1-integration-10x3-rc0",
+      "config_sha256": "sha256:5b10d0c29794e80d6876a99e26bcf6ec6a27a4c5165aee78054a6bc32759f4bc"
+    },
+    "contract_b": {
+      "version": "1.2.0",
+      "production_lock": "c314e53bd91c0736aa4370a364673b069aceb43e"
+    }
+  },
+  "downstream": {
+    "contract_c": {
+      "canonical_version": "1.0.0",
+      "disposition": "C1_CANNOT_AUTHORITATIVELY_BIND_CAL_V1_DECOMPOSITION_RC0",
+      "apparatus_pr": 107,
+      "terminal_result_commit": "f866e0592aa733faf8fabd50c52150e82110db12"
+    },
+    "decision_engine": {
+      "state": "not_requalified_for_new_parent_decomposition_surface"
+    }
+  },
+  "terminal_cal_prs": {
+    "two_registry": 176,
+    "decomposition_composer": 177,
+    "upstream_parent_integration": 178,
+    "final_semantic_closure": 179
+  },
+  "preserved_limits": [
+    "no universal retrieval completeness claim",
+    "EB obligation-selector PR 119 is not part of this frozen baseline",
+    "no scalar_value end-to-end A/B runtime wiring",
+    "no percentage/rate/compound/uncertain quantitative change",
+    "no rich spatial geometry/topology/routing",
+    "no inferred causality beyond explicit typed causal assertion",
+    "no arbitrary copular definition parsing or equivalence substitution",
+    "no mention/retrieval/absence shortcut to existence or nonexistence",
+    "no deep coreference or arbitrary identity resolution",
+    "no subset-derived deontic applicability or conflict resolution",
+    "Contract C 1.0 cannot authoritatively bind the new decomposition lineage",
+    "no production release, tag, or automatic authorization"
+  ],
+  "next_authorized_step": "minimal promotion-design PR against the real production base; do not release until boundary/version decisions are separately qualified"
+}
