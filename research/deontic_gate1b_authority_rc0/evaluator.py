@@ -9,12 +9,12 @@ from research.deontic_measurement_machinery_rc0.candidate import direct_grammar
 from research.deontic_measurement_machinery_rc0.cohort import (
     APPROVE_RECORD,
     ARCHIVE_RECORD,
-    QA,
-    RELEASE_BATCH,
-    TECH,
     Mode,
     Norm,
+    QA,
+    RELEASE_BATCH,
     Status,
+    TECH,
 )
 
 from .cohort import CLEAN, CleanCase
