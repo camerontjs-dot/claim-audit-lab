@@ -1,7 +1,5 @@
 """Revealed parent failures used only as successor development controls."""
 
-from __future__ import annotations
-
 from .candidate import eligibility
 
 
