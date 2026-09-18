@@ -1,0 +1,38 @@
+name: Research - CAL attribute state Gate-1B authority RC0
+
+on:
+  push:
+    branches: [research/cal-attribute-state-gate1b-authority-rc0-20260917]
+  pull_request:
+    paths:
+      - "research/attribute_state_gate1b_authority_rc0/**"
+      - "tests/research/test_attribute_state_gate1b_authority_rc0_*"
+      - ".github/workflows/cal-attribute-state-gate1b-authority-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - run: uv run python -m spacy download en_core_web_sm
+      - name: Verify Gate-1A parent isolation
+        run: |
+          git diff --exit-code 08c198ee009f389b6386383c289494f2a44c2a9a -- research/attribute_state_measurement_machinery_rc1
+          git diff --exit-code 08c198ee009f389b6386383c289494f2a44c2a9a -- src/
+      - name: Frozen evaluator control
+        run: uv run python -m pytest -q tests/research/test_attribute_state_gate1b_authority_rc0_apparatus.py
+      - name: Candidate qualification
+        run: uv run python -m pytest -q tests/research/test_attribute_state_gate1b_authority_rc0_candidate.py
+      - name: Report
+        run: uv run python -m research.attribute_state_gate1b_authority_rc0.report
+      - name: Static checks
+        run: uv run python -m ruff check research/attribute_state_gate1b_authority_rc0 tests/research/test_attribute_state_gate1b_authority_rc0_*
