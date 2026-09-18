@@ -162,10 +162,10 @@ def test_unknown_module_fails_closed() -> None:
     ],
 )
 def test_exact_quantitative_change_relations(
-    request: QuantitativeChangeRequest,
+    case_request: QuantitativeChangeRequest,
     expected: CategoricalRelation,
 ) -> None:
-    assert _compose(request).relation is expected
+    assert _compose(case_request).relation is expected
 
 
 def test_call_order_does_not_replace_temporal_authority() -> None:
@@ -184,7 +184,7 @@ def test_temporal_rank_reversal_changes_semantics() -> None:
 
 
 @pytest.mark.parametrize(
-    "request",
+    "case_request",
     [
         _request(right=_authority("scalar-auth-t2", "95", entity="other")),
         _request(right=_authority("scalar-auth-t2", "95", metric="count")),
@@ -199,15 +199,15 @@ def test_temporal_rank_reversal_changes_semantics() -> None:
     ],
 )
 def test_semantic_insufficiency_is_unresolved(
-    request: QuantitativeChangeRequest,
+    case_request: QuantitativeChangeRequest,
 ) -> None:
-    result = _compose(request)
+    result = _compose(case_request)
     assert result.relation is CategoricalRelation.UNRESOLVED
     assert result.receipt.relation is CategoricalRelation.UNRESOLVED
 
 
 @pytest.mark.parametrize(
-    "request",
+    "case_request",
     [
         _request(left=_authority("a1", "92", semantic_family="event_occurrence")),
         _request(left=_authority("a1", "92", status="CLAIMED")),
@@ -222,10 +222,10 @@ def test_semantic_insufficiency_is_unresolved(
     ],
 )
 def test_authority_firewall_rejects_invalid_inputs(
-    request: QuantitativeChangeRequest,
+    case_request: QuantitativeChangeRequest,
 ) -> None:
     with pytest.raises(CompositionRefusal):
-        _compose(request)
+        _compose(case_request)
 
 
 def test_duplicate_authority_identity_is_rejected() -> None:
