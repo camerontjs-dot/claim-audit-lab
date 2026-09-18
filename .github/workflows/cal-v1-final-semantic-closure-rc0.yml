@@ -1,0 +1,62 @@
+name: Research - CAL V1 final semantic closure RC0
+
+on:
+  push:
+    branches: [research/cal-v1-final-semantic-closure-rc0-20260918]
+  pull_request:
+    paths:
+      - "docs/research/CAL_V1_FINAL_SEMANTIC_CLOSURE_RC0.md"
+      - "tests/research/test_cal_v1_final_semantic_closure_rc0.py"
+      - ".github/workflows/cal-v1-final-semantic-closure-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: 22bc5c1d97b78cfe6f9e2f57e52f69d528069b9a
+          path: external/typed-binary
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: f117698e6db3b47cc68af2024c7816cc8945b004
+          path: external/attribute-state
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify preregistration and frozen CAL base
+        run: |
+          git diff --exit-code a91b400b598d45d458db18c5ce39199f03e6a197 --             docs/research/CAL_V1_FINAL_SEMANTIC_CLOSURE_RC0.md
+          git diff --exit-code 47d7067476088e7b5b86944ec0df72ef949f5127 --             src/claim_audit_lab
+      - name: Verify exact family authorities
+        run: |
+          test "$(git -C external/typed-binary rev-parse HEAD)" =             "22bc5c1d97b78cfe6f9e2f57e52f69d528069b9a"
+          test "$(git -C external/attribute-state rev-parse HEAD)" =             "f117698e6db3b47cc68af2024c7816cc8945b004"
+          test "$(git -C external/typed-binary hash-object research/typed_spatial_relation_discriminator_rc0/candidate.py)" =             "4dbbc3a94ce561ef71590c8ac900c87259ac361f"
+          test "$(git -C external/attribute-state hash-object research/attribute_state_contract_rc0/candidate.py)" =             "5d33fd1fd5259cd3d3176b9c7e748252a8eac646"
+      - name: Final semantic closure discriminators
+        env:
+          CAL_TYPED_BINARY_REPO: ${{ github.workspace }}/external/typed-binary
+          CAL_ATTRIBUTE_STATE_REPO: ${{ github.workspace }}/external/attribute-state
+        run: |
+          uv run python -m pytest -q             tests/research/test_cal_v1_final_semantic_closure_rc0.py
+      - name: Frozen current architecture regressions
+        run: |
+          uv run python -m pytest -q             tests/production/test_decomposition_composer_rc0.py             tests/production/test_composition_registry_rc0.py             tests/production/test_semantic_plugin_registry.py
+      - name: Static checks
+        run: |
+          uv run python -m ruff check             tests/research/test_cal_v1_final_semantic_closure_rc0.py
+          uv run python -m ruff format --check             tests/research/test_cal_v1_final_semantic_closure_rc0.py
