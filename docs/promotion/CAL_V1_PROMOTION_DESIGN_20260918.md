@@ -15,6 +15,7 @@ This is a promotion-design artifact. It is not a release record and does not its
 ## Frozen research authority
 
 Prototype freeze:
+
 - disposition: `CAL_V1_PROTOTYPE_FROZEN`
 - freeze ID: `cal-v1-prototype-20260918`
 - accepted freeze commit: `e24e405f5336ee024674f39dba97255bb58a2dd9`
@@ -25,131 +26,260 @@ Prototype freeze:
 
 The freeze passed the exact semantic-source guard, external-authority guards, integrated A2 → EB → B1.2 → CAL → parent path, final semantic closure, architecture gates, full-history repository regression, Ruff, and strict mypy.
 
-## Capability that may be considered for promotion
+## Exact production-to-freeze delta
 
-The frozen architecture is:
+Comparison:
+
+`32275a239b68af383a56bca843e28cbc1e343976...7cf0d2e50562ec4ce4082d1e1c058a11025b1a48`
+
+Observed:
+
+- 78 commits ahead of production `main`;
+- no commits behind;
+- the delta contains production runtime work, qualification machinery, research records, workflows, fixture-version churn, and unrelated historical changes.
+
+Conclusion: the research branch must not be merged wholesale.
+
+A second comparison from the earlier frozen integration candidate:
+
+`80835a57e121c66d22c68f349abf8e318de0e232...7cf0d2e50562ec4ce4082d1e1c058a11025b1a48`
+
+isolated the later V1 source changes to:
+
+- `production_v1/claim_compiler.py`
+- `semantic/authority.py`
+- `semantic/composition.py`
+- `semantic/decomposition.py`
+- `semantic/engine.py`
+- `semantic/measurement_ledger.py`
+- `semantic/plugins.py`
+
+This makes the active-runtime boundary directly inspectable.
+
+## Canonical production route
+
+The earlier integration EDR and the frozen code agree that the canonical operator route is:
 
 ```text
-Contract A / typed proposition structure
+released Contract B 1.2 bundle
+        +
+typed target bound to exact Contract B claim
         ↓
-Evidence Bundler / Contract B
+claim-audit-v1 run-bundle
+        ↓
+canonical Contract B intake
+        ↓
+AuditContext
         ↓
 SemanticFamilyRegistry
         ↓
-CompositionRegistry
+measurement → warrant → proposition-relative relation
         ↓
-scoreless proposition result
+scoreless categorical compose()
         ↓
-DecompositionComposer
-        ↓
-native CAL child + parent results
+native CAL result + deterministic artifacts
 ```
 
-Current active runtime authority remains narrower:
+The historical/top-level `claim-audit` compatibility-packet commands are not the canonical Evidence Bundler handoff.
 
-- semantic families:
-  - `strict_comparison`
-  - `direct_event_order`
-- registered composition:
-  - `quantitative_change_exact_v1`
-- decomposition:
-  - root/single
-  - declared exact `all_of`
+## Proposed first promotion slice
 
-Important reachability constraints:
+The smallest production slice should promote the already-qualified canonical Contract B → CAL verdict path and no more.
 
-- ordinary A/B execution does not yet produce active `scalar_value` atomic authority, so quantitative change must not be promoted as an ordinary end-to-end capability merely because the composition module is qualified;
-- DecompositionComposer is qualified through the frozen integration harness, but multi-child parent orchestration is not yet a one-command production path.
+### Runtime and intake
 
-## Research-qualified extension authority that is not automatically in scope
+Promote frozen versions of:
 
-Research also supports bounded contracts for:
+- `src/claim_audit_lab/production_v1/__init__.py`
+- `src/claim_audit_lab/production_v1/bundle_cli.py`
+- `src/claim_audit_lab/production_v1/bundle_input.py`
+- `src/claim_audit_lab/production_v1/execution.py`
+- `src/claim_audit_lab/production_v1/packet.py`
+- `src/claim_audit_lab/production_v1/render.py`
 
-- `deontic_norm`
-- `population_membership`
-- `scalar_value`
-- `event_occurrence`
-- `attribute_state`
-- `typed_binary_relation`
-- `explicit_causal_assertion`
+`packet.py` remains in the dependency closure because frozen `execution.py` imports and preserves the compatibility-packet surface, but that surface is not the canonical promoted operator boundary.
 
-Definition/equivalence collapses to closed typed-binary relation semantics. Explicit entity existence collapses to closed functional attribute-state semantics.
+### Active semantic dependency closure
 
-These results may inform future promotion work, but this PR must not silently wire them into production merely because research authority exists.
+Promote frozen versions of:
 
-## Evidence spine
+- `semantic/__init__.py`
+- `semantic/models.py`
+- `semantic/measurements.py`
+- `semantic/authority.py`
+- `semantic/authority_validation.py`
+- `semantic/relations.py`
+- `semantic/plugins.py`
+- `semantic/measurement_ledger.py`
+- `semantic/engine.py`
 
-- PR #175 — portable composition vectors; independent consumer in Apparatus Contracts PR #104
-- PR #176 — `SemanticFamilyRegistry + CompositionRegistry`
-- PR #177 — `DecompositionComposer`
-- PR #178 — exact Contract A 2.0 → EB #79 → Contract B 1.2 → CAL children → parent recomposition
-- PR #179 — final semantic closure
-- PR #180 — terminal prototype freeze
+This preserves the exact qualified ordinary audit behavior, including:
 
-Upstream authorities:
-- Contract A `2.0.0`
-- Evidence Bundler PR #79 frozen head `4e1f6fe00e7c350b28f52bfea14f1f8988847884`
-- EB profile `eb-v1-integration-10x3-rc0`
-- Contract B `1.2.0`, production lock `c314e53bd91c0736aa4370a364673b069aceb43e`
+- active families `strict_comparison` and `direct_event_order`;
+- explicit fail-closed family dispatch;
+- source/authority integrity checks;
+- the authority-family firewall;
+- measurement-ledger integrity needed by the frozen engine dependency graph;
+- scoreless categorical support/refute/not-checkable behavior.
 
-## Preserved downstream blocker
+### Schemas and packaging
 
-Apparatus Contracts PR #107 established:
+Promote only the schema resources referenced by the frozen runtime:
+
+- `packet.schema.json`
+- `target.schema.json`
+- `result-v2.schema.json`
+- `manifest-v2.schema.json`
+
+Packaging changes required for reachability:
+
+- add `claim-audit-v1 = "claim_audit_lab.production_v1.bundle_cli:app"`;
+- package `production_v1/schema/*.json`;
+- include those schema files in source-distribution packaging.
+
+The existing historical `claim-audit` command should remain untouched in the first promotion slice.
+
+## Explicitly deferred from the first promotion slice
+
+### Claim compiler
+
+`production_v1/claim_compiler.py` is research-qualified but is not required by the canonical typed-target Contract B route.
+
+Do not promote it in Slice 1.
+
+### CompositionRegistry / quantitative change
+
+`semantic/composition.py` is qualified and registers `quantitative_change_exact_v1`, but ordinary A/B execution does not produce active `scalar_value` authority.
+
+The ordinary verdict path uses the frozen scoreless categorical `compose()` in `semantic/engine.py`; it does not call the quantitative CompositionRegistry.
+
+Do not place quantitative composition on the ordinary production path in Slice 1.
+
+A later promotion may package the registry as an explicit dormant extension surface if there is a concrete consumer need.
+
+### DecompositionComposer
+
+`semantic/decomposition.py` is qualified for root/single and declared exact `all_of`, but multi-child orchestration is not a normal one-command production route.
+
+Apparatus Contracts PR #107 also preserves:
 
 `C1_CANNOT_AUTHORITATIVELY_BIND_CAL_V1_DECOMPOSITION_RC0`
 
-Contract C 1.0 cannot independently bind the richer CAL V1 decomposition lineage to exact child results and the DecompositionReceipt.
+Do not couple DecompositionComposer promotion to the first CAL runtime merge.
 
-This is not a CAL V1 freeze blocker. It is also not authority to redesign Contract C inside this PR.
+### Research-only and unrelated delta
 
-Decision Engine has not been requalified against the richer parent state.
+Do not promote merely because they exist on the research lineage:
 
-## Promotion-design boundary
+- research workflows;
+- research/preregistration/result documents except the terminal promotion record;
+- research fixtures and harnesses;
+- historical trace version-token churn;
+- `scripts/run_cal_v1_bundle.py`;
+- `src/claim_audit_lab/v1/impl/retriever.py` changes;
+- root `claim-audit` compatibility command additions;
+- Contract C or Decision Engine changes.
 
-In scope:
+## Why this is the smallest defensible slice
 
-- inspect the delta between production `main` and the frozen V1 research architecture;
-- identify which already-qualified source modules and public entry points are genuinely required;
-- identify the smallest production-facing orchestration/API/CLI surface needed to expose that machinery;
-- determine compatibility and version implications from observed consumer behavior;
-- define exact production qualification gates;
-- preserve the current active-family and composition reachability limits.
+The canonical `run-bundle` path imports the active semantic registry and authority stack directly.
 
-Allowed mutations in this PR should remain minimal and traceable to the frozen evidence.
+By contrast:
 
-Protected / prohibited:
+- `claim_compiler.py` is not imported by the canonical path;
+- `semantic/composition.py` is not imported by ordinary `audit()`;
+- `semantic/decomposition.py` is not imported by ordinary `audit()`;
+- the historical `claim-audit` CLI is not needed because `claim-audit-v1` is a dedicated entry point.
 
-- no new semantic family research;
-- no widening of warrant/relation semantics;
-- no new decomposition modes;
-- no scalar-value end-to-end claim without separately demonstrated runtime authority;
-- no Contract C redesign;
-- no Decision Engine change;
-- no release/tag;
-- no reinterpretation or deletion of failed research evidence.
+Therefore including those surfaces in the first production merge would enlarge the production claim without being necessary to expose the already-proven claim → verdict route.
 
-## Acceptance condition
+## Pre-promotion live smoke evidence
 
-This promotion-design step is complete only when the PR makes it possible to answer, from exact diffs and tests:
+Two disposable runs exercised the exact frozen semantic code before this design was finalized.
 
-1. What is the minimum code/configuration surface that must move from the frozen research lineage into production?
-2. Which frozen semantic files remain byte-identical?
-3. Which runtime entry points become newly reachable?
-4. Which capabilities remain research-qualified but unreachable?
-5. What production regression and cross-repository conformance gates are required?
-6. What SemVer class, if any, would the resulting production change require?
-7. What remains blocked downstream by Contract C / Decision Engine?
+### Positive control
 
-If answering those questions requires inventing new semantic behavior, stop and return that question to research.
+Claim:
+`Women had a higher rate than Men.`
 
-## Current next action
+Evidence:
+`Women had a higher rate than Men.`
 
-Start by comparing production `main` with the exact frozen semantic subject and decomposing the delta into:
+Run `35398836307` produced:
 
-- semantic machinery already qualified;
-- research-only harness/evidence;
-- integration/orchestration glue;
-- packaging/public-surface changes;
-- downstream-incompatible state that must remain native CAL output for now.
+- authority `WARRANTED`;
+- relation `SUPPORTS`;
+- conclusion `supported`;
+- failure code `null`.
 
-Then propose the smallest promotion candidate. Do not widen the candidate merely to make the research tree easier to merge.
+### Reversed control
+
+Evidence remained:
+`Women had a higher rate than Men.`
+
+Claim changed only to:
+`Women had a lower rate than Men.`
+
+Run `35403739264` produced:
+
+- authority `WARRANTED`;
+- relation `REFUTES`;
+- conclusion `contradicted`;
+- failure code `null`.
+
+Both runs passed a guard that `src/claim_audit_lab` remained unchanged from qualified semantic subject `7cf0d2e50562ec4ce4082d1e1c058a11025b1a48`.
+
+These are bounded smoke results, not new semantic qualification.
+
+## Required production-candidate gates
+
+Before Slice 1 can leave Draft, the production-shaped branch should demonstrate:
+
+1. byte identity for every promoted semantic file against the qualified frozen subject, except any separately declared nonsemantic packaging/version token;
+2. canonical `claim-audit-v1 run-bundle` execution against exact Contract B 1.2;
+3. target identity/text binding and evidence-aperture preservation;
+4. frozen positive and reversed negative controls;
+5. unsupported-family and mixed/unresolved fail-closed controls;
+6. RC1 authority-integrity regressions;
+7. semantic plugin-registry and measurement-ledger regressions;
+8. deterministic native artifact replay;
+9. full repository regression;
+10. Ruff, Ruff format and strict mypy;
+11. clean wheel/sdist installation with the `claim-audit-v1` entry point and packaged schemas;
+12. no Contract C output and no automatic action.
+
+## Version consequence
+
+The promotion adds a new installed operator surface and native artifact/schema surface. That is release-visible additive functionality, so it should not be shipped under the already released `0.5.0` identity.
+
+The research lineage carries `0.6.0`, but this design does not itself authorize that exact release token, tag, or publication. Version assignment remains a separate release-governance decision after the production candidate is qualified.
+
+## Preserved downstream boundary
+
+Contract C 1.0 cannot independently bind the richer decomposition lineage to exact child results and the DecompositionReceipt.
+
+Decision Engine has not been requalified against richer parent decomposition state.
+
+Neither issue blocks Slice 1 because Slice 1 emits native CAL results only and does not claim downstream decomposition transport or decision authority.
+
+## Promotion-design disposition
+
+**SUPPORTED_MINIMAL_PROMOTION_SLICE_1**
+
+The smallest justified production candidate is the canonical Contract B 1.2 → frozen CAL V1 verdict runtime with:
+
+- dedicated `claim-audit-v1` entry point;
+- exact active semantic registry/authority dependency closure;
+- deterministic native result artifacts;
+- no semantic widening;
+- no claim compiler;
+- no quantitative composition wiring;
+- no DecompositionComposer production orchestration;
+- no Contract C / Decision Engine change;
+- no release or tag.
+
+## Next action
+
+Build Slice 1 on this PR from production `main` by copying only the frozen files and packaging changes named above, then run the production-candidate gates.
+
+If implementation requires any semantic edit rather than exact promotion of already-qualified code, stop and return that specific change to research.
