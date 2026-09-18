@@ -1,0 +1,31 @@
+name: Research - CAL occurrence order binding discriminator RC0
+
+on:
+  push:
+    branches: [research/cal-occurrence-order-binding-discriminator-rc0-20260918]
+  pull_request:
+    paths:
+      - "research/occurrence_order_binding_discriminator_rc0/**"
+      - "tests/research/test_occurrence_order_binding_discriminator_rc0_*"
+      - ".github/workflows/cal-occurrence-order-binding-discriminator-rc0.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  freeze-apparatus:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --all-extras
+      - name: Verify terminal pressure parent isolation
+        run: git diff --exit-code b10adbb5f185c093bbe9b7e8e7759f666141cd0e -- src/
+      - name: Frozen evaluator controls
+        run: uv run python -m pytest -q tests/research/test_occurrence_order_binding_discriminator_rc0_apparatus.py
+      - name: Static checks
+        run: uv run python -m ruff check research/occurrence_order_binding_discriminator_rc0 tests/research/test_occurrence_order_binding_discriminator_rc0_apparatus.py
