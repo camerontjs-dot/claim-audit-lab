@@ -44,7 +44,11 @@ def _norm(value: str) -> str:
 def _scope_guard(text: str) -> None:
     low = _norm(text)
 
-    if re.search(r"\b(?:not|no|never)\s+(?:greater|higher|larger|lower|smaller|more|less|fewer)\b", low):
+    if re.search(
+        r"\b(?:not|no|never)\s+"
+        r"(?:greater|higher|larger|lower|smaller|more|less|fewer)\b",
+        low,
+    ):
         raise AuthorityRefusal(
             "SOURCE_COMPLETION_FAILED",
             "negated comparison is outside positive strict-comparison authority",
