@@ -1,0 +1,404 @@
+[
+  {
+    "case_id": "UC01",
+    "class": "canonical",
+    "text": "Sector A exceeded Sector B by 4 units.",
+    "allowed": [
+      "strict_comparison"
+    ]
+  },
+  {
+    "case_id": "UC02",
+    "class": "canonical",
+    "text": "Talia reviewed packet u after Ravi signed ledger c.",
+    "allowed": [
+      "direct_event_order"
+    ]
+  },
+  {
+    "case_id": "UC03",
+    "class": "canonical",
+    "text": "Qualified technicians must release the batch.",
+    "allowed": [
+      "deontic_norm"
+    ]
+  },
+  {
+    "case_id": "UC04",
+    "class": "canonical",
+    "text": "Bob is a reviewer.",
+    "allowed": [
+      "population_membership"
+    ]
+  },
+  {
+    "case_id": "UC05",
+    "class": "canonical",
+    "text": "Batch yield was 92.5%.",
+    "allowed": [
+      "scalar_value"
+    ]
+  },
+  {
+    "case_id": "UC06",
+    "class": "canonical",
+    "text": "The batch was approved by QA.",
+    "allowed": [
+      "event_occurrence"
+    ]
+  },
+  {
+    "case_id": "UC07",
+    "class": "canonical",
+    "text": "Device mode is standby.",
+    "allowed": [
+      "attribute_state"
+    ]
+  },
+  {
+    "case_id": "UC08",
+    "class": "canonical",
+    "text": "Room lies within Zone.",
+    "allowed": [
+      "typed_binary_relation"
+    ]
+  },
+  {
+    "case_id": "UC09",
+    "class": "canonical",
+    "text": "A contributes to B.",
+    "allowed": [
+      "explicit_causal_assertion"
+    ]
+  },
+  {
+    "case_id": "US01",
+    "class": "modifier",
+    "text": "QA believes Sector A is higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "US02",
+    "class": "modifier",
+    "text": "Sector A seems to be higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "US03",
+    "class": "attribution",
+    "text": "Sector A is higher than Sector B, per QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "US04",
+    "class": "attribution",
+    "text": "Sector A is higher than Sector B as stated by QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "US05",
+    "class": "modifier",
+    "text": "Sector A was hardly higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "US06",
+    "class": "modifier",
+    "text": "Sector A was almost higher than Sector B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UE01",
+    "class": "attribution",
+    "text": "QA claims Talia reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "UE02",
+    "class": "attribution",
+    "text": "Talia reviewed packet u before Ravi signed ledger c, per QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "UE03",
+    "class": "attribution",
+    "text": "Talia reviewed packet u before Ravi signed ledger c as reported by QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "UE04",
+    "class": "coreference",
+    "text": "Talia reviewed packet u before Ravi signed that.",
+    "allowed": []
+  },
+  {
+    "case_id": "UE05",
+    "class": "coreference",
+    "text": "She reviewed packet u before Ravi signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "UE06",
+    "class": "coreference",
+    "text": "Talia reviewed packet u before he signed ledger c.",
+    "allowed": []
+  },
+  {
+    "case_id": "UD01",
+    "class": "modifier",
+    "text": "Qualified technicians must ordinarily release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UD02",
+    "class": "attribution",
+    "text": "QA says qualified technicians may release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UD03",
+    "class": "condition",
+    "text": "Qualified technicians may release the batch provided QA approves.",
+    "allowed": []
+  },
+  {
+    "case_id": "UD04",
+    "class": "scope",
+    "text": "Qualified technicians may release the batch only on weekdays.",
+    "allowed": []
+  },
+  {
+    "case_id": "UD05",
+    "class": "negation",
+    "text": "Qualified technicians need not release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UP01",
+    "class": "attribution",
+    "text": "QA believes Alice is a qualified technician.",
+    "allowed": []
+  },
+  {
+    "case_id": "UP02",
+    "class": "temporal",
+    "text": "Alice used to be a reviewer.",
+    "allowed": []
+  },
+  {
+    "case_id": "UP03",
+    "class": "temporal",
+    "text": "Alice remains a reviewer.",
+    "allowed": []
+  },
+  {
+    "case_id": "UP04",
+    "class": "modifier",
+    "text": "Alice is probably still a reviewer.",
+    "allowed": []
+  },
+  {
+    "case_id": "UP05",
+    "class": "paraphrase",
+    "text": "Alice is one of the reviewers.",
+    "allowed": []
+  },
+  {
+    "case_id": "UQ01",
+    "class": "attribution",
+    "text": "QA reports batch yield was 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "UQ02",
+    "class": "bound",
+    "text": "Batch yield was just over 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "UQ03",
+    "class": "bound",
+    "text": "Batch yield was less than 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "UQ04",
+    "class": "attribution",
+    "text": "Batch yield was 92% per QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "UQ05",
+    "class": "aggregation",
+    "text": "Batch yield averaged 92%.",
+    "allowed": []
+  },
+  {
+    "case_id": "UO01",
+    "class": "attribution",
+    "text": "QA reportedly released the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UO02",
+    "class": "attribution",
+    "text": "QA is said to have approved the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UO03",
+    "class": "coreference",
+    "text": "QA approved it.",
+    "allowed": []
+  },
+  {
+    "case_id": "UO04",
+    "class": "cardinality",
+    "text": "QA approved the batch once.",
+    "allowed": []
+  },
+  {
+    "case_id": "UO05",
+    "class": "composition",
+    "text": "QA approved the batch after review.",
+    "allowed": []
+  },
+  {
+    "case_id": "UA01",
+    "class": "attribution",
+    "text": "QA believes batch status is released.",
+    "allowed": []
+  },
+  {
+    "case_id": "UA02",
+    "class": "temporal",
+    "text": "Batch status remains released.",
+    "allowed": []
+  },
+  {
+    "case_id": "UA03",
+    "class": "temporal",
+    "text": "Batch status was released.",
+    "allowed": []
+  },
+  {
+    "case_id": "UA04",
+    "class": "modifier",
+    "text": "Batch status is provisionally released.",
+    "allowed": []
+  },
+  {
+    "case_id": "UA05",
+    "class": "attribution",
+    "text": "Batch status is released per QA.",
+    "allowed": []
+  },
+  {
+    "case_id": "UT01",
+    "class": "attribution",
+    "text": "QA says A owns B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UT02",
+    "class": "modifier",
+    "text": "A appears north of B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UT03",
+    "class": "modifier",
+    "text": "A is directly north of B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UT04",
+    "class": "attribution",
+    "text": "A is owned by B, per registry.",
+    "allowed": []
+  },
+  {
+    "case_id": "UT05",
+    "class": "paraphrase",
+    "text": "Room is inside Zone.",
+    "allowed": []
+  },
+  {
+    "case_id": "UX01",
+    "class": "attribution",
+    "text": "Experts believe A causes B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UX02",
+    "class": "attribution",
+    "text": "A is thought to cause B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UX03",
+    "class": "modifier",
+    "text": "A may contribute to B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UX04",
+    "class": "attribution",
+    "text": "A causes B per the report.",
+    "allowed": []
+  },
+  {
+    "case_id": "UX05",
+    "class": "paraphrase",
+    "text": "A causally influences B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR01",
+    "class": "recombination",
+    "text": "Alice, a qualified technician, may release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR02",
+    "class": "recombination",
+    "text": "Batch status became released after QA approved the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR03",
+    "class": "recombination",
+    "text": "Batch yield increased from 92% at T1 to 95% at T2.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR04",
+    "class": "recombination",
+    "text": "Room is in Zone A north of Zone B.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR05",
+    "class": "recombination",
+    "text": "A causes B before C occurs.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR06",
+    "class": "recombination",
+    "text": "QA approved the batch, then Ops released it.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR07",
+    "class": "recombination",
+    "text": "Qualified technicians who are reviewers may release the batch.",
+    "allowed": []
+  },
+  {
+    "case_id": "UR08",
+    "class": "recombination",
+    "text": "A owns B because A acquired B.",
+    "allowed": []
+  }
+]
