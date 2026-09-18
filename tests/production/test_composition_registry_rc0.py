@@ -99,9 +99,7 @@ def _compose(request: QuantitativeChangeRequest):
 
 
 def test_default_composition_registry_is_separate_and_bounded() -> None:
-    assert DEFAULT_COMPOSITION_REGISTRY.supported_modules == (
-        "quantitative_change_exact_v1",
-    )
+    assert DEFAULT_COMPOSITION_REGISTRY.supported_modules == ("quantitative_change_exact_v1",)
     assert DEFAULT_COMPOSITION_REGISTRY.get("quantitative_change_exact_v1") is (
         QUANTITATIVE_CHANGE_EXACT_MODULE
     )
@@ -113,9 +111,7 @@ def test_registry_rejects_duplicate_module() -> None:
         CompositionConfigurationError,
         match="duplicate composition module",
     ):
-        CompositionRegistry(
-            (QUANTITATIVE_CHANGE_EXACT_MODULE, QUANTITATIVE_CHANGE_EXACT_MODULE)
-        )
+        CompositionRegistry((QUANTITATIVE_CHANGE_EXACT_MODULE, QUANTITATIVE_CHANGE_EXACT_MODULE))
 
 
 def test_unknown_module_fails_closed() -> None:
