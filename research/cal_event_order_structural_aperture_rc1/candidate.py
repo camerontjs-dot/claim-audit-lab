@@ -7,10 +7,7 @@ from dataclasses import dataclass
 from research.cal_event_order_authority_rc0 import candidate as parent
 from research.cal_measurement_envelope_rc0.envelope import AuditContext, MeasurementReceipt
 
-_PAST = (
-    "reviewed|signed|inspected|released|approved|archived|"
-    "processed|verified|recorded"
-)
+_PAST = "reviewed|signed|inspected|released|approved|archived|processed|verified|recorded"
 _BASE = "review|sign|inspect|release|approve|archive|process|verify|record"
 _SUBJECT = r"[A-Z][A-Za-z0-9-]*"
 _OBJECT = r"[A-Za-z0-9-]+(?:\s+[A-Za-z0-9-]+)?"
