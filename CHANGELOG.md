@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.6.0 — UNRELEASED
+
+CAL 0.6.0 is the bounded promotion candidate for the frozen CAL V1 Contract B 1.2 → native verdict runtime. Under the strict pre-1.0 policy this is a **MINOR** change because it adds a public CLI/runtime and artifact surface. It is not an official release until a separate release decision creates immutable release artifacts.
+
+### Added
+
+- Dedicated `claim-audit-v1 run-bundle`, `validate-bundle`, and `inspect --json` operator surface over released Contract B 1.2 intake.
+- Frozen active semantic-family registry for `strict_comparison` and `direct_event_order`, with source/authority integrity checks and scoreless categorical verdicts.
+- Deterministic native CAL audit context, result, report, intake snapshot, and manifest artifacts with packaged schemas.
+
+### Promotion bounds
+
+- Promoted runtime/schema files are byte-identical to the qualified frozen CAL V1 source where the promotion qualification requires identity.
+- Claim compiler, quantitative CompositionRegistry reachability, DecompositionComposer orchestration, Contract C redesign, and Decision Engine requalification remain outside this first production slice.
+- No tag, GitHub Release, or PyPI publication is authorized by this changelog entry.
+
 ## 0.5.0 — 2026-08-29
 
 CAL 0.5.0 adds the public deterministic Apparatus Contract C 1.0.0 exporter. It is a strict pre-1.0 **MINOR** release because the exporter is a new public capability; existing CAL verdict semantics, the frozen policy, the ordinary v1 engine, and the selectable v0.2 path are unchanged by this promotion.
