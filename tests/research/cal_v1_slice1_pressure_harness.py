@@ -21,7 +21,6 @@ from evidence_bundler.v1.contract_b import (
     project_contract_b,
 )
 
-from claim_audit_lab.production_v1.execution import inspect_record
 from claim_audit_lab.production_v1.semantic.authority import (
     AuthorityRefusal,
     complete_and_warrant,
