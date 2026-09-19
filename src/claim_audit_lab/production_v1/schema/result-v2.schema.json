@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/camerontjs-dot/claim-audit-lab/schemas/cal-v1-result-v2.schema.json",
+  "title": "CAL V1 Integration Candidate Native Result Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "profile",
+    "distribution_version",
+    "semantic_implementation_sha",
+    "input",
+    "original_claim",
+    "proposition",
+    "evidence_world",
+    "measurements",
+    "authorities",
+    "relations",
+    "composition",
+    "result",
+    "contract_c_handoff",
+    "authorization"
+  ],
+  "$defs": {
+    "taggedSha": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "hexSha": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "failure": {
+      "type": ["string", "null"],
+      "enum": [
+        null,
+        "UPSTREAM_APERTURE_INSUFFICIENT",
+        "EVIDENCE_NOT_ADMITTED",
+        "MEASUREMENT_NOT_APPLICABLE",
+        "MEASUREMENT_MISS",
+        "SOURCE_COMPLETION_FAILED",
+        "SEMANTIC_AUTHORITY_UNRESOLVED",
+        "PROPOSITION_BINDING_FAILED",
+        "NO_DECIDING_RELATION",
+        "RELATION_UNRESOLVED",
+        "MIXED_RELATIONS",
+        "COMMON_EVIDENCE_WORLD_MISMATCH",
+        "UNSUPPORTED_SEMANTIC_FAMILY",
+        "RESULT_PROJECTION_FAILED"
+      ]
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation_id",
+        "categorical_relation",
+        "audit_context_sha256",
+        "evidence_world_sha256",
+        "proposition_sha256",
+        "authority_id",
+        "passage_id"
+      ],
+      "properties": {
+        "relation_id": {"type": "string", "minLength": 1},
+        "categorical_relation": {"enum": ["SUPPORTS", "REFUTES", "IRRELEVANT", "UNRESOLVED"]},
+        "audit_context_sha256": {"$ref": "#/$defs/hexSha"},
+        "evidence_world_sha256": {"$ref": "#/$defs/hexSha"},
+        "proposition_sha256": {"$ref": "#/$defs/hexSha"},
+        "authority_id": {"type": "string", "minLength": 1},
+        "passage_id": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "properties": {
+    "schema": {"const": "cal-v1-result-v2"},
+    "profile": {"const": "cal-v1-integration-candidate-v1"},
+    "distribution_version": {"const": "0.6.0"},
+    "semantic_implementation_sha": {
+      "const": "847cc970642bb648dc994b929c2053b5c9d4648c"
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "primary_input_sha256",
+        "input_schema_sha256",
+        "audit_context_artifact_sha256",
+        "contract_b"
+      ],
+      "properties": {
+        "mode": {"enum": ["contract_b_bundle", "compatibility_packet"]},
+        "primary_input_sha256": {"$ref": "#/$defs/taggedSha"},
+        "input_schema_sha256": {"$ref": "#/$defs/taggedSha"},
+        "audit_context_artifact_sha256": {"$ref": "#/$defs/taggedSha"},
+        "contract_b": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "bundle_id", "bundle_hash", "extension_state", "intake_snapshot_sha256"],
+          "properties": {
+            "version": {"const": "1.2.0"},
+            "bundle_id": {"type": "string", "minLength": 1},
+            "bundle_hash": {"$ref": "#/$defs/taggedSha"},
+            "extension_state": {
+              "enum": ["present", "absent", "legacy_absent", "not_available_in_compatibility_packet"]
+            },
+            "intake_snapshot_sha256": {
+              "oneOf": [{"$ref": "#/$defs/taggedSha"}, {"type": "null"}]
+            }
+          }
+        }
+      }
+    },
+    "original_claim": {"type": "string", "minLength": 1},
+    "proposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proposition_id", "text_sha256", "semantic_family", "fields", "proposition_sha256"],
+      "properties": {
+        "proposition_id": {"type": "string", "minLength": 1},
+        "text_sha256": {"$ref": "#/$defs/hexSha"},
+        "semantic_family": {
+          "enum": ["strict_comparison", "direct_event_order", "permission_exception", "assertion_scope", "unsupported"]
+        },
+        "fields": {"type": "object", "additionalProperties": {"type": "string"}},
+        "proposition_sha256": {"$ref": "#/$defs/hexSha"}
+      }
+    },
+    "evidence_world": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_b_version",
+        "bundle_id",
+        "bundle_hash",
+        "evidence_world_sha256",
+        "audit_context_sha256",
+        "aperture_observation",
+        "admitted_passage_ids",
+        "available_but_unused_passage_ids"
+      ],
+      "properties": {
+        "contract_b_version": {"const": "1.2.0"},
+        "bundle_id": {"type": "string", "minLength": 1},
+        "bundle_hash": {"$ref": "#/$defs/taggedSha"},
+        "evidence_world_sha256": {"$ref": "#/$defs/hexSha"},
+        "audit_context_sha256": {"$ref": "#/$defs/hexSha"},
+        "aperture_observation": {"type": "object"},
+        "admitted_passage_ids": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "available_but_unused_passage_ids": {"type": "array", "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "measurements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "receipt_id",
+          "audit_context_sha256",
+          "semantic_family",
+          "instrument_id",
+          "instrument_version",
+          "available_passage_ids",
+          "consumed_passage_ids",
+          "consumed_spans",
+          "observed_semantic_spans",
+          "raw_measurement",
+          "diagnostics"
+        ]
+      }
+    },
+    "authorities": {"type": "array", "items": {"type": "object"}},
+    "relations": {"type": "array", "items": {"$ref": "#/$defs/relation"}},
+    "composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "precedence",
+        "audit_context_sha256",
+        "evidence_world_sha256",
+        "proposition_sha256",
+        "relation_ids",
+        "relation_categories",
+        "deciding_relation_ids",
+        "non_deciding_relation_ids",
+        "conclusion",
+        "failure_code"
+      ],
+      "properties": {
+        "rule_id": {"const": "scoreless-categorical-v1"},
+        "precedence": {"type": "array", "items": {"type": "string"}},
+        "audit_context_sha256": {"$ref": "#/$defs/hexSha"},
+        "evidence_world_sha256": {"$ref": "#/$defs/hexSha"},
+        "proposition_sha256": {"$ref": "#/$defs/hexSha"},
+        "relation_ids": {"type": "array", "items": {"type": "string"}},
+        "relation_categories": {"type": "array", "items": {"enum": ["SUPPORTS", "REFUTES", "IRRELEVANT", "UNRESOLVED"]}},
+        "deciding_relation_ids": {"type": "array", "items": {"type": "string"}},
+        "non_deciding_relation_ids": {"type": "array", "items": {"type": "string"}},
+        "conclusion": {"enum": ["supported", "contradicted", "not_checkable", "not_composed"]},
+        "failure_code": {"$ref": "#/$defs/failure"}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["conclusion", "failure_code", "deciding_passage_ids", "non_deciding_passage_ids", "traces"],
+      "properties": {
+        "conclusion": {"enum": ["supported", "contradicted", "not_checkable", "not_composed"]},
+        "failure_code": {"$ref": "#/$defs/failure"},
+        "deciding_passage_ids": {"type": "array", "items": {"type": "string"}},
+        "non_deciding_passage_ids": {"type": "array", "items": {"type": "string"}},
+        "traces": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "contract_c_handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "owner", "reason"],
+      "properties": {
+        "state": {"const": "not_emitted"},
+        "owner": {"const": "apparatus-contracts"},
+        "reason": {"const": "separate_compose_only_versioned_handoff_layer"}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "automatic_action_allowed"],
+      "properties": {
+        "state": {"const": "not_evaluated"},
+        "automatic_action_allowed": {"const": false}
+      }
+    }
+  }
+}
