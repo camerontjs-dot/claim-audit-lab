@@ -71,6 +71,820 @@ jobs:
           assert 'version = "0.6.0"' in lock[start:start + 160]
           PY
 
+      - name: Verify 0.6.0 trace migration is version-only
+        run: |
+          set -euo pipefail
+          BASE=32275a239b68af383a56bca843e28cbc1e343976
+          count="$(git diff --name-only "$BASE"...HEAD -- tests/v1/fixtures/traces | wc -l | tr -d ' ')"
+          test "$count" = "30"
+          forbidden="$(git diff --name-only --diff-filter=ADR "$BASE"...HEAD -- tests/v1/fixtures/traces || true)"
+          test -z "$forbidden"
+          python - <<'PY'
+          import re
+          import subprocess
+
+          base = "32275a239b68af383a56bca843e28cbc1e343976"
+          diff = subprocess.check_output(
+              ["git", "diff", "--unified=0", f"{base}...HEAD", "--", "tests/v1/fixtures/traces"],
+              text=True,
+          )
+          changed = [
+              line for line in diff.splitlines()
+              if (line.startswith("+") or line.startswith("-"))
+              and not line.startswith("+++")
+              and not line.startswith("---")
+          ]
+          old = re.compile(r'^-\s*"library_version": "0\.5\.0",?        run: |
+          test "$(git hash-object src/claim_audit_lab/production_v1/__init__.py)" = "5ad5c109b876c1c82360d85d83b13a0e91a3e82d"
+          test "$(git hash-object src/claim_audit_lab/production_v1/bundle_cli.py)" = "537a05ca839794474a5950d1a1239f43932c9089"
+          test "$(git hash-object src/claim_audit_lab/production_v1/bundle_input.py)" = "ba3a11b1095ece2965b50e0eeec07d2d5508db82"
+          test "$(git hash-object src/claim_audit_lab/production_v1/execution.py)" = "927e9e141c78a9d8cfe3c13572c1c6d47e1d90f3"
+          test "$(git hash-object src/claim_audit_lab/production_v1/packet.py)" = "bda55edcad5bfa10a51a37d0fbc1a51acbe03300"
+          test "$(git hash-object src/claim_audit_lab/production_v1/render.py)" = "7dd622f72b062ea280ad21ba78b952ed4f76fbe4"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/__init__.py)" = "33ed5ac6301badde7a4448cd6cbf1316912fd415"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/models.py)" = "4a8ee5ddc66ad5512d675b45215a858eb8fdd7ee"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/measurements.py)" = "aa26d34a94488901d8a838824e0d7a23c6655f4c"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/authority.py)" = "09761aab9e04deca724fd213a9295fc93cc3be52"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/authority_validation.py)" = "73ee2cc8e26cc3945558f76fa8c0992441177a97"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/relations.py)" = "2330f7acb64ac77ed0d26aebe7f4536062503400"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/plugins.py)" = "a2b96f192a4acafb2471785f0b51d2c656e03afc"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/measurement_ledger.py)" = "5e01c0a3246a90fcc42219da78b7d8a1ed5d5f74"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/engine.py)" = "4111545663f97b4be53cc7523071bbed394d6769"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/packet.schema.json)" = "36e01759bffc41ef5afd55a644a4de4988e6e684"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/target.schema.json)" = "6e6e3c1498b1ef5e3161fa0caeaea454782cd586"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/result-v2.schema.json)" = "01b6aa0379c020aeca74d839c0b7eb8e079b224a"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/manifest-v2.schema.json)" = "2264ec7100a76dec9d1c4a7899424b83f4905801"
+
+      - name: Verify exact frozen Evidence Bundler subject
+        run: |
+          test "$(git -C external/evidence-bundler rev-parse HEAD)" = "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          git -C external/evidence-bundler diff --exit-code
+
+      - name: Verify dedicated source-tree operator entry point
+        run: |
+          uv run claim-audit-v1 --help
+          uv run claim-audit-v1 inspect --json
+
+      - name: Replay frozen Contract B candidate tests against promoted slice
+        run: |
+          git fetch origin 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48
+          mkdir -p .promotion-qualification
+          git show 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48:tests/production/test_contract_b_integration_candidate.py > .promotion-qualification/test_contract_b_integration_candidate.py
+          git show 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48:tests/production/test_contract_b_run_surface.py > .promotion-qualification/test_contract_b_run_surface.py
+          uv run pytest -q \
+            .promotion-qualification/test_contract_b_integration_candidate.py \
+            .promotion-qualification/test_contract_b_run_surface.py
+          rm -rf .promotion-qualification
+
+      - name: Build candidate wheel and sdist
+        run: |
+          rm -rf dist
+          uv run python -m build
+          test "$(find dist -maxdepth 1 -type f -name '*.whl' | wc -l)" -eq 1
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 1
+
+      - name: Verify package artifacts contain operator and schemas
+        run: |
+          uv run python - <<'PY'
+          import configparser
+          import tarfile
+          import zipfile
+          from pathlib import Path
+
+          wheel = next(Path("dist").glob("*.whl"))
+          assert "0.6.0" in wheel.name, wheel
+          with zipfile.ZipFile(wheel) as zf:
+              names = set(zf.namelist())
+              required = {
+                  "claim_audit_lab/production_v1/schema/packet.schema.json",
+                  "claim_audit_lab/production_v1/schema/target.schema.json",
+                  "claim_audit_lab/production_v1/schema/result-v2.schema.json",
+                  "claim_audit_lab/production_v1/schema/manifest-v2.schema.json",
+              }
+              assert required <= names, required - names
+              ep_name = next(name for name in names if name.endswith(".dist-info/entry_points.txt"))
+              parser = configparser.ConfigParser()
+              parser.read_string(zf.read(ep_name).decode())
+              assert parser["console_scripts"]["claim-audit-v1"] == "claim_audit_lab.production_v1.bundle_cli:app"
+
+          sdist = next(Path("dist").glob("*.tar.gz"))
+          assert "0.6.0" in sdist.name, sdist
+          with tarfile.open(sdist, "r:gz") as tf:
+              names = set(tf.getnames())
+              for suffix in (
+                  "claim_audit_lab/production_v1/schema/packet.schema.json",
+                  "claim_audit_lab/production_v1/schema/target.schema.json",
+                  "claim_audit_lab/production_v1/schema/result-v2.schema.json",
+                  "claim_audit_lab/production_v1/schema/manifest-v2.schema.json",
+              ):
+                  assert any(name.endswith(suffix) for name in names), suffix
+          PY
+
+      - name: Clean-install built wheel and verify CLI identity
+        run: |
+          rm -rf /tmp/cal-v1-slice1
+          python -m venv /tmp/cal-v1-slice1
+          /tmp/cal-v1-slice1/bin/python -m pip install --upgrade pip
+          /tmp/cal-v1-slice1/bin/python -m pip install dist/*.whl
+          cd /tmp
+          /tmp/cal-v1-slice1/bin/python - <<'PY'
+          import importlib.metadata
+          import json
+          import subprocess
+
+          import claim_audit_lab
+          from claim_audit_lab.production_v1 import DISTRIBUTION_VERSION
+
+          assert importlib.metadata.version("claim-audit-lab") == "0.6.0"
+          assert claim_audit_lab.__version__ == "0.6.0"
+          assert DISTRIBUTION_VERSION == "0.6.0"
+
+          raw = subprocess.check_output(
+              ["/tmp/cal-v1-slice1/bin/claim-audit-v1", "inspect", "--json"],
+              text=True,
+          )
+          record = json.loads(raw)
+          assert record["distribution_version"] == "0.6.0"
+          assert record["profile"] == "cal-v1-integration-candidate-v1"
+          assert record["semantic_implementation_sha"] == "847cc970642bb648dc994b929c2053b5c9d4648c"
+          assert record["contract_b"]["version"] == "1.2.0"
+          assert record["contract_b"]["canonical_execution_surface"] == "run-bundle"
+          assert record["supported_semantic_families"] == [
+              "strict_comparison",
+              "direct_event_order",
+          ]
+          PY
+          /tmp/cal-v1-slice1/bin/claim-audit-v1 --help >/dev/null
+
+      - name: Real EB to Contract B 1.2 to clean-wheel CAL support and contradiction controls
+        env:
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+        run: |
+          uv run python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          from evidence_bundler.v1 import build_package
+          from evidence_bundler.v1.contract_a import compute_handoff_sha256
+          from evidence_bundler.v1.contract_b import (
+              CONTRACT_B_PRODUCTION_LOCK,
+              INTEGRATION_CONFIG,
+              INTEGRATION_CONFIG_SHA256,
+              INTEGRATION_PROFILE_ID,
+              project_contract_b,
+          )
+
+          EB_HEAD = "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          B_LOCK = "c314e53bd91c0736aa4370a364673b069aceb43e"
+          CLAIM = "Alpha had a higher rate than Beta."
+          C2_TEXT = "Alice reviewed dossier before Bob archived dossier."
+          ROOT_TEXT = (
+              "Alpha had a higher rate than Beta, and "
+              "Alice reviewed dossier before Bob archived dossier."
+          )
+          SOURCES = (
+              ("S-C1-SUPPORT", CLAIM),
+              ("S-C1-REFUTE", "Alpha had a lower rate than Beta."),
+              ("S-C2-SUPPORT", C2_TEXT),
+              ("S-D01", "Alpha calibration records describe sampling frequency."),
+              ("S-D02", "Beta calibration records describe sampling frequency."),
+              ("S-D03", "Alice prepared the dossier for review."),
+              ("S-D04", "Bob stored archival metadata for the dossier."),
+              ("S-D05", "Gamma had a higher output than Delta."),
+              ("S-D06", "Quality staff inspected batch documentation."),
+              ("S-D07", "The archive contains unrelated maintenance notes."),
+          )
+
+          def tagged(text: str) -> str:
+              return "sha256:" + hashlib.sha256(text.encode()).hexdigest()
+
+          def contract_a():
+              value = {
+                  "schema": "contract-a-wire-candidate-rc2",
+                  "handoff_id": "cal-v1-local-pipeline-qualification",
+                  "producer": {
+                      "producer_id": "cal-v1-promotion-qualification",
+                      "producer_version": "0.6.0-candidate",
+                  },
+                  "work": {"work_id": "cal-v1-slice1-local-pipeline"},
+                  "root_proposition": {
+                      "proposition_id": "ROOT",
+                      "text": ROOT_TEXT,
+                      "text_sha256": tagged(ROOT_TEXT),
+                  },
+                  "decomposition": {
+                      "state": "declared",
+                      "decomposition_id": "D-SLICE1",
+                      "operator": "all_of",
+                      "children": [
+                          {
+                              "proposition_id": "C1",
+                              "text": CLAIM,
+                              "text_sha256": tagged(CLAIM),
+                              "sequence": 1,
+                          },
+                          {
+                              "proposition_id": "C2",
+                              "text": C2_TEXT,
+                              "text_sha256": tagged(C2_TEXT),
+                              "sequence": 2,
+                          },
+                      ],
+                  },
+                  "sources": [
+                      {
+                          "source_id": source_id,
+                          "media_type": "text/plain; charset=utf-8",
+                          "content": text,
+                          "content_sha256": tagged(text),
+                      }
+                      for source_id, text in SOURCES
+                  ],
+                  "handoff_sha256": "sha256:" + "0" * 64,
+              }
+              value["handoff_sha256"] = compute_handoff_sha256(value)
+              return value
+
+          eb_repo = Path(os.environ["CAL_EB_INTEGRATION_REPO"]).resolve()
+          actual_eb = subprocess.check_output(
+              ["git", "-C", str(eb_repo), "rev-parse", "HEAD"],
+              text=True,
+          ).strip()
+          assert actual_eb == EB_HEAD
+          carrier = json.loads(
+              (
+                  eb_repo
+                  / "research"
+                  / "eb_v1_integration_candidate"
+                  / "contract_b_compatibility_carrier.json"
+              ).read_text()
+          )
+
+          assert INTEGRATION_PROFILE_ID == "eb-v1-integration-10x3-rc0"
+          assert INTEGRATION_CONFIG.identity == INTEGRATION_CONFIG_SHA256
+          assert CONTRACT_B_PRODUCTION_LOCK == B_LOCK
+
+          initial = build_package(contract_a=contract_a(), config=INTEGRATION_CONFIG)
+
+          def retained(source_id: str) -> str:
+              rows = [
+                  row
+                  for row in initial["candidates"]
+                  if row["proposition_id"] == "C1"
+                  and row["source_id"] == source_id
+                  and row["selection_state"] == "retained"
+              ]
+              assert len(rows) == 1, (source_id, rows)
+              return str(rows[0]["passage_id"])
+
+          target = {
+              "claim_id": "C1",
+              "proposition": {
+                  "proposition_id": "C1",
+                  "text_sha256": hashlib.sha256(CLAIM.encode()).hexdigest(),
+                  "semantic_family": "strict_comparison",
+                  "fields": {
+                      "lhs_entity": "Alpha",
+                      "rhs_entity": "Beta",
+                      "comparison_direction": "MORE_THAN",
+                  },
+              },
+          }
+
+          root = Path("/tmp/cal-v1-real-pipeline")
+          if root.exists():
+              import shutil
+              shutil.rmtree(root)
+          root.mkdir()
+          target_path = root / "C1.target.json"
+          target_path.write_text(json.dumps(target, sort_keys=True, separators=(",", ":")) + "\n")
+
+          cases = (
+              ("support", "S-C1-SUPPORT", "supported", "SUPPORTS"),
+              ("reverse", "S-C1-REFUTE", "contradicted", "REFUTES"),
+          )
+          for case_id, source_id, expected, relation in cases:
+              package = build_package(
+                  contract_a=contract_a(),
+                  config=INTEGRATION_CONFIG,
+                  admission={("C1", retained(source_id)): "accepted"},
+              )
+              case_dir = root / case_id
+              receipt = project_contract_b(
+                  package=package,
+                  compatibility_carrier=carrier,
+                  out_dir=case_dir / "eb",
+              )
+              assert receipt["contract_b_authority"] == {
+                  "version": "1.2.0",
+                  "production_lock": B_LOCK,
+              }
+              bundle = case_dir / "eb" / "contract_b"
+              out = case_dir / "cal"
+              validated = subprocess.run(
+                  [
+                      "/tmp/cal-v1-slice1/bin/claim-audit-v1",
+                      "validate-bundle",
+                      str(bundle),
+                      str(target_path),
+                  ],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              assert validated.stdout.strip() == "VALID", validated
+              subprocess.run(
+                  [
+                      "/tmp/cal-v1-slice1/bin/claim-audit-v1",
+                      "run-bundle",
+                      str(bundle),
+                      str(target_path),
+                      "--out-dir",
+                      str(out),
+                  ],
+                  check=True,
+              )
+              record = json.loads((out / "result.json").read_text())
+              assert record["input"]["mode"] == "contract_b_bundle"
+              assert record["input"]["contract_b"]["version"] == "1.2.0"
+              assert record["result"]["conclusion"] == expected, record
+              assert record["result"]["failure_code"] is None, record
+              assert record["composition"]["relation_categories"] == [relation], record
+              print(
+                  f"REAL_PIPELINE_{case_id.upper()}="
+                  f"{record['result']['conclusion']}:{relation}"
+              )
+          PY
+
+      - name: Write local-pipeline candidate receipt
+        env:
+          QUALIFICATION_RUN_ID: ${{ github.run_id }}
+        run: |
+          sha256sum dist/*.whl dist/*.tar.gz > dist/SHA256SUMS
+          uv run python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          def digest(path: Path) -> str:
+              return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+          wheel = next(Path("dist").glob("*.whl"))
+          sdist = next(Path("dist").glob("*.tar.gz"))
+          receipt = {
+              "schema": "cal-v1-local-pipeline-candidate-receipt-v1",
+              "state": "QUALIFIED_FOR_LOCAL_PIPELINE_RUNS",
+              "official_release": False,
+              "tag": None,
+              "repository": "camerontjs-dot/claim-audit-lab",
+              "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+              "tree": subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip(),
+              "distribution_version": "0.6.0",
+              "profile": "cal-v1-integration-candidate-v1",
+              "semantic_implementation_sha": "847cc970642bb648dc994b929c2053b5c9d4648c",
+              "qualified_semantic_source": "7cf0d2e50562ec4ce4082d1e1c058a11025b1a48",
+              "evidence_bundler_head": "4e1f6fe00e7c350b28f52bfea14f1f8988847884",
+              "contract_b_version": "1.2.0",
+              "contract_b_production_lock": "c314e53bd91c0736aa4370a364673b069aceb43e",
+              "qualification_run_id": int(os.environ["QUALIFICATION_RUN_ID"]),
+              "controls": {
+                  "real_eb_b_cal_support": "supported",
+                  "real_eb_b_cal_reversed_evidence": "contradicted",
+              },
+              "artifacts": {
+                  "wheel": {"name": wheel.name, "sha256": digest(wheel)},
+                  "sdist": {"name": sdist.name, "sha256": digest(sdist)},
+              },
+              "bounds": {
+                  "claim_compiler_promoted": False,
+                  "quantitative_composition_wired": False,
+                  "decomposition_orchestration_promoted": False,
+                  "contract_c_requalified": False,
+                  "decision_engine_requalified": False,
+              },
+          }
+          Path("dist/local-pipeline-candidate-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-v1-0.6.0-local-pipeline-candidate-${{ github.sha }}
+          path: |
+            dist/*.whl
+            dist/*.tar.gz
+            dist/SHA256SUMS
+            dist/local-pipeline-candidate-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+)
+          new = re.compile(r'^\+\s*"library_version": "0\.6\.0",?        run: |
+          test "$(git hash-object src/claim_audit_lab/production_v1/__init__.py)" = "5ad5c109b876c1c82360d85d83b13a0e91a3e82d"
+          test "$(git hash-object src/claim_audit_lab/production_v1/bundle_cli.py)" = "537a05ca839794474a5950d1a1239f43932c9089"
+          test "$(git hash-object src/claim_audit_lab/production_v1/bundle_input.py)" = "ba3a11b1095ece2965b50e0eeec07d2d5508db82"
+          test "$(git hash-object src/claim_audit_lab/production_v1/execution.py)" = "927e9e141c78a9d8cfe3c13572c1c6d47e1d90f3"
+          test "$(git hash-object src/claim_audit_lab/production_v1/packet.py)" = "bda55edcad5bfa10a51a37d0fbc1a51acbe03300"
+          test "$(git hash-object src/claim_audit_lab/production_v1/render.py)" = "7dd622f72b062ea280ad21ba78b952ed4f76fbe4"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/__init__.py)" = "33ed5ac6301badde7a4448cd6cbf1316912fd415"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/models.py)" = "4a8ee5ddc66ad5512d675b45215a858eb8fdd7ee"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/measurements.py)" = "aa26d34a94488901d8a838824e0d7a23c6655f4c"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/authority.py)" = "09761aab9e04deca724fd213a9295fc93cc3be52"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/authority_validation.py)" = "73ee2cc8e26cc3945558f76fa8c0992441177a97"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/relations.py)" = "2330f7acb64ac77ed0d26aebe7f4536062503400"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/plugins.py)" = "a2b96f192a4acafb2471785f0b51d2c656e03afc"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/measurement_ledger.py)" = "5e01c0a3246a90fcc42219da78b7d8a1ed5d5f74"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/engine.py)" = "4111545663f97b4be53cc7523071bbed394d6769"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/packet.schema.json)" = "36e01759bffc41ef5afd55a644a4de4988e6e684"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/target.schema.json)" = "6e6e3c1498b1ef5e3161fa0caeaea454782cd586"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/result-v2.schema.json)" = "01b6aa0379c020aeca74d839c0b7eb8e079b224a"
+          test "$(git hash-object src/claim_audit_lab/production_v1/schema/manifest-v2.schema.json)" = "2264ec7100a76dec9d1c4a7899424b83f4905801"
+
+      - name: Verify exact frozen Evidence Bundler subject
+        run: |
+          test "$(git -C external/evidence-bundler rev-parse HEAD)" = "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          git -C external/evidence-bundler diff --exit-code
+
+      - name: Verify dedicated source-tree operator entry point
+        run: |
+          uv run claim-audit-v1 --help
+          uv run claim-audit-v1 inspect --json
+
+      - name: Replay frozen Contract B candidate tests against promoted slice
+        run: |
+          git fetch origin 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48
+          mkdir -p .promotion-qualification
+          git show 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48:tests/production/test_contract_b_integration_candidate.py > .promotion-qualification/test_contract_b_integration_candidate.py
+          git show 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48:tests/production/test_contract_b_run_surface.py > .promotion-qualification/test_contract_b_run_surface.py
+          uv run pytest -q \
+            .promotion-qualification/test_contract_b_integration_candidate.py \
+            .promotion-qualification/test_contract_b_run_surface.py
+          rm -rf .promotion-qualification
+
+      - name: Build candidate wheel and sdist
+        run: |
+          rm -rf dist
+          uv run python -m build
+          test "$(find dist -maxdepth 1 -type f -name '*.whl' | wc -l)" -eq 1
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 1
+
+      - name: Verify package artifacts contain operator and schemas
+        run: |
+          uv run python - <<'PY'
+          import configparser
+          import tarfile
+          import zipfile
+          from pathlib import Path
+
+          wheel = next(Path("dist").glob("*.whl"))
+          assert "0.6.0" in wheel.name, wheel
+          with zipfile.ZipFile(wheel) as zf:
+              names = set(zf.namelist())
+              required = {
+                  "claim_audit_lab/production_v1/schema/packet.schema.json",
+                  "claim_audit_lab/production_v1/schema/target.schema.json",
+                  "claim_audit_lab/production_v1/schema/result-v2.schema.json",
+                  "claim_audit_lab/production_v1/schema/manifest-v2.schema.json",
+              }
+              assert required <= names, required - names
+              ep_name = next(name for name in names if name.endswith(".dist-info/entry_points.txt"))
+              parser = configparser.ConfigParser()
+              parser.read_string(zf.read(ep_name).decode())
+              assert parser["console_scripts"]["claim-audit-v1"] == "claim_audit_lab.production_v1.bundle_cli:app"
+
+          sdist = next(Path("dist").glob("*.tar.gz"))
+          assert "0.6.0" in sdist.name, sdist
+          with tarfile.open(sdist, "r:gz") as tf:
+              names = set(tf.getnames())
+              for suffix in (
+                  "claim_audit_lab/production_v1/schema/packet.schema.json",
+                  "claim_audit_lab/production_v1/schema/target.schema.json",
+                  "claim_audit_lab/production_v1/schema/result-v2.schema.json",
+                  "claim_audit_lab/production_v1/schema/manifest-v2.schema.json",
+              ):
+                  assert any(name.endswith(suffix) for name in names), suffix
+          PY
+
+      - name: Clean-install built wheel and verify CLI identity
+        run: |
+          rm -rf /tmp/cal-v1-slice1
+          python -m venv /tmp/cal-v1-slice1
+          /tmp/cal-v1-slice1/bin/python -m pip install --upgrade pip
+          /tmp/cal-v1-slice1/bin/python -m pip install dist/*.whl
+          cd /tmp
+          /tmp/cal-v1-slice1/bin/python - <<'PY'
+          import importlib.metadata
+          import json
+          import subprocess
+
+          import claim_audit_lab
+          from claim_audit_lab.production_v1 import DISTRIBUTION_VERSION
+
+          assert importlib.metadata.version("claim-audit-lab") == "0.6.0"
+          assert claim_audit_lab.__version__ == "0.6.0"
+          assert DISTRIBUTION_VERSION == "0.6.0"
+
+          raw = subprocess.check_output(
+              ["/tmp/cal-v1-slice1/bin/claim-audit-v1", "inspect", "--json"],
+              text=True,
+          )
+          record = json.loads(raw)
+          assert record["distribution_version"] == "0.6.0"
+          assert record["profile"] == "cal-v1-integration-candidate-v1"
+          assert record["semantic_implementation_sha"] == "847cc970642bb648dc994b929c2053b5c9d4648c"
+          assert record["contract_b"]["version"] == "1.2.0"
+          assert record["contract_b"]["canonical_execution_surface"] == "run-bundle"
+          assert record["supported_semantic_families"] == [
+              "strict_comparison",
+              "direct_event_order",
+          ]
+          PY
+          /tmp/cal-v1-slice1/bin/claim-audit-v1 --help >/dev/null
+
+      - name: Real EB to Contract B 1.2 to clean-wheel CAL support and contradiction controls
+        env:
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+        run: |
+          uv run python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          from evidence_bundler.v1 import build_package
+          from evidence_bundler.v1.contract_a import compute_handoff_sha256
+          from evidence_bundler.v1.contract_b import (
+              CONTRACT_B_PRODUCTION_LOCK,
+              INTEGRATION_CONFIG,
+              INTEGRATION_CONFIG_SHA256,
+              INTEGRATION_PROFILE_ID,
+              project_contract_b,
+          )
+
+          EB_HEAD = "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          B_LOCK = "c314e53bd91c0736aa4370a364673b069aceb43e"
+          CLAIM = "Alpha had a higher rate than Beta."
+          C2_TEXT = "Alice reviewed dossier before Bob archived dossier."
+          ROOT_TEXT = (
+              "Alpha had a higher rate than Beta, and "
+              "Alice reviewed dossier before Bob archived dossier."
+          )
+          SOURCES = (
+              ("S-C1-SUPPORT", CLAIM),
+              ("S-C1-REFUTE", "Alpha had a lower rate than Beta."),
+              ("S-C2-SUPPORT", C2_TEXT),
+              ("S-D01", "Alpha calibration records describe sampling frequency."),
+              ("S-D02", "Beta calibration records describe sampling frequency."),
+              ("S-D03", "Alice prepared the dossier for review."),
+              ("S-D04", "Bob stored archival metadata for the dossier."),
+              ("S-D05", "Gamma had a higher output than Delta."),
+              ("S-D06", "Quality staff inspected batch documentation."),
+              ("S-D07", "The archive contains unrelated maintenance notes."),
+          )
+
+          def tagged(text: str) -> str:
+              return "sha256:" + hashlib.sha256(text.encode()).hexdigest()
+
+          def contract_a():
+              value = {
+                  "schema": "contract-a-wire-candidate-rc2",
+                  "handoff_id": "cal-v1-local-pipeline-qualification",
+                  "producer": {
+                      "producer_id": "cal-v1-promotion-qualification",
+                      "producer_version": "0.6.0-candidate",
+                  },
+                  "work": {"work_id": "cal-v1-slice1-local-pipeline"},
+                  "root_proposition": {
+                      "proposition_id": "ROOT",
+                      "text": ROOT_TEXT,
+                      "text_sha256": tagged(ROOT_TEXT),
+                  },
+                  "decomposition": {
+                      "state": "declared",
+                      "decomposition_id": "D-SLICE1",
+                      "operator": "all_of",
+                      "children": [
+                          {
+                              "proposition_id": "C1",
+                              "text": CLAIM,
+                              "text_sha256": tagged(CLAIM),
+                              "sequence": 1,
+                          },
+                          {
+                              "proposition_id": "C2",
+                              "text": C2_TEXT,
+                              "text_sha256": tagged(C2_TEXT),
+                              "sequence": 2,
+                          },
+                      ],
+                  },
+                  "sources": [
+                      {
+                          "source_id": source_id,
+                          "media_type": "text/plain; charset=utf-8",
+                          "content": text,
+                          "content_sha256": tagged(text),
+                      }
+                      for source_id, text in SOURCES
+                  ],
+                  "handoff_sha256": "sha256:" + "0" * 64,
+              }
+              value["handoff_sha256"] = compute_handoff_sha256(value)
+              return value
+
+          eb_repo = Path(os.environ["CAL_EB_INTEGRATION_REPO"]).resolve()
+          actual_eb = subprocess.check_output(
+              ["git", "-C", str(eb_repo), "rev-parse", "HEAD"],
+              text=True,
+          ).strip()
+          assert actual_eb == EB_HEAD
+          carrier = json.loads(
+              (
+                  eb_repo
+                  / "research"
+                  / "eb_v1_integration_candidate"
+                  / "contract_b_compatibility_carrier.json"
+              ).read_text()
+          )
+
+          assert INTEGRATION_PROFILE_ID == "eb-v1-integration-10x3-rc0"
+          assert INTEGRATION_CONFIG.identity == INTEGRATION_CONFIG_SHA256
+          assert CONTRACT_B_PRODUCTION_LOCK == B_LOCK
+
+          initial = build_package(contract_a=contract_a(), config=INTEGRATION_CONFIG)
+
+          def retained(source_id: str) -> str:
+              rows = [
+                  row
+                  for row in initial["candidates"]
+                  if row["proposition_id"] == "C1"
+                  and row["source_id"] == source_id
+                  and row["selection_state"] == "retained"
+              ]
+              assert len(rows) == 1, (source_id, rows)
+              return str(rows[0]["passage_id"])
+
+          target = {
+              "claim_id": "C1",
+              "proposition": {
+                  "proposition_id": "C1",
+                  "text_sha256": hashlib.sha256(CLAIM.encode()).hexdigest(),
+                  "semantic_family": "strict_comparison",
+                  "fields": {
+                      "lhs_entity": "Alpha",
+                      "rhs_entity": "Beta",
+                      "comparison_direction": "MORE_THAN",
+                  },
+              },
+          }
+
+          root = Path("/tmp/cal-v1-real-pipeline")
+          if root.exists():
+              import shutil
+              shutil.rmtree(root)
+          root.mkdir()
+          target_path = root / "C1.target.json"
+          target_path.write_text(json.dumps(target, sort_keys=True, separators=(",", ":")) + "\n")
+
+          cases = (
+              ("support", "S-C1-SUPPORT", "supported", "SUPPORTS"),
+              ("reverse", "S-C1-REFUTE", "contradicted", "REFUTES"),
+          )
+          for case_id, source_id, expected, relation in cases:
+              package = build_package(
+                  contract_a=contract_a(),
+                  config=INTEGRATION_CONFIG,
+                  admission={("C1", retained(source_id)): "accepted"},
+              )
+              case_dir = root / case_id
+              receipt = project_contract_b(
+                  package=package,
+                  compatibility_carrier=carrier,
+                  out_dir=case_dir / "eb",
+              )
+              assert receipt["contract_b_authority"] == {
+                  "version": "1.2.0",
+                  "production_lock": B_LOCK,
+              }
+              bundle = case_dir / "eb" / "contract_b"
+              out = case_dir / "cal"
+              validated = subprocess.run(
+                  [
+                      "/tmp/cal-v1-slice1/bin/claim-audit-v1",
+                      "validate-bundle",
+                      str(bundle),
+                      str(target_path),
+                  ],
+                  check=True,
+                  capture_output=True,
+                  text=True,
+              )
+              assert validated.stdout.strip() == "VALID", validated
+              subprocess.run(
+                  [
+                      "/tmp/cal-v1-slice1/bin/claim-audit-v1",
+                      "run-bundle",
+                      str(bundle),
+                      str(target_path),
+                      "--out-dir",
+                      str(out),
+                  ],
+                  check=True,
+              )
+              record = json.loads((out / "result.json").read_text())
+              assert record["input"]["mode"] == "contract_b_bundle"
+              assert record["input"]["contract_b"]["version"] == "1.2.0"
+              assert record["result"]["conclusion"] == expected, record
+              assert record["result"]["failure_code"] is None, record
+              assert record["composition"]["relation_categories"] == [relation], record
+              print(
+                  f"REAL_PIPELINE_{case_id.upper()}="
+                  f"{record['result']['conclusion']}:{relation}"
+              )
+          PY
+
+      - name: Write local-pipeline candidate receipt
+        env:
+          QUALIFICATION_RUN_ID: ${{ github.run_id }}
+        run: |
+          sha256sum dist/*.whl dist/*.tar.gz > dist/SHA256SUMS
+          uv run python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          def digest(path: Path) -> str:
+              return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+          wheel = next(Path("dist").glob("*.whl"))
+          sdist = next(Path("dist").glob("*.tar.gz"))
+          receipt = {
+              "schema": "cal-v1-local-pipeline-candidate-receipt-v1",
+              "state": "QUALIFIED_FOR_LOCAL_PIPELINE_RUNS",
+              "official_release": False,
+              "tag": None,
+              "repository": "camerontjs-dot/claim-audit-lab",
+              "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+              "tree": subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip(),
+              "distribution_version": "0.6.0",
+              "profile": "cal-v1-integration-candidate-v1",
+              "semantic_implementation_sha": "847cc970642bb648dc994b929c2053b5c9d4648c",
+              "qualified_semantic_source": "7cf0d2e50562ec4ce4082d1e1c058a11025b1a48",
+              "evidence_bundler_head": "4e1f6fe00e7c350b28f52bfea14f1f8988847884",
+              "contract_b_version": "1.2.0",
+              "contract_b_production_lock": "c314e53bd91c0736aa4370a364673b069aceb43e",
+              "qualification_run_id": int(os.environ["QUALIFICATION_RUN_ID"]),
+              "controls": {
+                  "real_eb_b_cal_support": "supported",
+                  "real_eb_b_cal_reversed_evidence": "contradicted",
+              },
+              "artifacts": {
+                  "wheel": {"name": wheel.name, "sha256": digest(wheel)},
+                  "sdist": {"name": sdist.name, "sha256": digest(sdist)},
+              },
+              "bounds": {
+                  "claim_compiler_promoted": False,
+                  "quantitative_composition_wired": False,
+                  "decomposition_orchestration_promoted": False,
+                  "contract_c_requalified": False,
+                  "decision_engine_requalified": False,
+              },
+          }
+          Path("dist/local-pipeline-candidate-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-v1-0.6.0-local-pipeline-candidate-${{ github.sha }}
+          path: |
+            dist/*.whl
+            dist/*.tar.gz
+            dist/SHA256SUMS
+            dist/local-pipeline-candidate-receipt.json
+          if-no-files-found: error
+          retention-days: 30
+)
+          old_lines = [line for line in changed if old.match(line)]
+          new_lines = [line for line in changed if new.match(line)]
+          unexpected = [line for line in changed if not old.match(line) and not new.match(line)]
+          assert len(old_lines) == 30, len(old_lines)
+          assert len(new_lines) == 30, len(new_lines)
+          assert not unexpected, unexpected[:10]
+          print("Trace migration proof: exactly 30 library_version 0.5.0 -> 0.6.0 substitutions.")
+          PY
+
       - name: Verify promoted runtime is byte-identical to frozen V1
         run: |
           test "$(git hash-object src/claim_audit_lab/production_v1/__init__.py)" = "5ad5c109b876c1c82360d85d83b13a0e91a3e82d"
