@@ -912,6 +912,126 @@ def run_real_pipeline_pressure() -> None:
                 "Malformed active-family target did not fail closed in the expected way.",
             )
 
+    # Second-wave target-semantic drift pressure.
+    drift_cases = (
+        (
+            "extra-semantic-field",
+            {
+                "lhs_entity": "Alpha",
+                "rhs_entity": "Beta",
+                "comparison_direction": "MORE_THAN",
+                "time_scope": "2025",
+            },
+            "supported",
+        ),
+        (
+            "direction-disagrees-with-claim",
+            {
+                "lhs_entity": "Alpha",
+                "rhs_entity": "Beta",
+                "comparison_direction": "LESS_THAN",
+            },
+            "contradicted",
+        ),
+        (
+            "entities-disagree-with-claim",
+            {
+                "lhs_entity": "Beta",
+                "rhs_entity": "Alpha",
+                "comparison_direction": "MORE_THAN",
+            },
+            "contradicted",
+        ),
+    )
+    for suffix, fields, expected_engine_outcome in drift_cases:
+        path = root / f"target-drift-{suffix}.json"
+        write_json(path, target(fields))
+        validation = cli(wheel_prefix, "validate-bundle", str(support_bundle), str(path))
+        out = root / f"target-drift-{suffix}-out"
+        run = cli(wheel_prefix, "run-bundle", str(support_bundle), str(path), "--out-dir", str(out))
+        observed: dict[str, Any] = {
+            "validate_rc": validation.returncode,
+            "run_rc": run.returncode,
+        }
+        if run.returncode == 0:
+            rec = read_result(out)
+            observed.update(
+                {
+                    "conclusion": rec["result"]["conclusion"],
+                    "failure_code": rec["result"]["failure_code"],
+                    "proposition_fields": rec["proposition"]["fields"],
+                }
+            )
+        accepted_and_decided = (
+            validation.returncode == 0
+            and run.returncode == 0
+            and observed.get("conclusion") == expected_engine_outcome
+        )
+        record(
+            f"IFACE-target-drift-{suffix}",
+            "interface",
+            "validator detects typed-target semantics that disagree with or exceed exact claim text",
+            observed,
+            not accepted_and_decided,
+            (
+                "The engine followed the typed proposition and produced a terminal verdict. "
+                "This is safe only if target compilation is independently trusted."
+                if accepted_and_decided
+                else ""
+            ),
+        )
+
+    unsupported_target = target()
+    unsupported_target["proposition"]["semantic_family"] = "permission_exception"
+    unsupported_target["proposition"]["fields"] = {"placeholder": "value"}
+    unsupported_path = root / "target-inactive-family.json"
+    write_json(unsupported_path, unsupported_target)
+    validation = cli(
+        wheel_prefix,
+        "validate-bundle",
+        str(support_bundle),
+        str(unsupported_path),
+    )
+    out = root / "target-inactive-family-out"
+    run = cli(
+        wheel_prefix,
+        "run-bundle",
+        str(support_bundle),
+        str(unsupported_path),
+        "--out-dir",
+        str(out),
+    )
+    observed: dict[str, Any] = {
+        "validate_rc": validation.returncode,
+        "run_rc": run.returncode,
+    }
+    if run.returncode == 0:
+        rec = read_result(out)
+        observed.update(
+            {
+                "conclusion": rec["result"]["conclusion"],
+                "failure_code": rec["result"]["failure_code"],
+            }
+        )
+    accepted_inactive = (
+        validation.returncode == 0
+        and run.returncode == 0
+        and observed.get("conclusion") == "not_checkable"
+        and observed.get("failure_code") == "UNSUPPORTED_SEMANTIC_FAMILY"
+    )
+    record(
+        "IFACE-inactive-family-validation",
+        "interface",
+        "validate-bundle rejects families outside inspect.supported_semantic_families",
+        observed,
+        not accepted_inactive,
+        (
+            "Execution fails closed, but validate-bundle accepts an inactive family."
+            if accepted_inactive
+            else ""
+        ),
+    )
+
     # Bundle integrity pressure.
     passage_mut = root / "bundle-passage-mut"
     shutil.copytree(support_bundle, passage_mut)
