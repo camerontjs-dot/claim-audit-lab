@@ -151,6 +151,16 @@ def _load_module(path: Path, name: str) -> ModuleType:
     return module
 
 
+def _load_rc2_package(rc2_root: Path) -> ModuleType:
+    package_name = "_cal_contract_c_rc2_authority"
+    module_name = f"{package_name}.contract_c_rc2"
+    package = ModuleType(package_name)
+    package.__path__ = [str(rc2_root / "validators")]  # type: ignore[attr-defined]
+    package.__package__ = package_name
+    sys.modules[package_name] = package
+    return _load_module(rc2_root / RC2_VALIDATOR_PATH, module_name)
+
+
 def _load_authority_modules(
     *,
     contract_c_root: Path,
@@ -160,10 +170,7 @@ def _load_authority_modules(
         contract_c_root / CONTRACT_C_CANDIDATE_PATH,
         "cal_v1_parent_bound_contract_c_candidate",
     )
-    rc2 = _load_module(
-        rc2_root / RC2_VALIDATOR_PATH,
-        "cal_v1_parent_bound_contract_c_rc2",
-    )
+    rc2 = _load_rc2_package(rc2_root)
     if getattr(candidate, "PROFILE", None) != CONTRACT_C_PROFILE:
         raise ParentBoundPipelineError("Contract C candidate profile mismatch")
     if getattr(candidate, "CAL_SEMANTIC_IMPLEMENTATION", None) != SEMANTIC_IMPLEMENTATION_SHA:
