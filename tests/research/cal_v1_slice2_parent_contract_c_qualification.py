@@ -54,19 +54,6 @@ def _evidence_index(package: dict[str, Any]) -> set[tuple[str, str]]:
     }
 
 
-def _candidate_modules() -> tuple[Any, Any]:
-    candidate = _load(
-        CONTRACT_C_ROOT
-        / "research/contract_c_cal_v1_parent_recomposition_rc0_20260919/candidate_rc0.py",
-        "slice2_contract_c_candidate",
-    )
-    rc2 = _load(
-        RC2_ROOT / "validators/contract_c_rc2.py",
-        "slice2_contract_c_rc2",
-    )
-    return candidate, rc2
-
-
 def main() -> None:
     os.environ["CAL_ROOT"] = str(FROZEN_CAL_ROOT)
     os.environ["EB_ROOT"] = str(EB_ROOT)
@@ -89,7 +76,7 @@ def main() -> None:
             / "research/contract_c2_current_cal_resolver_successor_rc0/RESOLVER.json"
         ).read_text(encoding="utf-8")
     )
-    candidate, rc2 = _candidate_modules()
+    candidate, rc2 = frozen_eval.candidate, frozen_eval.rc2
 
     observations: dict[str, Any] = {}
     controls: dict[str, bool] = {}
