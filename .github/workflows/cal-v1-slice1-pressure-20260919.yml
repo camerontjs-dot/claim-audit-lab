@@ -1,0 +1,111 @@
+name: Research - CAL V1 Slice 1 pressure 20260919
+
+on:
+  push:
+    branches:
+      - research/cal-v1-slice1-pressure-20260919
+
+permissions:
+  contents: read
+
+jobs:
+  pressure:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: 4e1f6fe00e7c350b28f52bfea14f1f8988847884
+          path: external/evidence-bundler
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Verify pressure branch does not mutate candidate runtime
+        run: |
+          git diff --exit-code \
+            61cab64149cb6119e4dbe1fe18496f3ccf89002f \
+            -- \
+            src/claim_audit_lab \
+            pyproject.toml \
+            uv.lock \
+            MANIFEST.in \
+            tests/v1/fixtures/traces
+
+      - name: Install source qualification environment
+        run: |
+          uv sync --all-extras
+          uv pip install -e external/evidence-bundler
+
+      - name: Verify exact Evidence Bundler subject
+        run: |
+          test "$(git -C external/evidence-bundler rev-parse HEAD)" = \
+            "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          git -C external/evidence-bundler diff --exit-code
+
+      - name: Static-check pressure harness
+        run: |
+          uv run ruff check --ignore E501 tests/research/cal_v1_slice1_pressure_harness.py
+          uv run python -m py_compile tests/research/cal_v1_slice1_pressure_harness.py
+
+      - name: Build exact candidate wheel
+        run: |
+          rm -rf dist
+          uv run python -m build
+          test -f dist/claim_audit_lab-0.6.0-py3-none-any.whl
+
+      - name: Clean-install candidate wheel
+        run: |
+          rm -rf /tmp/cal-pressure-wheel
+          python -m venv /tmp/cal-pressure-wheel
+          /tmp/cal-pressure-wheel/bin/python -m pip install --upgrade pip
+          /tmp/cal-pressure-wheel/bin/python -m pip install \
+            dist/claim_audit_lab-0.6.0-py3-none-any.whl
+          cd /tmp
+          /tmp/cal-pressure-wheel/bin/claim-audit-v1 inspect --json
+
+      - name: Execute full pressure matrix
+        id: pressure_matrix
+        continue-on-error: true
+        env:
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+          CAL_PRESSURE_CLI: /tmp/cal-pressure-wheel/bin/claim-audit-v1
+          CAL_PRESSURE_OUT: ${{ github.workspace }}/pressure-output
+        run: |
+          uv run python tests/research/cal_v1_slice1_pressure_harness.py
+
+      - name: Show pressure summary
+        if: always()
+        run: |
+          test -f pressure-output/pressure-results.json
+          cat pressure-output/pressure-summary.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("pressure-output/pressure-results.json").read_text())
+          print(json.dumps(data["counts"], sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-v1-slice1-pressure-20260919-${{ github.sha }}
+          path: |
+            pressure-output/pressure-results.json
+            pressure-output/pressure-summary.md
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Preserve critical-failure disposition
+        if: always()
+        run: |
+          test "${{ steps.pressure_matrix.outcome }}" = "success"
