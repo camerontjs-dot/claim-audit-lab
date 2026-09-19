@@ -77,9 +77,9 @@ jobs:
         id: pressure_matrix
         continue-on-error: true
         env:
-          CAL_EB_INTEGRATION_REPO: \${{ github.workspace }}/external/evidence-bundler
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
           CAL_PRESSURE_CLI: /tmp/cal-pressure-wheel/bin/claim-audit-v1
-          CAL_PRESSURE_OUT: \${{ github.workspace }}/pressure-output
+          CAL_PRESSURE_OUT: ${{ github.workspace }}/pressure-output
         run: |
           uv run python tests/research/cal_v1_slice1_pressure_harness.py
 
@@ -98,7 +98,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: cal-v1-slice1-pressure-20260919-\${{ github.sha }}
+          name: cal-v1-slice1-pressure-20260919-${{ github.sha }}
           path: |
             pressure-output/pressure-results.json
             pressure-output/pressure-summary.md
@@ -108,4 +108,4 @@ jobs:
       - name: Preserve critical-failure disposition
         if: always()
         run: |
-          test "\${{ steps.pressure_matrix.outcome }}" = "success"
+          test "${{ steps.pressure_matrix.outcome }}" = "success"
