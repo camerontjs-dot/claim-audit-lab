@@ -1,0 +1,270 @@
+name: Promotion - CAL V1 Slice 2 parent-bound qualification
+
+on:
+  push:
+    branches:
+      - promotion/cal-v1-slice2-parent-contract-c-20260919
+  pull_request:
+    paths:
+      - "src/claim_audit_lab/production_v1/**"
+      - "pyproject.toml"
+      - "docs/promotion/CAL_V1_SLICE2_PARENT_CONTRACT_C_20260919.md"
+      - "tests/research/cal_v1_slice2_parent_contract_c_qualification.py"
+      - ".github/workflows/cal-v1-slice2-parent-contract-c-qualification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen Contract C candidate
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c5b1d757f3a0ad4f6e2c3f6dbdc2dd2d3c1403ec
+          path: external/contract-c-freeze
+          fetch-depth: 1
+
+      - name: Checkout exact Contract C RC2 authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: b42c827acb0a9fe65353354d709add0e27bab307
+          path: external/contract-c-rc2
+          fetch-depth: 1
+
+      - name: Checkout exact current-CAL resolver authority
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 1d33e0612befcf8016816197c90c062373796df9
+          path: external/contract-c-resolver
+          fetch-depth: 1
+
+      - name: Checkout exact frozen CAL V1 producer subject
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e24e405f5336ee024674f39dba97255bb58a2dd9
+          path: external/frozen-cal
+          fetch-depth: 1
+
+      - name: Checkout exact frozen Evidence Bundler
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: 4e1f6fe00e7c350b28f52bfea14f1f8988847884
+          path: external/evidence-bundler
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install candidate and exact upstream test dependency
+        run: |
+          uv sync --all-extras
+          uv pip install -e external/evidence-bundler
+
+      - name: Verify exact frozen semantic and external authority identities
+        run: |
+          set -euo pipefail
+          test "$(git merge-base 61cab64149cb6119e4dbe1fe18496f3ccf89002f HEAD)" = "61cab64149cb6119e4dbe1fe18496f3ccf89002f"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/decomposition.py)" = "268d0dc4dd22ddde3848141d62b7d719e48d374d"
+          test "$(git -C external/contract-c-freeze rev-parse HEAD)" = "c5b1d757f3a0ad4f6e2c3f6dbdc2dd2d3c1403ec"
+          test "$(git -C external/contract-c-freeze rev-parse HEAD:research/contract_c_cal_v1_parent_recomposition_rc0_20260919/candidate_rc0.py)" = "df6b6ed410f52cafaeadfe1578d770f480a34b09"
+          test "$(git -C external/contract-c-rc2 rev-parse HEAD)" = "b42c827acb0a9fe65353354d709add0e27bab307"
+          test "$(git -C external/contract-c-rc2 rev-parse HEAD:validators/contract_c_rc2.py)" = "1d2ecd228cde807138013c33c8675c3003421d3c"
+          test "$(git -C external/contract-c-resolver rev-parse HEAD)" = "1d33e0612befcf8016816197c90c062373796df9"
+          test "$(git -C external/contract-c-resolver rev-parse HEAD:research/contract_c2_current_cal_resolver_successor_rc0/RESOLVER.json)" = "1a408246fd3bef0758a958ae716b44ea74bc0689"
+          test "$(git -C external/frozen-cal rev-parse HEAD)" = "e24e405f5336ee024674f39dba97255bb58a2dd9"
+          test "$(git -C external/evidence-bundler rev-parse HEAD)" = "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          git -C external/contract-c-freeze diff --exit-code
+          git -C external/contract-c-rc2 diff --exit-code
+          git -C external/contract-c-resolver diff --exit-code
+          git -C external/frozen-cal diff --exit-code
+          git -C external/evidence-bundler diff --exit-code
+
+      - name: Replay exact frozen DecompositionComposer tests
+        run: |
+          set -euo pipefail
+          git fetch origin 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48
+          mkdir -p .qualification
+          git show 7cf0d2e50562ec4ce4082d1e1c058a11025b1a48:tests/production/test_decomposition_composer_rc0.py > .qualification/test_decomposition_composer_rc0.py
+          uv run pytest -q .qualification/test_decomposition_composer_rc0.py
+
+      - name: Cross-repository production projection qualification
+        env:
+          CONTRACT_C_ROOT: ${{ github.workspace }}/external/contract-c-freeze
+          RC2_ROOT: ${{ github.workspace }}/external/contract-c-rc2
+          RESOLVER_ROOT: ${{ github.workspace }}/external/contract-c-resolver
+          FROZEN_CAL_ROOT: ${{ github.workspace }}/external/frozen-cal
+          EB_ROOT: ${{ github.workspace }}/external/evidence-bundler
+          QUALIFICATION_RESULT: ${{ github.workspace }}/cal-v1-slice2-qualification.json
+        run: |
+          uv run python tests/research/cal_v1_slice2_parent_contract_c_qualification.py
+
+      - name: Build wheel and source distribution
+        run: |
+          rm -rf dist
+          uv run python -m build
+          test "$(find dist -maxdepth 1 -type f -name '*.whl' | wc -l)" -eq 1
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 1
+
+      - name: Verify parent-bound console entry point is packaged
+        run: |
+          uv run python - <<'PY'
+          import configparser
+          import zipfile
+          from pathlib import Path
+
+          wheel = next(Path("dist").glob("*.whl"))
+          with zipfile.ZipFile(wheel) as zf:
+              names = set(zf.namelist())
+              assert "claim_audit_lab/production_v1/parent_bound.py" in names
+              assert "claim_audit_lab/production_v1/parent_cli.py" in names
+              assert "claim_audit_lab/production_v1/semantic/decomposition.py" in names
+              ep = next(name for name in names if name.endswith(".dist-info/entry_points.txt"))
+              parser = configparser.ConfigParser()
+              parser.read_string(zf.read(ep).decode())
+              assert parser["console_scripts"]["claim-audit-v1-parent"] == (
+                  "claim_audit_lab.production_v1.parent_cli:app"
+              )
+          PY
+
+      - name: Prepare real frozen EB to B1.2 installed-CLI fixture
+        env:
+          FROZEN_CAL_ROOT: ${{ github.workspace }}/external/frozen-cal
+          EB_ROOT: ${{ github.workspace }}/external/evidence-bundler
+        run: |
+          uv run python - <<'PY'
+          import importlib.util
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          cal = Path(os.environ["FROZEN_CAL_ROOT"]).resolve()
+          eb = Path(os.environ["EB_ROOT"]).resolve()
+          sys.path.insert(0, str(cal / "src"))
+          sys.path.insert(0, str(eb / "src"))
+          path = cal / "tests/research/test_cal_v1_a2_eb_b_parent_integration_rc0.py"
+          spec = importlib.util.spec_from_file_location("slice2_cli_fixture", path)
+          module = importlib.util.module_from_spec(spec)
+          sys.modules[spec.name] = module
+          spec.loader.exec_module(module)
+
+          root = Path("/tmp/cal-v1-slice2-cli-fixture")
+          root.mkdir(parents=True, exist_ok=True)
+          case = module.CASES[0]
+          initial = module._initial_package()
+          package = module.build_package(
+              contract_a=module._contract_a(),
+              config=module.INTEGRATION_CONFIG,
+              admission=module._admission(case, initial),
+          )
+          module.project_contract_b(
+              package=package,
+              compatibility_carrier=module._carrier(),
+              out_dir=root / "eb",
+          )
+          (root / "contract-a.json").write_text(
+              json.dumps(module._contract_a(), indent=2, sort_keys=True) + "\n"
+          )
+          module._write_target(root / "C1.target.json", "C1")
+          module._write_target(root / "C2.target.json", "C2")
+          PY
+
+      - name: Clean-install wheel and execute real parent-bound CLI twice
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/cal-v1-slice2-wheel
+          python -m venv /tmp/cal-v1-slice2-wheel
+          /tmp/cal-v1-slice2-wheel/bin/python -m pip install --upgrade pip
+          /tmp/cal-v1-slice2-wheel/bin/python -m pip install dist/*.whl
+          /tmp/cal-v1-slice2-wheel/bin/claim-audit-v1-parent inspect --json > /tmp/cal-v1-slice2-inspect.json
+
+          FIX=/tmp/cal-v1-slice2-cli-fixture
+          for run in 1 2; do
+            /tmp/cal-v1-slice2-wheel/bin/claim-audit-v1-parent run               "$FIX/contract-a.json"               "$FIX/eb/contract_b"               --target "C1=$FIX/C1.target.json"               --target "C2=$FIX/C2.target.json"               --out-dir "/tmp/cal-v1-slice2-installed-$run"               --contract-c-root "${{ github.workspace }}/external/contract-c-freeze"               --rc2-root "${{ github.workspace }}/external/contract-c-rc2"               --resolver-root "${{ github.workspace }}/external/contract-c-resolver"
+          done
+
+          cmp /tmp/cal-v1-slice2-installed-1/parent-result.json /tmp/cal-v1-slice2-installed-2/parent-result.json
+          cmp /tmp/cal-v1-slice2-installed-1/contract-c.json /tmp/cal-v1-slice2-installed-2/contract-c.json
+          cmp /tmp/cal-v1-slice2-installed-1/manifest.json /tmp/cal-v1-slice2-installed-2/manifest.json
+
+          /tmp/cal-v1-slice2-wheel/bin/python - <<'PY'
+          import json
+          from pathlib import Path
+
+          result = json.loads(Path("/tmp/cal-v1-slice2-installed-1/parent-result.json").read_text())
+          manifest = json.loads(Path("/tmp/cal-v1-slice2-installed-1/manifest.json").read_text())
+          assert result["parent_conclusion"] == "supported"
+          assert result["authorization"]["automatic_action_allowed"] is False
+          assert manifest["authorization"]["automatic_action_allowed"] is False
+          assert manifest["contract_c_sha256"] == result["contract_c"]["whole_object_sha256"]
+          PY
+
+      - name: Ordinary CAL repository regression
+        run: |
+          uv run python -m pytest -q
+          uv run python -m ruff check src tests
+          uv run python -m ruff format --check src
+          uv run python -m mypy
+
+      - name: Record exact candidate identity
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import subprocess
+          from pathlib import Path
+
+          head = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          tree = subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip()
+          qual = json.loads(Path("cal-v1-slice2-qualification.json").read_text())
+          receipt = {
+              "schema": "cal-v1-slice2-candidate-receipt-v1",
+              "commit": head,
+              "tree": tree,
+              "disposition": qual["disposition"],
+              "qualification_sha256": "sha256:" + hashlib.sha256(
+                  Path("cal-v1-slice2-qualification.json").read_bytes()
+              ).hexdigest(),
+              "wheel": {},
+              "sdist": {},
+          }
+          for path in Path("dist").iterdir():
+              digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+              if path.suffix == ".whl":
+                  receipt["wheel"] = {"name": path.name, "sha256": digest}
+              elif path.name.endswith(".tar.gz"):
+                  receipt["sdist"] = {"name": path.name, "sha256": digest}
+          Path("cal-v1-slice2-candidate-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(receipt, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-v1-slice2-parent-bound-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            cal-v1-slice2-qualification.json
+            cal-v1-slice2-candidate-receipt.json
+            dist/*
+            /tmp/cal-v1-slice2-inspect.json
+            /tmp/cal-v1-slice2-installed-1/parent-result.json
+            /tmp/cal-v1-slice2-installed-1/contract-c.json
+            /tmp/cal-v1-slice2-installed-1/manifest.json
