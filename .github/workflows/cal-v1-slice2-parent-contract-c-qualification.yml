@@ -146,6 +146,7 @@ jobs:
         env:
           FROZEN_CAL_ROOT: ${{ github.workspace }}/external/frozen-cal
           EB_ROOT: ${{ github.workspace }}/external/evidence-bundler
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
         run: |
           uv run python - <<'PY'
           import importlib.util
