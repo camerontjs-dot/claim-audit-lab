@@ -74,7 +74,8 @@ ui = [
 
 [project.scripts]
 claim-audit = "claim_audit_lab.cli:app"
-claim-audit-v1 = "claim_audit_lab.production_v1.bundle_cli:app"\nclaim-audit-v1-parent = "claim_audit_lab.production_v1.parent_cli:app"
+claim-audit-v1 = "claim_audit_lab.production_v1.bundle_cli:app"
+claim-audit-v1-parent = "claim_audit_lab.production_v1.parent_cli:app"
 
 [tool.setuptools.packages.find]
 where = ["src"]
