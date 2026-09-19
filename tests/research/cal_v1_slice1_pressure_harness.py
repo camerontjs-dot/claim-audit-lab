@@ -7,9 +7,10 @@ import shutil
 import subprocess
 import sys
 import time
+from collections.abc import Callable
 from dataclasses import replace
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 from evidence_bundler.v1 import build_package
 from evidence_bundler.v1.contract_a import compute_handoff_sha256
