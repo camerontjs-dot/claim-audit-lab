@@ -216,6 +216,10 @@ jobs:
           assert manifest["contract_c_sha256"] == result["contract_c"]["whole_object_sha256"]
           PY
 
+      - name: Install maintained CAL regression model
+        run: |
+          uv run python -m spacy download en_core_web_sm
+
       - name: Ordinary CAL repository regression
         run: |
           uv run python -m pytest -q
