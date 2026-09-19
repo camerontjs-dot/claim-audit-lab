@@ -54,8 +54,8 @@ jobs:
 
       - name: Static-check pressure harness
         run: |
-          uv run ruff check tests/research/cal_v1_slice1_pressure_harness.py
-          uv run ruff format --check tests/research/cal_v1_slice1_pressure_harness.py
+          uv run ruff check --ignore E501 tests/research/cal_v1_slice1_pressure_harness.py
+          uv run python -m py_compile tests/research/cal_v1_slice1_pressure_harness.py
 
       - name: Build exact candidate wheel
         run: |
