@@ -32,19 +32,13 @@ def _target_map(values: list[str]) -> dict[str, Path]:
     result: dict[str, Path] = {}
     for value in values:
         if "=" not in value:
-            raise ParentBoundPipelineError(
-                "--target must be PROPOSITION_ID=TARGET.json"
-            )
+            raise ParentBoundPipelineError("--target must be PROPOSITION_ID=TARGET.json")
         proposition_id, raw_path = value.split("=", 1)
         proposition_id = proposition_id.strip()
         if not proposition_id or not raw_path.strip():
-            raise ParentBoundPipelineError(
-                "--target must be PROPOSITION_ID=TARGET.json"
-            )
+            raise ParentBoundPipelineError("--target must be PROPOSITION_ID=TARGET.json")
         if proposition_id in result:
-            raise ParentBoundPipelineError(
-                f"duplicate --target proposition id: {proposition_id}"
-            )
+            raise ParentBoundPipelineError(f"duplicate --target proposition id: {proposition_id}")
         result[proposition_id] = Path(raw_path)
     return result
 
