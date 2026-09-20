@@ -155,7 +155,7 @@ def _load_rc2_package(rc2_root: Path) -> ModuleType:
     package_name = "_cal_contract_c_rc2_authority"
     module_name = f"{package_name}.contract_c_rc2"
     package = ModuleType(package_name)
-    package.__path__ = [str(rc2_root / "validators")]  # type: ignore[attr-defined]
+    package.__path__ = [str(rc2_root / "validators")]
     package.__package__ = package_name
     sys.modules[package_name] = package
     return _load_module(rc2_root / RC2_VALIDATOR_PATH, module_name)
