@@ -9,10 +9,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-from claim_audit_lab.production_v1.parent_bound import (
-    ParentBoundPipelineError,
-    build_parent_bound_contract_c,
-)
+from claim_audit_lab.production_v1.parent_bound import build_parent_bound_contract_c
 
 CONTRACT_C_ROOT = Path(os.environ["CONTRACT_C_ROOT"]).resolve()
 RC2_ROOT = Path(os.environ["RC2_ROOT"]).resolve()
