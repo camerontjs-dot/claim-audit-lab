@@ -193,7 +193,7 @@ def _declaration(contract_a: Mapping[str, Any]) -> DecompositionDeclaration:
     if not isinstance(root, dict) or not isinstance(decomposition, dict):
         raise ParentBoundPipelineError("Contract A root/decomposition must be objects")
     if decomposition.get("state") != "declared":
-        raise ParentBoundPipelineError("parent-bound Contract C path is qualified only for declared decomposition")
+        raise ParentBoundPipelineError(\n            "parent-bound Contract C path is qualified only for declared decomposition"\n        )
     children = decomposition.get("children")
     if not isinstance(children, list):
         raise ParentBoundPipelineError("Contract A decomposition children must be a list")
@@ -225,7 +225,7 @@ def _child_row(declaration: DecompositionDeclaration, proposition_id: str) -> Pr
     for row in declaration.children:
         if row.proposition_id == proposition_id:
             return row
-    raise ParentBoundPipelineError(f"native CAL child is not declared by Contract A: {proposition_id}")
+    raise ParentBoundPipelineError(\n        f"native CAL child is not declared by Contract A: {proposition_id}"\n    )
 
 
 def _native_child(
