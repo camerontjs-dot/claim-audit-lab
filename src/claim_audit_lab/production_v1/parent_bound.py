@@ -318,9 +318,7 @@ def _public_terminal(record: Mapping[str, Any]) -> tuple[str, str]:
         )
     if failure == "NO_DECIDING_RELATION":
         return "not_checkable", "no_deciding_relation"
-    raise ParentBoundPipelineError(
-        f"UNREPRESENTABLE_RC2_TERMINAL:{conclusion}:{failure}"
-    )
+    raise ParentBoundPipelineError(f"UNREPRESENTABLE_RC2_TERMINAL:{conclusion}:{failure}")
 
 
 def _participant_rows(
@@ -366,25 +364,17 @@ def _participant_rows(
         groups = [
             [ref]
             for ref in support_refs
-            if any(
-                p["evidence_ref"] == ref and p["role"] == "causal"
-                for p in participants
-            )
+            if any(p["evidence_ref"] == ref and p["role"] == "causal" for p in participants)
         ]
     elif verdict == "contradicted":
         groups = [
             [ref]
             for ref in refute_refs
-            if any(
-                p["evidence_ref"] == ref and p["role"] == "causal"
-                for p in participants
-            )
+            if any(p["evidence_ref"] == ref and p["role"] == "causal" for p in participants)
         ]
     elif reason == "MIXED_RELATIONS":
         groups = [[s, r] for s in support_refs for r in refute_refs]
-        causal = {
-            (x["source_id"], x["passage_id"]) for group in groups for x in group
-        }
+        causal = {(x["source_id"], x["passage_id"]) for group in groups for x in group}
         for row in participants:
             key = (
                 row["evidence_ref"]["source_id"],
@@ -393,9 +383,7 @@ def _participant_rows(
             row["role"] = "causal" if key in causal else "residual"
     elif reason == "unresolved_categorical_relation":
         groups = [[ref] for ref in unresolved_refs]
-        causal = {
-            (x["source_id"], x["passage_id"]) for group in groups for x in group
-        }
+        causal = {(x["source_id"], x["passage_id"]) for group in groups for x in group}
         for row in participants:
             key = (
                 row["evidence_ref"]["source_id"],
@@ -465,9 +453,7 @@ def _recomposition_authority(
                 "proposition_id": row.proposition_id,
                 "text_sha256": row.text_sha256,
                 "contract_c_content_sha256": content_by_id[row.proposition_id],
-                "native_result_sha256": _tagged_bytes(
-                    child_by_id[row.proposition_id].result_bytes
-                ),
+                "native_result_sha256": _tagged_bytes(child_by_id[row.proposition_id].result_bytes),
                 "cal_result_id": child_by_id[row.proposition_id].outcome.result_id,
                 "conclusion": child_by_id[row.proposition_id].outcome.conclusion.value,
             }
@@ -639,8 +625,7 @@ def _parent_result_record(
 
 def _canonical_json_bytes(value: Mapping[str, Any]) -> bytes:
     return (
-        json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-        + "\n"
+        json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n"
     ).encode("utf-8")
 
 
@@ -722,8 +707,7 @@ def run_parent_bound_pipeline(
             "parent_result_sha256": _tagged_bytes(parent_bytes),
             "contract_c_sha256": build.contract_c_sha256,
             "child_result_sha256": {
-                child.proposition_id: _tagged_bytes(child.result_bytes)
-                for child in build.children
+                child.proposition_id: _tagged_bytes(child.result_bytes) for child in build.children
             },
             "authorization": {
                 "state": "not_evaluated",
