@@ -97,12 +97,22 @@ class Qualification:
             "expected_exit": expected,
             "log": log.name,
         }
-        with log.open("wb") as stream:
+        stderr_log = log.with_suffix(".stderr.log")
+        with log.open("wb") as stdout_stream, stderr_log.open("wb") as stderr_stream:
             result = subprocess.run(
-                command, cwd=self.root, env=env or self.env, stdout=stream, stderr=stream
+                command,
+                cwd=self.root,
+                env=env or self.env,
+                stdout=stdout_stream,
+                stderr=stderr_stream,
             )
         raw = log.read_bytes()
-        step.update(exit_code=result.returncode, log_sha256=digest(raw))
+        step.update(
+            exit_code=result.returncode,
+            log_sha256=digest(raw),
+            stderr_log=stderr_log.name,
+            stderr_sha256=digest(stderr_log.read_bytes()),
+        )
         self.receipt["steps"].append(step)
         self.save()
         print(f"{name}: exit {result.returncode} (expected {expected})", flush=True)

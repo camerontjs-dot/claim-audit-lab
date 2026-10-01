@@ -99,6 +99,23 @@ shared uv archive cache. `deviation-03.json` preserves the failed cache read. Th
 bounded correction used a fresh task-local cache for the unchanged model installer;
 no shared cache was deleted and no scientific control had executed.
 
+The first frozen qualification stopped on exact head
+`9dba4edb90ec9c29068c70d8d30843b30454749d`, tree
+`d680d163bd80b744332aa01a1694ed040d21ba59`. Target units, frozen Contract B/composer
+tests, the #184 decisive matrix, Slice 2 matrix/mutations, wheel/sdist build and both
+clean installations had passed. Installed child/parent equivalence and full regression
+had not executed. The new runner combined stderr warnings and stdout, then tried to
+parse that combined stream as the installed `inspect --json` result. The command itself
+returned 0; separate capture confirmed valid identity JSON on stdout and the inherited
+Pydantic warning on stderr. `deviation-04.json` and the untouched failed run preserve
+the error. A successor records both streams separately and parses stdout only. No
+runtime byte, decisive evaluator, mutation, expectation or grammar changes.
+
+The shared local repository's all-reference leak scan reported 129 inherited history
+matches across unrelated preserved branches. A separate single-branch clone of the
+outgoing candidate scanned clean across its complete reachable history. The broad
+failed scan is preserved; no historical branch or commit was rewritten.
+
 Predecessor failures remain in #181/#183/#184. This candidate does not rewrite those
 receipts or the inherited release-specific 0.5.0 lock.
 
