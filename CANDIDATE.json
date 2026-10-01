@@ -1,0 +1,78 @@
+{
+  "schema_version": "cal-convergence-candidate-rc0",
+  "candidate_id": "cal-v1-convergence-rc0-20261001",
+  "product_line": "cal-v1-categorical",
+  "engine_family": "cal-v1-frozen-active-families",
+  "distribution_version": "0.6.0",
+  "version_posture": "inherited_candidate_metadata_not_a_release_decision",
+  "branch": "promotion/cal-v1-convergence-rc0-20261001",
+  "state": "frozen_for_qualification",
+  "advancement_readiness": "operator_acceptance_and_release_blocked",
+  "source_commit": "ad9e302e7c89b9394c99da29173ff609eb5571d0",
+  "source_tree": "8646c687af91295ee2cebd5aad0c9ad2ae2e1594",
+  "base_commit": "32275a239b68af383a56bca843e28cbc1e343976",
+  "base_tree": "bd5c6dd6d352f11282899e0b8c07c4f223504c2e",
+  "issue": "https://github.com/camerontjs-dot/claim-audit-lab/issues/185",
+  "qualified_predecessors": {
+    "slice1": "61cab64149cb6119e4dbe1fe18496f3ccf89002f",
+    "slice2": "ddaf94551e38663920593cab89f9c60d43c1555f",
+    "target_seam": "76b7c4dee6369cc6494486eb115a096e9da370b0"
+  },
+  "protected_identity": {
+    "semantic_implementation": "847cc970642bb648dc994b929c2053b5c9d4648c",
+    "decomposition_blob": "268d0dc4dd22ddde3848141d62b7d719e48d374d",
+    "supported_families": [
+      "strict_comparison",
+      "direct_event_order"
+    ],
+    "contract_b": "1.2.0",
+    "external_contract_c": "c5b1d757f3a0ad4f6e2c3f6dbdc2dd2d3c1403ec"
+  },
+  "scope": {
+    "included": [
+      "Exact Slice 2 child/native/parent production closure",
+      "Exact #184 bounded target authoring and conformance, separate and upstream",
+      "Inherited candidate packaging and version-only trace tokens",
+      "Immutable decisive qualification inputs and installed predecessor-equivalence runner"
+    ],
+    "excluded": [
+      "Historical research/promotional documentation and workflows",
+      "Broad target grammar or new semantic families",
+      "Changes to semantic judgment, composer bytes, failure/conclusion precedence or not_checkable",
+      "Vendored/redefined Contract C",
+      "Decision Engine/Contract D changes",
+      "Final public API/version decision, merge, tag, release"
+    ]
+  },
+  "evaluation_evidence": {
+    "component": "See exact-head external qualification receipt and per-command logs; this manifest does not predeclare a pass.",
+    "replay": "Preserved #184 controls and Slice 2 PIPE01-PIPE04/mutations are required; actual result is in target-seam.json and slice2-parent.json bound by receipt.json.",
+    "fresh_blind": "NOT_RUN"
+  },
+  "qualification": {
+    "runner": "scripts/qualify_v1_convergence.py",
+    "workflow": ".github/workflows/cal-v1-convergence-qualification.yml",
+    "receipt_schema": "cal-v1-convergence-qualification-rc0",
+    "receipt_head_binding": "The freeze commit containing this manifest must equal receipt.head; its tree must equal receipt.tree.",
+    "implementation_binding": "Only CANDIDATE.json may differ from source_commit; no further development in this frozen tree."
+  },
+  "blockers": [
+    "Independent promotion review/operator acceptance",
+    "Final distribution version/public compatibility and supported-interface decision",
+    "Successor release lock and artifact/release custody",
+    "Exact-convergence downstream Decision/D qualification before consumer repins",
+    "Fresh blind acceptance for any validated-accuracy claim"
+  ],
+  "external_inputs": [
+    "Exact frozen EB, CAL trusted oracle, Slice 2 reference, Contract C, RC2, and resolver checkouts; see runner pins."
+  ],
+  "claims_not_made": [
+    "CAL 1.0 readiness",
+    "representative or validated accuracy",
+    "regulatory suitability",
+    "unrestricted natural-language authoring",
+    "additional semantic families",
+    "authorization or execution",
+    "merge or release"
+  ]
+}
