@@ -1,0 +1,91 @@
+name: CAL V1 convergence qualification
+
+on:
+  push:
+    branches: [promotion/cal-v1-convergence-rc0-20261001]
+  pull_request:
+    paths:
+      - "src/claim_audit_lab/production_v1/**"
+      - "src/claim_audit_lab/__init__.py"
+      - "tests/qualification/**"
+      - "tests/test_production_v1_targeting.py"
+      - "tests/v1/fixtures/traces/**"
+      - "scripts/qualify_v1_convergence.py"
+      - "CANDIDATE.json"
+      - "pyproject.toml"
+      - "uv.lock"
+      - "MANIFEST.in"
+      - "docs/promotion/CAL_V1_CONVERGENCE_RC0_20261001.md"
+      - ".github/workflows/cal-v1-convergence-qualification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e24e405f5336ee024674f39dba97255bb58a2dd9
+          path: external/frozen-cal
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: ddaf94551e38663920593cab89f9c60d43c1555f
+          path: external/slice2
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: 4e1f6fe00e7c350b28f52bfea14f1f8988847884
+          path: external/evidence-bundler
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: c5b1d757f3a0ad4f6e2c3f6dbdc2dd2d3c1403ec
+          path: external/contract-c
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: b42c827acb0a9fe65353354d709add0e27bab307
+          path: external/rc2
+      - uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/apparatus-contracts
+          ref: 1d33e0612befcf8016816197c90c062373796df9
+          path: external/resolver
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+      - name: Prepare maintained environment and exact external dependencies
+        run: |
+          echo 'external/' >> .git/info/exclude
+          uv sync --python 3.11 --all-extras --frozen
+          uv pip install -e external/evidence-bundler
+          uv run --frozen python -m spacy download en_core_web_sm
+      - name: Run immutable convergence qualification
+        run: |
+          .venv/bin/python scripts/qualify_v1_convergence.py \
+            --external external --out outputs/convergence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-v1-convergence-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            outputs/convergence/receipt.json
+            outputs/convergence/*.log
+            outputs/convergence/first-failure.txt
+            outputs/convergence/target-seam.json
+            outputs/convergence/slice2-parent.json
+            outputs/convergence/dist/*
+            outputs/convergence/predecessor-fixtures/**/parent-result.json
+            outputs/convergence/predecessor-fixtures/**/contract-c.json
+            outputs/convergence/predecessor-fixtures/**/manifest.json

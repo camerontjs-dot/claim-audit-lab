@@ -26,6 +26,32 @@ you wrote?**
 [architecture](docs/architecture.html), [research briefs](docs/research.html), and
 [benchmarks & limits](docs/benchmarks.html). GitHub Pages is not enabled for this repository.
 
+## CAL V1 convergence candidate
+
+Issue [#185](https://github.com/camerontjs-dot/claim-audit-lab/issues/185) brings the
+qualified Contract B 1.2 child runtime, declared `all_of` parent recomposition, and
+bounded target authoring/conformance onto one branch from production `main`.
+The active semantic families remain `strict_comparison` and `direct_event_order`.
+Parent-bound Contract C requires the exact external Apparatus checkouts.
+
+Target authoring uses exact claim text and refuses forms outside the qualified grammar.
+It runs upstream of semantic judgment:
+
+```bash
+python -m claim_audit_lab.production_v1.target_cli author BUNDLE_DIR CLAIM_ID --out target.json
+python -m claim_audit_lab.production_v1.target_cli conform BUNDLE_DIR target.json
+claim-audit-v1 run-bundle BUNDLE_DIR target.json --out-dir RUN_DIR
+```
+
+The existing `validate-bundle` command checks structural binding. Use the separate
+`conform` step to establish claim/target semantic conformance before execution.
+`run-bundle` and the parent operator retain their qualified behavior.
+
+The inherited package token `0.6.0` is candidate metadata. A release version and public
+compatibility decision remain pending. This branch is a Draft convergence candidate;
+it does not establish CAL 1.0 readiness. The [convergence record](docs/promotion/CAL_V1_CONVERGENCE_RC0_20261001.md)
+lists exact authorities, changed files, qualification, and remaining blockers.
+
 ---
 
 ## Status
@@ -34,7 +60,7 @@ you wrote?**
 
 | | |
 |---|---|
-| Distribution | `0.5.0`; adds the public Contract C 1.0.0 exporter. `0.4.0` remains the first public tag |
+| Distribution | Inherited `0.6.0` candidate metadata on this branch; latest public release remains `0.5.0` |
 | Default engine | `v1-retrieve-entail`, retrieve → entail → rules on `audit` and `demo` |
 | Selectable | `v0.2-lexical` via `--engine` (falsified; kept for apparatus pins) |
 | Frozen rules | `cal-rules-v1.13.0`, governs the v1 engine only |
