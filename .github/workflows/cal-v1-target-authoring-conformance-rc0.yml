@@ -1,0 +1,166 @@
+name: Research - CAL V1 target authoring conformance RC0
+
+on:
+  push:
+    branches:
+      - research/cal-v1-target-authoring-conformance-rc0-20261001
+  pull_request:
+    paths:
+      - "src/claim_audit_lab/production_v1/targeting.py"
+      - "src/claim_audit_lab/production_v1/target_cli.py"
+      - "tests/test_production_v1_targeting.py"
+      - "tests/research/cal_v1_target_authoring_conformance_qualification.py"
+      - "docs/research/CAL_V1_TARGET_AUTHORING_CONFORMANCE_RC0_20261001.md"
+      - ".github/workflows/cal-v1-target-authoring-conformance-rc0.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen trusted-target oracle
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/claim-audit-lab
+          ref: e24e405f5336ee024674f39dba97255bb58a2dd9
+          path: external/frozen-cal
+          fetch-depth: 1
+
+      - name: Checkout exact frozen Evidence Bundler
+        uses: actions/checkout@v4
+        with:
+          repository: camerontjs-dot/evidence-bundler
+          ref: 4e1f6fe00e7c350b28f52bfea14f1f8988847884
+          path: external/evidence-bundler
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install qualification environment
+        run: |
+          uv sync --all-extras
+          uv pip install -e external/evidence-bundler
+
+      - name: Verify protected CAL V1 boundaries
+        run: |
+          set -euo pipefail
+          test "$(git merge-base ddaf94551e38663920593cab89f9c60d43c1555f HEAD)" = \
+            "ddaf94551e38663920593cab89f9c60d43c1555f"
+          test "$(git hash-object src/claim_audit_lab/production_v1/semantic/decomposition.py)" = \
+            "268d0dc4dd22ddde3848141d62b7d719e48d374d"
+          git diff --exit-code ddaf94551e38663920593cab89f9c60d43c1555f -- \
+            src/claim_audit_lab/production_v1/semantic \
+            src/claim_audit_lab/production_v1/bundle_input.py \
+            src/claim_audit_lab/production_v1/bundle_cli.py \
+            src/claim_audit_lab/production_v1/execution.py \
+            src/claim_audit_lab/production_v1/parent_bound.py \
+            src/claim_audit_lab/production_v1/parent_cli.py \
+            pyproject.toml
+          test "$(git -C external/frozen-cal rev-parse HEAD)" = \
+            "e24e405f5336ee024674f39dba97255bb58a2dd9"
+          test "$(git -C external/evidence-bundler rev-parse HEAD)" = \
+            "4e1f6fe00e7c350b28f52bfea14f1f8988847884"
+          git -C external/frozen-cal diff --exit-code
+          git -C external/evidence-bundler diff --exit-code
+
+      - name: Focused authoring unit controls
+        run: |
+          uv run pytest -q tests/test_production_v1_targeting.py
+
+      - name: Execute frozen-oracle qualification matrix
+        env:
+          FROZEN_CAL_ROOT: ${{ github.workspace }}/external/frozen-cal
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+          QUALIFICATION_RESULT: ${{ github.workspace }}/cal-v1-target-authoring-conformance-result.json
+        run: |
+          uv run python tests/research/cal_v1_target_authoring_conformance_qualification.py
+
+      - name: Build candidate distribution
+        run: |
+          rm -rf dist
+          uv run python -m build
+          test "$(find dist -maxdepth 1 -type f -name '*.whl' | wc -l)" -eq 1
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 1
+
+      - name: Clean-install wheel and exercise research CLI
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/cal-v1-target-wheel /tmp/cal-v1-target-cli.json
+          python -m venv /tmp/cal-v1-target-wheel
+          /tmp/cal-v1-target-wheel/bin/python -m pip install --upgrade pip
+          /tmp/cal-v1-target-wheel/bin/python -m pip install dist/*.whl
+          BUNDLE="${{ github.workspace }}/target-authoring-conformance-work/eb/contract_b"
+          /tmp/cal-v1-target-wheel/bin/python -m claim_audit_lab.production_v1.target_cli \
+            author "$BUNDLE" C1 --out /tmp/cal-v1-target-cli.json
+          /tmp/cal-v1-target-wheel/bin/python -m claim_audit_lab.production_v1.target_cli \
+            conform "$BUNDLE" /tmp/cal-v1-target-cli.json
+          cmp /tmp/cal-v1-target-cli.json \
+            "${{ github.workspace }}/target-authoring-conformance-work/C1.trusted.target.json"
+
+      - name: Install maintained regression model
+        run: |
+          uv run python -m spacy download en_core_web_sm
+
+      - name: Ordinary CAL regression and static checks
+        run: |
+          uv run pytest -q
+          uv run ruff check src tests
+          uv run ruff format --check src
+          uv run mypy
+
+      - name: Record exact research-candidate receipt
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import subprocess
+          from pathlib import Path
+
+          result_path = Path("cal-v1-target-authoring-conformance-result.json")
+          result = json.loads(result_path.read_text())
+          assert result["result"] == "PASS"
+          receipt = {
+              "schema": "cal-v1-target-authoring-conformance-candidate-receipt-rc0",
+              "commit": subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip(),
+              "tree": subprocess.check_output(["git", "rev-parse", "HEAD^{tree}"], text=True).strip(),
+              "base": "ddaf94551e38663920593cab89f9c60d43c1555f",
+              "result_sha256": "sha256:" + hashlib.sha256(result_path.read_bytes()).hexdigest(),
+              "wheel": {},
+              "sdist": {},
+          }
+          for path in Path("dist").iterdir():
+              digest = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+              if path.suffix == ".whl":
+                  receipt["wheel"] = {"name": path.name, "sha256": digest}
+              elif path.name.endswith(".tar.gz"):
+                  receipt["sdist"] = {"name": path.name, "sha256": digest}
+          Path("cal-v1-target-authoring-conformance-candidate-receipt.json").write_text(
+              json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+          )
+          print(json.dumps(receipt, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cal-v1-target-authoring-conformance-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            cal-v1-target-authoring-conformance-result.json
+            cal-v1-target-authoring-conformance-candidate-receipt.json
+            target-authoring-conformance-work/C1.trusted.target.json
+            target-authoring-conformance-work/C1.authored.target.json
+            target-authoring-conformance-work/C2.trusted.target.json
+            target-authoring-conformance-work/C2.authored.target.json
+            dist/*
