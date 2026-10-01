@@ -115,10 +115,10 @@ jobs:
 
       - name: Ordinary CAL regression and static checks
         run: |
-          uv run pytest -q
-          uv run ruff check src tests
-          uv run ruff format --check src
-          uv run mypy
+          uv run python -m pytest -q
+          uv run python -m ruff check src tests
+          uv run python -m ruff format --check src
+          uv run python -m mypy
 
       - name: Record exact research-candidate receipt
         run: |
