@@ -1,0 +1,493 @@
+{
+  "schema": "cal-v1-strict-comparison-polarity-rc0-decisive-cases",
+  "issue": 190,
+  "scientific_parent": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "counterexample_freeze_sha256": "9bd10b6fe86e3dd91808df906688d82abe9cb325446c859b26a00015187f747b",
+  "authentic_source_refusals_included": false,
+  "cases": [
+    {
+      "case_id": "D1-positive-higher-support",
+      "role": "discriminator",
+      "property": 1,
+      "frozen_controls": ["B-support"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a higher rate than Beta."],
+      "expected_conclusion": "supported",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "SUPPORTS"
+        }
+      ]
+    },
+    {
+      "case_id": "D2-positive-opposite-contradiction",
+      "role": "discriminator",
+      "property": 2,
+      "frozen_controls": ["B-refute", "B-world-substitution"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a lower rate than Beta."],
+      "expected_conclusion": "contradicted",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "alpha",
+          "relation": "LESS_THAN",
+          "right": "beta",
+          "categorical_relation": "REFUTES"
+        }
+      ]
+    },
+    {
+      "case_id": "D3-exact-negation-falsifier",
+      "role": "discriminator",
+      "property": 3,
+      "frozen_controls": ["B-explicit-negation"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha did not have a higher rate than Beta."],
+      "expected_conclusion": "contradicted",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "negative",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "REFUTES"
+        }
+      ]
+    },
+    {
+      "case_id": "D4-not-higher-does-not-decide-lower",
+      "role": "discriminator",
+      "property": 4,
+      "claim": "Alpha had a lower rate than Beta.",
+      "evidence": ["Alpha did not have a higher rate than Beta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "negative",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "case_id": "D4-not-lower-does-not-decide-higher",
+      "role": "discriminator",
+      "property": 4,
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha did not have a lower rate than Beta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "negative",
+          "left": "alpha",
+          "relation": "LESS_THAN",
+          "right": "beta",
+          "categorical_relation": "UNRESOLVED"
+        }
+      ]
+    },
+    {
+      "case_id": "D5-positive-entity-swap-direction-inversion",
+      "role": "discriminator",
+      "property": 5,
+      "frozen_controls": ["B-swap"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Beta had a lower rate than Alpha."],
+      "expected_conclusion": "supported",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "beta",
+          "relation": "LESS_THAN",
+          "right": "alpha",
+          "categorical_relation": "SUPPORTS"
+        }
+      ]
+    },
+    {
+      "case_id": "D5-negative-entity-swap-direction-inversion",
+      "role": "discriminator",
+      "property": 5,
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Beta did not have a lower rate than Alpha."],
+      "expected_conclusion": "contradicted",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "negative",
+          "left": "beta",
+          "relation": "LESS_THAN",
+          "right": "alpha",
+          "categorical_relation": "REFUTES"
+        }
+      ]
+    },
+    {
+      "case_id": "D5-claim-swap-inversion-same-negation",
+      "role": "discriminator",
+      "property": 5,
+      "frozen_controls": ["B-target-swap-invert"],
+      "claim": "Beta had a lower rate than Alpha.",
+      "evidence": ["Alpha did not have a higher rate than Beta."],
+      "expected_conclusion": "contradicted",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "negative",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "REFUTES"
+        }
+      ]
+    },
+    {
+      "case_id": "D6-never",
+      "role": "discriminator",
+      "property": 6,
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha never had a higher rate than Beta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "UNRESOLVED",
+          "polarity_diagnostic": "unrepresentable",
+          "authority_present": false
+        }
+      ]
+    },
+    {
+      "case_id": "D6-contraction",
+      "role": "discriminator",
+      "property": 6,
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha hadn't a higher rate than Beta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "UNRESOLVED",
+          "polarity_diagnostic": "unrepresentable",
+          "authority_present": false
+        }
+      ]
+    },
+    {
+      "case_id": "D6-double-negation",
+      "role": "discriminator",
+      "property": 6,
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha did not not have a higher rate than Beta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "UNRESOLVED",
+          "polarity_diagnostic": "unrepresentable",
+          "authority_present": false
+        }
+      ]
+    },
+    {
+      "case_id": "D6-embedded-not",
+      "role": "discriminator",
+      "property": 6,
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a not higher rate than Beta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "UNRESOLVED",
+          "polarity_diagnostic": "unrepresentable",
+          "authority_present": false
+        }
+      ]
+    },
+    {
+      "case_id": "D6-cannot",
+      "role": "discriminator",
+      "property": 6,
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha cannot have a higher rate than Beta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "UNRESOLVED",
+          "polarity_diagnostic": "unrepresentable",
+          "authority_present": false
+        }
+      ]
+    },
+    {
+      "case_id": "R-unresolved-cue",
+      "role": "regression",
+      "frozen_controls": ["B-unresolved-cue"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["The comparison might be higher."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "UNRESOLVED",
+          "authority_present": false
+        }
+      ]
+    },
+    {
+      "case_id": "R-unrelated-entities",
+      "role": "regression",
+      "frozen_controls": ["B-unrelated-entities"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Gamma had a higher rate than Delta."],
+      "expected_conclusion": "not_checkable",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "gamma",
+          "relation": "MORE_THAN",
+          "right": "delta",
+          "categorical_relation": "IRRELEVANT"
+        }
+      ]
+    },
+    {
+      "case_id": "R-lowercase",
+      "role": "regression",
+      "frozen_controls": ["B-lowercase"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["alpha had a higher rate than beta."],
+      "expected_conclusion": "not_checkable"
+    },
+    {
+      "case_id": "R-punctuation",
+      "role": "regression",
+      "frozen_controls": ["B-punctuation"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a higher rate than Beta!"],
+      "expected_conclusion": "not_checkable"
+    },
+    {
+      "case_id": "R-greater",
+      "role": "regression",
+      "frozen_controls": ["B-greater"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a greater rate than Beta."],
+      "expected_conclusion": "supported",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "SUPPORTS"
+        }
+      ]
+    },
+    {
+      "case_id": "R-larger",
+      "role": "regression",
+      "frozen_controls": ["B-larger"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a larger rate than Beta."],
+      "expected_conclusion": "supported",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "SUPPORTS"
+        }
+      ]
+    },
+    {
+      "case_id": "R-exceeded",
+      "role": "regression",
+      "frozen_controls": ["B-exceeded"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha exceeded Beta."],
+      "expected_conclusion": "supported",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "SUPPORTS"
+        }
+      ]
+    },
+    {
+      "case_id": "R-time-scope",
+      "role": "regression",
+      "frozen_controls": ["B-time-scope"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a higher rate than Beta in 2025."],
+      "expected_conclusion": "not_checkable"
+    },
+    {
+      "case_id": "R-plural",
+      "role": "regression",
+      "frozen_controls": ["B-plural"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had higher rates than Beta."],
+      "expected_conclusion": "not_checkable"
+    },
+    {
+      "case_id": "R-equality",
+      "role": "regression",
+      "frozen_controls": ["B-equality"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had an equal rate to Beta."],
+      "expected_conclusion": "not_checkable"
+    },
+    {
+      "case_id": "R-non-order",
+      "role": "regression",
+      "frozen_controls": ["B-non-order"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha had a different rate from Beta."],
+      "expected_conclusion": "not_checkable"
+    },
+    {
+      "case_id": "R-target-swap-invert",
+      "role": "regression",
+      "frozen_controls": ["B-target-swap-invert"],
+      "claim": "Beta had a lower rate than Alpha.",
+      "evidence": ["Alpha had a higher rate than Beta."],
+      "expected_conclusion": "supported",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "SUPPORTS"
+        }
+      ]
+    },
+    {
+      "case_id": "R-irrelevant-insertion",
+      "role": "regression",
+      "frozen_controls": ["B-irrelevant-insertion"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Gamma had a higher rate than Delta."
+      ],
+      "expected_conclusion": "supported"
+    },
+    {
+      "case_id": "R-permutation-a",
+      "role": "regression",
+      "frozen_controls": ["B-permutation-a"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "No deciding comparison here."
+      ],
+      "expected_conclusion": "supported"
+    },
+    {
+      "case_id": "R-permutation-b",
+      "role": "regression",
+      "frozen_controls": ["B-permutation-b"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "No deciding comparison here.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_conclusion": "supported"
+    },
+    {
+      "case_id": "R-mixed",
+      "role": "regression",
+      "frozen_controls": ["B-mixed"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable"
+    },
+    {
+      "case_id": "R-unmeasurable-insertion",
+      "role": "regression",
+      "frozen_controls": ["B-unmeasurable-insertion"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "The comparison might be higher."
+      ],
+      "expected_conclusion": "supported"
+    },
+    {
+      "case_id": "R-duplicate",
+      "role": "regression",
+      "frozen_controls": ["B-duplicate"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_conclusion": "supported"
+    },
+    {
+      "case_id": "R-near-duplicate",
+      "role": "regression",
+      "frozen_controls": ["B-near-duplicate"],
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a HIGHER rate than Beta."
+      ],
+      "expected_conclusion": "supported"
+    },
+    {
+      "case_id": "R-comma-delta",
+      "role": "regression",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": ["Alpha recorded 4 cases, 2 more than Beta."],
+      "expected_conclusion": "supported",
+      "expected_passages": [
+        {
+          "measurement_status": "CLAIMED",
+          "authority_present": true,
+          "assertion_polarity": "positive",
+          "left": "alpha",
+          "relation": "MORE_THAN",
+          "right": "beta",
+          "categorical_relation": "SUPPORTS"
+        }
+      ]
+    }
+  ]
+}
