@@ -1,0 +1,100 @@
+{
+  "subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "falsifier": {
+    "case_id": "B-explicit-negation",
+    "domain": "B",
+    "classification": "CRITICAL_FAIL",
+    "expected": {
+      "case_id": "B-explicit-negation",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha did not have a higher rate than Beta."
+      ],
+      "expected": "refuted_or_abstain",
+      "coverage": false,
+      "pair": null
+    },
+    "observed": {
+      "conclusion": "supported",
+      "failure_code": null,
+      "semantic_family": "strict_comparison",
+      "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+      "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+      "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+      "traces": [
+        {
+          "passage_id": "p0",
+          "measurement": {
+            "receipt_id": "measurement:9e7332654fbc1f4d09428fc850321b6df11a7e9ba73e48351eb8c630e90c2bdd",
+            "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+            "semantic_family": "strict_comparison",
+            "instrument_id": "rc7fb1-strict-comparison",
+            "instrument_version": "rc7fb1-comparator-1",
+            "available_passage_ids": [
+              "p0"
+            ],
+            "consumed_passage_ids": [
+              "p0"
+            ],
+            "raw_measurement_json": "{\"proposals\":[{\"cue_span\":[21,27],\"left\":\"alpha\",\"relation\":\"MORE_THAN\",\"right\":\"beta\"}],\"status\":\"CLAIMED\"}",
+            "diagnostics": []
+          },
+          "authority": {
+            "authority_id": "semantic-authority:598afaf1962eee689ae94279ec14bf8bc0a5f36a380664c654d4986387288a02",
+            "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+            "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+            "atom": {
+              "atom_id": "semantic-atom:7501ed59cfd47cf1f8ec0e19e6c3f26a04f7b12a5a1abecf43088f77a7da5602",
+              "semantic_family": "strict_comparison",
+              "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+              "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+              "passage_id": "p0",
+              "source_id": "s0",
+              "fields": [
+                [
+                  "left",
+                  "alpha"
+                ],
+                [
+                  "relation",
+                  "MORE_THAN"
+                ],
+                [
+                  "right",
+                  "beta"
+                ]
+              ],
+              "measurement_receipt_id": "measurement:9e7332654fbc1f4d09428fc850321b6df11a7e9ba73e48351eb8c630e90c2bdd"
+            },
+            "status": "WARRANTED",
+            "reason": "ALL_REQUIRED_WARRANT_ESTABLISHED"
+          },
+          "relation": {
+            "relation_id": "bound-relation:85164f19c89197037bc32e5d345d8edb864dc95ff370ed14fe6c7de74c8bd706",
+            "categorical_relation": "SUPPORTS",
+            "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+            "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+            "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+            "authority_id": "semantic-authority:598afaf1962eee689ae94279ec14bf8bc0a5f36a380664c654d4986387288a02",
+            "passage_id": "p0"
+          },
+          "failure_code": null,
+          "detail": null
+        }
+      ]
+    },
+    "evidence_path": "cases/B-explicit-negation",
+    "evidence_tree": {
+      "CONTEXT.json": "7b698a14692f4036743ebf17fe360d53ec89d07adda85c044b41796ce9ca3292",
+      "EXPECTED.json": "35b678b1cc05190a7296d59c73c5a314df60ee499af7f5a5bc5453ffe246cf3f",
+      "FILE_HASHES.json": "1d7a1f5128d8c8e99c4a1d6ab322c3f4a7147d5cbc677b6c866c3d3402d37a6c",
+      "OBSERVED.json": "50b52d5083e2fb7aeaab06d784b5e3fce90f49e4971bfd07e806e99a420bc7ca"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:49.122001+00:00"
+  },
+  "release_allowed": false
+}

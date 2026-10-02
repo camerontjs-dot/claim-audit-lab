@@ -1,0 +1,14 @@
+{
+  "case_id": "B-explicit-negation",
+  "domain": "B",
+  "operation": "semantic",
+  "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+  "family": "strict_comparison",
+  "claim": "Alpha had a higher rate than Beta.",
+  "texts": [
+    "Alpha did not have a higher rate than Beta."
+  ],
+  "expected": "refuted_or_abstain",
+  "coverage": false,
+  "pair": null
+}

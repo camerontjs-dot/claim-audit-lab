@@ -1,0 +1,62 @@
+[
+  {
+    "id": "D01",
+    "phase": "first attempt",
+    "classification": "APPARATUS_INVALID",
+    "detail": "Missing rank_bm25 during historical producer import; zero semantic/real cases. Original failure frozen before separately frozen dependency successor."
+  },
+  {
+    "id": "D02",
+    "phase": "pre-exposure source capture",
+    "classification": "SOURCE_UNAVAILABLE",
+    "detail": "Fixed sources S06 and S07 returned HTTP 403; raw responses hashed/preserved; no substitution."
+  },
+  {
+    "id": "D03",
+    "phase": "pre-exposure extraction",
+    "classification": "EXTRACTION_DEVIATION",
+    "detail": "FDA S10 narrative used div/br; added main text extraction from unchanged raw HTML, retained original extraction; frozen before CAL exposure."
+  },
+  {
+    "id": "D04",
+    "phase": "oracle authority",
+    "classification": "AUTHORITY_LIMIT",
+    "detail": "Source-first judgments are agent judgments, human_gold false, needs_audit true."
+  },
+  {
+    "id": "D05",
+    "phase": "subject binding",
+    "classification": "LIFECYCLE_CONTROL_ABSENT",
+    "detail": "Exact subject lacks cal_lab_control.py; direct live Git and immutable artifact binding used under issue188 authority; no comparative score/candidate advancement claim."
+  },
+  {
+    "id": "D06",
+    "phase": "historical replay",
+    "classification": "METADATA_APERTURE",
+    "detail": "Historical harness retains old CANDIDATE constant unchanged; outer receipt binds actual6bb0 subject. Historical weak-system gaps not relabeled as fixed."
+  },
+  {
+    "id": "D07",
+    "phase": "prepublication audit",
+    "classification": "INHERITED_HISTORY_PATH_FINDINGS",
+    "detail": "New pressure files have zero path/secret matches; full all-ref historical scan reports129 inherited path matches; no history rewrite or protected-subject repair."
+  },
+  {
+    "id": "D08",
+    "phase": "real execution",
+    "classification": "ROBUSTNESS_LIMIT",
+    "detail": "All20 source-first claims refused authoring; real semantic execution zero; no real-source accuracy estimate."
+  },
+  {
+    "id": "D09",
+    "phase": "stop rule",
+    "classification": "NOT_RUN",
+    "detail": "B-multiple-cues remained unexecuted after genuine critical negation falsifier."
+  },
+  {
+    "id": "D10",
+    "phase": "protocol lint",
+    "classification": "NONBLOCKING_NOTE",
+    "detail": "Protocol is a research procedure, not an adopted operating contract; contract-lint returned a nonblocking normative-clause note."
+  }
+]

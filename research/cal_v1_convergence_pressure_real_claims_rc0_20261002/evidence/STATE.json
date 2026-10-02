@@ -1,0 +1,17 @@
+{
+  "state": "completed",
+  "scientific_disposition": "PRESSURE_FALSIFIED_CRITICAL_SEMANTIC_FAILURE",
+  "release_progression": "STOPPED",
+  "subject_commit": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "original_attempt_disposition": "PRESSURE_INCONCLUSIVE_APPARATUS_INVALID",
+  "original_attempt_semantic_calls": 0,
+  "successor": "apparatus_successor_1",
+  "remaining_case": "B-multiple-cues",
+  "remaining_status": "NOT_RUN",
+  "raw_local_archive_sha256": "536cf5a5fe29ad7a3d59d8c27dd11025c8cacfd73e45a71f84b37d76320e9dba",
+  "raw_local_archive_bytes": 6287789,
+  "raw_original_results_sha256": "4a956b903254dc87397a211feb16dcfe9c6c2a99942092e144cdd32006bb6749",
+  "human_gold": false,
+  "real_semantic_runs": 0,
+  "real_authoring_attempts": 20
+}

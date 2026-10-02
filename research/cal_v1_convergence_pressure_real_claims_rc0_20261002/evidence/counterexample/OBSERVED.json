@@ -1,0 +1,69 @@
+{
+  "conclusion": "supported",
+  "failure_code": null,
+  "semantic_family": "strict_comparison",
+  "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+  "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+  "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+  "traces": [
+    {
+      "passage_id": "p0",
+      "measurement": {
+        "receipt_id": "measurement:9e7332654fbc1f4d09428fc850321b6df11a7e9ba73e48351eb8c630e90c2bdd",
+        "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+        "semantic_family": "strict_comparison",
+        "instrument_id": "rc7fb1-strict-comparison",
+        "instrument_version": "rc7fb1-comparator-1",
+        "available_passage_ids": [
+          "p0"
+        ],
+        "consumed_passage_ids": [
+          "p0"
+        ],
+        "raw_measurement_json": "{\"proposals\":[{\"cue_span\":[21,27],\"left\":\"alpha\",\"relation\":\"MORE_THAN\",\"right\":\"beta\"}],\"status\":\"CLAIMED\"}",
+        "diagnostics": []
+      },
+      "authority": {
+        "authority_id": "semantic-authority:598afaf1962eee689ae94279ec14bf8bc0a5f36a380664c654d4986387288a02",
+        "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+        "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+        "atom": {
+          "atom_id": "semantic-atom:7501ed59cfd47cf1f8ec0e19e6c3f26a04f7b12a5a1abecf43088f77a7da5602",
+          "semantic_family": "strict_comparison",
+          "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+          "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+          "passage_id": "p0",
+          "source_id": "s0",
+          "fields": [
+            [
+              "left",
+              "alpha"
+            ],
+            [
+              "relation",
+              "MORE_THAN"
+            ],
+            [
+              "right",
+              "beta"
+            ]
+          ],
+          "measurement_receipt_id": "measurement:9e7332654fbc1f4d09428fc850321b6df11a7e9ba73e48351eb8c630e90c2bdd"
+        },
+        "status": "WARRANTED",
+        "reason": "ALL_REQUIRED_WARRANT_ESTABLISHED"
+      },
+      "relation": {
+        "relation_id": "bound-relation:85164f19c89197037bc32e5d345d8edb864dc95ff370ed14fe6c7de74c8bd706",
+        "categorical_relation": "SUPPORTS",
+        "audit_context_sha256": "2bf5542f1060e1405e7d842872407d6fa88fc6931f16bcaef1c39c1ea0794030",
+        "evidence_world_sha256": "dddf0ea6409275721611d200b53472afaf2a454ca6fbb9dcaad22f6f721e8131",
+        "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+        "authority_id": "semantic-authority:598afaf1962eee689ae94279ec14bf8bc0a5f36a380664c654d4986387288a02",
+        "passage_id": "p0"
+      },
+      "failure_code": null,
+      "detail": null
+    }
+  ]
+}

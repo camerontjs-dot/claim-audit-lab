@@ -1,0 +1,722 @@
+[
+  {
+    "case_id": "E-replay",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-replay",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "replay"
+    },
+    "observed": {
+      "a": {
+        "label": "a",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-replay/a"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "87bc2b78db0e95e4cffc24a109622331e981513f0d217f98347e142e14aa4de0",
+        "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "pythonpath_present": true
+      },
+      "b": {
+        "label": "b",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-replay/b"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "34429fa1d0852f2bba980fe770b09db4a5ea91c1569f79e6735d2a5b95bdc177",
+        "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "pythonpath_present": true
+      },
+      "hashes_a": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      },
+      "hashes_b": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      }
+    },
+    "evidence_path": "cases/E-replay",
+    "evidence_tree": {
+      "EXPECTED.json": "ce7205e27c488931b4f833e831cc6b816eef99ad4b0701d2f0db2927afef8daf",
+      "FILE_HASHES.json": "53db26215470794590ddf062a8862a921ad8fe1b82c6ac22ad2fdc8528bea860",
+      "OBSERVED.json": "b3e871c5283badbe624cff238e7b88ff7b62b0c2059950631c5245e39b0bfd1e",
+      "a/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "a/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "a/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "a/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "a/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "a/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "a.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+      "a.stdout": "87bc2b78db0e95e4cffc24a109622331e981513f0d217f98347e142e14aa4de0",
+      "b/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "b/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "b/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "b/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "b/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "b/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "b.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+      "b.stdout": "34429fa1d0852f2bba980fe770b09db4a5ea91c1569f79e6735d2a5b95bdc177"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:44.731267+00:00"
+  },
+  {
+    "case_id": "E-source-wheel",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-source-wheel",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "source-wheel"
+    },
+    "observed": {
+      "a": {
+        "label": "a",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-source-wheel/a"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "14312a68381163236d3869ba6efc7dd93c870237ab5c3c9513e7e3aac4b62071",
+        "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "pythonpath_present": true
+      },
+      "b": {
+        "label": "b",
+        "argv": [
+          "$CUSTODY_ROOT/wheel-env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-source-wheel/b"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "9e148b41ab9543147775f4eb939f408ce9e49bf3178134e42bc8f352c0adb40f",
+        "stderr_sha256": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+        "pythonpath_present": false
+      },
+      "hashes_a": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      },
+      "hashes_b": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      }
+    },
+    "evidence_path": "cases/E-source-wheel",
+    "evidence_tree": {
+      "EXPECTED.json": "f048eb62d578a8d8b4f6a3d4a7b0d45f8c670b1cd74c4d6dd4932a586af8f08c",
+      "FILE_HASHES.json": "eb8bf720bff5b3d25685eb4338322b83b69f628e78e3dbda385a95b799031704",
+      "OBSERVED.json": "96bfd76b9052b12579190b15e87bb600a90d1a82b22e7ecc014cdf6b74742cc2",
+      "a/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "a/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "a/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "a/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "a/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "a/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "a.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+      "a.stdout": "14312a68381163236d3869ba6efc7dd93c870237ab5c3c9513e7e3aac4b62071",
+      "b/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "b/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "b/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "b/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "b/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "b/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "b.stderr": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+      "b.stdout": "9e148b41ab9543147775f4eb939f408ce9e49bf3178134e42bc8f352c0adb40f"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:45.429931+00:00"
+  },
+  {
+    "case_id": "E-wheel-sdist",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-wheel-sdist",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "wheel-sdist"
+    },
+    "observed": {
+      "a": {
+        "label": "a",
+        "argv": [
+          "$CUSTODY_ROOT/wheel-env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-wheel-sdist/a"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "e3baa1335f27b3f38535866e96f8774e950f7936e49c0a13435c8958e1d6b8fb",
+        "stderr_sha256": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+        "pythonpath_present": false
+      },
+      "b": {
+        "label": "b",
+        "argv": [
+          "$CUSTODY_ROOT/sdist-env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-wheel-sdist/b"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "57894f5b113f2d1b682b9a2df2f2a7df0811b3acccc5d19731839aaae194f7dc",
+        "stderr_sha256": "63d1a00501ca12d80746f94554aa469acb6e67d4697d9db10587286393c7e996",
+        "pythonpath_present": false
+      },
+      "hashes_a": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      },
+      "hashes_b": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      }
+    },
+    "evidence_path": "cases/E-wheel-sdist",
+    "evidence_tree": {
+      "EXPECTED.json": "8d1834946208442544497e31a575ccaababfbc4808da12d25f6b123877f67d2b",
+      "FILE_HASHES.json": "abafdd2dfce0cb488f42cee87c3ab9f3c60a78a84526207ed8c5784fb34b7631",
+      "OBSERVED.json": "f71b130b41232c7adbe1c6e57c636bec74f81ce3883019f963bea65b2fee7534",
+      "a/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "a/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "a/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "a/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "a/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "a/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "a.stderr": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+      "a.stdout": "e3baa1335f27b3f38535866e96f8774e950f7936e49c0a13435c8958e1d6b8fb",
+      "b/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "b/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "b/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "b/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "b/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "b/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "b.stderr": "63d1a00501ca12d80746f94554aa469acb6e67d4697d9db10587286393c7e996",
+      "b.stdout": "57894f5b113f2d1b682b9a2df2f2a7df0811b3acccc5d19731839aaae194f7dc"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:46.591904+00:00"
+  },
+  {
+    "case_id": "E-overwrite",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-overwrite",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "overwrite"
+    },
+    "observed": {
+      "run": {
+        "label": "run",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-overwrite/dest"
+        ],
+        "returncode": 2,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "bc1ff399dcfcb418eed7a9ca1917ff07462cdd0fd0f2c8d6d12bdefc126b2e60",
+        "pythonpath_present": true
+      },
+      "destination_symlink": false,
+      "sentinel": "keep",
+      "real_files": null
+    },
+    "evidence_path": "cases/E-overwrite",
+    "evidence_tree": {
+      "EXPECTED.json": "f1185ec884ab3454285b31177e92b59c5b5a22710cad0c4b7baa79bf02a265e2",
+      "FILE_HASHES.json": "4a90c9b8aa9873b78aa80e2dfcd6be2ae18d253d14a56af0f1d8d956028299cd",
+      "OBSERVED.json": "9bcb7e9056b2f7a1131ee766d0f58696b729534c4b8b7845dee6ca1b233e4835",
+      "dest/sentinel": "6ca7ea2feefc88ecb5ed6356ed963f47dc9137f82526fdd25d618ea626d0803f",
+      "run.stderr": "bc1ff399dcfcb418eed7a9ca1917ff07462cdd0fd0f2c8d6d12bdefc126b2e60",
+      "run.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:46.816635+00:00"
+  },
+  {
+    "case_id": "E-file",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-file",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "file"
+    },
+    "observed": {
+      "run": {
+        "label": "run",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-file/dest"
+        ],
+        "returncode": 2,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "d2c53a0b1b76eadfc2e9fe1947dc6cdd6fa818d43e48b3198e5a50fd040b30d8",
+        "pythonpath_present": true
+      },
+      "destination_symlink": false,
+      "sentinel": "keep",
+      "real_files": null
+    },
+    "evidence_path": "cases/E-file",
+    "evidence_tree": {
+      "EXPECTED.json": "c7b2bc2bfd2ed1188d6109551f582f7a37363dc0de48af62e76f336ad5b13c21",
+      "FILE_HASHES.json": "9bd0a92de2fcc6601ae9c9bf21edd51de6df942915b398a0df6e454c0ade6ee8",
+      "OBSERVED.json": "edb74a59dab62e97c2fc6034fb2984465c0f44a01bbbe6c5b6edcd0bb7e34135",
+      "dest": "6ca7ea2feefc88ecb5ed6356ed963f47dc9137f82526fdd25d618ea626d0803f",
+      "run.stderr": "d2c53a0b1b76eadfc2e9fe1947dc6cdd6fa818d43e48b3198e5a50fd040b30d8",
+      "run.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:47.062530+00:00"
+  },
+  {
+    "case_id": "E-symlink",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-symlink",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "symlink"
+    },
+    "observed": {
+      "run": {
+        "label": "run",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-symlink/dest"
+        ],
+        "returncode": 2,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "14fa56eaa42ea80df16be2ac90a27039a36312978eebe43657b4c34aa90229e1",
+        "pythonpath_present": true
+      },
+      "destination_symlink": true,
+      "sentinel": null,
+      "real_files": {}
+    },
+    "evidence_path": "cases/E-symlink",
+    "evidence_tree": {
+      "EXPECTED.json": "7d8dcb962cadae00be4d4cab7272cae98cc7768f25b40a5e1655f2bdf55e8966",
+      "FILE_HASHES.json": "d1380f0b610540065344abd53652c4c29b992f5c4b83177d02aecb6d2c9c41e2",
+      "OBSERVED.json": "014d8237c195e6dea7f04540639efd8e3c3a20f5f9bca1c2895613e2d2df1cb8",
+      "run.stderr": "14fa56eaa42ea80df16be2ac90a27039a36312978eebe43657b4c34aa90229e1",
+      "run.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:47.271717+00:00"
+  },
+  {
+    "case_id": "E-dangling-symlink",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-dangling-symlink",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "dangling-symlink"
+    },
+    "observed": {
+      "run": {
+        "label": "run",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-dangling-symlink/dest"
+        ],
+        "returncode": 2,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "99cb07b7af7805f3c1da273df56022a4eb5815c8f4b0649cf686cad50f70896a",
+        "pythonpath_present": true
+      },
+      "destination_symlink": true,
+      "sentinel": null,
+      "real_files": {}
+    },
+    "evidence_path": "cases/E-dangling-symlink",
+    "evidence_tree": {
+      "EXPECTED.json": "ee406d3945ff9d7d8a9636cbed5fbac10a61c37f44759e3862f37132764d8cad",
+      "FILE_HASHES.json": "4d1478bb1b03d63a43d732cbf2718e4346527854beb11c0aba28fa5abbedf10c",
+      "OBSERVED.json": "4fd354c4959ebef8ec57cc186d9b86cedaf5178f157abe24b7775e224812ef1c",
+      "run.stderr": "99cb07b7af7805f3c1da273df56022a4eb5815c8f4b0649cf686cad50f70896a",
+      "run.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:47.514222+00:00"
+  },
+  {
+    "case_id": "E-same-output",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-same-output",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "same-output"
+    },
+    "observed": {
+      "returncodes": [
+        2,
+        0
+      ],
+      "valid_complete_output": true,
+      "leftovers": [],
+      "output_a": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      },
+      "output_b": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      }
+    },
+    "evidence_path": "cases/E-same-output",
+    "evidence_tree": {
+      "EXPECTED.json": "d5757ef410782bb72df8c9dfb10dd877ea329fa1228e29fcb3359e36302c57b9",
+      "FILE_HASHES.json": "89582dc37e0019b5572b6fd1d6541192ab80655488f3896b13900ede9211f656",
+      "OBSERVED.json": "27d9da90aaa65e86e1ba9f783cedd007988a232cee62be9c5be8d4ce99b0527d",
+      "a/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "a/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "a/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "a/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "a/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "a/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "writer-0.stderr": "4be376bd868e306a8bf75f76b285fb214d780fb0d6ebd85ab50ed312f93eb930",
+      "writer-0.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "writer-1.stderr": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+      "writer-1.stdout": "c0cfbb8bb81bfdc3a50d97d543c3815ae96b3022df4e7b9e42cd4f7114818627"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:47.888444+00:00"
+  },
+  {
+    "case_id": "E-distinct-output",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-distinct-output",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "distinct-output"
+    },
+    "observed": {
+      "returncodes": [
+        0,
+        0
+      ],
+      "valid_complete_output": true,
+      "leftovers": [],
+      "output_a": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      },
+      "output_b": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      }
+    },
+    "evidence_path": "cases/E-distinct-output",
+    "evidence_tree": {
+      "EXPECTED.json": "03855b30da9c60208f6f48679917d816d8a11199afe341f8076912e62ea62335",
+      "FILE_HASHES.json": "23d56eca089ffc949354b30ad3378f9a81ff3201f4f0d759721f2ae30aacede5",
+      "OBSERVED.json": "548c3cd1ba0a693484f0044ed29a1dd737cc118a8defcad87e75e9e57a5b2881",
+      "a/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "a/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "a/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "a/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "a/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "a/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "b/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "b/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "b/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "b/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "b/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "b/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "writer-0.stderr": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+      "writer-0.stdout": "9b29b3719099f7f2af06888f4d33f8933ce4672528270481185645855b749025",
+      "writer-1.stderr": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+      "writer-1.stdout": "4a657469b6abb9fc68eeacd7cc6b93a074122262b32791ca28d6aece271df525"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:48.235529+00:00"
+  },
+  {
+    "case_id": "E-partial-failure",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-partial-failure",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "partial-failure"
+    },
+    "observed": {
+      "refused": true,
+      "error": "cannot finalize output directory $CUSTODY_ROOT/successor-1-run/cases/E-partial-failure/dest: preregistered apparatus finalization fault",
+      "temporary_leftovers": [],
+      "final_output_present": false
+    },
+    "evidence_path": "cases/E-partial-failure",
+    "evidence_tree": {
+      "EXPECTED.json": "cd876fa6d541f5aa84a31ac527af4842c6b4e8e56204d7b3fba25a1f1423d309",
+      "FILE_HASHES.json": "ae373222703f8eb8ee499dddb29590015d82757fd13d7aaeff4f7a2950f37679",
+      "OBSERVED.json": "39590edd084fa0a4233478a36b8a08b415af55c2564d0d68c0a4b0984f57eb8c"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:48.277791+00:00"
+  },
+  {
+    "case_id": "E-symlink-race",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-symlink-race",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "symlink-race"
+    },
+    "observed": {
+      "refused": true,
+      "error": "output directory must not be a symlink: $CUSTODY_ROOT/successor-1-run/cases/E-symlink-race/dest",
+      "temporary_leftovers": [],
+      "final_output_present": false
+    },
+    "evidence_path": "cases/E-symlink-race",
+    "evidence_tree": {
+      "EXPECTED.json": "304fc19533a954acdef3a901df411090bc7dc7e53db03612402601945e8b4ace",
+      "FILE_HASHES.json": "bd38cf142bcc0b8245597eab630724152230761486ba3f58a6bdd5ae7befa9a0",
+      "OBSERVED.json": "38ac227e6ef1bacaf7f91cfee0c6b5659a185371690de35f5966f27aa0a2be16"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:48.324125+00:00"
+  },
+  {
+    "case_id": "E-environment",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-environment",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "environment"
+    },
+    "observed": {
+      "a": {
+        "label": "a",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-environment/a"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "ea9ea8a2dcbe0faa178fc0e93edf5e71b4892e057ef7e5345f2617b34a96f829",
+        "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "pythonpath_present": true
+      },
+      "b": {
+        "label": "b",
+        "argv": [
+          "$CUSTODY_ROOT/env/bin/python",
+          "-m",
+          "claim_audit_lab.production_v1.bundle_cli",
+          "run-bundle",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+          "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+          "--out-dir",
+          "$CUSTODY_ROOT/successor-1-run/cases/E-environment/b"
+        ],
+        "returncode": 0,
+        "stdout_sha256": "634f994c1cb476b6e0c9fb5850c9cd2f15fdc2fee7436b8ab7601ff2c9a90fd0",
+        "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "pythonpath_present": true
+      },
+      "hashes_a": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      },
+      "hashes_b": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      }
+    },
+    "evidence_path": "cases/E-environment",
+    "evidence_tree": {
+      "EXPECTED.json": "e5dbd4070788d2b3eb1449aa05981226871f3141f304d4c156cd2ac0068fc978",
+      "FILE_HASHES.json": "d42f9e548d1871f05fe9ff29688c74c603578dbbb692480a68912684b08d0018",
+      "OBSERVED.json": "4be2366dd8d4fc9e8b0d5c4347fdb2d886c03566d7963602321c44eba8456e74",
+      "a/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "a/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "a/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "a/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "a/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "a/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "a.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+      "a.stdout": "ea9ea8a2dcbe0faa178fc0e93edf5e71b4892e057ef7e5345f2617b34a96f829",
+      "b/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "b/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "b/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "b/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "b/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "b/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10",
+      "b.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+      "b.stdout": "634f994c1cb476b6e0c9fb5850c9cd2f15fdc2fee7436b8ab7601ff2c9a90fd0"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:48.969859+00:00"
+  },
+  {
+    "case_id": "E-manifest-hashes",
+    "domain": "E",
+    "classification": "PASS",
+    "expected": {
+      "case_id": "E-manifest-hashes",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "manifest-hashes"
+    },
+    "observed": {
+      "mismatches": [],
+      "files": {
+        "audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+        "contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+        "manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+        "report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+        "result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+      }
+    },
+    "evidence_path": "cases/E-manifest-hashes",
+    "evidence_tree": {
+      "EXPECTED.json": "86380071b4936838546eb63d397ca9551fbacca5c3af71ba2477f9169cb62f7e",
+      "FILE_HASHES.json": "8cb88571a0fed236c9c22e7f31b2eeac54f484ad54a5f5b50b687d342e19e9c3",
+      "OBSERVED.json": "06d0be971f65ded3aaee19e7c5ee657d93fec98d83c5c9102aef4e832a33223e",
+      "run/audit_context.json": "751884cf6dcf6a1d09d465159c459a2938bed3087bfb17eb4e9a4c1f0907b436",
+      "run/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+      "run/input.target.json": "f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c",
+      "run/manifest.json": "4eb095749bd7f4bcbfc560c962a3931e479304c04d856df4fdbb194196f95900",
+      "run/report.md": "8ec2632b18c14204d87dcd98d4cf67e2971d145705f75ec932fed323fe2edc94",
+      "run/result.json": "013c0d72cf03b93deb985bbaba3577b020af06a17855733e4480b2a4fe0d1c10"
+    },
+    "recorded_at_utc": "2026-10-02T15:51:49.012496+00:00"
+  }
+]

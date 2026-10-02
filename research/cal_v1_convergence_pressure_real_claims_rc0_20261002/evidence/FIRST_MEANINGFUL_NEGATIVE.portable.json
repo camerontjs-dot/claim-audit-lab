@@ -1,0 +1,22 @@
+{
+  "case_id": "H182-ROB-CMP-plural-measure",
+  "domain": "H_DETAIL",
+  "classification": "ROBUSTNESS_LIMIT",
+  "observed": {
+    "probe_id": "ROB-CMP-plural-measure",
+    "kind": "robustness",
+    "status": "ROBUSTNESS_LIMIT",
+    "expected": "supported",
+    "observed": {
+      "conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "relations": [],
+      "trace_failures": [
+        "MEASUREMENT_MISS"
+      ]
+    },
+    "detail": "Equivalent phrasing fell outside the bounded grammar."
+  },
+  "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "recorded_at_utc": "2026-10-02T15:49:10.496515+00:00"
+}

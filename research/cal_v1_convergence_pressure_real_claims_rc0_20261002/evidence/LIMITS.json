@@ -1,0 +1,3296 @@
+{
+  "primary_limits": [
+    {
+      "case_id": "H182-ROB-CMP-plural-measure",
+      "domain": "H_DETAIL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "observed": {
+        "probe_id": "ROB-CMP-plural-measure",
+        "kind": "robustness",
+        "status": "ROBUSTNESS_LIMIT",
+        "expected": "supported",
+        "observed": {
+          "conclusion": "not_checkable",
+          "failure_code": "MEASUREMENT_MISS",
+          "relations": [],
+          "trace_failures": [
+            "MEASUREMENT_MISS"
+          ]
+        },
+        "detail": "Equivalent phrasing fell outside the bounded grammar."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:49:10.496515+00:00"
+    },
+    {
+      "case_id": "H182-ROB-CMP-lowercase-entities",
+      "domain": "H_DETAIL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "observed": {
+        "probe_id": "ROB-CMP-lowercase-entities",
+        "kind": "robustness",
+        "status": "ROBUSTNESS_LIMIT",
+        "expected": "supported",
+        "observed": {
+          "conclusion": "not_checkable",
+          "failure_code": "MEASUREMENT_MISS",
+          "relations": [],
+          "trace_failures": [
+            "MEASUREMENT_MISS"
+          ]
+        },
+        "detail": "Equivalent phrasing fell outside the bounded grammar."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:49:10.499977+00:00"
+    },
+    {
+      "case_id": "H182-ROB-CMP-article-right",
+      "domain": "H_DETAIL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "observed": {
+        "probe_id": "ROB-CMP-article-right",
+        "kind": "robustness",
+        "status": "ROBUSTNESS_LIMIT",
+        "expected": "supported",
+        "observed": {
+          "conclusion": "not_checkable",
+          "failure_code": "MEASUREMENT_MISS",
+          "relations": [],
+          "trace_failures": [
+            "MEASUREMENT_MISS"
+          ]
+        },
+        "detail": "Equivalent phrasing fell outside the bounded grammar."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:49:10.501145+00:00"
+    },
+    {
+      "case_id": "H182-ROB-CMP-temporal-tail",
+      "domain": "H_DETAIL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "observed": {
+        "probe_id": "ROB-CMP-temporal-tail",
+        "kind": "robustness",
+        "status": "ROBUSTNESS_LIMIT",
+        "expected": "supported",
+        "observed": {
+          "conclusion": "not_checkable",
+          "failure_code": "MEASUREMENT_MISS",
+          "relations": [],
+          "trace_failures": [
+            "MEASUREMENT_MISS"
+          ]
+        },
+        "detail": "Equivalent phrasing fell outside the bounded grammar."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:49:10.501928+00:00"
+    },
+    {
+      "case_id": "H182-ROB-EVT-article-objects",
+      "domain": "H_DETAIL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "observed": {
+        "probe_id": "ROB-EVT-article-objects",
+        "kind": "robustness",
+        "status": "ROBUSTNESS_LIMIT",
+        "expected": "supported",
+        "observed": {
+          "conclusion": "not_checkable",
+          "failure_code": "NO_DECIDING_RELATION",
+          "relations": [
+            "IRRELEVANT"
+          ],
+          "trace_failures": [
+            null
+          ]
+        },
+        "detail": "Equivalent phrasing fell outside the bounded grammar."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:49:10.511457+00:00"
+    },
+    {
+      "case_id": "H182-ROB-EVT-lowercase-actors",
+      "domain": "H_DETAIL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "observed": {
+        "probe_id": "ROB-EVT-lowercase-actors",
+        "kind": "robustness",
+        "status": "ROBUSTNESS_LIMIT",
+        "expected": "supported",
+        "observed": {
+          "conclusion": "not_checkable",
+          "failure_code": "MEASUREMENT_MISS",
+          "relations": [],
+          "trace_failures": [
+            "MEASUREMENT_MISS"
+          ]
+        },
+        "detail": "Equivalent phrasing fell outside the bounded grammar."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:49:10.512272+00:00"
+    },
+    {
+      "case_id": "H182-ROB-EVT-comma-cue",
+      "domain": "H_DETAIL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "observed": {
+        "probe_id": "ROB-EVT-comma-cue",
+        "kind": "robustness",
+        "status": "ROBUSTNESS_LIMIT",
+        "expected": "supported",
+        "observed": {
+          "conclusion": "not_checkable",
+          "failure_code": "MEASUREMENT_MISS",
+          "relations": [],
+          "trace_failures": [
+            "MEASUREMENT_MISS"
+          ]
+        },
+        "detail": "Equivalent phrasing fell outside the bounded grammar."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:49:10.513028+00:00"
+    },
+    {
+      "case_id": "H182-IFACE-missing-fields",
+      "domain": "H_DETAIL",
+      "classification": "INTERFACE_GAP",
+      "observed": {
+        "probe_id": "IFACE-missing-fields",
+        "kind": "interface",
+        "status": "INTERFACE_GAP",
+        "expected": "validate-bundle rejects semantically malformed active-family fields",
+        "observed": {
+          "validate_rc": 0,
+          "run_rc": 0,
+          "conclusion": "not_checkable",
+          "failure_code": "PROPOSITION_BINDING_FAILED"
+        },
+        "detail": "Execution fails closed, but validation accepted the malformed semantic target."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:50:26.363646+00:00"
+    },
+    {
+      "case_id": "H182-IFACE-bad-direction",
+      "domain": "H_DETAIL",
+      "classification": "INTERFACE_GAP",
+      "observed": {
+        "probe_id": "IFACE-bad-direction",
+        "kind": "interface",
+        "status": "INTERFACE_GAP",
+        "expected": "validate-bundle rejects semantically malformed active-family fields",
+        "observed": {
+          "validate_rc": 0,
+          "run_rc": 0,
+          "conclusion": "not_checkable",
+          "failure_code": "PROPOSITION_BINDING_FAILED"
+        },
+        "detail": "Execution fails closed, but validation accepted the malformed semantic target."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:50:31.065516+00:00"
+    },
+    {
+      "case_id": "H182-IFACE-target-drift-extra-semantic-field",
+      "domain": "H_DETAIL",
+      "classification": "INTERFACE_GAP",
+      "observed": {
+        "probe_id": "IFACE-target-drift-extra-semantic-field",
+        "kind": "interface",
+        "status": "INTERFACE_GAP",
+        "expected": "validator detects typed-target semantics that disagree with or exceed exact claim text",
+        "observed": {
+          "validate_rc": 0,
+          "run_rc": 0,
+          "conclusion": "supported",
+          "failure_code": null,
+          "proposition_fields": {
+            "comparison_direction": "MORE_THAN",
+            "lhs_entity": "Alpha",
+            "rhs_entity": "Beta",
+            "time_scope": "2025"
+          }
+        },
+        "detail": "The engine followed the typed proposition and produced a terminal verdict. This is safe only if target compilation is independently trusted."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:50:34.958759+00:00"
+    },
+    {
+      "case_id": "H182-IFACE-target-drift-direction-disagrees-with-claim",
+      "domain": "H_DETAIL",
+      "classification": "INTERFACE_GAP",
+      "observed": {
+        "probe_id": "IFACE-target-drift-direction-disagrees-with-claim",
+        "kind": "interface",
+        "status": "INTERFACE_GAP",
+        "expected": "validator detects typed-target semantics that disagree with or exceed exact claim text",
+        "observed": {
+          "validate_rc": 0,
+          "run_rc": 0,
+          "conclusion": "contradicted",
+          "failure_code": null,
+          "proposition_fields": {
+            "comparison_direction": "LESS_THAN",
+            "lhs_entity": "Alpha",
+            "rhs_entity": "Beta"
+          }
+        },
+        "detail": "The engine followed the typed proposition and produced a terminal verdict. This is safe only if target compilation is independently trusted."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:50:38.241458+00:00"
+    },
+    {
+      "case_id": "H182-IFACE-target-drift-entities-disagree-with-claim",
+      "domain": "H_DETAIL",
+      "classification": "INTERFACE_GAP",
+      "observed": {
+        "probe_id": "IFACE-target-drift-entities-disagree-with-claim",
+        "kind": "interface",
+        "status": "INTERFACE_GAP",
+        "expected": "validator detects typed-target semantics that disagree with or exceed exact claim text",
+        "observed": {
+          "validate_rc": 0,
+          "run_rc": 0,
+          "conclusion": "contradicted",
+          "failure_code": null,
+          "proposition_fields": {
+            "comparison_direction": "MORE_THAN",
+            "lhs_entity": "Beta",
+            "rhs_entity": "Alpha"
+          }
+        },
+        "detail": "The engine followed the typed proposition and produced a terminal verdict. This is safe only if target compilation is independently trusted."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:50:41.233045+00:00"
+    },
+    {
+      "case_id": "H182-IFACE-inactive-family-validation",
+      "domain": "H_DETAIL",
+      "classification": "INTERFACE_GAP",
+      "observed": {
+        "probe_id": "IFACE-inactive-family-validation",
+        "kind": "interface",
+        "status": "INTERFACE_GAP",
+        "expected": "validate-bundle rejects families outside inspect.supported_semantic_families",
+        "observed": {
+          "validate_rc": 0,
+          "run_rc": 0,
+          "conclusion": "not_checkable",
+          "failure_code": "UNSUPPORTED_SEMANTIC_FAMILY"
+        },
+        "detail": "Execution fails closed, but validate-bundle accepts an inactive family."
+      },
+      "actual_subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+      "recorded_at_utc": "2026-10-02T15:50:44.799481+00:00"
+    },
+    {
+      "case_id": "REAL-S01-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S01-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S01-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S01-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "d162ed190682ee9b4e02f720847b11bf3b94781af38793b4f5b1e8104bac10b8",
+        "evidence_text_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18"
+      },
+      "evidence_path": "cases/REAL-S01-F",
+      "evidence_tree": {
+        "EXPECTED.json": "13219a238c148475f23aef9c82a55e62845456a75a3af42549dd9879647e6b4d",
+        "FILE_HASHES.json": "648cf423ce61e536184b0e7b85a8e880601277fb0e6cb08e2aaa5c93a4c10ad2",
+        "INPUT.json": "bb43f3a1861490f0f6b829d008bdb655727dd761b45c96586c13d996e9b74cf4",
+        "OBSERVED.json": "cfaccff6af4c727955b04717ba6bce29e40ac856df0c76df10d4bd1f7e5e424b"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.182068+00:00"
+    },
+    {
+      "case_id": "REAL-S01-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S01-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S01-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S01-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "d162ed190682ee9b4e02f720847b11bf3b94781af38793b4f5b1e8104bac10b8",
+        "evidence_text_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18"
+      },
+      "evidence_path": "cases/REAL-S01-I",
+      "evidence_tree": {
+        "EXPECTED.json": "f17275240928d80851f357b2b50301bbd57087c239862dc16badb992f595044a",
+        "FILE_HASHES.json": "37dd12474cca48c713056524a97da26090fd80c180ec2922486ee4e59b8377d4",
+        "INPUT.json": "1d3fb2c6ea802b87055b2c936d8da639493aada15fff61430aa59ec6c33535ca",
+        "OBSERVED.json": "6e06cbe912ba8bf47a18dbf725e77e96caa19c74b4b91a1291e7867e65f02118"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.185318+00:00"
+    },
+    {
+      "case_id": "REAL-S02-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S02-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S02-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S02-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "af8818291673e956605627409e0fb070926b959136db034b0dccbd1d4ec368dd",
+        "evidence_text_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5"
+      },
+      "evidence_path": "cases/REAL-S02-F",
+      "evidence_tree": {
+        "EXPECTED.json": "6be46d40cb981520e0a6cb7774156dc9e2304a535638a8fb5ea10fa24a923907",
+        "FILE_HASHES.json": "7be7463d65ca2d5adac1e42e970b58c16fbd5789e9409adf53784c769b9bfed4",
+        "INPUT.json": "f1a9d9b33207b4faa2c08ab05ed35813918f50097515538a45bba6e506780185",
+        "OBSERVED.json": "5d0ddc34aa756a774e54ffce900b5f3004b47c178ea7ed3e17ee6b473a525a3a"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.188444+00:00"
+    },
+    {
+      "case_id": "REAL-S02-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S02-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S02-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S02-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "af8818291673e956605627409e0fb070926b959136db034b0dccbd1d4ec368dd",
+        "evidence_text_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5"
+      },
+      "evidence_path": "cases/REAL-S02-I",
+      "evidence_tree": {
+        "EXPECTED.json": "60c9348a6b093a6b6ad995e900e9c4d42e72853ab90ca3ab29900b9bee44ca63",
+        "FILE_HASHES.json": "d31a3acdc77f9717909a809bce1209db826f513bbc537d6c124154ea01647450",
+        "INPUT.json": "38a68d0f9ddb5db631509079435a1714caa6c430bfd968e9c82fe86cb4ba73cb",
+        "OBSERVED.json": "4df896ac4f4519dcba0ec6afa7b9b9219dc7e80caab042a672834f665fac100b"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.190959+00:00"
+    },
+    {
+      "case_id": "REAL-S03-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S03-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S03-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S03-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "c79fa9cbc1e8658de9af0a6e77c78167c83b16f345d26419c2546342e16b3d2f",
+        "evidence_text_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902"
+      },
+      "evidence_path": "cases/REAL-S03-F",
+      "evidence_tree": {
+        "EXPECTED.json": "e08efb710ca4aa8b2b045e03a3249ae07f721ff66862b177a995646c0f20f5d4",
+        "FILE_HASHES.json": "ee5bc96e2f656a5022ff832d75fca03f475541d780e96b32e4a6c64033f55307",
+        "INPUT.json": "c7dbf8d3fd5ff691d9ac4dfb216922d1cc6e653558615f3edb87484edb1bf32c",
+        "OBSERVED.json": "cb081cb701ebb5afdce74f9461bcb3329c12bf942ba3f2dfaaa2ed76a42e4d4d"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.193415+00:00"
+    },
+    {
+      "case_id": "REAL-S03-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S03-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S03-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S03-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "c79fa9cbc1e8658de9af0a6e77c78167c83b16f345d26419c2546342e16b3d2f",
+        "evidence_text_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902"
+      },
+      "evidence_path": "cases/REAL-S03-I",
+      "evidence_tree": {
+        "EXPECTED.json": "9f09438a94850a9fe82e1e3e5147ae16a67b2ac8fda26c0e080dff50ccb72dc1",
+        "FILE_HASHES.json": "6ca6ba6be234c08a788413c7d5b3553bba4cfa37e5cbd8edd46ca90c6cdcca9d",
+        "INPUT.json": "168ec3a26acb0e201bc78bd4d964a553f6ac83c594f85456cb2830710e5342d7",
+        "OBSERVED.json": "31f3b33c96336ce20f75f0127cbff93259df78864e37d1389cee6decb41b2866"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.195612+00:00"
+    },
+    {
+      "case_id": "REAL-S04-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S04-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S04-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S04-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "a7d6ee72c3d1a83a5e9cc0a45b7de9ab1c90521050db8e3a47cc6bdd5614dcbc",
+        "evidence_text_sha256": "e45a2cf84ab9af55a7b9098931eaf3f281750b1399ced6ddc907795eadc6d46a"
+      },
+      "evidence_path": "cases/REAL-S04-F",
+      "evidence_tree": {
+        "EXPECTED.json": "62a1020a4184e906d9ff6808b426412c8569e6e9265f2f55e059aa1c7b85ce2f",
+        "FILE_HASHES.json": "968074bb9f81ef8498ba901a51af21d94532c5c50f3c8961a09a5e26342472aa",
+        "INPUT.json": "c57a8d9cdbef7c86bb2e0e2abca1e4f9754f7d8dae1f82ed364546a7037b272c",
+        "OBSERVED.json": "a9f1f6950953aae34116948c1900b12600f0c8e66f56dcc41df8daa171c59ae2"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.199842+00:00"
+    },
+    {
+      "case_id": "REAL-S04-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S04-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S04-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S04-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "a7d6ee72c3d1a83a5e9cc0a45b7de9ab1c90521050db8e3a47cc6bdd5614dcbc",
+        "evidence_text_sha256": "e45a2cf84ab9af55a7b9098931eaf3f281750b1399ced6ddc907795eadc6d46a"
+      },
+      "evidence_path": "cases/REAL-S04-I",
+      "evidence_tree": {
+        "EXPECTED.json": "763aa1fe719f65626c8c4a2be2a57c6f4955eee2746f4e86ac693857ce56c3b3",
+        "FILE_HASHES.json": "00f6bd05ba79ad498bb3cc2a66aa1f1314bb88cb340874121d64823f85183c28",
+        "INPUT.json": "c1c9c77b0e1a9afd2e61e95d20bd7ebbdb4f422a93f23e723197e6b2eaaa560d",
+        "OBSERVED.json": "e04774bab62406cfd8e5fb728310d10f1069e4794df4a186bd6b0fbd6298c2b9"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.202406+00:00"
+    },
+    {
+      "case_id": "REAL-S05-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S05-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S05-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S05-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "eb84285aca3d7fa62beda71702c53b390e292ff3efbd6ad917e0c49e40ac93ea",
+        "evidence_text_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e"
+      },
+      "evidence_path": "cases/REAL-S05-F",
+      "evidence_tree": {
+        "EXPECTED.json": "e060259214a583caa45fa227ee534aca1699976739455c1f09f4c86cde08ce0b",
+        "FILE_HASHES.json": "20577c4024bccb454b8afd964e5740ef18b891c3adae1d5b7dc6439db5a99067",
+        "INPUT.json": "6dd5cc582ef444c811a46615a04252d7e012c3e0412c14f0575e23f13e35a75a",
+        "OBSERVED.json": "df510a95b327aa141dda8c7bcdbd4165b4fcb4c3367d2bafef7608690dd07766"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.204522+00:00"
+    },
+    {
+      "case_id": "REAL-S05-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S05-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S05-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S05-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "eb84285aca3d7fa62beda71702c53b390e292ff3efbd6ad917e0c49e40ac93ea",
+        "evidence_text_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e"
+      },
+      "evidence_path": "cases/REAL-S05-I",
+      "evidence_tree": {
+        "EXPECTED.json": "cc36a3ba1961dfc5d7fb4203b7a608d6e4fe354523d3b30a62061ca85e98c780",
+        "FILE_HASHES.json": "f9128a8e2416a26211bc1ecaa5afd82771f7669dc24db64bb3a16a6dc6e2bbb1",
+        "INPUT.json": "939c59d70f4502007b49237b707b9e93158cb445ca49f5f18b407a1d50c87750",
+        "OBSERVED.json": "c19895898f68954ac2cc3ed1a4eed864e8358d9b3c5d1762a3d00d109f64448b"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.206695+00:00"
+    },
+    {
+      "case_id": "REAL-S08-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S08-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S08-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S08-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "384dc100015d52df35478df661a4ca5abfda26e0fb7250dec6f30f7fed1477ba",
+        "evidence_text_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c"
+      },
+      "evidence_path": "cases/REAL-S08-F",
+      "evidence_tree": {
+        "EXPECTED.json": "3f24107d8d4e18b57f57e11f40a6cb5124e4d4cd8bb5fd40147bc68145fb5142",
+        "FILE_HASHES.json": "5afdfba75175d9b4c9d3fd3aac68079cf8928f5d843f1488c8198a76a0994b2e",
+        "INPUT.json": "ea67d4d65839df4b0612e02d442ea696f55298829227c1699c55a36ecadaf649",
+        "OBSERVED.json": "0a521489d7e6fe57970d6d2ea6d31b8a2558a8591dde46c2631c939b9ae167d3"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.209180+00:00"
+    },
+    {
+      "case_id": "REAL-S08-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S08-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S08-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S08-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "384dc100015d52df35478df661a4ca5abfda26e0fb7250dec6f30f7fed1477ba",
+        "evidence_text_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c"
+      },
+      "evidence_path": "cases/REAL-S08-I",
+      "evidence_tree": {
+        "EXPECTED.json": "2085dd758a222e6d77e539ef866597d78ef5e412db79e4fa50e5ff9218258492",
+        "FILE_HASHES.json": "00f3f89f3f0913d4a95cd6ccdbc07c383b3d7cc6b4d5580b6310bc27e93d141a",
+        "INPUT.json": "df4d82ab8b3687db1b947a0f16a217758657793693b74a0e6d98600e3ab254c9",
+        "OBSERVED.json": "0414af22f30493f6143e074356a9ef22cc35a030ac4e0b645ae5edac42aad168"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.211646+00:00"
+    },
+    {
+      "case_id": "REAL-S09-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S09-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S09-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S09-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "83208ff6ea64bc4483c31da050cd72bd228e54187cab9030b70f61eee2df80c7",
+        "evidence_text_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585"
+      },
+      "evidence_path": "cases/REAL-S09-F",
+      "evidence_tree": {
+        "EXPECTED.json": "26b7d520d635c51b1767423ca6b78cbb6a0efea2b4f398db8f93ee276b5e323e",
+        "FILE_HASHES.json": "e68c8618db402f063705edfe928d9db2bd2737463ca9e4b4e05aa941bca35a5e",
+        "INPUT.json": "5f260914553916d7ae2b03074e994319dd5792a510a3a67ce3c7dc1da98483f4",
+        "OBSERVED.json": "f1c47d379b6b0b6e004cff5b88cfb10c4dea2a9ca73a114dcdc230b97660719d"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.213604+00:00"
+    },
+    {
+      "case_id": "REAL-S09-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S09-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S09-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S09-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "83208ff6ea64bc4483c31da050cd72bd228e54187cab9030b70f61eee2df80c7",
+        "evidence_text_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585"
+      },
+      "evidence_path": "cases/REAL-S09-I",
+      "evidence_tree": {
+        "EXPECTED.json": "acc1a76c2a597e2696070f29c36c903b28bf87b8cb4286a781916cc0b31dcbcc",
+        "FILE_HASHES.json": "3b8f4ffa4947507d38e8ededbcd8aa0650573ee334606b2a33f2ba5004ed700b",
+        "INPUT.json": "d5a279564e313449e4723f8602b6d5e1ea88172469ecdbe34a01d2dcad6054a6",
+        "OBSERVED.json": "73f84767d28db44c269d1f1abab60d51763dc87a1961e07eec70685bb426c5d2"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.215423+00:00"
+    },
+    {
+      "case_id": "REAL-S10-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S10-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S10-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S10-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "e2c83b79e42cbab3cc19f1cc76cb227334f9abf6cbdec778912cf550b75156b2",
+        "evidence_text_sha256": "4f798adc3081f293ecb39b0f6dba2ce74fb9a6d1b5026210a1a506d3c0adf90d"
+      },
+      "evidence_path": "cases/REAL-S10-F",
+      "evidence_tree": {
+        "EXPECTED.json": "da6f19413d2857d120c54be5f1a8ddee019c3226ad6861108cdbd846c10220eb",
+        "FILE_HASHES.json": "95f6d00136c2595b1bf22357cd23d597b0d9156c3169bd7bce0a1d520e137160",
+        "INPUT.json": "6a8644b3d85d6b1d93c2c1e757b4bd54f4339c14c40d9c5b3ac040e8905cdb1f",
+        "OBSERVED.json": "333fcdfd0cea8e959af010f789205a62f03baa1bf3570f0ea5b3f420fb852704"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.223851+00:00"
+    },
+    {
+      "case_id": "REAL-S10-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S10-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S10-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S10-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "e2c83b79e42cbab3cc19f1cc76cb227334f9abf6cbdec778912cf550b75156b2",
+        "evidence_text_sha256": "4f798adc3081f293ecb39b0f6dba2ce74fb9a6d1b5026210a1a506d3c0adf90d"
+      },
+      "evidence_path": "cases/REAL-S10-I",
+      "evidence_tree": {
+        "EXPECTED.json": "c2c2dacc31c8299c3411a3507762b873ba17ab66ff2d397c85b6eada4f53cadf",
+        "FILE_HASHES.json": "64c38e2615b7dd948100572e4d132b9d1fd2e289a91b3e2b2ad1cb18f567e7a0",
+        "INPUT.json": "b8dc0692e94747e07dfb946832997a1ecdebf0fe62a3d502dbb65333837a7a05",
+        "OBSERVED.json": "a42587d73f8cc33b819ebf51a6666b6ed7471420883ded8116fc93feddefb7c4"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.226431+00:00"
+    },
+    {
+      "case_id": "REAL-S11-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S11-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S11-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S11-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "e4ae9cc640b9d8089e33c79964bb0fa80a7890597c8100d4c1e02a703b5d0c0e",
+        "evidence_text_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229"
+      },
+      "evidence_path": "cases/REAL-S11-F",
+      "evidence_tree": {
+        "EXPECTED.json": "77905d64316aa460381fd7f6abed3e2dd600b29e09d4b259b43df902f975af21",
+        "FILE_HASHES.json": "2d5e00edf913cfcb1222c4d0a1dd47512b330b25c584ed99bc9f6fc03ab9c936",
+        "INPUT.json": "b3a6a1409397b0685baa60e1fae9ed1f626e3c8f3cf690b5e5f4d48c8c4f5a0a",
+        "OBSERVED.json": "9fc90dce3368204a9fb6fb509539647120b476415b185130d60fb32182de5c47"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.229079+00:00"
+    },
+    {
+      "case_id": "REAL-S11-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S11-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S11-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S11-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "e4ae9cc640b9d8089e33c79964bb0fa80a7890597c8100d4c1e02a703b5d0c0e",
+        "evidence_text_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229"
+      },
+      "evidence_path": "cases/REAL-S11-I",
+      "evidence_tree": {
+        "EXPECTED.json": "2f34bef89e32d5d77468c34e68636f1ebab63f28cc6bc6dd27258f8497139df3",
+        "FILE_HASHES.json": "225abfa98ed425538f230c273549841f97ead5897b02a1c11b9f29a2cca3a9dd",
+        "INPUT.json": "4e38833b7991869e5146a85069c6571a416f108621f1e280d0a7bc1ae578ef0e",
+        "OBSERVED.json": "df1e43fa5766b244cbd3ca93ca9e1f42535ea4ca252d3dd754ec29a9462255bf"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.232043+00:00"
+    },
+    {
+      "case_id": "REAL-S12-F",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S12-F",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S12-F"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S12-F",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "7731fc996ed631f4f15f831f6230992719d769f59bf9dc93fb41f8f8bec06d27",
+        "evidence_text_sha256": "2a309b25b301cbaf7bf6e8d6cf13f1ea84f90f0edf3d711f539cff9646bc45a7"
+      },
+      "evidence_path": "cases/REAL-S12-F",
+      "evidence_tree": {
+        "EXPECTED.json": "0bb8765fb0b963ac9e718ace2ddd696f1b1c8bcb179ea21a6aba94df0ede6bd1",
+        "FILE_HASHES.json": "7ac4c0f33535a0faa920af0474f55a44ace0437b916d541d643d67e274b5bfba",
+        "INPUT.json": "30a41c9e76a2c0490bab068c18fd7ac4c5529adfd52a4d1f35be2d377a7dda74",
+        "OBSERVED.json": "85a642cd6654f117a1e840cffc19ffecacc5e3d91bef9e2df95fb76320ef1a60"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.235409+00:00"
+    },
+    {
+      "case_id": "REAL-S12-I",
+      "domain": "REAL",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "REAL-S12-I",
+        "domain": "REAL",
+        "operation": "real",
+        "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+        "cohort_case_id": "REAL-S12-I"
+      },
+      "observed": {
+        "authoring": "REFUSED",
+        "error": "unsupported claim form: REAL-S12-I",
+        "semantic_execution": "NOT_RUN",
+        "raw_source_sha256": "7731fc996ed631f4f15f831f6230992719d769f59bf9dc93fb41f8f8bec06d27",
+        "evidence_text_sha256": "2a309b25b301cbaf7bf6e8d6cf13f1ea84f90f0edf3d711f539cff9646bc45a7"
+      },
+      "evidence_path": "cases/REAL-S12-I",
+      "evidence_tree": {
+        "EXPECTED.json": "11d82c9dc420fef93debc104839bbf057166670908dd5f8787f0626e42b58f55",
+        "FILE_HASHES.json": "3d9ffa3b27a234400ee0d867cbcc01c6750c690531b0a590e2fcf357b6223f7a",
+        "INPUT.json": "9bdca961f81f10bf6050f5ef1957fdcbb52d2983b6d5096583a16af0a9e7bf4c",
+        "OBSERVED.json": "46f7e5d596d865d26a6fb8078d59b1606e3895f65a2dcad9804627d8545a5a63"
+      },
+      "recorded_at_utc": "2026-10-02T15:50:57.237949+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-raw-bypass",
+      "domain": "A",
+      "classification": "INTERFACE_GAP",
+      "expected": {
+        "case_id": "A-strict_comparison-raw-bypass",
+        "domain": "A",
+        "operation": "bypass",
+        "invariant": "Raw structural acceptance and terminal drift are INTERFACE_GAP; supported author/conform gate rejects and produces no output.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta."
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_run": {
+          "label": "raw-run",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "run-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/target.json",
+            "--out-dir",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/raw-output"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "b7f821ecff64370f437d1afc0f885618b0c996846581a318e5f3a54aa4363bee",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "raw_result": {
+          "authorities": [
+            {
+              "atom": {
+                "atom_id": "semantic-atom:b1d9ca12ab44d9cb17f7950b40f9a8f568e244d6109599dbc41ea3324d19c7f0",
+                "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+                "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602",
+                "fields": {
+                  "left": "alpha",
+                  "relation": "MORE_THAN",
+                  "right": "beta"
+                },
+                "measurement_receipt_id": "measurement:e8f0b77f003111aeaa9d820d0b76a78aeaac3ab85c33483677474dc6eb28d5e7",
+                "passage_id": "passage:170f80a49ae83ccb680d9ace6efc5942",
+                "semantic_family": "strict_comparison",
+                "source_id": "S-C1-SUPPORT"
+              },
+              "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+              "authority_id": "semantic-authority:ff8e093d96853d442e7ebf05b05127d9cea48eba5e494f693731d1eacba0af94",
+              "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602",
+              "reason": "ALL_REQUIRED_WARRANT_ESTABLISHED",
+              "status": "WARRANTED"
+            }
+          ],
+          "authorization": {
+            "automatic_action_allowed": false,
+            "state": "not_evaluated"
+          },
+          "composition": {
+            "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+            "conclusion": "contradicted",
+            "deciding_relation_ids": [
+              "bound-relation:97c8a86a867f034d19055d3af5b502934227d395ad730173fd10543c36da367f"
+            ],
+            "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602",
+            "failure_code": null,
+            "non_deciding_relation_ids": [],
+            "precedence": [
+              "UNRESOLVED",
+              "SUPPORT_REFUTE_CONFLICT",
+              "SUPPORTS",
+              "REFUTES",
+              "NO_DECIDING_RELATION"
+            ],
+            "proposition_sha256": "4e24896efc927254d4e06cdb042a4bcb76038c5ec2a2cdc9eca58fa5a134ca2e",
+            "relation_categories": [
+              "REFUTES"
+            ],
+            "relation_ids": [
+              "bound-relation:97c8a86a867f034d19055d3af5b502934227d395ad730173fd10543c36da367f"
+            ],
+            "rule_id": "scoreless-categorical-v1"
+          },
+          "contract_c_handoff": {
+            "owner": "apparatus-contracts",
+            "reason": "separate_compose_only_versioned_handoff_layer",
+            "state": "not_emitted"
+          },
+          "distribution_version": "0.6.0",
+          "evidence_world": {
+            "admitted_passage_ids": [
+              "passage:170f80a49ae83ccb680d9ace6efc5942"
+            ],
+            "aperture_observation": {
+              "contract_b_factual_context_state": "present",
+              "observation": {
+                "claim_id": "C1",
+                "limitations": [
+                  "B1.2 lacks native admission_state=not_applicable; non-retained candidates use review.decision=needs-review only as compatibility encoding while preserving native_admission_state=not_applicable.",
+                  "Candidate depth is bounded and does not establish corpus completeness.",
+                  "No support, refutation, applicability, completeness or verdict is emitted.",
+                  "Nomination, retention and admission are distinct non-semantic stages."
+                ],
+                "outcome": {
+                  "state": "known",
+                  "value": {
+                    "accepted_count": 1,
+                    "aperture_state": "bounded_under_limit",
+                    "candidate_depth_hit": false,
+                    "needs_review_count": 2,
+                    "not_retained_count": 2,
+                    "rejected_count": 0,
+                    "retained_count": 3,
+                    "returned_count": 5,
+                    "status": "completed"
+                  }
+                },
+                "search_scope": {
+                  "candidate_depth_limit": 10,
+                  "config_sha256": "sha256:5b10d0c29794e80d6876a99e26bcf6ec6a27a4c5165aee78054a6bc32759f4bc",
+                  "query_id": "query:ca5c997653141eba480738f49c4daa0c",
+                  "requested_source_ids": [
+                    "S-C1-REFUTE",
+                    "S-C1-SUPPORT",
+                    "S-C2-SUPPORT",
+                    "S-D01",
+                    "S-D02",
+                    "S-D03",
+                    "S-D04",
+                    "S-D05",
+                    "S-D06",
+                    "S-D07"
+                  ],
+                  "retained_k": 3,
+                  "retrieval_id": "retrieval:dd6c50f19341b01c71f8fd3db3a95143",
+                  "retrieval_lane": "declared_child",
+                  "searched_source_ids": [
+                    "S-C1-REFUTE",
+                    "S-C1-SUPPORT",
+                    "S-C2-SUPPORT",
+                    "S-D01",
+                    "S-D02",
+                    "S-D03",
+                    "S-D04",
+                    "S-D05",
+                    "S-D06",
+                    "S-D07"
+                  ]
+                }
+              }
+            },
+            "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+            "available_but_unused_passage_ids": [],
+            "bundle_hash": "sha256:9dd3aa55b5bf2329299c6cb3e4540b2587027a3baf7949578ab165d6938f39fe",
+            "bundle_id": "78977d18-2eb1-5b1a-bd29-bd1ea8361d1a",
+            "contract_b_version": "1.2.0",
+            "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602"
+          },
+          "input": {
+            "audit_context_artifact_sha256": "sha256:5a5ba2884ae8bdb9c36b2947af07f62b0344e791accc995151f8bc17faae7ab6",
+            "contract_b": {
+              "bundle_hash": "sha256:9dd3aa55b5bf2329299c6cb3e4540b2587027a3baf7949578ab165d6938f39fe",
+              "bundle_id": "78977d18-2eb1-5b1a-bd29-bd1ea8361d1a",
+              "extension_state": "present",
+              "intake_snapshot_sha256": "sha256:d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+              "version": "1.2.0"
+            },
+            "input_schema_sha256": "sha256:875f0a320699743befd3f61ea41b8f9ef86a520ac7edd4ef07b502b0d3a93798",
+            "mode": "contract_b_bundle",
+            "primary_input_sha256": "sha256:e8093a3475db7f77077573233fe9baf79b211ef2bc161a0b70bd71ad6be77bcf"
+          },
+          "measurements": [
+            {
+              "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+              "available_passage_ids": [
+                "passage:170f80a49ae83ccb680d9ace6efc5942"
+              ],
+              "consumed_passage_ids": [
+                "passage:170f80a49ae83ccb680d9ace6efc5942"
+              ],
+              "consumed_spans": [
+                {
+                  "end": 34,
+                  "passage_id": "passage:170f80a49ae83ccb680d9ace6efc5942",
+                  "start": 0
+                }
+              ],
+              "diagnostics": {},
+              "instrument_id": "rc7fb1-strict-comparison",
+              "instrument_version": "rc7fb1-comparator-1",
+              "observed_semantic_spans": [
+                {
+                  "end": 18,
+                  "role": "comparison_cue",
+                  "start": 12
+                }
+              ],
+              "raw_measurement": {
+                "proposals": [
+                  {
+                    "cue_span": [
+                      12,
+                      18
+                    ],
+                    "left": "alpha",
+                    "relation": "MORE_THAN",
+                    "right": "beta"
+                  }
+                ],
+                "status": "CLAIMED"
+              },
+              "receipt_id": "measurement:e8f0b77f003111aeaa9d820d0b76a78aeaac3ab85c33483677474dc6eb28d5e7",
+              "semantic_family": "strict_comparison"
+            }
+          ],
+          "original_claim": "Alpha had a higher rate than Beta.",
+          "profile": "cal-v1-integration-candidate-v1",
+          "proposition": {
+            "fields": {
+              "comparison_direction": "LESS_THAN",
+              "lhs_entity": "Alpha",
+              "rhs_entity": "Beta"
+            },
+            "proposition_id": "C1",
+            "proposition_sha256": "4e24896efc927254d4e06cdb042a4bcb76038c5ec2a2cdc9eca58fa5a134ca2e",
+            "semantic_family": "strict_comparison",
+            "text_sha256": "e6f2ac2792789b8430ea3468071801712f25b7386f7641b415f859fd7aea9601"
+          },
+          "relations": [
+            {
+              "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+              "authority_id": "semantic-authority:ff8e093d96853d442e7ebf05b05127d9cea48eba5e494f693731d1eacba0af94",
+              "categorical_relation": "REFUTES",
+              "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602",
+              "passage_id": "passage:170f80a49ae83ccb680d9ace6efc5942",
+              "proposition_sha256": "4e24896efc927254d4e06cdb042a4bcb76038c5ec2a2cdc9eca58fa5a134ca2e",
+              "relation_id": "bound-relation:97c8a86a867f034d19055d3af5b502934227d395ad730173fd10543c36da367f"
+            }
+          ],
+          "result": {
+            "conclusion": "contradicted",
+            "deciding_passage_ids": [
+              "passage:170f80a49ae83ccb680d9ace6efc5942"
+            ],
+            "failure_code": null,
+            "non_deciding_passage_ids": [],
+            "traces": [
+              {
+                "authority": {
+                  "atom": {
+                    "atom_id": "semantic-atom:b1d9ca12ab44d9cb17f7950b40f9a8f568e244d6109599dbc41ea3324d19c7f0",
+                    "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+                    "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602",
+                    "fields": {
+                      "left": "alpha",
+                      "relation": "MORE_THAN",
+                      "right": "beta"
+                    },
+                    "measurement_receipt_id": "measurement:e8f0b77f003111aeaa9d820d0b76a78aeaac3ab85c33483677474dc6eb28d5e7",
+                    "passage_id": "passage:170f80a49ae83ccb680d9ace6efc5942",
+                    "semantic_family": "strict_comparison",
+                    "source_id": "S-C1-SUPPORT"
+                  },
+                  "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+                  "authority_id": "semantic-authority:ff8e093d96853d442e7ebf05b05127d9cea48eba5e494f693731d1eacba0af94",
+                  "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602",
+                  "reason": "ALL_REQUIRED_WARRANT_ESTABLISHED",
+                  "status": "WARRANTED"
+                },
+                "detail": null,
+                "failure_code": null,
+                "measurement": {
+                  "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+                  "available_passage_ids": [
+                    "passage:170f80a49ae83ccb680d9ace6efc5942"
+                  ],
+                  "consumed_passage_ids": [
+                    "passage:170f80a49ae83ccb680d9ace6efc5942"
+                  ],
+                  "consumed_spans": [
+                    {
+                      "end": 34,
+                      "passage_id": "passage:170f80a49ae83ccb680d9ace6efc5942",
+                      "start": 0
+                    }
+                  ],
+                  "diagnostics": {},
+                  "instrument_id": "rc7fb1-strict-comparison",
+                  "instrument_version": "rc7fb1-comparator-1",
+                  "observed_semantic_spans": [
+                    {
+                      "end": 18,
+                      "role": "comparison_cue",
+                      "start": 12
+                    }
+                  ],
+                  "raw_measurement": {
+                    "proposals": [
+                      {
+                        "cue_span": [
+                          12,
+                          18
+                        ],
+                        "left": "alpha",
+                        "relation": "MORE_THAN",
+                        "right": "beta"
+                      }
+                    ],
+                    "status": "CLAIMED"
+                  },
+                  "receipt_id": "measurement:e8f0b77f003111aeaa9d820d0b76a78aeaac3ab85c33483677474dc6eb28d5e7",
+                  "semantic_family": "strict_comparison"
+                },
+                "passage_id": "passage:170f80a49ae83ccb680d9ace6efc5942",
+                "relation": {
+                  "audit_context_sha256": "5b0244d730c31e8ad97980473ff26d805722550843de7a54b3fd94f72fc3f9d0",
+                  "authority_id": "semantic-authority:ff8e093d96853d442e7ebf05b05127d9cea48eba5e494f693731d1eacba0af94",
+                  "categorical_relation": "REFUTES",
+                  "evidence_world_sha256": "d41e45cdd8552d31e395a38211f94a57bfd394cb64bdc9d4584ab37fccf1a602",
+                  "passage_id": "passage:170f80a49ae83ccb680d9ace6efc5942",
+                  "proposition_sha256": "4e24896efc927254d4e06cdb042a4bcb76038c5ec2a2cdc9eca58fa5a134ca2e",
+                  "relation_id": "bound-relation:97c8a86a867f034d19055d3af5b502934227d395ad730173fd10543c36da367f"
+                }
+              }
+            ]
+          },
+          "schema": "cal-v1-result-v2",
+          "semantic_implementation_sha": "847cc970642bb648dc994b929c2053b5c9d4648c"
+        }
+      },
+      "evidence_path": "cases/A-strict_comparison-raw-bypass",
+      "evidence_tree": {
+        "EXPECTED.json": "9f6b7105e4768de731b201c8e2a3cc89db4c6d5352648d39ccaa7be9b3bf61bc",
+        "FILE_HASHES.json": "8d817fb7412c6895ddfe541017551b27c24153172a46fab9f7924a9f972bb779",
+        "OBSERVED.json": "6a27decea3eb54daa07493878b12531ef5080724d11471119468954062ba5ecb",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw-output/audit_context.json": "5a5ba2884ae8bdb9c36b2947af07f62b0344e791accc995151f8bc17faae7ab6",
+        "raw-output/contract_b_intake.snapshot.json": "d01dddf35b97a65779f45a48c3c557d42f76c69f3a4e4667c6acd2c37ff720c6",
+        "raw-output/input.target.json": "e8093a3475db7f77077573233fe9baf79b211ef2bc161a0b70bd71ad6be77bcf",
+        "raw-output/manifest.json": "ce719be7a9b8d563d0fc8f3d1c90200abe16107b22abeb95701378c36f22316e",
+        "raw-output/report.md": "c6d6dab3aaba4835349eaea794d6db17f25f8c5df74eb9169a0308153a11e753",
+        "raw-output/result.json": "2b71cf1b4352a8ab8e356dc0ed2798bdb0526e3c9a806776ae6579213ba10651",
+        "raw-run.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "raw-run.stdout": "b7f821ecff64370f437d1afc0f885618b0c996846581a318e5f3a54aa4363bee",
+        "target.json": "e8093a3475db7f77077573233fe9baf79b211ef2bc161a0b70bd71ad6be77bcf",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:28.836750+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-raw-bypass",
+      "domain": "A",
+      "classification": "INTERFACE_GAP",
+      "expected": {
+        "case_id": "A-direct_event_order-raw-bypass",
+        "domain": "A",
+        "operation": "bypass",
+        "invariant": "Raw structural acceptance and terminal drift are INTERFACE_GAP; supported author/conform gate rejects and produces no output.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier."
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_run": {
+          "label": "raw-run",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "run-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/target.json",
+            "--out-dir",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/raw-output"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "3904ffa87756b67a5000b487e0314706ac69fc001e1d77d33f0c644c7a4baa29",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "raw_result": {
+          "authorities": [
+            {
+              "atom": {
+                "atom_id": "semantic-atom:4ae6763671ea869ec28da48d840aa324178d16aef0a08eb8ee2888d0290a665e",
+                "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+                "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde",
+                "fields": {
+                  "left_object": "dossier",
+                  "left_polarity": "positive",
+                  "left_predicate": "review",
+                  "left_subject": "alice",
+                  "right_object": "dossier",
+                  "right_polarity": "positive",
+                  "right_predicate": "archive",
+                  "right_subject": "bob",
+                  "temporal_relation": "BEFORE"
+                },
+                "measurement_receipt_id": "measurement:f0289997e70f63b11b5e141210367fd81a3dd77a0563f5699a760f1538f9a7c9",
+                "passage_id": "passage:cdfce7346d70aaa440927df2a1467e3d",
+                "semantic_family": "direct_event_order",
+                "source_id": "S-C2-SUPPORT"
+              },
+              "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+              "authority_id": "semantic-authority:c1758e9ca3d6a47d6fcb3643caa5252bb25da0555342208a025ed83bed462036",
+              "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde",
+              "reason": "ALL_REQUIRED_WARRANT_ESTABLISHED",
+              "status": "WARRANTED"
+            }
+          ],
+          "authorization": {
+            "automatic_action_allowed": false,
+            "state": "not_evaluated"
+          },
+          "composition": {
+            "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+            "conclusion": "contradicted",
+            "deciding_relation_ids": [
+              "bound-relation:0fb7ba0d3f1ef3f8fa70534675df2345b11d98b1e5c167b921d4bb8208781dc7"
+            ],
+            "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde",
+            "failure_code": null,
+            "non_deciding_relation_ids": [],
+            "precedence": [
+              "UNRESOLVED",
+              "SUPPORT_REFUTE_CONFLICT",
+              "SUPPORTS",
+              "REFUTES",
+              "NO_DECIDING_RELATION"
+            ],
+            "proposition_sha256": "d8b28994e045cd8a48fcc6710c5a9425fa88c3aa58892006d8d455f58096990d",
+            "relation_categories": [
+              "REFUTES"
+            ],
+            "relation_ids": [
+              "bound-relation:0fb7ba0d3f1ef3f8fa70534675df2345b11d98b1e5c167b921d4bb8208781dc7"
+            ],
+            "rule_id": "scoreless-categorical-v1"
+          },
+          "contract_c_handoff": {
+            "owner": "apparatus-contracts",
+            "reason": "separate_compose_only_versioned_handoff_layer",
+            "state": "not_emitted"
+          },
+          "distribution_version": "0.6.0",
+          "evidence_world": {
+            "admitted_passage_ids": [
+              "passage:cdfce7346d70aaa440927df2a1467e3d"
+            ],
+            "aperture_observation": {
+              "contract_b_factual_context_state": "present",
+              "observation": {
+                "claim_id": "C2",
+                "limitations": [
+                  "B1.2 lacks native admission_state=not_applicable; non-retained candidates use review.decision=needs-review only as compatibility encoding while preserving native_admission_state=not_applicable.",
+                  "Candidate depth is bounded and does not establish corpus completeness.",
+                  "No support, refutation, applicability, completeness or verdict is emitted.",
+                  "Nomination, retention and admission are distinct non-semantic stages."
+                ],
+                "outcome": {
+                  "state": "known",
+                  "value": {
+                    "accepted_count": 1,
+                    "aperture_state": "bounded_under_limit",
+                    "candidate_depth_hit": false,
+                    "needs_review_count": 2,
+                    "not_retained_count": 0,
+                    "rejected_count": 0,
+                    "retained_count": 3,
+                    "returned_count": 3,
+                    "status": "completed"
+                  }
+                },
+                "search_scope": {
+                  "candidate_depth_limit": 10,
+                  "config_sha256": "sha256:5b10d0c29794e80d6876a99e26bcf6ec6a27a4c5165aee78054a6bc32759f4bc",
+                  "query_id": "query:5747a15d23f15b2208c632eda525cb4f",
+                  "requested_source_ids": [
+                    "S-C1-REFUTE",
+                    "S-C1-SUPPORT",
+                    "S-C2-SUPPORT",
+                    "S-D01",
+                    "S-D02",
+                    "S-D03",
+                    "S-D04",
+                    "S-D05",
+                    "S-D06",
+                    "S-D07"
+                  ],
+                  "retained_k": 3,
+                  "retrieval_id": "retrieval:27ed82ed47707df2d3b460b1cc0fd414",
+                  "retrieval_lane": "declared_child",
+                  "searched_source_ids": [
+                    "S-C1-REFUTE",
+                    "S-C1-SUPPORT",
+                    "S-C2-SUPPORT",
+                    "S-D01",
+                    "S-D02",
+                    "S-D03",
+                    "S-D04",
+                    "S-D05",
+                    "S-D06",
+                    "S-D07"
+                  ]
+                }
+              }
+            },
+            "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+            "available_but_unused_passage_ids": [],
+            "bundle_hash": "sha256:c7be5440f4da6d3b3560848bc04025bcf45e45783f0925501d3a844f70f939cb",
+            "bundle_id": "d2915bdc-bd20-5f6f-8f6f-f06ddc1a8f7b",
+            "contract_b_version": "1.2.0",
+            "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde"
+          },
+          "input": {
+            "audit_context_artifact_sha256": "sha256:afc612a100c030c0929d1f51f6ab36570db0ea43a235c1de168798b5c424045a",
+            "contract_b": {
+              "bundle_hash": "sha256:c7be5440f4da6d3b3560848bc04025bcf45e45783f0925501d3a844f70f939cb",
+              "bundle_id": "d2915bdc-bd20-5f6f-8f6f-f06ddc1a8f7b",
+              "extension_state": "present",
+              "intake_snapshot_sha256": "sha256:5c6940f932f152b3d2b670d376ed28d3328ea5282ca3ab461e5e87e7bc606d4a",
+              "version": "1.2.0"
+            },
+            "input_schema_sha256": "sha256:875f0a320699743befd3f61ea41b8f9ef86a520ac7edd4ef07b502b0d3a93798",
+            "mode": "contract_b_bundle",
+            "primary_input_sha256": "sha256:cff8d80112af2a0b6cc50fd727c01bd88a84808c33efe875401711b67bafca40"
+          },
+          "measurements": [
+            {
+              "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+              "available_passage_ids": [
+                "passage:cdfce7346d70aaa440927df2a1467e3d"
+              ],
+              "consumed_passage_ids": [
+                "passage:cdfce7346d70aaa440927df2a1467e3d"
+              ],
+              "consumed_spans": [
+                {
+                  "end": 51,
+                  "passage_id": "passage:cdfce7346d70aaa440927df2a1467e3d",
+                  "start": 0
+                }
+              ],
+              "diagnostics": {},
+              "instrument_id": "rc7fc-event-order",
+              "instrument_version": "rc7fc-event-order-1",
+              "observed_semantic_spans": [
+                {
+                  "end": 29,
+                  "role": "temporal_cue",
+                  "start": 23
+                }
+              ],
+              "raw_measurement": {
+                "proposals": [
+                  {
+                    "left_event": {
+                      "object": "dossier",
+                      "polarity": "positive",
+                      "predicate": "review",
+                      "subject": "alice"
+                    },
+                    "relation": "BEFORE",
+                    "right_event": {
+                      "object": "dossier",
+                      "polarity": "positive",
+                      "predicate": "archive",
+                      "subject": "bob"
+                    },
+                    "span": [
+                      23,
+                      29
+                    ]
+                  }
+                ],
+                "status": "CLAIMED"
+              },
+              "receipt_id": "measurement:f0289997e70f63b11b5e141210367fd81a3dd77a0563f5699a760f1538f9a7c9",
+              "semantic_family": "direct_event_order"
+            }
+          ],
+          "original_claim": "Alice reviewed dossier before Bob archived dossier.",
+          "profile": "cal-v1-integration-candidate-v1",
+          "proposition": {
+            "fields": {
+              "left_object": "dossier",
+              "left_polarity": "positive",
+              "left_predicate": "review",
+              "left_subject": "alice",
+              "right_object": "dossier",
+              "right_polarity": "positive",
+              "right_predicate": "archive",
+              "right_subject": "bob",
+              "temporal_relation": "AFTER"
+            },
+            "proposition_id": "C2",
+            "proposition_sha256": "d8b28994e045cd8a48fcc6710c5a9425fa88c3aa58892006d8d455f58096990d",
+            "semantic_family": "direct_event_order",
+            "text_sha256": "fafacbe46796663d673cdcbf3e53860e50cad3e9dd4566dc47ac116b5b4e309f"
+          },
+          "relations": [
+            {
+              "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+              "authority_id": "semantic-authority:c1758e9ca3d6a47d6fcb3643caa5252bb25da0555342208a025ed83bed462036",
+              "categorical_relation": "REFUTES",
+              "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde",
+              "passage_id": "passage:cdfce7346d70aaa440927df2a1467e3d",
+              "proposition_sha256": "d8b28994e045cd8a48fcc6710c5a9425fa88c3aa58892006d8d455f58096990d",
+              "relation_id": "bound-relation:0fb7ba0d3f1ef3f8fa70534675df2345b11d98b1e5c167b921d4bb8208781dc7"
+            }
+          ],
+          "result": {
+            "conclusion": "contradicted",
+            "deciding_passage_ids": [
+              "passage:cdfce7346d70aaa440927df2a1467e3d"
+            ],
+            "failure_code": null,
+            "non_deciding_passage_ids": [],
+            "traces": [
+              {
+                "authority": {
+                  "atom": {
+                    "atom_id": "semantic-atom:4ae6763671ea869ec28da48d840aa324178d16aef0a08eb8ee2888d0290a665e",
+                    "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+                    "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde",
+                    "fields": {
+                      "left_object": "dossier",
+                      "left_polarity": "positive",
+                      "left_predicate": "review",
+                      "left_subject": "alice",
+                      "right_object": "dossier",
+                      "right_polarity": "positive",
+                      "right_predicate": "archive",
+                      "right_subject": "bob",
+                      "temporal_relation": "BEFORE"
+                    },
+                    "measurement_receipt_id": "measurement:f0289997e70f63b11b5e141210367fd81a3dd77a0563f5699a760f1538f9a7c9",
+                    "passage_id": "passage:cdfce7346d70aaa440927df2a1467e3d",
+                    "semantic_family": "direct_event_order",
+                    "source_id": "S-C2-SUPPORT"
+                  },
+                  "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+                  "authority_id": "semantic-authority:c1758e9ca3d6a47d6fcb3643caa5252bb25da0555342208a025ed83bed462036",
+                  "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde",
+                  "reason": "ALL_REQUIRED_WARRANT_ESTABLISHED",
+                  "status": "WARRANTED"
+                },
+                "detail": null,
+                "failure_code": null,
+                "measurement": {
+                  "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+                  "available_passage_ids": [
+                    "passage:cdfce7346d70aaa440927df2a1467e3d"
+                  ],
+                  "consumed_passage_ids": [
+                    "passage:cdfce7346d70aaa440927df2a1467e3d"
+                  ],
+                  "consumed_spans": [
+                    {
+                      "end": 51,
+                      "passage_id": "passage:cdfce7346d70aaa440927df2a1467e3d",
+                      "start": 0
+                    }
+                  ],
+                  "diagnostics": {},
+                  "instrument_id": "rc7fc-event-order",
+                  "instrument_version": "rc7fc-event-order-1",
+                  "observed_semantic_spans": [
+                    {
+                      "end": 29,
+                      "role": "temporal_cue",
+                      "start": 23
+                    }
+                  ],
+                  "raw_measurement": {
+                    "proposals": [
+                      {
+                        "left_event": {
+                          "object": "dossier",
+                          "polarity": "positive",
+                          "predicate": "review",
+                          "subject": "alice"
+                        },
+                        "relation": "BEFORE",
+                        "right_event": {
+                          "object": "dossier",
+                          "polarity": "positive",
+                          "predicate": "archive",
+                          "subject": "bob"
+                        },
+                        "span": [
+                          23,
+                          29
+                        ]
+                      }
+                    ],
+                    "status": "CLAIMED"
+                  },
+                  "receipt_id": "measurement:f0289997e70f63b11b5e141210367fd81a3dd77a0563f5699a760f1538f9a7c9",
+                  "semantic_family": "direct_event_order"
+                },
+                "passage_id": "passage:cdfce7346d70aaa440927df2a1467e3d",
+                "relation": {
+                  "audit_context_sha256": "54c9807aeba44ad48853db97b48f2f3f59b1dfcffd8cd55e199378b59786f01d",
+                  "authority_id": "semantic-authority:c1758e9ca3d6a47d6fcb3643caa5252bb25da0555342208a025ed83bed462036",
+                  "categorical_relation": "REFUTES",
+                  "evidence_world_sha256": "e368929d13822e40d14283c80e89d82239601abf77e40ff60c455834ddc8acde",
+                  "passage_id": "passage:cdfce7346d70aaa440927df2a1467e3d",
+                  "proposition_sha256": "d8b28994e045cd8a48fcc6710c5a9425fa88c3aa58892006d8d455f58096990d",
+                  "relation_id": "bound-relation:0fb7ba0d3f1ef3f8fa70534675df2345b11d98b1e5c167b921d4bb8208781dc7"
+                }
+              }
+            ]
+          },
+          "schema": "cal-v1-result-v2",
+          "semantic_implementation_sha": "847cc970642bb648dc994b929c2053b5c9d4648c"
+        }
+      },
+      "evidence_path": "cases/A-direct_event_order-raw-bypass",
+      "evidence_tree": {
+        "EXPECTED.json": "6b7a15e54b9748314f58618232c35b97003af93d1e953319673085833eb89fac",
+        "FILE_HASHES.json": "b14669236e4d4dadeab18f151379152a8bfc3baf76a2de784952fe8f0bd2c1a3",
+        "OBSERVED.json": "3bc9e5d08efb6aa01cf3e20fa05681cd7cb5fb925167bc0c9fb4c11a6be7f790",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "raw-output/audit_context.json": "afc612a100c030c0929d1f51f6ab36570db0ea43a235c1de168798b5c424045a",
+        "raw-output/contract_b_intake.snapshot.json": "5c6940f932f152b3d2b670d376ed28d3328ea5282ca3ab461e5e87e7bc606d4a",
+        "raw-output/input.target.json": "cff8d80112af2a0b6cc50fd727c01bd88a84808c33efe875401711b67bafca40",
+        "raw-output/manifest.json": "44cfe6cdfb905dfaea368e28d7eb3ccc3050866995be7c770ac47e87335ae3f5",
+        "raw-output/report.md": "363bd4122c8898e3ee1b8ca1738b35806e6ae49dc607bd0e23375a27e2a084fd",
+        "raw-output/result.json": "cb662e772e6c0ab28a1fa8d4e9362fc854adce982602dd0a45c6fed1ee497f49",
+        "raw-run.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "raw-run.stdout": "3904ffa87756b67a5000b487e0314706ac69fc001e1d77d33f0c644c7a4baa29",
+        "target.json": "cff8d80112af2a0b6cc50fd727c01bd88a84808c33efe875401711b67bafca40",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:43.191482+00:00"
+    },
+    {
+      "case_id": "C-lowercase",
+      "domain": "C",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "C-lowercase",
+        "domain": "C",
+        "operation": "semantic",
+        "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "texts": [
+          "alice reviewed dossier before bob archived dossier."
+        ],
+        "expected": "supported",
+        "coverage": true,
+        "pair": null
+      },
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "semantic_family": "direct_event_order",
+        "audit_context_sha256": "a75f34adf1ad23dcc857e3e10049115a4d2a7b628710b4b6142313fd6e692ba1",
+        "evidence_world_sha256": "784d408841f0e272069da12548c44e9fdb08b985e468a7b123312ae883640bc7",
+        "proposition_sha256": "4fd0ea1fa415b3ff061866468fbcf72c871ca2deb5d7cfbe188d083ff57985d1",
+        "traces": [
+          {
+            "passage_id": "p0",
+            "measurement": {
+              "receipt_id": "measurement:ead358af0b00ebe6c13ee696638a437a601c07e83f0d612adf6b6793427c234f",
+              "audit_context_sha256": "a75f34adf1ad23dcc857e3e10049115a4d2a7b628710b4b6142313fd6e692ba1",
+              "semantic_family": "direct_event_order",
+              "instrument_id": "rc7fc-event-order",
+              "instrument_version": "rc7fc-event-order-1",
+              "available_passage_ids": [
+                "p0"
+              ],
+              "consumed_passage_ids": [
+                "p0"
+              ],
+              "raw_measurement_json": "{\"proposals\":[],\"status\":\"UNRESOLVED\"}",
+              "diagnostics": []
+            },
+            "authority": null,
+            "relation": null,
+            "failure_code": "MEASUREMENT_MISS",
+            "detail": "UNRESOLVED"
+          }
+        ]
+      },
+      "evidence_path": "cases/C-lowercase",
+      "evidence_tree": {
+        "CONTEXT.json": "2656b146c79fba7c4e1f194e1fa35a16047666132124eba87d5290edb2c3d0b3",
+        "EXPECTED.json": "cfe00e801ca4ac9bc1612f859293a56bfc17f4b0c2959ea0206b7c3bdebdc416",
+        "FILE_HASHES.json": "11057b274133b942b351d9b20de66f5f59f39ddc373320a6b135924179ad57ce",
+        "OBSERVED.json": "a1e8abfadf9e6dd0bb54c972fb806ee15886a4ab0a0a3f8b14299d2c8b102ff7"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:49.035396+00:00"
+    },
+    {
+      "case_id": "C-punctuation",
+      "domain": "C",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "C-punctuation",
+        "domain": "C",
+        "operation": "semantic",
+        "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "texts": [
+          "Alice reviewed dossier, before Bob archived dossier."
+        ],
+        "expected": "supported",
+        "coverage": true,
+        "pair": null
+      },
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "semantic_family": "direct_event_order",
+        "audit_context_sha256": "ada1f9097520f41d536e4ca983e38fd6a515fe8b15bd5c948153b2d3ba479286",
+        "evidence_world_sha256": "2412a1983f792fc37991a14ebd6e8334cc98a3c8a005ea9ebc99add81a0e904d",
+        "proposition_sha256": "4fd0ea1fa415b3ff061866468fbcf72c871ca2deb5d7cfbe188d083ff57985d1",
+        "traces": [
+          {
+            "passage_id": "p0",
+            "measurement": {
+              "receipt_id": "measurement:2cdf9762646a1901ceb1014964a9387c0f7da800e049401755059af3a793ceb4",
+              "audit_context_sha256": "ada1f9097520f41d536e4ca983e38fd6a515fe8b15bd5c948153b2d3ba479286",
+              "semantic_family": "direct_event_order",
+              "instrument_id": "rc7fc-event-order",
+              "instrument_version": "rc7fc-event-order-1",
+              "available_passage_ids": [
+                "p0"
+              ],
+              "consumed_passage_ids": [
+                "p0"
+              ],
+              "raw_measurement_json": "{\"proposals\":[],\"status\":\"UNRESOLVED\"}",
+              "diagnostics": []
+            },
+            "authority": null,
+            "relation": null,
+            "failure_code": "MEASUREMENT_MISS",
+            "detail": "UNRESOLVED"
+          }
+        ]
+      },
+      "evidence_path": "cases/C-punctuation",
+      "evidence_tree": {
+        "CONTEXT.json": "056dd4876e2162c4238af8c90424e0c7a9590d91e9befc0465a56a40650e0283",
+        "EXPECTED.json": "4fa2d1f13a57bdb45e7e1e11547fddd25f76584fd1c62fa42f09d460237f679b",
+        "FILE_HASHES.json": "518c2a335e0fddbfbd814984dbbd94b4a8a0fdb1cccee4c9279f615cc061d992",
+        "OBSERVED.json": "4b3deae246660aca6602db3d67aff0d2a1fb787eb5ba55cc43433ba3b0282f3d"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:49.036764+00:00"
+    },
+    {
+      "case_id": "C-complex",
+      "domain": "C",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "C-complex",
+        "domain": "C",
+        "operation": "semantic",
+        "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "texts": [
+          "After a second examination, Alice reviewed the dossier before its archival by Bob."
+        ],
+        "expected": "supported",
+        "coverage": true,
+        "pair": null
+      },
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "semantic_family": "direct_event_order",
+        "audit_context_sha256": "9f1312f02eab0f9b8ec72046534e858aa5c4808296dbf280efbcd38c90a5cc00",
+        "evidence_world_sha256": "511c585c8c35dc37c4f34ac27994bfe24f0c46b5d87ee28885b2fe5ce8ea7026",
+        "proposition_sha256": "4fd0ea1fa415b3ff061866468fbcf72c871ca2deb5d7cfbe188d083ff57985d1",
+        "traces": [
+          {
+            "passage_id": "p0",
+            "measurement": {
+              "receipt_id": "measurement:4ba263ae63d72f23a6022cc4f6375531297c6f7da8e0463c58678b7f7a11c2d5",
+              "audit_context_sha256": "9f1312f02eab0f9b8ec72046534e858aa5c4808296dbf280efbcd38c90a5cc00",
+              "semantic_family": "direct_event_order",
+              "instrument_id": "rc7fc-event-order",
+              "instrument_version": "rc7fc-event-order-1",
+              "available_passage_ids": [
+                "p0"
+              ],
+              "consumed_passage_ids": [
+                "p0"
+              ],
+              "raw_measurement_json": "{\"proposals\":[],\"status\":\"UNRESOLVED\"}",
+              "diagnostics": []
+            },
+            "authority": null,
+            "relation": null,
+            "failure_code": "MEASUREMENT_MISS",
+            "detail": "UNRESOLVED"
+          }
+        ]
+      },
+      "evidence_path": "cases/C-complex",
+      "evidence_tree": {
+        "CONTEXT.json": "56f0216c459ecae19ef405d9c3abb8b2f61d1ea38a978fe9389f78c8d6c47a73",
+        "EXPECTED.json": "5fe5098e9e1128f3215e29e37a187e9672e4cf8afdd4353cf76da63137e891ab",
+        "FILE_HASHES.json": "1ccc83302b78a0d2dfcc9137b3f0b8c3108a9263fbd119ac6d1c1316d28efe47",
+        "OBSERVED.json": "8cceb04f8b2e126a0fff3425f37e4a7ea4f533ca395b58adfbb993d626c05f23"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:49.038297+00:00"
+    },
+    {
+      "case_id": "B-lowercase",
+      "domain": "B",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "B-lowercase",
+        "domain": "B",
+        "operation": "semantic",
+        "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "texts": [
+          "alpha had a higher rate than beta."
+        ],
+        "expected": "supported",
+        "coverage": true,
+        "pair": null
+      },
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "semantic_family": "strict_comparison",
+        "audit_context_sha256": "2623a8dcdf06271c413124c5d8604012a49c2bddc60d6212672907b37ff4437e",
+        "evidence_world_sha256": "78db041cf13db0a7dccea7b34eb864162df80011f9586f420bfc8dac1f9cb532",
+        "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+        "traces": [
+          {
+            "passage_id": "p0",
+            "measurement": {
+              "receipt_id": "measurement:bcb0ace74a1345da40d28f968c09c755e0fee46d5651f18f70c6a862863693fc",
+              "audit_context_sha256": "2623a8dcdf06271c413124c5d8604012a49c2bddc60d6212672907b37ff4437e",
+              "semantic_family": "strict_comparison",
+              "instrument_id": "rc7fb1-strict-comparison",
+              "instrument_version": "rc7fb1-comparator-1",
+              "available_passage_ids": [
+                "p0"
+              ],
+              "consumed_passage_ids": [
+                "p0"
+              ],
+              "raw_measurement_json": "{\"proposals\":[],\"status\":\"UNRESOLVED\"}",
+              "diagnostics": []
+            },
+            "authority": null,
+            "relation": null,
+            "failure_code": "MEASUREMENT_MISS",
+            "detail": "UNRESOLVED"
+          }
+        ]
+      },
+      "evidence_path": "cases/B-lowercase",
+      "evidence_tree": {
+        "CONTEXT.json": "1e2fb135e38b6ae24b4be06ec11716a6c017b7b2bc76fafb5b6628012ffef549",
+        "EXPECTED.json": "6020cb1505a98cabefe6d67cf9a6300b48978691db015269d414d98c2c9ec765",
+        "FILE_HASHES.json": "2adc612b680b2617447d49283810b7477a6827ece1019c2335066b49c2dd1359",
+        "OBSERVED.json": "ba6692b1fdaa0774991c1300e6cb643be5aa16a967a73a3689440e2d6c091890"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:49.077111+00:00"
+    },
+    {
+      "case_id": "B-punctuation",
+      "domain": "B",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "B-punctuation",
+        "domain": "B",
+        "operation": "semantic",
+        "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "texts": [
+          "Alpha had a higher rate than Beta!"
+        ],
+        "expected": "supported",
+        "coverage": true,
+        "pair": null
+      },
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "semantic_family": "strict_comparison",
+        "audit_context_sha256": "804d8e851a0c0c6ffe68f8c70a65d0784295a91722a53ff624d8a8513a5fd8ad",
+        "evidence_world_sha256": "db9bc4fc442af25ae670712e28f36346fd3a916f02d2fa539f5e8bb6adb8b0b0",
+        "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+        "traces": [
+          {
+            "passage_id": "p0",
+            "measurement": {
+              "receipt_id": "measurement:0b41a74315a6e31fb540e1fbb78cbb6af16e65483577749016ba195357d54e4c",
+              "audit_context_sha256": "804d8e851a0c0c6ffe68f8c70a65d0784295a91722a53ff624d8a8513a5fd8ad",
+              "semantic_family": "strict_comparison",
+              "instrument_id": "rc7fb1-strict-comparison",
+              "instrument_version": "rc7fb1-comparator-1",
+              "available_passage_ids": [
+                "p0"
+              ],
+              "consumed_passage_ids": [
+                "p0"
+              ],
+              "raw_measurement_json": "{\"proposals\":[],\"status\":\"UNRESOLVED\"}",
+              "diagnostics": []
+            },
+            "authority": null,
+            "relation": null,
+            "failure_code": "MEASUREMENT_MISS",
+            "detail": "UNRESOLVED"
+          }
+        ]
+      },
+      "evidence_path": "cases/B-punctuation",
+      "evidence_tree": {
+        "CONTEXT.json": "f6a955287d067e5f3fe10191a783cb84293644698456035d0f8a860e259ae39a",
+        "EXPECTED.json": "46f14fa14a37d57712947d2ccdc91ca585675302897523edc52ae16cb15615c4",
+        "FILE_HASHES.json": "2abada61989670f179a7706d26f699bbdaeb288316296fca34c033daa169f540",
+        "OBSERVED.json": "e9a32d352cdba3ab58f1e702f7536ffe91fb2ab1e0bf17b223671853d9beaa82"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:49.078888+00:00"
+    },
+    {
+      "case_id": "B-time-scope",
+      "domain": "B",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "B-time-scope",
+        "domain": "B",
+        "operation": "semantic",
+        "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "texts": [
+          "Alpha had a higher rate than Beta in 2025."
+        ],
+        "expected": "supported",
+        "coverage": true,
+        "pair": null
+      },
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "semantic_family": "strict_comparison",
+        "audit_context_sha256": "0c51f2f5ac638b930883f7c86e07da9322932775638a3b77959fd8f5153b218d",
+        "evidence_world_sha256": "98e3c1f1d29820ff028113270636324050d8ce7ffcf6755bc9f196af9bb1721d",
+        "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+        "traces": [
+          {
+            "passage_id": "p0",
+            "measurement": {
+              "receipt_id": "measurement:bbaa06320ad8143c102e0d499cb384aab12256ed059f3e3a198ef13e5a47d6f5",
+              "audit_context_sha256": "0c51f2f5ac638b930883f7c86e07da9322932775638a3b77959fd8f5153b218d",
+              "semantic_family": "strict_comparison",
+              "instrument_id": "rc7fb1-strict-comparison",
+              "instrument_version": "rc7fb1-comparator-1",
+              "available_passage_ids": [
+                "p0"
+              ],
+              "consumed_passage_ids": [
+                "p0"
+              ],
+              "raw_measurement_json": "{\"proposals\":[],\"status\":\"UNRESOLVED\"}",
+              "diagnostics": []
+            },
+            "authority": null,
+            "relation": null,
+            "failure_code": "MEASUREMENT_MISS",
+            "detail": "UNRESOLVED"
+          }
+        ]
+      },
+      "evidence_path": "cases/B-time-scope",
+      "evidence_tree": {
+        "CONTEXT.json": "92105f61d1d70e6b069260695642444c3f19d13127e4ecd19c934a12e9fd10f3",
+        "EXPECTED.json": "d8b14df5223b37ec8a72782a0ef9b3da09bebd16a8645b12c101214b8e02e503",
+        "FILE_HASHES.json": "acbfa4fab30d106d31ff6e158cc7735227eb4afb35137ca96eb1d314ff657249",
+        "OBSERVED.json": "690094510cce2c0873fd9b2dab598178a5f348afa4832641d87d529159d458b6"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:49.087267+00:00"
+    },
+    {
+      "case_id": "B-plural",
+      "domain": "B",
+      "classification": "ROBUSTNESS_LIMIT",
+      "expected": {
+        "case_id": "B-plural",
+        "domain": "B",
+        "operation": "semantic",
+        "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "texts": [
+          "Alpha had higher rates than Beta."
+        ],
+        "expected": "supported",
+        "coverage": true,
+        "pair": null
+      },
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "semantic_family": "strict_comparison",
+        "audit_context_sha256": "1bc6e2414058cd03d0b80380159b46f208aac5603ccfb77a02d48b60b3651e51",
+        "evidence_world_sha256": "f2ec8251c4dae7d7fad00a1a1b5fe56a3c568c0cd81b1dda487fdbb3714600a6",
+        "proposition_sha256": "09a3580ba4e5a9b747b6b7fe41ff2420ceeaac5d4b23b20cac122aa9dd4c866a",
+        "traces": [
+          {
+            "passage_id": "p0",
+            "measurement": {
+              "receipt_id": "measurement:70e8a5d21baa51657f7127e3d5b31be6ad9cee38e63b17b543fd9b858c1c382a",
+              "audit_context_sha256": "1bc6e2414058cd03d0b80380159b46f208aac5603ccfb77a02d48b60b3651e51",
+              "semantic_family": "strict_comparison",
+              "instrument_id": "rc7fb1-strict-comparison",
+              "instrument_version": "rc7fb1-comparator-1",
+              "available_passage_ids": [
+                "p0"
+              ],
+              "consumed_passage_ids": [
+                "p0"
+              ],
+              "raw_measurement_json": "{\"proposals\":[],\"status\":\"UNRESOLVED\"}",
+              "diagnostics": []
+            },
+            "authority": null,
+            "relation": null,
+            "failure_code": "MEASUREMENT_MISS",
+            "detail": "UNRESOLVED"
+          }
+        ]
+      },
+      "evidence_path": "cases/B-plural",
+      "evidence_tree": {
+        "CONTEXT.json": "8fa155dac4d9d094f85e4cf48467ef289660c021649e7d51511f46e12d972a83",
+        "EXPECTED.json": "0644def3fb58e5286e416b248ecc14025ea101a8b0a3c70a1ed890275a7b2931",
+        "FILE_HASHES.json": "02384c347ab33ffbd54cef37fe27b75bc78e54b1fd20a9b97aa42966efe2b5b2",
+        "OBSERVED.json": "4d37ac3d0d46449b15e2dfbdb7b7e54d8f23d3cef8846d5a1093087c095758e8"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:49.088785+00:00"
+    }
+  ],
+  "raw_weak_validation_comparisons": [
+    {
+      "case_id": "A-strict_comparison-missing",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-missing",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "missing",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-missing/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-missing/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-missing",
+      "evidence_tree": {
+        "EXPECTED.json": "5f3ee11a2553743e5c965b85b078e06caaa207d557bc11498354bf1a5ccf2b84",
+        "FILE_HASHES.json": "72210a2a43fec4ef8386f9e078e33e53150f9819811bd24712e4ddf29a3ef836",
+        "OBSERVED.json": "a38dbab1bbf0ee869fa9497d3ff551e0150974ff95a37bba59dd9a4ef0e2bde1",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "de08a9b8fceaa28afd2e18f40aea19836b8cfe12fd57903d1b976bc6dd217cbe",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:02.237315+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-extra-semantic",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-extra-semantic",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "extra-semantic",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-extra-semantic/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-extra-semantic/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-extra-semantic",
+      "evidence_tree": {
+        "EXPECTED.json": "254fedc804b6f185f14995a702457da7e7162ce50b16644254ecb2891205a54d",
+        "FILE_HASHES.json": "16b22777183436fc02c38c3c07ad29b2e4990dea0e4fa759e571b5ddca1a7e17",
+        "OBSERVED.json": "00d67d40405b20e189b92096e223248c2492d6bd4695709c97eeb77f69157373",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "58271bbde4196b4ce868599b660b8835d3a23d23db212f3f0ba72cd3e2ab9aa0",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:06.134513+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-unsupported-direction",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-unsupported-direction",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "unsupported-direction",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unsupported-direction/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unsupported-direction/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-unsupported-direction",
+      "evidence_tree": {
+        "EXPECTED.json": "f7a5255779ea97cb1d7009c1b852a3dc848d77dfea2f80d3fd354588dd755eb6",
+        "FILE_HASHES.json": "6d5ae4abe97c73593d1094de36efd4f9e9ca567f701b8fa655f61957fea06d11",
+        "OBSERVED.json": "10c221c2d879452e3fb22dfbaf64f2de7a0cd6324a883713e4df1e9c567112a2",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "339c82b6d16d0b63a874763c56a49da66296b3af0a5e6e0bc4c3525ca3cc463d",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:10.042812+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-orientation",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-orientation",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "orientation",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-orientation/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-orientation/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-orientation",
+      "evidence_tree": {
+        "EXPECTED.json": "d676be2b8093bf35e0f288b0cbc298f3a7fbc0a81faabaed5cd88c560d37e10b",
+        "FILE_HASHES.json": "9d8752311ef0937b8117366c3a1fa622de276a69f49e19cb19305330a1d96f1e",
+        "OBSERVED.json": "4f354625b0000537f3f2d9d4113e73e96fa28e21564d165c47e9c24e3e773986",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "194b49e3b38985389d7005b658e5eb2b6893c144ce1d10d365f585453de5b002",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:14.665180+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-inversion",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-inversion",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "inversion",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-inversion/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-inversion/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-inversion",
+      "evidence_tree": {
+        "EXPECTED.json": "c438ebfcf0770713925432e33b1f7aed7d34a4e6f4137452ed81e47358756d73",
+        "FILE_HASHES.json": "986ca0ff48d246da6747c40fa89d0129412869eacec229d8cf9124cca7e1d59a",
+        "OBSERVED.json": "c519b7066037956bd89cf454f1c5e96700c33f75d23a87111599ac48263d5396",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "e8093a3475db7f77077573233fe9baf79b211ef2bc161a0b70bd71ad6be77bcf",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:15.919108+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-family-substitution",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-family-substitution",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "family-substitution",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-family-substitution/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-family-substitution/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "eda3ec9092d48c8f58f6deed5f2db867bb902e0e3296fbb059bd7f0d1f637e4d",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-family-substitution",
+      "evidence_tree": {
+        "EXPECTED.json": "b1fceb1d9ed2203f529268272f99134250624ee419c754582b3ba4d568abba93",
+        "FILE_HASHES.json": "dc71373da165473d1014388034a188798d5ec731741b62cf524331a8d0ecb334",
+        "OBSERVED.json": "ef87da38af53898d2b0ca6e2885ce8080ff0fa749b7cc5fdaf8caa028d6f0ae5",
+        "conform.stderr": "eda3ec9092d48c8f58f6deed5f2db867bb902e0e3296fbb059bd7f0d1f637e4d",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "3f8ef707361566a9cd4198906186c02109677877759ed228bf7eb39dc2a8deed",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:17.083697+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-whitespace-field",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-whitespace-field",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "whitespace-field",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-whitespace-field/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-whitespace-field/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-whitespace-field",
+      "evidence_tree": {
+        "EXPECTED.json": "834a7e9046bc08d94bebacb652ee41061c64a5f221dbf9227eeae3af87866b44",
+        "FILE_HASHES.json": "260a2d0552ab561573d9a1f80382810b756655ea3514fb1919e1a24c626ae975",
+        "OBSERVED.json": "e43d6b9088a136f6705a73350add62e0b91dc6f21b2f5fc44a8fe2c7f2d31643",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "2a77ac9c5d0f20c4be0991cb57697d1c60468371788926061f959a7edb7f82bf",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:23.194586+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-punctuation-field",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-punctuation-field",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "punctuation-field",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-punctuation-field/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-punctuation-field/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-punctuation-field",
+      "evidence_tree": {
+        "EXPECTED.json": "cc5ec2a7033f55222d01d04c6cf5c08f3f1df0371de22db3fef73d402076ce98",
+        "FILE_HASHES.json": "061828ce15a84cb06d389ec24dff5aaf302d6476844b9bd569c5f95e3d619bb9",
+        "OBSERVED.json": "bda919255525724dba10662e937abae776344f10be6ba7493752232f98b2a190",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "386cc87fd8f6431cb2573686d8331fd8eb295fb636429b8df1083ad4e3fd453d",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:24.240879+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-confusable",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-confusable",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "confusable",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-confusable/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-confusable/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-confusable",
+      "evidence_tree": {
+        "EXPECTED.json": "1ad204185f3e2cebe9d685d13593ca0d0d71042e6038bdf75e106ba67e95b276",
+        "FILE_HASHES.json": "16ddbd38be5d44b152eb242e23b78b82ef8bb540a1e151edbffcf982d97a43b9",
+        "OBSERVED.json": "5b64df9be380277fd08e19cf006e715c9e3c998a2ffa0a177d2b6579a6fa6b2a",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "8f017c653e0ee8da7b4e01e7cd8de58aca6af13368e4ad48b6420fa573b6f891",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:25.204507+00:00"
+    },
+    {
+      "case_id": "A-strict_comparison-long-field",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-strict_comparison-long-field",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "strict_comparison",
+        "claim": "Alpha had a higher rate than Beta.",
+        "mutation": "long-field",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-long-field/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-long-field/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-strict_comparison-long-field",
+      "evidence_tree": {
+        "EXPECTED.json": "4ff07532327f9c4a37e861b4d1d0c986f18e6f2b929205ad28964d642b1d422c",
+        "FILE_HASHES.json": "2362c3dff7d284f53ac9ab87b3163381ce1907637203d8d434c79426bceab03a",
+        "OBSERVED.json": "c976007da7a1b6e0bc9fa855b52da6b4569f16b08e9ccb6d60a9dc428c4b48eb",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "b579903b14df62c78fc69e3fb79557396ecce654ff2c1a591c6669573d3128bd",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:26.068492+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-missing",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-missing",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "missing",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-missing/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-missing/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-missing",
+      "evidence_tree": {
+        "EXPECTED.json": "27068b34c2f907c682ba98772960e2c490998762a955cf62c1dd1f9221fbcf61",
+        "FILE_HASHES.json": "708dc5e8346400677b309e3cf0d09532accb20a006ddb4c7257157cce0945806",
+        "OBSERVED.json": "74840381329fbd6a7a62327b6288c6957e4beb7e7da478fb337dd172dd0b332e",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "1f7a42af2136d96adc08c044f738390ac5082443738034be51991180105f8e13",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:29.844297+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-extra-semantic",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-extra-semantic",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "extra-semantic",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-extra-semantic/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-extra-semantic/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-extra-semantic",
+      "evidence_tree": {
+        "EXPECTED.json": "8938205603efa8cb66afd15fbf7f7dd25220b7c3d533d83e9890f4c677ecee7a",
+        "FILE_HASHES.json": "887496b72a94f361082da8f93ec78d31fce967aa87cb1ad700dc201cebe6951c",
+        "OBSERVED.json": "135573b7c4cc1b196c20be39e25fbf270ec97e2c464ea1dcb6054f77b1b12190",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "e6a1f466f44d9a4e3a6b76a3f2bea99637fcca2faa4d4fd15064d96e14cf675b",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:30.684345+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-unsupported-direction",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-unsupported-direction",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "unsupported-direction",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unsupported-direction/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unsupported-direction/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-unsupported-direction",
+      "evidence_tree": {
+        "EXPECTED.json": "587e08f3a2f3c0a2d7aa8fed15039242a61df9159578f19c66b32670dd0bb0ca",
+        "FILE_HASHES.json": "391842aba7770ae7f60fd84975edf7c06a9f728e94d677e14d005c2739790b9c",
+        "OBSERVED.json": "32bd4cf75d786eb553b9bcc7a794a079a76de1043324954e5aff3f2c7878b027",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "0d23cae0eb9ea189d3a38c312542890ec7d5a95219af224ef885c2ffeb8964b1",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:31.433645+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-orientation",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-orientation",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "orientation",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-orientation/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-orientation/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-orientation",
+      "evidence_tree": {
+        "EXPECTED.json": "2c51564ba77e49134dadf8adb3821e3c207fb50572cb8a894e1c0499835efe44",
+        "FILE_HASHES.json": "25d62557518dcfe6da2ae662079e651315617ea5c89969c4682d637b24849069",
+        "OBSERVED.json": "f99d1109822dda42b422476ba1d95d6cc4065a285d669190d6acfe6a8a9d4eb6",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "f4fc87c5a4e27bc7612250d5cf8726552ed59db81b8242e4603b97f41ef2f096",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:34.051818+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-inversion",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-inversion",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "inversion",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-inversion/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-inversion/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-inversion",
+      "evidence_tree": {
+        "EXPECTED.json": "9b7a13ebc01f58efc08cb908eb0df220a17af9663f9067a135fd45826f12053d",
+        "FILE_HASHES.json": "7da24550bb5d6fe76304f4d2629c28ed16ee5ce4f26096e6eeee902acea2f7d9",
+        "OBSERVED.json": "95379f0273a456b03f0e5bf2db079d9c0ac121a5cb80bd0216059fc489019fa1",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "cff8d80112af2a0b6cc50fd727c01bd88a84808c33efe875401711b67bafca40",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:34.796731+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-family-substitution",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-family-substitution",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "family-substitution",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-family-substitution/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-family-substitution/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "eda3ec9092d48c8f58f6deed5f2db867bb902e0e3296fbb059bd7f0d1f637e4d",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-family-substitution",
+      "evidence_tree": {
+        "EXPECTED.json": "fb8b775e2d9b4dfa6bb5fef01467cfc44ac50638a994ffef09e9ff22f8f7a17b",
+        "FILE_HASHES.json": "21f9a66e9fb0f11b4af077815a1c0627099cddf4210ff1a5b9242531bd41c29e",
+        "OBSERVED.json": "614e81877bd7f908e6c1ffc45f9c84c2609bef8602d68d01b5efb5854f4f0808",
+        "conform.stderr": "eda3ec9092d48c8f58f6deed5f2db867bb902e0e3296fbb059bd7f0d1f637e4d",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "266e86a9254a0269ce8a00b9caf20611081c7438b36c4812e756c4da4341cc20",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:35.484379+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-whitespace-field",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-whitespace-field",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "whitespace-field",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-whitespace-field/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-whitespace-field/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-whitespace-field",
+      "evidence_tree": {
+        "EXPECTED.json": "91bc114db960f8ef0087eca8efcb515bd52097afc10752fa451c9f1e890170d4",
+        "FILE_HASHES.json": "d94ac6605769b9068a6d5f36b04facdd0869318a8d2b2ce45e8ed57ffbf65406",
+        "OBSERVED.json": "04f1d8bff138818e4636067a0b4c017656b2828fd493360f5eff614fdc8317e0",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "fa559c52acc11c622acf8b1508114639d9df624be629950b0476ead6a34ef5b1",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:39.352860+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-punctuation-field",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-punctuation-field",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "punctuation-field",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-punctuation-field/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-punctuation-field/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-punctuation-field",
+      "evidence_tree": {
+        "EXPECTED.json": "e496dd45648e9120c0fc253db33204cb367e3c7658c0e3cdfadc42135454beae",
+        "FILE_HASHES.json": "2be5294b04c254d863c078871d27707bf9975fab94b652805a60e3555035568f",
+        "OBSERVED.json": "08d52f6aa3cef8ab0388418c3da4c3c82ec99436f05dc0637cb0dcd914b55f78",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "b4115b67c24c9f839bbf544ff4ace35d578f74ca4d9045e49d618c955eb2b68f",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:40.307799+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-confusable",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-confusable",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "confusable",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-confusable/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-confusable/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-confusable",
+      "evidence_tree": {
+        "EXPECTED.json": "0f0f1b2bf7cc864d9df24d158fb9bfb4969cf0c475abf8abab16db01f70b59c9",
+        "FILE_HASHES.json": "2aaf9728338a9750fd09371ae75e17cea1013f1f44ca408235a5092ef972dea9",
+        "OBSERVED.json": "92b4eb04bf45fc994da1ab547277e3810879481a82c4b49d641a8ed507d86731",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "4148f2f4a050d1d2fee4e318fdb9c0a37def3a1c51468c8ea05e4351bcb26633",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:40.821270+00:00"
+    },
+    {
+      "case_id": "A-direct_event_order-long-field",
+      "domain": "A",
+      "classification": "PASS",
+      "expected": {
+        "case_id": "A-direct_event_order-long-field",
+        "domain": "A",
+        "operation": "target",
+        "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+        "family": "direct_event_order",
+        "claim": "Alice reviewed dossier before Bob archived dossier.",
+        "mutation": "long-field",
+        "conform_accept": false
+      },
+      "observed": {
+        "structural": {
+          "label": "validate",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.bundle_cli",
+            "validate-bundle",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-long-field/target.json"
+          ],
+          "returncode": 0,
+          "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+          "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+          "pythonpath_present": true
+        },
+        "conformance": {
+          "label": "conform",
+          "argv": [
+            "$CUSTODY_ROOT/env/bin/python",
+            "-m",
+            "claim_audit_lab.production_v1.target_cli",
+            "conform",
+            "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+            "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-long-field/target.json"
+          ],
+          "returncode": 2,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+          "pythonpath_present": true
+        },
+        "supported_execution_calls": 0,
+        "supported_output_present": false,
+        "raw_precondition_gap": true
+      },
+      "evidence_path": "cases/A-direct_event_order-long-field",
+      "evidence_tree": {
+        "EXPECTED.json": "742cd699beef78d3f10bbec64719d6e83c0fdbd9a538847834faf012e4a90c1a",
+        "FILE_HASHES.json": "3f576667e62bdbe34357fdd930a091fcb6352b0832fa2b9d24aa4dccceeb7ed1",
+        "OBSERVED.json": "f7f7d49c83cbf88237d0fa11d3186473d7be6c97ce1727f0a4a60fecd75d6064",
+        "conform.stderr": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+        "conform.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "target.json": "c1a2680b3f0a5b4fb754598d63eb119e53f55025183ef89f123c3ea8aff567d7",
+        "validate.stderr": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+        "validate.stdout": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2"
+      },
+      "recorded_at_utc": "2026-10-02T15:51:41.358557+00:00"
+    }
+  ],
+  "interpretation": "Primary counts use disjoint matrix cases; historical subcases remain separate. Twenty additional structural acceptance controls illustrate the same raw expert precondition gap; their supported conformance rejection is a PASS, not a claimed raw-surface repair."
+}

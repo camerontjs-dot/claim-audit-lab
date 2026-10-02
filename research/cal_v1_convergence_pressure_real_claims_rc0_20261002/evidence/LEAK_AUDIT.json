@@ -1,0 +1,13 @@
+{
+  "current_pressure_files_checked": 49,
+  "new_absolute_local_paths": [],
+  "new_secret_patterns": [],
+  "full_repository_scan": "FAILED_INHERITED_HISTORY_PATH_MATCHES",
+  "historical_matches": 129,
+  "commits_scanned_all_refs": 1749,
+  "example_old_commit": "dc0e3386929174d2a0d5ccf231e5478f3a825954",
+  "example_is_pressure_ancestor": false,
+  "history_rewritten": false,
+  "protected_subject_modified": false,
+  "interpretation": "New working tree passed the full tool path/secret/env-file checks. Full-history scan reported inherited local-path strings. This campaign preserves historical/subject Git objects and publishes only new path-safe apparatus/evidence."
+}

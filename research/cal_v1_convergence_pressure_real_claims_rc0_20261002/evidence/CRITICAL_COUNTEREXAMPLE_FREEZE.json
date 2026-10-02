@@ -1,0 +1,19 @@
+{
+  "schema": "cal188-critical-counterexample-freeze-v1",
+  "classification": "CRITICAL_FAIL",
+  "frozen_at_utc": "2026-10-02T15:54:06.103335+00:00",
+  "case_id": "B-explicit-negation",
+  "subject_commit": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "harness_freeze_sha256": "6bea1438ab1175386c8de4dd57011d08bee33ccb2141f3fe2a585f26d4250a58",
+  "cohort_sha256": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+  "apparatus_successor_1_sha256": "0637798d09f1f98f186e6d13b85429ac8ac93eeef80ceb7c7bbcd54215af4031",
+  "files": {
+    "cases/B-explicit-negation/CONTEXT.json": "7b698a14692f4036743ebf17fe360d53ec89d07adda85c044b41796ce9ca3292",
+    "cases/B-explicit-negation/EXPECTED.json": "35b678b1cc05190a7296d59c73c5a314df60ee499af7f5a5bc5453ffe246cf3f",
+    "cases/B-explicit-negation/FILE_HASHES.json": "1d7a1f5128d8c8e99c4a1d6ab322c3f4a7147d5cbc677b6c866c3d3402d37a6c",
+    "cases/B-explicit-negation/OBSERVED.json": "50b52d5083e2fb7aeaab06d784b5e3fce90f49e4971bfd07e806e99a420bc7ca"
+  },
+  "terminal_receipt_sha256": "4a956b903254dc87397a211feb16dcfe9c6c2a99942092e144cdd32006bb6749",
+  "release_progression": "STOPPED",
+  "subject_correction": "FORBIDDEN_AND_NOT_PERFORMED"
+}
