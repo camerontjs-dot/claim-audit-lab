@@ -45,14 +45,18 @@ jobs:
           set -e
           echo "$RC" > "$RUNNER_TEMP/cal188/exit-code.txt"
           python -c 'import json,os; from pathlib import Path; p=Path(os.environ["RUNNER_TEMP"])/"cal188"; r=json.loads((p/"run/RESULTS.json").read_text()); rc=int((p/"exit-code.txt").read_text()); assert rc in (0,1) and r["subject_commit"]=="6bb0d60f3e2286123f56de5657de4e97d6374c63"; print(r["disposition"], r["counts"])'
+      - name: Archive native receipt paths without renaming
+        if: always()
+        shell: bash
+        run: |
+          tar -czf "$RUNNER_TEMP/cal188-hosted-evidence.tar.gz" -C "$RUNNER_TEMP" cal188/run cal188/dist cal188/run.log cal188/exit-code.txt
+          sha256sum "$RUNNER_TEMP/cal188-hosted-evidence.tar.gz" > "$RUNNER_TEMP/cal188-hosted-evidence.sha256"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cal188-frozen-pressure-receipts
           path: |
-            ${{ runner.temp }}/cal188/run
-            ${{ runner.temp }}/cal188/dist
-            ${{ runner.temp }}/cal188/run.log
-            ${{ runner.temp }}/cal188/exit-code.txt
+            ${{ runner.temp }}/cal188-hosted-evidence.tar.gz
+            ${{ runner.temp }}/cal188-hosted-evidence.sha256
           retention-days: 90
           if-no-files-found: error

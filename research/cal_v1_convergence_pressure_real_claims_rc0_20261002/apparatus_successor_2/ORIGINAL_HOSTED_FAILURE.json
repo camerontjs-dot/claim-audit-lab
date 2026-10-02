@@ -1,0 +1,21 @@
+{
+  "schema": "cal188-hosted-upload-failure-v1",
+  "classification": "APPARATUS_RECEIPT_TRANSPORT_FAILURE",
+  "run_id": 37031290256,
+  "head_sha": "b19a661ccee480b645845b16d7b84dc5cc377b91",
+  "execution_step": "success",
+  "scientific_disposition_from_exact_head_log": "PRESSURE_FALSIFIED_CRITICAL_SEMANTIC_FAILURE",
+  "counts_from_log": {
+    "PASS": 120,
+    "ROBUSTNESS_LIMIT": 27,
+    "INTERFACE_GAP": 2,
+    "CRITICAL_FAIL": 1,
+    "NOT_RUN": 1
+  },
+  "artifact_upload": "failure",
+  "reason": "GitHub upload-artifact rejects colon in native passage filenames",
+  "raw_first_hosted_artifact": "UNAVAILABLE_UPLOAD_FAILED",
+  "log_sha256": "9e5283363d88320922bb9fbd86ba828337d6279a4b861fcbe2e42f645b91b17d",
+  "classified_before_correction_at_utc": "2026-10-02T16:07:14.212160+00:00",
+  "correction_scope": "Archive receipts to retain native names; no scientific input/oracle/runtime change"
+}

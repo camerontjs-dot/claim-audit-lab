@@ -58,5 +58,11 @@
     "phase": "protocol lint",
     "classification": "NONBLOCKING_NOTE",
     "detail": "Protocol is a research procedure, not an adopted operating contract; contract-lint returned a nonblocking normative-clause note."
+  },
+  {
+    "id": "D11",
+    "phase": "hosted first execution upload",
+    "classification": "APPARATUS_RECEIPT_TRANSPORT_FAILURE",
+    "detail": "Run37031290256 scientific step completed and logged same critical disposition/counts. Native colon filenames rejected by upload-artifact. Original complete artifact unavailable; log frozen before apparatus-only tar packaging successor2."
   }
 ]
