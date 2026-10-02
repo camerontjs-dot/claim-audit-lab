@@ -1,0 +1,34 @@
+{
+  "schema": "cal188-first-attempt-apparatus-failure-v1",
+  "classification": "APPARATUS_INVALID",
+  "disposition": "PRESSURE_INCONCLUSIVE_APPARATUS_INVALID",
+  "failure": "ModuleNotFoundError: rank_bm25 importing unchanged historical EB fixture producer",
+  "phase": "historical module import before case loop",
+  "semantic_calls": 0,
+  "real_claim_calls": 0,
+  "subject_repaired": false,
+  "expected_invariants_changed": false,
+  "harness_freeze_sha256": "6bea1438ab1175386c8de4dd57011d08bee33ccb2141f3fe2a585f26d4250a58",
+  "log_sha256": "f12681e855aacb2d304b01807aad1472b44b1225ebf10ba8fd7c16f2130f8ae1",
+  "input_tree": {
+    "run_pressure.py": "77168689d89a838d5d621635c8ed2fc1a980f6521a0826ebfd30c02c42ba1c7c",
+    "SOURCE_CUSTODY.json": "a55c06c75f6ae04ddc9f06a591e4d82912e7375dda08d41037a2564ded0d2346",
+    "COHORT.json": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+    "COHORT_FREEZE.json": "140a859f7e8688cc38400f6d661b59e619c40407b5000dae82fa4e6bcc21fffe",
+    "SUBJECT_PACKAGE_CUSTODY.json": "a2b7b58e570b06403bd3f68cda2582c9bd05224a0e68ef2f5e2ea5bec1e08e93",
+    "HARNESS_FREEZE.json": "6bea1438ab1175386c8de4dd57011d08bee33ccb2141f3fe2a585f26d4250a58",
+    "build_matrix.py": "18e6e045a4990d2465e3e897b8ab18bd23e8566f14f81176d38d0aa99e9d36c9",
+    "DEPENDENCIES.txt": "d3c3c6c262383b2f7fdd98579ae85c9976c27b99eac7ab7fc0be063bf7a7cee4",
+    "TASK_AUTHORITY.json": "cee85ef7293342e2ffff2c6ec6421b81a598550cd1ec89c57242ed652f25037b",
+    "build_source_custody.py": "1e4350e3974c553fbb888e881700289763c9ed7f87777a2ac32715e392f8a3cb",
+    "MATRIX.json": "4da3bfedf9d55ef1ddb52b34b65fb306e7d6f30cff69e92ae58456864bb1bd68",
+    "EXPERIMENT.json": "5e6ddde63cf50f4b58a6dcf8cef3cea2f859a45560e5281fbbb90fd375446480",
+    "historical_182.py": "c64cbe9173cb617d1f1cb13ae66b33ebfce674190f9ddc91a5367b68ebd6ab58",
+    "PROTOCOL.md": "3f94cfcd31dd12f234fe9f4b3a9f8c85fceb3b91bf3bed0ef38a3f86d660012f"
+  },
+  "observed_outputs": {
+    "INSPECT.json": "858003492dcc10e4807034f11a9b2ac485fa34a7eae6e0c530bd6b18fc3fb8a3"
+  },
+  "classified_before_correction_at_utc": "2026-10-02T15:47:24.687654+00:00",
+  "successor_allowed": "dependency completion only, preserve original frozen scientific inputs/logic and new environment identity"
+}

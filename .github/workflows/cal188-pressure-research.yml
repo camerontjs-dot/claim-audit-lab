@@ -25,6 +25,7 @@ jobs:
           git -C "$RUNNER_TEMP/cal188/eb" checkout --detach 4e1f6fe00e7c350b28f52bfea14f1f8988847884
           python -m venv "$RUNNER_TEMP/cal188/source-env"
           "$RUNNER_TEMP/cal188/source-env/bin/pip" install -r "$APP/DEPENDENCIES.txt"
+          "$RUNNER_TEMP/cal188/source-env/bin/pip" install -r "$APP/apparatus_successor_1/DEPENDENCIES-extra.txt"
           "$RUNNER_TEMP/cal188/source-env/bin/python" -m build --no-isolation --outdir "$RUNNER_TEMP/cal188/dist" "$RUNNER_TEMP/cal188/subject"
           python -m venv "$RUNNER_TEMP/cal188/wheel-env"
           "$RUNNER_TEMP/cal188/wheel-env/bin/pip" install "$RUNNER_TEMP/cal188/dist/claim_audit_lab-0.6.0-py3-none-any.whl"
