@@ -1,0 +1,1474 @@
+[
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-missing/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-missing/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-extra-semantic/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-extra-semantic/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unsupported-direction/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unsupported-direction/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-claim-hash/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e006fbdacd4fdce2181d373a42e4d25fe5b2bf2b1bb49707cc3074833ee7a9f7",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-claim-hash/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "2e7a392ed4d0f8f11b6a22fb5b8933c591a1780c0b5f1ac10b16ff5a1b35486e",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-claim-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d9aecfe270370315750998a2656d30ea32a6aab469549f6ede9aa6c1eb664cc3",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-claim-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c3a8c7bab8bcc5e54874969dfe17aa281e5b3ca035e76e06a3e8aed0addbcef4",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-proposition-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d9aecfe270370315750998a2656d30ea32a6aab469549f6ede9aa6c1eb664cc3",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-proposition-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c3a8c7bab8bcc5e54874969dfe17aa281e5b3ca035e76e06a3e8aed0addbcef4",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-orientation/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-orientation/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-inversion/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-inversion/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-family-substitution/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-family-substitution/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "eda3ec9092d48c8f58f6deed5f2db867bb902e0e3296fbb059bd7f0d1f637e4d",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-duplicate-keys/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4c672ad007c9f3a34284e5bc8f5decc17f3985f2cfcfc853ce375ca79f2a5541",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-duplicate-keys/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "3e1be0b018415b3abae6de28cd665eb70757ec6ab60ee56fad9ca6bb5dca0206",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-malformed-json/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c0d5468087d7bfb94875d821a2862b2b6218bee15669bbc512ee7c2c9bb37288",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-malformed-json/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "5402600c771bba1cf8658fe95d2d64af39975defc7b54bae1e849da436459719",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-invalid-utf8/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "7114ae4fa9bab522d5cc7d314876019f74f11d00f0ae3dc233a1da54673c8fbf",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-invalid-utf8/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "0415eaed2f51b6a369b99d4c9b51a4dd951a29e57356c467e989940e76c7fec6",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unknown-top/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "cb4c7c7a334d9e1bd254f8e7c1c497523c945daaffcae6c33e006288be29c919",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unknown-top/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "a326de51e689ef9eb6c6888c8c51ceb04c59b690af22fc85e586b982da5f7e0e",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unknown-nested/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "1ea5cbdb65c6b6da4feb91bce081ef33e8ff38a04b4704b480a908ea8c56183b",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-unknown-nested/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "34e390981991a8a6fbe8dc953856264f5ce3b1758de8b6e623e194aae7d0c5b9",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-whitespace-field/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-whitespace-field/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-punctuation-field/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-punctuation-field/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-confusable/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-confusable/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-long-field/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-long-field/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-format-only/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-format-only/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "c6a175fe6ba0f8e8ca39653f81da014bc368cb03852fa2acbaa243fab0c8084f",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "supported-run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-format-only/target.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-format-only/supported-workflow-output"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "3971c382cffcf0645eb7f34af2bb28086f27f7ac147f218bc8363058a7f719d4",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "raw-run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/target.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-strict_comparison-raw-bypass/raw-output"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "b7f821ecff64370f437d1afc0f885618b0c996846581a318e5f3a54aa4363bee",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-missing/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-missing/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-extra-semantic/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-extra-semantic/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unsupported-direction/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unsupported-direction/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-claim-hash/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e006fbdacd4fdce2181d373a42e4d25fe5b2bf2b1bb49707cc3074833ee7a9f7",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-claim-hash/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "2e7a392ed4d0f8f11b6a22fb5b8933c591a1780c0b5f1ac10b16ff5a1b35486e",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-claim-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d9aecfe270370315750998a2656d30ea32a6aab469549f6ede9aa6c1eb664cc3",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-claim-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c3a8c7bab8bcc5e54874969dfe17aa281e5b3ca035e76e06a3e8aed0addbcef4",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-proposition-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d9aecfe270370315750998a2656d30ea32a6aab469549f6ede9aa6c1eb664cc3",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-proposition-id/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "c3a8c7bab8bcc5e54874969dfe17aa281e5b3ca035e76e06a3e8aed0addbcef4",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-orientation/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-orientation/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-inversion/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-inversion/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-family-substitution/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-family-substitution/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "eda3ec9092d48c8f58f6deed5f2db867bb902e0e3296fbb059bd7f0d1f637e4d",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-duplicate-keys/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "4c672ad007c9f3a34284e5bc8f5decc17f3985f2cfcfc853ce375ca79f2a5541",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-duplicate-keys/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "3e1be0b018415b3abae6de28cd665eb70757ec6ab60ee56fad9ca6bb5dca0206",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-malformed-json/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e9b7bc23f82c38fce04e803be8092ac59f678df030547cebe88ebc05db166f1c",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-malformed-json/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "13feb03651114a6b042cfce2a3497971a2302b192d886a936a273c7824dff150",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-invalid-utf8/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "7114ae4fa9bab522d5cc7d314876019f74f11d00f0ae3dc233a1da54673c8fbf",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-invalid-utf8/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "0415eaed2f51b6a369b99d4c9b51a4dd951a29e57356c467e989940e76c7fec6",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unknown-top/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "cb4c7c7a334d9e1bd254f8e7c1c497523c945daaffcae6c33e006288be29c919",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unknown-top/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "a326de51e689ef9eb6c6888c8c51ceb04c59b690af22fc85e586b982da5f7e0e",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unknown-nested/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "1ea5cbdb65c6b6da4feb91bce081ef33e8ff38a04b4704b480a908ea8c56183b",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-unknown-nested/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "34e390981991a8a6fbe8dc953856264f5ce3b1758de8b6e623e194aae7d0c5b9",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-whitespace-field/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-whitespace-field/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-punctuation-field/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-punctuation-field/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-confusable/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-confusable/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-long-field/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-long-field/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-format-only/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-format-only/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "881fccbc111c7c35638597104540667f6394ba7e22db1326757cdad4538e3261",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "supported-run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-format-only/target.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-format-only/supported-workflow-output"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "ca6b3af8ffd1d56a20b86e9c51d64ab07cbaea2901b1d8fb94befb00b2db8f37",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "validate",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "validate-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/target.json"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "de545cc7e7ff8eaacefae8fcb4a954555a1224f24fe7ce8ff62b9874c54f3fe2",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "conform",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.target_cli",
+      "conform",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/target.json"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f05bfc2758837065020dd8d4e75b61b388dfd32c6cd3de8a644fd0561ab8b6a5",
+    "pythonpath_present": true
+  },
+  {
+    "label": "raw-run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/direct_event_order/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/target.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/A-direct_event_order-raw-bypass/raw-output"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "3904ffa87756b67a5000b487e0314706ac69fc001e1d77d33f0c644c7a4baa29",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "a",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-replay/a"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "87bc2b78db0e95e4cffc24a109622331e981513f0d217f98347e142e14aa4de0",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "b",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-replay/b"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "34429fa1d0852f2bba980fe770b09db4a5ea91c1569f79e6735d2a5b95bdc177",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "a",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-source-wheel/a"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "14312a68381163236d3869ba6efc7dd93c870237ab5c3c9513e7e3aac4b62071",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "b",
+    "argv": [
+      "$CUSTODY_ROOT/wheel-env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-source-wheel/b"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "9e148b41ab9543147775f4eb939f408ce9e49bf3178134e42bc8f352c0adb40f",
+    "stderr_sha256": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+    "pythonpath_present": false
+  },
+  {
+    "label": "a",
+    "argv": [
+      "$CUSTODY_ROOT/wheel-env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-wheel-sdist/a"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "e3baa1335f27b3f38535866e96f8774e950f7936e49c0a13435c8958e1d6b8fb",
+    "stderr_sha256": "d42ec97e73c3e88a9856802de9388592cf28a6779c76107e6dbe32523fe51c4a",
+    "pythonpath_present": false
+  },
+  {
+    "label": "b",
+    "argv": [
+      "$CUSTODY_ROOT/sdist-env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-wheel-sdist/b"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "57894f5b113f2d1b682b9a2df2f2a7df0811b3acccc5d19731839aaae194f7dc",
+    "stderr_sha256": "63d1a00501ca12d80746f94554aa469acb6e67d4697d9db10587286393c7e996",
+    "pythonpath_present": false
+  },
+  {
+    "label": "run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-overwrite/dest"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "bc1ff399dcfcb418eed7a9ca1917ff07462cdd0fd0f2c8d6d12bdefc126b2e60",
+    "pythonpath_present": true
+  },
+  {
+    "label": "run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-file/dest"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "d2c53a0b1b76eadfc2e9fe1947dc6cdd6fa818d43e48b3198e5a50fd040b30d8",
+    "pythonpath_present": true
+  },
+  {
+    "label": "run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-symlink/dest"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "14fa56eaa42ea80df16be2ac90a27039a36312978eebe43657b4c34aa90229e1",
+    "pythonpath_present": true
+  },
+  {
+    "label": "run",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-dangling-symlink/dest"
+    ],
+    "returncode": 2,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "99cb07b7af7805f3c1da273df56022a4eb5815c8f4b0649cf686cad50f70896a",
+    "pythonpath_present": true
+  },
+  {
+    "label": "a",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-environment/a"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "ea9ea8a2dcbe0faa178fc0e93edf5e71b4892e057ef7e5345f2617b34a96f829",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  },
+  {
+    "label": "b",
+    "argv": [
+      "$CUSTODY_ROOT/env/bin/python",
+      "-m",
+      "claim_audit_lab.production_v1.bundle_cli",
+      "run-bundle",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/contract_b",
+      "$CUSTODY_ROOT/successor-1-run/bases/strict_comparison/authored.json",
+      "--out-dir",
+      "$CUSTODY_ROOT/successor-1-run/cases/E-environment/b"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "634f994c1cb476b6e0c9fb5850c9cd2f15fdc2fee7436b8ab7601ff2c9a90fd0",
+    "stderr_sha256": "7e950d259178a2aa89808e154c0aca3fa2f9440c3c053e94520cb916c3650e89",
+    "pythonpath_present": true
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "schema": "cal188-apparatus-successor-freeze-v1",
+  "identity": "apparatus_successor_2",
+  "frozen_at_utc": "2026-10-02T16:08:06.825728+00:00",
+  "original_harness_freeze_sha256": "6bea1438ab1175386c8de4dd57011d08bee33ccb2141f3fe2a585f26d4250a58",
+  "apparatus_successor_1_sha256": "0637798d09f1f98f186e6d13b85429ac8ac93eeef80ceb7c7bbcd54215af4031",
+  "files": {
+    "ORIGINAL_HOSTED_FAILURE.json": "20efdf1f8f6315630e9eeaf314d3e36f39a8ab03f44b47663ab115128b1e65ca"
+  },
+  "previous_workflow_sha256": "204d00b4f6547a5aaa0aefe774943e881d024b6a0a6037824536364a767e67df",
+  "successor_workflow_sha256": "78e523a5190862290e4b64091f0ce145b5ea286a79a3bd050e8b89431eb6154a",
+  "change": "Package native receipt paths in tar.gz for GitHub upload only. No scientific code, matrix, expectations, source, claim, target, subject, or first result changed. Replay is the same stopped frozen experiment, not resumption of NOT_RUN cases."
+}

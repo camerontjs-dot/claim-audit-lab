@@ -1,0 +1,986 @@
+{
+  "contract_b_lock": "c314e53bd91c0736aa4370a364673b069aceb43e",
+  "counts": {
+    "INTERFACE_GAP": 6,
+    "OBSERVATION": 1,
+    "PASS": 47,
+    "ROBUSTNESS_LIMIT": 7
+  },
+  "evidence_bundler_head": "4e1f6fe00e7c350b28f52bfea14f1f8988847884",
+  "results": [
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "CMP-01-exact-support",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "contradicted",
+        "failure_code": null,
+        "relations": [
+          "REFUTES"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "contradicted",
+        "failure_code": null,
+        "relations": [
+          "REFUTES"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "CMP-02-exact-refute",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "CMP-03-swapped-inverse-support",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "not_checkable",
+        "failure_code": "MIXED_RELATIONS",
+        "relations": [
+          "REFUTES",
+          "SUPPORTS"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MIXED_RELATIONS",
+        "relations": [
+          "REFUTES",
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null,
+          null
+        ]
+      },
+      "probe_id": "CMP-04-mixed-relations",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+        "relations": []
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_NOT_APPLICABLE"
+        ]
+      },
+      "probe_id": "CMP-05-unrelated-only",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "EVT-01-exact-support",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "contradicted",
+        "failure_code": null,
+        "relations": [
+          "REFUTES"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "contradicted",
+        "failure_code": null,
+        "relations": [
+          "REFUTES"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "EVT-02-exact-refute",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "EVT-03-swapped-inverse-support",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "not_checkable",
+        "failure_code": "MIXED_RELATIONS",
+        "relations": [
+          "REFUTES",
+          "SUPPORTS"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MIXED_RELATIONS",
+        "relations": [
+          "REFUTES",
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null,
+          null
+        ]
+      },
+      "probe_id": "EVT-04-mixed-relations",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "not_checkable",
+        "failure_code": "RELATION_UNRESOLVED",
+        "relations": [
+          "SUPPORTS",
+          "UNRESOLVED"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "RELATION_UNRESOLVED",
+        "relations": [
+          "SUPPORTS",
+          "UNRESOLVED"
+        ],
+        "trace_failures": [
+          null,
+          null
+        ]
+      },
+      "probe_id": "EVT-05-negative-unresolved-precedence",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "not_checkable",
+        "failure_code": "UNSUPPORTED_SEMANTIC_FAMILY"
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "UNSUPPORTED_SEMANTIC_FAMILY",
+        "relations": [],
+        "trace_failures": [
+          "UNSUPPORTED_SEMANTIC_FAMILY"
+        ]
+      },
+      "probe_id": "SEM-01-unsupported-family",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "AuthorityRefusal",
+      "kind": "critical",
+      "observed": {
+        "code": "SEMANTIC_AUTHORITY_UNRESOLVED",
+        "detail": "stale or foreign measurement context"
+      },
+      "probe_id": "AUTH-01-foreign-measurement-context",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "AuthorityRefusal",
+      "kind": "critical",
+      "observed": {
+        "code": "SEMANTIC_AUTHORITY_UNRESOLVED",
+        "detail": "measurement receipt identity mismatch"
+      },
+      "probe_id": "AUTH-02-forged-instrument-id",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "RelationRefusal",
+      "kind": "critical",
+      "observed": {
+        "code": "SEMANTIC_AUTHORITY_UNRESOLVED",
+        "detail": "semantic authority identity mismatch"
+      },
+      "probe_id": "AUTH-03-forged-authority-id",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-higher",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-greater",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-larger",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-exceeded",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-swapped-lower",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-uppercase-cue",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-post-noun-cue",
+      "status": "PASS"
+    },
+    {
+      "detail": "Equivalent phrasing fell outside the bounded grammar.",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_MISS"
+        ]
+      },
+      "probe_id": "ROB-CMP-plural-measure",
+      "status": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "detail": "Equivalent phrasing fell outside the bounded grammar.",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_MISS"
+        ]
+      },
+      "probe_id": "ROB-CMP-lowercase-entities",
+      "status": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "detail": "Equivalent phrasing fell outside the bounded grammar.",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_MISS"
+        ]
+      },
+      "probe_id": "ROB-CMP-article-right",
+      "status": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "detail": "Equivalent phrasing fell outside the bounded grammar.",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_MISS"
+        ]
+      },
+      "probe_id": "ROB-CMP-temporal-tail",
+      "status": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "detail": "Scope/reporting/negative surfaces must not become support/refute.",
+      "expected": "not_checkable",
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "NO_DECIDING_RELATION",
+        "relations": [
+          "IRRELEVANT"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-CMP-reporting-prefix",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-EVT-exact",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "relations": [
+          "SUPPORTS"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-EVT-swapped-after",
+      "status": "PASS"
+    },
+    {
+      "detail": "Equivalent phrasing fell outside the bounded grammar.",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "NO_DECIDING_RELATION",
+        "relations": [
+          "IRRELEVANT"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-EVT-article-objects",
+      "status": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "detail": "Equivalent phrasing fell outside the bounded grammar.",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_MISS"
+        ]
+      },
+      "probe_id": "ROB-EVT-lowercase-actors",
+      "status": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "detail": "Equivalent phrasing fell outside the bounded grammar.",
+      "expected": "supported",
+      "kind": "robustness",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_MISS"
+        ]
+      },
+      "probe_id": "ROB-EVT-comma-cue",
+      "status": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "detail": "Scope/reporting/negative surfaces must not become support/refute.",
+      "expected": "not_checkable",
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "MEASUREMENT_MISS",
+        "relations": [],
+        "trace_failures": [
+          "MEASUREMENT_MISS"
+        ]
+      },
+      "probe_id": "ROB-EVT-reporting-prefix",
+      "status": "PASS"
+    },
+    {
+      "detail": "Scope/reporting/negative surfaces must not become support/refute.",
+      "expected": "not_checkable",
+      "kind": "critical",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "RELATION_UNRESOLVED",
+        "relations": [
+          "UNRESOLVED"
+        ],
+        "trace_failures": [
+          null
+        ]
+      },
+      "probe_id": "ROB-EVT-negative",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "record elapsed seconds",
+      "kind": "observation",
+      "observed": {
+        "audits_per_second": 56.08,
+        "seconds": 8.915286
+      },
+      "probe_id": "OBS-01-direct-throughput-500",
+      "status": "OBSERVATION"
+    },
+    {
+      "detail": "",
+      "expected": "4e1f6fe00e7c350b28f52bfea14f1f8988847884",
+      "kind": "critical",
+      "observed": "4e1f6fe00e7c350b28f52bfea14f1f8988847884",
+      "probe_id": "XREPO-01-exact-eb-head",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "c314e53bd91c0736aa4370a364673b069aceb43e",
+      "kind": "critical",
+      "observed": "c314e53bd91c0736aa4370a364673b069aceb43e",
+      "probe_id": "XREPO-02-contract-b-lock",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "automatic_action_allowed": false,
+        "distribution_version": "0.6.0",
+        "families": [
+          "strict_comparison",
+          "direct_event_order"
+        ]
+      },
+      "kind": "critical",
+      "observed": {
+        "record": {
+          "authorization": {
+            "automatic_action_allowed": false
+          },
+          "compatibility_packet_surface": {
+            "command": "run",
+            "state": "preserved_noncanonical_input"
+          },
+          "contract_b": {
+            "canonical_execution_surface": "run-bundle",
+            "compatibility": "released_input_authority",
+            "intake": "load_contract_b_intake",
+            "version": "1.2.0"
+          },
+          "contract_c_handoff": {
+            "owner": "apparatus-contracts",
+            "state": "separate_compose_only_versioned_handoff"
+          },
+          "distribution_version": "0.6.0",
+          "manifest_schema_sha256": "sha256:73cb72121d287a5aeb635e96699bf53fe5476d3b2154d9b8d62a1bad44706460",
+          "packet_schema_sha256": "sha256:d33b52364544d623e182434d09b1ace549fbed02e7ec8e5f1a48e9288d9da1a0",
+          "profile": "cal-v1-integration-candidate-v1",
+          "qualified_rc1_parent_sha": "a902621e8baea3063dddd7f92ba975aade305464",
+          "result_schema_sha256": "sha256:154cca661b4b48e2595658b49090adc9da8bd513902604ee76de8bafddae6ca2",
+          "semantic_implementation_sha": "847cc970642bb648dc994b929c2053b5c9d4648c",
+          "supported_semantic_families": [
+            "strict_comparison",
+            "direct_event_order"
+          ],
+          "target_schema_sha256": "sha256:875f0a320699743befd3f61ea41b8f9ef86a520ac7edd4ef07b502b0d3a93798"
+        },
+        "returncode": 0
+      },
+      "probe_id": "CLI-01-inspect-authority",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "supported",
+        "input_mode": "contract_b_bundle",
+        "relation": "SUPPORTS"
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "input_mode": "contract_b_bundle",
+        "relations": [
+          "SUPPORTS"
+        ],
+        "run_rc": 0,
+        "run_stderr": "$CUSTODY_ROOT/subject-export/src/claim_audit_lab/contracts/factual_context.py:121: UserWarning: Field name \"schema\" in \"ContractBFactualContext\" shadows an attribute in parent \"_Strict\"\n  class ContractBFactualContext(_Strict):",
+        "validate_rc": 0,
+        "validate_stdout": "VALID"
+      },
+      "probe_id": "CLI-02-real-support",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": {
+        "conclusion": "contradicted",
+        "input_mode": "contract_b_bundle",
+        "relation": "REFUTES"
+      },
+      "kind": "critical",
+      "observed": {
+        "conclusion": "contradicted",
+        "failure_code": null,
+        "input_mode": "contract_b_bundle",
+        "relations": [
+          "REFUTES"
+        ],
+        "run_rc": 0,
+        "run_stderr": "$CUSTODY_ROOT/subject-export/src/claim_audit_lab/contracts/factual_context.py:121: UserWarning: Field name \"schema\" in \"ContractBFactualContext\" shadows an attribute in parent \"_Strict\"\n  class ContractBFactualContext(_Strict):",
+        "validate_rc": 0,
+        "validate_stdout": "VALID"
+      },
+      "probe_id": "CLI-02-real-refute",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "byte-identical directories",
+      "kind": "critical",
+      "observed": {
+        "equal": true,
+        "rc_a": 0,
+        "rc_b": 0
+      },
+      "probe_id": "DET-01-byte-replay",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "byte-identical directories",
+      "kind": "critical",
+      "observed": {
+        "equal": true,
+        "source_rc": 0,
+        "wheel_rc": 0
+      },
+      "probe_id": "DET-02-source-wheel-equivalence",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "same semantic context/conclusion; different exact input hash",
+      "kind": "critical",
+      "observed": {
+        "canonical_conclusion": "supported",
+        "canonical_context": "baf48461198aea3a77f70a1f6fb21ffd16bfa813588c78f9649c83f578168409",
+        "pretty_conclusion": "supported",
+        "pretty_context": "baf48461198aea3a77f70a1f6fb21ffd16bfa813588c78f9649c83f578168409",
+        "primary_input_hash_equal": false
+      },
+      "probe_id": "DET-03-target-format-metamorphism",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "all emitted artifact hashes match",
+      "kind": "critical",
+      "observed": [],
+      "probe_id": "ART-01-manifest-hashes",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": 2,
+      "probe_id": "TGT-01-text-hash-mismatch",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": 2,
+      "probe_id": "TGT-02-proposition-id-mismatch",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": 2,
+      "probe_id": "TGT-03-unknown-family",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": 2,
+      "probe_id": "TGT-04-duplicate-json-key",
+      "status": "PASS"
+    },
+    {
+      "detail": "Execution fails closed, but validation accepted the malformed semantic target.",
+      "expected": "validate-bundle rejects semantically malformed active-family fields",
+      "kind": "interface",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "PROPOSITION_BINDING_FAILED",
+        "run_rc": 0,
+        "validate_rc": 0
+      },
+      "probe_id": "IFACE-missing-fields",
+      "status": "INTERFACE_GAP"
+    },
+    {
+      "detail": "Execution fails closed, but validation accepted the malformed semantic target.",
+      "expected": "validate-bundle rejects semantically malformed active-family fields",
+      "kind": "interface",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "PROPOSITION_BINDING_FAILED",
+        "run_rc": 0,
+        "validate_rc": 0
+      },
+      "probe_id": "IFACE-bad-direction",
+      "status": "INTERFACE_GAP"
+    },
+    {
+      "detail": "The engine followed the typed proposition and produced a terminal verdict. This is safe only if target compilation is independently trusted.",
+      "expected": "validator detects typed-target semantics that disagree with or exceed exact claim text",
+      "kind": "interface",
+      "observed": {
+        "conclusion": "supported",
+        "failure_code": null,
+        "proposition_fields": {
+          "comparison_direction": "MORE_THAN",
+          "lhs_entity": "Alpha",
+          "rhs_entity": "Beta",
+          "time_scope": "2025"
+        },
+        "run_rc": 0,
+        "validate_rc": 0
+      },
+      "probe_id": "IFACE-target-drift-extra-semantic-field",
+      "status": "INTERFACE_GAP"
+    },
+    {
+      "detail": "The engine followed the typed proposition and produced a terminal verdict. This is safe only if target compilation is independently trusted.",
+      "expected": "validator detects typed-target semantics that disagree with or exceed exact claim text",
+      "kind": "interface",
+      "observed": {
+        "conclusion": "contradicted",
+        "failure_code": null,
+        "proposition_fields": {
+          "comparison_direction": "LESS_THAN",
+          "lhs_entity": "Alpha",
+          "rhs_entity": "Beta"
+        },
+        "run_rc": 0,
+        "validate_rc": 0
+      },
+      "probe_id": "IFACE-target-drift-direction-disagrees-with-claim",
+      "status": "INTERFACE_GAP"
+    },
+    {
+      "detail": "The engine followed the typed proposition and produced a terminal verdict. This is safe only if target compilation is independently trusted.",
+      "expected": "validator detects typed-target semantics that disagree with or exceed exact claim text",
+      "kind": "interface",
+      "observed": {
+        "conclusion": "contradicted",
+        "failure_code": null,
+        "proposition_fields": {
+          "comparison_direction": "MORE_THAN",
+          "lhs_entity": "Beta",
+          "rhs_entity": "Alpha"
+        },
+        "run_rc": 0,
+        "validate_rc": 0
+      },
+      "probe_id": "IFACE-target-drift-entities-disagree-with-claim",
+      "status": "INTERFACE_GAP"
+    },
+    {
+      "detail": "Execution fails closed, but validate-bundle accepts an inactive family.",
+      "expected": "validate-bundle rejects families outside inspect.supported_semantic_families",
+      "kind": "interface",
+      "observed": {
+        "conclusion": "not_checkable",
+        "failure_code": "UNSUPPORTED_SEMANTIC_FAMILY",
+        "run_rc": 0,
+        "validate_rc": 0
+      },
+      "probe_id": "IFACE-inactive-family-validation",
+      "status": "INTERFACE_GAP"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": 2,
+      "probe_id": "BND-01-passage-byte-mutation",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": 2,
+      "probe_id": "BND-02-missing-contract-version",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": 2,
+      "probe_id": "BND-03-sha-path-traversal",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject without mutation",
+      "kind": "critical",
+      "observed": {
+        "returncode": 2,
+        "sentinel": "keep"
+      },
+      "probe_id": "OUT-01-nonempty-refusal",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject without mutation",
+      "kind": "critical",
+      "observed": {
+        "content": "keep",
+        "returncode": 2
+      },
+      "probe_id": "OUT-02-file-path-refusal",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "reject",
+      "kind": "critical",
+      "observed": {
+        "real_dir_files": [],
+        "returncode": 2
+      },
+      "probe_id": "OUT-03-symlink-refusal",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "both succeed with identical bytes",
+      "kind": "critical",
+      "observed": {
+        "equal": true,
+        "rc_a": 0,
+        "rc_b": 0
+      },
+      "probe_id": "CONC-01-distinct-output",
+      "status": "PASS"
+    },
+    {
+      "detail": "",
+      "expected": "exactly one writer; valid final output; no temp leftovers",
+      "kind": "critical",
+      "observed": {
+        "returncodes": [
+          2,
+          0
+        ],
+        "temp_leftovers": [],
+        "valid_output": true
+      },
+      "probe_id": "CONC-02-same-output-contention",
+      "status": "PASS"
+    }
+  ],
+  "schema": "cal-v1-slice1-pressure-results-v1",
+  "subject_commit": "61cab64149cb6119e4dbe1fe18496f3ccf89002f"
+}

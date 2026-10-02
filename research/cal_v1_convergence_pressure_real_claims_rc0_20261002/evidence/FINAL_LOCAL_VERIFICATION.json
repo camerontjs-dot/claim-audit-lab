@@ -1,0 +1,11 @@
+{
+  "subject_bytes_unchanged": true,
+  "all_frozen_apparatus_hashes_unchanged": true,
+  "all_preregistered_cases_accounted_for": 151,
+  "critical_falsifiers": 1,
+  "real_authoring_attempts": 20,
+  "real_semantic_executions": 0,
+  "human_gold": false,
+  "release_progression": "STOPPED",
+  "source_raw_hashes_rechecked": 12
+}

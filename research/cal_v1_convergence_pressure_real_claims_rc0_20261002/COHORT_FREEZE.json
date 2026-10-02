@@ -1,0 +1,12 @@
+{
+  "schema": "cal188-cohort-freeze-v1",
+  "frozen_at_utc": "2026-10-02T15:22:33.760094+00:00",
+  "files": {
+    "COHORT.json": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+    "SOURCE_CUSTODY.json": "a55c06c75f6ae04ddc9f06a591e4d82912e7375dda08d41037a2564ded0d2346",
+    "build_source_custody.py": "1e4350e3974c553fbb888e881700289763c9ed7f87777a2ac32715e392f8a3cb"
+  },
+  "cal_calls": 0,
+  "case_count": 20,
+  "all_pool_dispositions_recorded": true
+}

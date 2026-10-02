@@ -1,0 +1,52 @@
+{
+  "transforms": [
+    {
+      "file": "RESULTS.portable.json",
+      "raw_original_sha256": "4a956b903254dc87397a211feb16dcfe9c6c2a99942092e144cdd32006bb6749",
+      "public_derivative_sha256": "8554904e8f1d9a17b839faa96f445db4112629b2d0b75f7edca16f119a32b28b",
+      "normalization": "replace local command/output path prefixes with named portable anchors; semantic values and hashes unchanged"
+    },
+    {
+      "file": "HISTORICAL182_RESULTS.portable.json",
+      "raw_original_sha256": "9683241cbe46308d63d2d3c10e80eb149da3eeaa49f8ebc4b5ac7014479d9635",
+      "public_derivative_sha256": "e909d66e616c2760cb768aeef458527e41f8abf9c4928ea746ccd3ec87b023dc",
+      "normalization": "replace local command/output path prefixes with named portable anchors; semantic values and hashes unchanged"
+    },
+    {
+      "file": "COMMANDS.portable.json",
+      "raw_original_sha256": "f0b58c3c496d42aad2ce29b17d4482770ab2e66576a337ec8f86345148fcf920",
+      "public_derivative_sha256": "e17d03387f190ed076b07bf6e135d813dd8386aaeecd3179e157b4bc033ce9a8",
+      "normalization": "replace local command/output path prefixes with named portable anchors; semantic values and hashes unchanged"
+    },
+    {
+      "file": "ARTIFACT_INDEX.json",
+      "raw_original_sha256": "4c9013402cdc086d7ccb57f0d122ced05e0f028a9e7e345c1d0265ae0231cb85",
+      "public_derivative_sha256": "4c9013402cdc086d7ccb57f0d122ced05e0f028a9e7e345c1d0265ae0231cb85",
+      "normalization": "replace local command/output path prefixes with named portable anchors; semantic values and hashes unchanged"
+    },
+    {
+      "file": "FIRST_MEANINGFUL_NEGATIVE.portable.json",
+      "raw_original_sha256": "beca6c90a38f802bc067907f42227c57fa375269981f38ef3a3625eec5513121",
+      "public_derivative_sha256": "beca6c90a38f802bc067907f42227c57fa375269981f38ef3a3625eec5513121",
+      "normalization": "replace local command/output path prefixes with named portable anchors; semantic values and hashes unchanged"
+    },
+    {
+      "file": "RELEASE_PROGRESSION_STOP.portable.json",
+      "raw_original_sha256": "acd80d83ba42fe3dac276b4a3760e949f6bd1c0088a67d2f7384435d80999f1a",
+      "public_derivative_sha256": "acd80d83ba42fe3dac276b4a3760e949f6bd1c0088a67d2f7384435d80999f1a",
+      "normalization": "replace local command/output path prefixes with named portable anchors; semantic values and hashes unchanged"
+    }
+  ],
+  "exact_counterexample_files": {
+    "EXPECTED.json": "35b678b1cc05190a7296d59c73c5a314df60ee499af7f5a5bc5453ffe246cf3f",
+    "FILE_HASHES.json": "1d7a1f5128d8c8e99c4a1d6ab322c3f4a7147d5cbc677b6c866c3d3402d37a6c",
+    "CONTEXT.json": "7b698a14692f4036743ebf17fe360d53ec89d07adda85c044b41796ce9ca3292",
+    "OBSERVED.json": "50b52d5083e2fb7aeaab06d784b5e3fce90f49e4971bfd07e806e99a420bc7ca"
+  },
+  "raw_evidence_preserved": true,
+  "portable_prefixes": [
+    "$CUSTODY_ROOT",
+    "$APPARATUS_ROOT",
+    "$WORKSPACE_ROOT"
+  ]
+}

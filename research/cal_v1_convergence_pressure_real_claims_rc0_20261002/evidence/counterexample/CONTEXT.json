@@ -1,0 +1,39 @@
+{
+  "original_claim": "Alpha had a higher rate than Beta.",
+  "proposition": {
+    "proposition_id": "C1",
+    "text_sha256": "e6f2ac2792789b8430ea3468071801712f25b7386f7641b415f859fd7aea9601",
+    "semantic_family": "strict_comparison",
+    "fields": [
+      [
+        "comparison_direction",
+        "MORE_THAN"
+      ],
+      [
+        "lhs_entity",
+        "Alpha"
+      ],
+      [
+        "rhs_entity",
+        "Beta"
+      ]
+    ]
+  },
+  "evidence_world": {
+    "contract_b_version": "1.2.0",
+    "bundle_id": "cal188-world",
+    "bundle_hash": "sha256:3a02b3be14278ec51651c99dde481d1adab6bfebf69aa0f98dfaf8ec3116a699",
+    "admitted_passages": [
+      {
+        "passage_id": "p0",
+        "source_id": "s0",
+        "text": "Alpha did not have a higher rate than Beta.",
+        "text_sha256": "sha256:3b5c70c99b2bcea9e3a3b422ce58c61147ec7563588a83b622c19a267e49b3f6",
+        "source_sha256": "sha256:c212b3ffca5edfa74e06c2840b8186018ed11c3ff7adc5b3810527fe4feffa31"
+      }
+    ],
+    "aperture_observation_json": "{\"contract_b_factual_context_state\":\"present\",\"observation\":{\"scope\":\"pressure\"}}",
+    "root_id": null,
+    "child_id": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "cal188-complete-harness-freeze-v1",
+  "frozen_at_utc": "2026-10-02T15:44:43.762619+00:00",
+  "subject_commit": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "subject_tree": "6b09583c86800118862dd5428ce8508e6fc5f2e8",
+  "files": {
+    "COHORT.json": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+    "COHORT_FREEZE.json": "140a859f7e8688cc38400f6d661b59e619c40407b5000dae82fa4e6bcc21fffe",
+    "DEPENDENCIES.txt": "d3c3c6c262383b2f7fdd98579ae85c9976c27b99eac7ab7fc0be063bf7a7cee4",
+    "EXPERIMENT.json": "5e6ddde63cf50f4b58a6dcf8cef3cea2f859a45560e5281fbbb90fd375446480",
+    "MATRIX.json": "4da3bfedf9d55ef1ddb52b34b65fb306e7d6f30cff69e92ae58456864bb1bd68",
+    "PROTOCOL.md": "3f94cfcd31dd12f234fe9f4b3a9f8c85fceb3b91bf3bed0ef38a3f86d660012f",
+    "SOURCE_CUSTODY.json": "a55c06c75f6ae04ddc9f06a591e4d82912e7375dda08d41037a2564ded0d2346",
+    "SUBJECT_PACKAGE_CUSTODY.json": "a2b7b58e570b06403bd3f68cda2582c9bd05224a0e68ef2f5e2ea5bec1e08e93",
+    "TASK_AUTHORITY.json": "cee85ef7293342e2ffff2c6ec6421b81a598550cd1ec89c57242ed652f25037b",
+    "build_matrix.py": "18e6e045a4990d2465e3e897b8ab18bd23e8566f14f81176d38d0aa99e9d36c9",
+    "build_source_custody.py": "1e4350e3974c553fbb888e881700289763c9ed7f87777a2ac32715e392f8a3cb",
+    "historical_182.py": "c64cbe9173cb617d1f1cb13ae66b33ebfce674190f9ddc91a5367b68ebd6ab58",
+    "run_pressure.py": "77168689d89a838d5d621635c8ed2fc1a980f6521a0826ebfd30c02c42ba1c7c"
+  },
+  "case_count": 151,
+  "workflow_sha256": "fa7dd894372b388359e33fe8d79145bfaf6127ce4d492f7e0d19aaeee38345bd",
+  "cal_pressure_calls": 0,
+  "cohort_sha256": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+  "historical_blob": "913cf7b5573c3135c98e3d6d16430900bf8b8119",
+  "review_187_published_before_this_freeze": true
+}

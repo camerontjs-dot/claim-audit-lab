@@ -1,0 +1,14 @@
+{
+  "schema": "cal188-apparatus-successor-freeze-v1",
+  "identity": "apparatus_successor_1",
+  "frozen_at_utc": "2026-10-02T15:48:36.460466+00:00",
+  "original_harness_freeze_sha256": "6bea1438ab1175386c8de4dd57011d08bee33ccb2141f3fe2a585f26d4250a58",
+  "change": "Complete historical producer import dependencies only; no scientific code, matrix, expectation, cohort, source or subject change. Original import failure remains terminal for first attempt.",
+  "files": {
+    "ORIGINAL_FAILURE.json": "3eff2af46e7d706dfc498dd426d48843c06e48eb9b0133254e2939d6c738ff5b",
+    "DEPENDENCIES-extra.txt": "c1ed5c20397782de27d562a728d7dcc4204efe4885752f38c0a86a02fa8a246e"
+  },
+  "successor_workflow_sha256": "204d00b4f6547a5aaa0aefe774943e881d024b6a0a6037824536364a767e67df",
+  "cal_semantic_calls_before_successor": 0,
+  "real_claim_calls_before_successor": 0
+}

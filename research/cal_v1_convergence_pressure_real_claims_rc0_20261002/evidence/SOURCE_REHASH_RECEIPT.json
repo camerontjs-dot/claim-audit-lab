@@ -1,0 +1,79 @@
+{
+  "sources": [
+    {
+      "source_id": "S01",
+      "raw_sha256": "d162ed190682ee9b4e02f720847b11bf3b94781af38793b4f5b1e8104bac10b8",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S02",
+      "raw_sha256": "af8818291673e956605627409e0fb070926b959136db034b0dccbd1d4ec368dd",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S03",
+      "raw_sha256": "c79fa9cbc1e8658de9af0a6e77c78167c83b16f345d26419c2546342e16b3d2f",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S04",
+      "raw_sha256": "a7d6ee72c3d1a83a5e9cc0a45b7de9ab1c90521050db8e3a47cc6bdd5614dcbc",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S05",
+      "raw_sha256": "eb84285aca3d7fa62beda71702c53b390e292ff3efbd6ad917e0c49e40ac93ea",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S06",
+      "raw_sha256": "c28b003967d1318207537910f9451c3092c92415ca6b07ba25193e03750bf367",
+      "matches_frozen": true,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "source_id": "S07",
+      "raw_sha256": "654311013e37ba0cd4eaa9127b8d9e198940657cc3bfc321a0b9a9532d9c0e20",
+      "matches_frozen": true,
+      "status": "SOURCE_UNAVAILABLE"
+    },
+    {
+      "source_id": "S08",
+      "raw_sha256": "384dc100015d52df35478df661a4ca5abfda26e0fb7250dec6f30f7fed1477ba",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S09",
+      "raw_sha256": "83208ff6ea64bc4483c31da050cd72bd228e54187cab9030b70f61eee2df80c7",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S10",
+      "raw_sha256": "e2c83b79e42cbab3cc19f1cc76cb227334f9abf6cbdec778912cf550b75156b2",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S11",
+      "raw_sha256": "e4ae9cc640b9d8089e33c79964bb0fa80a7890597c8100d4c1e02a703b5d0c0e",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    },
+    {
+      "source_id": "S12",
+      "raw_sha256": "7731fc996ed631f4f15f831f6230992719d769f59bf9dc93fb41f8f8bec06d27",
+      "matches_frozen": true,
+      "status": "AVAILABLE"
+    }
+  ],
+  "checked_at_utc": "2026-10-02T15:56:51.445713+00:00",
+  "original_raw_bytes_available_locally": true,
+  "extracted_passage_hashes_match": true
+}
