@@ -1,0 +1,57 @@
+name: CAL 188 frozen pressure research
+on:
+  push:
+    branches: [research/cal-v1-convergence-pressure-real-claims-rc0-20261002]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.15'
+      - name: Prepare exact subject and historical producer
+        shell: bash
+        run: |
+          APP=research/cal_v1_convergence_pressure_real_claims_rc0_20261002
+          mkdir -p "$RUNNER_TEMP/cal188/subject" "$RUNNER_TEMP/cal188/dist"
+          git archive 6bb0d60f3e2286123f56de5657de4e97d6374c63 | tar -x -C "$RUNNER_TEMP/cal188/subject"
+          git clone https://github.com/camerontjs-dot/evidence-bundler.git "$RUNNER_TEMP/cal188/eb"
+          git -C "$RUNNER_TEMP/cal188/eb" checkout --detach 4e1f6fe00e7c350b28f52bfea14f1f8988847884
+          python -m venv "$RUNNER_TEMP/cal188/source-env"
+          "$RUNNER_TEMP/cal188/source-env/bin/pip" install -r "$APP/DEPENDENCIES.txt"
+          "$RUNNER_TEMP/cal188/source-env/bin/python" -m build --no-isolation --outdir "$RUNNER_TEMP/cal188/dist" "$RUNNER_TEMP/cal188/subject"
+          python -m venv "$RUNNER_TEMP/cal188/wheel-env"
+          "$RUNNER_TEMP/cal188/wheel-env/bin/pip" install "$RUNNER_TEMP/cal188/dist/claim_audit_lab-0.6.0-py3-none-any.whl"
+          python -m venv "$RUNNER_TEMP/cal188/sdist-env"
+          "$RUNNER_TEMP/cal188/sdist-env/bin/pip" install "$RUNNER_TEMP/cal188/dist/claim_audit_lab-0.6.0.tar.gz"
+      - name: Execute frozen matrix and preserve terminal disposition
+        shell: bash
+        run: |
+          APP=research/cal_v1_convergence_pressure_real_claims_rc0_20261002
+          export PYTHONPATH="$RUNNER_TEMP/cal188/subject/src:$RUNNER_TEMP/cal188/eb/src"
+          export CAL_EB_INTEGRATION_REPO="$RUNNER_TEMP/cal188/eb"
+          export CAL188_WHEEL_PYTHON="$RUNNER_TEMP/cal188/wheel-env/bin/python"
+          export CAL188_SDIST_PYTHON="$RUNNER_TEMP/cal188/sdist-env/bin/python"
+          set +e
+          "$RUNNER_TEMP/cal188/source-env/bin/python" "$APP/run_pressure.py" --out "$RUNNER_TEMP/cal188/run" > "$RUNNER_TEMP/cal188/run.log" 2>&1
+          RC=$?
+          set -e
+          echo "$RC" > "$RUNNER_TEMP/cal188/exit-code.txt"
+          python -c 'import json,os; from pathlib import Path; p=Path(os.environ["RUNNER_TEMP"])/"cal188"; r=json.loads((p/"run/RESULTS.json").read_text()); rc=int((p/"exit-code.txt").read_text()); assert rc in (0,1) and r["subject_commit"]=="6bb0d60f3e2286123f56de5657de4e97d6374c63"; print(r["disposition"], r["counts"])'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal188-frozen-pressure-receipts
+          path: |
+            ${{ runner.temp }}/cal188/run
+            ${{ runner.temp }}/cal188/dist
+            ${{ runner.temp }}/cal188/run.log
+            ${{ runner.temp }}/cal188/exit-code.txt
+          retention-days: 90
+          if-no-files-found: error

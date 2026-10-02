@@ -1,0 +1,1825 @@
+{
+  "schema": "cal188-matrix-v1",
+  "subject_commit": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "stop_rule": "Freeze first meaningful negative immediately. On genuine CRITICAL_FAIL freeze counterexample, block release progression, stop subsequent scientific cases; mark remaining NOT_RUN. Never change expectations or subject.",
+  "historical_adapter": "Unchanged harness with external record observer; original CANDIDATE constant retained as historical metadata, outer receipt binds actual subject. OBSERVATION is not a scientific pass/failure.",
+  "real_route": "Exact frozen claim -> CAL author_target; refusal is ROBUSTNESS_LIMIT and semantic execution NOT_RUN. If accepted, exact target and verbatim frozen passage go to audit internal seam; no invented target or evidence rewriting.",
+  "scope": {
+    "concurrent_writers": 2,
+    "distractors": 128,
+    "long_field_chars": 8192,
+    "general_accuracy": "NOT_ESTABLISHED",
+    "human_gold": false
+  },
+  "cases": [
+    {
+      "case_id": "H-182",
+      "domain": "H",
+      "operation": "historical",
+      "invariant": "Replay unchanged blob; retain historical labels and outer actual subject identity; no CRITICAL_FAIL."
+    },
+    {
+      "case_id": "REAL-S01-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S01-F"
+    },
+    {
+      "case_id": "REAL-S01-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S01-I"
+    },
+    {
+      "case_id": "REAL-S02-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S02-F"
+    },
+    {
+      "case_id": "REAL-S02-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S02-I"
+    },
+    {
+      "case_id": "REAL-S03-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S03-F"
+    },
+    {
+      "case_id": "REAL-S03-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S03-I"
+    },
+    {
+      "case_id": "REAL-S04-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S04-F"
+    },
+    {
+      "case_id": "REAL-S04-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S04-I"
+    },
+    {
+      "case_id": "REAL-S05-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S05-F"
+    },
+    {
+      "case_id": "REAL-S05-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S05-I"
+    },
+    {
+      "case_id": "REAL-S08-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S08-F"
+    },
+    {
+      "case_id": "REAL-S08-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S08-I"
+    },
+    {
+      "case_id": "REAL-S09-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S09-F"
+    },
+    {
+      "case_id": "REAL-S09-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S09-I"
+    },
+    {
+      "case_id": "REAL-S10-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S10-F"
+    },
+    {
+      "case_id": "REAL-S10-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S10-I"
+    },
+    {
+      "case_id": "REAL-S11-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S11-F"
+    },
+    {
+      "case_id": "REAL-S11-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S11-I"
+    },
+    {
+      "case_id": "REAL-S12-F",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S12-F"
+    },
+    {
+      "case_id": "REAL-S12-I",
+      "domain": "REAL",
+      "operation": "real",
+      "invariant": "Correct terminal or documented authoring/refusal/measurement limit; opposite terminal is critical.",
+      "cohort_case_id": "REAL-S12-I"
+    },
+    {
+      "case_id": "A-strict_comparison-missing",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "missing",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-extra-semantic",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "extra-semantic",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-unsupported-direction",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "unsupported-direction",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-claim-hash",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "claim-hash",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-claim-id",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "claim-id",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-proposition-id",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "proposition-id",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-orientation",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "orientation",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-inversion",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "inversion",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-family-substitution",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "family-substitution",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-duplicate-keys",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "duplicate-keys",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-malformed-json",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "malformed-json",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-invalid-utf8",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "invalid-utf8",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-unknown-top",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "unknown-top",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-unknown-nested",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "unknown-nested",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-whitespace-field",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "whitespace-field",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-punctuation-field",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "punctuation-field",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-confusable",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "confusable",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-long-field",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "long-field",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-strict_comparison-format-only",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "mutation": "format-only",
+      "conform_accept": true
+    },
+    {
+      "case_id": "A-strict_comparison-raw-bypass",
+      "domain": "A",
+      "operation": "bypass",
+      "invariant": "Raw structural acceptance and terminal drift are INTERFACE_GAP; supported author/conform gate rejects and produces no output.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta."
+    },
+    {
+      "case_id": "A-direct_event_order-missing",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "missing",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-extra-semantic",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "extra-semantic",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-unsupported-direction",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "unsupported-direction",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-claim-hash",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "claim-hash",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-claim-id",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "claim-id",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-proposition-id",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "proposition-id",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-orientation",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "orientation",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-inversion",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "inversion",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-family-substitution",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "family-substitution",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-duplicate-keys",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "duplicate-keys",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-malformed-json",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "malformed-json",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-invalid-utf8",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "invalid-utf8",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-unknown-top",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "unknown-top",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-unknown-nested",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "unknown-nested",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-whitespace-field",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "whitespace-field",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-punctuation-field",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "punctuation-field",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-confusable",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "confusable",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-long-field",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "long-field",
+      "conform_accept": false
+    },
+    {
+      "case_id": "A-direct_event_order-format-only",
+      "domain": "A",
+      "operation": "target",
+      "invariant": "Conformance rejects semantic/binding/serialization drift; formatting preserves meaning; rejected supported workflow executes zero times.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "mutation": "format-only",
+      "conform_accept": true
+    },
+    {
+      "case_id": "A-direct_event_order-raw-bypass",
+      "domain": "A",
+      "operation": "bypass",
+      "invariant": "Raw structural acceptance and terminal drift are INTERFACE_GAP; supported author/conform gate rejects and produces no output.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier."
+    },
+    {
+      "case_id": "D-strict_comparison-passage-hash",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "passage-hash"
+    },
+    {
+      "case_id": "D-strict_comparison-source-hash-invalid",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "source-hash-invalid"
+    },
+    {
+      "case_id": "D-strict_comparison-passage-id",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "passage-id"
+    },
+    {
+      "case_id": "D-strict_comparison-duplicate-id",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "duplicate-id"
+    },
+    {
+      "case_id": "D-strict_comparison-stale-measurement",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "stale-measurement"
+    },
+    {
+      "case_id": "D-strict_comparison-source-substitution-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "source-substitution-stale"
+    },
+    {
+      "case_id": "D-strict_comparison-foreign-authority",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "foreign-authority"
+    },
+    {
+      "case_id": "D-strict_comparison-forged-authority",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "forged-authority"
+    },
+    {
+      "case_id": "D-strict_comparison-foreign-relation",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "foreign-relation"
+    },
+    {
+      "case_id": "D-strict_comparison-aperture-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "aperture-stale"
+    },
+    {
+      "case_id": "D-strict_comparison-source-identity-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "source-identity-stale"
+    },
+    {
+      "case_id": "D-strict_comparison-claim-identity-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "strict_comparison",
+      "mutation": "claim-identity-stale"
+    },
+    {
+      "case_id": "D-strict_comparison-same-world-paths",
+      "domain": "D",
+      "operation": "same-world",
+      "invariant": "Different filesystem paths reconstruct byte-identical outputs.",
+      "family": "strict_comparison"
+    },
+    {
+      "case_id": "D-strict_comparison-empty",
+      "domain": "D",
+      "operation": "semantic",
+      "invariant": "Empty admitted world must abstain.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [],
+      "expected": "not_checkable"
+    },
+    {
+      "case_id": "D-strict_comparison-bounded-flood",
+      "domain": "D",
+      "operation": "semantic",
+      "invariant": "128 nondeciding distractors cannot flip the deciding relation and cannot disappear from traces.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta.",
+        "Unrelated maintenance note 0.",
+        "Unrelated maintenance note 1.",
+        "Unrelated maintenance note 2.",
+        "Unrelated maintenance note 3.",
+        "Unrelated maintenance note 4.",
+        "Unrelated maintenance note 5.",
+        "Unrelated maintenance note 6.",
+        "Unrelated maintenance note 7.",
+        "Unrelated maintenance note 8.",
+        "Unrelated maintenance note 9.",
+        "Unrelated maintenance note 10.",
+        "Unrelated maintenance note 11.",
+        "Unrelated maintenance note 12.",
+        "Unrelated maintenance note 13.",
+        "Unrelated maintenance note 14.",
+        "Unrelated maintenance note 15.",
+        "Unrelated maintenance note 16.",
+        "Unrelated maintenance note 17.",
+        "Unrelated maintenance note 18.",
+        "Unrelated maintenance note 19.",
+        "Unrelated maintenance note 20.",
+        "Unrelated maintenance note 21.",
+        "Unrelated maintenance note 22.",
+        "Unrelated maintenance note 23.",
+        "Unrelated maintenance note 24.",
+        "Unrelated maintenance note 25.",
+        "Unrelated maintenance note 26.",
+        "Unrelated maintenance note 27.",
+        "Unrelated maintenance note 28.",
+        "Unrelated maintenance note 29.",
+        "Unrelated maintenance note 30.",
+        "Unrelated maintenance note 31.",
+        "Unrelated maintenance note 32.",
+        "Unrelated maintenance note 33.",
+        "Unrelated maintenance note 34.",
+        "Unrelated maintenance note 35.",
+        "Unrelated maintenance note 36.",
+        "Unrelated maintenance note 37.",
+        "Unrelated maintenance note 38.",
+        "Unrelated maintenance note 39.",
+        "Unrelated maintenance note 40.",
+        "Unrelated maintenance note 41.",
+        "Unrelated maintenance note 42.",
+        "Unrelated maintenance note 43.",
+        "Unrelated maintenance note 44.",
+        "Unrelated maintenance note 45.",
+        "Unrelated maintenance note 46.",
+        "Unrelated maintenance note 47.",
+        "Unrelated maintenance note 48.",
+        "Unrelated maintenance note 49.",
+        "Unrelated maintenance note 50.",
+        "Unrelated maintenance note 51.",
+        "Unrelated maintenance note 52.",
+        "Unrelated maintenance note 53.",
+        "Unrelated maintenance note 54.",
+        "Unrelated maintenance note 55.",
+        "Unrelated maintenance note 56.",
+        "Unrelated maintenance note 57.",
+        "Unrelated maintenance note 58.",
+        "Unrelated maintenance note 59.",
+        "Unrelated maintenance note 60.",
+        "Unrelated maintenance note 61.",
+        "Unrelated maintenance note 62.",
+        "Unrelated maintenance note 63.",
+        "Unrelated maintenance note 64.",
+        "Unrelated maintenance note 65.",
+        "Unrelated maintenance note 66.",
+        "Unrelated maintenance note 67.",
+        "Unrelated maintenance note 68.",
+        "Unrelated maintenance note 69.",
+        "Unrelated maintenance note 70.",
+        "Unrelated maintenance note 71.",
+        "Unrelated maintenance note 72.",
+        "Unrelated maintenance note 73.",
+        "Unrelated maintenance note 74.",
+        "Unrelated maintenance note 75.",
+        "Unrelated maintenance note 76.",
+        "Unrelated maintenance note 77.",
+        "Unrelated maintenance note 78.",
+        "Unrelated maintenance note 79.",
+        "Unrelated maintenance note 80.",
+        "Unrelated maintenance note 81.",
+        "Unrelated maintenance note 82.",
+        "Unrelated maintenance note 83.",
+        "Unrelated maintenance note 84.",
+        "Unrelated maintenance note 85.",
+        "Unrelated maintenance note 86.",
+        "Unrelated maintenance note 87.",
+        "Unrelated maintenance note 88.",
+        "Unrelated maintenance note 89.",
+        "Unrelated maintenance note 90.",
+        "Unrelated maintenance note 91.",
+        "Unrelated maintenance note 92.",
+        "Unrelated maintenance note 93.",
+        "Unrelated maintenance note 94.",
+        "Unrelated maintenance note 95.",
+        "Unrelated maintenance note 96.",
+        "Unrelated maintenance note 97.",
+        "Unrelated maintenance note 98.",
+        "Unrelated maintenance note 99.",
+        "Unrelated maintenance note 100.",
+        "Unrelated maintenance note 101.",
+        "Unrelated maintenance note 102.",
+        "Unrelated maintenance note 103.",
+        "Unrelated maintenance note 104.",
+        "Unrelated maintenance note 105.",
+        "Unrelated maintenance note 106.",
+        "Unrelated maintenance note 107.",
+        "Unrelated maintenance note 108.",
+        "Unrelated maintenance note 109.",
+        "Unrelated maintenance note 110.",
+        "Unrelated maintenance note 111.",
+        "Unrelated maintenance note 112.",
+        "Unrelated maintenance note 113.",
+        "Unrelated maintenance note 114.",
+        "Unrelated maintenance note 115.",
+        "Unrelated maintenance note 116.",
+        "Unrelated maintenance note 117.",
+        "Unrelated maintenance note 118.",
+        "Unrelated maintenance note 119.",
+        "Unrelated maintenance note 120.",
+        "Unrelated maintenance note 121.",
+        "Unrelated maintenance note 122.",
+        "Unrelated maintenance note 123.",
+        "Unrelated maintenance note 124.",
+        "Unrelated maintenance note 125.",
+        "Unrelated maintenance note 126.",
+        "Unrelated maintenance note 127."
+      ],
+      "expected": "supported"
+    },
+    {
+      "case_id": "D-direct_event_order-passage-hash",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "passage-hash"
+    },
+    {
+      "case_id": "D-direct_event_order-source-hash-invalid",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "source-hash-invalid"
+    },
+    {
+      "case_id": "D-direct_event_order-passage-id",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "passage-id"
+    },
+    {
+      "case_id": "D-direct_event_order-duplicate-id",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "duplicate-id"
+    },
+    {
+      "case_id": "D-direct_event_order-stale-measurement",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "stale-measurement"
+    },
+    {
+      "case_id": "D-direct_event_order-source-substitution-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "source-substitution-stale"
+    },
+    {
+      "case_id": "D-direct_event_order-foreign-authority",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "foreign-authority"
+    },
+    {
+      "case_id": "D-direct_event_order-forged-authority",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "forged-authority"
+    },
+    {
+      "case_id": "D-direct_event_order-foreign-relation",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "foreign-relation"
+    },
+    {
+      "case_id": "D-direct_event_order-aperture-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "aperture-stale"
+    },
+    {
+      "case_id": "D-direct_event_order-source-identity-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "source-identity-stale"
+    },
+    {
+      "case_id": "D-direct_event_order-claim-identity-stale",
+      "domain": "D",
+      "operation": "binding",
+      "invariant": "Hash/identity mutation or stale receipt must refuse before a terminal relation/composition; no silent dropping.",
+      "family": "direct_event_order",
+      "mutation": "claim-identity-stale"
+    },
+    {
+      "case_id": "D-direct_event_order-same-world-paths",
+      "domain": "D",
+      "operation": "same-world",
+      "invariant": "Different filesystem paths reconstruct byte-identical outputs.",
+      "family": "direct_event_order"
+    },
+    {
+      "case_id": "D-direct_event_order-empty",
+      "domain": "D",
+      "operation": "semantic",
+      "invariant": "Empty admitted world must abstain.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [],
+      "expected": "not_checkable"
+    },
+    {
+      "case_id": "D-direct_event_order-bounded-flood",
+      "domain": "D",
+      "operation": "semantic",
+      "invariant": "128 nondeciding distractors cannot flip the deciding relation and cannot disappear from traces.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier.",
+        "Unrelated maintenance note 0.",
+        "Unrelated maintenance note 1.",
+        "Unrelated maintenance note 2.",
+        "Unrelated maintenance note 3.",
+        "Unrelated maintenance note 4.",
+        "Unrelated maintenance note 5.",
+        "Unrelated maintenance note 6.",
+        "Unrelated maintenance note 7.",
+        "Unrelated maintenance note 8.",
+        "Unrelated maintenance note 9.",
+        "Unrelated maintenance note 10.",
+        "Unrelated maintenance note 11.",
+        "Unrelated maintenance note 12.",
+        "Unrelated maintenance note 13.",
+        "Unrelated maintenance note 14.",
+        "Unrelated maintenance note 15.",
+        "Unrelated maintenance note 16.",
+        "Unrelated maintenance note 17.",
+        "Unrelated maintenance note 18.",
+        "Unrelated maintenance note 19.",
+        "Unrelated maintenance note 20.",
+        "Unrelated maintenance note 21.",
+        "Unrelated maintenance note 22.",
+        "Unrelated maintenance note 23.",
+        "Unrelated maintenance note 24.",
+        "Unrelated maintenance note 25.",
+        "Unrelated maintenance note 26.",
+        "Unrelated maintenance note 27.",
+        "Unrelated maintenance note 28.",
+        "Unrelated maintenance note 29.",
+        "Unrelated maintenance note 30.",
+        "Unrelated maintenance note 31.",
+        "Unrelated maintenance note 32.",
+        "Unrelated maintenance note 33.",
+        "Unrelated maintenance note 34.",
+        "Unrelated maintenance note 35.",
+        "Unrelated maintenance note 36.",
+        "Unrelated maintenance note 37.",
+        "Unrelated maintenance note 38.",
+        "Unrelated maintenance note 39.",
+        "Unrelated maintenance note 40.",
+        "Unrelated maintenance note 41.",
+        "Unrelated maintenance note 42.",
+        "Unrelated maintenance note 43.",
+        "Unrelated maintenance note 44.",
+        "Unrelated maintenance note 45.",
+        "Unrelated maintenance note 46.",
+        "Unrelated maintenance note 47.",
+        "Unrelated maintenance note 48.",
+        "Unrelated maintenance note 49.",
+        "Unrelated maintenance note 50.",
+        "Unrelated maintenance note 51.",
+        "Unrelated maintenance note 52.",
+        "Unrelated maintenance note 53.",
+        "Unrelated maintenance note 54.",
+        "Unrelated maintenance note 55.",
+        "Unrelated maintenance note 56.",
+        "Unrelated maintenance note 57.",
+        "Unrelated maintenance note 58.",
+        "Unrelated maintenance note 59.",
+        "Unrelated maintenance note 60.",
+        "Unrelated maintenance note 61.",
+        "Unrelated maintenance note 62.",
+        "Unrelated maintenance note 63.",
+        "Unrelated maintenance note 64.",
+        "Unrelated maintenance note 65.",
+        "Unrelated maintenance note 66.",
+        "Unrelated maintenance note 67.",
+        "Unrelated maintenance note 68.",
+        "Unrelated maintenance note 69.",
+        "Unrelated maintenance note 70.",
+        "Unrelated maintenance note 71.",
+        "Unrelated maintenance note 72.",
+        "Unrelated maintenance note 73.",
+        "Unrelated maintenance note 74.",
+        "Unrelated maintenance note 75.",
+        "Unrelated maintenance note 76.",
+        "Unrelated maintenance note 77.",
+        "Unrelated maintenance note 78.",
+        "Unrelated maintenance note 79.",
+        "Unrelated maintenance note 80.",
+        "Unrelated maintenance note 81.",
+        "Unrelated maintenance note 82.",
+        "Unrelated maintenance note 83.",
+        "Unrelated maintenance note 84.",
+        "Unrelated maintenance note 85.",
+        "Unrelated maintenance note 86.",
+        "Unrelated maintenance note 87.",
+        "Unrelated maintenance note 88.",
+        "Unrelated maintenance note 89.",
+        "Unrelated maintenance note 90.",
+        "Unrelated maintenance note 91.",
+        "Unrelated maintenance note 92.",
+        "Unrelated maintenance note 93.",
+        "Unrelated maintenance note 94.",
+        "Unrelated maintenance note 95.",
+        "Unrelated maintenance note 96.",
+        "Unrelated maintenance note 97.",
+        "Unrelated maintenance note 98.",
+        "Unrelated maintenance note 99.",
+        "Unrelated maintenance note 100.",
+        "Unrelated maintenance note 101.",
+        "Unrelated maintenance note 102.",
+        "Unrelated maintenance note 103.",
+        "Unrelated maintenance note 104.",
+        "Unrelated maintenance note 105.",
+        "Unrelated maintenance note 106.",
+        "Unrelated maintenance note 107.",
+        "Unrelated maintenance note 108.",
+        "Unrelated maintenance note 109.",
+        "Unrelated maintenance note 110.",
+        "Unrelated maintenance note 111.",
+        "Unrelated maintenance note 112.",
+        "Unrelated maintenance note 113.",
+        "Unrelated maintenance note 114.",
+        "Unrelated maintenance note 115.",
+        "Unrelated maintenance note 116.",
+        "Unrelated maintenance note 117.",
+        "Unrelated maintenance note 118.",
+        "Unrelated maintenance note 119.",
+        "Unrelated maintenance note 120.",
+        "Unrelated maintenance note 121.",
+        "Unrelated maintenance note 122.",
+        "Unrelated maintenance note 123.",
+        "Unrelated maintenance note 124.",
+        "Unrelated maintenance note 125.",
+        "Unrelated maintenance note 126.",
+        "Unrelated maintenance note 127."
+      ],
+      "expected": "supported"
+    },
+    {
+      "case_id": "E-replay",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "replay"
+    },
+    {
+      "case_id": "E-source-wheel",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "source-wheel"
+    },
+    {
+      "case_id": "E-wheel-sdist",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "wheel-sdist"
+    },
+    {
+      "case_id": "E-overwrite",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "overwrite"
+    },
+    {
+      "case_id": "E-file",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "file"
+    },
+    {
+      "case_id": "E-symlink",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "symlink"
+    },
+    {
+      "case_id": "E-dangling-symlink",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "dangling-symlink"
+    },
+    {
+      "case_id": "E-same-output",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "same-output"
+    },
+    {
+      "case_id": "E-distinct-output",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "distinct-output"
+    },
+    {
+      "case_id": "E-partial-failure",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "partial-failure"
+    },
+    {
+      "case_id": "E-symlink-race",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "symlink-race"
+    },
+    {
+      "case_id": "E-environment",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "environment"
+    },
+    {
+      "case_id": "E-manifest-hashes",
+      "domain": "E",
+      "operation": "operational",
+      "invariant": "Equivalent runs preserve all output bytes; unsafe destinations fail without mutation; two bounded writers yield one complete winner; injected finalization failure cleans temporary output.",
+      "control": "manifest-hashes"
+    },
+    {
+      "case_id": "C-support",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-refute",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier after Bob archived dossier."
+      ],
+      "expected": "contradicted",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-swap",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Bob archived dossier after Alice reviewed dossier."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": "C-support"
+    },
+    {
+      "case_id": "C-event-mismatch",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Clara reviewed dossier before Bob archived dossier."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-predicate-mismatch",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice signed dossier before Bob archived dossier."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-object-mismatch",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed memo before Bob archived dossier."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-unrelated",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Clara signed memo before Dan released memo."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-negative",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice did not review dossier before Bob archived dossier."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-multiple-cues",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier after Clara signed memo."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-no-cue",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier. Bob archived dossier."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-lowercase",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "alice reviewed dossier before bob archived dossier."
+      ],
+      "expected": "supported",
+      "coverage": true,
+      "pair": null
+    },
+    {
+      "case_id": "C-punctuation",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier, before Bob archived dossier."
+      ],
+      "expected": "supported",
+      "coverage": true,
+      "pair": null
+    },
+    {
+      "case_id": "C-complex",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "After a second examination, Alice reviewed the dossier before its archival by Bob."
+      ],
+      "expected": "supported",
+      "coverage": true,
+      "pair": null
+    },
+    {
+      "case_id": "C-uppercase-cue",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier BEFORE Bob archived dossier."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-after-target",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier after Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier."
+      ],
+      "expected": "contradicted",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-target-swap-invert",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Bob archived dossier after Alice reviewed dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": "C-support"
+    },
+    {
+      "case_id": "C-duplicate",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier.",
+        "Alice reviewed dossier before Bob archived dossier."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-permutation-a",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier.",
+        "No relation is expressed here."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-permutation-b",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "No relation is expressed here.",
+        "Alice reviewed dossier before Bob archived dossier."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": "C-permutation-a"
+    },
+    {
+      "case_id": "C-conflict",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier.",
+        "Alice reviewed dossier after Bob archived dossier."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-negative-mixed",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier before Bob archived dossier.",
+        "Alice did not review dossier before Bob archived dossier."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "C-world-substitution",
+      "domain": "C",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "direct_event_order",
+      "claim": "Alice reviewed dossier before Bob archived dossier.",
+      "texts": [
+        "Alice reviewed dossier after Bob archived dossier."
+      ],
+      "expected": "contradicted",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-support",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-refute",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected": "contradicted",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-swap",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Beta had a lower rate than Alpha."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": "B-support"
+    },
+    {
+      "case_id": "B-unresolved-cue",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "The comparison might be higher."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-unrelated-entities",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Gamma had a higher rate than Delta."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-lowercase",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "alpha had a higher rate than beta."
+      ],
+      "expected": "supported",
+      "coverage": true,
+      "pair": null
+    },
+    {
+      "case_id": "B-punctuation",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta!"
+      ],
+      "expected": "supported",
+      "coverage": true,
+      "pair": null
+    },
+    {
+      "case_id": "B-greater",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a greater rate than Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-larger",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a larger rate than Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-exceeded",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha exceeded Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-time-scope",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta in 2025."
+      ],
+      "expected": "supported",
+      "coverage": true,
+      "pair": null
+    },
+    {
+      "case_id": "B-plural",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had higher rates than Beta."
+      ],
+      "expected": "supported",
+      "coverage": true,
+      "pair": null
+    },
+    {
+      "case_id": "B-equality",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had an equal rate to Beta."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-non-order",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a different rate from Beta."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-target-swap-invert",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Beta had a lower rate than Alpha.",
+      "texts": [
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": "B-support"
+    },
+    {
+      "case_id": "B-irrelevant-insertion",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta.",
+        "Gamma had a higher rate than Delta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-permutation-a",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta.",
+        "No deciding comparison here."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-permutation-b",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "No deciding comparison here.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": "B-permutation-a"
+    },
+    {
+      "case_id": "B-mixed",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-unmeasurable-insertion",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta.",
+        "The comparison might be higher."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-duplicate",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-near-duplicate",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a HIGHER rate than Beta."
+      ],
+      "expected": "supported",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-world-substitution",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected": "contradicted",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-explicit-negation",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha did not have a higher rate than Beta."
+      ],
+      "expected": "refuted_or_abstain",
+      "coverage": false,
+      "pair": null
+    },
+    {
+      "case_id": "B-multiple-cues",
+      "domain": "B",
+      "operation": "semantic",
+      "invariant": "Preserve expressed source relation; mixed/unresolved evidence must not decide; equivalent transformations cannot flip terminal direction.",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "texts": [
+        "Alpha had a higher rate than Beta, but Alpha had a lower rate than Beta."
+      ],
+      "expected": "not_checkable",
+      "coverage": false,
+      "pair": null
+    }
+  ]
+}

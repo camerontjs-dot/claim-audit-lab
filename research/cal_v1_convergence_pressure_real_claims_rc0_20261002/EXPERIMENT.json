@@ -1,0 +1,21 @@
+{
+  "schema": "cal188-experiment-v1",
+  "experiment_id": "cal-v1-convergence-pressure-real-claims-rc0-20261002",
+  "state": "designed",
+  "evaluation_layer": "frozen_subject_adversarial_research",
+  "candidate_commit": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "candidate_tree": "6b09583c86800118862dd5428ce8508e6fc5f2e8",
+  "task_authority": "https://github.com/camerontjs-dot/claim-audit-lab/issues/188",
+  "review_187_body_sha256": "71f2905a607fc790ad705468cb01aa6e87caefa3091b8b6cf5b270566106154b",
+  "protocol_sha256": "3f94cfcd31dd12f234fe9f4b3a9f8c85fceb3b91bf3bed0ef38a3f86d660012f",
+  "input_hashes": {
+    "MATRIX.json": "4da3bfedf9d55ef1ddb52b34b65fb306e7d6f30cff69e92ae58456864bb1bd68",
+    "COHORT.json": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+    "SOURCE_CUSTODY.json": "a55c06c75f6ae04ddc9f06a591e4d82912e7375dda08d41037a2564ded0d2346",
+    "historical_182.py": "c64cbe9173cb617d1f1cb13ae66b33ebfce674190f9ddc91a5367b68ebd6ab58"
+  },
+  "metric": "disjoint preregistered case classifications; historical subcases separately reported",
+  "unit_of_analysis": "case",
+  "comparative_score_claim": false,
+  "lifecycle_control": "subject does not carry cal_lab_control.py; direct Git identity and artifact hash binding; no candidate advancement"
+}

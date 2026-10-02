@@ -1,0 +1,1114 @@
+{
+  "schema": "cal188-source-first-cohort-v1",
+  "created_at_utc": "2026-10-02T15:22:33.727171+00:00",
+  "cal_calls_before_freeze": 0,
+  "subject": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "selection_rule": "In fixed source order select the first clear expressed factual comparison or temporal relation in substantive prose; avoid generating comparisons from unrelated numeric mentions or header dates, normative requirements as events, and later occurrence from absence before an event. Retain necessary adjacent definitions and all qualifiers. Inversion is direction or polarity, never an invented subsequent event.",
+  "claim_judgment_authority": "agent_llm source-first judgments, needs-audit; not human adjudication or sealed gold",
+  "source_pool": [
+    {
+      "source_id": "S01",
+      "title": "Statistics Canada firearms 2023",
+      "fixed_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00002-eng.htm",
+      "final_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00002-eng.htm",
+      "retrieved_at_utc": "2026-10-02T15:14:58.902224+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "d162ed190682ee9b4e02f720847b11bf3b94781af38793b4f5b1e8104bac10b8",
+      "raw_bytes": 207914,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "120b9d475bde43c81c61d12db91c876823fce7d0eee2e73aa809443d0173e72f",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 19,
+          "tag": "li",
+          "id": null,
+          "text_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18",
+          "element_serialization_sha256": "845ff1cc6a38d6f325771a5d0c35c717d4e6ae45c6c0f2341967a74cc719f0a3"
+        }
+      ],
+      "selected_passage_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "36.9 in 2023 is below 37.5 in 2022; the source explicitly calls this a decrease."
+    },
+    {
+      "source_id": "S02",
+      "title": "Statistics Canada rural crime 2023",
+      "fixed_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00005-eng.htm",
+      "final_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00005-eng.htm",
+      "retrieved_at_utc": "2026-10-02T15:14:59.648915+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "af8818291673e956605627409e0fb070926b959136db034b0dccbd1d4ec368dd",
+      "raw_bytes": 243845,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "6757a4dc3bd9b6484177802c60a8a511b828e2567b819259fe7688e6309471a1",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 15,
+          "tag": "li",
+          "id": null,
+          "text_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5",
+          "element_serialization_sha256": "b73107a53a6fd0c22b3568cbe1d5ee93237e1009f30936db7b648e80ad6fd3e7"
+        }
+      ],
+      "selected_passage_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "The first substantive comparison states a 34% higher provincial rural crime rate."
+    },
+    {
+      "source_id": "S03",
+      "title": "Statistics Canada mothers and fathers 2023",
+      "fixed_url": "https://www150.statcan.gc.ca/n1/pub/14-28-0001/2024001/article/00006-eng.htm",
+      "final_url": "https://www150.statcan.gc.ca/n1/pub/14-28-0001/2024001/article/00006-eng.htm",
+      "retrieved_at_utc": "2026-10-02T15:15:00.597496+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "c79fa9cbc1e8658de9af0a6e77c78167c83b16f345d26419c2546342e16b3d2f",
+      "raw_bytes": 46927,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "6038c24851fe4e8a3361d3afa0dc111ce5e8ffbc7d2907c1496c3edbddba8946",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 10,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902",
+          "element_serialization_sha256": "1102965afe705aa925a22d13f1959efc12ecc1c51e72be4811cd80a5e96a896f"
+        }
+      ],
+      "selected_passage_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "The first specified binary comparison is fathers 93.4% versus mothers 79.8%, explicitly higher."
+    },
+    {
+      "source_id": "S04",
+      "title": "Statistics Canada Indigenous custody",
+      "fixed_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/230712/dq230712a-eng.htm",
+      "final_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/230712/dq230712a-eng.htm",
+      "retrieved_at_utc": "2026-10-02T15:15:00.996029+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "a7d6ee72c3d1a83a5e9cc0a45b7de9ab1c90521050db8e3a47cc6bdd5614dcbc",
+      "raw_bytes": 34959,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "754208d23cf59a843fdea044da9104b8713a5c142ea3d29563d0eb7ec4033806",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 8,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "f8289d615ae1da8c0f1e155d21dae473797b7584dabc268219f354ce833d86f4",
+          "element_serialization_sha256": "fce52275bf2ba6bc8e003dcc8994743db0313fbdeb92017d8ab8df11252f8d89"
+        },
+        {
+          "document_order_block": 9,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "b1efda9f7668f14751a8454c8f346be117d64f87aee5bbc005222ec7b905968d",
+          "element_serialization_sha256": "55e823cee2c1ab7250580c9a71f2641bf3dc2ce1d0a636131a5083f3232bf55d"
+        }
+      ],
+      "selected_passage_sha256": "e45a2cf84ab9af55a7b9098931eaf3f281750b1399ced6ddc907795eadc6d46a",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "The first relation gives an 8.9-times-higher index; its immediately adjacent definition binds age/sex adjustment and five-province scope."
+    },
+    {
+      "source_id": "S05",
+      "title": "Statistics Canada COPD 2009",
+      "fixed_url": "https://www150.statcan.gc.ca/n1/pub/82-625-x/2010002/article/11273-eng.htm",
+      "final_url": "https://www150.statcan.gc.ca/n1/pub/82-625-x/2010002/article/11273-eng.htm",
+      "retrieved_at_utc": "2026-10-02T15:15:01.205738+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "eb84285aca3d7fa62beda71702c53b390e292ff3efbd6ad917e0c49e40ac93ea",
+      "raw_bytes": 21095,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "c5cce4f266896995c341f102acb4d937c779c3c57ac919ccc1de05e937dcdb91",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 15,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e",
+          "element_serialization_sha256": "c0a9d89c5f5ee6b27b93e0fe0e7d108cdf3407c08f6c86b7350822f83664ab2e"
+        }
+      ],
+      "selected_passage_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "First explicit strict comparison is the 2001-2005 sex relation. Earlier 2009 numbers accompany no-significant-change wording; no population-order or significance claim is manufactured from those numbers."
+    },
+    {
+      "source_id": "S06",
+      "title": "CDC NIOSH truck crash",
+      "fixed_url": "https://stacks.cdc.gov/view/cdc/181173",
+      "final_url": "https://stacks.cdc.gov/view/cdc/181173",
+      "retrieved_at_utc": "2026-10-02T15:15:01.674736+00:00",
+      "http_status": 403,
+      "media_type": "text/html",
+      "raw_sha256": "c28b003967d1318207537910f9451c3092c92415ca6b07ba25193e03750bf367",
+      "raw_bytes": 391,
+      "status": "SOURCE_UNAVAILABLE",
+      "extraction_method": null,
+      "extraction_sha256": null,
+      "inclusion": "EXCLUDED_SOURCE_UNAVAILABLE",
+      "reason": "First exact-locator GET returned HTTP 403; raw response preserved; no replacement or alternate source."
+    },
+    {
+      "source_id": "S07",
+      "title": "CDC NCHS contraception DB188",
+      "fixed_url": "https://www.cdc.gov/nchs/products/databriefs/db188.htm",
+      "final_url": "https://www.cdc.gov/nchs/products/databriefs/db188.htm",
+      "retrieved_at_utc": "2026-10-02T15:15:01.876587+00:00",
+      "http_status": 403,
+      "media_type": "text/html",
+      "raw_sha256": "654311013e37ba0cd4eaa9127b8d9e198940657cc3bfc321a0b9a9532d9c0e20",
+      "raw_bytes": 413,
+      "status": "SOURCE_UNAVAILABLE",
+      "extraction_method": null,
+      "extraction_sha256": null,
+      "inclusion": "EXCLUDED_SOURCE_UNAVAILABLE",
+      "reason": "First exact-locator GET returned HTTP 403; raw response preserved; no replacement or alternate source."
+    },
+    {
+      "source_id": "S08",
+      "title": "CDC EID Rift Valley fever figure",
+      "fixed_url": "https://wwwnc.cdc.gov/eid/article/14/8/08-0082-f4",
+      "final_url": "https://wwwnc.cdc.gov/eid/article/14/8/08-0082-f4",
+      "retrieved_at_utc": "2026-10-02T15:15:02.084341+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "raw_sha256": "384dc100015d52df35478df661a4ca5abfda26e0fb7250dec6f30f7fed1477ba",
+      "raw_bytes": 293134,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "4b9444c4d205c0d3f850eb05954300d5bacb56cb1288e042834975092c6fe27a",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 4,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c",
+          "element_serialization_sha256": "3e594527968beceaa5f40c715b1cce0bdae4db9caaf7f552a580ca40777533b1"
+        }
+      ],
+      "selected_passage_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "The sole substantive figure caption states this higher-rate relation, with the almost-all-age-groups qualifier retained."
+    },
+    {
+      "source_id": "S09",
+      "title": "FDA West Coast Laboratories",
+      "fixed_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/west-coast-laboratories-inc-672954-06122024",
+      "final_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/west-coast-laboratories-inc-672954-06122024",
+      "retrieved_at_utc": "2026-10-02T15:15:02.995044+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "83208ff6ea64bc4483c31da050cd72bd228e54187cab9030b70f61eee2df80c7",
+      "raw_bytes": 50768,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "b41018a595db965bec282abad2579472e2d9bf524d12510e35cbe5ada103b0b6",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 15,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585",
+          "element_serialization_sha256": "414a1720fbc9f3f6ae7fea50e537dad08ee7e897ad661d839431046148054aa1"
+        }
+      ],
+      "selected_passage_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "First expressed temporal factual finding is absence of identity testing prior to use. The pair inverts polarity, never assumes testing subsequently occurred."
+    },
+    {
+      "source_id": "S10",
+      "title": "FDA Diamond Wipes International",
+      "fixed_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/diamond-wipes-international-inc-534290-03072018",
+      "final_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/diamond-wipes-international-inc-534290-03072018",
+      "retrieved_at_utc": "2026-10-02T15:15:03.318387+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "e2c83b79e42cbab3cc19f1cc76cb227334f9abf6cbdec778912cf550b75156b2",
+      "raw_bytes": 53908,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "e86759fe54bf7f985174d0616a0bb7ec354ffd20199addbc0aa208f7b4b3f3bf",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "extraction_file": "full-main-text.txt",
+          "start_char": 2472,
+          "end_char": 3051,
+          "full_extraction_sha256": "973419ae08e568bc4745e68084abec753320e5d5048464a484f32dbda1901253"
+        }
+      ],
+      "selected_passage_sha256": "4f798adc3081f293ecb39b0f6dba2ce74fb9a6d1b5026210a1a506d3c0adf90d",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser main.get_text('\\n', strip=False); exact character slice, no prose/whitespace rewriting",
+      "selection_rationale": "First expressed factual strict comparison says the water exceeded the microbiological total count action limit in eight instances. Redacted numerical thresholds are not invented."
+    },
+    {
+      "source_id": "S11",
+      "title": "FDA Somalabs",
+      "fixed_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/somalabs-inc-573299-05312019",
+      "final_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/somalabs-inc-573299-05312019",
+      "retrieved_at_utc": "2026-10-02T15:15:03.648909+00:00",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_sha256": "e4ae9cc640b9d8089e33c79964bb0fa80a7890597c8100d4c1e02a703b5d0c0e",
+      "raw_bytes": 51364,
+      "status": "AVAILABLE",
+      "extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "extraction_sha256": "95ea519aa4a52f4313e01024ce7cfcd5077bbdb10a35ac13dc367d69e121af30",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "document_order_block": 18,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229",
+          "element_serialization_sha256": "a96051d582ab4c28e001fd3e8a2549b97112e8b11630275ee4a9e58f03cbec68"
+        }
+      ],
+      "selected_passage_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229",
+      "selected_extraction_method": "BeautifulSoup 4.14.3 html.parser; document-order main/body h1-h4,p,li,figcaption; get_text(' ', strip=False); evidence keeps exact extracted block text",
+      "selection_rationale": "First expressed temporal factual finding states failure to establish supplier COA reliability by confirmation before using components. The pair inverts polarity without inventing later qualification."
+    },
+    {
+      "source_id": "S12",
+      "title": "NASA OIG IG-18-015",
+      "fixed_url": "https://oig.nasa.gov/docs/IG-18-015.pdf",
+      "final_url": "https://oig.nasa.gov/wp-content/uploads/2024/02/IG-18-015.pdf",
+      "retrieved_at_utc": "2026-10-02T15:15:03.958271+00:00",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "raw_sha256": "7731fc996ed631f4f15f831f6230992719d769f59bf9dc93fb41f8f8bec06d27",
+      "raw_bytes": 4122330,
+      "status": "AVAILABLE",
+      "extraction_method": "pdftotext -layout; original page/form-feed/line text retained",
+      "extraction_sha256": "b8fd1f96a54a0a81c8112088e3abc7976234f5416fd44b868cc42360e220b630",
+      "inclusion": "INCLUDED",
+      "selected_locators": [
+        {
+          "extraction_file": "extracted.txt",
+          "start_char": 4304,
+          "end_char": 4584,
+          "physical_pdf_pages": [
+            3
+          ],
+          "locator": "Results in Brief / What We Found, first approval finding; preserves physical line breaks",
+          "full_extraction_sha256": "b8fd1f96a54a0a81c8112088e3abc7976234f5416fd44b868cc42360e220b630"
+        }
+      ],
+      "selected_passage_sha256": "2a309b25b301cbaf7bf6e8d6cf13f1ea84f90f0edf3d711f539cff9646bc45a7",
+      "selected_extraction_method": "pdftotext -layout; original page/form-feed/line text retained",
+      "selection_rationale": "First expressed factual event-order finding in Results in Brief says 43 of 66 new publications were not approved prior to release. No later approval is inferred."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "REAL-S01-F",
+      "source_id": "S01",
+      "pair_id": "REAL-S01",
+      "paired_case_id": "REAL-S01-I",
+      "claim_text": "The rate of firearm-related violent crime in Canada in 2023 is lower than the rate in 2022.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "supports",
+      "evidence_text": " There\r\nwas a decrease (-1.7%) in the rate of firearm-related violent crime, which went\r\nfrom 37.5 incidents per 100,000 population in 2022 to 36.9 in 2023. In\r\ncontrast, overall violent crime increased 4.0%.",
+      "evidence_text_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18",
+      "raw_source_sha256": "d162ed190682ee9b4e02f720847b11bf3b94781af38793b4f5b1e8104bac10b8",
+      "locator": [
+        {
+          "document_order_block": 19,
+          "tag": "li",
+          "id": null,
+          "text_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18",
+          "element_serialization_sha256": "845ff1cc6a38d6f325771a5d0c35c717d4e6ae45c6c0f2341967a74cc719f0a3"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00002-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "36.9 in 2023 is below 37.5 in 2022; the source explicitly calls this a decrease.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S01-I",
+      "source_id": "S01",
+      "pair_id": "REAL-S01",
+      "paired_case_id": "REAL-S01-F",
+      "claim_text": "The rate of firearm-related violent crime in Canada in 2023 is higher than the rate in 2022.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "refutes",
+      "evidence_text": " There\r\nwas a decrease (-1.7%) in the rate of firearm-related violent crime, which went\r\nfrom 37.5 incidents per 100,000 population in 2022 to 36.9 in 2023. In\r\ncontrast, overall violent crime increased 4.0%.",
+      "evidence_text_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18",
+      "raw_source_sha256": "d162ed190682ee9b4e02f720847b11bf3b94781af38793b4f5b1e8104bac10b8",
+      "locator": [
+        {
+          "document_order_block": 19,
+          "tag": "li",
+          "id": null,
+          "text_sha256": "5dd1907c94a22b62f60e3bdcdc31b9377d44e0eb14a289c256f9973ff98cac18",
+          "element_serialization_sha256": "845ff1cc6a38d6f325771a5d0c35c717d4e6ae45c6c0f2341967a74cc719f0a3"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00002-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "36.9 in 2023 is below 37.5 in 2022; the source explicitly calls this a decrease.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S02-F",
+      "source_id": "S02",
+      "pair_id": "REAL-S02",
+      "paired_case_id": "REAL-S02-I",
+      "claim_text": "The police-reported crime rate in provincial rural areas in 2023 is higher than the rate in provincial urban areas in 2023.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "supports",
+      "evidence_text": " In\r\n    2023, the police-reported crime rate was 34% higher in rural areas in the\r\n    provinces than in urban areas. This continues a pattern that has been observed\r\n    for over a decade. ",
+      "evidence_text_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5",
+      "raw_source_sha256": "af8818291673e956605627409e0fb070926b959136db034b0dccbd1d4ec368dd",
+      "locator": [
+        {
+          "document_order_block": 15,
+          "tag": "li",
+          "id": null,
+          "text_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5",
+          "element_serialization_sha256": "b73107a53a6fd0c22b3568cbe1d5ee93237e1009f30936db7b648e80ad6fd3e7"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00005-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The first substantive comparison states a 34% higher provincial rural crime rate.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S02-I",
+      "source_id": "S02",
+      "pair_id": "REAL-S02",
+      "paired_case_id": "REAL-S02-F",
+      "claim_text": "The police-reported crime rate in provincial rural areas in 2023 is lower than the rate in provincial urban areas in 2023.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "refutes",
+      "evidence_text": " In\r\n    2023, the police-reported crime rate was 34% higher in rural areas in the\r\n    provinces than in urban areas. This continues a pattern that has been observed\r\n    for over a decade. ",
+      "evidence_text_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5",
+      "raw_source_sha256": "af8818291673e956605627409e0fb070926b959136db034b0dccbd1d4ec368dd",
+      "locator": [
+        {
+          "document_order_block": 15,
+          "tag": "li",
+          "id": null,
+          "text_sha256": "8f05d93d163bf7b1a534da5d628dc6d1e7f61c82e01540de08ba7c71b0c81db5",
+          "element_serialization_sha256": "b73107a53a6fd0c22b3568cbe1d5ee93237e1009f30936db7b648e80ad6fd3e7"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/85-002-x/2025001/article/00005-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The first substantive comparison states a 34% higher provincial rural crime rate.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S03-F",
+      "source_id": "S03",
+      "pair_id": "REAL-S03",
+      "paired_case_id": "REAL-S03-I",
+      "claim_text": "The employment rate of fathers in 2023 is higher than the employment rate of mothers in 2023.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "supports",
+      "evidence_text": "The employment rate of mothers has increased substantially in the last five decades. However, in 2023, differences remained between the employment rates of mothers and fathers, and fathers (93.4%) had an employment rate that was 13.6 percentage points higher than the rate of mothers (79.8%). ",
+      "evidence_text_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902",
+      "raw_source_sha256": "c79fa9cbc1e8658de9af0a6e77c78167c83b16f345d26419c2546342e16b3d2f",
+      "locator": [
+        {
+          "document_order_block": 10,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902",
+          "element_serialization_sha256": "1102965afe705aa925a22d13f1959efc12ecc1c51e72be4811cd80a5e96a896f"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/14-28-0001/2024001/article/00006-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The first specified binary comparison is fathers 93.4% versus mothers 79.8%, explicitly higher.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S03-I",
+      "source_id": "S03",
+      "pair_id": "REAL-S03",
+      "paired_case_id": "REAL-S03-F",
+      "claim_text": "The employment rate of fathers in 2023 is lower than the employment rate of mothers in 2023.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "refutes",
+      "evidence_text": "The employment rate of mothers has increased substantially in the last five decades. However, in 2023, differences remained between the employment rates of mothers and fathers, and fathers (93.4%) had an employment rate that was 13.6 percentage points higher than the rate of mothers (79.8%). ",
+      "evidence_text_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902",
+      "raw_source_sha256": "c79fa9cbc1e8658de9af0a6e77c78167c83b16f345d26419c2546342e16b3d2f",
+      "locator": [
+        {
+          "document_order_block": 10,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "e466a0d374f1ca86decdb3892155295ec60510e034022f9763f2595d4be57902",
+          "element_serialization_sha256": "1102965afe705aa925a22d13f1959efc12ecc1c51e72be4811cd80a5e96a896f"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/14-28-0001/2024001/article/00006-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The first specified binary comparison is fathers 93.4% versus mothers 79.8%, explicitly higher.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S04-F",
+      "source_id": "S04",
+      "pair_id": "REAL-S04",
+      "paired_case_id": "REAL-S04-I",
+      "claim_text": "In the five provinces studied, the age- and sex-adjusted Indigenous incarceration rate in 2020/2021 is higher than the corresponding non-Indigenous rate.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "supports",
+      "evidence_text": "In 2019/2020 and 2020/2021, Indigenous persons in Canada were incarcerated at a much higher rate than non-Indigenous persons. According to the new Over-Representation Index, the Indigenous incarceration rate was 8.9 times higher than the non-Indigenous incarceration rate in 2020/2021 in the five provinces participating in this  Juristat  (Nova Scotia, Ontario, Saskatchewan, Alberta and British Columbia).\n\nThe Over-Representation Index provides the relative difference between the Indigenous and non-Indigenous incarceration rates (expressed as the number of times higher the incarceration rate is for the Indigenous population, compared with the rate for the non-Indigenous population) after adjusting for age and sex differences between the Indigenous and non-Indigenous populations. Indigenous populations in Canada are younger than non-Indigenous populations, and research has shown that the highest rate of offending and incarceration is among young adults, in particular young men. To consider these factors, Statistics Canada has developed the Over-Representation Index, with the first results released today in the  Juristat  article titled \" Over-representation of Indigenous persons in adult provincial custody, 2019/2020 and 2020/2021 .\"",
+      "evidence_text_sha256": "e45a2cf84ab9af55a7b9098931eaf3f281750b1399ced6ddc907795eadc6d46a",
+      "raw_source_sha256": "a7d6ee72c3d1a83a5e9cc0a45b7de9ab1c90521050db8e3a47cc6bdd5614dcbc",
+      "locator": [
+        {
+          "document_order_block": 8,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "f8289d615ae1da8c0f1e155d21dae473797b7584dabc268219f354ce833d86f4",
+          "element_serialization_sha256": "fce52275bf2ba6bc8e003dcc8994743db0313fbdeb92017d8ab8df11252f8d89"
+        },
+        {
+          "document_order_block": 9,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "b1efda9f7668f14751a8454c8f346be117d64f87aee5bbc005222ec7b905968d",
+          "element_serialization_sha256": "55e823cee2c1ab7250580c9a71f2641bf3dc2ce1d0a636131a5083f3232bf55d"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/230712/dq230712a-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The first relation gives an 8.9-times-higher index; its immediately adjacent definition binds age/sex adjustment and five-province scope.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S04-I",
+      "source_id": "S04",
+      "pair_id": "REAL-S04",
+      "paired_case_id": "REAL-S04-F",
+      "claim_text": "In the five provinces studied, the age- and sex-adjusted Indigenous incarceration rate in 2020/2021 is lower than the corresponding non-Indigenous rate.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "refutes",
+      "evidence_text": "In 2019/2020 and 2020/2021, Indigenous persons in Canada were incarcerated at a much higher rate than non-Indigenous persons. According to the new Over-Representation Index, the Indigenous incarceration rate was 8.9 times higher than the non-Indigenous incarceration rate in 2020/2021 in the five provinces participating in this  Juristat  (Nova Scotia, Ontario, Saskatchewan, Alberta and British Columbia).\n\nThe Over-Representation Index provides the relative difference between the Indigenous and non-Indigenous incarceration rates (expressed as the number of times higher the incarceration rate is for the Indigenous population, compared with the rate for the non-Indigenous population) after adjusting for age and sex differences between the Indigenous and non-Indigenous populations. Indigenous populations in Canada are younger than non-Indigenous populations, and research has shown that the highest rate of offending and incarceration is among young adults, in particular young men. To consider these factors, Statistics Canada has developed the Over-Representation Index, with the first results released today in the  Juristat  article titled \" Over-representation of Indigenous persons in adult provincial custody, 2019/2020 and 2020/2021 .\"",
+      "evidence_text_sha256": "e45a2cf84ab9af55a7b9098931eaf3f281750b1399ced6ddc907795eadc6d46a",
+      "raw_source_sha256": "a7d6ee72c3d1a83a5e9cc0a45b7de9ab1c90521050db8e3a47cc6bdd5614dcbc",
+      "locator": [
+        {
+          "document_order_block": 8,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "f8289d615ae1da8c0f1e155d21dae473797b7584dabc268219f354ce833d86f4",
+          "element_serialization_sha256": "fce52275bf2ba6bc8e003dcc8994743db0313fbdeb92017d8ab8df11252f8d89"
+        },
+        {
+          "document_order_block": 9,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "b1efda9f7668f14751a8454c8f346be117d64f87aee5bbc005222ec7b905968d",
+          "element_serialization_sha256": "55e823cee2c1ab7250580c9a71f2641bf3dc2ce1d0a636131a5083f3232bf55d"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/230712/dq230712a-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The first relation gives an 8.9-times-higher index; its immediately adjacent definition binds age/sex adjustment and five-province scope.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S05-F",
+      "source_id": "S05",
+      "pair_id": "REAL-S05",
+      "paired_case_id": "REAL-S05-I",
+      "claim_text": "From 2001 to 2005, women were more likely than men to report COPD.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "supports",
+      "evidence_text": "From 2001 to 2005, women were more likely than men to report  COPD , but in 2008 and 2009 there was no significant difference between the sexes (Chart 1).",
+      "evidence_text_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e",
+      "raw_source_sha256": "eb84285aca3d7fa62beda71702c53b390e292ff3efbd6ad917e0c49e40ac93ea",
+      "locator": [
+        {
+          "document_order_block": 15,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e",
+          "element_serialization_sha256": "c0a9d89c5f5ee6b27b93e0fe0e7d108cdf3407c08f6c86b7350822f83664ab2e"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/82-625-x/2010002/article/11273-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First explicit strict comparison is the 2001-2005 sex relation. Earlier 2009 numbers accompany no-significant-change wording; no population-order or significance claim is manufactured from those numbers.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S05-I",
+      "source_id": "S05",
+      "pair_id": "REAL-S05",
+      "paired_case_id": "REAL-S05-F",
+      "claim_text": "From 2001 to 2005, men were more likely than women to report COPD.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "refutes",
+      "evidence_text": "From 2001 to 2005, women were more likely than men to report  COPD , but in 2008 and 2009 there was no significant difference between the sexes (Chart 1).",
+      "evidence_text_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e",
+      "raw_source_sha256": "eb84285aca3d7fa62beda71702c53b390e292ff3efbd6ad917e0c49e40ac93ea",
+      "locator": [
+        {
+          "document_order_block": 15,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "c36408a0abed6a1514cfe6c30b6ecc5e5fd626c297e0b0cd776083c4961d1f0e",
+          "element_serialization_sha256": "c0a9d89c5f5ee6b27b93e0fe0e7d108cdf3407c08f6c86b7350822f83664ab2e"
+        }
+      ],
+      "source_url": "https://www150.statcan.gc.ca/n1/pub/82-625-x/2010002/article/11273-eng.htm",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First explicit strict comparison is the 2001-2005 sex relation. Earlier 2009 numbers accompany no-significant-change wording; no population-order or significance claim is manufactured from those numbers.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S08-F",
+      "source_id": "S08",
+      "pair_id": "REAL-S08",
+      "paired_case_id": "REAL-S08-I",
+      "claim_text": "Gumarey had a higher Rift Valley fever virus immunoglobulin G seropositivity rate than Sogan-Godud in almost all age groups.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "supports",
+      "evidence_text": "Figure 4 . Rift Valley fever virus immunoglobulin G seropositivity by decade of age and village of residence; Gumarey had a higher rate than Sogan-Godud in almost all age groups.",
+      "evidence_text_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c",
+      "raw_source_sha256": "384dc100015d52df35478df661a4ca5abfda26e0fb7250dec6f30f7fed1477ba",
+      "locator": [
+        {
+          "document_order_block": 4,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c",
+          "element_serialization_sha256": "3e594527968beceaa5f40c715b1cce0bdae4db9caaf7f552a580ca40777533b1"
+        }
+      ],
+      "source_url": "https://wwwnc.cdc.gov/eid/article/14/8/08-0082-f4",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The sole substantive figure caption states this higher-rate relation, with the almost-all-age-groups qualifier retained.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S08-I",
+      "source_id": "S08",
+      "pair_id": "REAL-S08",
+      "paired_case_id": "REAL-S08-F",
+      "claim_text": "Gumarey had a lower Rift Valley fever virus immunoglobulin G seropositivity rate than Sogan-Godud in almost all age groups.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "refutes",
+      "evidence_text": "Figure 4 . Rift Valley fever virus immunoglobulin G seropositivity by decade of age and village of residence; Gumarey had a higher rate than Sogan-Godud in almost all age groups.",
+      "evidence_text_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c",
+      "raw_source_sha256": "384dc100015d52df35478df661a4ca5abfda26e0fb7250dec6f30f7fed1477ba",
+      "locator": [
+        {
+          "document_order_block": 4,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "8edcdf0f747dd21a28c2c5c4f40bc2178430e88b40f0d00bc4aaecf830d1ff8c",
+          "element_serialization_sha256": "3e594527968beceaa5f40c715b1cce0bdae4db9caaf7f552a580ca40777533b1"
+        }
+      ],
+      "source_url": "https://wwwnc.cdc.gov/eid/article/14/8/08-0082-f4",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "The sole substantive figure caption states this higher-rate relation, with the almost-all-age-groups qualifier retained.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S09-F",
+      "source_id": "S09",
+      "pair_id": "REAL-S09",
+      "paired_case_id": "REAL-S09-I",
+      "claim_text": "West Coast Laboratories did not conduct identity testing for the dietary ingredients listed in finding 1 before using them.",
+      "family_hypothesis": "direct_event_order",
+      "expected_source_relation": "supports",
+      "evidence_text": "1. You did not conduct at least one appropriate test or examination to verify the identity of a dietary ingredient, prior to its use, as required by 21 CFR 111.75(a)(1)(i), nor did you petition the agency under 21 CFR 111.75(a)(1)(ii) for exemption from such testing. \n \nSpecifically, you did not conduct identity testing for  (b)(4)  Lot  (b)(4) , Naticol HPMG Lot  (b)(4) , and Aquamin F  (b)(4)  used in the manufacture of CalComplex Lot 523008; you did not conduct identity testing for  (b)(4)  Lot  (b)(4)  used in the manufacture of Chromium Picolinate Lot 40223; nor did you conduct identity testing for Calcium Pyruvate Lots  (b)(4)  or Lot  (b)(4)  used in the manufacture of Calcium Pyruvate Lot 150822. You also have not petitioned the agency for an exemption for such testing.",
+      "evidence_text_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585",
+      "raw_source_sha256": "83208ff6ea64bc4483c31da050cd72bd228e54187cab9030b70f61eee2df80c7",
+      "locator": [
+        {
+          "document_order_block": 15,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585",
+          "element_serialization_sha256": "414a1720fbc9f3f6ae7fea50e537dad08ee7e897ad661d839431046148054aa1"
+        }
+      ],
+      "source_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/west-coast-laboratories-inc-672954-06122024",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed temporal factual finding is absence of identity testing prior to use. The pair inverts polarity, never assumes testing subsequently occurred.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S09-I",
+      "source_id": "S09",
+      "pair_id": "REAL-S09",
+      "paired_case_id": "REAL-S09-F",
+      "claim_text": "West Coast Laboratories conducted identity testing for the dietary ingredients listed in finding 1 before using them.",
+      "family_hypothesis": "direct_event_order",
+      "expected_source_relation": "refutes",
+      "evidence_text": "1. You did not conduct at least one appropriate test or examination to verify the identity of a dietary ingredient, prior to its use, as required by 21 CFR 111.75(a)(1)(i), nor did you petition the agency under 21 CFR 111.75(a)(1)(ii) for exemption from such testing. \n \nSpecifically, you did not conduct identity testing for  (b)(4)  Lot  (b)(4) , Naticol HPMG Lot  (b)(4) , and Aquamin F  (b)(4)  used in the manufacture of CalComplex Lot 523008; you did not conduct identity testing for  (b)(4)  Lot  (b)(4)  used in the manufacture of Chromium Picolinate Lot 40223; nor did you conduct identity testing for Calcium Pyruvate Lots  (b)(4)  or Lot  (b)(4)  used in the manufacture of Calcium Pyruvate Lot 150822. You also have not petitioned the agency for an exemption for such testing.",
+      "evidence_text_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585",
+      "raw_source_sha256": "83208ff6ea64bc4483c31da050cd72bd228e54187cab9030b70f61eee2df80c7",
+      "locator": [
+        {
+          "document_order_block": 15,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "79fcbb877c2d69f746b627f5b04394015b6edd4977cbe499381dde128c3d5585",
+          "element_serialization_sha256": "414a1720fbc9f3f6ae7fea50e537dad08ee7e897ad661d839431046148054aa1"
+        }
+      ],
+      "source_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/west-coast-laboratories-inc-672954-06122024",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed temporal factual finding is absence of identity testing prior to use. The pair inverts polarity, never assumes testing subsequently occurred.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S10-F",
+      "source_id": "S10",
+      "pair_id": "REAL-S10",
+      "paired_case_id": "REAL-S10-I",
+      "claim_text": "In eight reported instances, the microbiological total count of water used by Diamond Wipes for manufacturing was higher than its action limit.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "supports",
+      "evidence_text": "You used water for manufacturing operations that exceeded your microbiological total count action limit in eight instances and exceeded your alert limit numerous times during a 14-month period. You failed to adequately investigate the lack of water system control, and implement adequate corrective actions and preventive actions (CAPA).\n Notably, in addition to high numbers of microbes (in some cases too numerous to count) in your system, your firm isolated \nPseudomonas \nspp., \nBurkholderia \nspp., and other potentially- pathogenic gram-negative bacteria from the system. \n \n",
+      "evidence_text_sha256": "4f798adc3081f293ecb39b0f6dba2ce74fb9a6d1b5026210a1a506d3c0adf90d",
+      "raw_source_sha256": "e2c83b79e42cbab3cc19f1cc76cb227334f9abf6cbdec778912cf550b75156b2",
+      "locator": [
+        {
+          "extraction_file": "full-main-text.txt",
+          "start_char": 2472,
+          "end_char": 3051,
+          "full_extraction_sha256": "973419ae08e568bc4745e68084abec753320e5d5048464a484f32dbda1901253"
+        }
+      ],
+      "source_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/diamond-wipes-international-inc-534290-03072018",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed factual strict comparison says the water exceeded the microbiological total count action limit in eight instances. Redacted numerical thresholds are not invented.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S10-I",
+      "source_id": "S10",
+      "pair_id": "REAL-S10",
+      "paired_case_id": "REAL-S10-F",
+      "claim_text": "In eight reported instances, the microbiological total count of water used by Diamond Wipes for manufacturing was lower than its action limit.",
+      "family_hypothesis": "strict_comparison",
+      "expected_source_relation": "refutes",
+      "evidence_text": "You used water for manufacturing operations that exceeded your microbiological total count action limit in eight instances and exceeded your alert limit numerous times during a 14-month period. You failed to adequately investigate the lack of water system control, and implement adequate corrective actions and preventive actions (CAPA).\n Notably, in addition to high numbers of microbes (in some cases too numerous to count) in your system, your firm isolated \nPseudomonas \nspp., \nBurkholderia \nspp., and other potentially- pathogenic gram-negative bacteria from the system. \n \n",
+      "evidence_text_sha256": "4f798adc3081f293ecb39b0f6dba2ce74fb9a6d1b5026210a1a506d3c0adf90d",
+      "raw_source_sha256": "e2c83b79e42cbab3cc19f1cc76cb227334f9abf6cbdec778912cf550b75156b2",
+      "locator": [
+        {
+          "extraction_file": "full-main-text.txt",
+          "start_char": 2472,
+          "end_char": 3051,
+          "full_extraction_sha256": "973419ae08e568bc4745e68084abec753320e5d5048464a484f32dbda1901253"
+        }
+      ],
+      "source_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/diamond-wipes-international-inc-534290-03072018",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed factual strict comparison says the water exceeded the microbiological total count action limit in eight instances. Redacted numerical thresholds are not invented.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S11-F",
+      "source_id": "S11",
+      "pair_id": "REAL-S11",
+      "paired_case_id": "REAL-S11-I",
+      "claim_text": "SomaLabs did not confirm suppliers' certificate-of-analysis results before using the corresponding components.",
+      "family_hypothesis": "direct_event_order",
+      "expected_source_relation": "supports",
+      "evidence_text": "2. You failed to confirm the identity of other components and determine whether other applicable component specifications established in accordance with 21 CFR 111.70(b) are met, as required by 21 CFR 111.75(a)(2). This requirement may be met by either conducting appropriate tests or examinations in accordance with 21 CFR 111.75(a)(2)(i), unless you petition the agency under 21 CFR 111.75(a)(1)(ii) and the agency exempts you from such testing, or by relying on a certificate of analysis (COA) from the supplier of the component that you receive, provided that certain requirements are met to establish the reliability of the supplier’s COA in accordance with 21 CFR 111.75(a)(2)(ii). However, when relying on a COA from a component supplier, you failed to qualify the suppliers by establishing the reliability of the suppliers' COA through confirmation of the results of the suppliers' tests or examinations, before using those components, as required by 21 CFR 111.75(a)(2)(ii)(A), and failed to maintain documentation of how the supplier was qualified, as required by 21 CFR 111.75(a)(2)(ii)(C). In order to rely on a COA from a supplier of the component, the following requirements of 21 CFR 111.75(a)(2)(ii) must be met: (A) qualify the supplier by establishing the reliability of the supplier's COA through confirmation of the results of the supplier's tests or examinations; (B) the COA must include a description of the test or examination method(s) used, limits of the test or examinations, and actual results of the tests or examinations; (C) maintain documentation of how you qualified the supplier; (D) periodically reconfirm the supplier's COA; and (E) the documentation setting forth the basis for qualification (and re-qualification) of any supplier must be reviewed and approved by quality control personnel. Specifically, you stated to our investigator that you do not have written documents covering how you qualified component suppliers by establishing the reliability of the suppliers’ COAs, which your quality control unit relied on to release the components for manufacturing of your finished dietary supplement products.",
+      "evidence_text_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229",
+      "raw_source_sha256": "e4ae9cc640b9d8089e33c79964bb0fa80a7890597c8100d4c1e02a703b5d0c0e",
+      "locator": [
+        {
+          "document_order_block": 18,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229",
+          "element_serialization_sha256": "a96051d582ab4c28e001fd3e8a2549b97112e8b11630275ee4a9e58f03cbec68"
+        }
+      ],
+      "source_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/somalabs-inc-573299-05312019",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed temporal factual finding states failure to establish supplier COA reliability by confirmation before using components. The pair inverts polarity without inventing later qualification.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S11-I",
+      "source_id": "S11",
+      "pair_id": "REAL-S11",
+      "paired_case_id": "REAL-S11-F",
+      "claim_text": "SomaLabs confirmed suppliers' certificate-of-analysis results before using the corresponding components.",
+      "family_hypothesis": "direct_event_order",
+      "expected_source_relation": "refutes",
+      "evidence_text": "2. You failed to confirm the identity of other components and determine whether other applicable component specifications established in accordance with 21 CFR 111.70(b) are met, as required by 21 CFR 111.75(a)(2). This requirement may be met by either conducting appropriate tests or examinations in accordance with 21 CFR 111.75(a)(2)(i), unless you petition the agency under 21 CFR 111.75(a)(1)(ii) and the agency exempts you from such testing, or by relying on a certificate of analysis (COA) from the supplier of the component that you receive, provided that certain requirements are met to establish the reliability of the supplier’s COA in accordance with 21 CFR 111.75(a)(2)(ii). However, when relying on a COA from a component supplier, you failed to qualify the suppliers by establishing the reliability of the suppliers' COA through confirmation of the results of the suppliers' tests or examinations, before using those components, as required by 21 CFR 111.75(a)(2)(ii)(A), and failed to maintain documentation of how the supplier was qualified, as required by 21 CFR 111.75(a)(2)(ii)(C). In order to rely on a COA from a supplier of the component, the following requirements of 21 CFR 111.75(a)(2)(ii) must be met: (A) qualify the supplier by establishing the reliability of the supplier's COA through confirmation of the results of the supplier's tests or examinations; (B) the COA must include a description of the test or examination method(s) used, limits of the test or examinations, and actual results of the tests or examinations; (C) maintain documentation of how you qualified the supplier; (D) periodically reconfirm the supplier's COA; and (E) the documentation setting forth the basis for qualification (and re-qualification) of any supplier must be reviewed and approved by quality control personnel. Specifically, you stated to our investigator that you do not have written documents covering how you qualified component suppliers by establishing the reliability of the suppliers’ COAs, which your quality control unit relied on to release the components for manufacturing of your finished dietary supplement products.",
+      "evidence_text_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229",
+      "raw_source_sha256": "e4ae9cc640b9d8089e33c79964bb0fa80a7890597c8100d4c1e02a703b5d0c0e",
+      "locator": [
+        {
+          "document_order_block": 18,
+          "tag": "p",
+          "id": null,
+          "text_sha256": "79c5899ac0c78ff89b9199991e35ae377ac0423dbb4b9a1a40543807c72cd229",
+          "element_serialization_sha256": "a96051d582ab4c28e001fd3e8a2549b97112e8b11630275ee4a9e58f03cbec68"
+        }
+      ],
+      "source_url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/somalabs-inc-573299-05312019",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed temporal factual finding states failure to establish supplier COA reliability by confirmation before using components. The pair inverts polarity without inventing later qualification.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S12-F",
+      "source_id": "S12",
+      "pair_id": "REAL-S12",
+      "paired_case_id": "REAL-S12-I",
+      "claim_text": "Forty-three GISS scientific publications released from October 2015 through September 2017 did not receive approval from GISS or Goddard officials before release.",
+      "family_hypothesis": "direct_event_order",
+      "expected_source_relation": "supports",
+      "evidence_text": "  Apart from its substantial scientific contributions and contrary to NASA policy, we found that 43 of 66 (65 percent) new\n  GISS scientific publications publicly released from October 2015 through September 2017 were not approved by GISS or\n  Goddard officials prior to release. ",
+      "evidence_text_sha256": "2a309b25b301cbaf7bf6e8d6cf13f1ea84f90f0edf3d711f539cff9646bc45a7",
+      "raw_source_sha256": "7731fc996ed631f4f15f831f6230992719d769f59bf9dc93fb41f8f8bec06d27",
+      "locator": [
+        {
+          "extraction_file": "extracted.txt",
+          "start_char": 4304,
+          "end_char": 4584,
+          "physical_pdf_pages": [
+            3
+          ],
+          "locator": "Results in Brief / What We Found, first approval finding; preserves physical line breaks",
+          "full_extraction_sha256": "b8fd1f96a54a0a81c8112088e3abc7976234f5416fd44b868cc42360e220b630"
+        }
+      ],
+      "source_url": "https://oig.nasa.gov/docs/IG-18-015.pdf",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed factual event-order finding in Results in Brief says 43 of 66 new publications were not approved prior to release. No later approval is inferred.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    },
+    {
+      "case_id": "REAL-S12-I",
+      "source_id": "S12",
+      "pair_id": "REAL-S12",
+      "paired_case_id": "REAL-S12-F",
+      "claim_text": "Forty-three GISS scientific publications released from October 2015 through September 2017 received approval from GISS or Goddard officials before release.",
+      "family_hypothesis": "direct_event_order",
+      "expected_source_relation": "refutes",
+      "evidence_text": "  Apart from its substantial scientific contributions and contrary to NASA policy, we found that 43 of 66 (65 percent) new\n  GISS scientific publications publicly released from October 2015 through September 2017 were not approved by GISS or\n  Goddard officials prior to release. ",
+      "evidence_text_sha256": "2a309b25b301cbaf7bf6e8d6cf13f1ea84f90f0edf3d711f539cff9646bc45a7",
+      "raw_source_sha256": "7731fc996ed631f4f15f831f6230992719d769f59bf9dc93fb41f8f8bec06d27",
+      "locator": [
+        {
+          "extraction_file": "extracted.txt",
+          "start_char": 4304,
+          "end_char": 4584,
+          "physical_pdf_pages": [
+            3
+          ],
+          "locator": "Results in Brief / What We Found, first approval finding; preserves physical line breaks",
+          "full_extraction_sha256": "b8fd1f96a54a0a81c8112088e3abc7976234f5416fd44b868cc42360e220b630"
+        }
+      ],
+      "source_url": "https://oig.nasa.gov/docs/IG-18-015.pdf",
+      "source_first_judgment": {
+        "evaluator": "agent_llm",
+        "human_gold": false,
+        "needs_audit": true,
+        "confidence": "high for expressed source relation; no claim of underlying world truth",
+        "rationale": "First expressed factual event-order finding in Results in Brief says 43 of 66 new publications were not approved prior to release. No later approval is inferred.",
+        "no_cal_exposure": true
+      },
+      "allowed_safe_outcomes": [
+        "correct_terminal",
+        "not_checkable",
+        "authoring_refusal"
+      ],
+      "abstention_or_honest_refusal_classification": "ROBUSTNESS_LIMIT",
+      "wrong_terminal_classification": "CRITICAL_FAIL",
+      "target_authoring_outcome": "NOT_RUN"
+    }
+  ],
+  "counts": {
+    "fixed_sources": 12,
+    "available_sources": 10,
+    "unavailable_sources": 2,
+    "active_cases": 20,
+    "strict_comparison": 14,
+    "temporal_or_order_robustness": 6
+  },
+  "source_substitutions": 0,
+  "evidence_paraphrases": 0,
+  "inclusions_exclusions_frozen": true,
+  "cal_outcomes_observed": false,
+  "extraction_deviation": "FDA Diamond Wipes narrative is in div/br nodes, outside initial paragraph-block extraction. Raw bytes were unchanged. Added lossless full-main text extraction before any CAL exposure; selected first factual comparison from exact character offsets."
+}
