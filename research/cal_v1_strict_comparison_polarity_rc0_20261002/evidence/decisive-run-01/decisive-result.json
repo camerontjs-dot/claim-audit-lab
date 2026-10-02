@@ -1,0 +1,1626 @@
+{
+  "apparatus_errors": [],
+  "case_count": 33,
+  "cases_sha256": "1f602f9e79a70745e3b4eff39d675810fbdeaa7653444895181b5906e3dde721",
+  "evaluator_sha256": "a406699bbd5a595c55d2853ba54c1938d668396b1931988a25f748ea4ddfa695",
+  "failed_count": 0,
+  "head": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "matched_count": 33,
+  "mechanical_disposition": "SUPPORTED_FOR_POLARITY_SUCCESSOR_QUALIFICATION",
+  "results": [
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D1-positive-higher-support",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-support"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": 1,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D2-positive-opposite-contradiction",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-refute",
+        "B-world-substitution"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "contradicted",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "LESS_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "REFUTES",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              17
+            ],
+            "left": "alpha",
+            "relation": "LESS_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": 2,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D3-exact-negation-falsifier",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha did not have a higher rate than Beta."
+      ],
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-explicit-negation"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "contradicted",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "negative",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "REFUTES",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "negative",
+            "cue_span": [
+              21,
+              27
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": 3,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D4-not-higher-does-not-decide-lower",
+      "claim": "Alpha had a lower rate than Beta.",
+      "evidence": [
+        "Alpha did not have a higher rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "RELATION_UNRESOLVED",
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "negative",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "UNRESOLVED",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "negative",
+            "cue_span": [
+              21,
+              27
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": 4,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D4-not-lower-does-not-decide-higher",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha did not have a lower rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "RELATION_UNRESOLVED",
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "negative",
+            "left": "alpha",
+            "relation": "LESS_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "UNRESOLVED",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "negative",
+            "cue_span": [
+              21,
+              26
+            ],
+            "left": "alpha",
+            "relation": "LESS_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": 4,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D5-positive-entity-swap-direction-inversion",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Beta had a lower rate than Alpha."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-swap"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "beta",
+            "relation": "LESS_THAN",
+            "right": "alpha"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              11,
+              16
+            ],
+            "left": "beta",
+            "relation": "LESS_THAN",
+            "right": "alpha"
+          }
+        }
+      ],
+      "property": 5,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D5-negative-entity-swap-direction-inversion",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Beta did not have a lower rate than Alpha."
+      ],
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "contradicted",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "negative",
+            "left": "beta",
+            "relation": "LESS_THAN",
+            "right": "alpha"
+          },
+          "categorical_relation": "REFUTES",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "negative",
+            "cue_span": [
+              20,
+              25
+            ],
+            "left": "beta",
+            "relation": "LESS_THAN",
+            "right": "alpha"
+          }
+        }
+      ],
+      "property": 5,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "Beta",
+        "rhs_entity": "Alpha"
+      },
+      "case_id": "D5-claim-swap-inversion-same-negation",
+      "claim": "Beta had a lower rate than Alpha.",
+      "evidence": [
+        "Alpha did not have a higher rate than Beta."
+      ],
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-target-swap-invert"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "contradicted",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "negative",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "REFUTES",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "negative",
+            "cue_span": [
+              21,
+              27
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": 5,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D6-never",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha never had a higher rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": "unrepresentable",
+          "proposal": null
+        }
+      ],
+      "property": 6,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D6-contraction",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha hadn't a higher rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": "unrepresentable",
+          "proposal": null
+        }
+      ],
+      "property": 6,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D6-double-negation",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha did not not have a higher rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": "unrepresentable",
+          "proposal": null
+        }
+      ],
+      "property": 6,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D6-embedded-not",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a not higher rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": "unrepresentable",
+          "proposal": null
+        }
+      ],
+      "property": 6,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "D6-cannot",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha cannot have a higher rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": "unrepresentable",
+          "proposal": null
+        }
+      ],
+      "property": 6,
+      "role": "discriminator"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-unresolved-cue",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "The comparison might be higher."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [
+        "B-unresolved-cue"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-unrelated-entities",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Gamma had a higher rate than Delta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "NO_DECIDING_RELATION",
+      "frozen_controls": [
+        "B-unrelated-entities"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "gamma",
+            "relation": "MORE_THAN",
+            "right": "delta"
+          },
+          "categorical_relation": "IRRELEVANT",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "gamma",
+            "relation": "MORE_THAN",
+            "right": "delta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-lowercase",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "alpha had a higher rate than beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [
+        "B-lowercase"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-punctuation",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta!"
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [
+        "B-punctuation"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-greater",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a greater rate than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-greater"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              19
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-larger",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a larger rate than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-larger"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-exceeded",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha exceeded Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-exceeded"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              6,
+              14
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-time-scope",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta in 2025."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [
+        "B-time-scope"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-plural",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had higher rates than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "frozen_controls": [
+        "B-plural"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-equality",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had an equal rate to Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+      "frozen_controls": [
+        "B-equality"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "NOT_APPLICABLE",
+          "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "NOT_APPLICABLE",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-non-order",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a different rate from Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+      "frozen_controls": [
+        "B-non-order"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "NOT_APPLICABLE",
+          "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "NOT_APPLICABLE",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "Beta",
+        "rhs_entity": "Alpha"
+      },
+      "case_id": "R-target-swap-invert",
+      "claim": "Beta had a lower rate than Alpha.",
+      "evidence": [
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-target-swap-invert"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-irrelevant-insertion",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Gamma had a higher rate than Delta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-irrelevant-insertion"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        },
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "gamma",
+            "relation": "MORE_THAN",
+            "right": "delta"
+          },
+          "categorical_relation": "IRRELEVANT",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p1",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "gamma",
+            "relation": "MORE_THAN",
+            "right": "delta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-permutation-a",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "No deciding comparison here."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-permutation-a"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        },
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "NOT_APPLICABLE",
+          "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "NOT_APPLICABLE",
+          "passage_id": "p1",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-permutation-b",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "No deciding comparison here.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-permutation-b"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "NOT_APPLICABLE",
+          "failure_code": "MEASUREMENT_NOT_APPLICABLE",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "NOT_APPLICABLE",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": null
+        },
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p1",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-mixed",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MIXED_RELATIONS",
+      "frozen_controls": [
+        "B-mixed"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "not_checkable",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        },
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "LESS_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "REFUTES",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p1",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              17
+            ],
+            "left": "alpha",
+            "relation": "LESS_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-unmeasurable-insertion",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "The comparison might be higher."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-unmeasurable-insertion"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        },
+        {
+          "atom_fields": null,
+          "categorical_relation": null,
+          "detail": "UNRESOLVED",
+          "failure_code": "MEASUREMENT_MISS",
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "UNRESOLVED",
+          "passage_id": "p1",
+          "polarity_diagnostic": null,
+          "proposal": null
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-duplicate",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-duplicate"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        },
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p1",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-near-duplicate",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a HIGHER rate than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [
+        "B-near-duplicate"
+      ],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        },
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p1",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              12,
+              18
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    },
+    {
+      "authored_fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "case_id": "R-comma-delta",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha recorded 4 cases, 2 more than Beta."
+      ],
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "frozen_controls": [],
+      "matched": true,
+      "mismatches": [],
+      "observed_conclusion": "supported",
+      "passages": [
+        {
+          "atom_fields": {
+            "assertion_polarity": "positive",
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          },
+          "categorical_relation": "SUPPORTS",
+          "detail": null,
+          "failure_code": null,
+          "instrument_id": "rc7fb1-strict-comparison",
+          "instrument_version": "strict-comparison-polarity-rc0",
+          "measurement_status": "CLAIMED",
+          "passage_id": "p0",
+          "polarity_diagnostic": null,
+          "proposal": {
+            "assertion_polarity": "positive",
+            "cue_span": [
+              26,
+              30
+            ],
+            "left": "alpha",
+            "relation": "MORE_THAN",
+            "right": "beta"
+          }
+        }
+      ],
+      "property": null,
+      "role": "regression"
+    }
+  ],
+  "schema": "cal-v1-strict-comparison-polarity-rc0-decisive-result",
+  "tree": "07cd41c4efe6a5570cdc46c4ab5f2cf8788df56f"
+}
