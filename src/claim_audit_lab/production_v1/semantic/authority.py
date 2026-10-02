@@ -51,6 +51,21 @@ def _norm(value: str) -> str:
     return re.sub(r"\s+", " ", value.strip(" .,:;\"'")).casefold()
 
 
+# Independent of the measurement copy. Only one adjacent "did not" is representable.
+_OVERT_NEGATION = re.compile(r"(?i)(?:n't|\b(?:not|never|no|without|neither|nor|cannot)\b)")
+
+
+def _assertion_polarity(span: str) -> str | None:
+    markers = list(_OVERT_NEGATION.finditer(span))
+    if not markers:
+        return "positive"
+    if len(markers) == 1 and markers[0].group(0).casefold() == "not":
+        preceding = span[: markers[0].start()].split()
+        if preceding and preceding[-1].casefold() == "did":
+            return "negative"
+    return None
+
+
 def _strict_source_fields(text: str) -> dict[str, str]:
     entity = r"[A-Z][A-Za-z0-9-]*(?:\s+[A-Z][A-Za-z0-9-]*)?"
     patterns = (
@@ -77,11 +92,18 @@ def _strict_source_fields(text: str) -> dict[str, str]:
     for pattern, relation_map in patterns:
         match = re.match(pattern, normalized)
         if match is not None:
+            polarity = _assertion_polarity(normalized[match.end("left") : match.start("rel")])
+            if polarity is None:
+                raise AuthorityRefusal(
+                    "SOURCE_COMPLETION_FAILED",
+                    "strict comparison polarity is not safely representable",
+                )
             relation = relation_map[match.group("rel").casefold()]
             return {
                 "left": _norm(match.group("left")),
                 "relation": relation,
                 "right": _norm(match.group("right")),
+                "assertion_polarity": polarity,
             }
     verb = re.match(
         rf"^(?P<left>{entity})\s+(?P<verb>(?i:exceeded|trailed))\s+"
@@ -89,12 +111,19 @@ def _strict_source_fields(text: str) -> dict[str, str]:
         normalized,
     )
     if verb is not None:
+        polarity = _assertion_polarity(normalized[verb.end("left") : verb.start("verb")])
+        if polarity is None:
+            raise AuthorityRefusal(
+                "SOURCE_COMPLETION_FAILED",
+                "strict comparison polarity is not safely representable",
+            )
         return {
             "left": _norm(verb.group("left")),
             "relation": (
                 "MORE_THAN" if verb.group("verb").casefold() == "exceeded" else "LESS_THAN"
             ),
             "right": _norm(verb.group("right")),
+            "assertion_polarity": polarity,
         }
     raise AuthorityRefusal(
         "SOURCE_COMPLETION_FAILED",
@@ -226,6 +255,7 @@ def _measurement_fields(receipt: MeasurementReceipt) -> dict[str, str]:
                 "left": str(proposal["left"]),
                 "relation": str(proposal["relation"]),
                 "right": str(proposal["right"]),
+                "assertion_polarity": str(proposal["assertion_polarity"]),
             }
         except KeyError as exc:
             raise AuthorityRefusal(

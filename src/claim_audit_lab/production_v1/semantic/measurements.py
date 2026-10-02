@@ -9,7 +9,7 @@ from typing import Any, cast
 from .models import AuditContext, SemanticFamily, stable_id
 
 STRICT_INSTRUMENT_ID = "rc7fb1-strict-comparison"
-STRICT_INSTRUMENT_VERSION = "rc7fb1-comparator-1"
+STRICT_INSTRUMENT_VERSION = "strict-comparison-polarity-rc0"
 EVENT_INSTRUMENT_ID = "rc7fc-event-order"
 EVENT_INSTRUMENT_VERSION = "rc7fc-event-order-1"
 
@@ -107,12 +107,45 @@ _REL = {
     "lower": "LESS_THAN",
     "smaller": "LESS_THAN",
 }
+# Refusal boundary for assertion polarity. Only one adjacent "did not" is a
+# representable negative comparison. Every other overt marker fails closed.
+_OVERT_NEGATION = re.compile(r"(?i)(?:n't|\b(?:not|never|no|without|neither|nor|cannot)\b)")
+
+
+def _assertion_polarity(span: str) -> str | None:
+    markers = list(_OVERT_NEGATION.finditer(span))
+    if not markers:
+        return "positive"
+    if len(markers) == 1 and markers[0].group(0).casefold() == "not":
+        preceding = span[: markers[0].start()].split()
+        if preceding and preceding[-1].casefold() == "did":
+            return "negative"
+    return None
+
+
+def _comparison_proposal(
+    match: re.Match[str],
+    *,
+    relation: str,
+    cue_group: str,
+) -> dict[str, Any] | None:
+    polarity = _assertion_polarity(match.string[match.end("left") : match.start(cue_group)])
+    if polarity is None:
+        return None
+    return {
+        "left": _norm(match.group("left")),
+        "relation": relation,
+        "right": _norm(match.group("right")),
+        "assertion_polarity": polarity,
+        "cue_span": list(match.span(cue_group)),
+    }
 
 
 def measure_strict_comparison(context: AuditContext, passage_id: str) -> MeasurementReceipt:
     passage = context.evidence_world.passage(passage_id)
     text = " ".join(passage.text.strip().split())
     proposal: dict[str, Any] | None = None
+    unsafe_polarity = False
     patterns = (
         re.compile(
             rf"^(?P<left>{_ENTITY})\s+.+?,\s*(?P<delta>.+?)\s+"
@@ -131,16 +164,16 @@ def measure_strict_comparison(context: AuditContext, passage_id: str) -> Measure
     )
     for pattern in patterns:
         match = pattern.match(text)
-        if match is not None:
-            rel = match.group("rel").casefold()
-            proposal = {
-                "left": _norm(match.group("left")),
-                "relation": _REL[rel],
-                "right": _norm(match.group("right")),
-                "cue_span": list(match.span("rel")),
-            }
-            break
-    if proposal is None:
+        if match is None:
+            continue
+        proposal = _comparison_proposal(
+            match,
+            relation=_REL[match.group("rel").casefold()],
+            cue_group="rel",
+        )
+        unsafe_polarity = proposal is None
+        break
+    if proposal is None and not unsafe_polarity:
         verb = re.match(
             rf"^(?P<left>{_ENTITY})\s+(?P<verb>(?i:exceeded|trailed))\s+"
             rf"(?P<right>{_ENTITY})(?:\s+by\s+.+)?\.?$",
@@ -148,13 +181,13 @@ def measure_strict_comparison(context: AuditContext, passage_id: str) -> Measure
         )
         if verb is not None:
             relation = "MORE_THAN" if verb.group("verb").casefold() == "exceeded" else "LESS_THAN"
-            proposal = {
-                "left": _norm(verb.group("left")),
-                "relation": relation,
-                "right": _norm(verb.group("right")),
-                "cue_span": list(verb.span("verb")),
-            }
-    if proposal is None:
+            proposal = _comparison_proposal(verb, relation=relation, cue_group="verb")
+            unsafe_polarity = proposal is None
+    diagnostics: dict[str, str] | None = None
+    if unsafe_polarity:
+        raw: Mapping[str, Any] = {"status": "UNRESOLVED", "proposals": []}
+        diagnostics = {"polarity": "unrepresentable"}
+    elif proposal is None:
         status = (
             "UNRESOLVED"
             if re.search(
@@ -164,7 +197,7 @@ def measure_strict_comparison(context: AuditContext, passage_id: str) -> Measure
             )
             else "NOT_APPLICABLE"
         )
-        raw: Mapping[str, Any] = {"status": status, "proposals": []}
+        raw = {"status": status, "proposals": []}
     else:
         raw = {"status": "CLAIMED", "proposals": [proposal]}
     return _make_receipt(
@@ -174,6 +207,7 @@ def measure_strict_comparison(context: AuditContext, passage_id: str) -> Measure
         instrument_version=STRICT_INSTRUMENT_VERSION,
         consumed_passage_ids=(passage_id,),
         raw_measurement=raw,
+        diagnostics=diagnostics,
     )
 
 

@@ -42,6 +42,9 @@ def _derive_comparison(context: AuditContext, fields: dict[str, str]) -> Categor
         raise RelationRefusal(
             "PROPOSITION_BINDING_FAILED", "strict comparison target fields missing"
         )
+    polarity = fields.get("assertion_polarity", "")
+    if polarity not in {"positive", "negative"}:
+        return CategoricalRelation.UNRESOLVED
     lhs = target["lhs_entity"].casefold().strip()
     rhs = target["rhs_entity"].casefold().strip()
     expected = _comparison_sign(target["comparison_direction"])
@@ -58,6 +61,12 @@ def _derive_comparison(context: AuditContext, fields: dict[str, str]) -> Categor
         normalized = -observed
     else:
         return CategoricalRelation.IRRELEVANT
+    if polarity == "negative":
+        # A negated comparison refutes that same oriented comparison.
+        # It does not establish the opposite direction: equality remains possible.
+        if normalized == expected:
+            return CategoricalRelation.REFUTES
+        return CategoricalRelation.UNRESOLVED
     return CategoricalRelation.SUPPORTS if normalized == expected else CategoricalRelation.REFUTES
 
 
