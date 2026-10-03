@@ -1,0 +1,1207 @@
+{
+  "authority": [
+    {
+      "case_id": "AUTH-PASSAGE-HASH",
+      "classification": "PASS",
+      "detail": "passage hash mismatch: p0"
+    },
+    {
+      "case_id": "AUTH-SOURCE-HASH-UNBOUND",
+      "classification": "INTERFACE_GAP",
+      "detail": "source hash substitution still decided supported"
+    },
+    {
+      "case_id": "AUTH-CROSS-WORLD",
+      "classification": "PASS",
+      "detail": "RelationRefusal: PROPOSITION_BINDING_FAILED: relation/context mismatch"
+    },
+    {
+      "case_id": "AUTH-STALE-CHILD",
+      "classification": "PASS",
+      "detail": "CHILD_TEXT_BINDING_MISMATCH"
+    },
+    {
+      "case_id": "AUTH-MISSING-CHILD",
+      "classification": "PASS",
+      "detail": "MISSING_CHILD_RESULT"
+    },
+    {
+      "case_id": "AUTH-EXTRA-CHILD",
+      "classification": "PASS",
+      "detail": "EXTRA_CHILD_RESULT"
+    },
+    {
+      "case_id": "AUTH-REPLAY-RESULT-ID",
+      "classification": "PASS",
+      "detail": "CHILD_RESULT_ID_MISMATCH"
+    },
+    {
+      "case_id": "AUTH-CHILD-SEQUENCE",
+      "classification": "PASS",
+      "detail": "INVALID_CHILD_SEQUENCE"
+    },
+    {
+      "case_id": "AUTH-CHILD-SUPPLY-ORDER",
+      "classification": "PASS",
+      "detail": "supported"
+    },
+    {
+      "case_id": "AUTH-MISSING-VERSION",
+      "classification": "PASS",
+      "detail": "Contract B version and bundle_id are required"
+    },
+    {
+      "case_id": "AUTH-EXTRA-APERTURE",
+      "classification": "INTERFACE_GAP",
+      "detail": "unknown aperture state decided supported"
+    },
+    {
+      "case_id": "AUTH-WRONG-CONTRACT-C",
+      "classification": "PASS",
+      "detail": "Contract C freeze checkout is not exact pinned authority"
+    },
+    {
+      "case_id": "AUTH-WRONG-RESOLVER",
+      "classification": "PASS",
+      "detail": "Contract C freeze checkout is not exact pinned authority"
+    },
+    {
+      "case_id": "AUTH-EXACT-AUTHORITY",
+      "classification": "PASS",
+      "detail": "pinned checkouts verified"
+    },
+    {
+      "case_id": "AUTH-SEMANTIC-MISMATCH",
+      "classification": "PASS",
+      "detail": "Contract C candidate CAL semantic identity mismatch"
+    }
+  ],
+  "counts": {
+    "AUTHORING_LIMIT": 26,
+    "INTERFACE_GAP": 3,
+    "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM": 9,
+    "PASS": 52,
+    "ROBUSTNESS_LIMIT": 5,
+    "rows": 95
+  },
+  "disposition": "PRESSURE_SUPPORTED_NO_CRITICAL_FAIL_WITH_DOCUMENTED_LIMITS",
+  "head": "111d7a070acb114eb69ae512695590f8640f9c10",
+  "operational": [
+    {
+      "case_id": "OPS-DET-ROOTS",
+      "classification": "PASS",
+      "detail": "two locale roots"
+    },
+    {
+      "case_id": "OPS-LOCALE",
+      "classification": "PASS",
+      "detail": "contradicted/contradicted"
+    },
+    {
+      "case_id": "OPS-OVERWRITE",
+      "classification": "PASS",
+      "detail": "refusing to overwrite target path: <local-path>"
+    },
+    {
+      "case_id": "OPS-NONDIR",
+      "classification": "PASS",
+      "detail": "output path is not a directory: <local-path>"
+    },
+    {
+      "case_id": "OPS-SYMLINK",
+      "classification": "PASS",
+      "detail": "output directory must not be a symlink: <local-path>"
+    },
+    {
+      "case_id": "OPS-CONCURRENT",
+      "classification": "PASS",
+      "detail": "distinct outputs"
+    },
+    {
+      "case_id": "OPS-COLLISION",
+      "classification": "PASS",
+      "detail": "rejected,rejected"
+    },
+    {
+      "case_id": "OPS-EMPTY-RACE",
+      "classification": "INTERFACE_GAP",
+      "detail": "accepted,accepted"
+    },
+    {
+      "artifact_name": "claim_audit_lab-0.6.0-py3-none-any.whl",
+      "artifact_sha256": "c7a0aea6e10f5cb923778d4903582d08439d8f92965bb9f37382e26c59f90070",
+      "case_id": "OPS-WHEEL",
+      "classification": "PASS",
+      "detail": "sha256=c7a0aea6e10f5cb923778d4903582d08439d8f92965bb9f37382e26c59f90070 conclusion=contradicted"
+    },
+    {
+      "artifact_name": "claim_audit_lab-0.6.0.tar.gz",
+      "artifact_sha256": "dd4fd665b8e134bfbf90a4a9ec03a30e251468d690d7c21f5c3aa19ebebc8c70",
+      "case_id": "OPS-SDIST",
+      "classification": "PASS",
+      "detail": "sha256=dd4fd665b8e134bfbf90a4a9ec03a30e251468d690d7c21f5c3aa19ebebc8c70 conclusion=contradicted"
+    }
+  ],
+  "predecessor": "decisive-run-01",
+  "python": "3.11.15",
+  "real": [
+    {
+      "authoring": "refused",
+      "case_id": "S08-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S08",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S08-C1-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S08",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S08-C2-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S08",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S08-C2-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S08",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S10-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S10",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S10-C1-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S10",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S10-C2-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S10",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S10-C2-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S10",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S11-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S11",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S11-C1-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S11",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S11-C2-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S11",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S11-C2-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S11",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S12-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S12",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S12-C1-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S12",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S12-C2-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S12",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S12-C2-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S12",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S13-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S13",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S13-C1-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S13",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S13-C2-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S13",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S13-C2-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S13",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S14-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S14",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S14-C1-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S14",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S14-C2-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S14",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S14-C2-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S14",
+      "source_relation": "refutes"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S16-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "direct_event_order",
+      "source_id": "S16",
+      "source_relation": "supports"
+    },
+    {
+      "authoring": "refused",
+      "case_id": "S16-C1-I",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "direct_event_order",
+      "source_id": "S16",
+      "source_relation": "refutes"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S01-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieval_http_403_block_page",
+      "source_id": "S01",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S02-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieval_http_403_block_page",
+      "source_id": "S02",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S03-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieval_http_403_block_page",
+      "source_id": "S03",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S04-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieval_http_403_block_page",
+      "source_id": "S04",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S05-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieval_http_404",
+      "source_id": "S05",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S06-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieval_http_404",
+      "source_id": "S06",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S07-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieved_discontinuation_notice_has_no_in_scope_relation",
+      "source_id": "S07",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S09-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieval_http_403_block_page",
+      "source_id": "S09",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    },
+    {
+      "cal_called": false,
+      "case_id": "S15-NONE",
+      "classification": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM",
+      "judgment": "agent",
+      "reason": "retrieved_index_has_no_in_scope_factual_relation",
+      "source_id": "S15",
+      "status": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM"
+    }
+  ],
+  "representatives": {
+    "abstention": {
+      "authoring": "authored",
+      "case_id": "SC-NOT-HIGHER-VS-LOWER",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "RELATION_UNRESOLVED",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "not higher is not lower. Equality remains possible.",
+      "trace_count": 1
+    },
+    "authoring_refusal": {
+      "authoring": "refused",
+      "case_id": "S08-C1-F",
+      "classification": "AUTHORING_LIMIT",
+      "conclusion": null,
+      "failure_code": null,
+      "family_hypothesis": "strict_comparison",
+      "source_id": "S08",
+      "source_relation": "supports"
+    },
+    "correct": {
+      "authoring": "authored",
+      "case_id": "SC-DID-NOT",
+      "classification": "PASS",
+      "conclusion": "contradicted",
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "One adjacent did-not refutes the same orientation. This is the #188 sentence.",
+      "trace_count": 1
+    },
+    "negative_control": {
+      "authoring": "authored",
+      "case_id": "SC-NEVER",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "never is an unsupported negation and must fail closed.",
+      "trace_count": 1
+    }
+  },
+  "schema": "cal-v1-polarity-successor-pressure-result-rc0",
+  "semantic": [
+    {
+      "authoring": "authored",
+      "case_id": "SC-SUPPORT",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Same-direction positive comparison.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-REFUTE",
+      "classification": "PASS",
+      "conclusion": "contradicted",
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Opposite positive direction refutes.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-ENTITY-SWAP",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Entity swap plus direction inversion preserves the comparison.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-DID-NOT",
+      "classification": "PASS",
+      "conclusion": "contradicted",
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "One adjacent did-not refutes the same orientation. This is the #188 sentence.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-NOT-HIGHER-VS-LOWER",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "RELATION_UNRESOLVED",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "LESS_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "not higher is not lower. Equality remains possible.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-MIXED",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MIXED_RELATIONS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Support and refute together do not yield a direction.",
+      "trace_count": 2
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-IRRELEVANT",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "NO_DECIDING_RELATION",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Unrelated entities are not a decision.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "refused",
+      "case_id": "SC-EQUALITY",
+      "classification": "PASS",
+      "conclusion": null,
+      "detail": "unsupported claim form: probe",
+      "evidence_not_used": true,
+      "note": "Equality is outside the supported comparison grammar and must fail closed."
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-MULTI-CUE",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "NO_DECIDING_RELATION",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Multiple comparison cues must not collapse to one direction.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-QUALIFIER",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "A population and time scope must not confirm the bare comparison.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-ORDER-A",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "First evidence order. Paired with SC-ORDER-B. A shared not_checkable result is a robustness limit. A difference is nondeterminism.",
+      "order_match": true,
+      "trace_count": 2
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-ORDER-B",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Permuted evidence order. A conclusion difference from SC-ORDER-A is nondeterminism.",
+      "order_match": true,
+      "trace_count": 2
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-DUPLICATE",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Duplicate admitted support stays support.",
+      "trace_count": 2
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-NEAR-DUP",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Near-duplicate punctuation. not_checkable is a robustness limit, not a wrong direction.",
+      "trace_count": 2
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-SOURCE-SUBST",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Same passage text under a different caller-supplied source hash.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-CASE",
+      "classification": "ROBUSTNESS_LIMIT",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Lowercase entities lose coverage and must not invent a direction.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-PUNCT",
+      "classification": "ROBUSTNESS_LIMIT",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Exclamation is outside the measurement terminator and must stay safe.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-WS",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Internal whitespace collapses and the comparison is unchanged.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-NEVER",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "never is an unsupported negation and must fail closed.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-DOUBLE-NEG",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "Double negation is not a supported positive.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-NOT-BARE",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "not outside one adjacent did-not frame fails closed.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "SC-CANNOT",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "strict_comparison",
+      "fields": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      },
+      "note": "cannot is an unsupported negation.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-BEFORE",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Same before-order.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-AFTER-INVERSION",
+      "classification": "PASS",
+      "conclusion": "contradicted",
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "BEFORE claim against AFTER evidence.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-SIDE-SWAP-PRESERVE",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Swapped sides with the temporal cue that preserves order.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-SIDE-SWAP-INVERT",
+      "classification": "PASS",
+      "conclusion": "contradicted",
+      "expected_conclusion": "contradicted",
+      "failure_code": null,
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Swapped sides that invert order.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-NEGATIVE",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "RELATION_UNRESOLVED",
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Negative-event form has no deciding semantics.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-MULTI-CUE",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Two temporal cues must not yield a direction.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-UNRELATED",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "NO_DECIDING_RELATION",
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Unrelated events are not a decision.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-MIXED",
+      "classification": "PASS",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MIXED_RELATIONS",
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Mixed before and after evidence.",
+      "trace_count": 2
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-SOURCE-SUBST",
+      "classification": "PASS",
+      "conclusion": "supported",
+      "expected_conclusion": "supported",
+      "failure_code": null,
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Same event text under a substituted source hash.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-PUNCT",
+      "classification": "ROBUSTNESS_LIMIT",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Comma punctuation is outside the direct event grammar.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-CASE",
+      "classification": "ROBUSTNESS_LIMIT",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Lowercase event prose loses coverage.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "authored",
+      "case_id": "EV-COMPLEX",
+      "classification": "ROBUSTNESS_LIMIT",
+      "conclusion": "not_checkable",
+      "expected_conclusion": "not_checkable",
+      "failure_code": "MEASUREMENT_MISS",
+      "family": "direct_event_order",
+      "fields": {
+        "left_object": "batch",
+        "left_polarity": "positive",
+        "left_predicate": "review",
+        "left_subject": "ada",
+        "right_object": "record",
+        "right_polarity": "positive",
+        "right_predicate": "sign",
+        "right_subject": "bea",
+        "temporal_relation": "BEFORE"
+      },
+      "note": "Naturally more complex prose with an extra temporal cue and a scene.",
+      "trace_count": 1
+    },
+    {
+      "authoring": "refused",
+      "case_id": "SC-SCOPED-CLAIM",
+      "classification": "PASS",
+      "conclusion": null,
+      "detail": "unsupported claim form: probe",
+      "evidence_not_used": true,
+      "note": "A qualifier-bearing comparison is not representable by lhs, rhs, and direction. Refusal is an authoring limit of the real surface. The weak collapse must still extract a bare comparison."
+    }
+  ],
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "subject": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+  "tree": "82d570a7bcd36e33fb89ddec6b61100fd4648054",
+  "weak_gates": [
+    {
+      "case_id": "WEAK-IGNORE-POLARITY",
+      "discriminates": true,
+      "real": "contradicted",
+      "weak": "supported"
+    },
+    {
+      "case_id": "WEAK-COLLAPSE-SCOPE",
+      "discriminates": true,
+      "real": "refused",
+      "weak": {
+        "comparison_direction": "MORE_THAN",
+        "lhs_entity": "Alpha",
+        "rhs_entity": "Beta"
+      }
+    },
+    {
+      "case_id": "WEAK-STRUCTURAL-ONLY",
+      "discriminates": true,
+      "real_conformance_rejects": true,
+      "real_structural_accepts": true,
+      "weak": true
+    },
+    {
+      "case_id": "WEAK-RESOLVER-WILDCARD",
+      "discriminates": true,
+      "real_rejects": true,
+      "weak_accepts": true
+    }
+  ]
+}
