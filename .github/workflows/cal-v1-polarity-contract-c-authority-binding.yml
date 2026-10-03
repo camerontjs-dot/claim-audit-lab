@@ -75,7 +75,7 @@ jobs:
 
       - name: Replay frozen polarity discriminator
         run: |
-          mkdir -p outputs/polarity
+          mkdir -p outputs
           .venv/bin/python research/cal_v1_strict_comparison_polarity_rc0_20261002/decisive/evaluate.py \
             --cases research/cal_v1_strict_comparison_polarity_rc0_20261002/decisive/CASES.json \
             --out outputs/polarity
