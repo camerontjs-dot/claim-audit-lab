@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - research/cal-v1-polarity-contract-c-binding-qualification-rc1-20261003
+  pull_request:
+    branches:
+      - research/cal-v1-polarity-contract-c-authority-binding-rc0-20261003
   workflow_dispatch:
 
 permissions:
