@@ -1,0 +1,54 @@
+name: CAL V1 polarity package artifact qualification
+
+on:
+  push:
+    branches:
+      - research/cal-v1-polarity-package-artifacts-rc0-20261003
+  pull_request:
+    branches:
+      - research/cal-v1-polarity-contract-c-authority-binding-rc0-20261003
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify frozen evaluator and product immutability
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD:research/cal_v1_polarity_package_artifacts_rc0_20261003/evaluate.py)" = "5de88f3a447672909aa98f7fbb559c33e80460d9"
+          git diff --exit-code 64b6c7702696c851057c1cf0b2c105b1c81db543 HEAD -- src/claim_audit_lab pyproject.toml uv.lock MANIFEST.in
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Prepare qualification environment
+        run: |
+          uv sync --python 3.11 --all-extras --frozen
+          uv pip install build
+
+      - name: Execute frozen package evaluator
+        run: |
+          .venv/bin/python research/cal_v1_polarity_package_artifacts_rc0_20261003/evaluate.py \
+            --out outputs/package-qualification
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-v1-polarity-package-artifacts-${{ github.sha }}
+          if-no-files-found: warn
+          path: |
+            outputs/package-qualification/receipt.json
+            outputs/package-qualification/dist/*.whl
+            outputs/package-qualification/dist/*.tar.gz
