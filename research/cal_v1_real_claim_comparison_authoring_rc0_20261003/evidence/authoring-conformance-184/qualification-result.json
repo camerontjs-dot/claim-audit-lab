@@ -1,0 +1,102 @@
+{
+  "formatting_invariance": {
+    "pretty_json_conforms": true,
+    "raw_target_identity_changes": true
+  },
+  "non_claims": [
+    "This does not establish unrestricted natural-language target authoring.",
+    "This does not change or requalify frozen CAL semantic behavior.",
+    "This does not promote or version the authoring/conformance path.",
+    "This does not move parent-bound Contract C into CAL."
+  ],
+  "out_of_aperture_authoring_refusals": 5,
+  "protected_boundaries": {
+    "contract_c_consumed_or_modified": false,
+    "decomposition_composer_modified": false,
+    "frozen_semantic_runtime_modified": false,
+    "run_bundle_behavior_modified": false
+  },
+  "research_question": "Can a deterministic bounded authoring/conformance path produce trusted CAL targets for the two active semantic families while rejecting PR #182 semantic-drift cases before frozen CAL execution?",
+  "result": "PASS",
+  "schema": "cal-v1-target-authoring-conformance-qualification-rc0",
+  "subject": {
+    "cal_base": "ddaf94551e38663920593cab89f9c60d43c1555f",
+    "contract_b": "1.2.0",
+    "decomposition_blob": "268d0dc4dd22ddde3848141d62b7d719e48d374d",
+    "evidence_bundler": "4e1f6fe00e7c350b28f52bfea14f1f8988847884",
+    "frozen_cal_oracle": "e24e405f5336ee024674f39dba97255bb58a2dd9",
+    "semantic_implementation": "847cc970642bb648dc994b929c2053b5c9d4648c"
+  },
+  "trusted_target_equivalence": [
+    {
+      "byte_identical_to_frozen_trusted_target": true,
+      "claim_id": "C1",
+      "conclusion": "supported",
+      "native_run_byte_identical": true,
+      "semantic_family": "strict_comparison",
+      "target_sha256": "sha256:f7a341852be2ad6cfac6dfe5f1f082450248a15989edc16e171e8e45f18d980c"
+    },
+    {
+      "byte_identical_to_frozen_trusted_target": true,
+      "claim_id": "C2",
+      "conclusion": "supported",
+      "native_run_byte_identical": true,
+      "semantic_family": "direct_event_order",
+      "target_sha256": "sha256:baa835920af21912332c0aa0f95079fa7d18e044ab2befe83f24b270693f5b7f"
+    }
+  ],
+  "weak_control_discrimination": {
+    "cases": [
+      {
+        "case": "strict_missing_required_family_field",
+        "detail": "target fields do not conform exactly to the authored supported-family semantics",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      },
+      {
+        "case": "strict_unsupported_direction",
+        "detail": "target fields do not conform exactly to the authored supported-family semantics",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      },
+      {
+        "case": "strict_extra_ignored_semantics",
+        "detail": "target fields do not conform exactly to the authored supported-family semantics",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      },
+      {
+        "case": "strict_direction_disagrees_with_claim",
+        "detail": "target fields do not conform exactly to the authored supported-family semantics",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      },
+      {
+        "case": "strict_entity_orientation_disagrees_with_claim",
+        "detail": "target fields do not conform exactly to the authored supported-family semantics",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      },
+      {
+        "case": "inactive_family",
+        "detail": "target semantic_family does not conform to the exact Contract B claim text",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      },
+      {
+        "case": "event_relation_disagrees_with_claim",
+        "detail": "target fields do not conform exactly to the authored supported-family semantics",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      },
+      {
+        "case": "event_extra_ignored_semantics",
+        "detail": "target fields do not conform exactly to the authored supported-family semantics",
+        "existing_structural_validator": "ACCEPTED",
+        "new_conformer": "REJECTED"
+      }
+    ],
+    "existing_structural_validator_accepted": 8,
+    "new_conformer_rejected": 8
+  }
+}
