@@ -1,0 +1,56 @@
+{
+  "authentic_claim_count": 14,
+  "authentic_claims_authored": 14,
+  "cohort_sha256": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+  "collision_observations": {
+    "COLLIDE-S04-SCOPE": {
+      "fields_changed": false,
+      "mutation": "AUTHORED"
+    },
+    "COLLIDE-S05-MEASURE": {
+      "fields_changed": false,
+      "mutation": "AUTHORED"
+    },
+    "COLLIDE-S08-SCOPE": {
+      "fields_changed": false,
+      "mutation": "AUTHORED"
+    },
+    "COLLIDE-S10-QUANTIFIER": {
+      "fields_changed": false,
+      "mutation": "AUTHORED"
+    }
+  },
+  "disposition": "FALSIFIED_EXISTING_TARGET_FIELD_MODEL_INSUFFICIENT",
+  "failures": [
+    {
+      "case_id": "COLLIDE-S04-SCOPE",
+      "detail": "material claim mutation authored to identical strict_comparison fields",
+      "kind": "target_field_collision"
+    },
+    {
+      "case_id": "COLLIDE-S05-MEASURE",
+      "detail": "material claim mutation authored to identical strict_comparison fields",
+      "kind": "target_field_collision"
+    },
+    {
+      "case_id": "COLLIDE-S08-SCOPE",
+      "detail": "material claim mutation authored to identical strict_comparison fields",
+      "kind": "target_field_collision"
+    },
+    {
+      "case_id": "COLLIDE-S10-QUANTIFIER",
+      "detail": "material claim mutation authored to identical strict_comparison fields",
+      "kind": "target_field_collision"
+    }
+  ],
+  "issue": 193,
+  "negative_observations": {
+    "NEG-AMBIGUOUS-PAIR": "REFUSED:unsupported claim form: NEG-AMBIGUOUS-PAIR",
+    "NEG-EQUALITY": "REFUSED:unsupported claim form: NEG-EQUALITY",
+    "NEG-MISSING-RHS": "REFUSED:unsupported claim form: NEG-MISSING-RHS",
+    "NEG-MULTIPLE-CUES": "REFUSED:unsupported claim form: NEG-MULTIPLE-CUES",
+    "NEG-OTHER-FAMILY": "AUTHORED:direct_event_order",
+    "NEG-UNBOUND-DIRECTION": "REFUSED:unsupported claim form: NEG-UNBOUND-DIRECTION"
+  },
+  "schema": "cal-v1-real-claim-comparison-authoring-rc0-result"
+}

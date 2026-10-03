@@ -1,0 +1,174 @@
+{
+  "schema": "cal-v1-real-claim-comparison-authoring-rc0-cases",
+  "issue": 193,
+  "scientific_base": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+  "frozen_cohort_sha256": "3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+  "claims": [
+    {
+      "case_id": "REAL-S01-F",
+      "pair_id": "REAL-S01",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "The rate of firearm-related violent crime in Canada in 2023 is lower than the rate in 2022.",
+      "direction": "LESS_THAN"
+    },
+    {
+      "case_id": "REAL-S01-I",
+      "pair_id": "REAL-S01",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "The rate of firearm-related violent crime in Canada in 2023 is higher than the rate in 2022.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S02-F",
+      "pair_id": "REAL-S02",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "The police-reported crime rate in provincial rural areas in 2023 is higher than the rate in provincial urban areas in 2023.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S02-I",
+      "pair_id": "REAL-S02",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "The police-reported crime rate in provincial rural areas in 2023 is lower than the rate in provincial urban areas in 2023.",
+      "direction": "LESS_THAN"
+    },
+    {
+      "case_id": "REAL-S03-F",
+      "pair_id": "REAL-S03",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "The employment rate of fathers in 2023 is higher than the employment rate of mothers in 2023.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S03-I",
+      "pair_id": "REAL-S03",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "The employment rate of fathers in 2023 is lower than the employment rate of mothers in 2023.",
+      "direction": "LESS_THAN"
+    },
+    {
+      "case_id": "REAL-S04-F",
+      "pair_id": "REAL-S04",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "In the five provinces studied, the age- and sex-adjusted Indigenous incarceration rate in 2020/2021 is higher than the corresponding non-Indigenous rate.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S04-I",
+      "pair_id": "REAL-S04",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "In the five provinces studied, the age- and sex-adjusted Indigenous incarceration rate in 2020/2021 is lower than the corresponding non-Indigenous rate.",
+      "direction": "LESS_THAN"
+    },
+    {
+      "case_id": "REAL-S05-F",
+      "pair_id": "REAL-S05",
+      "pair_mode": "side_swap_same_direction",
+      "claim": "From 2001 to 2005, women were more likely than men to report COPD.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S05-I",
+      "pair_id": "REAL-S05",
+      "pair_mode": "side_swap_same_direction",
+      "claim": "From 2001 to 2005, men were more likely than women to report COPD.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S08-F",
+      "pair_id": "REAL-S08",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "Gumarey had a higher Rift Valley fever virus immunoglobulin G seropositivity rate than Sogan-Godud in almost all age groups.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S08-I",
+      "pair_id": "REAL-S08",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "Gumarey had a lower Rift Valley fever virus immunoglobulin G seropositivity rate than Sogan-Godud in almost all age groups.",
+      "direction": "LESS_THAN"
+    },
+    {
+      "case_id": "REAL-S10-F",
+      "pair_id": "REAL-S10",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "In eight reported instances, the microbiological total count of water used by Diamond Wipes for manufacturing was higher than its action limit.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "REAL-S10-I",
+      "pair_id": "REAL-S10",
+      "pair_mode": "same_sides_direction_flip",
+      "claim": "In eight reported instances, the microbiological total count of water used by Diamond Wipes for manufacturing was lower than its action limit.",
+      "direction": "LESS_THAN"
+    }
+  ],
+  "existing_supported": [
+    {
+      "case_id": "BASE-HIGHER",
+      "claim": "Alpha had a higher rate than Beta.",
+      "direction": "MORE_THAN"
+    },
+    {
+      "case_id": "BASE-LOWER",
+      "claim": "Alpha had a lower rate than Beta.",
+      "direction": "LESS_THAN"
+    }
+  ],
+  "negative_controls": [
+    {
+      "case_id": "NEG-EQUALITY",
+      "claim": "Alpha had the same rate as Beta."
+    },
+    {
+      "case_id": "NEG-MULTIPLE-CUES",
+      "claim": "Alpha had a higher rate than Beta but a lower rate than Gamma."
+    },
+    {
+      "case_id": "NEG-MISSING-RHS",
+      "claim": "Alpha had a higher rate than."
+    },
+    {
+      "case_id": "NEG-AMBIGUOUS-PAIR",
+      "claim": "Alpha and Gamma had a higher rate than Beta."
+    },
+    {
+      "case_id": "NEG-UNBOUND-DIRECTION",
+      "claim": "Alpha had a different rate than Beta."
+    },
+    {
+      "case_id": "NEG-OTHER-FAMILY",
+      "claim": "Alpha reviewed Report before Beta approved File."
+    }
+  ],
+  "collision_controls": [
+    {
+      "case_id": "COLLIDE-S04-SCOPE",
+      "original": "In the five provinces studied, the age- and sex-adjusted Indigenous incarceration rate in 2020/2021 is higher than the corresponding non-Indigenous rate.",
+      "mutation": "In all provinces, the age- and sex-adjusted Indigenous incarceration rate in 2020/2021 is higher than the corresponding non-Indigenous rate."
+    },
+    {
+      "case_id": "COLLIDE-S05-MEASURE",
+      "original": "From 2001 to 2005, women were more likely than men to report COPD.",
+      "mutation": "From 2001 to 2005, women were more likely than men to report asthma."
+    },
+    {
+      "case_id": "COLLIDE-S08-SCOPE",
+      "original": "Gumarey had a higher Rift Valley fever virus immunoglobulin G seropositivity rate than Sogan-Godud in almost all age groups.",
+      "mutation": "Gumarey had a higher Rift Valley fever virus immunoglobulin G seropositivity rate than Sogan-Godud in all age groups."
+    },
+    {
+      "case_id": "COLLIDE-S10-QUANTIFIER",
+      "original": "In eight reported instances, the microbiological total count of water used by Diamond Wipes for manufacturing was higher than its action limit.",
+      "mutation": "In two reported instances, the microbiological total count of water used by Diamond Wipes for manufacturing was higher than its action limit."
+    }
+  ],
+  "metamorphic_controls": [
+    {
+      "case_id": "META-BASE-SWAP",
+      "a": "Alpha had a higher rate than Beta.",
+      "b": "Beta had a lower rate than Alpha.",
+      "mode": "swap_sides_direction_flip"
+    }
+  ]
+}

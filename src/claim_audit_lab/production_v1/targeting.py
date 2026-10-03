@@ -50,6 +50,27 @@ _COMPARISON_DIRECTION = {
     "fewer": "LESS_THAN",
     "less": "LESS_THAN",
 }
+_RELATION = "higher|lower|greater|larger|smaller|more|fewer|less"
+_LEADING_ADJUNCT = re.compile(
+    r"^(?P<adjunct>(?i:In|From|During|Across|Within|After|Before|Over|Among|"
+    r"Between|Throughout|For)\b[^,]+),\s*(?P<body>.+)$"
+)
+_COPAR = re.compile(
+    rf"^(?P<lhs>.+?)\s+(?i:is|was|were)\s+(?P<rel>(?i:{_RELATION}))\s+than\s+(?P<rhs>.+)$"
+)
+_LIKELY = re.compile(
+    r"^(?P<lhs>.+?)\s+(?i:was|were)\s+(?P<rel>(?i:more|less))\s+likely\s+than\s+"
+    r"(?P<rhs>.+?)\s+to\s+(?P<property>.+)$"
+)
+_COMPLEX_MEASURE = re.compile(
+    rf"^(?P<lhs>{_ENTITY})\s+had\s+(?:a\s+)?(?P<rel>(?i:{_RELATION}))\s+"
+    rf"(?P<measure>.+?)\s+than\s+(?P<rhs>{_ENTITY})"
+    rf"(?:\s+(?i:in|during|across|within|for|among|over|after|before|throughout)\b.+)?$"
+)
+_RESIDUAL_CUE = re.compile(
+    r"\b(?:higher|lower|greater|larger|smaller|more|fewer|less|likely|before|after)\b",
+    re.IGNORECASE,
+)
 
 _EVENT_VERBS = {
     "reviewed": "review",
@@ -87,15 +108,102 @@ def _require_contract_b(intake: ContractBIntakeView) -> None:
         )
 
 
-def _strict_comparison_fields(claim_text: str) -> dict[str, str] | None:
-    match = _COMPARISON.fullmatch(" ".join(claim_text.strip().split()))
+def _comparison_surface(claim_text: str) -> str:
+    text = " ".join(claim_text.strip().split())
+    if text.endswith("."):
+        text = text[:-1].rstrip()
+    return text
+
+
+def _comparison_body(surface: str) -> str:
+    """Return the main clause after one sentence-initial prepositional adjunct."""
+    match = _LEADING_ADJUNCT.fullmatch(surface)
     if match is None:
+        return surface
+    return match.group("body")
+
+
+def _bound_direction(relation: str) -> str | None:
+    return _COMPARISON_DIRECTION.get(relation.casefold())
+
+
+def _comparison_fields(lhs: str, rhs: str, relation: str) -> dict[str, str] | None:
+    direction = _bound_direction(relation)
+    if direction is None or not lhs or not rhs:
+        return None
+    if _RESIDUAL_CUE.search(lhs) or _RESIDUAL_CUE.search(rhs):
         return None
     return {
-        "lhs_entity": match.group("lhs"),
-        "rhs_entity": match.group("rhs"),
-        "comparison_direction": _COMPARISON_DIRECTION[match.group("relation").casefold()],
+        "lhs_entity": lhs,
+        "rhs_entity": rhs,
+        "comparison_direction": direction,
     }
+
+
+def _closed_comparison_fields(normalized: str) -> dict[str, str] | None:
+    match = _COMPARISON.fullmatch(normalized)
+    if match is None:
+        return None
+    return _comparison_fields(match.group("lhs"), match.group("rhs"), match.group("relation"))
+
+
+def _copular_comparison_fields(surface: str) -> dict[str, str] | None:
+    body = _comparison_body(surface)
+    if len(re.findall(rf"\b(?i:is|was|were)\s+(?i:{_RELATION})\s+than\b", body)) != 1:
+        return None
+    match = _COPAR.fullmatch(body)
+    if match is None:
+        return None
+    return _comparison_fields(
+        match.group("lhs").strip(), match.group("rhs").strip(), match.group("rel")
+    )
+
+
+def _likelihood_comparison_fields(surface: str) -> dict[str, str] | None:
+    # The infinitive complement is the measured property. strict_comparison has no field for it.
+    body = _comparison_body(surface)
+    if len(re.findall(r"\b(?i:more|less)\s+likely\s+than\b", body)) != 1:
+        return None
+    if len(re.findall(r"\bthan\b", body, re.IGNORECASE)) != 1:
+        return None
+    match = _LIKELY.fullmatch(body)
+    if match is None or not match.group("property").strip():
+        return None
+    return _comparison_fields(
+        match.group("lhs").strip(), match.group("rhs").strip(), match.group("rel")
+    )
+
+
+def _complex_measure_comparison_fields(surface: str) -> dict[str, str] | None:
+    # A multi-word measure and any trailing adjunct are outside the three stored fields.
+    # The closed single-measure frame stays end-bounded and does not use this path.
+    body = _comparison_body(surface)
+    if len(re.findall(r"\bthan\b", body, re.IGNORECASE)) != 1:
+        return None
+    match = _COMPLEX_MEASURE.fullmatch(body)
+    if match is None or len(match.group("measure").split()) < 2:
+        return None
+    return _comparison_fields(match.group("lhs"), match.group("rhs"), match.group("rel"))
+
+
+def _strict_comparison_fields(claim_text: str) -> dict[str, str] | None:
+    normalized = " ".join(claim_text.strip().split())
+    closed = _closed_comparison_fields(normalized)
+    if closed is not None:
+        return closed
+    surface = _comparison_surface(claim_text)
+    parsed = [
+        fields
+        for parser in (
+            _copular_comparison_fields,
+            _likelihood_comparison_fields,
+            _complex_measure_comparison_fields,
+        )
+        if (fields := parser(surface)) is not None
+    ]
+    if len(parsed) != 1:
+        return None
+    return parsed[0]
 
 
 def _event_side(text: str) -> tuple[str, str, str, str] | None:
