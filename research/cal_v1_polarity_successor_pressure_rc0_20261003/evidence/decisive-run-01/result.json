@@ -1,0 +1,10 @@
+{
+  "disposition": "PRESSURE_INCONCLUSIVE_APPARATUS_INVALID",
+  "error": "Traceback (most recent call last):\n  File \"<local-path>\", line 801, in execute\n    semantic = _run_semantic(matrix)\n               ^^^^^^^^^^^^^^^^^^^^^\n  File \"<local-path>\", line 183, in _run_semantic\n    observed = _conclusion_for(case[\"claim\"], case[\"evidence\"], case.get(\"source_sha256\"))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<local-path>\", line 90, in _conclusion_for\n    from claim_audit_lab.production_v1.semantic.engine import audit\n  File \"<local-path>\", line 34, in <module>\n    from claim_audit_lab.auditor import audit_claims, audit_document\n  File \"<local-path>\", line 5, in <module>\n    from claim_audit_lab.claim_extraction import extract_claims\n  File \"<local-path>\", line 9, in <module>\n    from claim_audit_lab.classifiers import classify_claim_text\n  File \"<local-path>\", line 8, in <module>\n    from claim_audit_lab.models import ClaimType\n  File \"<local-path>\", line 8, in <module>\n    from pydantic import BaseModel, ConfigDict, Field, model_validator\nModuleNotFoundError: No module named 'pydantic'\n",
+  "head": "9f83bf0e31a3d0de5acb26e9891f2ff682f6cee1",
+  "python": "3.11.15",
+  "schema": "cal-v1-polarity-successor-pressure-result-rc0",
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "subject": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+  "tree": "82456a1dc5b07db2e6e068915c1be48b77bcf7c0"
+}

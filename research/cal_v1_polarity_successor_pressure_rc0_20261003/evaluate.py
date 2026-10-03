@@ -71,12 +71,18 @@ def _apparatus_repo() -> Path:
     raise RuntimeError("apparatus workbench unavailable")
 
 
-def _assert_frozen_blobs() -> str | None:
+def _assert_frozen_blobs(successor: bool = False) -> str | None:
     freeze = _load("HARNESS_FREEZE.json")
     blobs = freeze.get("blobs")
     if not isinstance(blobs, dict) or not blobs:
         return "harness freeze has no blobs"
-    for name, expected in blobs.items():
+    expected_blobs = dict(blobs)
+    if successor:
+        successor_blob = freeze.get("successor_evaluate_blob")
+        if not isinstance(successor_blob, str) or not successor_blob:
+            return "successor evaluator blob is not frozen"
+        expected_blobs["evaluate.py"] = successor_blob
+    for name, expected in expected_blobs.items():
         path = CAMPAIGN / name
         if not path.is_file():
             return f"frozen file missing: {name}"
@@ -84,6 +90,49 @@ def _assert_frozen_blobs() -> str | None:
         if observed != expected:
             return f"frozen blob drift: {name}"
     return None
+
+
+def _bootstrap_dependencies() -> None:
+    """Re-exec under Python 3.11 with the project's declared runtime dependencies.
+
+    The first decisive run used a bare interpreter and stopped before CAL with
+    ModuleNotFoundError: pydantic. This bootstrap does not change the candidate.
+    """
+    try:
+        import pydantic  # noqa: F401
+        return
+    except ModuleNotFoundError:
+        pass
+    if os.environ.get("CAL_PRESSURE_RUNTIME") == "1":
+        raise RuntimeError("declared dependencies are still missing after bootstrap")
+    runtime = Path(tempfile.mkdtemp(prefix="cal-pressure-runtime-"))
+    created = subprocess.run(
+        ["uv", "venv", "--python", "3.11", str(runtime)],
+        capture_output=True,
+        text=True,
+    )
+    if created.returncode != 0:
+        raise RuntimeError(_public(created.stderr[-400:]))
+    installed = subprocess.run(
+        [
+            "uv",
+            "pip",
+            "install",
+            "--python",
+            str(runtime / "bin" / "python"),
+            "pydantic>=2.6",
+            "PyYAML>=6.0",
+            "typer>=0.12",
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if installed.returncode != 0:
+        raise RuntimeError(_public(installed.stderr[-400:]))
+    env = os.environ.copy()
+    env["CAL_PRESSURE_RUNTIME"] = "1"
+    python = str(runtime / "bin" / "python")
+    os.execve(python, [python, *sys.argv], env)
 
 
 def _conclusion_for(claim: str, evidence: list[str], source_sha256: str | None = None) -> dict[str, Any]:
@@ -773,8 +822,21 @@ def _disposition(rows: list[dict[str, Any]], gates: list[dict[str, Any]]) -> str
     return "PRESSURE_SUPPORTED_NO_CRITICAL_FAIL_WITH_DOCUMENTED_LIMITS"
 
 
-def execute() -> int:
-    output = CAMPAIGN / "evidence" / "decisive-run-01"
+def execute(successor: bool = False) -> int:
+    output = CAMPAIGN / "evidence" / ("decisive-run-02" if successor else "decisive-run-01")
+    first = CAMPAIGN / "evidence" / "decisive-run-01"
+    if successor:
+        prior_path = first / "result.json"
+        if not prior_path.is_file():
+            print("successor requires the preserved first run", file=sys.stderr)
+            return 2
+        prior = json.loads(prior_path.read_text(encoding="utf-8"))
+        if prior.get("disposition") != "PRESSURE_INCONCLUSIVE_APPARATUS_INVALID":
+            print("successor is only for an apparatus-invalid first run", file=sys.stderr)
+            return 2
+    elif first.exists():
+        print("decisive output already exists", file=sys.stderr)
+        return 2
     if output.exists():
         print("decisive output already exists", file=sys.stderr)
         return 2
@@ -790,10 +852,27 @@ def execute() -> int:
     ).returncode != 0:
         print("product commit is not an ancestor", file=sys.stderr)
         return 2
-    drift = _assert_frozen_blobs()
+    drift = _assert_frozen_blobs(successor)
     if drift:
         print(drift, file=sys.stderr)
         return 2
+    try:
+        _bootstrap_dependencies()
+    except Exception:
+        output.mkdir(parents=True, exist_ok=True)
+        failed = {
+            "schema": "cal-v1-polarity-successor-pressure-result-rc0",
+            "subject": SUBJECT,
+            "semantic_implementation": SEMANTIC,
+            "head": _git("rev-parse", "HEAD"),
+            "tree": _git("rev-parse", "HEAD^{tree}"),
+            "python": sys.version.split()[0],
+            "disposition": "PRESSURE_INCONCLUSIVE_APPARATUS_INVALID",
+            "error": _public(traceback.format_exc()),
+        }
+        (output / "result.json").write_text(json.dumps(failed, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        print(failed["disposition"])
+        return 1
     matrix = _load("MATRIX.json")
     output.mkdir(parents=True)
     os.environ["CAL_PRESSURE_DECISIVE"] = "1"
@@ -812,6 +891,7 @@ def execute() -> int:
             "head": _git("rev-parse", "HEAD"),
             "tree": _git("rev-parse", "HEAD^{tree}"),
             "python": sys.version.split()[0],
+            "predecessor": "decisive-run-01" if successor else None,
             "semantic": semantic,
             "authority": authority,
             "operational": operational,
@@ -854,11 +934,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--execute", action="store_true")
     parser.add_argument("--probe", action="store_true")
+    parser.add_argument("--successor", action="store_true")
     args = parser.parse_args()
     if args.probe:
         return _probe_main()
     if args.execute:
-        return execute()
+        return execute(successor=args.successor)
     print("frozen runner; pass --execute for the decisive run")
     return 0
 

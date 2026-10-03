@@ -57,6 +57,9 @@
     "select_window.py": "99838371aa6f1cba75fa960475cd80aaf8eaece9",
     "weak_systems.py": "8a3230a30d40e6b06015eb8e5fdeef4078d385c1"
   },
+  "run01_evaluate_blob": "15a4feadba6c72f99c016dbf167513aab9c9a169",
+  "successor_evaluate_blob": "8703b8244ee099156c622d7ba9372b05a26ec931",
+  "successor_reason": "decisive-run-01 stopped before CAL because the bare Python 3.11 interpreter had no pydantic. The successor only bootstraps the declared runtime dependencies.",
   "publication_redaction": {
     "path": "raw/S16.body",
     "marker": "[REDACTED-MAPBOX-TOKEN]",
