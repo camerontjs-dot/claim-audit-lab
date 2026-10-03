@@ -36,20 +36,20 @@ from claim_audit_lab.production_v1.semantic.decomposition import (
 )
 from claim_audit_lab.production_v1.semantic.models import Conclusion
 
-CONTRACT_C_FREEZE_COMMIT = "c5b1d757f3a0ad4f6e2c3f6dbdc2dd2d3c1403ec"
+CONTRACT_C_FREEZE_COMMIT = "c183d2d12306ee30c509169a58db55e7430fe8c5"
 CONTRACT_C_CANDIDATE_PATH = (
-    "research/contract_c_cal_v1_parent_recomposition_rc0_20260919/candidate_rc0.py"
+    "research/contract_c_cal_v1_polarity_authority_successor_rc0_20261003/candidate_rc0.py"
 )
-CONTRACT_C_CANDIDATE_BLOB = "df6b6ed410f52cafaeadfe1578d770f480a34b09"
+CONTRACT_C_CANDIDATE_BLOB = "aeb50dee8d24bda5f62eb879654e80437a50912d"
 CONTRACT_C_PROFILE = "contract-c-cal-v1-parent-recomposition-rc0"
 
 RC2_AUTHORITY_COMMIT = "b42c827acb0a9fe65353354d709add0e27bab307"
 RC2_VALIDATOR_PATH = "validators/contract_c_rc2.py"
 RC2_VALIDATOR_BLOB = "1d2ecd228cde807138013c33c8675c3003421d3c"
 
-RESOLVER_AUTHORITY_COMMIT = "1d33e0612befcf8016816197c90c062373796df9"
-RESOLVER_PATH = "research/contract_c2_current_cal_resolver_successor_rc0/RESOLVER.json"
-RESOLVER_BLOB = "1a408246fd3bef0758a958ae716b44ea74bc0689"
+RESOLVER_AUTHORITY_COMMIT = "292168222f83c67a24190b4846eebe84392e3d04"
+RESOLVER_PATH = "research/contract_c_cal_v1_polarity_authority_successor_rc0_20261003/RESOLVER.json"
+RESOLVER_BLOB = "b9297ba06beefe1de8488bc25a4c424b0e10e58b"
 
 CAL_FREEZE_COMMIT = "e24e405f5336ee024674f39dba97255bb58a2dd9"
 CAL_SEMANTIC_SOURCE_COMMIT = "7cf0d2e50562ec4ce4082d1e1c058a11025b1a48"
