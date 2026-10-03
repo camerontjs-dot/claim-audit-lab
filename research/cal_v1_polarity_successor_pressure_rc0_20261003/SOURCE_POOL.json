@@ -1,0 +1,146 @@
+{
+  "schema": "cal-v1-polarity-successor-pressure-source-pool-rc0",
+  "fixed_before_retrieval": true,
+  "excluded_prior_cohort": "claim-audit-lab #189 source cohort SHA-256 3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+  "excluded_titles": [
+    "Statistics Canada firearms 2023",
+    "Statistics Canada rural crime 2023",
+    "Statistics Canada mothers and fathers 2023",
+    "Statistics Canada Indigenous custody",
+    "Statistics Canada COPD 2009",
+    "CDC NIOSH truck crash",
+    "CDC NCHS contraception DB188",
+    "CDC EID Rift Valley fever figure",
+    "FDA West Coast Laboratories",
+    "FDA Diamond Wipes International",
+    "FDA Somalabs",
+    "NASA OIG IG-18-015"
+  ],
+  "process_order": "S01 through S16, no substitution after retrieval",
+  "selection_rule": {
+    "window": "first 120000 characters of the frozen extraction",
+    "extraction": "PDF: pdftotext -layout -enc UTF-8. HTML: strip script/style/noscript, then tags, unescape entities. Raw download bytes are the custody object.",
+    "sentence": "split on whitespace following . ! or ?; keep spans of 80 to 700 characters",
+    "skip": "navigation, cookie banners, table-of-contents lines, sentences whose main verb is shall/must/should, header-only dates, and comparisons inferred only by placing two unrelated numbers side by side",
+    "comparison": "first remaining sentence that states a factual magnitude comparison between two named populations, periods, places, or groups",
+    "temporal": "if no comparison sentence occurs first, the first remaining sentence that states a factual before/after order of two events",
+    "qualifiers": "time, population, geography, and condition stay in the passage and in the concise claim",
+    "no_eligible": "NO_ELIGIBLE_ACTIVE_FAMILY_CLAIM when the window has no such sentence, or when retrieval fails",
+    "claim_timing": "concise ordinary-English claim and, where logically valid, one inverse or refuting paired claim are written before any CAL import",
+    "no_substitution_for_performance": true
+  },
+  "sources": [
+    {
+      "source_id": "S01",
+      "publisher": "US Bureau of Labor Statistics",
+      "title": "Employment Situation news release PDF",
+      "url": "https://www.bls.gov/news.release/pdf/empsit.pdf",
+      "media_expectation": "application/pdf"
+    },
+    {
+      "source_id": "S02",
+      "publisher": "US Bureau of Labor Statistics",
+      "title": "Consumer Price Index news release PDF",
+      "url": "https://www.bls.gov/news.release/pdf/cpi.pdf",
+      "media_expectation": "application/pdf"
+    },
+    {
+      "source_id": "S03",
+      "publisher": "US Bureau of Labor Statistics",
+      "title": "Employment Cost Index news release PDF",
+      "url": "https://www.bls.gov/news.release/pdf/eci.pdf",
+      "media_expectation": "application/pdf"
+    },
+    {
+      "source_id": "S04",
+      "publisher": "US Bureau of Labor Statistics",
+      "title": "Producer Price Index news release PDF",
+      "url": "https://www.bls.gov/news.release/pdf/ppi.pdf",
+      "media_expectation": "application/pdf"
+    },
+    {
+      "source_id": "S05",
+      "publisher": "US Census Bureau",
+      "title": "Income, poverty, and health insurance 2025 press release",
+      "url": "https://www.census.gov/newsroom/press-releases/2025/income-poverty-health-insurance.html",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S06",
+      "publisher": "US Bureau of Economic Analysis",
+      "title": "GDP second quarter 2025 third estimate",
+      "url": "https://www.bea.gov/news/2025/gross-domestic-product-second-quarter-2025-third-estimate-gdp-industry-and-corporate-profits",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S07",
+      "publisher": "US Energy Information Administration",
+      "title": "Weekly Petroleum Status Report PDF",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/pdf/wpsrall.pdf",
+      "media_expectation": "application/pdf"
+    },
+    {
+      "source_id": "S08",
+      "publisher": "Board of Governors of the Federal Reserve",
+      "title": "FOMC minutes July 2025",
+      "url": "https://www.federalreserve.gov/monetarypolicy/files/fomcminutes20250730.pdf",
+      "media_expectation": "application/pdf"
+    },
+    {
+      "source_id": "S09",
+      "publisher": "US CDC National Center for Health Statistics",
+      "title": "NCHS Data Brief 523",
+      "url": "https://www.cdc.gov/nchs/products/databriefs/db523.htm",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S10",
+      "publisher": "UK Office for National Statistics",
+      "title": "Consumer price inflation August 2025",
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S11",
+      "publisher": "Statistics Canada",
+      "title": "Labour Force Survey September 2025 daily",
+      "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/250905/dq250905a-eng.htm",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S12",
+      "publisher": "Bank of England",
+      "title": "Monetary policy summary September 2025",
+      "url": "https://www.bankofengland.co.uk/monetary-policy-summary-and-minutes/2025/september-2025",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S13",
+      "publisher": "US Environmental Protection Agency",
+      "title": "Inventory of US greenhouse gas emissions and sinks",
+      "url": "https://www.epa.gov/ghgemissions/inventory-us-greenhouse-gas-emissions-and-sinks",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S14",
+      "publisher": "US National Highway Traffic Safety Administration",
+      "title": "Early estimate of motor vehicle traffic fatalities",
+      "url": "https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813705",
+      "media_expectation": "application/pdf"
+    },
+    {
+      "source_id": "S15",
+      "publisher": "US Food and Drug Administration",
+      "title": "Recalls, market withdrawals, and safety alerts index",
+      "url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts",
+      "media_expectation": "text/html"
+    },
+    {
+      "source_id": "S16",
+      "publisher": "National Institute of Standards and Technology",
+      "title": "Post-quantum encryption standards announcement",
+      "url": "https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards",
+      "media_expectation": "text/html"
+    }
+  ]
+}

@@ -1,0 +1,780 @@
+{
+  "schema": "cal-v1-polarity-successor-pressure-matrix-rc0",
+  "frozen_before_cal_execution": true,
+  "subject_commit": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+  "cases": [
+    {
+      "case_id": "SC-SUPPORT",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Same-direction positive comparison."
+    },
+    {
+      "case_id": "SC-REFUTE",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "contradicted",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported"
+      ],
+      "note": "Opposite positive direction refutes."
+    },
+    {
+      "case_id": "SC-ENTITY-SWAP",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Beta had a lower rate than Alpha."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Entity swap plus direction inversion preserves the comparison."
+    },
+    {
+      "case_id": "SC-DID-NOT",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha did not have a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "contradicted",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported"
+      ],
+      "note": "One adjacent did-not refutes the same orientation. This is the #188 sentence."
+    },
+    {
+      "case_id": "SC-NOT-HIGHER-VS-LOWER",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a lower rate than Beta.",
+      "evidence": [
+        "Alpha did not have a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "not higher is not lower. Equality remains possible."
+    },
+    {
+      "case_id": "SC-MIXED",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a lower rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Support and refute together do not yield a direction."
+    },
+    {
+      "case_id": "SC-IRRELEVANT",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Gamma had a higher rate than Delta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Unrelated entities are not a decision."
+    },
+    {
+      "case_id": "SC-EQUALITY",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had the same rate as Beta.",
+      "evidence": [],
+      "expected_kind": "authoring_refusal",
+      "expected_conclusion": null,
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Equality is outside the supported comparison grammar and must fail closed."
+    },
+    {
+      "case_id": "SC-MULTI-CUE",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta and a lower rate than Gamma."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Multiple comparison cues must not collapse to one direction."
+    },
+    {
+      "case_id": "SC-QUALIFIER",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta among adults in 2024."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "A population and time scope must not confirm the bare comparison."
+    },
+    {
+      "case_id": "SC-ORDER-A",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha exceeded Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted"
+      ],
+      "note": "First evidence order. Paired with SC-ORDER-B. A shared not_checkable result is a robustness limit. A difference is nondeterminism.",
+      "not_checkable_class": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "case_id": "SC-ORDER-B",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha exceeded Beta.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted"
+      ],
+      "note": "Permuted evidence order. A conclusion difference from SC-ORDER-A is nondeterminism.",
+      "not_checkable_class": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "case_id": "SC-DUPLICATE",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Duplicate admitted support stays support."
+    },
+    {
+      "case_id": "SC-NEAR-DUP",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta.",
+        "Alpha had a higher rate than Beta"
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted"
+      ],
+      "note": "Near-duplicate punctuation. not_checkable is a robustness limit, not a wrong direction.",
+      "not_checkable_class": "ROBUSTNESS_LIMIT"
+    },
+    {
+      "case_id": "SC-SOURCE-SUBST",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Same passage text under a different caller-supplied source hash.",
+      "source_sha256": "sha256:abababababababababababababababababababababababababababababababab"
+    },
+    {
+      "case_id": "SC-CASE",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "alpha had a higher rate than beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "ROBUSTNESS_LIMIT",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Lowercase entities lose coverage and must not invent a direction."
+    },
+    {
+      "case_id": "SC-PUNCT",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a higher rate than Beta!"
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "ROBUSTNESS_LIMIT",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Exclamation is outside the measurement terminator and must stay safe."
+    },
+    {
+      "case_id": "SC-WS",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha  had a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Internal whitespace collapses and the comparison is unchanged."
+    },
+    {
+      "case_id": "SC-NEVER",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha never had a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "never is an unsupported negation and must fail closed."
+    },
+    {
+      "case_id": "SC-DOUBLE-NEG",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha did not not have a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Double negation is not a supported positive."
+    },
+    {
+      "case_id": "SC-NOT-BARE",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha had a not higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "not outside one adjacent did-not frame fails closed."
+    },
+    {
+      "case_id": "SC-CANNOT",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        "Alpha cannot have a higher rate than Beta."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "cannot is an unsupported negation."
+    },
+    {
+      "case_id": "EV-BEFORE",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Ada reviewed Batch before Bea signed Record."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Same before-order."
+    },
+    {
+      "case_id": "EV-AFTER-INVERSION",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Ada reviewed Batch after Bea signed Record."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "contradicted",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported"
+      ],
+      "note": "BEFORE claim against AFTER evidence."
+    },
+    {
+      "case_id": "EV-SIDE-SWAP-PRESERVE",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Bea signed Record after Ada reviewed Batch."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Swapped sides with the temporal cue that preserves order."
+    },
+    {
+      "case_id": "EV-SIDE-SWAP-INVERT",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Bea signed Record before Ada reviewed Batch."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "contradicted",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported"
+      ],
+      "note": "Swapped sides that invert order."
+    },
+    {
+      "case_id": "EV-NEGATIVE",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Ada did not review Batch before Bea signed Record."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Negative-event form has no deciding semantics."
+    },
+    {
+      "case_id": "EV-MULTI-CUE",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Ada reviewed Batch before Bea signed Record after Cara approved File."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Two temporal cues must not yield a direction."
+    },
+    {
+      "case_id": "EV-UNRELATED",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Cara approved File before Dan archived Log."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Unrelated events are not a decision."
+    },
+    {
+      "case_id": "EV-MIXED",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Ada reviewed Batch before Bea signed Record.",
+        "Ada reviewed Batch after Bea signed Record."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Mixed before and after evidence."
+    },
+    {
+      "case_id": "EV-SOURCE-SUBST",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Ada reviewed Batch before Bea signed Record."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "supported",
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "contradicted",
+        "not_checkable"
+      ],
+      "note": "Same event text under a substituted source hash.",
+      "source_sha256": "sha256:cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd"
+    },
+    {
+      "case_id": "EV-PUNCT",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "Ada reviewed Batch, before Bea signed Record."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "ROBUSTNESS_LIMIT",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Comma punctuation is outside the direct event grammar."
+    },
+    {
+      "case_id": "EV-CASE",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "ada reviewed batch before bea signed record."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "ROBUSTNESS_LIMIT",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Lowercase event prose loses coverage."
+    },
+    {
+      "case_id": "EV-COMPLEX",
+      "domain": "semantic",
+      "family": "direct_event_order",
+      "claim": "Ada reviewed Batch before Bea signed Record.",
+      "evidence": [
+        "On Monday, after the inspection window closed, Ada reviewed Batch before Bea signed Record in the archive room."
+      ],
+      "expected_kind": "conclusion",
+      "expected_conclusion": "not_checkable",
+      "match_class": "ROBUSTNESS_LIMIT",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "Naturally more complex prose with an extra temporal cue and a scene."
+    },
+    {
+      "case_id": "SC-SCOPED-CLAIM",
+      "domain": "semantic",
+      "family": "strict_comparison",
+      "claim": "Alpha had a higher rate than Beta among adults in 2024.",
+      "evidence": [],
+      "expected_kind": "authoring_refusal",
+      "expected_conclusion": null,
+      "match_class": "PASS",
+      "critical_conclusions": [
+        "supported",
+        "contradicted"
+      ],
+      "note": "A qualifier-bearing comparison is not representable by lhs, rhs, and direction. Refusal is an authoring limit of the real surface. The weak collapse must still extract a bare comparison."
+    }
+  ],
+  "authority": [
+    {
+      "case_id": "AUTH-PASSAGE-HASH",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A mutated passage hash must be rejected before a decision."
+    },
+    {
+      "case_id": "AUTH-SOURCE-HASH-UNBOUND",
+      "expected": "decision_without_rejection",
+      "match_class": "INTERFACE_GAP",
+      "note": "A well-formed substituted source hash is not bound to passage bytes. A decision here is a gap, not support."
+    },
+    {
+      "case_id": "AUTH-CROSS-WORLD",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A relation from one evidence world must not compose in another."
+    },
+    {
+      "case_id": "AUTH-STALE-CHILD",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A child text hash that does not match the declaration is stale."
+    },
+    {
+      "case_id": "AUTH-MISSING-CHILD",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A missing declared child must fail."
+    },
+    {
+      "case_id": "AUTH-EXTRA-CHILD",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "An undeclared child result must fail."
+    },
+    {
+      "case_id": "AUTH-REPLAY-RESULT-ID",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A copied child result id must fail verification."
+    },
+    {
+      "case_id": "AUTH-CHILD-SEQUENCE",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A declaration whose child sequence is not 1..n must fail."
+    },
+    {
+      "case_id": "AUTH-CHILD-SUPPLY-ORDER",
+      "expected": "same_conclusion",
+      "match_class": "PASS",
+      "note": "Supply order of a commutative all_of does not change the conclusion. The declared sequence still binds."
+    },
+    {
+      "case_id": "AUTH-MISSING-VERSION",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "An empty Contract B version must fail."
+    },
+    {
+      "case_id": "AUTH-EXTRA-APERTURE",
+      "expected": "accepted_extra_state",
+      "match_class": "INTERFACE_GAP",
+      "note": "Unknown aperture keys are not a closed schema on the audit seam. Acceptance is a gap."
+    },
+    {
+      "case_id": "AUTH-WRONG-CONTRACT-C",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A checkout that is not the pinned Contract C candidate must fail."
+    },
+    {
+      "case_id": "AUTH-WRONG-RESOLVER",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A checkout that is not the pinned resolver must fail."
+    },
+    {
+      "case_id": "AUTH-EXACT-AUTHORITY",
+      "expected": "accepted",
+      "match_class": "PASS",
+      "note": "The pinned Contract C, RC2, and resolver checkouts must verify. Unavailable checkouts block only this control."
+    },
+    {
+      "case_id": "AUTH-SEMANTIC-MISMATCH",
+      "expected": "explicit_rejection",
+      "match_class": "PASS",
+      "note": "A candidate module whose semantic identity is not caa0048f must fail before emission."
+    }
+  ],
+  "operational": [
+    {
+      "case_id": "OPS-DET-ROOTS",
+      "expected": "byte_identical_distinct_roots",
+      "match_class": "PASS"
+    },
+    {
+      "case_id": "OPS-OVERWRITE",
+      "expected": "explicit_rejection",
+      "match_class": "PASS"
+    },
+    {
+      "case_id": "OPS-NONDIR",
+      "expected": "explicit_rejection",
+      "match_class": "PASS"
+    },
+    {
+      "case_id": "OPS-SYMLINK",
+      "expected": "explicit_rejection",
+      "match_class": "PASS"
+    },
+    {
+      "case_id": "OPS-CONCURRENT",
+      "expected": "distinct_outputs_succeed",
+      "match_class": "PASS"
+    },
+    {
+      "case_id": "OPS-COLLISION",
+      "expected": "both_callers_reject_nonempty",
+      "match_class": "PASS",
+      "note": "Two callers on one pre-filled output directory must both be refused. Acceptance is a critical overwrite."
+    },
+    {
+      "case_id": "OPS-EMPTY-RACE",
+      "expected": "both_accept_is_interface_gap",
+      "match_class": "INTERFACE_GAP",
+      "note": "Two callers on one empty directory. The destination helper does not take a lock. Both accepting is an interface gap. Both rejecting is a stronger PASS."
+    },
+    {
+      "case_id": "OPS-LOCALE",
+      "expected": "identical_across_locale_tz_hashseed",
+      "match_class": "PASS"
+    },
+    {
+      "case_id": "OPS-WHEEL",
+      "expected": "same_polarity_conclusion_as_source",
+      "match_class": "PASS"
+    },
+    {
+      "case_id": "OPS-SDIST",
+      "expected": "same_polarity_conclusion_as_source",
+      "match_class": "PASS"
+    }
+  ],
+  "weak": [
+    {
+      "case_id": "WEAK-IGNORE-POLARITY",
+      "gate": "SC-DID-NOT is contradicted",
+      "weak_expected": "supported",
+      "real_expected": "contradicted"
+    },
+    {
+      "case_id": "WEAK-COLLAPSE-SCOPE",
+      "gate": "scoped comparison is not authored as bare lhs/rhs/direction",
+      "weak_expected": "bare_fields",
+      "real_expected": "authoring_refusal"
+    },
+    {
+      "case_id": "WEAK-STRUCTURAL-ONLY",
+      "gate": "direction-mutated target fails exact conformance",
+      "weak_expected": "accepted",
+      "real_expected": "rejected"
+    },
+    {
+      "case_id": "WEAK-RESOLVER-WILDCARD",
+      "gate": "wrong semantic identity is rejected",
+      "weak_expected": "accepted",
+      "real_expected": "rejected"
+    }
+  ],
+  "counts": {
+    "semantic": 35,
+    "authority": 15,
+    "operational": 10,
+    "weak": 4
+  }
+}

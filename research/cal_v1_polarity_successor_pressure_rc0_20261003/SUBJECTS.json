@@ -1,0 +1,60 @@
+{
+  "schema": "cal-v1-polarity-successor-pressure-subjects-rc0",
+  "product_commit": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+  "product_tree": "62c32ab15489e6c3b20e63efb500c0fa26d0084d",
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "distribution_version_observed_not_assigned": "0.6.0",
+  "authoring_change_included": false,
+  "authoring_record": {
+    "issue": 193,
+    "pull_request": 202,
+    "disposition": "FALSIFIED_EXISTING_TARGET_FIELD_MODEL_INSUFFICIENT",
+    "evidence_commit": "2d7177869c6de2df428acbb5f9b39739d68b6aab",
+    "included_in_candidate": false,
+    "reason": "The falsified field model is a limit. This campaign does not add an authoring system."
+  },
+  "polarity": {
+    "issue": 190,
+    "pull_request": 191,
+    "integration_commit": "86b60022420a006358fde38b20a204ffe4df1a96",
+    "disposition": "SUPPORTED_FOR_POLARITY_SUCCESSOR_QUALIFICATION"
+  },
+  "contract_c": {
+    "issue": 163,
+    "disposition": "SUPPORTED_AUTHORITY_ONLY_CONTRACT_C_POLARITY_SUCCESSOR",
+    "candidate_commit": "c183d2d12306ee30c509169a58db55e7430fe8c5",
+    "candidate_blob": "aeb50dee8d24bda5f62eb879654e80437a50912d",
+    "resolver_commit": "292168222f83c67a24190b4846eebe84392e3d04",
+    "resolver_blob": "b9297ba06beefe1de8488bc25a4c424b0e10e58b",
+    "rc2_commit": "b42c827acb0a9fe65353354d709add0e27bab307",
+    "rc2_blob": "1d2ecd228cde807138013c33c8675c3003421d3c",
+    "projection_blob": "bae0c176c5a3c889bcde68662f45bb7bfb93cbce",
+    "binding_qualification": "QUALIFIED_POLARITY_CONTRACT_C_AUTHORITY_BINDING_SUCCESSOR",
+    "binding_subject": "64b6c7702696c851057c1cf0b2c105b1c81db543"
+  },
+  "package_qualification": {
+    "issue": 200,
+    "pull_request": 201,
+    "disposition": "QUALIFIED_POLARITY_SUCCESSOR_PACKAGE_ARTIFACTS"
+  },
+  "downstream_decision_d": {
+    "issue": 166,
+    "repository": "apparatus-contracts",
+    "pull_request": 172,
+    "disposition": "SUPPORTED_POLARITY_SUCCESSOR_DOWNSTREAM_DECISION_D_CONFORMANCE",
+    "qualification_commit": "6399a866add04bb313fafa57cebc0a40315bbe37",
+    "decision_commit": "cadef9e103edeba32f1247b99d81d5e25175bcd9",
+    "released_contract_d": "298a1a0f7b7b6d7712e11200d04faec3e1ca169b",
+    "included_as_supported_path": true
+  },
+  "convergence_base_not_the_subject": {
+    "pull_request": 186,
+    "commit": "6bb0d60f3e2286123f56de5657de4e97d6374c63",
+    "reason": "Superseded for this campaign by the qualified polarity successor. The #189 negation falsifier applies to 6bb0d60f, not to this product."
+  },
+  "excluded": [
+    "authoring implementation eb1de81c36683c4239ee5eef6a26ea1079b31ce2",
+    "identity-only Contract C successor falsified by apparatus-contracts #161",
+    "version, merge, tag, release, consumer repin"
+  ]
+}
