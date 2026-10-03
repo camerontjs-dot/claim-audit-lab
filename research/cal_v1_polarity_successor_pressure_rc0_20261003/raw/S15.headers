@@ -1,0 +1,15 @@
+HTTP/2 200 
+content-type: text/html; charset=UTF-8
+server: nginx
+content-language: en
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+last-modified: Sat, 03 Oct 2026 17:48:38 GMT
+etag: "1791049718"
+x-cache-status: MISS
+x-akamai-transformed: 0 - 0 -
+cache-control: public, max-age=86172
+expires: Sun, 04 Oct 2026 23:07:18 GMT
+date: Sat, 03 Oct 2026 23:11:06 GMT
+alt-svc: h3=":443"; ma=93600
+strict-transport-security: max-age=31536000 ; includeSubDomains ; preload

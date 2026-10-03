@@ -1,0 +1,881 @@
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                      1
+
+
+
+
+DOT HS 813 705                                                                                                               April 2025
+
+
+Overview of Motor Vehicle Traffic Crashes
+In 2023
+There were 1,820 fewer people killed in motor vehicle traffic crashes on U.S. roadways during 2023, a 4.3-
+percent decrease from 42,721 in 2022 to 40,901 in 2023. It represents the second year-to-year decrease since
+2021. The fatality rate per 100 million vehicle miles traveled (VMT) decreased by 6.0 percent from 1.34 in 2022
+to 1.26 in 2023.
+The estimated number of people injured on our roadways increased in 2023 to 2.44 million, rising 2.5 percent
+from 2.38 million in 2022. This increase was not statistically significant. The injury rate per 100 million VMT
+remained the same at 75 in 2022 and 2023.
+The estimated number of police-reported traffic crashes increased from 5.93 million in 2022 to 6.14 million in
+2023, a 3.5-percent increase which was not statistically significant. VMT for 2023, reported through the Federal
+Highway Administration (FHWA), increased by 1.6 percent from 3,196 billion in 2022 to 3,247 billion in 2023.
+       •    Traffic fatalities decreased in 2023 compared to 2022 in the following categories.
+            o Passenger vehicle 1 occupant fatalities (1,541 fewer fatalities, 6.0% decrease)
+                 Passenger car occupant fatalities (945 fewer fatalities, 7.4% decrease)
+                 Light-truck 2 occupant fatalities (596 fewer fatalities, 4.7% decrease)
+            o Passenger vehicle occupant fatalities in vehicles that rolled over (745 fewer fatalities, 10% decrease)
+            o Passenger vehicle occupant fatalities who were ejected (500 fewer fatalities, 9.1% decrease)
+            o Passenger vehicle occupant fatalities who were unrestrained (875 fewer fatalities, 7.7% decrease)
+            o Fatalities in large-truck 3 crashes (497 fewer fatalities, 8.3% decrease)
+                 Large-truck3 occupant fatalities (137 fewer fatalities, 12% decrease)
+            o Pedestrian fatalities (279 fewer fatalities, 3.7% decrease)
+            o Urban fatalities (1,371 fewer fatalities, 5.4% decrease)
+            o Rural fatalities (643 fewer fatalities, 3.7% decrease)
+            o Fatalities in traffic crashes involving older drivers 4 (119 fewer fatalities, 1.4% decrease)
+            o Speeding-related fatalities (382 fewer fatalities, 3.1% decrease)
+            o Alcohol-impaired-driving fatalities (1,029 fewer fatalities, 7.6% decrease)
+            o Fatalities in distraction-affected crashes (40 fewer fatalities, 1.2% decrease)
+
+1
+    Includes passenger cars and light trucks.
+2
+    Includes SUVs, pickups, vans, and other/unknown light trucks with gross vehicle weight ratings (GVWR) of 10,000 pounds or less.
+3 Includes commercial and non-commercial trucks with GVWRs over 10,000 pounds. This definition applies to any mention of “large
+
+       trucks” throughout this report.
+4
+    Refers to people 65 and older operating a motor vehicle.
+
+U.S. Department of Transportation                                                NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                                2
+
+
+            o Fatalities in hit-and-run crashes (100 fewer fatalities, 3.4% decrease)
+            o Pedestrian fatalities in hit-and-run crashes (121 fewer fatalities, 6.2% decrease)
+       •    Traffic fatalities increased in 2023 compared to 2022 in the following categories.
+            o Motorcyclist 5 fatalities (84 more fatalities, 1.3% increase)6
+            o Pedalcyclist fatalities (49 more fatalities, 4.4% increase) 6
+            o Pedalcyclist fatalities in hit-and-run crashes (5 more fatalities, 1.9% increase)6
+            o Fatalities in traffic crashes involving young drivers 7 (227 more fatalities, 4.2% increase)
+                 Motorcyclist5 fatalities 15 to 20 years old in traffic crashes involving young drivers increased by
+                     43 percent (+149), from 343 in 2022 to 492 in 2023.
+                 Motorcyclist5 fatalities 15 to 20 years old in traffic crashes involving young drivers accounted for
+                     66 percent (149 out of 227) of the increase.
+       •    The estimated number of people injured in traffic crashes increased in most person-type categories from
+            2022 to 2023, except for passenger car occupants, large-truck occupants, and motorcyclists. Light-truck
+            occupants injured (+10%) and pedalcyclists injured (+8.2%) were statistically significant increases among
+            the person-type categories.
+Information in this research note is presented in the following sections.
+       •    Overall Trends
+       •    People Killed and Injured in Traffic Crashes, by Person Type
+       •    People Killed and Injured in Traffic Crashes Involving Large Trucks
+       •    Three Major Behavioral Factors: Alcohol-Impaired Driving, Speeding Involvement, and Restraint Use
+           o    Alcohol-Impaired Driving
+           o    Speeding Involvement
+           o    Restraint Use
+           o    Three Behavioral Factors Combined
+       •    Traffic Fatalities, by Rural/Urban Classification
+       •    Additional Facts
+           o    Time of Day and Day of Week
+           o    Demographics
+           o    Other Characteristics
+       •    State Data
+
+Important Change for Motorized Bicycles: Prior to 2022, motorized bicycles were collected as motor vehicles
+in Fatality Analysis Reporting System (FARS) and Crash Report Sampling System (CRSS) and their operators
+and passengers were captured as motorists. Beginning in 2022, FARS and CRSS are no longer collecting
+motorized bicycles as motor vehicles. Consequently, operators and passengers of motorized bicycles will be
+captured as pedalcyclists when involved in a motor vehicle traffic crash. Any traffic crash involving ONLY
+motorized bicycle(s) will no longer be captured in FARS or CRSS. Refer to the end of the document for more
+information about FARS and CRSS.
+
+
+5 Motorcyclists include operators (riders) or passengers.
+
+6
+    Starting in 2022, people on motorized bicycles are classified as pedalcyclists instead of motorcyclists. Consider this when comparing the
+       2022 and later pedalcyclist, motorcyclist, and nonoccupant data with earlier data.
+7
+    Refers to people 15 to 20 years old operating a motor vehicle.
+
+U.S. Department of Transportation                                                    NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                                                                                                                                              3
+
+
+Overall Trends
+In 2023 there were 40,901 motor vehicle traffic fatalities in the United States, a 4.3-percent decrease from 42,721
+traffic fatalities in 2022, as shown in Figure 1. The 2023 fatality rate per 100 million VMT (1.26) is down from
+1.34 in 2022.
+
+Figure 1. Traffic Fatalities and Fatality Rate per 100 Million VMT, 1975-2023
+
+                                                                           Fatalities                      Fatality Rate Per 100M VMT
+
+                 60,000                                                                                                                                                                               5.00
+
+
+
+
+                                                                                                                                                                                                                          Fatality Rate Per 100 Million VMT
+                              44,525
+                 50,000                                                                                                                                                                  40,901       4.00
+
+                 40,000
+                                                                                                                                                                                                      3.00
+
+ Fatalities
+                 30,000       3.35
+                                                                                                                                                                                                      2.00
+                 20,000
+
+                                                                                                                                                                                                      1.00
+                 10,000                                                                                                                                                                    1.26
+
+                      0                                                                                                                                                                               0.00
+                              1976   1978   1980   1982   1984   1986   1988   1990   1992   1994   1996   1998   2000   2002   2004   2006   2008   2010   2012   2014   2016   2018   2020   2022
+
+Sources: FARS 1975-2022 Final File, 2023 ARF; 1975-2023 VMT – FHWA’s Annual Highway Statistics
+
+In 2023 an estimated 2.44 million people were injured in motor vehicle traffic crashes, compared to 2.38 million
+in 2022 as shown in Figure 2, an increase of 2.5 percent that was not statistically significant.
+
+Figure 2. People Injured in Traffic Crashes and Injury Rate per 100 Million VMT, 1988-2023
+
+                                                                               Injured                     Injury Rate Per 100M VMT
+                 4,000,000                                                                                                                                                                            200
+                                     3,427,486                                           NASS GES                                                                           CRSS
+
+
+
+
+                                                                                                                                                                                                            Injury Rate per 100 MIllion VMT
+                 3,000,000                                                                                                                                                                            150
+                                 169                                                                                                                                             2,442,581
+
+
+
+People Injured
+                 2,000,000                                                                                                                                                                            100
+
+
+                                                                                                                                                                                               75
+                 1,000,000                                                                                                                                                                            50
+
+
+
+                          0    1988
+                               1989
+                               1990                                                                                                                                                                   0
+                               1991
+                               1992
+                               1993
+                               1994
+                               1995
+                               1996
+                               1997
+                               1998
+                               1999
+                               2000
+                               2001
+                               2002
+                               2003
+                               2004
+                               2005
+                               2006
+                               2007
+                               2008
+                               2009
+                               2010
+                               2011
+                               2012
+                               2013
+                               2014
+                               2015
+                               2016
+                               2017
+                               2018
+                               2019
+                               2020
+                               2021
+                               2022
+                               2023
+Sources: FARS 1988-2022 Final File, 2023 ARF; NASS GES 1988-2015; CRSS 2016-2023; 1988-2023 VMT – FHWA’s Annual
+Highway Statistics
+Note: NASS GES and CRSS estimates are not comparable due to different sample designs.
+
+
+
+
+U.S. Department of Transportation                                                                                                 NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                     4
+
+
+Table 1 summarizes the changes in fatality and injury rates per 100 million VMT from 2022 to 2023 as well as
+VMT changes.
+
+Table 1. Traffic Fatality/Injury Rates per 100 Million VMT and VMT, 2022-2023
+                                      2022                       2023                     Change                    % Change
+Fatality Rate                            1.34                       1.26                     -0.08                     -6.0%
+Injury Rate                                75                         75                         0                      0.0%
+VMT (millions)                     3,196,191                  3,246,817                   +50,626                      +1.6%
+Sources: FARS 2022 Final File, 2023 ARF; CRSS 2022-2023; 2022-2023 VMT – FHWA’s Annual Highway Statistics
+
+The estimated number of police-reported motor vehicle traffic crashes increased by 3.5 percent from 5,930,697 in
+2022 to 6,138,359 in 2023, as presented in Table 2. Property-damage-only crashes—in which there were no
+injuries to involved occupants or nonoccupants—increased by 4.2 percent from 2022 to 2023. These increases
+were not statistically significant. Fatal traffic crashes decreased from 39,422 in 2022 to 37,654 in 2023, a 4.5-
+percent decrease. Fatal crash counts are not tested for statistical significance because they are a census.
+
+Table 2. Police-Reported Traffic Crashes, by Crash Severity, 2022-2023
+     Crash Severity                   2022                       2023                     Change                    % Change
+Total Crashes                      5,930,697                  6,138,359                  +207,662                     +3.5%
+Fatal Crashes                         39,422                     37,654                     -1,768                    -4.5%
+Non-Fatal Crashes                  5,891,275                  6,100,705                  +209,430                     +3.6%
+   Injury Crashes                  1,664,598                  1,697,252                   +32,654                     +2.0%
+   Property-Damage-
+                                   4,226,677                  4,403,453                  +176,776                     +4.2%
+   Only Crashes
+Sources: FARS 2022 Final File, 2023 ARF; CRSS 2022-2023
+Notes: For injured estimates, the number changes are based on rounded estimates, but the percentage changes are based on unrounded
+estimates. Changes from 2022 to 2023 were not statistically significant.
+
+
+People Killed and Injured in Traffic Crashes, by Person Type
+Table 3 presents the change from 2022 and 2023 in the number of occupant and nonoccupant fatalities as well as
+the estimated number of occupants and nonoccupants injured.
+Overall, most categories of occupant and nonoccupant fatalities decreased from 2022 to 2023 except for
+motorcyclist fatalities and pedalcyclist fatalities. In summary for 2023:
+    •    The number of passenger vehicle occupant fatalities decreased by 1,541, a 6.0-percent decrease
+         from 2022.
+         o Passenger car occupant fatalities decreased by 945, a 7.4-percent decrease from 2022.
+         o Light-truck occupant fatalities decreased by 596, a 4.7-percent decrease from 2022. Of the light-truck
+             categories (SUVs, pickups, and vans):
+              SUV occupant fatalities decreased by 233, a 3.3-percent decrease from 2022;
+              Pickup occupant fatalities decreased by 275, a 6.0-percent decrease from 2022; and
+              Van occupant fatalities decreased by 83, a 7.9-percent decrease from 2022.
+    •    Large-truck occupant fatalities decreased by 137, a 12-percent decrease from 2022.
+    •    Motorcyclist fatalities increased by 84, a 1.3-percent increase from 2022.
+    •    Pedestrian fatalities decreased by 279, a 3.7-percent decrease from 2022.
+    •    Pedalcyclist fatalities increased by 49, a 4.4-percent increase from 2022.
+
+
+
+
+U.S. Department of Transportation                                              NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                                5
+
+
+The estimated number of people injured in 2023 increased by 59,748 to 2.44 million, a 2.5-percent increase from
+the 2.38 million people injured in 2022. Most categories of people injured increased from 2022 to 2023 except for
+passenger car occupants, large-truck occupants, and motorcyclists. In summary for 2023:
+     •    Passenger vehicle occupants injured increased by 46,671, a 2.5-percent increase from 2022.
+          o Passenger car occupants injured decreased by 50,803, a 5.2-percent decrease from 2022.
+          o Light-truck occupants injured increased by 97,474, a statistically significant 10-percent increase from
+              2022. Of the light-truck categories:
+               SUV occupants injured increased by 70,011, a statistically significant 11-percent increase
+                  from 2022;
+               Pickup occupants injured increased by 21,329, a statistically significant 9.7-percent increase from
+                  2022; and
+               Van occupants injured increased by 6,190, a 7.1-percent increase from 2022.
+     •    Large-truck occupants injured decreased by 168, a 0.4-percent decrease from 2022.
+     •    Motorcyclists injured decreased by 126, a 0.2-percent decrease from 2022.
+     •    Pedestrians injured increased by 903, a 1.3-percent increase from 2022.
+     •    Pedalcyclists injured increased by 3,794, a statistically significant 8.2-percent increase from 2022.
+
+Table 3. Occupants and Nonoccupants Killed and Injured in Traffic Crashes, 2022-2023
+                                                       Killed                                                 Injured
+         Description             2022          2023        Change       % Change         2022           2023         Change       % Change
+Total                           42,721        40,901       -1,820         -4.3%        2,382,833      2,442,581      +59,748       +2.5%
+                                                                  Occupants
+Total Occupants**               27,428        25,746        -1,682         -6.1%       2,169,176      2,223,735       +54,559       +2.5%
+Passenger Vehicles              25,500        23,959        -1,541         -6.0%       1,900,627      1,947,298       +46,671       +2.5%
+   Passenger Cars               12,737        11,792            -945       -7.4%         969,838        919,035       -50,803        -5.2%
+   Light Trucks***              12,763        12,167            -596       -4.7%         930,789      1,028,263       +97,474       +10%*
+      SUVs                       7,121         6,888            -233       -3.3%         624,248        694,259       +70,011       +11%*
+      Pickups                    4,586         4,311            -275       -6.0%         218,988        240,317       +21,329      +9.7%*
+      Vans                       1,049           966             -83       -7.9%           87,359        93,549         +6,190      +7.1%
+Large Trucks                     1,098           961            -137       -12%            41,901        41,733           -168       -0.4%
+                                                                 Motorcyclists
+Motorcyclists                    6,251         6,335            +84       +1.3%            82,690        82,564           -126       -0.2%
+                                                                Nonoccupants
+Total
+                                 9,042         8,820            -222       -2.5%         130,967        136,281         +5,314      +4.1%
+Nonoccupants****
+Pedestrians                      7,593         7,314            -279       -3.7%           67,341        68,244          +903       +1.3%
+Pedalcyclists                    1,117         1,166            +49       +4.4%            46,195        49,989         +3,794     +8.2%*
+Sources: FARS 2022 Final File, 2023 ARF; CRSS 2022-2023
+*These estimated changes are statistically significant at the α=.05 level of significance.
+**Includes occupants of buses and other/unknown vehicle types.
+***Includes occupants of other/unknown light-truck vehicle types.
+****Includes other/unknown nonoccupants.
+Notes: Starting in 2022, people on motorized bicycles are classified as pedalcyclists instead of motorcyclists. Changes in fatalities are not
+tested for statistical significance because they are from a census.
+
+The proportion of people killed “inside the vehicle” (occupants of passenger cars, light trucks, large trucks, buses,
+and other vehicles) has declined from a high of 80 percent in 1996 to a low of 63 percent in 2023, as seen in
+Figure 3. Correspondingly, the proportion of people killed “outside the vehicle” (motorcyclists, pedestrians,
+pedalcyclists, and other nonoccupants) has increased from a low of 20 percent in 1996 to a high of 37 percent
+in 2023.
+
+U.S. Department of Transportation                                                   NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                           6
+
+
+Figure 3. Proportion of Traffic Fatalities Inside/Outside Vehicles, 1975-2023
+
+                                              Inside Vehicle       Outside Vehicle
+
+ 100%
+  90%                                                      80%
+  80%                   71%
+  70%
+  60%        Inside Vehicle: Occupants of cars, light trucks, large trucks, buses, and other
+             vehicles                                                                                         63%
+  50%
+  40%        Outside Vehicle: Motorcyclists, pedestrians, pedalcyclists, and other                            37%
+             nonoccupants
+  30%
+  20%                   29%
+  10%                                                      20%
+    0%   1975
+         1976
+         1977
+         1978
+         1979
+         1980
+         1981
+         1982
+         1983
+         1984
+         1985
+         1986
+         1987
+         1988
+         1989
+         1990
+         1991
+         1992
+         1993
+         1994
+         1995
+         1996
+         1997
+         1998
+         1999
+         2000
+         2001
+         2002
+         2003
+         2004
+         2005
+         2006
+         2007
+         2008
+         2009
+         2010
+         2011
+         2012
+         2013
+         2014
+         2015
+         2016
+         2017
+         2018
+         2019
+         2020
+         2021
+         2022
+         2023
+
+Source: FARS 1975-2022 Final File, 2023 ARF
+
+
+People Killed and Injured in Traffic Crashes Involving Large Trucks
+Table 4 displays the number of people killed and the estimated number of people injured in traffic crashes
+involving large trucks from 2022 to 2023. Large trucks include commercial and non-commercial trucks with
+GVWRs of over 10,000 pounds.
+The number of people killed in traffic crashes involving large trucks decreased by 8.3 percent from 2022 to 2023.
+Among fatalities in traffic crashes involving large trucks in 2023:
+    •    Large-truck occupant fatalities in single-vehicle crashes decreased by 19, a 3.1-percent decrease
+         from 2022.
+    •    Large-truck occupant fatalities in multi-vehicle crashes decreased by 118, a 24-percent decrease
+         from 2022.
+    •    Occupants of other vehicles killed decreased by 350, an 8.4-percent decrease from 2022.
+    •    Nonoccupants killed decreased by 10, a 1.5-percent decrease from 2022.
+The estimated number of people injured in crashes involving large trucks decreased by 4.5 percent from 2022 to
+2023. Changes from 2022 to 2023 in traffic crashes involving large trucks were not statistically significant.
+Among the estimated number of people injured in crashes involving large trucks in 2023:
+    •    Large-truck occupants injured in single-vehicle crashes decreased by 4,029, a 23-percent decrease
+         from 2022.
+    •    Large-truck occupants injured in multi-vehicle crashes increased by 3,861, a 16-percent increase
+         from 2022.
+    •    Occupants of other vehicles who were injured decreased by 7,545, a 6.6-percent decrease from 2022.
+    •    Nonoccupants injured increased by 545, a 15-percent increase from 2022.
+
+
+
+
+U.S. Department of Transportation                                         NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                     7
+
+
+Table 4. People Killed and Injured in Traffic Crashes Involving Large Trucks, by Person Type,
+2022-2023
+                                                         Killed                                            Injured
+         Person Type                 2022        2023       Change      % Change        2022        2023       Change      % Change
+Total                                5,969       5,472       -497         -8.3%        160,619    153,452      -7,167        -4.5%
+Large-Truck Occupants                1,098         961       -137          -12%         41,901      41,733       -168        -0.4%
+   In Single-Vehicle Crashes           615         596            -19     -3.1%         17,167      13,138     -4,029         -23%
+   In Multi-Vehicle Crashes            483         365       -118          -24%         24,734      28,595     +3,861        +16%
+Other People                         4,871       4,511       -360         -7.4%        118,719    111,719      -7,000        -5.9%
+   Other Vehicle Occupants           4,187       3,837       -350         -8.4%        115,181    107,636      -7,545        -6.6%
+   Nonoccupants                        684         674            -10     -1.5%          3,538       4,083       +545        +15%
+Sources: FARS 2022 Final File, 2023 ARF; CRSS 2022-2023
+Notes: For injured estimates, the number changes are based on rounded estimates, but the percentage changes are based on unrounded
+estimates. Changes from 2022 to 2023 were not statistically significant.
+
+
+Three Major Behavioral Factors: Alcohol-Impaired Driving, Speeding
+Involvement, and Restraint Use
+NHTSA’s three major behavioral focus areas are alcohol-impaired driving, speeding involvement, and
+restraint use.
+Alcohol-Impaired Driving
+Drivers or motorcycle riders (operators) are alcohol-impaired when their blood alcohol concentrations (BACs) are
+.08 grams per deciliter (g/dL) or higher. Thus, any fatal traffic crash involving a driver/rider with a BAC of .08
+g/dL or higher is an alcohol-impaired-driving crash, and fatalities occurring in those crashes are considered to be
+alcohol-impaired-driving fatalities. Estimates of alcohol-impaired driving are generated using BAC values
+reported to FARS and BAC values imputed when they are not reported.
+Alcohol-impaired-driving fatalities decreased by 7.6 percent from 2022 to 2023 (Table 5), accounting for 30
+percent of overall traffic fatalities in 2023. The alcohol-impaired-driving fatality rate per 100 million VMT
+decreased by 9.5 percent from 0.42 in 2022 to 0.38 in 2023.
+
+Table 5. Total and Alcohol-Impaired-Driving Traffic Fatalities, and Alcohol-Impaired-Driving
+Fatality Rates per 100 Million VMT, 2022-2023
+                                                          2022                 2023                Change               % Change
+Total Fatalities                                         42,721              40,901               -1,820                 -4.3%
+Alcohol-Impaired-Driving Fatalities                      13,458              12,429               -1,029                 -7.6%
+Percentage of Total Fatalities                             32%                  30%
+Alcohol-Impaired-Driving Fatality Rate per
+                                                           0.42                 0.38               -0.04                 -9.5%
+100 Million VMT
+
+Sources: FARS 2022 Final File, 2023 ARF; 2022-2023 VMT – FHWA’s Annual Highway Statistics
+Note: NHTSA estimates BACs when alcohol test results are unknown.
+
+
+
+
+U.S. Department of Transportation                                              NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                          8
+
+
+As shown in Table 6, drivers of all vehicle types saw decreases in the number of alcohol-impaired drivers
+involved in fatal crashes from 2022 to 2023, except for large-truck drivers which increased by 19 percent. Light-
+truck drivers had the largest number decrease (-554) in alcohol-impaired drivers involved in fatal crashes from
+2022 to 2023. Passenger car drivers had the next largest number decrease (-358) in alcohol-impaired drivers.
+
+Table 6. Alcohol-Impaired Drivers Involved in Fatal Traffic Crashes, by Vehicle Type, 2022-2023
+        Vehicle Type                     2022                        2023                      Change                    % Change
+Passenger Cars                           4,863                       4,505                      -358                       -7.4%
+Light Trucks*                            5,500                       4,946                      -554                        -10%
+     Light Truck – SUVs                  2,886                       2,634                      -252                       -8.7%
+     Light Truck – Pickups               2,343                       2,068                      -275                        -12%
+     Light Truck – Vans                    269                        243                        -26                       -9.7%
+Motorcycles                              1,772                       1,668                      -104                       -5.9%
+Large Trucks                               157                        187                        +30                       +19%
+Source: FARS 2022 Final File, 2023 ARF
+*Includes other/unknown light-truck vehicle types.
+Notes: Starting in 2022, people on motorized bicycles are classified as pedalcyclists instead of motorcyclists. NHTSA estimates BACs
+when alcohol test results are unknown.
+
+Speeding Involvement
+NHTSA considers a traffic crash to be speeding-related if any driver in the crash was charged with a speeding-
+related offense or if a police officer indicated that racing, driving too fast for conditions, or exceeding the posted
+speed limit was a contributing factor in the crash. A speeding-related fatality is any fatality that occurs in a
+speeding-related crash.
+From 2022 to 2023 speeding-related fatalities decreased by 3.1 percent, from 12,157 in 2022 to 11,775 in 2023
+(Table 7). Nineteen percent of all drivers involved in fatal traffic crashes were speeding at the time of the crashes,
+and 29 percent of all those killed in traffic crashes were in speeding-related traffic crashes.
+
+Table 7. Total and Speeding-Related Traffic Fatalities, 2022-2023
+                                                             2022                  2023                Change               % Change
+Total Fatalities                                            42,721                40,901                -1,820                -4.3%
+Speeding-Related Fatalities                                 12,157                11,775                  -382                -3.1%
+Percentage of Total Fatalities                                 28%                   29%
+Source: FARS 2022 Final File, 2023 ARF
+
+Restraint Use
+Not using a seat belt or child restraint indicates the passenger vehicle occupant was unrestrained.
+According to NHTSA’s National Occupant Protection Use Survey (NOPUS), 8 the estimated passenger vehicle
+front-seat belt use for adults increased from 91.6 percent in 2022 to 91.9 percent in 2023, but the change was not
+statistically significant at the .05 level.
+The percentages reported in this section are all based on known restraint use (restraint use was unknown for 11
+percent of passenger vehicle occupant fatalities in 2023). Among passenger vehicle occupants killed in 2023, a
+little less than half (49%) were unrestrained (Table 8). Fifty-six percent of those killed during the nighttime in
+2023 were unrestrained as compared to 42 percent during the daytime.
+
+
+
+8
+    National Center for Statistics and Analysis. (2024, February). Seat belt use in 2023 – overall results (Report No. DOT HS 813 543).
+       National Highway Traffic Safety Administration. https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813543
+
+U.S. Department of Transportation                                                   NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                              9
+
+
+For those passenger vehicle occupants who survived fatal crashes in 2023, only 14 percent were unrestrained
+compared to 49 percent of those who died. During the nighttime, 16 percent of passenger vehicle occupants who
+survived fatal crashes were unrestrained as compared to 13 percent during the daytime.
+
+Table 8. Passenger Vehicle Occupants Killed in Traffic Crashes, by Restraint Use, 2022-2023
+                                                                                                  Percent Based on Known Restraint Use
+                                     2022             2023       Change           % Change              2022                      2023
+Total                               25,500            23,959     -1,541            -6.0%
+Restrained                          11,436            10,816       -620            -5.4%                50%                       51%
+Unrestrained                        11,359            10,484       -875            -7.7%                50%                       49%
+Unknown                              2,705             2,659        -46            -1.7%
+Source: FARS 2022 Final File, 2023 ARF
+
+Three Behavioral Factors Combined
+Of the 43,813 passenger vehicle drivers involved in 2023:
+            •             18,842 had at least one of the three behavioral factors (43%), while 24,971 (57%) did not have any of the
+                          three behavioral factors;
+                          o 2,186 were both alcohol-impaired and unrestrained (5.0%);
+                          o 1,754 were both speeding and unrestrained (4.0%);
+                          o 1,514 were both speeding and alcohol-impaired (3.5%);
+                          o 1,671 were exhibiting all three behavioral factors simultaneously (3.8%).
+
+Traffic Fatalities, by Rural/Urban Classification
+As shown in Figure 4, the number of traffic fatalities on urban roadways has been larger than the number of traffic
+fatalities on rural roadways since 2016. As a longer-term trend from 2014 to 2023 urban traffic fatalities increased
+by 50 percent and rural traffic fatalities decreased by 0.8 percent. From 2022 to 2023 urban traffic fatalities
+decreased by 5.4 percent and rural traffic fatalities decreased by 3.7 percent.
+
+Figure 4. Traffic Fatalities, by Rural/Urban Classification, 2014-2023
+
+                                                                          Rural       Urban
+
+                        30,000
+                                                                                                               25,749    25,292
+                                                                                                                                    23,921
+                        25,000                                                                      22,513
+                                                                 19,976      20,661    19,946
+                                                        19,357
+
+
+
+
+   Traffic Fatalities
+                        20,000               17,715
+                                  16,791
+
+                        15,000               17,573     18,321   17,405                                        17,339    17,299     16,656
+                                 15,917                                      16,070    16,288       16,340
+
+                        10,000
+
+                         5,000
+
+                            0
+                                  2014       2015        2016    2017         2018         2019      2020       2021      2022       2023
+
+Source: FARS 2014-2022 Final File, 2023 ARF
+Note: Excludes unknown rural/urban classification.
+
+
+
+U.S. Department of Transportation                                                            NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                 10
+
+
+Figure 5 highlights the proportion of fatalities between urban and rural areas. Urban areas have larger proportions
+of motorcyclist fatalities (17% versus 13%) and nonoccupant fatalities (30% versus 9%) than rural areas.
+Conversely, rural areas have larger proportions of passenger car occupant fatalities (30% versus 28%), light-truck
+occupant fatalities (41% versus 22%), and large-truck, bus, and other vehicle occupant fatalities (7% versus 2%)
+than urban areas.
+
+Figure 5. Composition of Motor Vehicle Traffic Fatalities, by Rural/Urban Classification, 2023
+
+                  Rural                                                                                        Urban
+
+
+                9%
+                                              Passenger Car Occupants
+          13%             30%                 Light-Truck Occupants                                     30%            28%
+
+        7%                                    Large-Truck/Bus/Other Vehicle Occupants
+                                              Motorcyclists
+                 41%                          Nonoccupants                                               17%        22%
+
+
+
+                                                                                                               2%
+
+Source: FARS 2023 ARF
+Note: Nonoccupants include pedestrians, pedalcyclists, and other nonoccupants.
+
+
+Additional Facts
+Time of Day and Day of Week
+   • Nighttime (6 p.m. to 5:59 a.m.) fatalities decreased by 4.0 percent (23,038 in 2022 to 22,114 in 2023). In
+       comparison, daytime (6 a.m. to 5:59 p.m.) traffic fatalities decreased by 4.5 percent (19,365 in 2022 to
+       18,495 in 2023).
+   • Weekend (Friday 6 p.m. to Monday 5:59 a.m.) fatalities decreased by 2.6 percent (17,725 in 2022 to
+       17,262 in 2023). In comparison, weekday (Monday 6 a.m. to Friday 5:59 p.m.) fatalities decreased by 5.4
+       percent (24,920 in 2022 to 23,562 in 2023).
+Demographics
+  • Male fatalities decreased by 4.0 percent (30,831 in 2022 to 29,584 in 2023), and female fatalities
+     decreased by 4.7 percent (11,787 in 2022 to 11,229 in 2023).
+  • There were more fatalities among people 15 to 20 years old (3,448 in 2022 to 3,632 in 2023, or a 5.3-
+     percent increase) from 2022 to 2023. All other age groups decreased with the largest decrease in the 25-
+     to-34 age group (8,132 in 2022 to 7,583 in 2023).
+  • Fatal traffic crashes involving young drivers 15 to 20 years old increased by 4.5 percent from 4,719 in
+     2022 to 4,933 in 2023.
+     o Fatalities in crashes involving young drivers increased by 4.2 percent (+227) from 5,361 in 2022 to
+         5,588 in 2023.
+     o Motorcyclist fatalities 15 to 20 years old in traffic crashes involving young drivers increased by 43
+         percent (+149), from 343 in 2022 to 492 in 2023.
+     o Motorcyclist fatalities 15 to 20 years old in traffic crashes involving young drivers accounted for 66
+         percent (149 out of 227) of the increase.
+  • Fatal traffic crashes involving older drivers 65+ years old decreased by 1.2 percent from 7,906 in 2022 to
+     7,810 in 2023.
+
+
+
+
+U.S. Department of Transportation                                                NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                   11
+
+
+Other Characteristics
+   • Traffic fatalities in single-vehicle crashes decreased by 6.1 percent (23,320 in 2022 to 21,902 in 2023). In
+       comparison, fatalities in multi-vehicle crashes decreased by 2.1 percent (19,401 in 2022 to 18,999
+       in 2023).
+   • Passenger vehicle occupants killed in vehicles that rolled over decreased by 10 percent (7,341 in 2022 to
+       6,596 in 2023).
+   • In 2023, of the 23,959 passenger vehicle occupants killed, 21 percent (4,975) were ejected from the
+       vehicles, a 9.1-percent decrease from 5,475 occupants ejected and killed in 2022.
+   • The number of passenger vehicle occupants killed decreased by 5.6 percent in vehicles 10 years and older
+       (15,591 in 2022 to 14,724 in 2023). In comparison, those killed in vehicles 9 years and newer decreased
+       by 7.0 percent (9,881 in 2022 to 9,193 in 2023).
+   • There were 2,872 fatalities in traffic crashes involving hit-and-run drivers in 2023, a decrease of 3.4
+       percent from 2,972 in 2022.
+       o Of the 7,314 pedestrian fatalities, 1,818 (25%) were involved in hit-and-run crashes in 2023.
+       o Of the 1,166 pedalcyclist fatalities, 274 (23%) were involved in hit-and-run crashes in 2023.
+   • Fatalities in school-transportation-related traffic crashes increased by 23 percent from 104 in 2022 to 128
+       in 2023.
+   • The number of fatalities in distraction-affected crashes, i.e., a crash involving at least one driver who was
+       distracted, was 3,275, or 8.0 percent of total traffic fatalities in 2023. This represents a 1.2-percent
+       decrease from 3,315 in 2022.
+   • The number of fatalities involving drowsy drivers was 633 or 1.5 percent of total traffic fatalities in 2023.
+       This represents a 9.6-percent decrease from 700 in 2022.
+
+
+
+
+U.S. Department of Transportation                                  NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                       12
+
+
+State Data
+Figure 6 displays a map of 2023 traffic fatalities by State and the percentage changes from 2022.
+
+Figure 6. Traffic Fatalities, by State and Percentage Change, 2022-2023
+
+
+
+
+Source: FARS 2022 Final File, 2023 ARF
+Note: Puerto Rico is not included in the U.S. total.
+
+Table 9 shows the total number of motor vehicle traffic crash fatalities and the number of alcohol-impaired-
+driving fatalities for 2022 and 2023, the changes in the number of fatalities, and the percentage change for each
+State, the District of Columbia, and Puerto Rico. Thirty-seven States had reductions in the number of traffic
+fatalities. In 2023 the largest reduction was in California, with 478 fewer fatalities. Thirteen States, the District of
+Columbia, and Puerto Rico had more fatalities in 2023 than in 2022. Kentucky had the largest increase with 70
+additional fatalities.
+Nationwide, 30 percent of the total traffic fatalities were in alcohol-impaired-driving crashes in 2023. Twelve
+States, the District of Columbia, and Puerto Rico saw increases in the number of alcohol-impaired-driving
+fatalities from 2022 to 2023, with the largest increases of 28 fatalities each in Iowa and Washington followed by
+22 in Kentucky. Thirty-seven States saw declines in the number of alcohol-impaired-driving fatalities from 2022
+to 2023. Texas had the largest decrease, with 182 fewer lives lost in alcohol-impaired-driving crashes in 2023.
+West Virginia was the only State with no change in the number of alcohol-impaired-driving fatalities from 2022
+to 2023.
+
+
+
+
+U.S. Department of Transportation                                      NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                                      13
+
+
+Table 9. Total and Alcohol-Impaired-Driving Traffic Fatalities, by State, 2022 and 2023
+                                   2022                               2023                            2022 to 2023 Change
+                                  Alcohol-Impaired-                  Alcohol-Impaired-                           Alcohol-Impaired-
+                                  Driving Fatalities                 Driving Fatalities        Total Fatalities   Driving Fatalities
+                       Total                              Total                                             %                   %
+        State        Fatalities   Number     Percent    Fatalities   Number      Percent     Change Change Change Change
+Alabama                  988          276     28%           974          283      29%            -14      -1.4%        +7    +2.5%
+Alaska                     82          20     24%             60          15      25%            -22       -27%        -5     -25%
+Arizona                1,320          455     34%         1,304          429      33%            -16      -1.2%       -26    -5.7%
+Arkansas                 637          150     23%           596          157      26%            -41      -6.4%        +7    +4.7%
+California             4,539        1,419     31%         4,061        1,355      33%           -478       -11%       -64    -4.5%
+Colorado                 764          259     34%           720          214      30%            -44      -5.8%       -45     -17%
+Connecticut              366          129     35%           308          113      37%            -58       -16%       -16     -12%
+Delaware                 162           51     32%           135           39      29%            -27       -17%       -12     -24%
+Dist of Columbia           32          10     31%             44          14      32%            +12      +38%         +4    +40%
+Florida                3,548          932     26%         3,396          839      25%           -152      -4.3%       -93     -10%
+Georgia                1,796          509     28%         1,615          433      27%           -181       -10%       -76     -15%
+Hawaii                   116           36     31%             93          39      42%            -23       -20%        +3    +8.3%
+Idaho                    215           69     32%           275           60      22%            +60      +28%         -9     -13%
+Illinois               1,268          422     33%         1,241          399      32%            -27      -2.1%       -23    -5.5%
+Indiana                  976          285     29%           898          251      28%            -78      -8.0%       -34     -12%
+Iowa                     336          113     34%           377          141      37%            +41      +12%        +28    +25%
+Kansas                   410          136     33%           387          125      32%            -23      -5.6%       -11    -8.1%
+Kentucky                 744          176     24%           814          198      24%            +70     +9.4%        +22    +13%
+Louisiana                906          271     30%           811          232      29%            -95       -10%       -39     -14%
+Maine                    182           64     35%           135           37      27%            -47       -26%       -27     -42%
+Maryland                 566          199     35%           621          173      28%            +55     +9.7%        -26     -13%
+Massachusetts            435          122     28%           343          116      34%            -92       -21%        -6    -4.9%
+Michigan               1,124          294     26%         1,094          286      26%            -30      -2.7%        -8    -2.7%
+Minnesota                444          136     31%           409          100      24%            -35      -7.9%       -36     -26%
+Mississippi              703          156     22%           732          155      21%            +29     +4.1%         -1    -0.6%
+Missouri               1,057          290     27%           991          283      29%            -66      -6.2%        -7    -2.4%
+Montana                  215           70     33%           208           71      34%             -7      -3.3%        +1    +1.4%
+Nebraska                 244           68     28%           227           70      31%            -17      -7.0%        +2    +2.9%
+Nevada                   417          141     34%           389          121      31%            -28      -6.7%       -20     -14%
+New Hampshire            146           52     36%           130           36      27%            -16       -11%       -16     -31%
+New Jersey               689          180     26%           606          142      23%            -83       -12%       -38     -21%
+New Mexico               466          148     32%           437          119      27%            -29      -6.2%       -29     -20%
+New York               1,182          383     32%         1,114          325      29%            -68      -5.8%       -58     -15%
+North Carolina         1,631          453     28%         1,561          415      27%            -70      -4.3%       -38    -8.4%
+North Dakota               98          33     34%           106           38      36%             +8     +8.2%         +5    +15%
+Ohio                   1,274          479     38%         1,242          455      37%            -32      -2.5%       -24    -5.0%
+Oklahoma                 710          189     27%           718          179      25%             +8     +1.1%        -10    -5.3%
+Oregon                   602          236     39%           587          200      34%            -15      -2.5%       -36     -15%
+Pennsylvania           1,179          345     29%         1,211          321      27%            +32     +2.7%        -24    -7.0%
+Rhode Island               52          23     44%             71          24      33%            +19      +37%         +1    +4.3%
+South Carolina         1,094          471     43%         1,047          413      39%            -47      -4.3%       -58     -12%
+South Dakota             137           45     33%           140           38      27%             +3     +2.2%         -7     -16%
+Tennessee              1,313          361     28%         1,323          371      28%            +10     +0.8%        +10    +2.8%
+Texas                  4,408        1,881     43%         4,291        1,699      40%           -117      -2.7%      -182    -9.7%
+Utah                     319           73     23%           280           59      21%            -39       -12%       -14     -19%
+Vermont                    76          26     34%             69          18      26%             -7      -9.2%        -8     -31%
+Virginia               1,006          289     29%           913          261      29%            -93      -9.2%       -28    -9.7%
+Washington               743          266     36%           810          294      36%            +67     +9.0%        +28    +11%
+West Virginia            266           58     22%           260           58      22%             -6      -2.3%         0     0.0%
+Wisconsin                604          172     28%           583          182      31%            -21      -3.5%       +10    +5.8%
+Wyoming                  134           39     29%           144           36      25%            +10     +7.5%         -3    -7.7%
+National              42,721       13,458     32%        40,901       12,429      30%         -1,820      -4.3%    -1,029    -7.6%
+Puerto Rico              271           90     33%           307           96      31%            +36      +13%         +6    +6.7%
+Source: FARS 2022 Final File, 2023 ARF
+Notes: Puerto Rico is not included in the U.S. total. Percentages of alcohol-impaired-driving fatalities are computed based on unrounded
+estimates. Year-to-year percentage changes in alcohol-impaired-driving fatalities are based on rounded estimates. NHTSA estimates BACs
+when alcohol test results are unknown.
+
+
+U.S. Department of Transportation                                               NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                      14
+
+
+  Fatality Analysis Reporting System
+  FARS contains data on every fatal motor vehicle traffic crash within the 50 States, the District of Columbia,
+  and Puerto Rico. To be included in FARS, a traffic crash must involve a motor vehicle traveling on a
+  trafficway customarily open to the public and must result in the death of a vehicle occupant or a nonoccupant
+  within 30 days of the crash. The Annual Report File (ARF) is the FARS data file associated with the most
+  recent available year, which is subject to change when it is finalized the following year to the final version
+  known as the Final File. The additional time between the ARF and the Final File provides the opportunity for
+  submission of important variable data requiring outside sources, which may lead to changes in the final
+  counts. More information on FARS can be found at www.nhtsa.gov/crash-data-systems/fatality-analysis-
+  reporting-system.
+  The updated final counts for the previous data year will be reflected with the release of the recent year’s ARF.
+  For example, along with the release of the 2023 ARF, the 2022 Final File was released to replace the 2022
+  ARF. The final fatality count in motor vehicle traffic crashes for 2022 was 42,721, which was updated from
+  42,514 in the 2022 ARF.
+
+
+
+  Crash Report Sampling System
+  NHTSA’s National Center for Statistics and Analysis (NCSA) redesigned the nationally representative
+  sample of police-reported traffic crashes, which estimates the number of police-reported injury and property-
+  damage-only crashes in the United States. The new system, called CRSS, replaced the National Automotive
+  Sampling System (NASS) General Estimates System (GES) in 2016. More information on CRSS can be
+  found at www.nhtsa.gov/crash-data-systems/crash-report-sampling-system-crss.
+
+
+
+  Product Information Catalog and Vehicle Listing (vPIC) Vehicle Classification
+  Historically, vehicle type classifications (e.g., passenger cars, light trucks, large trucks, motorcycles, buses)
+  from FARS, NASS GES, and CRSS used for analysis and data reporting were based on analyst-coded vehicle
+  body type. NHTSA did not have manufacturer authoritative data to assist in vehicle body type coding. NCSA
+  has developed a Product Information Catalog and Vehicle Listing (vPIC) dataset that is being used to decode
+  VINs (Vehicle Identification Numbers) and extract vehicle information. Details of vehicles (make, model,
+  body class, etc.) involved in crashes are obtained from vPIC via VIN-linkage. The VIN-derived information
+  from vPIC uses the manufacturer’s classification of body class, which allows for more accurate vehicle
+  type analysis.
+  The vPIC-based analysis data are available beginning with 2020 FARS and CRSS data files. Vehicle-related
+  analysis for 2020 and later years are based on vPIC vehicle classification. As a result, the 2020 and later-year
+  vehicle type classifications are not comparable to 2019 and earlier-year vehicle type classifications. This
+  change affects any analysis with a vehicle component to it. More information on vPIC can be found at
+  https://vpic.nhtsa.dot.gov/.
+
+
+
+
+U.S. Department of Transportation                                    NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590
+Research Note: Overview of Motor Vehicle Traffic Crashes in 2023                                                            15
+
+
+  For More Information:
+  Motor vehicle traffic crash data are available from the National Center for Statistics and Analysis, NSA-230.
+  NCSA can be contacted at NCSARequests@dot.gov or 800-934-8517. NCSA programs can be found at
+  www.nhtsa.gov/data. To report a motor vehicle safety-related problem or to inquire about safety information,
+  contact the Vehicle Safety Hotline at 888-327- 4236 or www.nhtsa.gov/report-a-safety-problem.
+  The following data tools and resources can be found at https://cdan.dot.gov/.
+  •   Fatal Motor Vehicle Traffic Crash Data Visualizations
+  •   Fatality and Injury Reporting System Tool (FIRST)
+  •   State Traffic Safety Information (STSI)
+  •   Traffic Safety Facts Annual Report Tables
+  •   FARS Data Tables (FARS Encyclopedia)
+  •   Motor Vehicle Traffic Crash Databook
+  •   Leading Cause of Death Reports
+  •   Crash Viewer
+  •   Product Information Catalog and Vehicle Listing (vPIC)
+  •   FARS, NASS GES, CRSS, NASS Crashworthiness Data System (CDS), and Crash Investigation
+      Sampling System (CISS) data can be downloaded for further analysis.
+  Detailed data on motor vehicle traffic crashes are published annually in Traffic Safety Facts: A Compilation
+  of Motor Vehicle Traffic Crash Data. The fact sheets and Traffic Safety Facts annual report can be found at
+  https://crashstats.nhtsa.dot.gov/.
+
+
+
+
+Suggested APA format citation for this document:
+National Center for Statistics and Analysis. (2025, April). Overview of motor vehicle traffic crashes in 2023
+    (Traffic Safety Facts Research Note. Report No. DOT HS 813 705). National Highway Traffic Safety
+    Administration.
+
+
+
+
+                                                                   This research note and other general information
+                                                                   on highway traffic safety may be found at:
+                                                                   https://crashstats.nhtsa.dot.gov/.
+
+U.S. Department of Transportation                                       NHTSA’s National Center for Statistics and Analysis
+1200 New Jersey Avenue SE, Washington, DC 20590                                                                 16635-031925-v2a
+

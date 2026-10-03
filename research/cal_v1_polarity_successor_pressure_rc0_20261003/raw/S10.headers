@@ -1,0 +1,13 @@
+HTTP/2 200 
+date: Sat, 03 Oct 2026 23:11:00 GMT
+content-type: text/html;charset=utf-8
+allow: DELETE, GET, HEAD, POST, PUT, OPTIONS, PATCH
+cache-control: public, s-maxage=900, max-age=900, stale-while-revalidate=10
+strict-transport-security: max-age=31536000; includeSubDomains
+vary: Accept-Encoding, User-Agent
+x-frame-options: SAMEORIGIN
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1
+cf-cache-status: EXPIRED
+server: cloudflare
+cf-ray: a44f9f959e57ac81-YYZ

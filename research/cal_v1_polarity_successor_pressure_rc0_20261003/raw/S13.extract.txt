@@ -1,0 +1,892 @@
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ Inventory of U.S. Greenhouse Gas Emissions and Sinks | US EPA 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Skip to main content 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ An official website of the United States government
+
+ Here’s how you know
+ 
+ 
+ Here’s how you know 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Official websites use .gov 
+ 
+ A .gov website belongs to an official government organization in the United States.
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Secure .gov websites use HTTPS 
+ 
+ A lock ( Lock A locked padlock ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Menu 
+ 
+ 
+ 
+ 
+ 
+ Search 
+ 
+ 
+ 
+ Search 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Primary navigation 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Environmental Topics
+ 
+ Environmental Topics Air Bed Bugs Chemicals, Toxics, and Pesticide Emergency Response Environmental Information by Location Health Land, Waste, and Cleanup Lead Mold Radon Research Science Topics Water Topics A-Z Topic Index 
+ 
+ 
+ 
+ 
+ 
+ 
+ Laws & Regulations
+ 
+ Laws & Regulations By Business Sector By Topic Compliance Enforcement Guidance Laws and Executive Orders Regulations 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report a Violation
+ 
+ Report a Violation Environmental Violations Fraud, Waste or Abuse 
+ 
+ 
+ 
+ 
+ 
+ 
+ About EPA
+ 
+ About EPA Our Mission and What We Do Headquarters Offices Regional Offices Labs and Research Centers Newsroom Planning, Budget, and Results Organization Chart EPA History 
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+ 
+ 
+
+
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+
+
+
+ 
+ Breadcrumb 
+
+ 
+ 
+ Home 
+ 
+ 
+ Greenhouse Gas Emissions 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Inventory of U.S. Greenhouse Gas Emissions and Sinks
+ 
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+
+
+ Related Links
+ 
+ 
+
+ 1990-2023 DRAFT Inventory Report is available for public comment per federal register notice ( FRL- 9448-04-OAR, FR Doc. 2024-31058 ) .  The draft report  will be uploaded to public docket EPA-HQ-OAR-2024-0591 between January 15 and February 13, 2025. Comments were due by March 17, 2025.  
+ 1990-2022 Inventory Report  and its  Data Highlights Greenhouse Gas Inventory Data Explorer Natural Gas Systems Data in the Inventory Stakeholder Webinar: Waste Sector Data and Methodology in the Inventory Greenhouse Gas Reporting Program (GHGRP) GHGRP and the U.S. Inventory of Greenhouse Gas Emissions and Sinks USDA's USFS Resource Bulletin U.S. Greenhouse Gas Inventory Report Archives 
+
+ 
+ 
+
+
+
+
+ 
+
+ About the Inventory of Greenhouse Gas Emissions and Sinks EPA develops an annual report  called the Inventory of U.S. Greenhouse Gas Emissions and Sinks (Inventory), that tracks U.S. greenhouse gas emissions and sinks by source, economic sector, and greenhouse gas going back to 1990. EPA has prepared the Inventory of U.S. Greenhouse Gas Emissions and Sinks since the early 1990s. This annual report , provides a comprehensive accounting of total greenhouse gas emissions for all man-made sources in the United States, including carbon dioxide removal from the atmosphere by “sinks,” (e.g., through the uptake of carbon and storage in forests, vegetation, and soils) from management of lands in their current use or as lands are converted to other uses. The gases covered by the Inventory include carbon dioxide, methane, nitrous oxide, hydrofluorocarbons, perfluorocarbons, sulfur hexafluoride, and nitrogen trifluoride.
+ The national greenhouse gas inventory is submitted to the United Nations in accordance with the Framework Convention on Climate Change . In preparing the annual emissions and sinks inventory report, EPA collaborates with hundreds of experts representing more than a dozen U.S. government agencies, academic institutions, industry associations, consultants and environmental organizations. EPA also collects greenhouse gas emissions data from individual facilities and suppliers of certain fossil fuels and industrial gases through the Greenhouse Gas Reporting Program .
+ Trends Overview of Greenhouse Gas Emissions 
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+
+ Note: All emission estimates are sourced from the Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990–2022 . Land Use, Land-Use Change, and Forestry in the United States is a net sink and offsets 13% of these greenhouse gas emissions. This net sink is not shown in the above diagram.  
+ 
+
+ Key findings from the latest Inventory include:
+ In 2022, U.S. greenhouse gas emissions totaled 6,343 million metric tons of carbon dioxide equivalents, and 5,489 million metric tons of carbon dioxide equivalents after accounting for sequestration from the land sector. Emissions increased in 2022 by 1 percent (after accounting for sequestration from the land sector) compared to the previous year. The increase in total greenhouse gas emissions was driven largely by an increase in CO 2 emissions from fossil fuel combustion. In 2022, CO 2 emissions from fossil fuel combustion increased by 1 percent relative to the previous year. This increase in fossil fuel consumption emissions was from increased energy use, due in part to the continued rebound in economic activity after the height of the COVID-19 pandemic. Greenhouse gas emissions in 2022 (after accounting for sequestration from the land sector) were 17 percent below 2005 levels. See the Data Highlights to learn more about the latest inventory findings.
+ Total U.S. Greenhouse Gas Emissions by Economic Sector in 2022 
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+ 
+
+ Total U.S. Greenhouse Gas Emissions by Economic Sector 
+
+ Image to save or print 
+ 
+
+ 
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+ 
+
+ Total U.S. Greenhouse Gas Emissions by Economic Sector and Electricity End-Use  
+
+ Image to save or print 
+ 
+
+ Note: All emission estimates are sourced from the Inventory of U.S. Greenhouse Gas Emissions and Sinks: 1990–2022 . Greenhouse gas emissions from commercial and residential buildings increase substantially when emissions from electricity end-use are included, due to the relatively large share of electricity use (e.g., heating, ventilation, and air conditioning; lighting; and appliances) in these sectors. Also, if emissions from electricity use are allocated to the industrial end-use sector, industrial activities account for a much larger share of U.S. greenhouse gas emissions. Land Use, Land-Use Change, and Forestry in the United States is a net sink and offsets 13% of these greenhouse gas emissions. This net sink is not shown in the above diagram.
+ Explore the Data EPA has developed an interactive tool that provides access to data from the national greenhouse gas inventory. Visit the Greenhouse Gas Inventory Data Explorer to create customized graphs, examine trends over time, and download the data. The graph below is an example from EPA’s Greenhouse Gas Inventory Data Explorer. Click the image to enter the tool and explore an interactive version of the graph.
+ 
+ 
+ 
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+
+
+
+
+
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+
+ Greenhouse Gas Emissions 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ Open Sidenav Menu 
+ Close Sidenav Menu 
+
+ 
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Overview of Greenhouse Gases expand or collapse the child menu Carbon Dioxide Emissions Methane Emissions Nitrous Oxide Emissions Fluorinated Gas Emissions 
+ 
+ 
+ 
+ 
+ 
+ Sources of Greenhouse Gas Emissions expand or collapse the child menu Electric Power Sector Emissions Transportation Sector Emissions Industry Sector Emissions Commercial and Residential Sector Emissions Agriculture Sector Emissions Land Use & Forestry Emissions 
+ 
+ 
+ 
+ 
+ 
+ Global Emissions and Removals 
+ 
+ 
+ 
+ 
+ 
+ National Emissions and Removals 
+ 
+ 
+ 
+ 
+ 
+ State and Tribal GHG Data and Resources 
+ 
+ 
+ 
+ 
+ 
+ Facility-Level Emissions 
+ 
+ 
+ 
+ 
+ 
+ Gridded Methane Emissions 
+ 
+ 
+ 
+ 
+ 
+ Carbon Footprint Calculator 
+ 
+ 
+ 
+ 
+ 
+ GHG Equivalencies Calculator 
+ 
+
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+ Contact Us about Greenhouse Gas Emissions 
+
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ Contact Us about Greenhouse Gas Emissions to ask a question, provide feedback, or report a problem. 
+ Last updated on June 10, 2026 
+
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+
+
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+ 
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ Assistance 
+ Spanish 
+ Arabic 
+ Chinese (simplified) 
+ Chinese (traditional) 
+ French 
+ Haitian Creole 
+ Korean 
+ Portuguese 
+ Russian 
+ Tagalog 
+ Vietnamese 
+ 
+
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+ 
+ Discover. 
+ 
+ 
+ Accessibility Statement 
+ 
+ 
+ EPA Administrator 
+ 
+ 
+ Budget & Performance 
+ 
+ 
+ Contracting 
+ 
+ 
+ EPA www Web Snapshot 
+ 
+ 
+ Grants 
+ 
+ 
+ No FEAR Act Data 
+ 
+ 
+ Plain Writing 
+ 
+ 
+ Privacy and Security Notice 
+ 
+ 
+ 
+ 
+ Connect. 
+ 
+ 
+ Data 
+ 
+ 
+ Inspector General 
+ 
+ 
+ Jobs 
+ 
+ 
+ Newsroom 
+ 
+ 
+ Regulations.gov 
+ 
+ 
+ Subscribe 
+ 
+ 
+ USA.gov 
+ 
+ 
+ White House 
+ 
+ 
+ 
+ 
+ Ask. 
+ 
+ 
+ Contact EPA 
+ 
+ 
+ EPA Disclaimers 
+ 
+ 
+ Hotlines 
+ 
+ 
+ FOIA Requests 
+ 
+ 
+ Frequent Questions 
+ 
+ 
+ Site Feedback 
+ 
+ 
+ Follow. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 

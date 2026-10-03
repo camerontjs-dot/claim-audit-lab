@@ -1,0 +1,16 @@
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+pragma: no-cache
+server: Microsoft-IIS/10.0
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+request-context: appId=cid-v1:91794b7d-16f5-40a2-bc11-021bf853ac50
+access-control-expose-headers: Request-Context
+x-akamai-transformed: 9 - 0 pmb=mRUM,2
+cache-control: max-age=86400
+expires: Sun, 04 Oct 2026 23:11:01 GMT
+date: Sat, 03 Oct 2026 23:11:01 GMT
+server-timing: cdn-cache; desc=HIT
+server-timing: edge; dur=2
+x-akam-sw-version: 0.5.0
+server-timing: ak_p; desc="1791069061542_34645832_1228912277_248_7406_26_35_15";dur=1

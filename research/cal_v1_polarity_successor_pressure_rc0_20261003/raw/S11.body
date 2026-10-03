@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<!-- Web Experience Toolkit (WET) / Bo&#238;te &#224; outils de l'exp&#233;rience Web (BOEW)
+     wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+<title>The Daily&#160;&#8212;&#160;Labour Force Survey, August 2025</title>
+<meta name="dcterms.title" content="The Daily &#8212; Labour Force Survey, August 2025" />
+<meta name="dcterms.description" content="Employment declined by 66,000 (-0.3%) in August, largely the result of a decline in part-time work, and the employment rate fell 0.2 percentage points to 60.5%. The unemployment rate rose 0.2 percentage points to 7.1%. " />
+<meta name="description" content="Employment declined by 66,000 (-0.3%) in August, largely the result of a decline in part-time work, and the employment rate fell 0.2 percentage points to 60.5%. The unemployment rate rose 0.2 percentage points to 7.1%. " />
+<meta name="STCkeywords" content="Labour force characteristics, Labour impacts of COVID-19, stcfree" />
+<meta name="dcterms.creator" content="Government of Canada, Statistics Canada" />
+<meta name="dcterms.issued" title="W3CDTF" content="2025-09-05" />
+<meta name="dcterms.modified" title="W3CDTF" content="2025-09-05" />
+<meta name="dcterms.subject" title="gcstc" content="none" />
+<meta name="dcterms.language" title="ISO639-2" content="eng" />
+<meta name="STCsubtopic" content="Labour force characteristics; Labour impacts of COVID-19" />
+<meta name="STCsubtopicID" content="140205 ; 451002" />
+<meta name="STCtype" content="none" />
+<meta name="STCsource" content="none" />
+<meta name="STCstatus" content="none" />
+<meta name="STClist" content="none" />
+
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta property="dcterms:service" content="StatCan"/> 
+<meta property="dcterms:accessRights" content="2"/>
+
+<link href="/wet-boew4b/assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="/wet-boew4b/css/wet-boew.min.css">
+<script src="/wet-boew4b/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/wet-boew4b/css/theme.min.css">
+<link rel="stylesheet" href="/wet-boew4b/css/statcan.css">
+<link rel="stylesheet" href="/wet-boew4b/invitation-manager/Overlay.css"> 
+
+<noscript><link rel="stylesheet" href="/wet-boew4b/css/noscript.min.css" /></noscript>
+<!-- Adobe Analytics v5 production version --><!--script src="//assets.adobedtm.com/be5dfd287373/8cdb3d539c44/launch-6df9e9b447f9.min.js"></script-->
+<!-- Adobe Analytics v5 staging version --><!--script src="//assets.adobedtm.com/be5dfd287373/8cdb3d539c44/launch-dfa8abb35555-staging.min.js"></script-->
+<!-- Adobe Analytics v10 production version --><script src="//assets.adobedtm.com/be5dfd287373/8f0ead8a37e7/launch-09394abc039d.min.js"></script>
+
+<script>dataLayer1 = [];</script>
+
+<link rel="stylesheet" href="/DailyWet4b/css/daily-wet4b-min.css" /><!-- CustomScriptsCSSEnd -->
+<script src="/wet-boew4b/js/jquery.min.js"></script>
+<script src="/DailyWet4b/js/jquery-ui.widget.min.js"></script>
+<script src="/DailyWet4b/js/dailyWet4b-min.js"></script>
+<link rel="canonical" href="https://www150.statcan.gc.ca/n1/daily-quotidien/250905/dq250905a-eng.htm" />
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<ul id="wb-tphp">
+<li class="wb-slc">
+<a class="wb-sl" href="#wb-cont">Skip to main content</a>
+</li>
+<li class="wb-slc visible-sm visible-md visible-lg">
+<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
+</li>
+</ul>
+<header role="banner">
+<div id="wb-bnr" class="container">
+<section id="wb-lng" class="visible-md visible-lg text-right">
+<h2 class="wb-inv">Language selection</h2>
+<div class="row">
+<div class="col-md-12">
+<ul class="list-inline margin-bottom-none">
+<li><a lang="fr" href="/cgi-bin/change.cgi">Fran&#231;ais</a></li>
+</ul>
+</div>
+</div>
+</section>
+<div class="row">
+<div class="brand col-xs-9 col-sm-5 col-md-4">
+<a href="https://www.canada.ca/en.html"><img src="/wet-boew4b/assets/sig-blk-gov-en.svg" alt="Government of Canada"><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span></a>
+</div>
+<section class="wb-mb-links col-sm-offset-4 col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
+<h2>Search and menus</h2>
+<ul class="list-inline text-right chvrn">
+<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
+</ul>
+<div id="mb-pnl"></div>
+</section>
+
+<section id="wb-srch" class="col-lg-offset-2 col-md-offset-2 col-xs-6 text-right visible-md visible-lg">
+<h2 class="wb-inv">Search</h2>
+<form action="https://www.statcan.gc.ca/search/results/site-search" method="get" name="cse-search-box" role="search" class="form-inline">
+<div class="form-group wb-srch-qry">
+<label for="wb-srch-q" class="wb-inv">Search Statistics Canada</label>
+<input type="hidden" name="fq" value="stclac:2" />
+<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="27" maxlength="150" placeholder="Search Statistics Canada">
+<datalist id="wb-srch-q-ac">
+</datalist>
+</div>
+<div class="form-group submit">
+<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+</div>
+</form>
+</section>
+</div>
+</div>
+
+<nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="/wet-boew4b/ajax/sitemenu-en.html" typeof="SiteNavigationElement">
+	<div class="container nvbar">
+		<h2 class="wb-inv">Topics menu</h2>
+		<div class="row">
+			<ul class="list-inline menu">
+				<li><a href="https://www150.statcan.gc.ca/n1/en/subjects?MM=1">Subjects</a></li>
+				<li><a href="https://www150.statcan.gc.ca/n1/en/type/data?MM=1">Data</a></li>
+				<li><a href="https://www150.statcan.gc.ca/n1/en/type/analysis?MM=1">Analysis</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/reference?MM=1">Reference</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/geography?MM=1">Geography</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/census?MM=1">Census</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/surveys?MM=1">Surveys and statistical programs</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/about/statcan?MM=1">About StatCan</a></li>
+				<li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<nav role="navigation" id="wb-bc" class="" property="breadcrumb">
+	<div class="container">
+		<div class="row">
+<!-- Breadcrumb trail -->
+<ol class="breadcrumb">
+<li><a href="/start-debut-eng.html">Home</a></li>
+<li><em>The Daily</em></li>
+</ol>
+</div>
+</div>
+</nav>
+</header>
+
+<main role="main" property="mainContentOfPage" class="container">
+
+<div class="moduleHeading">
+  <div class="DailyHeading">The Daily</div>	
+  <div class="DailySeperator">|</div>
+  <div class="DailySearch">
+    <a title="Search The Daily" href="#search01" aria-controls="search01" class="wb-lbx btn DailySearchLink" role="button">
+       <span class="glyphicon glyphicon-search"></span>
+    </a>
+  </div>
+
+  <section id="search01" class="mfp-hide modal-dialog modal-content overlay-def">
+    <header class="modal-header">
+      <h2 class="modal-title">Search <em>The Daily</em></h2>
+    </header>
+    <div class="modal-body">
+      <form action="//www.statcan.gc.ca/search/results/module-search" method="get" name="daily-search-box" role="search" class="form-inline">
+        <label for="daily-srch-q" class="wb-inv">Search website</label>
+        <input id="daily-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control daily-search-input" name="q" type="search" value="" size="27" maxlength="150" placeholder="Search The Daily">
+	    <input type="hidden" name="mc" value="dailyle" />
+        <button type="submit" class="btn btn-primary daily-search-btn">Search</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<div class="btn-group btn-group-justified" role="group">
+	<a class="btn btn-default" href="/dai-quo/index-eng.htm"><span class="glyphicon glyphicon-flash"></span>&nbsp;In the news</a>
+	<a class="btn btn-default" href="/dai-quo/ind1-eng.htm"><span class="glyphicon glyphicon-star"></span>&nbsp;Indicators</a>
+	<a class="btn btn-default" href="/dai-quo/subjects_sujets-eng.htm"><span class="glyphicon glyphicon-book"></span>&nbsp;Releases by subject</a>
+</div>
+
+<div class="btn-group btn-group-justified" role="group">
+	<a class="btn btn-default" href="/dai-quo/special-eng.htm"><span class="glyphicon glyphicon-link"></span>&nbsp;Special interest</a>
+	<a class="btn btn-default" href="/dai-quo/cal3-eng.htm"><span class="glyphicon glyphicon-calendar"></span>&nbsp;Release schedule</a>
+	<a class="btn btn-default" href="/dai-quo/info1-eng.htm"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;Information</a>	
+</div>
+
+
+<h1 property="name" id="wb-cont">Labour Force Survey, August 2025</h1>
+<section>
+<div class="release_nav">
+   <a class="btn btn-default btn-primary btn-sm" href="dq250905a-eng.htm">Text<span class="wb-inv">&#160;- Selected</span></a>   <a class="btn btn-default btn-sm" href="dq250905a-cansim-eng.htm">Tables</a>   <a class="btn btn-default btn-sm" href="dq250905a-info-eng.htm">Related information</a>   <a class="btn btn-default btn-sm" href="/dai-quo/cal1-eng.htm?sk=3587">Release schedule</a>
+   <a class="btn btn-default btn-sm" href="/daily-quotidien/250808/dq250808a-eng.htm">Previous release</a>
+   <a class="btn btn-default btn-sm" href="dq250905a-eng.pdf">PDF (706 KB)</a>
+</div>
+
+<p class="sd-release-date">Released:&#160;2025-09-05</p>
+<div class="panel panel-default sd-thumbnail">
+<label for="select_geo" class="wb-inv">
+    Select geography</label>
+<select style='max-width:260px' class= "select_geo" id="select_geo" onchange="geoChange()">
+  <option value="0">Canada</option>
+  <option value="1">Newfoundland and Labrador</option>
+  <option value="2">Prince Edward Island</option>
+  <option value="3">Nova Scotia</option>
+  <option value="4">New Brunswick</option>
+  <option value="5">Quebec</option>
+  <option value="6">Ontario</option>
+  <option value="7">Manitoba</option>
+  <option value="8">Saskatchewan</option>
+  <option value="9">Alberta</option>
+  <option value="10">British Columbia</option>
+</select> 
+
+<div id="geo0" class="indicator-box indicator-show">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-0">Tab&#160;1</a></li>
+      <li><a href="#panel2-0">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-0" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; Canada
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">20,955,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.3%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-0" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; Canada
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">7.1%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.2&#160;pts&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo1" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-1">Tab&#160;1</a></li>
+      <li><a href="#panel2-1">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-1" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; N.L.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">243,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-1</span>.3%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-1" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; N.L.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">10.7%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.2&#160;pts&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo2" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-2">Tab&#160;1</a></li>
+      <li><a href="#panel2-2">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-2" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; P.E.I.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">94,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">1.2%&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-2" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; P.E.I.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">8.1%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.7&#160;pts&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo3" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-3">Tab&#160;1</a></li>
+      <li><a href="#panel2-3">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-3" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; N.S.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">524,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.2%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-3" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; N.S.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">6.5%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.5&#160;pts&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo4" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-4">Tab&#160;1</a></li>
+      <li><a href="#panel2-4">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-4" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; N.B.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">401,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-1</span>.6%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-4" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; N.B.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">7.7%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.2&#160;pts&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo5" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-5">Tab&#160;1</a></li>
+      <li><a href="#panel2-5">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-5" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; Que.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">4,645,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.2%&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-5" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; Que.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">6.0%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.5&#160;pts&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo6" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-6">Tab&#160;1</a></li>
+      <li><a href="#panel2-6">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-6" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; Ont.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">8,191,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.3%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-6" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; Ont.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">7.7%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.2&#160;pts&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo7" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-7">Tab&#160;1</a></li>
+      <li><a href="#panel2-7">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-7" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; Man.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">736,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.7%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-7" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; Man.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">5.7%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.2&#160;pts&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo8" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-8">Tab&#160;1</a></li>
+      <li><a href="#panel2-8">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-8" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; Sask.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">621,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.4%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-8" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; Sask.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">4.7%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.3&#160;pts&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo9" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-9">Tab&#160;1</a></li>
+      <li><a href="#panel2-9">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-9" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; Alta.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">2,563,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.6%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-9" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; Alta.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">8.4%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.6&#160;pts&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="geo10" class="indicator-box indicator-hide">
+  <div class="wb-tabs carousel-s1 playing">
+    <ul role="tablist">
+      <li class="active"><a href="#panel1-10">Tab&#160;1</a></li>
+      <li><a href="#panel2-10">Tab&#160;2</a></li>
+    </ul>
+
+    <div class="tabpanels">
+      <div role="tabpanel" id="panel1-10" class="in fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Employment level &mdash; B.C.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">2,937,000</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth"><span class="nowrap">-0</span>.5%&#160;<img src="/DailyWet4b/img/down.png" alt="decrease" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+      <div role="tabpanel" id="panel2-10" class="out fade">
+<div class="indicator-box">
+<div class="panel-heading sd-indicator-heading">
+Unemployment rate &mdash; B.C.
+</div>
+<div class="panel-body sd-indicator-body">
+<p class="sd-indicator-value">6.2%</p>
+<p class="sd-indicator-refper">August&#160;2025</p>
+<p class="sd-indicator-divider"></p>
+<p class="sd-indicator-growth">0.3&#160;pts&#160;<img src="/DailyWet4b/img/up.png" alt="increase" /></p>
+<p class="sd-indicator-growth-details">(monthly change)</p>
+</div>
+<div class="panel-footer sd-indicator-source"> <strong>Source(s): </strong>Table <a class="hyperlink" href=/t1/tbl1/en/tv.action?pid=1410028701>14-10-0287-01</a>.
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<h2>Highlights</h2><p>Employment declined by&#160;66,000&#160;(<span class="nowrap">-0</span>.3%) in August, largely the result of a decline in part-time work, and the employment rate fell&#160;0.2&#160;percentage points to&#160;60.5%. The unemployment rate rose&#160;0.2&#160;percentage points to&#160;7.1%.</p><p>Employment fell for core-aged (25&#160;to&#160;54&#160;years old) men (<span class="nowrap">-5</span>8,000; <span class="nowrap">-0</span>.8%) and core-aged women (<span class="nowrap">-3</span>5,000; <span class="nowrap">-0</span>.5%) in August. There was little change in employment for youth aged&#160;15&#160;to&#160;24&#160;and people aged&#160;55&#160;and older.</p><p>Employment decreased across several industries in August, led by professional, scientific and technical services (<span class="nowrap">-2</span>6,000; <span class="nowrap">-1</span>.3%), transportation and warehousing (<span class="nowrap">-2</span>3,000; <span class="nowrap">-2</span>.1%), and manufacturing (<span class="nowrap">-1</span>9,000; <span class="nowrap">-1</span>.0%). On the other hand, there was an increase in construction employment (+17,000; +1.1%).</p><p>Several provinces recorded employment declines in August; the largest were in Ontario (<span class="nowrap">-2</span>6,000, <span class="nowrap">-0</span>.3%), British Columbia (<span class="nowrap">-1</span>6,000; <span class="nowrap">-0</span>.5%) and Alberta (<span class="nowrap">-1</span>4,000; <span class="nowrap">-0</span>.6%).</p><p>Total hours worked were little changed in August (+0.1%) and were up&#160;0.9% compared with&#160;12&#160;months earlier.</p><p>Average hourly wages among employees increased&#160;3.2% (+$1.12&#160;to $36.31) on a year-over-year basis in August, following growth of&#160;3.3% in July (not seasonally adjusted).</p><h2>Employment falls for second month in a row</h2><p>Employment fell by&#160;66,000&#160;(<span class="nowrap">-0</span>.3%) in August, extending the decline recorded in July (<span class="nowrap">-4</span>1,000; <span class="nowrap">-0</span>.2%). The employment decrease in August was mostly in part-time work (<span class="nowrap">-6</span>0,000; <span class="nowrap">-1</span>.5%). Full-time employment was little changed in August, following a decline in July (<span class="nowrap">-5</span>1,000; <span class="nowrap">-0</span>.3%).</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Chart&#160;1&#160;</strong> 
+  <a href="cg-a001-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge chart 1" alt="Chart 1: Employment rate decreases in August" /></a><br />
+Employment rate decreases in August
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="cg-a001-eng.htm">
+    <img src="cg250905a001-eng.png" class="sd-chart-thumbnail" title="Enlarge chart 1" alt="Chart 1: Employment rate decreases in August" />
+  </a>
+  </div>
+</div>
+<p>The employment rat<span class="nowrap">e&#8212;t</span>he proportion of the working-age population who are employe<span class="nowrap">d&#8212;f</span>ell&#160;0.2&#160;percentage points to&#160;60.5% in August, the second consecutive monthly decline. The employment rate has been on a downward trend since the beginning of the year, falling&#160;0.6&#160;percentage points from January to August.</p><p>The number of self-employed workers fell by&#160;43,000&#160;(<span class="nowrap">-1</span>.6%) in August. Self-employment has trended down in recent months, offsetting gains recorded in the second half of&#160;2024&#160;and in early&#160;2025. In August, there was little change in the number of private and public sector employees.</p><h2>Employment declines among core-aged men and women</h2><p>In August, employment fell both for core-aged men (<span class="nowrap">-5</span>8,000; <span class="nowrap">-0</span>.8%) and core-aged women (<span class="nowrap">-3</span>5,000; <span class="nowrap">-0</span>.5%).</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Infographic&#160;1&#160;</strong> 
+  <a href="g-a001-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge infographic 1" alt="Thumbnail for Infographic 1: Employment rate by age group, August 2025" /></a><br />
+Employment rate by age group, August&#160;2025
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="g-a001-eng.htm">
+    <img src="g250905a001-eng.png" class="sd-chart-thumbnail" title="Enlarge infographic 1" alt="Thumbnail for Infographic 1: Employment rate by age group, August 2025" />
+  </a>
+  </div>
+</div>
+<p>Among core-aged men, the employment rate in August (85.8%) was down&#160;0.7&#160;percentage points from July and was the lowest since March&#160;2017&#160;(excluding&#160;2020&#160;and&#160;2021, during the COVID<span class="nowrap">-1</span>9&#160;pandemic). Similarly, the employment rate of core-aged women fell&#160;0.5&#160;percentage points to&#160;79.5% in August, the lowest rate since August&#160;2018. </p><p>There was little change in employment among youth aged&#160;15&#160;to&#160;24&#160;and among people aged&#160;55&#160;and older in August.</p><h2>Unemployment rate rises to&#160;7.1% in August </h2><p>The unemployment rate rose&#160;0.2&#160;percentage points to&#160;7.1% in August. Since January&#160;2025, it has increased&#160;0.5&#160;percentage points. The unemployment rate in August was the highest since May&#160;2016&#160;(excluding&#160;2020&#160;and&#160;2021). In comparison, the unemployment rate averaged&#160;6.0% from&#160;2017&#160;to&#160;2019, just prior to the COVID<span class="nowrap">-1</span>9&#160;pandemic.</p><p>There were&#160;1.6&#160;million unemployed people in August, an increase of&#160;34,000&#160;(+2.2%) from July. The layoff rate was&#160;1.0% in August, which had edged up compared with the rate observed&#160;12&#160;months earlier (0.9%) (not seasonally adjusted). This represents the proportion of people who were employed in July but had become unemployed in August as a result of a layoff.</p><p>Those who were unemployed in July continued to face difficulties finding work in August. Just&#160;15.2% of those who were unemployed in July had found work in August, lower than the corresponding proportion for the same months from&#160;2017&#160;to&#160;2019&#160;(23.3%) (not seasonally adjusted).</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Chart&#160;2&#160;</strong> 
+  <a href="cg-a002-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge chart 2" alt="Chart 2: Unemployment rate increases to 7.1% in August" /></a><br />
+Unemployment rate increases to&#160;7.1% in August
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="cg-a002-eng.htm">
+    <img src="cg250905a002-eng.png" class="sd-chart-thumbnail" title="Enlarge chart 2" alt="Chart 2: Unemployment rate increases to 7.1% in August" />
+  </a>
+  </div>
+</div>
+<p>The participation rat<span class="nowrap">e&#8212;t</span>he proportion of the population aged&#160;15&#160;and older who were employed or looking for wor<span class="nowrap">k&#8212;f</span>ell by&#160;0.1&#160;percentage points to&#160;65.1% in August.</p><div id="jointrel" class="sd-jointrel"><h2>Supplementary measures of unemployment</h2><p>Supplementary measures of unemployment provide more detail on the composition of the population that is not working. One supplementary rate includes people searching for work as well as discouraged searcher<span class="nowrap">s&#8212;t</span>hat is, people who did not look for a job because they believed no suitable work was available. This rate was&#160;8.2% in August, up&#160;0.6&#160;percentage points from&#160;12&#160;months earlier. The increase is comparable to the corresponding year-over-year increase in the official unemployment rate (+0.5&#160;percentage points) (not seasonally adjusted).</p><p>More information on supplementary measures of unemployment is available in table <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1410007701">14-10-0077-01</a>.</p></div><h2>Unemployment rate up for core-aged men and women</h2><p>In August, the unemployment rate increased among both core-aged men (+0.3&#160;percentage points to&#160;6.4%) and core-aged women (+0.3&#160;percentage points to&#160;5.7%).</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Infographic&#160;2&#160;</strong> 
+  <a href="g-a002-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge infographic 2" alt="Thumbnail for Infographic 2: Unemployment rate by age group, August 2025" /></a><br />
+Unemployment rate by age group, August&#160;2025
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="g-a002-eng.htm">
+    <img src="g250905a002-eng.png" class="sd-chart-thumbnail" title="Enlarge infographic 2" alt="Thumbnail for Infographic 2: Unemployment rate by age group, August 2025" />
+  </a>
+  </div>
+</div>
+<p>For people aged&#160;55&#160;and older, the unemployment rate was unchanged at&#160;5.3% in August.</p><p>Despite little change in the month, the youth unemployment rate (14.5%) remained high and was&#160;0.1&#160;percentage points below the rate recorded in July, which was the highest since September&#160;2010&#160;(excluding&#160;2020&#160;and&#160;2021).</p><h2>Returning students continue to face a tough summer job market in August </h2><p>From May to August, the Labour Force Survey (<a class="acro01-tooltip">LFS</a>) collects labour market information from students who attended school full time in March and who intend to return to school full time in the fall.</p><p>The unemployment rate for returning students stood at&#160;16.9% in August, similar to the rate observed&#160;12&#160;months earlier (16.3%) (not seasonally adjusted).</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Chart&#160;3&#160;</strong> 
+  <a href="cg-a003-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge chart 3" alt="Chart 3: Unemployment rate trending up in recent years for returning students during the summer months" /></a><br />
+Unemployment rate trending up in recent years for returning students during the summer months
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="cg-a003-eng.htm">
+    <img src="cg250905a003-eng.png" class="sd-chart-thumbnail" title="Enlarge chart 3" alt="Chart 3: Unemployment rate trending up in recent years for returning students during the summer months" />
+  </a>
+  </div>
+</div>
+<p>For the summer of&#160;2025&#160;overall (the average from May to August), the unemployment rate for returning students aged&#160;15&#160;to&#160;24&#160;was&#160;17.9%. This was the highest since the summer of&#160;2009&#160;(18.0%), excluding the pandemic year of&#160;2020. The unemployment rate for returning students has increased each summer since&#160;2022&#160;(when it was&#160;10.4%).</p><p>The unemployment rate among returning students in the summer of&#160;2025&#160;was higher for men (19.2%) than for women (16.8%).</p><h2>Fewer people employed in professional, scientific and technical services, transportation and warehousing, and manufacturing</h2><p>Employment decreased in professional, scientific and technical services in August (<span class="nowrap">-2</span>6,000; <span class="nowrap">-1</span>.3%), following five months of little change. Despite the monthly decline, employment in the industry was up&#160;36,000&#160;(+1.8%) compared with&#160;12&#160;months earlier.</p><p>Employment fell by&#160;23,000&#160;(<span class="nowrap">-2</span>.1%) in transportation and warehousing in August, offsetting a similar-sized increase in July. On a year-over-year basis, employment in the industry was little changed in August.</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Chart&#160;4&#160;</strong> 
+  <a href="cg-a004-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge chart 4" alt="Chart 4: Employment change by industry in August 2025" /></a><br />
+Employment change by industry in August&#160;2025
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="cg-a004-eng.htm">
+    <img src="cg250905a004-eng.png" class="sd-chart-thumbnail" title="Enlarge chart 4" alt="Chart 4: Employment change by industry in August 2025" />
+  </a>
+  </div>
+</div>
+<p>There were fewer people working in manufacturing in August (<span class="nowrap">-1</span>9,000; <span class="nowrap">-1</span>.0%). Compared with the recent peak of January&#160;2025, employment in manufacturing has declined by&#160;58,000&#160;(<span class="nowrap">-3</span>.1%).</p><p>On the other hand, employment rose in construction (+17,000; +1.1%) in August, offsetting most of the decline in July (<span class="nowrap">-2</span>2,000; <span class="nowrap">-1</span>.3%). Employment in construction has recorded little net variation since the beginning of the year, and the increase in August was the first since January.</p><h2>Ontario, British Columbia, and Alberta record the largest employment declines</h2><p>Employment in Ontario decreased by&#160;26,000&#160;(<span class="nowrap">-0</span>.3%) in August. Compared with the recent peak of February&#160;2025, employment in the province was down by&#160;66,000&#160;(<span class="nowrap">-0</span>.8%) in August. The unemployment rate in Ontario declined&#160;0.2&#160;percentage points to&#160;7.7% in August, as the number of people searching for work edged down.</p><p>Since the beginning of the year, regions of Southern Ontario have faced an uncertain economic climate, brought on by the threat or imposition of tariffs, including on motor vehicle and parts exports. Across Canada's&#160;20&#160;largest census metropolitan areas, the highest unemployment rates in August were in Windsor (11.1% compared with&#160;9.1% in January), Oshawa (9.0% compared with&#160;8.2% in January) and Toronto (8.9% compared with&#160;8.8% in January) (three-month moving averages). </p><p>In British Columbia, employment fell by&#160;16,000&#160;(<span class="nowrap">-0</span>.5%) in August, the second consecutive monthly decrease. Losses in the month were mainly among core-aged men (<span class="nowrap">-1</span>3,000; <span class="nowrap">-1</span>.2%). The unemployment rate in British Columbia rose&#160;0.3&#160;percentage points to&#160;6.2%.</p><p>In Alberta, employment fell by&#160;14,000&#160;(<span class="nowrap">-0</span>.6%) in Augus<span class="nowrap">t&#8212;a</span>lso the second consecutive monthly decrease. The biggest declines in the month were in manufacturing and in wholesale and retail trade. The unemployment rate in Alberta rose&#160;0.6&#160;percentage points to&#160;8.4% in August, the highest rate since August&#160;2017&#160;(excluding&#160;2020&#160;and&#160;2021).</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Map&#160;1&#160;</strong> 
+  <a href="mc-a001-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge map 1" alt="Thumbnail for map 1: Unemployment rate by province and territory, August 2025" /></a><br />
+Unemployment rate by province and territory, August&#160;2025
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="mc-a001-eng.htm">
+    <img src="mc250905a001-eng.png" class="sd-chart-thumbnail" title="Enlarge map 1" alt="Thumbnail for map 1: Unemployment rate by province and territory, August 2025" />
+  </a>
+  </div>
+</div>
+
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Infographic&#160;3&#160;</strong> 
+  <a href="g-a003-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge infographic 3" alt="Thumbnail for Infographic 3: Unemployment rates highest in southern Ontario census metropolitan areas" /></a><br />
+Unemployment rates highest in southern Ontario census metropolitan areas
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="g-a003-eng.htm">
+    <img src="g250905a003-eng.png" class="sd-chart-thumbnail" title="Enlarge infographic 3" alt="Thumbnail for Infographic 3: Unemployment rates highest in southern Ontario census metropolitan areas" />
+  </a>
+  </div>
+</div>
+<p>Employment also declined in New Brunswick (<span class="nowrap">-6</span>,500; <span class="nowrap">-1</span>.6%), Manitoba (<span class="nowrap">-5</span>,200; <span class="nowrap">-0</span>.7%), and Newfoundland and Labrador (<span class="nowrap">-3</span>,200; <span class="nowrap">-1</span>.3%) in August. Meanwhile, Prince Edward Island had an employment gain (+1,100; +1.2%).</p><p>Employment held steady for a second consecutive month in Quebec in August. The number of people looking for work increased in the month (+24,000; +9.0%), pushing the unemployment rate up&#160;0.5&#160;percentage points to&#160;6.0%.</p><h2>In the spotlight: Nearly&#160;1&#160;in&#160;10&#160;workers would prefer to work more hours </h2><p>In the context of a cooling labour market, broader measures of labour underutilization can offer a more comprehensive picture of the gap between labour demand and labour supply.</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Chart&#160;5&#160;</strong> 
+  <a href="cg-a005-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge chart 5" alt="Chart 5: Time-related underemployment rate highest in Newfoundland and Labrador, Ontario and Alberta" /></a><br />
+Time-related underemployment rate highest in Newfoundland and Labrador, Ontario and Alberta
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="cg-a005-eng.htm">
+    <img src="cg250905a005-eng.png" class="sd-chart-thumbnail" title="Enlarge chart 5" alt="Chart 5: Time-related underemployment rate highest in Newfoundland and Labrador, Ontario and Alberta" />
+  </a>
+  </div>
+</div>
+<p>In August&#160;2025, the <a class="acro02-tooltip">LFS</a> asked workers if they would have preferred to work more, less or the same number of hours during the <a class="acro03-tooltip">LFS</a> reference week, for the same rate of pay. Among all employed people,&#160;8.8% were considered in time-related underemployment in Augus<span class="nowrap">t&#8212;t</span>hat is, they would have preferred to work more hours and were available to do so (population aged&#160;15&#160;to&#160;69, not seasonally adjusted). The underemployment rate was higher among part-time workers (23.0%) than among full-time workers (6.2%).</p>
+<div class="panel panel-default sd-thumbnail">
+  <div class="panel-heading">
+  <h2 class="chartt"><strong>Infographic&#160;4&#160;</strong> 
+  <a href="g-a004-eng.htm"> 
+  <img class="pull-right" src="/dai-quo/img/magnify-clip.png" title="Enlarge infographic 4" alt="Thumbnail for Infographic 4: Employees in time-related underemployment have lower hourly wages than other employees" /></a><br />
+Employees in time-related underemployment have lower hourly wages than other employees
+</h2>
+  </div>
+  <div class="panel-body">
+  <a href="g-a004-eng.htm">
+    <img src="g250905a004-eng.png" class="sd-chart-thumbnail" title="Enlarge infographic 4" alt="Thumbnail for Infographic 4: Employees in time-related underemployment have lower hourly wages than other employees" />
+  </a>
+  </div>
+</div>
+<p>Across provinces, the share of workers in underemployment was highest in Newfoundland and Labrador (11.3%), Ontario (9.6%) and Alberta (9.4%) in August. The three provinces also had unemployment rates that were above the national average.</p><p>Compared with their counterparts who were not underemployed, employees in time-related underemployment worked a largely similar average number of hours but had notably lower hourly wages. This indicates that underemployment is largely driven by the need to compensate for a lower rate of pay.</p><p>Among workers who would have preferred to work more hours, over half (55.7%) reported that their main reason was to cover current expenses, while&#160;17.9% reported that the main reason was to save money for a large purchase such as a home or car. Lower proportions of workers would have preferred to work more hours in response to general economic uncertainty (6.3%), to save money for retirement (4.5%) or for an emergency fund (4.7%).</p><p>While some workers want to work more hours, others would prefer to work fewer hours. In August,&#160;15.9% of employed persons would have preferred working fewer hours during the <a class="acro04-tooltip">LFS</a> reference week. Nearly half (45.0%) indicated that the main reason was to have more leisure time, while&#160;22.5% said it was due to family responsibilities and&#160;17.5% because of work-related stress.</p><p>Workers in accommodation and food services (22.7%), finance, insurance, real estate, rental and leasing (21.3%) and health care and social assistance (21.2%) were most likely to cite work-related stress as the main reason for wanting to work fewer hours.</p><h2>In the spotlight: One-third of multiple job holders in August did so to pay for essential needs</h2><p>Multiple jobholding is the practice of having two or more jobs simultaneously. The rate of multiple jobholding is part of the <a href="https://www150.statcan.gc.ca/n1/pub/14-28-0001/index-eng.htm">Statistical Framework on Quality of Employment</a>, as working more than one job may signal that the main job provides insufficient earnings. However, workers may hold multiple jobs for other reasons, such as to gain skills and expertise in other occupations.</p><p>The rate of multiple jobholding has been relatively stable in recent years. In August&#160;2025,&#160;5.4% of workers held more than one job, down slightly from August&#160;2024&#160;(5.5%) and from the pre-pandemic rate in August&#160;2019&#160;(5.5%) (three-month moving averages, not seasonally adjusted). For more information about historical trends in multiple jobholding since&#160;1976&#160;in Canada, see: "<a href="/en/catalogue/14280001202400100002">Multiple jobholders,&#160;2023</a>."</p><p>In August&#160;2025, one-third (33.6%) of multiple jobholders reported that the main reason for holding multiple jobs was to pay for essential needs, while another third (33.6%) indicated that it was to earn extra income (population aged&#160;15&#160;to&#160;69). These shares were little changed from August&#160;2023, the last time the question was asked in the <a class="acro05-tooltip">LFS</a>.</p><p>Less than&#160;1&#160;in&#160;5&#160;(16.6%) multiple jobholders in August reported that the main reason was to engage in work they were passionate about, up slightly from August&#160;2023&#160;(14.5%).</p><div id="jointrel" class="sd-jointrel"><h2>Did you know we have a mobile app?</h2><p>Download our mobile app and get timely access to data at your fingertips! The <a href="https://www.statcan.gc.ca/en/sc/mobile-applications?utm_source=daily-article-en&amp;utm_medium=web&amp;utm_campaign=statcan-statcan-sma-24-25">StatsCAN</a> app is available for free on the <a href="https://apps.apple.com/ca/app/statscan/id1581143394">App Store</a> and on <a href="https://play.google.com/store/apps/details?id=com.statcan.StatCan">Google Play</a>.</p></div>
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t001a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;1<br />Labour force characteristics by age group and gender<sup></sup>, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t002a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;2<br />Employment by class of worker and industry, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t003a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;3<br />Labour force characteristics by province, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t004a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;4<br />Labour force characteristics by province, age group and gender<sup></sup>, seasonally adjusted (Newfoundland and Labrador, Prince Edward Island, Nova Scotia, and New Brunswick)</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t005a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;5<br />Labour force characteristics by province, age group and gender<sup></sup>, seasonally adjusted (Quebec, Ontario, Manitoba, Saskatchewan, Alberta, and British Columbia)</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t006a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;6<br />Employment by province and industry, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t007a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;7<br />Labour force characteristics by census metropolitan area, three-month moving average, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t008a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;8<br />Labour force characteristics by Montr&#233;al, Toronto and Vancouver census metropolitan areas, monthly, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t009a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;9<br />Labour force characteristics by province and economic region,<sup></sup> three-month moving average ending in August&#160;2024&#160;and August&#160;2025, unadjusted for seasonality</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t010a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;10<br />Labour force characteristics by territory, three-month moving average, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t011a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;11<br />Average usual hours and wages of employees by selected characteristics, unadjusted for seasonality</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t012a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;12<br />Regional unemployment rates used by the Employment Insurance program,<sup></sup>, <sup></sup> three-month moving average, seasonally adjusted</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t013a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;13<br />Students and other persons aged&#160;15&#160;to&#160;24&#160;by detailed age group, unadjusted for seasonality</span></a>
+</div>
+<br />
+
+<div class="tablebtn btn-group btn-group-justified">
+  <a href="t014a-eng.htm" class="btn btn-default">
+  <span class="glyphicon glyphicon-lg glyphicon-th pull-left sd-tableicon"></span>
+  <span class="sd-tablet">Table&#160;14<br />Students and other persons aged&#160;15&#160;to&#160;24&#160;by province, unadjusted for seasonality</span></a>
+</div>
+<br />
+<div class="sdg"><h2>Sustainable Development Goals</h2><p>On January&#160;1,&#160;2016, the world officially began implementation of the <a href="https://www.un.org/sustainabledevelopment/development-agenda/">2030&#160;Agenda for Sustainable Development</a>&#8212;the United Nations' transformative plan of action that addresses urgent global challenges over the next&#160;15&#160;years. The plan is based on&#160;17&#160;specific sustainable development goals.</p><p>The Labour Force Survey is an example of how Statistics Canada supports the reporting on the Global Goals for Sustainable Development. This release will be used in helping to measure the following goals:</p><img class="sdg_img" title="Goal 8: Decent work And economic growth" src="/dai-quo/img/SDG/08_SDG_EN.png" />
+<img class="sdg_img" title="Goal 9: Industry, innovation And infrastructure" src="/dai-quo/img/SDG/09_SDG_EN.png" />
+</div><div class="panel panel-Default sd-noteuser">
+  <div class="panel-heading sd-noteuser-heading">
+    <h3 class="panel-title">&nbsp;&nbsp;Note to readers</h3>
+  </div>
+  <div class=" panel-body sd-noteuser-body">
+<p class="sd-first-para">The Labour Force Survey (<a class="acro06-tooltip">LFS</a>) estimates for August reflect labour market conditions during the reference week of August&#160;10&#160;to&#160;16,&#160;2025.</p><p>The sample size of the <a class="acro07-tooltip">LFS</a> is approximately&#160;65,000&#160;households, representing over&#160;100,000&#160;respondents each month. For more information, see the <a href="https://www150.statcan.gc.ca/n1/pub/71-543-g/71-543-g2025001-eng.htm"><em>Guide to the Labour Force Survey</em></a>.</p><p>This analysis focuses on differences between estimates that are statistically significant at the&#160;68% confidence level. Monthly estimates may show more sampling variability than trends observed over longer periods. For more information, see "<a href="/en/catalogue/11-626-X2014033">Interpreting Monthly Changes in Employment from the Labour Force Survey</a>."</p><p><a class="acro08-tooltip">LFS</a> estimates at the Canada level do not include the territories.</p><p>The <a class="acro09-tooltip">LFS</a> estimates are the first in a series of labour market indicators released by Statistics Canada, which includes indicators from programs such as the Survey of Employment, Payrolls and Hours (<a class="acro10-tooltip">SEPH</a>); Employment Insurance Statistics; and the Job Vacancy and Wage Survey. For more information on the conceptual differences between employment measures from the <a class="acro11-tooltip">LFS</a> and those from the <a class="acro12-tooltip">SEPH</a>, refer to <a href="https://www150.statcan.gc.ca/n1/pub/71-543-g/71-543-g2025001-eng.htm#a8">section&#160;8&#160;of the <em>Guide to the Labour Force Survey</em></a>.</p><p>The <strong>employment rate</strong> is the number of employed people as a percentage of the population aged&#160;15&#160;years and older. The rate for a particular group (for example, youth aged&#160;15&#160;to&#160;24&#160;years) is the number employed in that group as a percentage of the population for that group.</p><p>The <strong>unemployment rate</strong> is the number of unemployed people as a percentage of the labour force (employed and unemployed).</p><p>The <strong>participation rate</strong> is the number of employed and unemployed people as a percentage of the population aged&#160;15&#160;years and older.</p><p><strong>Full-time employment</strong> consists of persons who usually work&#160;30&#160;hours or more per week at their main or only job.</p><p><strong>Part-time employment</strong> consists of persons who usually work less than&#160;30&#160;hours per week at their main or only job.</p><p><strong>Total hours worked</strong> refers to the number of hours actually worked at the main job by the respondent during the reference week, including paid and unpaid hours. These hours reflect temporary decreases or increases in work hours (for example, hours lost due to illness, vacation, holidays or weather; or more hours worked due to overtime).</p><p>This release refers to the <a href="https://www23.statcan.gc.ca/imdb/p3Var.pl?Function=DEC&amp;Id=410445"><strong>gender of a person</strong></a>. The category "men" includes men, as well as some non-binary persons. The category "women" includes women, as well as some non-binary persons. Given that the non-binary population is small, data aggregation to a two-category gender variable is necessary to protect the confidentiality of responses provided.</p><h3>Seasonal adjustment</h3><p>Unless otherwise stated, estimates presented in this release are seasonally adjusted, which facilitates comparisons by removing the effects of typical seasonal variations. For more information on seasonal adjustment, see <a href="https://www.statcan.gc.ca/en/dai/btd/sad-faq">Seasonally adjusted data &#8211; Frequently asked questions</a>.</p><h3>Population growth in the Labour Force Survey</h3><p>The <a class="acro13-tooltip">LFS</a> target population includes all persons aged&#160;15&#160;years and older whose usual place of residence is in Canada, with some exceptions (those living on reserves, full-time members of the regular Armed Forces and persons living in institutions). The target population includes temporary resident<span class="nowrap">s&#8212;t</span>hat is, those with a valid work or study permit, their families, and refugee claimant<span class="nowrap">s&#8212;a</span>s well as permanent residents (landed immigrants) and the Canadian-born.</p><p>Information gathered from <a class="acro14-tooltip">LFS</a> respondents is weighted to represent the survey target population using population calibration totals. These totals are updated each month, using the most recently available information on population changes derived from Canada's official population estimates, with minor adjustments being made to reflect the <a class="acro15-tooltip">LFS</a> target population.</p><p>While the <a class="acro16-tooltip">LFS</a> population totals are generally aligned with official demographic estimates, the official estimates should be considered the official measure of population change in Canada. More information on how population totals in the <a class="acro17-tooltip">LFS</a> are calculated can be found in the article "<a href="/en/catalogue/75-005-M2024004">Interpreting population totals from the Labour Force Survey</a>."</p><h3>Regional unemployment rates used by the Employment Insurance program</h3><p>As a result of a temporary measure in effect from April&#160;6&#160;to October&#160;11,&#160;2025, the unemployment rates are adjusted by one percentage point (to a maximum of&#160;13.1%) in all Employment Insurance economic regions, ensuring that no region has an unemployment rate less than&#160;7.1%. Regions with an unemployment rate of&#160;13.1% or higher keep their actual rate. For more information, see <a href="https://www.canada.ca/en/services/benefits/ei/temporary-measures-for-major-economic-conditions.html">Temporary Employment Insurance measures to respond to major changes in economic conditions</a>.</p><h3>Updates to the Labour Force Survey sample design beginning in April&#160;2025</h3><p>Every&#160;10&#160;years, the <a class="acro18-tooltip">LFS</a> sample is redesigned to reflect changes in population characteristics and updated geographical boundaries. The updated sample desig<span class="nowrap">n&#8212;b</span>ased on the&#160;2021&#160;Census population characteristics and the&#160;2021&#160;Standard Geographical Classificatio<span class="nowrap">n&#8212;i</span>s being phased in from April to September&#160;2025. For more information, see <a href="https://www150.statcan.gc.ca/n1/pub/71-543-g/71-543-g2025001-eng.htm#a4">Section&#160;4&#160;of the <em>Guide to the Labour Force Survey</em></a>.</p><p>Data for the Labour Market Indicators program are now available for August&#160;2025.</p><h3>Next release</h3><p>The next release of the <a class="acro19-tooltip">LFS</a> will be on October&#160;10. September data will reflect labour market conditions during the week of September&#160;14&#160;to&#160;20.</p>
+  </div>
+</div>
+
+<h2>Products</h2>
+<p>More information about the concepts and use of the Labour Force Survey is available online in the <i>Guide to the Labour Force Survey </i>(<a href="/en/catalogue/71-543-G" title="Catalogue number 71-543-G"><span class="navaid">Catalogue number</span>71-543-G</a>).</p><p>The product "<a href="/en/catalogue/142000012018001">Labour Force Survey in brief: Interactive app</a>" (<a href="/en/catalogue/14200001" title="Catalogue number 14200001"><span class="navaid">Catalogue number</span>14200001</a>) is also available. This interactive visualization application provides seasonally adjusted estimates by province, gender, age group and industry.</p><p>The product "<a href="/en/catalogue/71-607-X2017001">Labour Market Indicators, by province and census metropolitan area, seasonally adjusted</a>" (<a href="/en/catalogue/71-607-X" title="Catalogue number 71-607-X"><span class="navaid">Catalogue number</span>71-607-X</a>) is also available. This interactive dashboard provides customizable access to key labour market indicators.</p><p>The product "<a href="/en/catalogue/71-607-X2017002">Labour Market Indicators, by province, territory and economic region, unadjusted for seasonality</a>" (<a href="/en/catalogue/71-607-X" title="Catalogue number 71-607-X"><span class="navaid">Catalogue number</span>71-607-X</a>) is also available. This dynamic web application provides access to labour market indicators for Canada, provinces, territories and economic regions.</p><p>The product "<a href="/en/catalogue/71-607-X2024025">Labour market indicators, census metropolitan areas, census agglomerations and self-contained labour areas: Interactive dashboard</a>" (<a href="/en/catalogue/71-607-X" title="Catalogue number 71-607-X"><span class="navaid">Catalogue number</span>71-607-X</a>) is also available. This dashboard allows users to visually explore the estimates using an interactive map as well as time series charts and tables.</p><p>The product <i>Labour Force Survey: Public Use Microdata File</i> (<a href="/en/catalogue/71M0001X" title="Catalogue number 71M0001X"><span class="navaid">Catalogue number</span>71M0001X</a>) is also available. This public use microdata file contains non-aggregated data for a wide variety of variables collected from the Labour Force Survey. The data have been modified to ensure that no individual or business is directly or indirectly identified. This product is for users who prefer to do their own analysis by focusing on specific subgroups in the population or by cross-classifying variables that are not in our catalogued products.</p><h2>Contact information</h2><p>For more information, or to enquire about the concepts, methods or data quality of this release, contact us (toll-free <span class="phone">1-800-263-1136</span>; <span class="phone">514-283-8300</span>; <a href="mailto:infostats@statcan.gc.ca">infostats@statcan.gc.ca</a>) or Media Relations (<a href="mailto:statcan.mediahotline-ligneinfomedias.statcan@statcan.gc.ca">statcan.mediahotline-ligneinfomedias.statcan@statcan.gc.ca</a>).</p>
+</section>
+<div class="pagedetails">
+	<dl id="wb-dtmd">
+		<dt>Date modified:&#32;</dt>
+		<dd><time property="dateModified">
+  2025-09-05
+</time></dd>
+	</dl>
+</div>
+</main>
+<footer id="wb-info">
+	<h2 class="wb-inv">About this site</h2>
+	<div class="gc-contextual">
+		<div class="container">
+			<nav>
+				<h3>Statistics Canada</h3>
+				<ul class="list-unstyled colcount-sm-2 colcount-md-3">
+					<li><a href="https://www.statcan.gc.ca/en/reference/refcentre/index">Contact StatCan</a></li>
+					<li><a href="https://www.statcan.gc.ca/en/trust">Trust Centre</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="gc-main-footer">
+		<div class="container">
+			<nav>
+				<h3>Government of Canada</h3>
+				<ul class="list-unstyled colcount-sm-2 colcount-md-3">
+					<li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+					<li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+					<li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+				</ul>
+				<h4><span class="wb-inv">Themes and topics</span></h4>
+				<ul class="list-unstyled colcount-sm-2 colcount-md-3">
+					<li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+					<li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+					<li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+					<li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
+					<li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+					<li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+					<li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+					<li><a href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+					<li><a href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+					<li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+					<li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+					<li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+					<li><a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
+					<li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
+					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
+					<li><a href="https://www.canada.ca/en/services/veterans.html">Veterans and military</a></li>
+					<li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li>
+					<li><a href="https://www.canada.ca/en/services/life-events.html">Manage life events</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="gc-sub-footer">
+		<div class="container d-flex align-items-center">
+			<nav>
+				<h3 class="wb-inv">Government of Canada Corporate</h3>
+				<ul>
+					<li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+					<li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+					<li><a href="https://www.canada.ca/en/government/about-canada-ca.html">About Canada.ca</a></li>
+					<li><a href="https://www.statcan.gc.ca/en/terms-conditions">Terms and conditions</a></li>
+					<li><a href="https://www.statcan.gc.ca/en/about/transparency/privacy">Privacy</a></li>
+				</ul>
+			</nav>
+			<div class="wtrmrk align-self-end">
+				<img src="/wet-boew4b/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script>
+
+    modifyBreadCrum();
+    
+
+    function modifyBreadCrum(){
+        
+    let dailyEn = "n1/dai-quo/index-eng.htm";
+    let dailyFr = "n1/dai-quo/index-fra.htm";
+ 
+    let breadcrumb = document.querySelector("#wb-bc ol.breadcrumb");
+        
+    if(breadcrumb === undefined || breadcrumb === null || breadcrumb.children.length == 0){
+        return;
+    } 
+        
+    let lastListNode = breadcrumb.children[breadcrumb.children.length -1];
+    
+    if(window.location.href.indexOf("daily-quotidien") != -1 || window.location.href.indexOf("dai-quo") != -1){
+        let href = window.location.href;
+        let env = href.split("n1")[0];
+        href = href.indexOf("eng") != -1 ? env + dailyEn : env + dailyFr;
+
+        createBreadcrumAnchor(href);
+    }
+    else{
+        removeBreadcrumNotAnchor();
+    }
+
+    return;
+
+    function createBreadcrumAnchor(href){
+
+        let anchor = document.createElement("a");
+    
+        if(lastListNode.lastChild !== undefined && lastListNode.lastChild !== null){
+            if(lastListNode.lastChild.nodeName === anchor.nodeName){
+                return;
+            } 
+
+            anchor.innerHTML = lastListNode.innerHTML;
+            anchor.href = href;
+            lastListNode.innerHTML = anchor.outerHTML; 
+        }
+    }
+
+    function removeBreadcrumNotAnchor(){
+
+        let anchor = document.createElement("a");
+
+        if(lastListNode.lastChild !== undefined && lastListNode.lastChild !== null){
+            if(lastListNode.lastChild.nodeName === anchor.nodeName){
+                return;
+            } 
+        
+            breadcrumb.removeChild(lastListNode);
+        }
+
+    }
+
+    }
+
+</script>
+
+<!--[if gte IE 9 | !IE ]><!-->
+<script src="/wet-boew4b/js/wet-boew.min.js"></script>
+<script src="/wet-boew4b/js/theme.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="/wet-boew4b/js/ie8-wet-boew2.min.js"></script>
+<![endif]-->
+<!-- InvitationManager -->
+<script src="/wet-boew4b/invitation-manager/Overlay.js"></script>
+<script src="/wet-boew4b/invitation-manager/InvitationManager.js"></script>
+<!-- End InvitationManager -->
+<script type="text/javascript">_satellite.pageBottom();</script>
+<!-- CustomScriptsJSStart -->
+<script>
+  CurrentLang=0;
+</script>	
+<!-- CustomScriptsJSEnd -->
+<script type="text/javascript">
+  $('.acro01-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro02-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro03-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro04-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro05-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro06-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro07-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro08-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro09-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro10-tooltip').tooltipster({
+    content: $('<p>Survey of Employment, Payrolls and Hours</p>')
+  });
+
+  $('.acro11-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro12-tooltip').tooltipster({
+    content: $('<p>Survey of Employment, Payrolls and Hours</p>')
+  });
+
+  $('.acro13-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro14-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro15-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro16-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro17-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro18-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+  $('.acro19-tooltip').tooltipster({
+    content: $('<p>Labour Force Survey</p>')
+  });
+
+</script>
+<script>
+var curGeo = '0';
+ function geoChange() {
+ var myselect = document.getElementById("select_geo");
+ var myGeo = myselect.options[myselect.selectedIndex].value;
+ //hide curGeo
+ var myIndicator = document.getElementById("geo" + curGeo);
+ myIndicator.setAttribute('class', 'indicator-box indicator-hide');
+ curGeo = myGeo;
+ //display curGeo
+ myIndicator = document.getElementById("geo" + curGeo);
+ myIndicator.setAttribute('class', 'indicator-box indicator-show');
+}
+</script>
+</body>
+</html>

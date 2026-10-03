@@ -1,0 +1,18 @@
+HTTP/2 404 
+date: Sat, 03 Oct 2026 23:10:49 GMT
+content-type: text/html
+x-content-type-options: nosniff
+cache-control: public, max-age=31536000
+referrer-policy: strict-origin-when-cross-origin
+accept-ranges: bytes
+x-xss-protection: 1; mode=block
+content-security-policy: default-src 'self' 'unsafe-inline' 'unsafe-eval' blob: census.gov *.census.gov http://www.census.gov 2020census.gov *.2020census.gov *.arcgis.com *.arcgisonline.com www.google-analytics.com www.google.com assets.adobedtm.com t.sharethis.com ws.sharethis.com count-server.sharethis.com l.sharethis.com s.ytimg.com censusbureau.d1.sc.omtrdc.net twitter.com connect.facebook.net www.gstatic.com fonts.gstatic.com www.addthis.com s7.addthis.com v1.addthis.com api-public.addthis.com m.addthis.com www.facebook.com graph.facebook.com dap.digitalgov.gov data: www.cia.gov assets.pinterest.com v1.addthisedge.com log.pinterest.com *.twitter.com *.go-mpulse.net dpm.demdex.net censusbureau.tt.omtrdc.net server.arcgisonline.com uscensusbureau.demdex.net fonts.googleapis.com cm.everesttech.net www.youtube.com code.highcharts.com ajax.googleapis.com *.adobe.com http://www.adobe.com maps.googleapis.com export.highcharts.com *.calendarwiz.com pilot.stage.www.census.gov api.airtable.com *.akstat.io www.census.gov.edgekey.net www.census.gov.edgekey-staging.net http://www.census.gov.edgekey-staging.net www2.census.gov.edgekey.net http://www.census.gov.edgekey.net *.akamaihd.net c.go-mpulse.net *.googletagmanager.com *.google-analytics.com https://static.cloudflareinsights.com; frame-ancestors 'self' https://*.census.gov http://census.gov http://*.census.gov census.gov https://*.house.gov http://*.house.gov https://www.census.gov.edgekey.net/;
+access-control-allow-origin: *
+vary: Origin
+x-frame-options: SAMEORIGIN
+speculation-rules: "/cdn-cgi/speculation"
+strict-transport-security: max-age=31536000; includeSubDomains
+cf-cache-status: DYNAMIC
+expect-ct: max-age=86400, enforce
+server: cloudflare
+cf-ray: a44f9f570a2bc32d-EWR

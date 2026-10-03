@@ -1,0 +1,36 @@
+HTTP/2 404 
+date: Sat, 03 Oct 2026 23:10:50 GMT
+content-type: text/html; charset=UTF-8
+content-length: 36058
+x-powered-by: Code and Coffee
+cache-control: max-age=60, public
+x-drupal-dynamic-cache: UNCACHEABLE (poor cacheability)
+x-consumer-id: 1731ed22-d600-4c04-96fa-525a467fad6a
+vary: X-Consumer-ID
+content-security-policy: report-uri /report-csp-violation
+x-content-security-policy: report-uri /report-csp-violation
+x-webkit-csp: report-uri /report-csp-violation
+x-xss-protection: 1; mode=block
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+x-frame-options: SAMEORIGIN
+x-drupal-cache: MISS
+access-control-allow-origin: *
+content-language: en
+x-content-type-options: nosniff
+expires: Sun, 19 Nov 1978 05:00:00 GMT
+x-generator: CMS
+last-modified: Sat, 03 Oct 2026 23:10:49 GMT
+etag: "1791069049"
+x-backend: backend_director
+x-ttl: 60.000
+x-varnish: 68387139
+age: 0
+via: 1.1 varnish (Varnish/6.0)
+x-hits: 0
+x-ttl-remaining: 59.995
+x-grace: 10.000
+x-keep: 0.000
+x-uncacheable: false
+x-varnish-server: serv730d
+x-cache: CONFIG_NOCACHE
+x-azure-ref: 20261003T231049Z-r1995c84f58h27f5hC1YTO63xs000000288g000000000z20

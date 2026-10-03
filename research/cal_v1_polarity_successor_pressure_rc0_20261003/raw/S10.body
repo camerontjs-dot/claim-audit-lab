@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Consumer price inflation, UK - Office for National Statistics</title>
+        <meta charset="utf-8" />
+        <meta content="width=device-width,initial-scale=1.0,user-scalable=1" name="viewport">
+        <meta name="theme-color" content="#58595B">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#58595B">
+
+        <meta name="description" content="Price indices, percentage changes, and weights for the different measures of consumer price inflation.">
+
+        
+            <link rel="canonical" href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025" />
+        
+        <link rel="stylesheet" type="text/css" href="//cdn.ons.gov.uk/sixteens/b1829e6/css/main.css">
+		
+
+        <script>
+    // extractValue extracts the value from an undecodeable json cookie string
+    function extractValue(key, extractionString) {
+        const extractionRegex = new RegExp(`'${key}':(.*?)[,}]`)
+        const match = extractionString.match(extractionRegex)
+        if (match) {
+            return match[1]
+        }
+        
+        return null
+    }
+
+    // isUsageCookieAllowed reads the ons_cookie_policy to determine the user's usage preference. 
+    function isUsageCookieAllowed() {
+        // ons_cookie_policy handler
+        var policyCookie = document.cookie.match('(?:^|; )ons_cookie_policy=({.*?})');
+        if (policyCookie) {
+            console.debug('ons_cookie_policy found');
+
+            var usageValue = extractValue("usage", policyCookie[1]);
+            console.debug('usage is', usageValue);
+
+            return (usageValue == "true") ? true : false
+        }
+        console.debug('no cookie found - opting out');
+        return false
+    }
+
+    // unescape html entities
+    function htmlUnescape(str){
+        return str
+                .replace(/&#x3D;/g, "=");
+    }
+
+    
+    var dataLayer = [{
+        contentTitle: htmlUnescape("Consumer price inflation, UK: August 2025"),
+        "gtm.whitelist": ["google","hjtc","lcl"],
+        "gtm.blacklist": ["customScripts","sp","adm","awct","k","d","j"]
+    }];
+
+    
+    dataLayer[0]["releaseDate"] = "2025/09/17";
+    
+
+    
+
+    
+    
+
+
+    
+    
+        
+            
+                dataLayer[0]["latestRelease"] = "no";
+            
+        
+    
+
+    
+    
+        
+            dataLayer[0]["wordCount"] = 6308
+        
+    
+
+    
+    
+
+    
+
+</script>
+
+
+        <!-- Google Tag Manager -->
+        <script>
+			// The naming of this function is important as it is called from sixteens as well as from other DOM code
+			function loadGTM(){
+				(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != 'dataLayer'
+					? '&l=' + l
+					: '';
+				j.async = true;
+				j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+				f.parentNode.insertBefore(j, f);
+				})(window, document, 'script', 'dataLayer', 'GTM-MBCBVQS');
+      		}
+
+			if (isUsageCookieAllowed()) {
+				loadGTM();
+			}
+	  	</script>
+        <!-- End Google Tag Manager -->
+
+        
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            
+            "description": "Price indices, percentage changes, and weights for the different measures of consumer price inflation.",
+            
+             "@type": "Article",
+"headLine": "Consumer price inflation, UK",
+"datePublished": "2025-09-16T23:00:00.000Z",
+"dateModified": "2025-09-16T23:00:00.000Z",
+"author": {
+    "@type": "Person",
+    "name": "Consumer Price Inflation team"
+},
+
+"image": "https://www.ons.gov.uk/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/35ebb3eb",
+
+"mainEntityOfPage": "/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025",
+"publisher": {
+    "@type": "GovernmentOrganization",
+    "name": "Office for National Statistics",  
+    "logo": "https://cdn.ons.gov.uk/assets/images/ons-logo/v2/ons-logo.png"
+}, 
+            
+            "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025",
+            "license": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        }
+    </script>
+
+
+		
+		
+
+	</head>
+	<body class="bulletin">
+    <script>document.body.className = ((document.body.className) ? document.body.className + ' js' : 'js');</script>
+    <form action="/cookies/accept-all" method="GET" id="global-cookie-message"
+      class="cookies-banner cookies-banner--hidden js-cookies-banner-form clearfix"
+      aria-label="cookie banner">
+    <div class="cookies-banner__wrapper wrapper js-cookies-banner-inform">
+        <div>
+            <div class="cookies-banner__message adjust-font-size--18">
+                <h3 class="cookies-banner__heading">Cookies on ons.gov.uk</h3>
+                <p class="cookies-banner__body">Cookies are small files stored on your device when you visit a website. We use some essential cookies to make this website work.</p>
+                <p class="cookies-banner__body">We would like to set <a href="/cookies">additional cookies</a> to remember your settings and understand how you use the site. This helps us to improve our services.</p>
+            </div>
+            <div class="cookies-banner__buttons">
+                <div class="nojs--hide cookies-banner__button cookies-banner__button--accept">
+                    <button class="btn btn--full-width btn--primary btn--focus margin-right--2 font-weight-700 font-size--17 text-wrap js-accept-cookies" data-gtm-accept-cookies="true" type="submit" data-action="accept" tabindex="0">
+                        Accept additional cookies
+                    </button>
+                </div>
+                <div class="nojs--hide cookies-banner__button cookies-banner__button--reject">
+                    <button class="btn btn--full-width btn--primary btn--focus margin-right--2 font-weight-700 font-size--17 text-wrap js-reject-cookies" data-gtm-accept-cookies="false" type="submit" data-action="reject" tabindex="0">
+                        Reject additional cookies
+                    </button>
+                </div>
+                <div class="cookies-banner__button">
+                    <a href="/cookies">Manage settings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hidden js-cookies-banner-confirmation" tabindex="-1">
+        <div class="cookies-banner__wrapper wrapper">
+            <div class="col">
+                <div class="cookies-banner__message adjust-font-size--18">
+                    <p class="cookies-banner__confirmation-message">
+                        <span class="hidden ons-js-accepted-text">You have accepted all additional cookies.</span>
+                        <span class="hidden ons-js-rejected-text">You have rejected all additional cookies.</span>
+                        <span>You can <a href="/cookies">change your cookie preferences</a> at any time.</span>
+                        <button type="button" class="cookies-banner__button--hide js-hide-cookies-banner">Hide</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBCBVQS"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+        
+        
+		
+
+		
+
+		
+		 						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<header >
+	
+    <a class="skiplink" href="#main" tabindex="0">
+        Skip to main content
+    </a>
+	
+  
+  
+
+	
+	
+	<div id="pagePath" class="hide">/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025</div>
+	
+		<div class="wrapper">
+			<div class="header col-wrap">
+				<div class="col col--lg-one-third col--md-one-third">
+					<a href="/">
+						<!--[if lte IE 8]>
+							<img class="logo" src="https://cdn.ons.gov.uk/assets/images/ons-logo/v2/ons-logo.png" alt="Office for National Statistics logo - Homepage">
+						<![endif]-->
+						<img class="logo" src="https://cdn.ons.gov.uk/assets/images/ons-logo/v2/ons-logo.svg" alt="Office for National Statistics logo - Homepage">
+					</a>
+				</div>
+				
+                <div class="col col--lg-two-thirds col--md-two-thirds hide--sm print--hide language--js__container">
+                    
+                    <div class="language">
+                        
+                            <span>English (EN) | </span>
+                            <a href="
+
+
+
+    //cy.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025
+" class="language__link" lang="cy">Cymraeg (CY)</a>
+                        
+                    </div>
+                </div>
+				<div class="secondary-nav col col--lg-two-thirds col--md-two-thirds print--hide">
+					<ul class="secondary-nav__list js-nav-clone__list">
+                        <li class="secondary-nav__item">
+                            <a class="secondary-nav__link  js-nav-clone__link" href="/releasecalendar">Release calendar</a>
+                        </li>
+                        <li class="secondary-nav__item">
+                            <a class="secondary-nav__link  js-nav-clone__link" href="/methodology">Methodology</a>
+                        </li>
+                        <li class="secondary-nav__item">
+                            <a class="secondary-nav__link  js-nav-clone__link" href="/news">Media</a>
+                        </li>
+						<li class="secondary-nav__item">
+							<a class="secondary-nav__link  js-nav-clone__link" href="/aboutus">About</a>
+						</li>
+						<li class="secondary-nav__item">
+							<a class="secondary-nav__link js-nav-clone__link" rel="noopener noreferrer" href="https://blog.ons.gov.uk/">Blog</a>
+						</li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	
+
+	
+	
+	<div class="primary-nav print--hide">
+		<nav aria-label="Header links">
+			
+			<ul class="nav--controls">
+				<li class="nav--controls__item">
+					<a href="#nav-primary" id="menu-toggle" aria-controls="nav-primary" aria-expanded="false" class="nav--controls__menu">
+						<span class="nav--controls__text">Menu</span>
+					</a>
+				</li>
+				<li class="nav--controls__item ">
+					<a href="#nav-search" id="search-toggle" aria-controls="nav-search" aria-expanded="false" class="nav--controls__search" aria-label="Search">
+						<span class="nav--controls__text">Search</span>
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="wrapper nav-main--hidden primary-nav__list" id="nav-primary" aria-expanded="false">
+				<li class="primary-nav__item  js-nav hide--sm old-ie--display-block"><a class="primary-nav__link col col--md-7 col--lg-9" href="/">Home</a></li>
+				
+				
+				
+				
+				
+				<li class="primary-nav__item js-nav js-expandable ">
+					<a class="primary-nav__link col col--md-8 col--lg-10" href="/businessindustryandtrade" aria-expanded="false" aria-label="Business, industry and trade sub menu">
+						<span aria-hidden="true" class="expansion-indicator"></span>
+						<span class="submenu-title">
+							Business, industry and trade
+						</span>
+					</a>
+					<ul class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance" aria-expanded="false" aria-label="submenu">
+						
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/business" >Business</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/changestobusiness" >Changes to business</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/constructionindustry" >Construction industry</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/itandinternetindustry" >Digital economy</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/internationaltrade" >International trade</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/manufacturingandproductionindustry" >Manufacturing and production industry</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/retailindustry" >Retail industry</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/businessindustryandtrade/tourismindustry" >Tourism industry</a>
+						</li>
+						
+					</ul>
+				</li>
+				
+				
+				
+				
+				
+				<li class="primary-nav__item js-nav js-expandable primary-nav__item--active">
+					<a class="primary-nav__link col col--md-8 col--lg-10" href="/economy" aria-expanded="false" aria-label="Economy sub menu">
+						<span aria-hidden="true" class="expansion-indicator"></span>
+						<span class="submenu-title">
+							Economy
+						</span>
+					</a>
+					<ul class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance" aria-expanded="false" aria-label="submenu">
+						
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/economicoutputandproductivity" >Economic output and productivity</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/environmentalaccounts" >Environmental accounts</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/governmentpublicsectorandtaxes" >Government, public sector and taxes</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/grossdomesticproductgdp" >Gross Domestic Product (GDP)</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/grossvalueaddedgva" >Gross Value Added (GVA)</a>
+						</li>
+						
+						<li class="primary-nav__child-item primary-nav__child-item--active js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/inflationandpriceindices" >Inflation and price indices</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/investmentspensionsandtrusts" >Investments, pensions and trusts</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/nationalaccounts" >National accounts</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/economy/regionalaccounts" >Regional accounts</a>
+						</li>
+						
+					</ul>
+				</li>
+				
+				
+				
+				
+				
+				<li class="primary-nav__item js-nav js-expandable ">
+					<a class="primary-nav__link col col--md-8 col--lg-10" href="/employmentandlabourmarket" aria-expanded="false" aria-label="Employment and labour market sub menu">
+						<span aria-hidden="true" class="expansion-indicator"></span>
+						<span class="submenu-title">
+							Employment and labour market
+						</span>
+					</a>
+					<ul class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance" aria-expanded="false" aria-label="submenu">
+						
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/employmentandlabourmarket/peopleinwork" >People in work</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/employmentandlabourmarket/peoplenotinwork" >People not in work</a>
+						</li>
+						
+					</ul>
+				</li>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<li class="primary-nav__item js-nav js-expandable ">
+					<a class="primary-nav__link col col--md-8 col--lg-10" href="/peoplepopulationandcommunity" aria-expanded="false" aria-label="People, population and community sub menu">
+						<span aria-hidden="true" class="expansion-indicator"></span>
+						<span class="submenu-title">
+							People, population and community
+						</span>
+					</a>
+					<ul class="primary-nav__child-list col col--md-16 col--lg-20 js-expandable__content js-nav-hidden jsEnhance" aria-expanded="false" aria-label="submenu">
+						
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/armedforcescommunity" >Armed forces community</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/birthsdeathsandmarriages" >Births, deaths and marriages</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/crimeandjustice" >Crime and justice</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/culturalidentity" >Cultural identity</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/educationandchildcare" >Education and childcare</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/elections" >Elections</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/healthandsocialcare" >Health and social care</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/householdcharacteristics" >Household characteristics</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/housing" >Housing</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/leisureandtourism" >Leisure and tourism</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/wellbeing" >Measuring progress, well-being and beyond GDP</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/personalandhouseholdfinances" >Personal and household finances</a>
+						</li>
+						
+						<li class="primary-nav__child-item  js-expandable__child">
+							<a class="primary-nav__child-link" tabindex="-1" href="/peoplepopulationandcommunity/populationandmigration" >Population and migration</a>
+						</li>
+						
+					</ul>
+				</li>
+				
+				
+				
+				
+				
+				
+				
+				<li class="primary-nav__item  js-nav">
+					<a class="primary-nav__link  col col--md-8 col--lg-10" href="/surveys">
+						Taking part in a survey?
+					</a>
+				</li>
+				<li class="hide--md primary-nav__language">
+					
+						<span>English (EN) | </span>
+						<a href="
+
+
+
+    //cy.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025
+" class="language__link">Cymraeg (CY)</a>
+					
+				</li>
+			</ul>
+		</nav>
+	</div>
+	
+	
+		<div class="search nav-search--hidden print--hide" id="searchBar" role="search">
+			<div class="wrapper">
+				<form class="col-wrap search__form" action="/search">
+					<label class="search__label col col--md-23 col--lg-24" for="nav-search">Search for a keyword(s) or time series ID</label>
+					<input type="search" autocomplete="off" class="search__input col col--md-21 col--lg-32" id="nav-search" name="q" value="">
+					<button type="submit" class="search__button col--md-3 col--lg-3" id="nav-search-submit" aria-label="Search">
+						<span class="visuallyhidden">Search</span>
+						<span class="icon icon-search--light"></span>
+					</button>
+				</form>
+			</div>
+		</div>
+	
+	<div class="promo__background--plum-gradient">
+    <div class="wrapper">
+        <div class="banner--half-padding">
+            <p class="margin-top--0 margin-bottom--0 padding-bottom--0 padding-top--0 flex flex-wrap-wrap banner--vertical-center">
+                <a class="flex" href="/census"><img src="https://cdn.ons.gov.uk/assets/images/census-logo/logo-census-2021-white-landscape.svg" title="Census 2021" alt="" class="header__svg-logo margin-right--1" xmlns="http://www.w3.org/2000/svg" focusable="false" width="167" height="32" viewBox="0 0 242 44" aria-labelledby="census-logo-banner" />
+                <a class="margin-top--0 text--white font-size--18 underline-link" href="/census">Data and analysis from Census 2021</a>
+            </p>
+        </div>
+    </div>
+</div>
+	
+</header>
+
+
+
+
+	
+    <div class="page-bulletins background--astral text--white">
+  <div class="wrapper">
+    <div class="col-wrap">
+      <div class="col">
+        <nav aria-label="Bulletin breadcrumbs">
+          <div class="breadcrumb-bulletins print--hide">
+            <ol class="breadcrumb-bulletins__list">
+              
+                <li class="breadcrumb-bulletins__item">
+                  <span
+                    class="icon icon-arrow-back--light-small hide--md"
+                  ></span>
+                  <a
+                    class="breadcrumb-bulletins__link"
+                    href="/"
+                  >Home</a>
+                  <span
+                    class="icon icon-arrow-forward--light-small hide--sm"
+                  ></span>
+                </li>
+              
+                <li class="breadcrumb-bulletins__item">
+                  <span
+                    class="icon icon-arrow-back--light-small hide--md"
+                  ></span>
+                  <a
+                    class="breadcrumb-bulletins__link"
+                    href="/economy"
+                  >Economy</a>
+                  <span
+                    class="icon icon-arrow-forward--light-small hide--sm"
+                  ></span>
+                </li>
+              
+                <li class="breadcrumb-bulletins__item">
+                  <span
+                    class="icon icon-arrow-back--light-small hide--md"
+                  ></span>
+                  <a
+                    class="breadcrumb-bulletins__link"
+                    href="/economy/inflationandpriceindices"
+                  >Inflation and price indices</a>
+                  <span
+                    class="icon icon-arrow-forward--light-small hide--sm"
+                  ></span>
+                </li>
+              
+              <li class="breadcrumb-bulletins__item">
+                Consumer price inflation, UK
+              </li>
+            </ol>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+		
+<main id="main" role="main" tabindex="-1">
+
+	
+	
+		<div class="page-bulletins background--astral text--white">
+    <div class="wrapper">
+        <div class="col-wrap">
+            <div class="col">
+                <div class="col margin-left--0">
+                    <h1 class="padding-bottom--0 padding-top--0 margin-top--2 font-weight-700 margin-bottom--2 ">Consumer price inflation, UK: August 2025</h1>
+                    <p class="page-bulletins--Summary margin-right-md--2 margin-bottom--3 padding-bottom--0 padding-top--0">
+                    
+                        
+                            Price indices, percentage changes, and weights for the different measures of consumer price inflation.
+                        
+                    </p>
+                </div>
+            </div> 
+        </div> 
+    </div> 
+    <div class="wrapper">
+        <div class="col-wrap">
+            
+
+    
+    
+        
+            <div class="col alert-release-banner alert-release-banner__not-latest">
+                <p class="alert-release-banner__title">This is not the latest release.
+                    <a
+                        class="alert-release-banner__link"
+                        href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2026"
+                    >View latest release</a>
+                </p>
+            </div>
+        
+    
+
+
+            
+            
+            
+        </div>
+    </div>
+    <div class="wrapper">
+        
+        <div class="col-wrap margin-top--3 margin-left--0">
+            
+            <div class="col col--md-4 col--lg-5">
+                <a href="https://uksa.statisticsauthority.gov.uk/about-the-authority/uk-statistical-system/types-of-official-statistics/">
+    
+        <img
+            class="meta__image meta__image--logo"
+            src="https://cdn.ons.gov.uk/assets/images/ons-logo/kitemark/v2/uksa-kitemark-en.svg" 
+            alt="These are accredited official statistics. Click for information about types of official statistics."
+            height="58"
+            width="58"
+        />
+    
+</a>
+
+            </div>
+            
+            <p class="col  col--md-12 col--lg-15 margin-bottom-sm--1 margin-bottom-md--3 margin-top-sm--1 padding-bottom--0 padding-top--0">
+                <span class="font-weight-700">Contact: </span><br/><a href="mailto:cpi@ons.gov.uk" class="text--white"><span class="visuallyhidden">Email </span>Consumer Price Inflation team</a>
+            </p>
+
+            <p class="col  col--md-one-third col--lg-one-third margin-bottom-sm--1 margin-bottom-md--3 margin-top--0 padding-bottom--0 padding-top--0">
+                <span class="font-weight-700">Release date: </span><br/>17 September 2025<br/>
+                
+            </p>
+
+            <p class="col  col--md-one-third col--lg-one-third margin-bottom-sm--3 margin-bottom-md--3 margin-top--0 padding-bottom--0 padding-top--0">
+                <span class="font-weight-700">Next release: </span><br/>22 October 2025
+            </p>
+        </div>
+    </div>
+</div>
+
+	
+
+<div class="page-content">
+	
+    <div class="wrapper">
+        
+        <div class="col-wrap border-bottom--iron-md">
+            
+            <div class="col col--md-31 col--lg-41 margin-left-md--1">
+	<div class="table-of-contents print--avoid-break">
+		<h2 class="table-of-contents__title">Table of contents</h2>
+		<ol id="toc" class="table-of-contents__list">
+			
+			<li class="table-of-contents__item">
+				<a href="#main-points" class="js-scroll">Main points</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#consumer-price-inflation-rates" class="js-scroll">Consumer price inflation rates</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#notable-movements-in-prices" class="js-scroll">Notable movements in prices</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#latest-movements-in-cpih-inflation" class="js-scroll">Latest movements in CPIH inflation</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#latest-movements-in-cpi-inflation" class="js-scroll">Latest movements in CPI inflation</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#data-on-consumer-price-inflation" class="js-scroll">Data on consumer price inflation</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#glossary" class="js-scroll">Glossary</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#data-sources-and-quality" class="js-scroll">Data sources and quality</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#related-links" class="js-scroll">Related links</a>
+			</li>
+			
+			<li class="table-of-contents__item">
+				<a href="#cite-this-statistical-bulletin" class="js-scroll">Cite this statistical bulletin</a>
+			</li>
+			
+			
+			
+		</ol>
+	</div>
+</div>
+            
+            
+            	
+
+<div class="col col--md-15 col--lg-16 margin-bottom-sm--2 margin-top-md--7 margin-bottom-md--2 margin-left-lg--2 padding-bottom-sm--2 padding-left-sm--1 padding-bottom-md--1 border-top--iron-sm border-right--iron-sm border-bottom--iron-sm border-left--iron-sm border-top--iron-md border-right--iron-md border-bottom--iron-md border-left--iron-md js-print-pdf print--hide">
+    <p class="text-right--md padding-top-md--0 padding-bottom-md--0 height--5 margin-bottom-md--0 print--hide nojs--hide js--show">
+        <a href="" class="link-complex nojs--hide js--show js-print-page">
+            Print this <span class="lowercase">
+Statistical bulletin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+        </a>
+        <span class="icon icon-print--dark"></span>
+    </p>
+    <p class="text-right--md padding-top-md--0 padding-bottom-md--0 height--5 margin-top-md--1 print--hide">
+        <a href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/pdf" class="link-complex js-pdf-dl-link" aria-label="Download Consumer price inflation, UK as PDF">
+            Download as PDF
+        </a>
+        <span class="icon icon-download--dark"></span>
+    </p>
+</div>
+            
+        </div>
+
+		
+		<div class="hide--md margin-top-sm--1">
+
+
+
+	<div class=" margin-bottom-sm--2 margin-bottom-md--2 print--hide">
+		<a class="btn btn--primary btn--full-width" href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/relateddata" data-gtm-title="" data-gtm-type="related-data">
+			
+			
+
+			
+			
+				View all data used in this <span class="lowercase">
+Statistical bulletin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+			
+
+			
+			
+		</a>
+	</div>
+</div>
+
+        
+        <article class="col col--md-36 col--lg-39 page-content__main-content padding-bottom">
+            
+                <div id="main-points" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">1.</span> Main points</h2>
+                        </header>
+                        <ul>
+  <li>The Consumer Prices Index including owner occupiers' housing costs (CPIH) rose by 4.1% in the 12 months to August 2025, down from 4.2% in the 12 months to July.</li>
+  <li>On a monthly basis, CPIH rose by 0.3% in August 2025, compared with a rise of 0.4% in August 2024.</li>
+  <li><p>The Consumer Prices Index (CPI) rose by 3.8% in the 12 months to August 2025, unchanged from July.</p></li>
+  <li><p>On a monthly basis, CPI rose by 0.3% in August 2025, the same rate as in August 2024.</p></li>
+  <li><p>Air fares made the largest downward contribution to the monthly change in both CPIH and CPI annual rates; restaurants and hotels, and motor fuels made large, partially offsetting, upward contributions.</p></li>
+  <li><p>Core CPIH (CPIH excluding energy, food, alcohol and tobacco) rose by 4.0% in the 12 months to August 2025, down from 4.2% in the 12 months to July; the CPIH goods annual rate rose slightly from 2.7% to 2.8%, while the CPIH services annual rate slowed from 5.2% to 4.9%.</p></li>
+  <li><p>Core CPI (CPI excluding energy, food, alcohol and tobacco) rose by 3.6% in the 12 months to August 2025, down from 3.8% in the 12 months to July; the CPI goods annual rate rose slightly from 2.7% to 2.8%, while the CPI services annual rate slowed from 5.0% to 4.7%.</p></li>
+</ul>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="consumer-price-inflation-rates" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">2.</span> Consumer price inflation rates</h2>
+                        </header>
+                        <p>
+<div class="markdown-table-container print--avoid-break">
+    <div class="scrollable-container" tabindex="0">
+        <div class="markdown-table-wrap">
+            <figure class="figure" id="table-3592691a">
+<table class="table">
+<caption class="table__caption">Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates <br/><span class="table__subtitle">UK, August 2024 to August 2025</span></caption>
+<colgroup><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/></colgroup>
+<tr class="table__header-row"><td class="align-left"></td><td class="align-left"></td><th scope="col" class="align-right">CPIH Index <br/>(UK, 2015 = 100)</th><th scope="col" class="align-right">CPIH 12-<br/>month rate (%)</th><th scope="col" class="align-right">CPIH 1-<br/>month rate (%)</th><th scope="col" class="align-right">CPI Index<br/>(UK, 2015=100)</th><th scope="col" class="align-right">CPI 12- <br/>month rate (%)</th><th scope="col" class="align-right">CPI 1- <br/>month rate (%)</th><th scope="col" class="align-right">OOH Index<br/>(UK, 2015=100)</th><th scope="col" class="align-right">OOH 12-<br/>month rate (%)</th></tr>
+<tr><th scope="row" class="align-left">2024</th><th scope="row" class="align-left">Aug</th><td class="align-right">133.4</td><td class="align-right">3.1</td><td class="align-right">0.4</td><td class="align-right">134.3</td><td class="align-right">2.2</td><td class="align-right">0.3</td><td class="align-right">127.7</td><td class="align-right">7.1</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Sep </th><td class="align-right">133.5</td><td class="align-right">2.6</td><td class="align-right">0.1</td><td class="align-right">134.2</td><td class="align-right">1.7</td><td class="align-right">0.0</td><td class="align-right">128.5</td><td class="align-right">7.2</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Oct</th><td class="align-right">134.3</td><td class="align-right">3.2</td><td class="align-right">0.6</td><td class="align-right">135.0</td><td class="align-right">2.3</td><td class="align-right">0.6</td><td class="align-right">129.5</td><td class="align-right">7.4</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Nov</th><td class="align-right">134.6</td><td class="align-right">3.5</td><td class="align-right">0.2</td><td class="align-right">135.1</td><td class="align-right">2.6</td><td class="align-right">0.1</td><td class="align-right">130.5</td><td class="align-right">7.8</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Dec </th><td class="align-right">135.1</td><td class="align-right">3.5</td><td class="align-right">0.3</td><td class="align-right">135.6</td><td class="align-right">2.5</td><td class="align-right">0.3</td><td class="align-right">131.3</td><td class="align-right">8.0</td></tr>
+<tr><th scope="row" class="align-left">2025</th><th scope="row" class="align-left">Jan</th><td class="align-right">135.1</td><td class="align-right">3.9</td><td class="align-right">0.0</td><td class="align-right">135.4</td><td class="align-right">3.0</td><td class="align-right">-0.1</td><td class="align-right">131.8</td><td class="align-right">8.0</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Feb</th><td class="align-right">135.6</td><td class="align-right">3.7</td><td class="align-right">0.4</td><td class="align-right">136.0</td><td class="align-right">2.8</td><td class="align-right">0.4</td><td class="align-right">132.4</td><td class="align-right">7.5</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Mar</th><td class="align-right">136.1</td><td class="align-right">3.4</td><td class="align-right">0.3</td><td class="align-right">136.5</td><td class="align-right">2.6</td><td class="align-right">0.3</td><td class="align-right">132.9</td><td class="align-right">7.2</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Apr</th><td class="align-right">137.7</td><td class="align-right">4.1</td><td class="align-right">1.2</td><td class="align-right">138.2</td><td class="align-right">3.5</td><td class="align-right">1.2</td><td class="align-right">133.2</td><td class="align-right">6.9</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">May</th><td class="align-right">138.0</td><td class="align-right">4.0</td><td class="align-right">0.2</td><td class="align-right">138.4</td><td class="align-right">3.4</td><td class="align-right">0.2</td><td class="align-right">133.7</td><td class="align-right">6.7</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Jun</th><td class="align-right">138.4</td><td class="align-right">4.1</td><td class="align-right">0.3</td><td class="align-right">138.9</td><td class="align-right">3.6</td><td class="align-right">0.3</td><td class="align-right">134.2</td><td class="align-right">6.4</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Jul</th><td class="align-right">138.5</td><td class="align-right">4.2</td><td class="align-right">0.0</td><td class="align-right">139.0</td><td class="align-right">3.8</td><td class="align-right">0.1</td><td class="align-right">134.0</td><td class="align-right">5.5</td></tr>
+<tr><td class="align-left"></td><th scope="row" class="align-left">Aug</th><td class="align-right">138.9</td><td class="align-right">4.1</td><td class="align-right">0.3</td><td class="align-right">139.3</td><td class="align-right">3.8</td><td class="align-right">0.3</td><td class="align-right">134.5</td><td class="align-right">5.3</td></tr>
+</table><footer class="figure__footer">
+<p class="figure__source">Source: Consumer price inflation from the Office for National Statistics</p>
+</footer>
+</figure>
+
+        </div>
+    </div>
+
+    <h4 class="print--hide font-size--h6 padding-top--0"><span role="text">Download this table <span class="visuallyhidden">Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates </span></span></h4>
+    <a href="/download/table?format=xlsx&uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/3592691a.json" title="Download as xls" download="Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates .xls" class="btn btn--primary print--hide" data-gtm-title="Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates " data-gtm-type="download-table-xlsx" aria-label="Download Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates  as xls">.xls</a>
+    <a href="/download/table?format=csv&uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/3592691a.json" title="Download as csv" download="Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates .csv" class="btn btn--primary print--hide" data-gtm-title="Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates " data-gtm-type="download-table-csv" aria-label="Download Table 1: CPIH, OOH component and CPI index values, and annual and monthly rates  as csv">.csv</a>
+</div>
+</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 1: CPIH and CPI annual inflation rates little changed in August 2025 </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">CPIH, owner occupiers’ housing (OOH) costs component and CPI annual inflation rates, UK, August 2015 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-35ebb3eb" data-filename="35ebb3eb" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/35ebb3eb" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/35ebb3eb&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-35ebb3eb" class="notes-holder-js">
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 1: CPIH and CPI annual inflation rates little changed in August 2025 </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="35ebb3eb" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/35ebb3eb" download="Figure 1: CPIH and CPI annual inflation rates little changed in August 2025 " data-gtm-title="Figure 1: CPIH and CPI annual inflation rates little changed in August 2025 " data-gtm-type="download-chart-image"  aria-label="Download Figure 1: CPIH and CPI annual inflation rates little changed in August 2025  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/35ebb3eb&format=csv" 
+    data-gtm-title="Figure 1: CPIH and CPI annual inflation rates little changed in August 2025 " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 1: CPIH and CPI annual inflation rates little changed in August 2025  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/35ebb3eb&format=xls" 
+    data-gtm-title="Figure 1: CPIH and CPI annual inflation rates little changed in August 2025 " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 1: CPIH and CPI annual inflation rates little changed in August 2025  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>The Consumer Prices Index including owner occupiers' housing costs (CPIH) rose by 4.1% in the 12 months to August 2025, down from 4.2% in the 12 months to July (Figure 1).</p><p>On a monthly basis, CPIH rose by 0.3% in August 2025, compared with a rise of 0.4% in August 2024.</p><p>The owner occupiers' housing (OOH) costs component of CPIH rose by 5.3% in the 12 months to August 2025, down from 5.5% in the 12 months to July. The rate has slowed for seven consecutive months and is the lowest recorded since December 2023, when it was also 5.3%. It was last lower in September 2023, at 5.0%. OOH costs rose by 0.4% on the month, compared with a 0.6% increase a year earlier.</p><p>The Consumer Prices Index (CPI) rose by 3.8% in the 12 months to August 2025, unchanged from July. The August and July 2025 figures were the joint-highest recorded since January 2024, when the rate was 4.0%.</p><p>On a monthly basis, CPI rose by 0.3% in August 2025, the same rate as in August 2024.</p><p>The main drivers of the annual inflation rate for CPIH and CPI are the same where they are common to both measures. However, the OOH costs component accounts for approximately 17% of the CPIH and is the main driver for differences between the CPIH and CPI inflation rates. This makes CPIH our most comprehensive measure of inflation. We cover this in more detail in <a href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025#latest-movements-in-cpih-inflation">Section 4: Latest movements in CPIH inflation</a> and provide a commentary on the CPI in <a href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025#latest-movements-in-cpi-inflation">Section 5: Latest movements in CPI inflation</a>. We also cover both CPIH and CPI in <a href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025#notable-movements-in-prices">Section 3: Notable movements in prices</a>, though the figures reflect CPIH.</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="notable-movements-in-prices" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">3.</span> Notable movements in prices</h2>
+                        </header>
+                        <p>
+<div class="markdown-table-container print--avoid-break">
+    <div class="scrollable-container" tabindex="0">
+        <div class="markdown-table-wrap">
+            <figure class="figure" id="table-1eb16695">
+<table class="table">
+<caption class="table__caption">Table 2: CPIH annual and monthly inflation rates by division <br/><span class="table__subtitle">UK, August 2024, July 2025, and August 2025</span></caption>
+<colgroup><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/></colgroup>
+<tr class="table__header-row"><td class="align-left"></td><th scope="colgroup" colspan="2" class="align-center">CPIH 12-month rate (%)</th><th scope="colgroup" colspan="2" class="align-center">CPIH 1-month rate (%)</th></tr>
+<tr class="table__header-row"><td class="align-left"></td><th scope="col" class="align-right">July 2025</th><th scope="col" class="align-right">August 2025</th><th scope="col" class="align-right">August 2024</th><th scope="col" class="align-right">August 2025</th></tr>
+<tr><th scope="row" class="align-left">CPIH All items </th><td class="align-right">4.2</td><td class="align-right">4.1</td><td class="align-right">0.4</td><td class="align-right">0.3</td></tr>
+<tr><th scope="row" class="align-left">Food and non-alcoholic beverages                                                                    </th><td class="align-right">4.9</td><td class="align-right">5.1</td><td class="align-right">0.2</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">Alcohol and tobacco          </th><td class="align-right">5.7</td><td class="align-right">5.9</td><td class="align-right">0.0</td><td class="align-right">0.3</td></tr>
+<tr><th scope="row" class="align-left">Clothing and footwear                                                                               </th><td class="align-right">0.3</td><td class="align-right">0.2</td><td class="align-right">1.0</td><td class="align-right">1.0</td></tr>
+<tr><th scope="row" class="align-left">Housing and household services</th><td class="align-right">6.2</td><td class="align-right">6.0</td><td class="align-right">0.4</td><td class="align-right">0.3</td></tr>
+<tr><th scope="row" class="align-left">of which owner occupiers&#39; housing costs</th><td class="align-right">5.5</td><td class="align-right">5.3</td><td class="align-right">0.6</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">Furniture and household goods</th><td class="align-right">0.7</td><td class="align-right">0.8</td><td class="align-right">0.6</td><td class="align-right">0.7</td></tr>
+<tr><th scope="row" class="align-left">Health                                                                                              </th><td class="align-right">3.5</td><td class="align-right">3.4</td><td class="align-right">0.5</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">Transport                                                                                </th><td class="align-right">3.2</td><td class="align-right">2.4</td><td class="align-right">1.3</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">Communication                                                                                       </th><td class="align-right">6.1</td><td class="align-right">6.1</td><td class="align-right">0.0</td><td class="align-right">-0.1</td></tr>
+<tr><th scope="row" class="align-left">Recreation and culture                                                                              </th><td class="align-right">3.4</td><td class="align-right">3.2</td><td class="align-right">0.4</td><td class="align-right">0.3</td></tr>
+<tr><th scope="row" class="align-left">Education                                                                                           </th><td class="align-right">7.5</td><td class="align-right">7.5</td><td class="align-right">0.0</td><td class="align-right">0.0</td></tr>
+<tr><th scope="row" class="align-left">Restaurants and hotels                                                                  </th><td class="align-right">3.4</td><td class="align-right">3.8</td><td class="align-right">-0.7</td><td class="align-right">-0.2</td></tr>
+<tr><th scope="row" class="align-left">Miscellaneous goods and services                                                                    </th><td class="align-right">2.2</td><td class="align-right">2.3</td><td class="align-right">0.3</td><td class="align-right">0.3</td></tr>
+<tr><td class="align-left"></td><td class="align-right"></td><td class="align-right"></td><td class="align-right"></td><td class="align-right"></td></tr>
+<tr><th scope="row" class="align-left">All goods</th><td class="align-right">2.7</td><td class="align-right">2.8</td><td class="align-right">0.2</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">All services </th><td class="align-right">5.2</td><td class="align-right">4.9</td><td class="align-right">0.4</td><td class="align-right">0.2</td></tr>
+<tr><th scope="row" class="align-left">CPIH exc food, energy, alcohol and tobacco (core CPIH) </th><td class="align-right">4.2</td><td class="align-right">4.0</td><td class="align-right">0.5</td><td class="align-right">0.3</td></tr>
+</table><footer class="figure__footer">
+<p class="figure__source">Source: Consumer price inflation from the Office for National Statistics</p>
+</footer>
+</figure>
+
+        </div>
+    </div>
+
+    <h4 class="print--hide font-size--h6 padding-top--0"><span role="text">Download this table <span class="visuallyhidden">Table 2: CPIH annual and monthly inflation rates by division </span></span></h4>
+    <a href="/download/table?format=xlsx&uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/1eb16695.json" title="Download as xls" download="Table 2: CPIH annual and monthly inflation rates by division .xls" class="btn btn--primary print--hide" data-gtm-title="Table 2: CPIH annual and monthly inflation rates by division " data-gtm-type="download-table-xlsx" aria-label="Download Table 2: CPIH annual and monthly inflation rates by division  as xls">.xls</a>
+    <a href="/download/table?format=csv&uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/1eb16695.json" title="Download as csv" download="Table 2: CPIH annual and monthly inflation rates by division .csv" class="btn btn--primary print--hide" data-gtm-title="Table 2: CPIH annual and monthly inflation rates by division " data-gtm-type="download-table-csv" aria-label="Download Table 2: CPIH annual and monthly inflation rates by division  as csv">.csv</a>
+</div>
+</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 2: Transport led the downward contributions to change in CPIH annual inflation </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">Contributions to change in the CPIH annual inflation rate, UK, between July and August 2025    </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-9f7c3e78" data-filename="9f7c3e78" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9f7c3e78" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9f7c3e78&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-9f7c3e78" class="notes-holder-js">
+  
+      <h5 class="flush--third--bottom js-notes-title font-size--16 padding-top--0">Notes:</h5>
+      <ol>
+  <li><p>Individual contributions may not sum to the total because of rounding.</p></li>
+  <li><p>More information on the contents of each division can be found in Table 3 in our accompanying <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation">Consumer price inflation dataset</a>. </p></li>
+</ol>
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 2: Transport led the downward contributions to change in CPIH annual inflation </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="9f7c3e78" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9f7c3e78" download="Figure 2: Transport led the downward contributions to change in CPIH annual inflation " data-gtm-title="Figure 2: Transport led the downward contributions to change in CPIH annual inflation " data-gtm-type="download-chart-image"  aria-label="Download Figure 2: Transport led the downward contributions to change in CPIH annual inflation  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9f7c3e78&format=csv" 
+    data-gtm-title="Figure 2: Transport led the downward contributions to change in CPIH annual inflation " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 2: Transport led the downward contributions to change in CPIH annual inflation  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9f7c3e78&format=xls" 
+    data-gtm-title="Figure 2: Transport led the downward contributions to change in CPIH annual inflation " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 2: Transport led the downward contributions to change in CPIH annual inflation  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Figure 2 shows the contributions from the 12 divisions to the change in the annual Consumer Prices Index including owner occupiers' housing costs (CPIH) inflation rate between July and August 2025. These sum to the change in the annual rate between the latest two months, that is, the easing from 4.2% to 4.1%.</p><p>The slight slowdown in the rate into August 2025 reflected downward contributions from three divisions, partially offset by upward contributions from five divisions. The largest downward contributions came from transport, particularly air fares, and housing and household services. These were partially offset by a large upward contribution from restaurants and hotels.</p><h3>Transport</h3><p>Prices in the transport division rose overall by 2.4% in the 12 months to August 2025, down from 3.2% in the 12 months to July (Figure 3). On a monthly basis, prices rose by 0.4% in August 2025, compared with a rise of 1.3% a year ago.</p><p>The slowing in the annual rate reflected downward effects from air fares and, to a lesser extent, vehicle maintenance and repair, partially offset by an upward effect from motor fuels.</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 3: Easing in annual transport inflation driven by air fares </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">Transport, motor fuels and air fares 12-month inflation rates, UK, August 2015 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-9168398b" data-filename="9168398b" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9168398b" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9168398b&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-9168398b" class="notes-holder-js">
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 3: Easing in annual transport inflation driven by air fares </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="9168398b" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9168398b" download="Figure 3: Easing in annual transport inflation driven by air fares " data-gtm-title="Figure 3: Easing in annual transport inflation driven by air fares " data-gtm-type="download-chart-image"  aria-label="Download Figure 3: Easing in annual transport inflation driven by air fares  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9168398b&format=csv" 
+    data-gtm-title="Figure 3: Easing in annual transport inflation driven by air fares " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 3: Easing in annual transport inflation driven by air fares  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/9168398b&format=xls" 
+    data-gtm-title="Figure 3: Easing in annual transport inflation driven by air fares " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 3: Easing in annual transport inflation driven by air fares  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Air fares rose by 2.1% between July and August 2025, compared with a rise of 22.2% between the same months in 2024. The smaller monthly rise in August 2025 resulted from a relatively high July index, which was probably influenced by the timing of the flights priced in relation to school summer holidays, particularly return flights from Europe. These return European flights were during the school term in July 2024, but during the school holidays in July 2025, potentially making them more expensive this year.</p><p>Prices for vehicle maintenance and repair fell this year but rose a year ago, particularly for roadside recovery services.</p><p>Within transport, these downward effects were partially offset by an upward contribution from motor fuels. The average price of petrol rose by 0.3 pence per litre between July and August 2025, compared with a fall of 2.1 pence per litre between July and August 2024. The average price stood at 134.2 pence per litre in August 2025, down from 142.3 pence per litre a year earlier.</p><p>Similarly, diesel prices rose by 0.8 pence per litre in August 2025, compared with a fall of 2.6 pence per litre in August 2024. The average price stood at 142.2 pence per litre in August 2025, down from 147.8 pence per litre a year earlier. These movements resulted in overall motor fuel prices falling by 4.9% in the 12 months to August 2025, compared with a larger fall of 6.7% in the 12 months to July.</p><h3>Housing and household services</h3><p>The 12-month inflation rate for housing and household services was 6.0% in August 2025, down from 6.2% in July. On a monthly basis, prices rose by 0.3% in August 2025, compared with a rise of 0.4% a year ago.</p><p>The easing in the 12-month rate between July and August 2025 mainly reflected a downward effect from owner occupiers' housing (OOH) costs, which rose by 5.3% in the 12 months to August 2025, compared with a rise of 5.5% in the 12 months to July 2025. The August figure was the lowest recorded since December 2023, when the rate was also 5.3%. It was last lower in September 2023, at 5.0%. On a monthly basis, OOH costs rose by 0.4% in August 2025 compared with a rise of 0.6% a year ago.</p><h3>Restaurants and hotels</h3><p>The overall easing in the inflation rate was partially offset by an upward effect from restaurants and hotels, where prices rose by 3.8% in the 12 months to August 2025, up from 3.4% in the 12 months to July. On a monthly basis, prices fell by 0.2% in August 2025, compared with a fall of 0.7% a year ago.</p><p>The largest upward effect came from accommodation services, specifically from overnight hotel stays priced the previous day, where prices fell this year by less than a year ago. There was also a smaller upward effect from canteens.</p><h3>Food and non-alcoholic beverages</h3><p>The 12-month inflation rate for food and non-alcoholic beverages was 5.1% in August 2025, up from 4.9% in July. This was the fifth consecutive increase in the annual rate and the highest recorded since January 2024, but it remains well below the peak seen in early 2023 (Figure 4). On a monthly basis, food and non-alcoholic beverages prices rose by 0.4% in August 2025, compared with a rise of 0.2% a year ago.</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024 </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">CPIH, and food and non-alcoholic beverages 12-month inflation rates, UK, August 2015 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-dc787117" data-filename="dc787117" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/dc787117" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/dc787117&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-dc787117" class="notes-holder-js">
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024 </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="dc787117" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/dc787117" download="Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024 " data-gtm-title="Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024 " data-gtm-type="download-chart-image"  aria-label="Download Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/dc787117&format=csv" 
+    data-gtm-title="Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024 " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/dc787117&format=xls" 
+    data-gtm-title="Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024 " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 4: Food and non-alcoholic beverages annual inflation rate highest since January 2024  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>There were small upward effects to the change in the rate from 3 of the 11 food and non-alcoholic beverages classes, namely vegetables; milk, cheese and eggs (particularly cheese); and fish. These were partially offset by small downward effects from bread and cereals; and oils and fats.</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="latest-movements-in-cpih-inflation" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">4.</span> Latest movements in CPIH inflation</h2>
+                        </header>
+                        <p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022 </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">CPIH goods, services and core annual inflation rates, UK, August 2015 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-23ad1b74" data-filename="23ad1b74" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/23ad1b74" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/23ad1b74&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-23ad1b74" class="notes-holder-js">
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022 </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="23ad1b74" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/23ad1b74" download="Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022 " data-gtm-title="Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022 " data-gtm-type="download-chart-image"  aria-label="Download Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/23ad1b74&format=csv" 
+    data-gtm-title="Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022 " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/23ad1b74&format=xls" 
+    data-gtm-title="Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022 " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 5: CPIH goods annual inflation rate highest since October 2023, while services inflation lowest since July 2022  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Figure 5 shows the 12-month inflation rates for the Consumer Prices Index including owner occupiers' housing costs (CPIH) series for all goods and all services, together with CPIH excluding energy, food, alcohol and tobacco (often referred to as core CPIH). The CPIH inflation rate is added for comparison.</p><p>The CPIH all goods index rose by 2.8% in the 12 months to August 2025, up from 2.7% in the 12 months to July. This is the highest rate since October 2023, when it was 2.9%. The largest upward contribution to the change in the annual rate came from energy, primarily motor fuels.</p><p>The CPIH all services index rose by 4.9% in the 12 months to August 2025, down from 5.2% in the 12 months to July. This is the lowest rate since July 2022, when it was also 4.9%. The rate was last lower in June 2022, at 4.5%. The largest downward contributions to the change in the annual rate came from transport services (specifically air fares) and housing services (mainly owner occupiers' housing costs).</p><p>The core CPIH annual inflation rate was 4.0% in August 2025, down from 4.2% in July. The rate was also 4.0% in September 2024 and January 2022, it was last lower in December 2021, at 3.8%.</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">Contributions to the CPIH annual inflation rate, UK, August 2023 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-d33b93e8" data-filename="d33b93e8" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/d33b93e8" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/d33b93e8&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-d33b93e8" class="notes-holder-js">
+  
+      <h5 class="flush--third--bottom js-notes-title font-size--16 padding-top--0">Notes:</h5>
+      <ol>
+  <li><p>Individual contributions may not sum to the total because of rounding.</p></li>
+  <li><p>More information on the contents of each division can be found in Table 3 in our accompanying <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation">Consumer price inflation dataset</a>. </p></li>
+</ol>
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="d33b93e8" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/d33b93e8" download="Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate " data-gtm-title="Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate " data-gtm-type="download-chart-image"  aria-label="Download Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/d33b93e8&format=csv" 
+    data-gtm-title="Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/d33b93e8&format=xls" 
+    data-gtm-title="Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 6: Housing and household services continued to make the largest contribution to the CPIH annual inflation rate  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Figure 6 shows the extent to which the distinct categories of goods and services have contributed to the overall annual CPIH inflation rate over the last two years. The contribution of each category to the annual rate depends on the price movement in that category and its weight, which is updated annually.</p><p>The contributions from all divisions to the annual CPIH inflation rate were positive in August 2025, though it was negligible from clothing and footwear. The largest positive contribution came from housing and household services. This contributed 1.79 percentage points, down from 1.82 percentage points in July. This division has made the largest contribution for the last 14 months, starting from July 2024.</p><p>The contribution from food and non-alcoholic beverages rose from 0.44 to 0.46 percentage points between July and August 2025. This was the largest contribution from this division since February 2024.</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024 </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">Contributions of housing components to the CPIH annual inflation rate, UK, August 2015 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-00da34e9" data-filename="00da34e9" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/00da34e9" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/00da34e9&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-00da34e9" class="notes-holder-js">
+  
+      <h5 class="flush--third--bottom js-notes-title font-size--16 padding-top--0">Notes:</h5>
+      <ol>
+  <li>Individual contributions may not sum to the total because of rounding.</li>
+</ol>
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024 </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="00da34e9" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/00da34e9" download="Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024 " data-gtm-title="Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024 " data-gtm-type="download-chart-image"  aria-label="Download Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/00da34e9&format=csv" 
+    data-gtm-title="Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024 " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/00da34e9&format=xls" 
+    data-gtm-title="Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024 " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 7: Annual contribution from owner occupiers’ housing costs smallest since January 2024  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Figure 7 shows the contributions from owner occupiers' housing (OOH) costs and Council Tax to the annual CPIH inflation rate in the context of wider housing-related costs. The Consumer Prices Index (CPI) differs from the CPIH because it does not include these two components.</p><p>The annual contribution from OOH costs continued to slow, to 0.89 percentage points in August 2025. This contribution was the smallest since January 2024, having decreased for seven consecutive months from a recent high of 1.31 percentage points in January 2025.</p><p>The contributions from other classes within the housing and household services division were little changed between July and August 2025.</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="latest-movements-in-cpi-inflation" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">5.</span> Latest movements in CPI inflation</h2>
+                        </header>
+                        <p>While the Consumer Prices Index including owner occupiers' housing costs (CPIH) is our lead and most comprehensive measure of consumer price inflation, the Consumer Prices Index (CPI) is based on a harmonised methodology developed by Eurostat. This enables international comparisons to be drawn. More information on the use cases for our consumer price inflation statistics can be found in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/measuringchangingpricesandcostsforconsumersandhouseholds/december2023">Measuring changing prices and costs for consumers and households: December 2023 article</a>.</p><p>Figure 8 shows annual CPI inflation for the UK compared with the EU average and selected G7 countries. While the UK CPI is produced on a comparable basis with EU countries, the US Harmonised Index of Consumer Prices (HICP) differs in some respects (see Note 1 to Figure 8).</p><p>The UK's CPI inflation rate of 3.8% was significantly higher than the first (or "flash") estimate of inflation for France (0.8%) and Germany (2.1%) in August 2025. The UK rate has been above that of the other two countries in each month of 2025 to date.</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025 </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">CPI compared with selected G7 and EU annual inflation rates, August 2015 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-cfa0dab6" data-filename="cfa0dab6" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfa0dab6" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfa0dab6&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics, Eurostat, and the US Bureau of Labor Statistics </h4>
+      <div id="notes-cfa0dab6" class="notes-holder-js">
+  
+      <h5 class="flush--third--bottom js-notes-title font-size--16 padding-top--0">Notes:</h5>
+      <ol>
+  <li><p>There are some differences in the definition of the US HICP that may limit comparison; more information is available on the <a href="https://www.bls.gov/cpi/research-series/r-hicp-home.htm">US Bureau of Labor Statistics R-HICP homepage</a>. The latest available figure is for December 2024. We are expecting it to be updated in early 2026. </p></li>
+  <li><p>August 2025 data for France and Germany are flash estimates and are not final; the final HICP dataset, including the EU27 aggregate, for August 2025 is published on Wednesday, 17 September 2025. The latest Euro area inflation estimates can be found on the <a href="https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr/default/table?lang=en&category=prc.prc_hicp">Eurostat website</a>. </p></li>
+  <li><p>The international data in this figure are sometimes revised.</p></li>
+</ol>
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025 </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="cfa0dab6" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfa0dab6" download="Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025 " data-gtm-title="Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025 " data-gtm-type="download-chart-image"  aria-label="Download Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfa0dab6&format=csv" 
+    data-gtm-title="Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025 " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfa0dab6&format=xls" 
+    data-gtm-title="Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025 " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 8: UK inflation rate has been above French and German rates in each of the eight months of 2025  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>
+<div class="markdown-table-container print--avoid-break">
+    <div class="scrollable-container" tabindex="0">
+        <div class="markdown-table-wrap">
+            <figure class="figure" id="table-c48bb914">
+<table class="table">
+<caption class="table__caption">Table 3: CPI annual and monthly inflation rates by division <br/><span class="table__subtitle">UK, August 2024, July 2025, and August 2025</span></caption>
+<colgroup><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/><col style="width: 3.57em"/></colgroup>
+<tr class="table__header-row"><td class="align-left"></td><th scope="colgroup" colspan="2" class="align-center">CPI 12-month rate (%)</th><th scope="colgroup" colspan="2" class="align-center">CPI 1-month rate (%)</th></tr>
+<tr class="table__header-row"><td class="align-left"></td><th scope="col" class="align-right">July 2025</th><th scope="col" class="align-right">August 2025</th><th scope="col" class="align-right">August 2024</th><th scope="col" class="align-right">August 2025</th></tr>
+<tr><th scope="row" class="align-left">CPI All items </th><td class="align-right">3.8</td><td class="align-right">3.8</td><td class="align-right">0.3</td><td class="align-right">0.3</td></tr>
+<tr><th scope="row" class="align-left">Food and non-alcoholic beverages                                                                    </th><td class="align-right">4.9</td><td class="align-right">5.1</td><td class="align-right">0.2</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">Alcohol and tobacco          </th><td class="align-right">5.7</td><td class="align-right">5.9</td><td class="align-right">0.0</td><td class="align-right">0.3</td></tr>
+<tr><th scope="row" class="align-left">Clothing and footwear                                                                               </th><td class="align-right">0.3</td><td class="align-right">0.2</td><td class="align-right">1.0</td><td class="align-right">1.0</td></tr>
+<tr><th scope="row" class="align-left">Housing and household services</th><td class="align-right">7.4</td><td class="align-right">7.4</td><td class="align-right">0.1</td><td class="align-right">0.1</td></tr>
+<tr><th scope="row" class="align-left">Furniture and household goods</th><td class="align-right">0.7</td><td class="align-right">0.8</td><td class="align-right">0.6</td><td class="align-right">0.7</td></tr>
+<tr><th scope="row" class="align-left">Health                                                                                              </th><td class="align-right">3.5</td><td class="align-right">3.4</td><td class="align-right">0.5</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">Transport                                                                                       </th><td class="align-right">3.2</td><td class="align-right">2.4</td><td class="align-right">1.3</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">Communication                                                                                       </th><td class="align-right">6.1</td><td class="align-right">6.1</td><td class="align-right">0.0</td><td class="align-right">-0.1</td></tr>
+<tr><th scope="row" class="align-left">Recreation and culture                                                                              </th><td class="align-right">3.4</td><td class="align-right">3.2</td><td class="align-right">0.4</td><td class="align-right">0.3</td></tr>
+<tr><th scope="row" class="align-left">Education                                                                                           </th><td class="align-right">7.5</td><td class="align-right">7.5</td><td class="align-right">0.0</td><td class="align-right">0.0</td></tr>
+<tr><th scope="row" class="align-left">Restaurants and hotels                                                                  </th><td class="align-right">3.4</td><td class="align-right">3.8</td><td class="align-right">-0.7</td><td class="align-right">-0.2</td></tr>
+<tr><th scope="row" class="align-left">Miscellaneous goods and services                                                                    </th><td class="align-right">2.2</td><td class="align-right">2.3</td><td class="align-right">0.3</td><td class="align-right">0.3</td></tr>
+<tr><td class="align-left"></td><td class="align-right"></td><td class="align-right"></td><td class="align-right"></td><td class="align-right"></td></tr>
+<tr><th scope="row" class="align-left">All goods</th><td class="align-right">2.7</td><td class="align-right">2.8</td><td class="align-right">0.2</td><td class="align-right">0.4</td></tr>
+<tr><th scope="row" class="align-left">All services </th><td class="align-right">5.0</td><td class="align-right">4.7</td><td class="align-right">0.4</td><td class="align-right">0.2</td></tr>
+<tr><th scope="row" class="align-left">CPI exc food, energy, alcohol and tobacco (core CPI) </th><td class="align-right">3.8</td><td class="align-right">3.6</td><td class="align-right">0.4</td><td class="align-right">0.3</td></tr>
+</table><footer class="figure__footer">
+<p class="figure__source">Source: Consumer price inflation from the Office for National Statistics</p>
+</footer>
+</figure>
+
+        </div>
+    </div>
+
+    <h4 class="print--hide font-size--h6 padding-top--0"><span role="text">Download this table <span class="visuallyhidden">Table 3: CPI annual and monthly inflation rates by division </span></span></h4>
+    <a href="/download/table?format=xlsx&uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/c48bb914.json" title="Download as xls" download="Table 3: CPI annual and monthly inflation rates by division .xls" class="btn btn--primary print--hide" data-gtm-title="Table 3: CPI annual and monthly inflation rates by division " data-gtm-type="download-table-xlsx" aria-label="Download Table 3: CPI annual and monthly inflation rates by division  as xls">.xls</a>
+    <a href="/download/table?format=csv&uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/c48bb914.json" title="Download as csv" download="Table 3: CPI annual and monthly inflation rates by division .csv" class="btn btn--primary print--hide" data-gtm-title="Table 3: CPI annual and monthly inflation rates by division " data-gtm-type="download-table-csv" aria-label="Download Table 3: CPI annual and monthly inflation rates by division  as csv">.csv</a>
+</div>
+</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 9: CPI goods annual inflation rate highest since October 2023 </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">CPI goods, services and core annual inflation rates, UK, August 2015 to August 2025</h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-cfd49210" data-filename="cfd49210" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfd49210" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfd49210&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-cfd49210" class="notes-holder-js">
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 9: CPI goods annual inflation rate highest since October 2023 </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="cfd49210" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfd49210" download="Figure 9: CPI goods annual inflation rate highest since October 2023 " data-gtm-title="Figure 9: CPI goods annual inflation rate highest since October 2023 " data-gtm-type="download-chart-image"  aria-label="Download Figure 9: CPI goods annual inflation rate highest since October 2023  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfd49210&format=csv" 
+    data-gtm-title="Figure 9: CPI goods annual inflation rate highest since October 2023 " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 9: CPI goods annual inflation rate highest since October 2023  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/cfd49210&format=xls" 
+    data-gtm-title="Figure 9: CPI goods annual inflation rate highest since October 2023 " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 9: CPI goods annual inflation rate highest since October 2023  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Figure 9 shows the 12-month inflation rates for the CPI all goods and all services series, together with CPI excluding energy, food, alcohol and tobacco (often referred to as core CPI). The headline CPI inflation rate is added for comparison.</p><p>The CPI all goods index rose by 2.8% in the 12 months to August 2025, up from 2.7% in the 12 months to July. This is the highest rate since October 2023, when it was 2.9%.</p><p>The CPI all services index rose by 4.7% in the 12 months to August 2025, down from 5.0% in the 12 months to July.</p><p>Core CPI rose by 3.6% in the 12 months to August 2025, down from 3.8% in the 12 months to July.</p><p>As with the all-items annual inflation rates, the drivers of CPIH and CPI goods and services inflation are the same (except for owner occupiers' housing (OOH) costs and Council Tax, which are excluded from CPI). The drivers are discussed in more detail in <a href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025#latest-movements-in-cpih-inflation">Section 4: Latest movements in CPIH inflation.</a></p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 10: Offsetting contributions lead to unchanged CPI annual inflation    </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">Contributions to change in the CPI annual inflation rate, UK, between July and August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-7f1de1c5" data-filename="7f1de1c5" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/7f1de1c5" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/7f1de1c5&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-7f1de1c5" class="notes-holder-js">
+  
+      <h5 class="flush--third--bottom js-notes-title font-size--16 padding-top--0">Notes:</h5>
+      <ol>
+  <li><p>Individual contributions may not sum to the total because of rounding.</p></li>
+  <li><p>More information on the contents of each division can be found in Table 4 in our accompanying <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation">Consumer price inflation dataset</a>. </p></li>
+</ol>
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 10: Offsetting contributions lead to unchanged CPI annual inflation    </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="7f1de1c5" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/7f1de1c5" download="Figure 10: Offsetting contributions lead to unchanged CPI annual inflation    " data-gtm-title="Figure 10: Offsetting contributions lead to unchanged CPI annual inflation    " data-gtm-type="download-chart-image"  aria-label="Download Figure 10: Offsetting contributions lead to unchanged CPI annual inflation     as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/7f1de1c5&format=csv" 
+    data-gtm-title="Figure 10: Offsetting contributions lead to unchanged CPI annual inflation    " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 10: Offsetting contributions lead to unchanged CPI annual inflation     as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/7f1de1c5&format=xls" 
+    data-gtm-title="Figure 10: Offsetting contributions lead to unchanged CPI annual inflation    " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 10: Offsetting contributions lead to unchanged CPI annual inflation     as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Figure 10 shows how each of the main groups of goods and services contributed to the change in the CPI annual inflation rate between July and August 2025.</p><p>The contributions to change between the two months offset each other, with downward contributions from two divisions and upward contributions from five divisions. The largest downward contribution came from transport, principally from air fares partially offset by motor fuels. The largest upward contribution came from restaurants and hotels.</p><p>Though the sizes of the contributions differ from CPIH, the main drivers to the change are the same where they are common to both measures.</p><p>
+
+
+  
+
+    <div class="markdown-chart-container panel--bottom-mar print--avoid-break">
+
+      <h3 class="flush--third--vertical font-size--18 padding-top--0 margin-bottom--1">Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate </h3>
+        
+            <h4 class="flush--third--bottom font-size--16 padding-top--0 margin-top--0">Contributions to the CPI annual inflation rate, UK, August 2023 to August 2025 </h4>
+        
+
+      <div class="scrollable-container">
+        <div id="chart-de45138e" data-filename="de45138e" data-uri="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/de45138e" class="markdown-chart">
+            <!--[if gt IE 8]><!--><noscript><!--[endif]-->
+            <img src="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/de45138e&width=&hideSource=true" alt="" />
+            <!--[if gt IE 8]><!--></noscript><!--[endif]-->
+        </div>
+      </div>
+  
+  
+
+
+
+
+
+
+  <h4 class="flush--third--bottom font-size--h6 clear-left">Source: Consumer price inflation from the Office for National Statistics </h4>
+      <div id="notes-de45138e" class="notes-holder-js">
+  
+      <h5 class="flush--third--bottom js-notes-title font-size--16 padding-top--0">Notes:</h5>
+      <ol>
+  <li><p>Individual contributions may not sum to the total because of rounding.</p></li>
+  <li><p>More information on the contents of each division can be found in Table 4 in our accompanying <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation">Consumer price inflation dataset</a>. </p></li>
+</ol>
+  
+      </div>
+  
+    <h4 class="print--hide padding-top--0 margin-top--0 font-size--h6 clear-left"><span role="text">Download this chart <span class="visuallyhidden">Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate </span></span></h4>
+
+    <a class="btn btn--primary print--hide js-chart-image-src" data-filename="de45138e" href="/chartimage?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/de45138e" download="Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate " data-gtm-title="Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate " data-gtm-type="download-chart-image"  aria-label="Download Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate  as an image">Image</a>
+      
+    <a class="btn btn--primary print--hide" title="Download as csv"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/de45138e&format=csv" 
+    data-gtm-title="Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate " 
+    data-gtm-type="download-chart-csv"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="csv"
+    aria-label="Download Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate  as csv"
+>
+    .csv
+</a>
+    <a class="btn btn--primary print--hide" title="Download as xls"
+    href="/generator?uri=/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/de45138e&format=xls" 
+    data-gtm-title="Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate " 
+    data-gtm-type="download-chart-xls"
+    data-gtm-download-file="timeseries-generated-file"
+    data-gtm-download-type="xls"
+    aria-label="Download Figure 11: Housing and household services continued to make the largest contribution to the CPI annual inflation rate  as xls"
+>
+    .xls
+</a>
+
+</div>
+</p><p>Figure 11 shows the extent to which the distinct categories of goods and services have contributed to the overall annual CPI inflation rate over the last two years.</p><p>The CPIH includes extra housing components not included in the CPI. This can sometimes result in the largest contributions to the annual CPI and CPIH inflation rates coming from different divisions. However, in August 2025, the housing and household services division made the largest contribution to both measures, with a 0.92 percentage point contribution to the CPI rate and 1.79 percentage points to the CPIH rate. OOH costs made a large upward contribution to housing and household services in the CPIH, but are excluded from the CPI.</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="data-on-consumer-price-inflation" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">6.</span> Data on consumer price inflation</h2>
+                        </header>
+                        <p><div class="markdown-box-container
+
+
+">
+    <p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation">Consumer price inflation tables</a> <br> Dataset | Released 17 September 2025 <br> Measures of monthly UK inflation data including the Consumer Prices Index including owner occupiers' housing costs (CPIH), Consumer Prices Index (CPI) and Retail Prices Index (RPI). These tables complement the consumer price inflation time series dataset. Please note that since publication on 19 February 2025, we have published fewer tables to avoid duplication and to remove discontinued series. Tables 39 and 40 detail which tables are no longer published and provide alternative sources for where the content in those tables can be found, if available.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindices">Consumer price inflation time series</a> <br> Dataset MM23 | Released 17 September 2025 <br> Comprehensive database of time series covering measures of inflation data for the UK including the CPIH, CPI and RPI.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflationdetailedbriefingnote">Consumer price inflation detailed briefing note</a> <br> Dataset | Released 17 September 2025 <br> The consumer price inflation detailed briefing note contains details of the items contributing to the changes in the CPIH, details of any notable movements, a summary of the reconciliation of CPIH and RPI, and the outlook, which looks ahead to next month's release.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindicescpiandretailpricesindexrpiitemindicesandpricequotes">Consumer price inflation consumption segment indices and price quotes</a> <br> Dataset | Released 17 September 2025 <br> Price quote data (for locally collected data only) and consumption segment indices (that underpin consumer price inflation statistics), giving users access to the detailed data that are used in the construction of the UK's inflation figures. Note that this dataset was previously called the Consumer price inflation item indices and price quotes dataset.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/contributionstothe12monthrateofcpibyimportintensity">Contributions to the 12-month rate of CPI(H) by import intensity</a> <br>Dataset | Released 17 September 2025 <br> A time series of the contributions to the CPIH and CPI annual rates broken down by the import intensity of household purchases.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflationhistoricaldatauk1950to1988">Consumer price inflation, historical data, UK, 1950 to 1988</a> <br> Dataset | Released 18 May 2022 <br> Data tables of historical estimates modelled for the CPIH and CPI over the period 1950 to 1988. Data in these tables are not accredited official statistics and are provided for indicative purposes only. </p>
+</div>
+</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="glossary" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">7.</span> Glossary</h2>
+                        </header>
+                        <h3>Annual inflation rate</h3><p>The most common approach to measuring inflation is the 12-month or annual inflation rate, which compares prices for the latest month with the same month a year ago. In any given month, the annual rate is determined by the balance between upward and downward price movements across the range of goods and services included in the index.</p><h3>Consumer price inflation</h3><p>Consumer price inflation is the rate at which the prices of goods and services bought by households rise or fall. It is estimated by using price indices. For an overview of the range of indices available and their uses, please see our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceindicesabriefguide/2017">Consumer price indices, a brief guide: 2017</a> and our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/measuringchangingpricesandcostsforconsumersandhouseholds/december2023">Measuring changing prices and costs for consumers and households: December 2023 article</a>.</p><h3>CPIH</h3><p>The Consumer Prices Index including owner occupiers' housing costs (CPIH) is the most comprehensive measure of inflation. It extends the Consumer Prices Index (CPI) to include a measure of the costs associated with owning, maintaining and living in one's own home, known as owner occupiers' housing (OOH) costs, along with Council Tax. Both are substantial expenses for many households and are not included in the CPI.</p><h3>CPI</h3><p>The CPI is a measure of consumer price inflation produced to international standards, and is based on European regulations for the <a href="https://ec.europa.eu/eurostat/web/hicp/overview">Harmonised Index of Consumer Prices</a>. The CPI is the inflation measure used in the government's target for inflation.</p><p>The CPI is produced at the same level of detail as the CPIH in our accompanying <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation">Consumer price inflation dataset</a> and in our accompanying <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindices">Consumer price inflation data time series</a>.</p><h3>Owner occupiers' housing costs</h3><p>OOH costs are the costs of housing services associated with owning, maintaining and living in one's own home.</p><h3>RPI</h3><p>The Retail Prices Index (RPI) and its subcomponents do not meet the required standard for designation as <a href="https://osr.statisticsauthority.gov.uk/national-statistics/">accredited official statistics</a>. In recognition that the index continues to be widely used in contracts, we continue to publish the RPI, its subcomponents, and RPI excluding mortgage interest payments (RPIX). To view the all-items RPI, please see the <a href="https://www.ons.gov.uk/economy/inflationandpriceindices#timeseries">data time series section of the Inflation and price indices area of our website</a>. The annual RPI inflation rate was 4.6% in August 2025.</p><p>The UK Statistics Authority (The Authority) and HM Treasury launched a consultation in 2020 on The Authority's proposal to address the shortcomings of the RPI. From 2030 (at the earliest), as outlined in <a href="https://uksa.statisticsauthority.gov.uk/news/response-to-the-joint-consultation-on-reforming-the-methodology-of-the-retail-prices-index/">The Authority's response to the joint consultation on reforming the methodology of the Retail Prices Index</a>, the CPIH methods and data sources will be introduced into the RPI. Additionally, the supplementary and lower-level indices of the RPI will be discontinued.</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="data-sources-and-quality" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">8.</span> Data sources and quality</h2>
+                        </header>
+                        <h3>Minor error</h3><p>Following a minor correction of the method used to impute missing seasonal items, published in our  <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/july2025#data-sources-and-quality">Consumer price inflation, UK: July 2025 bulletin</a>, a further minor correction has been made to resolve a residual issue with three seasonal items, affecting lower-level aggregates in July 2025 data only. This error is isolated to the imputation process of three seasonal items in July 2025 only, with the process having been rebuilt as part of modernising a legacy production system as we move towards incorporating scanner data in 2026.</p><p>This minor error has no impact on the headline Consumer Prices Index (CPI) or Consumer Prices Index including owner occupiers' housing costs (CPIH) annual growth rates. The Retail Prices Index (RPI) is also unaffected.</p><p>In line with the <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/revisionspolicyforconsumerpriceinflationstatistics/2017-03-21">Office for National Statistics (ONS) consumer prices revisions and correction of errors policy</a>, we have not corrected the indices for July 2025. However, we have corrected the error when producing the August 2025 indices.</p><h3>Quality improvement</h3><p>We are undertaking a programme of quality improvement across our consumer price statistics, including identifying new sources, improving methods and developing modern automated systems. Our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/introducingalternativedatasourcesintoconsumerpricestatistics/august2024">Transformation of consumer price statistics: August 2024 article</a> contains more information about the project and our ongoing plans. We also published our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpricesdevelopmentplan/updatedaugust2024">Consumer prices development plan: updated August 2024</a> to outline the rationale for our priorities and their potential impact.</p><p>The next planned improvement is the introduction of grocery scanner data into our consumer price statistics from February 2026, with the first publication scheduled for March 2026. We outlined this change in our series of research articles, including our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/researchanddevelopmentsinthetransformationofukconsumerpricestatistics/april2025">Research and developments in the transformation of UK consumer price statistics: April 2025 article</a>.</p><p>As usual, we welcome your feedback on our work. To contact us, please email <a href="mailto:cpi@ons.gov.uk">cpi@ons.gov.uk</a>.</p><h3>Moving from sample items to broader consumption segments</h3><p>The "All items" Consumer Prices Index (CPI) and Consumer Prices Index including owner occupiers' housing costs (CPIH) series incorporate price information from a wide range of goods and services. From March 2025, the process for aggregating this detailed information has changed, as a necessary step towards incorporating larger and more granular datasets into the consumer price indices.</p><p>Goods and services are allocated into "consumption segments" for different categories of expenditure. In some cases, we have defined these consumption segments to correspond to one "item" for which we track prices over time. However, in cases where more comprehensive source data are available, or are expected to be available in the future, a consumption segment typically includes much more than just one item. For simplicity, we continue to refer to "items" in the statistical bulletin and detailed briefing note. More detailed methodological information on the new aggregation process and consumption segments is available in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/introducingalternativedataintoconsumerpricestatisticsaggregationandweights/2025-04-29">Introducing alternative data into consumer price statistics: aggregation and weights</a> article.</p><p>Please note that the move from sample items to broader consumption segments means there is an impact on the individual price quotes and lower-level indices published from March 2025 in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceindicescpiandretailpricesindexrpiitemindicesandpricequotes">Consumer price inflation consumption segment indices and price quotes dataset</a>. These outputs have been updated and presented in an improved format to help users transition to the use of consumption segments and other methodological changes.</p><p>We have published an <a href="https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/consumerpriceindicescpiandretailpricesindexrpiitemindicesandpricequotes/glossaryfebruary2025onwards/glossaryfebruary2025onwards.xlsx">updated glossary (XLSX, 25KB)</a>, which sets out the changes made from March 2025.</p><h3>Households and the cost of living</h3><p>To assist individuals in understanding how the rise in inflation affects their expenditure, we have produced a <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/howisinflationaffectingyourhouseholdcosts/2022-03-23">personal inflation calculator</a>. The calculator allows users to enter the amount they spend across either a reduced or a wide range of categories, to produce an estimate of their personal inflation based on those spending patterns.</p><p>Our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/shoppingpricescomparisontool/2023-05-03">Shopping prices comparison tool</a> shows how the average prices of items have changed over time. Please note that the newly introduced consumption segments for food, drinks and tobacco will not have data before 2025 in the tool. However, the historical average prices for food, drinks and tobacco items, that were on the tool before the update in 2025, can be found in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/adhocs/2724shoppingpricescomparisontooldatadownloadbeforethe2025update">Shopping prices comparison tool data download before the 2025 update</a>.</p><p>Please also note that Table 55 in our historical <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation">Consumer price inflation tables dataset</a>, which provided time series of prices for petrol and diesel, has not been published since 19 February 2025 and the two series have been discontinued. Historical average prices are still available from the time series explorer function on our website, using the four-character identifiers CZMK for petrol and CZML for diesel.</p><p>On 28 August 2025, we published our quarterly <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/householdcostsindicesforukhouseholdgroups/apriltojune2025">Household Costs Indices (HCIs) for UK household groups bulletin</a>. The HCIs reflect how different types of households experience changing prices, and differ from CPIH and CPI. The CPIH and CPI are based on recognised economic principles, and provide an aggregate measure of inflation for household spending in the UK.</p><p>The HCIs are <a href="https://osr.statisticsauthority.gov.uk/policies/official-statistics-policies/official-statistics-in-development/">official statistics in development</a> and this release included new estimates for April to June 2025. It was not possible for this latest release to update the weights for 2025 in line with the standard methodology for consumer prices. This is because of delays in processing the underlying survey data and the need for further ongoing quality assurance. Instead, the most recent estimates have been compiled using the weights for February to December 2024. We aim to update the weights as soon as we can.</p><h3>Passenger transport by air</h3><p>We previously published a monthly index for passenger transport by air. We also began publishing <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/adhocs/2716domesticeuropeanandlonghaulairfaresconsumerpricessubindicesjanuary2017tofebruary2025">Domestic, European and long-haul airfares consumer prices sub-indices and weights</a> on an annual basis from 26 March 2025. These are being released in <a href="https://www.ons.gov.uk/alladhocs">the user requested data section of our website</a>.</p><h3>Classification of Individual Consumption According to Purpose (COICOP)</h3><p>The Classification of Individual Consumption According to Purpose (COICOP) is the classification that underpins some of the main statistics produced by the ONS. The <a href="https://unstats.un.org/unsd/classifications/unsdclassifications/COICOP_2018_pre_copy_edit_publication.pdf">classification has seen a substantial update (PDF, 1,286KB)</a> in recent years, to reflect changes in household expenditure patterns since its inception in the late 1990s. The UK currently uses the version of COICOP introduced in 1999.</p><p>We will ensure that the new classification is implemented in a comprehensive and reliable manner that considers other priorities around the production of our main statistics.</p><p>For further information, please email <a href="mailto:cpi@ons.gov.uk">cpi@ons.gov.uk</a>.</p><h3>Weights for 2025 consumer price inflation statistics</h3><p>In line with usual practice at the start of each year, the expenditure weights used in compiling the CPIH and CPI were calculated using updated spending information. The first update of weights was implemented with the January indices. The second update was introduced, along with the usual basket update, with the February indices released in March. We published our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceinflationupdatingweights/2025">Consumer price inflation, updating weights: 2025 article</a> and our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/ukconsumerpriceinflationbasketofgoodsandservices/2025">Consumer price inflation basket of goods and services: 2025 article</a> on 18 March 2025.</p><p>The 2025 weights for CPIH and CPI were calculated using national accounts household final consumption expenditure (HHFCE) data for 2023. This is in line with our standard methodology of using data lagged by two years. It differs from the approach used in 2021, 2022 and 2023, when there were large changes seen in spending patterns because of the coronavirus (COVID-19) pandemic. Over those years, we adjusted the spending data so that, for example, the resulting weights for 2023 better reflected spending in 2022. More information is available in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceinflationupdatingweights/previousReleases">Consumer price inflation, updating weights articles</a>.</p><p>The weights for the RPI were also updated for 2025 in line with the practice followed both before and during the coronavirus pandemic period.</p><p>In line with the improvements introduced last year, we now use unrounded weights in compiling CPIH and CPI. The weights before 2024 for the CPI and CPIH were rounded to integers as parts per thousand of the all-items indices at the class level (4-digit COICOP). The RPI continues to be based on integer weights.</p><h3>Consumer price inflation historical estimates, UK, 1950 to 1988</h3><p>On 18 May 2022, we published our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/consumerpriceinflationhistoricalestimatesuk1950to1988methodology">Consumer price inflation, historical estimates, UK, 1950 to 1988 - methodology</a> and our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceinflationhistoricalestimatesandrecenttrendsuk/1950to2022">Consumer price inflation, historical estimates and recent trends, UK: 1950 to 2022 article</a>. These include new estimates of CPIH and improved estimates of CPI for 1950 to 1988. These estimates (published in response to user need for a longer series) are indicative and are for analytical purposes only. They are not intended for official use and do not constitute part of the <a href="https://osr.statisticsauthority.gov.uk/accredited-official-statistics/">accredited official statistics</a> series.</p><p>Previously, in December 2018, we published our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpricesindexincludingowneroccupiershousingcostshistoricalseries/1988to2004">Consumer Prices Index including owner occupiers' housing costs (CPIH) historical series: 1988 to 2004 article</a>. These series are also not classed as accredited official statistics, reflecting the historical uncertainty around the backcasts.</p><h3>Pre-release access</h3><p>The Bank of England was granted exceptional pre-release access to an estimate of consumer price inflation data at 8:30am on Monday 15 September 2025 so that the data were available for the Monetary Policy Committee meeting held on that day. The letters requesting and agreeing to pre-release are available in the <a href="https://www.ons.gov.uk/news/statementsandletters/exchangeoflettersbetweenthebankofenglandandtheofficefornationalstatisticsforexceptionalprereleaseaccesstolabourmarketstatisticspayasyouearnrealtimeinformationandconsumerpriceindexstatistics">Exchange of letters between the Bank of England and the Office for National Statistics for exceptional pre-release access to Labour Market Statistics, Pay As You Earn Real Time Information and Consumer Price Index Statistics</a>.</p><h3>Methodology information</h3><p>The consumer price indices are normally based on prices collected from outlets around the country, supplemented by information collected centrally over the internet and by phone. The figures in this publication use data collected on or around 12 August 2025.</p><p>An overview of consumer price statistics is given in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceindicesabriefguide/2017">Consumer price indices, a brief guide: 2017</a>. The concepts and methodologies underpinning the indices in more detail are covered in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/consumerpricesindicestechnicalmanual2019">Consumer Prices Indices Technical Manual, 2019</a>.</p><p>A comprehensive source of information on the CPIH, focusing on the approach to measuring owner occupiers' housing costs, is provided in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/cpihcompendium/2016-10-13">CPIH Compendium</a>.</p><p>Information on the users and uses of these statistics, and the characteristics of the different measures of inflation related to potential use, is included in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/methodologies/usersandusesofconsumerpriceinflationstatisticsjuly2018update">Users and uses of consumer price inflation statistics: July 2018 update methodology</a>.</p><h3>Strengths and limitations</h3><p>In our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/measuringchangingpricesandcostsforconsumersandhouseholds/december2023">Measuring changing prices and costs for consumers and households article</a>, we illustrated our approach to the process using three "use cases", and described how they relate to the measures published and under development.</p><p>The three cases refer firstly to the CPIH as our lead measure of inflation based on economic principles. They also refer to the HCIs as a set of measures that reflect the change in costs and prices experienced by different households, and the RPI as a legacy measure that is required to meet existing user needs. The issues with the RPI are described in our <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/shortcomingsoftheretailpricesindexasameasureofinflation/2018-03-08">Shortcomings of the Retail Prices Index as a measure of inflation article</a>.</p><h3>Accredited official statistics</h3><p>These accredited official statistics were independently reviewed by the Office for Statistics Regulation in July 2017. They comply with the standards of trustworthiness, quality and value in the <a href="https://code.statisticsauthority.gov.uk/">Code of Practice for Statistics</a> and should be labelled "accredited official statistics".</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="related-links" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">9.</span> Related links</h2>
+                        </header>
+                        <p><div class="markdown-box-container
+
+
+">
+    <p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/producerpriceinflation/previousReleases">Producer price inflation, UK</a> <br> Bulletin | Released 19 February 2025 <br> Changes in the prices of goods bought and sold by UK manufacturers, including price indices of materials and fuels purchased (input prices) and factory gate prices (output prices). Publication of this dataset has been paused following the release in February 2025 while updates are made to processing systems.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/growthratesofselectedoutputandinputproducerpriceindicesandservicesproducerpriceindices/january2015tojune2025">Growth rates of selected output and input Producer Price Indices and Services Producer Price Indices: January 2015 to June 2025</a> <br> Article | Released 27 August 2025 <br> Update on progress towards resuming publication of our Producer Price Indices (PPI) and Services Producer Price Indices (SPPI) bulletins, including an indicative dataset.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/previousReleases">Private rent and house prices, UK</a> <br> Bulletin | Released 17 September 2025 <br> The Price Index of Private Rents (PIPR) measures private rent inflation for new and existing tenancies. The UK House Price Index measures house price inflation.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/shoppingpricescomparisontool/2023-05-03">Shopping prices comparison tool</a> <br> Interactive | Updated 17 September 2025 <br> Search to see how the average prices of hundreds of shopping items are changing.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/articles/consumerpriceinflationupdatingweights/previousreleases">Consumer price inflation, updating weights: 2025</a> <br> Article | Released 18 March 2025 <br> An overview of the latest annual update of Consumer Prices Index including owner occupiers' housing costs (CPIH) weights.</p><p><a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/householdcostsindicesforukhouseholdgroups/previousReleases">Household Costs Indices for UK household groups</a> <br> Bulletin | Released 28 August 2025 <br> Household Costs Indices, 12-month growth rates, expenditure shares and contributions for UK household groups and all-households. These are official statistics in development.</p><p><a href="https://uksa.statisticsauthority.gov.uk/the-authority-board/committees/national-statisticians-advisory-committees-and-panels/">UK Statistics Authority National Statistician's Advisory Panels on Consumer Price Statistics</a> <br> Web page | Updated when needed <br> Reports, papers and minutes of the two independent advisory panels on consumer price statistics: a technical panel to advise the National Statistician on technical aspects of the statistics, and a stakeholder panel to provide advice on the uses and applications of price indices. </p>
+</div>
+</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+                <div id="cite-this-statistical-bulletin" class="section__content--markdown">
+                    <section>
+                        <header>
+                            <h2><span class="section__content-number">10.</span> Cite this statistical bulletin</h2>
+                        </header>
+                        <p><div class="markdown-box-container
+
+
+">
+    <p>Office for National Statistics (ONS), released 17 September 2025, ONS website, statistical bulletin, <a href="https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025">Consumer price inflation, UK: August 2025</a> </p>
+</div>
+</p>
+                        <a class="print--hide js-scroll" href="#toc">Back to table of contents</a>
+                    </section>
+                </div>
+            
+            <!-- Accordion -->
+            
+             <!-- Margin at bottom of article if no Accordion present -->
+                <div class="margin-bottom--4">
+                </div>
+            
+        </article>
+        
+        <div class="col col--md-11 col--lg-20 margin-top-md--3">
+            
+    
+    
+
+
+
+	<div class=" margin-bottom-sm--2 margin-bottom-md--2 print--hide">
+		<a class="btn btn--primary btn--full-width" href="/economy/inflationandpriceindices/bulletins/consumerpriceinflation/august2025/relateddata" data-gtm-title="" data-gtm-type="related-data">
+			
+			
+
+			
+			
+				View all data used in this <span class="lowercase">
+Statistical bulletin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+			
+
+			
+			
+		</a>
+	</div>
+
+    
+    
+
+
+<div class="tiles__item tiles__item--nav-type flush-col">
+	<h3 class="tiles__title-h3 tiles__title-h3--nav">
+		Contact details for this <span class="lowercase">
+Statistical bulletin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</span>
+	</h3>
+	<div class="tiles__content--nav">
+		<address>
+			Consumer Price Inflation team<br/>
+			<a href="mailto:cpi@ons.gov.uk">cpi@ons.gov.uk</a><br/>
+			Telephone: +44 1633 456900, or 0800 011 3703 for recorded message
+		</address>
+	</div>
+</div>
+    
+    
+
+    
+    
+    
+    
+
+        </div>
+    </div> 
+
+</div>
+
+</main>
+
+
+	<footer class="print--hide">
+	<h2 class="visuallyhidden">Footer links</h2>
+	<div class="footer">
+		<div class="wrapper">
+			<nav aria-label="Footer links">
+                <div class="footer-nav col-wrap">
+                    
+                    <div class="col col--lg-one-third col--md-one-third">
+                        <h3 class="footer-nav__heading">Help</h3>
+                        <ul class="footer-nav__list">
+                            <li class="footer-nav__item">
+                                <a href="/help/accessibility">Accessibility</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="/cookies">Cookies</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="/help/privacynotice">Privacy</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="/help/termsandconditions">Terms and conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col col--lg-one-third col--md-one-third">
+                        <h3 class="footer-nav__heading">About ONS</h3>
+                        <ul class="footer-nav__list">
+                            <li class="footer-nav__item">
+                                <a href="/aboutus/whatwedo">What we do</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="https://careers.ons.gov.uk">Careers</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="/aboutus/contactus">Contact us</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="/news">News</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="/aboutus/transparencyandgovernance/freedomofinformationfoi">Freedom of Information</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col col--lg-one-third col--md-one-third">
+                        <h3 class="footer-nav__heading">Connect with us</h3>
+                        <ul class="footer-nav__list">
+                            <li class="footer-nav__item">
+                                <a href="https://twitter.com/ONS" target="_blank">X</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="https://www.instagram.com/officefornationalstatistics" target="_blank">Instagram</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="https://www.facebook.com/ONS" target="_blank">Facebook</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="https://www.linkedin.com/company/office-for-national-statistics" target="_blank">LinkedIn</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="https://consultations.ons.gov.uk/" target="_blank">Consultations</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="https://www.statsusernetwork.ons.gov.uk/" target="_blank">Discussion forums</a>
+                            </li>
+                            <li class="footer-nav__item">
+                                <a href="https://public.govdelivery.com/accounts/UKONS/subscribers/new" target="_blank">Email alerts</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+			</nav>
+		</div>
+		<div class="wrapper">
+			<div class="footer-license">
+				<img class="footer-license__img" alt="OGL" width="60" src="https://cdn.ons.gov.uk/assets/images/logo-ogl-footer.svg">
+				<p class="footer-license__text margin-left-sm--0">
+					All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>, except where otherwise stated
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+
+
+
+
+
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="//cdn.ons.gov.uk/sixteens/b1829e6/js/main.js"></script>
+        <script src="/js/app.js"></script>
+
+        
+        
+            <script src="/js/third-party/highcharts-annotations-5.0.7.js"></script>
+            <script src="/js/third-party/highcharts-broken-axis-5.0.7.js"></script>
+            <script src="/js/third-party/highcharts-heatmap-5.0.7.js"></script>
+            <script src="/js/third-party/highcharts-exporting-5.0.7.js"></script>
+        
+
+	<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a44f9f959e57ac81',t:'MTc5MTA2OTA1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

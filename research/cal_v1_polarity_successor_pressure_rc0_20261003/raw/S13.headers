@@ -1,0 +1,27 @@
+HTTP/2 200 
+content-type: text/html; charset=UTF-8
+content-length: 67602
+strict-transport-security: max-age=31536000; preload
+server: nginx
+x-drupal-dynamic-cache: UNCACHEABLE (poor cacheability)
+content-language: en
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-frame-options: SAMEORIGIN
+last-modified: Sat, 03 Oct 2026 02:38:10 GMT
+x-generator: Drupal 10 (https://www.drupal.org)
+x-drupal-cache: HIT
+x-xss-protection: 1
+feature-policy: geolocation 'none';midi 'none';microphone 'none';camera 'none';magnetometer 'none';gyroscope 'none';fullscreen 'self';payment 'none'
+referrer-policy: no-referrer-when-downgrade
+content-security-policy: block-all-mixed-content; default-src * data: 'unsafe-inline' 'unsafe-eval'; worker-src * blob: data: 'unsafe-inline' 'unsafe-eval'; child-src * blob: data: 'unsafe-inline' 'unsafe-eval'; img-src * blob: data: 'unsafe-inline' 'unsafe-eval';
+date: Sat, 03 Oct 2026 22:15:41 GMT
+cache-control: max-age=10800, public
+expires: Sun, 19 Nov 1978 05:00:00 GMT
+etag: "1790995090"
+vary: Cookie
+x-cache: Hit from cloudfront
+via: 1.1 561ea23d1fbb47b35216fa7040bfaa74.cloudfront.net (CloudFront)
+x-amz-cf-pop: YTO53-P2
+x-amz-cf-id: WHEpAPjuAeekiVWC93QPRHs66TqgSsxTe2_mqSeX8FCGx_Yz0vRL6g==
+age: 3320

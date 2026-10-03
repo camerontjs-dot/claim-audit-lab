@@ -1,0 +1,23 @@
+HTTP/1.1 200 OK
+Server: nginx/1.24.0
+Date: Sat, 03 Oct 2026 23:11:01 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Vary: Accept-Encoding
+X-Powered-By: PHP/8.3.33
+Cache-Control: max-age=120
+Content-language: en
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Expires: Sat, 03 Oct 2026 23:13:01 GMT
+X-Generator: Drupal 10 (https://www.drupal.org)
+X-Drupal-Cache: UNCACHEABLE (no cacheability)
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Content-Security-Policy: default-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net blob:; style-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca https://fonts.googleapis.com blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca *.googletagmanager.com *.adobedtm.com *.jsdelivr.net *.mathjax.org cdnjs.cloudflare.com blob:; connect-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net https://api.mapbox.com/ https://events.mapbox.com/ https://energy-information.canada.ca; img-src 'self' *.statcan.gc.ca *.statcan.ca *.stc.ca  *.demdex.net *.omtrdc.net *.everesttech.net *.jsdelivr.net data: blob:; font-src 'self' *.statcan.gc.ca *.statcan.ca https://fonts.gstatic.com; worker-src 'self' 'unsafe-inline' 'unsafe-eval' *.statcan.gc.ca *.statcan.ca blob:; frame-src 'self' 'unsafe-inline' *.statcan.gc.ca *.statcan.ca *.stc.ca https://dv-vd.shinyapps.io *.demdex.net blob:;
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-Frame-Options: SAMEORIGIN
+X-Proxy-Cache: HIT
+Cache-Control: public

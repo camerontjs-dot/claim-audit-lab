@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Pragma: no-cache
+Content-Length: 1885653
+Content-Type: application/pdf
+Expires: -1
+Content-Disposition: inline; filename="Overview of Motor Vehicle Traffic Crashes in 2023.pdf"
+Access-Control-Allow-Origin: https://crashstats.nhtsa.dot.gov/
+Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT
+Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+Content-Security-Policy: frame-ancestors 'none';
+Referrer-Policy: strict-origin-when-cross-origin
+Date: Sat, 03 Oct 2026 23:11:02 GMT
+Strict-Transport-Security: max-age=31536000; includeSubdomains
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff

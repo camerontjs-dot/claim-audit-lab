@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Content-Type: application/pdf
+Last-Modified: Mon, 21 Sep 2026 13:52:33 GMT
+Accept-Ranges: bytes
+ETag: "80267473d049dd1:0"
+Server: Microsoft-IIS/10.0
+X-Powered-By: ASP.NET
+Strict-Transport-Security: max-age=31536000
+Content-Length: 59600
+Date: Sat, 03 Oct 2026 23:10:58 GMT
+Connection: keep-alive
+Alt-Svc: h3=":443"; ma=93600
