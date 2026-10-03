@@ -6,9 +6,9 @@ from claim_audit_lab.production_v1.semantic.models import SemanticFamily
 
 DISTRIBUTION_VERSION = "0.6.0"
 PROFILE = "cal-v1-integration-candidate-v1"
-# Exact successor semantic freeze. This commit contains the two bounded
-# post-RC1 convergence corrections plus their focused regression controls.
-SEMANTIC_IMPLEMENTATION_SHA = "847cc970642bb648dc994b929c2053b5c9d4648c"
+# Exact polarity-successor semantic implementation. The scientific implementation
+# was frozen at this commit before the later findings/identity-binding commits.
+SEMANTIC_IMPLEMENTATION_SHA = "caa0048f8f511ec3c4aa1ce713766f2219a04bc1"
 QUALIFIED_RC1_PARENT_SHA = "a902621e8baea3063dddd7f92ba975aade305464"
 CONTRACT_B_VERSION = "1.2.0"
 PACKET_SCHEMA_RESOURCE = "production_v1/schema/packet.schema.json"
