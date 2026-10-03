@@ -87,6 +87,9 @@ jobs:
 
       - name: Target authoring and conformance regression
         env:
+          FROZEN_CAL_ROOT: ${{ github.workspace }}/external/frozen-cal
+          CAL_EB_INTEGRATION_REPO: ${{ github.workspace }}/external/evidence-bundler
+          EB_ROOT: ${{ github.workspace }}/external/evidence-bundler
           QUALIFICATION_RESULT: ${{ github.workspace }}/outputs/target.json
         run: .venv/bin/python tests/qualification/cal_v1_target_authoring_conformance_qualification.py
 
