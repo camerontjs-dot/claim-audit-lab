@@ -3,6 +3,8 @@ name: CAL V1 polarity successor qualification
 on:
   push:
     branches: [research/cal-v1-polarity-successor-qualification-rc0-20261003]
+  pull_request:
+    branches: [research/cal-v1-strict-comparison-polarity-rc0-20261002]
   workflow_dispatch:
 
 permissions:
