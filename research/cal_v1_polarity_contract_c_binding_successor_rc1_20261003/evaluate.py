@@ -16,7 +16,6 @@ from claim_audit_lab.production_v1.parent_bound import (
     CONTRACT_C_FREEZE_COMMIT,
     RESOLVER_AUTHORITY_COMMIT,
     RESOLVER_BLOB,
-    ParentBoundPipelineError,
     run_parent_bound_pipeline,
     verify_external_authorities,
 )
