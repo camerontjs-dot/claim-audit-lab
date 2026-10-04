@@ -1,0 +1,24 @@
+{
+  "conditional_accuracy": 0.6666666666666666,
+  "controls_passed": true,
+  "correct_deciding": 4,
+  "deciding_class_claims": 8,
+  "disposition": "FALSIFIED_UNSAFE_FALSE_DECISION_RATE",
+  "elapsed_seconds": 4.009778667008504,
+  "eligible": 12,
+  "false_claim_ids": [
+    "P01-3",
+    "P03-3"
+  ],
+  "false_refutation": 0,
+  "false_support": 2,
+  "freeze_ok": true,
+  "head": "195821ba8646869a2df7b150a3ea3a32a17a50a9",
+  "p1": [
+    "P01-2",
+    "P03-2",
+    "P04-2"
+  ],
+  "p2": [],
+  "safe_abstentions": 4
+}

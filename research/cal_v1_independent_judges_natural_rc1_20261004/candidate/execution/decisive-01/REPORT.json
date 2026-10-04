@@ -1,0 +1,2585 @@
+{
+  "arm_c_matrix": {
+    "abstained": 2,
+    "correct_deciding": 4,
+    "false_support": 2,
+    "safe_abstention": 4
+  },
+  "cases": [
+    {
+      "arm_c_kind": "correct_deciding",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        }
+      },
+      "claim_id": "P01-1",
+      "expected": "supported",
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "polarity"
+      ],
+      "input_sha256": "bca238a6146146de38dfaf17ffa3bf6ebf85673deb634ef1ff8137135d0ac028",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P01",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "safe_abstention",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        }
+      },
+      "claim_id": "P01-2",
+      "expected": "not_checkable",
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "input_sha256": "970a5d7860287a7b92ba4bf94bfad302acab97fc85f84bf9e57a60a0a13427cb",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P01",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "false_support",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        }
+      },
+      "claim_id": "P01-3",
+      "expected": "contradicted",
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "input_sha256": "73c46a5a8b80a36252c19574e01682ba1a24dbd890e99b91eee06a42987ce9d1",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P01",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "correct_deciding",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        }
+      },
+      "claim_id": "P03-1",
+      "expected": "supported",
+      "families": [
+        "quantity",
+        "comparison",
+        "time"
+      ],
+      "input_sha256": "42e45b441b4cb50401738d4f1434ed8dd4c2bc1c12433c7653ad5af1d40b9ba9",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P03",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "safe_abstention",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        }
+      },
+      "claim_id": "P03-2",
+      "expected": "not_checkable",
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "input_sha256": "c714d02a86546c2459761af242ed6d8c88a43f4b233b650c4e24460165eb5400",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P03",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "false_support",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        }
+      },
+      "claim_id": "P03-3",
+      "expected": "contradicted",
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "input_sha256": "a336a20cfa98128a95e38b1faba2618134d9097e21bc7e137fa0ebcf6b973fd6",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P03",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "correct_deciding",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        }
+      },
+      "claim_id": "P04-1",
+      "expected": "supported",
+      "families": [
+        "quantity",
+        "comparison",
+        "time"
+      ],
+      "input_sha256": "df1c39d60160c880e07302532a9f5546e3d9e24b8956b6a309adec996f6d680e",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P04",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "safe_abstention",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "supported",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "supports",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "1"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        }
+      },
+      "claim_id": "P04-2",
+      "expected": "not_checkable",
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "input_sha256": "f037efbadfdfca2ed7eacf2cd5f50053496fe1d695f802cef5f7b46933fff70c",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P04",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "correct_deciding",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "contradicted",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "refutes",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "1",
+            "supports": "0"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "contradicted",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "refutes",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "1",
+            "supports": "0"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "contradicted",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "refutes",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "1",
+            "supports": "0"
+          }
+        }
+      },
+      "claim_id": "P04-3",
+      "expected": "contradicted",
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "input_sha256": "4703d7402e07cf6255e493b2fde61d0fa026a7e155e04f4987035a965b357a9e",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P04",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "abstained",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": "no_matching_passage",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "no_matching_passage",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "no_matching_passage",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        }
+      },
+      "claim_id": "P05-1",
+      "expected": "supported",
+      "families": [
+        "quantity",
+        "comparison",
+        "time"
+      ],
+      "input_sha256": "1ea665eb86eb0eb327bd7265519f539eeda1f5cf258749f448a6483e3f4371a4",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P05",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "safe_abstention",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": "no_matching_passage",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [
+            "guard_violation"
+          ],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "time_mismatch",
+              "applicability": "applicable",
+              "conclusion": "violated",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        }
+      },
+      "claim_id": "P05-2",
+      "expected": "not_checkable",
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "input_sha256": "8a97dea1e69b9422be841c8d5cd54cae28018004928faf9586b0f4cdac893a3f",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P05",
+      "status": "eligible"
+    },
+    {
+      "arm_c_kind": "abstained",
+      "arms": {
+        "B": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "not_applicable"
+          },
+          "loss": {
+            "material_tokens_removed": true,
+            "operations": [
+              "strip_four_digit_years",
+              "strip_quantifier_words",
+              "strip_hedge_words"
+            ],
+            "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+          },
+          "processes": [
+            {
+              "abstention_cause": "no_matching_passage",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_scope_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "C": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_applicable",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "no_matching_passage",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "unparsed_event_order",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "event_order",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        },
+        "K": {
+          "abstention_cause": "authoring_refusal",
+          "authoring_status": "refused",
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": null,
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "authoring_refusal",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "kernel_legacy",
+              "state": "completed"
+            }
+          ],
+          "router": null,
+          "scores": null
+        },
+        "R": {
+          "abstention_cause": null,
+          "authoring_status": null,
+          "blockers": [],
+          "conclusion": "not_checkable",
+          "dispatch_failure": null,
+          "exclusions": {
+            "attribution_guard": "not_applicable",
+            "event_order": "not_run",
+            "quantity_relation": "unresolved",
+            "scope_guard": "non_voting_guard"
+          },
+          "loss": null,
+          "processes": [
+            {
+              "abstention_cause": "no_matching_passage",
+              "applicability": "applicable",
+              "conclusion": "unresolved",
+              "execution": "completed",
+              "process_id": "quantity_relation",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "applicable",
+              "conclusion": "satisfied",
+              "execution": "completed",
+              "process_id": "scope_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": "no_attribution_constraint",
+              "applicability": "not_applicable",
+              "conclusion": "not_applicable",
+              "execution": "completed",
+              "process_id": "attribution_guard",
+              "state": "completed"
+            },
+            {
+              "abstention_cause": null,
+              "applicability": "not_run",
+              "conclusion": "not_run",
+              "execution": "not_run",
+              "process_id": "event_order",
+              "state": "not_run"
+            }
+          ],
+          "router": {
+            "processes": [
+              "quantity_relation",
+              "scope_guard",
+              "attribution_guard"
+            ],
+            "profile": "quantity_only"
+          },
+          "scores": {
+            "refutes": "0",
+            "supports": "0"
+          }
+        }
+      },
+      "claim_id": "P05-3",
+      "expected": "contradicted",
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "input_sha256": "7ba99bed3e118a5a1124331070aa0835e5e5407af66fa0d19f91f52efb168ec5",
+      "scope_years_preserved_in_c_interpretation": true,
+      "source_id": "P05",
+      "status": "eligible"
+    }
+  ],
+  "differences_rbc": [
+    {
+      "claim_id": "P01-2",
+      "conclusions": {
+        "B": "supported",
+        "C": "not_checkable",
+        "R": "not_checkable"
+      },
+      "expected": "not_checkable"
+    },
+    {
+      "claim_id": "P03-2",
+      "conclusions": {
+        "B": "supported",
+        "C": "not_checkable",
+        "R": "not_checkable"
+      },
+      "expected": "not_checkable"
+    },
+    {
+      "claim_id": "P04-2",
+      "conclusions": {
+        "B": "supported",
+        "C": "not_checkable",
+        "R": "not_checkable"
+      },
+      "expected": "not_checkable"
+    }
+  ],
+  "elapsed_seconds": 4.009778667008504,
+  "eligible": 12,
+  "head": "195821ba8646869a2df7b150a3ea3a32a17a50a9",
+  "robustness_uncertain": 0,
+  "successor_processes": [
+    "quantity_relation",
+    "event_order",
+    "scope_guard",
+    "attribution_guard"
+  ]
+}

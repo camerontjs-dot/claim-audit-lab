@@ -1,0 +1,209 @@
+{
+  "arm_c_kind": "correct_deciding",
+  "arms": {
+    "B": {
+      "abstention_cause": null,
+      "authoring_status": null,
+      "blockers": [],
+      "conclusion": "contradicted",
+      "dispatch_failure": null,
+      "exclusions": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "scope_guard": "not_applicable"
+      },
+      "loss": {
+        "material_tokens_removed": true,
+        "operations": [
+          "strip_four_digit_years",
+          "strip_quantifier_words",
+          "strip_hedge_words"
+        ],
+        "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+      },
+      "processes": [
+        {
+          "abstention_cause": null,
+          "applicability": "applicable",
+          "conclusion": "refutes",
+          "execution": "completed",
+          "process_id": "quantity_relation",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "unparsed_event_order",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "event_order",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_scope_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "scope_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_attribution_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "attribution_guard",
+          "state": "completed"
+        }
+      ],
+      "router": null,
+      "scores": {
+        "refutes": "1",
+        "supports": "0"
+      }
+    },
+    "C": {
+      "abstention_cause": null,
+      "authoring_status": null,
+      "blockers": [],
+      "conclusion": "contradicted",
+      "dispatch_failure": null,
+      "exclusions": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "scope_guard": "non_voting_guard"
+      },
+      "loss": null,
+      "processes": [
+        {
+          "abstention_cause": null,
+          "applicability": "applicable",
+          "conclusion": "refutes",
+          "execution": "completed",
+          "process_id": "quantity_relation",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "unparsed_event_order",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "event_order",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": null,
+          "applicability": "applicable",
+          "conclusion": "satisfied",
+          "execution": "completed",
+          "process_id": "scope_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_attribution_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "attribution_guard",
+          "state": "completed"
+        }
+      ],
+      "router": null,
+      "scores": {
+        "refutes": "1",
+        "supports": "0"
+      }
+    },
+    "K": {
+      "abstention_cause": "authoring_refusal",
+      "authoring_status": "refused",
+      "blockers": [],
+      "conclusion": "not_checkable",
+      "dispatch_failure": null,
+      "exclusions": null,
+      "loss": null,
+      "processes": [
+        {
+          "abstention_cause": "authoring_refusal",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "kernel_legacy",
+          "state": "completed"
+        }
+      ],
+      "router": null,
+      "scores": null
+    },
+    "R": {
+      "abstention_cause": null,
+      "authoring_status": null,
+      "blockers": [],
+      "conclusion": "contradicted",
+      "dispatch_failure": null,
+      "exclusions": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_run",
+        "scope_guard": "non_voting_guard"
+      },
+      "loss": null,
+      "processes": [
+        {
+          "abstention_cause": null,
+          "applicability": "applicable",
+          "conclusion": "refutes",
+          "execution": "completed",
+          "process_id": "quantity_relation",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": null,
+          "applicability": "applicable",
+          "conclusion": "satisfied",
+          "execution": "completed",
+          "process_id": "scope_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_attribution_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "attribution_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": null,
+          "applicability": "not_run",
+          "conclusion": "not_run",
+          "execution": "not_run",
+          "process_id": "event_order",
+          "state": "not_run"
+        }
+      ],
+      "router": {
+        "processes": [
+          "quantity_relation",
+          "scope_guard",
+          "attribution_guard"
+        ],
+        "profile": "quantity_only"
+      },
+      "scores": {
+        "refutes": "1",
+        "supports": "0"
+      }
+    }
+  },
+  "claim_id": "P04-3",
+  "expected": "contradicted",
+  "families": [
+    "comparison",
+    "polarity",
+    "quantity",
+    "time"
+  ],
+  "input_sha256": "4703d7402e07cf6255e493b2fde61d0fa026a7e155e04f4987035a965b357a9e",
+  "scope_years_preserved_in_c_interpretation": true,
+  "source_id": "P04",
+  "status": "eligible"
+}

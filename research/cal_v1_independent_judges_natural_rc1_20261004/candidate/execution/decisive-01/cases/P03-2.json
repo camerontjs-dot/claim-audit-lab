@@ -1,0 +1,215 @@
+{
+  "arm_c_kind": "safe_abstention",
+  "arms": {
+    "B": {
+      "abstention_cause": null,
+      "authoring_status": null,
+      "blockers": [],
+      "conclusion": "supported",
+      "dispatch_failure": null,
+      "exclusions": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "scope_guard": "not_applicable"
+      },
+      "loss": {
+        "material_tokens_removed": true,
+        "operations": [
+          "strip_four_digit_years",
+          "strip_quantifier_words",
+          "strip_hedge_words"
+        ],
+        "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+      },
+      "processes": [
+        {
+          "abstention_cause": null,
+          "applicability": "applicable",
+          "conclusion": "supports",
+          "execution": "completed",
+          "process_id": "quantity_relation",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "unparsed_event_order",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "event_order",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_scope_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "scope_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_attribution_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "attribution_guard",
+          "state": "completed"
+        }
+      ],
+      "router": null,
+      "scores": {
+        "refutes": "0",
+        "supports": "1"
+      }
+    },
+    "C": {
+      "abstention_cause": null,
+      "authoring_status": null,
+      "blockers": [
+        "guard_violation"
+      ],
+      "conclusion": "not_checkable",
+      "dispatch_failure": null,
+      "exclusions": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "unresolved",
+        "scope_guard": "non_voting_guard"
+      },
+      "loss": null,
+      "processes": [
+        {
+          "abstention_cause": "time_mismatch",
+          "applicability": "applicable",
+          "conclusion": "unresolved",
+          "execution": "completed",
+          "process_id": "quantity_relation",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "unparsed_event_order",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "event_order",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "time_mismatch",
+          "applicability": "applicable",
+          "conclusion": "violated",
+          "execution": "completed",
+          "process_id": "scope_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_attribution_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "attribution_guard",
+          "state": "completed"
+        }
+      ],
+      "router": null,
+      "scores": {
+        "refutes": "0",
+        "supports": "0"
+      }
+    },
+    "K": {
+      "abstention_cause": "authoring_refusal",
+      "authoring_status": "refused",
+      "blockers": [],
+      "conclusion": "not_checkable",
+      "dispatch_failure": null,
+      "exclusions": null,
+      "loss": null,
+      "processes": [
+        {
+          "abstention_cause": "authoring_refusal",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "kernel_legacy",
+          "state": "completed"
+        }
+      ],
+      "router": null,
+      "scores": null
+    },
+    "R": {
+      "abstention_cause": null,
+      "authoring_status": null,
+      "blockers": [
+        "guard_violation"
+      ],
+      "conclusion": "not_checkable",
+      "dispatch_failure": null,
+      "exclusions": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_run",
+        "quantity_relation": "unresolved",
+        "scope_guard": "non_voting_guard"
+      },
+      "loss": null,
+      "processes": [
+        {
+          "abstention_cause": "time_mismatch",
+          "applicability": "applicable",
+          "conclusion": "unresolved",
+          "execution": "completed",
+          "process_id": "quantity_relation",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "time_mismatch",
+          "applicability": "applicable",
+          "conclusion": "violated",
+          "execution": "completed",
+          "process_id": "scope_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": "no_attribution_constraint",
+          "applicability": "not_applicable",
+          "conclusion": "not_applicable",
+          "execution": "completed",
+          "process_id": "attribution_guard",
+          "state": "completed"
+        },
+        {
+          "abstention_cause": null,
+          "applicability": "not_run",
+          "conclusion": "not_run",
+          "execution": "not_run",
+          "process_id": "event_order",
+          "state": "not_run"
+        }
+      ],
+      "router": {
+        "processes": [
+          "quantity_relation",
+          "scope_guard",
+          "attribution_guard"
+        ],
+        "profile": "quantity_only"
+      },
+      "scores": {
+        "refutes": "0",
+        "supports": "0"
+      }
+    }
+  },
+  "claim_id": "P03-2",
+  "expected": "not_checkable",
+  "families": [
+    "quantity",
+    "comparison",
+    "time",
+    "missing_scope"
+  ],
+  "input_sha256": "c714d02a86546c2459761af242ed6d8c88a43f4b233b650c4e24460165eb5400",
+  "scope_years_preserved_in_c_interpretation": true,
+  "source_id": "P03",
+  "status": "eligible"
+}

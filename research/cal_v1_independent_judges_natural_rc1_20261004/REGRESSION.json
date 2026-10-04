@@ -1,0 +1,19 @@
+{
+  "collection": "completed",
+  "command": "python -m pytest -q --tb=line",
+  "deselected": 48,
+  "elapsed_seconds": 46.27,
+  "environment": "declared [v1] extra installed; pytest installed; en_core_web_sm available",
+  "exit_code": 1,
+  "failed": 1,
+  "failure": {
+    "file": "research/cal_v1_independent_judges_natural_rc1_20261004/sources/raw/P08.bin",
+    "interpretation": "The frozen EPA page contains a public forms path that matches the authoring-path scanner. The source bytes were not edited. The match text is omitted here so this receipt does not create a second copy of that path.",
+    "line": 739,
+    "nodeid": "tests/test_no_authoring_paths.py::test_no_tracked_file_contains_an_authoring_path"
+  },
+  "passed": 976,
+  "rc0_without_v1_extra": "incomplete coverage, preserved",
+  "skipped": 5,
+  "suite_executed": true
+}
