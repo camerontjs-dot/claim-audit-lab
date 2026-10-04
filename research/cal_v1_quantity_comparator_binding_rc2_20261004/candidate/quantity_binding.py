@@ -10,7 +10,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-INSTRUMENT_ID = "quantity-comparator-binding-rc2"
+INSTRUMENT_ID = "quantity-comparator-binding-rc2-s2"
 
 _YEAR = re.compile(r"\b(?:19|20)\d{2}\b")
 _SPLIT = re.compile(r",\s*while\s+|;\s+", re.IGNORECASE)
@@ -20,7 +20,18 @@ _COMP = r"more|fewer|higher|lower|greater|less"
 _ANAPHOR = {"their", "his", "her", "its", "they", "it"}
 _SECOND_CUE = re.compile(
     r"\b(?:more|fewer|higher|lower|greater|less|faster|slower)\s+than\b"
-    r"|\b(?:increased|decreased)\b",
+    r"|\b(?:had|has|have)\s+(?:higher|lower|more|fewer|less|greater)\b"
+    r"|\b(?:increased|decreased|rose|fell)\b",
+    re.IGNORECASE,
+)
+_TIME_SCENE = re.compile(
+    r"^(?:from|in|during)\s+(?:the\s+)?(?:preceding|same|prior|previous|following|current)?\s*"
+    r"(?:month|year|quarter)\b[^,]{0,40},\s*",
+    re.IGNORECASE,
+)
+_TIME_WORD = re.compile(
+    r"\b(?:for|in|during)\s+(?:january|february|march|april|may|june|july|august|september|"
+    r"october|november|december|(?:19|20)\d{2})\b",
     re.IGNORECASE,
 )
 
@@ -47,21 +58,68 @@ _RATE_THAN = re.compile(
 _CHANGE = re.compile(
     rf"(?P<left>.+?)\s+(?P<verb>increased|decreased|increase|decrease|rose|fell|grew|declined|dropped)\s+"
     rf"(?:by\s+)?\$?(?P<qty>{_NUM})\s*(?P<unit>{_UNIT})?"
-    rf"\s*(?:\(\s*(?P<paren>{_NUM})\s*(?P<paren_unit>percentage points|%|percent)\s*\))?",
+    rf"\s*(?:\(\s*(?P<paren>{_NUM})\s*(?P<paren_unit>percentage points|%|percent)(?!\w)[^)]*\))?",
     re.IGNORECASE,
 )
 _HAD = re.compile(
-    rf"(?P<left>.+?)\s+(?:had|has|have)\s+(?P<comp>more|fewer|less|greater)\s+"
+    rf"(?P<left>.+?)\s+(?:had|has|have)\s+(?P<comp>more|fewer|less|greater|higher|lower)\s+"
     rf"(?P<measure>.+?)\s+than\s+(?P<right>.+)",
     re.IGNORECASE,
 )
 _THAN = re.compile(
     rf"(?P<left>.+?)\s+(?:was|were|is|are)\s+"
     rf"(?:(?P<qty>{_NUM})\s*(?P<unit>{_UNIT})?\s*)?"
-    rf"(?:\(\s*(?P<paren>{_NUM})\s*(?P<paren_unit>percentage points|%|percent)\s*\)\s*)?"
+    rf"(?:\(\s*(?P<paren>{_NUM})\s*(?P<paren_unit>percentage points|%|percent)(?!\w)[^)]*\)\s*)?"
     rf"(?P<comp>{_COMP})\s+than\s+(?P<right>.+)",
     re.IGNORECASE,
 )
+_QTY_THAN = re.compile(
+    rf"(?P<left>.+?)\s+(?:about|nearly|around|approximately)?\s*(?P<qty>{_NUM})\s*"
+    rf"(?P<unit>percentage points|cents per gallon|percent|%|points)\s+"
+    rf"(?P<comp>{_COMP})\s+than\s+(?P<right>.+)",
+    re.IGNORECASE,
+)
+_THRESHOLD = re.compile(
+    rf"(?P<left>.+?)\s+(?P<comp>less|more|fewer|greater)\s+than\s+"
+    rf"\$?(?P<qty>{_NUM})(?P<unit>\s*(?:percent|%))?",
+    re.IGNORECASE,
+)
+_SENTENCE = re.compile(r"(?<=[a-z0-9])\.\s+(?=[A-Z])")
+_AND_SPLIT = re.compile(r"\s+\band\b\s+", re.IGNORECASE)
+_RIGHT_CUT = re.compile(r",|\band\b", re.IGNORECASE)
+_FRAME = re.compile(
+    r"\b(?:expects|forecasts|projects|estimates|expect|forecast|project|estimate)\s+"
+    r"(?:the\s+)?(?P<object>.+?)\s+to\s+(?:average|reach|be|rise|fall)\b",
+    re.IGNORECASE,
+)
+_TRAIL_VERB = re.compile(
+    r"\s+(?:was|were|is|are|averages|averaged|average|scored|scores|score)\s*$",
+    re.IGNORECASE,
+)
+_DET = re.compile(
+    r"^(?:both\s+of\s+those|both\s+of\s+these|those|these|the|a|an|both)\s+",
+    re.IGNORECASE,
+)
+_TEMPORAL_RIGHT = re.compile(
+    r"^(?:in|during|for)\s+(?:the\s+)?(?:(?:first|second|third|fourth)\s+quarter\s+of\s+)?(?:19|20)\d{2}\b"
+    r"|^(?:last|this|next)\s+(?:year|month|quarter)\b"
+    r"|^(?:a|one)\s+year\s+ago\b"
+    r"|^(?:the\s+)?(?:preceding|prior|previous|same)\s+(?:year|month|quarter)\b",
+    re.IGNORECASE,
+)
+_SCOPE_YEAR = re.compile(
+    r"\b(?:in|during|for)\s+(?:the\s+)?"
+    r"(?:(?:first|second|third|fourth)\s+quarter\s+of\s+|(?:first|second)\s+half\s+of\s+)?"
+    r"((?:19|20)\d{2})\b",
+    re.IGNORECASE,
+)
+_SCOPE_MONTH = re.compile(
+    r"\b(?:in|during|for)\s+(january|february|march|april|may|june|july|august|september|"
+    r"october|november|december)\b",
+    re.IGNORECASE,
+)
+_SINCE_YEAR = re.compile(r"\bsince\s+(?:19|20)\d{2}\b", re.IGNORECASE)
+_NUMERIC_RIGHT = re.compile(rf"^\$?{_NUM}\b")
 _EQ_TO = re.compile(
     r"(?P<left>.+?)\s+(?:was|were|is|are)\s+equal\s+to\s+(?P<right>.+)",
     re.IGNORECASE,
@@ -80,7 +138,11 @@ _LT = {"fewer", "lower", "less"}
 
 
 def _covers(match: re.Match[str], text: str) -> bool:
-    return re.fullmatch(r"[\s.]*", text[match.end():]) is not None
+    tail = text[match.end():]
+    if re.fullmatch(r"[\s.,;:]*", tail):
+        return True
+    # A source or time adjunct may follow the relation. A second comparator may not.
+    return _SECOND_CUE.search(tail) is None
 
 
 def _norm_qty(raw: str | None) -> str | None:
@@ -174,11 +236,84 @@ def _decompose_left(text: str) -> tuple[str, str | None]:
 
 def _decompose_right(text: str) -> tuple[str, str | None]:
     raw = text.strip(" .")
+    raw = _RIGHT_CUT.split(raw, maxsplit=1)[0]
     raw = re.sub(r"\s+in\s+(?:19|20)\d{2}\b", "", raw, flags=re.IGNORECASE).strip(" .")
     on_measure = re.fullmatch(r"(.+?)\s+on\s+(.+)", raw, re.IGNORECASE)
     if on_measure:
         return _norm_entity(on_measure.group(1)), normalize_measure(on_measure.group(2))
     return _norm_entity(raw), None
+
+
+def _subject_measure(text: str) -> str | None:
+    """Measure carried by a non-possessive subject. Time scenes are not part of it."""
+    raw = text.strip(" .,")
+    raw = _TIME_SCENE.sub("", raw)
+    raw = re.sub(r"^(?:in|during)\s+(?:19|20)\d{2},?\s*", "", raw, flags=re.IGNORECASE)
+    frame = _FRAME.search(raw)
+    if frame:
+        raw = frame.group("object")
+    else:
+        raw = _TRAIL_VERB.sub("", raw)
+    raw = _TIME_WORD.sub(" ", raw)
+    raw = re.sub(r"\s+", " ", raw).strip(" .,")
+    while raw and _DET.match(raw):
+        raw = _DET.sub("", raw, count=1)
+    return normalize_measure(raw)
+
+
+def _is_temporal(text: str) -> bool:
+    raw = _RIGHT_CUT.split(text.strip(" .,"), maxsplit=1)[0].strip()
+    return _TEMPORAL_RIGHT.match(raw) is not None
+
+
+def _temporal_pole(text: str) -> str:
+    raw = _RIGHT_CUT.split(text.strip(" .,"), maxsplit=1)[0].strip().casefold()
+    year = re.search(r"(?:19|20)\d{2}", raw)
+    if year and re.match(r"(?:in|during|for)\b", raw):
+        return "year:" + year.group(0)
+    if "last year" in raw:
+        return "relative:last_year"
+    if "year ago" in raw:
+        return "relative:year_ago"
+    if "last month" in raw:
+        return "relative:last_month"
+    return "relative:" + re.sub(r"\s+", " ", raw)
+
+
+def _scope_years(text: str) -> list[str]:
+    """Years and months that qualify this clause, excluding commentary after a dash."""
+    cleaned = re.split(r"—|–", text, maxsplit=1)[0]
+    cleaned = _SINCE_YEAR.sub(" ", cleaned)
+    years = _SCOPE_YEAR.findall(cleaned)
+    months = ["month:" + item.casefold() for item in _SCOPE_MONTH.findall(cleaned)]
+    return years + months
+
+
+def _split_pattern(text: str, pattern: re.Pattern[str]) -> list[tuple[int, str]]:
+    parts: list[tuple[int, str]] = []
+    start = 0
+    for match in pattern.finditer(text):
+        parts.append((start, text[start:match.start()]))
+        start = match.end()
+    parts.append((start, text[start:]))
+    return [(offset, part) for offset, part in parts if part.strip()]
+
+
+def _and_parts(text: str) -> list[tuple[int, str]]:
+    pieces = _split_pattern(text, _AND_SPLIT)
+    if len(pieces) > 1 and all(_SECOND_CUE.search(part) for _, part in pieces):
+        return pieces
+    return [(0, text)]
+
+
+def _clauses(text: str) -> list[tuple[int, str]]:
+    found: list[tuple[int, str]] = []
+    for sent_off, sentence in _split_pattern(text, _SENTENCE):
+        for clause_off, clause in _split_pattern(sentence, _SPLIT):
+            base = sent_off + clause_off
+            for and_off, part in _and_parts(clause):
+                found.append((base + and_off, part))
+    return found or [(0, text)]
 
 
 def _finish(base: dict[str, Any], match: re.Match[str], offset: int) -> dict[str, Any]:
@@ -189,9 +324,16 @@ def _finish(base: dict[str, Any], match: re.Match[str], offset: int) -> dict[str
 def _relative(match: re.Match[str], comp_word: str, measure: str | None, offset: int) -> dict[str, Any]:
     row = _blank("GT" if comp_word.casefold() in _GT else "LT")
     left, left_measure = _decompose_left(match.group("left"))
-    right, right_measure = _decompose_right(match.group("right"))
-    if _SECOND_CUE.search(match.group("right")):
+    right_raw = match.group("right")
+    if _SECOND_CUE.search(right_raw):
         return _finish(_blank("AMBIGUOUS"), match, offset)
+    right, right_measure = _decompose_right(right_raw)
+    if _is_temporal(right_raw):
+        right = _temporal_pole(right_raw)
+        if left_measure is None:
+            subject = _subject_measure(match.group("left"))
+            left = subject or left
+            left_measure = subject
     row["left"] = left
     row["right"] = right
     row["measure"] = measure or right_measure or left_measure
@@ -244,6 +386,9 @@ def _from_match(kind: str, match: re.Match[str], offset: int) -> dict[str, Any]:
         if match.group("verb").casefold() in {"fell", "declined", "dropped"}:
             row["comparator"] = "DECREASE"
         left, measure = _decompose_left(match.group("left"))
+        if measure is None:
+            measure = _subject_measure(match.group("left"))
+            left = measure or left
         row["left"] = left
         row["measure"] = _aspect(measure, "change")
         row["verb"] = match.group("verb").casefold()
@@ -254,8 +399,18 @@ def _from_match(kind: str, match: re.Match[str], offset: int) -> dict[str, Any]:
         return _finish(row, match, offset)
     if kind == "had":
         return _relative(match, match.group("comp"), normalize_measure(match.group("measure")), offset)
-    if kind == "than":
+    if kind in {"than", "qty_than"}:
         return _relative(match, match.group("comp"), None, offset)
+    if kind == "threshold":
+        word = match.group("comp").casefold()
+        row = _blank("GT" if word in _GT else "LT")
+        subject = _subject_measure(match.group("left"))
+        row["left"] = subject
+        row["right"] = "threshold"
+        row["measure"] = subject
+        row["qty"] = _norm_qty(match.group("qty"))
+        row["unit"] = _norm_unit(match.group("unit"))
+        return _finish(row, match, offset)
     if kind in {"eq_to", "eq_bare", "unchanged"}:
         row = _blank("EQ")
         left, measure = _decompose_left(match.group("left"))
@@ -276,6 +431,8 @@ _PATTERNS = (
     ("rate_than", _RATE_THAN),
     ("change", _CHANGE),
     ("had", _HAD),
+    ("qty_than", _QTY_THAN),
+    ("threshold", _THRESHOLD),
     ("than", _THAN),
     ("eq_to", _EQ_TO),
     ("eq_bare", _EQ_BARE),
@@ -293,7 +450,9 @@ def _parse_clause(clause: str, offset: int) -> dict[str, Any] | None:
         found = pattern.search(text)
         if found is None or not _covers(found, text):
             continue
-        if kind in {"had", "than", "change", "rate_than"} and hits and hits[0]["comparator"] in {"NOT_GT", "NOT_LT"}:
+        if kind == "than" and _NUMERIC_RIGHT.match(found.group("right").strip()):
+            continue
+        if kind in {"had", "than", "qty_than", "change", "rate_than"} and hits and hits[0]["comparator"] in {"NOT_GT", "NOT_LT"}:
             continue
         hits.append(_from_match(kind, found, offset + pad))
         if hits[-1]["comparator"] in {"NOT_GT", "NOT_LT"}:
@@ -305,35 +464,32 @@ def _parse_clause(clause: str, offset: int) -> dict[str, Any] | None:
         row = _blank("AMBIGUOUS")
         row["span"] = [offset, offset + len(clause)]
         return row
+    # A numeric threshold owns the clause when a copula pattern agrees with it.
+    thresholds = [item for item in hits if item.get("right") == "threshold"]
+    if thresholds and len(kinds) == 1:
+        return max(thresholds, key=lambda item: item["span"][1] - item["span"][0])
     # Prefer the longest covering match when several patterns agree.
     return max(hits, key=lambda item: item["span"][1] - item["span"][0])
 
 
 def parse_document(text: str) -> dict[str, Any]:
-    clauses = []
-    start = 0
-    for match in _SPLIT.finditer(text):
-        clauses.append((start, text[start:match.start()]))
-        start = match.end()
-    clauses.append((start, text[start:]))
-    parsed = [item for item in (_parse_clause(part, offset) for offset, part in clauses if part.strip()) if item]
-    years = year_list(text)
+    parsed = []
+    for offset, part in _clauses(text):
+        item = _parse_clause(part, offset)
+        if item is None:
+            continue
+        item["years"] = _scope_years(part)
+        parsed.append(item)
     if not parsed:
         row = _blank("NA")
-        row["years"] = years
-        return row
-    if any(item["comparator"] == "AMBIGUOUS" for item in parsed):
-        row = _blank("AMBIGUOUS")
-        row["years"] = years
-        row["span"] = [0, len(text)]
+        row["years"] = _scope_years(text)
         return row
     if len(parsed) == 1:
-        parsed[0]["years"] = years
         return parsed[0]
     return {
         "comparator": "MULTI",
         "clauses": parsed,
-        "years": years,
+        "years": [],
         "span": [0, len(text)],
         "ambiguity": False,
         "measure": None,
@@ -349,20 +505,39 @@ def parse_document(text: str) -> dict[str, Any]:
     }
 
 
+def _measure_key(measure: str | None) -> str | None:
+    if not measure:
+        return None
+    text = _TIME_WORD.sub(" ", measure)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text or None
+
+
 def _measures_match(left: str | None, right: str | None) -> bool:
-    return bool(left) and left == right
+    """Equal measures only. A shorter name inside a qualified name is not the same measure."""
+    key_left, key_right = _measure_key(left), _measure_key(right)
+    return bool(key_left) and key_left == key_right
 
 
 def _select_evidence(parsed: dict[str, Any], claim_measure: str | None) -> dict[str, Any]:
     if parsed["comparator"] != "MULTI":
         return parsed
-    matches = [item for item in parsed["clauses"] if _measures_match(item.get("measure"), claim_measure)]
+    clauses = parsed["clauses"]
+    for item in clauses:
+        if item["comparator"] != "AMBIGUOUS":
+            continue
+        # An unbound ambiguous clause can still be the claim's relation. Fail closed.
+        if item.get("measure") is None or _measures_match(item.get("measure"), claim_measure):
+            row = _blank("AMBIGUOUS")
+            row["years"] = item.get("years") or []
+            row["span"] = item.get("span") or parsed["span"]
+            row["measure"] = claim_measure
+            return row
+    matches = [item for item in clauses if _measures_match(item.get("measure"), claim_measure)]
     if len(matches) == 1:
-        chosen = dict(matches[0])
-        chosen["years"] = parsed["years"]
-        return chosen
+        return dict(matches[0])
     row = _blank("AMBIGUOUS")
-    row["years"] = parsed["years"]
+    row["years"] = []
     row["span"] = parsed["span"]
     row["measure"] = claim_measure if matches else None
     return row

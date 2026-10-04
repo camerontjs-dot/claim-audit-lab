@@ -15,6 +15,7 @@
       "implementation": "research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/quantity_binding.py",
       "dependence_group": "quantity-text",
       "model": null,
+      "instrument_id": "quantity-comparator-binding-rc2-s2",
       "qualification": "UNQUALIFIED_DEVELOPMENT_CONTRACT_ONLY",
       "production_status": "research"
     },
@@ -58,7 +59,7 @@
     "use": "Arm K historical reference. Not a successor judge and not used for topology attribution."
   },
   "grammar": {
-    "direction_binding": "The quantity lane binds comparator, orientation, roles, measure, quantity, unit, and year scope. A shared verb or a matching number is not a relation. Multiple comparators in one clause stay unresolved.",
+    "direction_binding": "Successor s2 binds a copula comparative, a quantity before the comparator, a numeric threshold, a change verb with a non-possessive subject, and the object of a reporting frame. A time scene is not part of the measure. A qualified measure does not match a shorter name inside it. Clauses split on a sentence boundary, ', while', ';', and 'and' only when both sides carry a comparator. A second comparator in one clause stays unresolved. A shared verb or a matching number is not a relation.",
     "year_tokens": "Four-digit year tokens are scope, not quantities. A claim year set must be present in the evidence year set.",
     "union_scope": "Claim years are checked against the union of authorized evidence passages before a quantity decision.",
     "measure_binding": "The evidence comparator must attach to the claim's measure. A different measure stays unresolved even when the operator and the number match.",
