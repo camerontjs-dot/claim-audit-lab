@@ -1,0 +1,48 @@
+{
+  "abstention_cause": "SOURCE_COMPLETION_FAILED",
+  "applicability": "applicable",
+  "authored_fields": {
+    "left_object": "report",
+    "left_polarity": "positive",
+    "left_predicate": "review",
+    "left_subject": "alpha",
+    "right_object": "file",
+    "right_polarity": "positive",
+    "right_predicate": "approve",
+    "right_subject": "beta",
+    "temporal_relation": "BEFORE"
+  },
+  "authoring_status": "accepted",
+  "available_passage_ids": [
+    "S09-p1"
+  ],
+  "conclusion": "unresolved",
+  "consumed_claim": "Alpha reviewed Report before Beta approved File.",
+  "consumed_passage_ids": [
+    "S09-p1"
+  ],
+  "dependence_group": "frozen-kernel",
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "d53aadf544ac787638e1d78e575dceca914d9085684776c19d4ada3405c60f71",
+  "instrument_id": "frozen-kernel",
+  "instrument_version": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "kernel_conclusion": "not_checkable",
+  "kernel_failure": "SOURCE_COMPLETION_FAILED",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "cal_product_package",
+    "candidate_module",
+    "installed_dependency",
+    "platform_runtime",
+    "python_stdlib"
+  ],
+  "process_id": "kernel_legacy",
+  "role": "relation",
+  "semantic_family": "direct_event_order",
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "warrant": "qualified",
+  "worker_pid": 73974
+}

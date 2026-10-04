@@ -1,0 +1,57 @@
+{
+  "abstention_cause": "attribution",
+  "applicability": "applicable",
+  "available_passage_ids": [
+    "S13-p1"
+  ],
+  "claim_interpretation": {
+    "assertion": "direct",
+    "direction": "MORE_THAN",
+    "lhs": "Alpha",
+    "measure": "rate",
+    "polarity": "positive",
+    "property": "",
+    "quantifier": null,
+    "rhs": "Beta",
+    "time": null
+  },
+  "conclusion": "unresolved",
+  "consumed_claim": "Alpha had a higher rate than Beta.",
+  "consumed_passage_ids": [
+    "S13-p1"
+  ],
+  "dependence_group": "same-author-comparison-text",
+  "evidence_interpretations": [
+    {
+      "interpretation": {
+        "assertion": "allegation",
+        "direction": "MORE_THAN",
+        "lhs": "Alpha",
+        "measure": "rate",
+        "polarity": "positive",
+        "property": "",
+        "quantifier": null,
+        "rhs": "Beta",
+        "time": null
+      },
+      "passage_id": "S13-p1",
+      "relation": "attribution"
+    }
+  ],
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "aa996a2b30da298e7e1f35d1a7f374223f8fbbc9fd0ecb1cb6b417d671774e23",
+  "instrument_id": "comparison-relation-rc0",
+  "instrument_version": "deterministic-text-rc0",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "original_relation",
+  "role": "relation",
+  "warrant": "unqualified",
+  "worker_pid": 74038
+}

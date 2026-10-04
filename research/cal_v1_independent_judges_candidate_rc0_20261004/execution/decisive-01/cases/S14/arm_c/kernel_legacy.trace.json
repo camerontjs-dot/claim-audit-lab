@@ -1,0 +1,16 @@
+{
+  "binding_ok": true,
+  "forbidden_read": false,
+  "open_classes": [
+    "cal_product_package",
+    "candidate_module",
+    "installed_dependency",
+    "platform_runtime",
+    "python_stdlib"
+  ],
+  "process_id": "kernel_legacy",
+  "returncode": 0,
+  "state": "completed",
+  "stderr": "<repo>/src/claim_audit_lab/contracts/factual_context.py:121: UserWarning: Field name \"schema\" in \"ContractBFactualContext\" shadows an attribute in parent \"_Strict\"\n  class ContractBFactualContext(_Strict):\n",
+  "supplied_sha256": "c2ac738798833b63307daa1e4fd034e2062058dcd5c313473ef064934f1470de"
+}

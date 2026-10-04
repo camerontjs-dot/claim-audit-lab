@@ -1,0 +1,18 @@
+{
+  "arm_a": "not_checkable",
+  "arm_b": "supported",
+  "arm_c": "supported",
+  "arm_c_cause": "unsupported_form",
+  "attribution": "confounded_instruments_and_routing",
+  "dimension": "event_order",
+  "expected_seed": "supported",
+  "failures": [
+    "arm_a conclusion not_checkable != supported"
+  ],
+  "id": "S09",
+  "loss_contrast": "no_conclusion_difference",
+  "lossy_bytes_differ": false,
+  "lossy_transform": "shared-lossy-rc0-strip-time-property-quantifier-attribution",
+  "passed": false,
+  "scope_preserved_against_original": false
+}

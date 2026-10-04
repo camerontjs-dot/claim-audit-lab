@@ -1,0 +1,13 @@
+{
+  "binding_ok": true,
+  "forbidden_read": false,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "event_order",
+  "returncode": 0,
+  "state": "completed",
+  "stderr": "",
+  "supplied_sha256": "8a2213687cbed147eee2ba86a1eaf400dd33980ce00cd6ac6c05eb2f1ed6da68"
+}

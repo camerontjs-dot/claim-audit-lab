@@ -1,0 +1,17 @@
+{
+  "adapter_sha256": "f76b623d2158420a4d06c932aaa833733c3d2edfc310f86392f257d0df888bdf",
+  "candidate_commit": "83f4afda3328c7ccd9be3fbcd670083fc38f68a6",
+  "command": "python research/cal_v1_independent_judges_rc0_20261004/contract_tests.py --adapter research/cal_v1_independent_judges_candidate_rc0_20261004/adapter.py",
+  "evidence_class": "CANDIDATE_MECHANICAL_CONFORMANCE_ONLY",
+  "exit_code": 0,
+  "passed": true,
+  "python": "3.11.15",
+  "result": {
+    "errors": [],
+    "failures": [],
+    "skips": 0,
+    "tests": 30
+  },
+  "semantic_utility": "NOT_TESTED",
+  "v1_readiness": "NOT_ESTABLISHED"
+}

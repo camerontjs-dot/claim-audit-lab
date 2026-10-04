@@ -1,0 +1,16 @@
+{
+  "arm_a": "not_checkable",
+  "arm_b": "supported",
+  "arm_c": "not_checkable",
+  "arm_c_cause": "scope_mismatch",
+  "attribution": "no_conclusion_difference",
+  "dimension": "measure",
+  "expected_seed": "not_checkable",
+  "failures": [],
+  "id": "S06",
+  "loss_contrast": "same_instruments_different_input",
+  "lossy_bytes_differ": true,
+  "lossy_transform": "shared-lossy-rc0-strip-time-property-quantifier-attribution",
+  "passed": true,
+  "scope_preserved_against_original": true
+}

@@ -1,0 +1,24 @@
+{
+  "abstention_cause": "not_a_comparison_constraint",
+  "applicability": "not_applicable",
+  "claim_constraints": null,
+  "conclusion": "not_applicable",
+  "dependence_group": "same-author-comparison-text",
+  "evidence_constraints": [],
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "d53aadf544ac787638e1d78e575dceca914d9085684776c19d4ada3405c60f71",
+  "instrument_id": "constraint-guard-rc0",
+  "instrument_version": "deterministic-text-rc0",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "scope_guard",
+  "role": "guard",
+  "warrant": "qualified",
+  "worker_pid": 73972
+}

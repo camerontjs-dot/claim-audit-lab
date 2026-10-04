@@ -1,0 +1,57 @@
+{
+  "abstention_cause": "scope_mismatch",
+  "applicability": "applicable",
+  "available_passage_ids": [
+    "S06-p1"
+  ],
+  "claim_constraints": {
+    "allegation": false,
+    "measure": "rate",
+    "pair": [
+      "alpha had",
+      "beta"
+    ],
+    "property": "copd reporting",
+    "quantifiers": [],
+    "years": []
+  },
+  "conclusion": "violated",
+  "consumed_claim": "Alpha had a higher COPD reporting rate than Beta.",
+  "consumed_passage_ids": [
+    "S06-p1"
+  ],
+  "dependence_group": "same-author-comparison-text",
+  "evidence_constraints": [
+    {
+      "compared": true,
+      "constraints": {
+        "allegation": false,
+        "measure": "rate",
+        "pair": [
+          "alpha had",
+          "beta"
+        ],
+        "property": "asthma reporting",
+        "quantifiers": [],
+        "years": []
+      },
+      "passage_id": "S06-p1"
+    }
+  ],
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "797730104b9a6f8f633c88d2b52120ff7b82bf3f358a4840c84cf29a959a3fbe",
+  "instrument_id": "constraint-guard-rc0",
+  "instrument_version": "deterministic-text-rc0",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "scope_guard",
+  "role": "guard",
+  "warrant": "qualified",
+  "worker_pid": 73949
+}

@@ -1,0 +1,16 @@
+{
+  "arm_a": "not_checkable",
+  "arm_b": "supported",
+  "arm_c": "supported",
+  "arm_c_cause": null,
+  "attribution": "confounded_instruments_and_routing",
+  "dimension": "quantifier",
+  "expected_seed": "supported",
+  "failures": [],
+  "id": "S08",
+  "loss_contrast": "no_conclusion_difference",
+  "lossy_bytes_differ": true,
+  "lossy_transform": "shared-lossy-rc0-strip-time-property-quantifier-attribution",
+  "passed": true,
+  "scope_preserved_against_original": true
+}

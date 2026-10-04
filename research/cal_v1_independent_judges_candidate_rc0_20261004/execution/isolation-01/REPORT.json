@@ -1,0 +1,14 @@
+{
+  "candidate_commit": "83f4afda3328c7ccd9be3fbcd670083fc38f68a6",
+  "evidence_class": "PROCESS_ISOLATION_PROBE_NOT_SEMANTIC_UTILITY",
+  "failures": [],
+  "models_used": false,
+  "notes": [
+    "Children ran with cwd outside the repository and an environment that does not inherit the parent.",
+    "A receipt hash was checked against the bytes the parent wrote.",
+    "Timeout remains timeout rather than not_applicable or failed.",
+    "not_run is not produced here; the routed arm records not_run separately."
+  ],
+  "passed": true,
+  "pids_distinct": true
+}

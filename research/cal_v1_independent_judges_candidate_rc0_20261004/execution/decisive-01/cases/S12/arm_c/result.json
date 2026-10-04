@@ -1,0 +1,242 @@
+{
+  "conclusion": "not_checkable",
+  "synthesis": {
+    "blockers": [],
+    "conclusion": "not_checkable",
+    "exclusions": {
+      "event_order": "not_applicable",
+      "kernel_legacy": "unresolved",
+      "original_relation": "unresolved",
+      "scope_guard": "non_voting_guard"
+    },
+    "input_sha256": "8870f8820a72bba039cd7a45376ed1117a3fe75053536254d3e1c7350a1a011d",
+    "policy_sha256": "5db4557218c6b4430a94a0bda4e760db4755b5c04a97ecdf29e932a8cab4edc1",
+    "receipts": [
+      {
+        "abstention_cause": "unsupported_form",
+        "applicability": "not_applicable",
+        "available_passage_ids": [
+          "S12-p1",
+          "S12-p2"
+        ],
+        "claim_interpretation": null,
+        "conclusion": "not_applicable",
+        "consumed_passage_ids": [],
+        "dependence_group": "event-order-text",
+        "evidence_interpretations": [],
+        "execution": "completed",
+        "forbidden_read": false,
+        "input_sha256": "8870f8820a72bba039cd7a45376ed1117a3fe75053536254d3e1c7350a1a011d",
+        "instrument_id": "event-order-rc0",
+        "instrument_version": "deterministic-text-rc0",
+        "local_material_conflict": false,
+        "material_loss": false,
+        "model": null,
+        "open_classes": [
+          "candidate_module",
+          "python_stdlib"
+        ],
+        "process_id": "event_order",
+        "role": "relation",
+        "warrant": "qualified",
+        "worker_pid": 74014
+      },
+      {
+        "abstention_cause": "material_conflict",
+        "applicability": "applicable",
+        "authored_fields": {
+          "comparison_direction": "MORE_THAN",
+          "lhs_entity": "Alpha",
+          "rhs_entity": "Beta"
+        },
+        "authoring_status": "accepted",
+        "available_passage_ids": [
+          "S12-p1",
+          "S12-p2"
+        ],
+        "conclusion": "unresolved",
+        "consumed_claim": "Alpha had a higher rate than Beta.",
+        "consumed_passage_ids": [
+          "S12-p1",
+          "S12-p2"
+        ],
+        "dependence_group": "frozen-kernel",
+        "execution": "completed",
+        "forbidden_read": false,
+        "input_sha256": "8870f8820a72bba039cd7a45376ed1117a3fe75053536254d3e1c7350a1a011d",
+        "instrument_id": "frozen-kernel",
+        "instrument_version": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+        "kernel_conclusion": "not_checkable",
+        "kernel_failure": "MIXED_RELATIONS",
+        "local_material_conflict": true,
+        "material_loss": false,
+        "model": null,
+        "open_classes": [
+          "cal_product_package",
+          "candidate_module",
+          "installed_dependency",
+          "platform_runtime",
+          "python_stdlib"
+        ],
+        "process_id": "kernel_legacy",
+        "role": "relation",
+        "semantic_family": "strict_comparison",
+        "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+        "warrant": "qualified",
+        "worker_pid": 74011
+      },
+      {
+        "abstention_cause": "material_conflict",
+        "applicability": "applicable",
+        "available_passage_ids": [
+          "S12-p1",
+          "S12-p2"
+        ],
+        "claim_interpretation": {
+          "assertion": "direct",
+          "direction": "MORE_THAN",
+          "lhs": "Alpha",
+          "measure": "rate",
+          "polarity": "positive",
+          "property": "",
+          "quantifier": null,
+          "rhs": "Beta",
+          "time": null
+        },
+        "conclusion": "unresolved",
+        "consumed_claim": "Alpha had a higher rate than Beta.",
+        "consumed_passage_ids": [
+          "S12-p1",
+          "S12-p2"
+        ],
+        "dependence_group": "same-author-comparison-text",
+        "evidence_interpretations": [
+          {
+            "interpretation": {
+              "assertion": "direct",
+              "direction": "MORE_THAN",
+              "lhs": "Alpha",
+              "measure": "rate",
+              "polarity": "positive",
+              "property": "",
+              "quantifier": null,
+              "rhs": "Beta",
+              "time": null
+            },
+            "passage_id": "S12-p1",
+            "relation": "supports"
+          },
+          {
+            "interpretation": {
+              "assertion": "direct",
+              "direction": "LESS_THAN",
+              "lhs": "Alpha",
+              "measure": "rate",
+              "polarity": "positive",
+              "property": "",
+              "quantifier": null,
+              "rhs": "Beta",
+              "time": null
+            },
+            "passage_id": "S12-p2",
+            "relation": "refutes"
+          }
+        ],
+        "execution": "completed",
+        "forbidden_read": false,
+        "input_sha256": "8870f8820a72bba039cd7a45376ed1117a3fe75053536254d3e1c7350a1a011d",
+        "instrument_id": "comparison-relation-rc0",
+        "instrument_version": "deterministic-text-rc0",
+        "local_material_conflict": true,
+        "material_loss": false,
+        "model": null,
+        "open_classes": [
+          "candidate_module",
+          "python_stdlib"
+        ],
+        "process_id": "original_relation",
+        "role": "relation",
+        "warrant": "qualified",
+        "worker_pid": 74012
+      },
+      {
+        "abstention_cause": null,
+        "applicability": "applicable",
+        "available_passage_ids": [
+          "S12-p1",
+          "S12-p2"
+        ],
+        "claim_constraints": {
+          "allegation": false,
+          "measure": "rate",
+          "pair": [
+            "alpha had",
+            "beta"
+          ],
+          "property": "",
+          "quantifiers": [],
+          "years": []
+        },
+        "conclusion": "satisfied",
+        "consumed_claim": "Alpha had a higher rate than Beta.",
+        "consumed_passage_ids": [
+          "S12-p1",
+          "S12-p2"
+        ],
+        "dependence_group": "same-author-comparison-text",
+        "evidence_constraints": [
+          {
+            "compared": true,
+            "constraints": {
+              "allegation": false,
+              "measure": "rate",
+              "pair": [
+                "alpha had",
+                "beta"
+              ],
+              "property": "",
+              "quantifiers": [],
+              "years": []
+            },
+            "passage_id": "S12-p1"
+          },
+          {
+            "compared": true,
+            "constraints": {
+              "allegation": false,
+              "measure": "rate",
+              "pair": [
+                "alpha had",
+                "beta"
+              ],
+              "property": "",
+              "quantifiers": [],
+              "years": []
+            },
+            "passage_id": "S12-p2"
+          }
+        ],
+        "execution": "completed",
+        "forbidden_read": false,
+        "input_sha256": "8870f8820a72bba039cd7a45376ed1117a3fe75053536254d3e1c7350a1a011d",
+        "instrument_id": "constraint-guard-rc0",
+        "instrument_version": "deterministic-text-rc0",
+        "local_material_conflict": false,
+        "material_loss": false,
+        "model": null,
+        "open_classes": [
+          "candidate_module",
+          "python_stdlib"
+        ],
+        "process_id": "scope_guard",
+        "role": "guard",
+        "warrant": "qualified",
+        "worker_pid": 74013
+      }
+    ],
+    "scores": {
+      "refutes": "0",
+      "supports": "0"
+    }
+  }
+}
