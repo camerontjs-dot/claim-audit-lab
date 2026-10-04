@@ -1,0 +1,349 @@
+{
+  "claims": [
+    {
+      "claim": "The National Park Service reported 323 million recreation visits in calendar year 2025.",
+      "claim_id": "P02-1",
+      "evidence": [
+        {
+          "id": "P02-1-e1",
+          "text": "The National Park Service reported 323 million recreation visits in calendar year 2025."
+        }
+      ],
+      "families": [
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "National Park Service recreation visits in calendar year 2025 were 323 million.",
+      "scope": {
+        "measure": "recreation visits",
+        "polarity": "positive",
+        "population": "National Park Service",
+        "quantifier": "",
+        "time": "calendar year 2025"
+      },
+      "source_id": "P02"
+    },
+    {
+      "claim": "The National Park Service reported 323 million recreation visits in calendar year 2023.",
+      "claim_id": "P02-2",
+      "evidence": [
+        {
+          "id": "P02-2-e1",
+          "text": "The National Park Service reported 323 million recreation visits in calendar year 2025."
+        }
+      ],
+      "families": [
+        "quantity",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "National Park Service recreation visits in calendar year 2023 were 323 million.",
+      "scope": {
+        "measure": "recreation visits",
+        "polarity": "positive",
+        "population": "National Park Service",
+        "quantifier": "",
+        "time": "calendar year 2023"
+      },
+      "source_id": "P02"
+    },
+    {
+      "claim": "This is an increase of 8.85 million recreation visits, or 2.7%, from the record year in 2024.",
+      "claim_id": "P02-3",
+      "evidence": [
+        {
+          "id": "P02-3-e1",
+          "text": "This is a decrease of 8.85 million recreation visits, or 2.7%, from the record year in 2024."
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "Recreation visits increased by 8.85 million, or 2.7%, from the record year 2024.",
+      "scope": {
+        "measure": "recreation visits",
+        "polarity": "positive",
+        "population": "National Park Service",
+        "quantifier": "",
+        "time": "calendar year 2025 compared with 2024"
+      },
+      "source_id": "P02"
+    },
+    {
+      "claim": "Historic annual recreation visit estimates run from 1904 through 1978.",
+      "claim_id": "P02-4",
+      "evidence": [
+        {
+          "id": "P02-4-e1",
+          "text": "The NPS Visitor Use Statistics Program maintains a large data set with annual recreation visit estimates from 1904-1978 and monthly visitation estimates from 1979 to present."
+        },
+        {
+          "id": "P02-4-e2",
+          "text": "Query Builder for Historic Annual Recreation Visits (1904 - 1979)"
+        },
+        {
+          "id": "P02-4-e3",
+          "text": "1904-1979 | Annual recreation visits"
+        }
+      ],
+      "families": [
+        "material_conflict",
+        "time"
+      ],
+      "intended_proposition": "The historic annual recreation-visit series ends in 1978 rather than 1979.",
+      "scope": {
+        "measure": "annual recreation visits",
+        "polarity": "positive",
+        "population": "National Park Service historic visitor-use series",
+        "quantifier": "",
+        "time": "1904-1978 versus 1904-1979"
+      },
+      "source_id": "P02"
+    },
+    {
+      "claim": "Industrial production (IP) edged down 0.1 percent in July 2025.",
+      "claim_id": "P06-1",
+      "evidence": [
+        {
+          "id": "P06-1-e1",
+          "text": "Release Date: August 15, 2025"
+        },
+        {
+          "id": "P06-1-e2",
+          "text": "Industrial production (IP) edged down 0.1 percent in July."
+        },
+        {
+          "id": "P06-1-e3",
+          "text": "July '25"
+        }
+      ],
+      "families": [
+        "comparison",
+        "quantity",
+        "time",
+        "polarity"
+      ],
+      "intended_proposition": "Industrial production edged down 0.1 percent in July 2025.",
+      "scope": {
+        "measure": "industrial production percent change",
+        "polarity": "negative",
+        "population": "total industrial production",
+        "quantifier": "",
+        "time": "July 2025"
+      },
+      "source_id": "P06"
+    },
+    {
+      "claim": "Industrial production (IP) edged down 0.1 percent in July 2019.",
+      "claim_id": "P06-2",
+      "evidence": [
+        {
+          "id": "P06-2-e1",
+          "text": "Release Date: August 15, 2025"
+        },
+        {
+          "id": "P06-2-e2",
+          "text": "Industrial production (IP) edged down 0.1 percent in July."
+        }
+      ],
+      "families": [
+        "comparison",
+        "quantity",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "Industrial production edged down 0.1 percent in July 2019.",
+      "scope": {
+        "measure": "industrial production percent change",
+        "polarity": "negative",
+        "population": "total industrial production",
+        "quantifier": "",
+        "time": "July 2019"
+      },
+      "source_id": "P06"
+    },
+    {
+      "claim": "Industrial production (IP) edged up 0.1 percent in July 2025.",
+      "claim_id": "P06-3",
+      "evidence": [
+        {
+          "id": "P06-3-e1",
+          "text": "Release Date: August 15, 2025"
+        },
+        {
+          "id": "P06-3-e2",
+          "text": "Industrial production (IP) edged down 0.1 percent in July."
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "Industrial production edged up 0.1 percent in July 2025.",
+      "scope": {
+        "measure": "industrial production percent change",
+        "polarity": "positive",
+        "population": "total industrial production",
+        "quantifier": "",
+        "time": "July 2025"
+      },
+      "source_id": "P06"
+    },
+    {
+      "claim": "The U.S. Census Bureau today released July 1, 2024, population estimates for the nation and states. The U.S. population reached 340.1 million, up 0.98% from 336.8 million on July 1, 2023 \u2014 the highest year-over-year increase since a jump of 0.99% between 2000 and 2001.",
+      "claim_id": "P07-1",
+      "evidence": [
+        {
+          "id": "P07-1-e1",
+          "text": "The U.S. Census Bureau today released July 1, 2024, population estimates for the nation and states. The U.S. population reached 340.1 million, up 0.98% from 336.8 million on July 1, 2023 \u2014 the highest year-over-year increase since a jump of 0.99% between 2000 and 2001."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time"
+      ],
+      "intended_proposition": "The July 1, 2024 U.S. population was 340.1 million, up 0.98% from 336.8 million on July 1, 2023, the highest year-over-year increase since 0.99% between 2000 and 2001.",
+      "scope": {
+        "measure": "population and year-over-year percent change",
+        "polarity": "positive",
+        "population": "United States",
+        "quantifier": "",
+        "time": "July 1, 2024 compared with July 1, 2023"
+      },
+      "source_id": "P07"
+    },
+    {
+      "claim": "The U.S. Census Bureau today released July 1, 2019, population estimates for the nation and states. The U.S. population reached 340.1 million, up 0.98% from 336.8 million on July 1, 2023 \u2014 the highest year-over-year increase since a jump of 0.99% between 2000 and 2001.",
+      "claim_id": "P07-2",
+      "evidence": [
+        {
+          "id": "P07-2-e1",
+          "text": "The U.S. Census Bureau today released July 1, 2024, population estimates for the nation and states. The U.S. population reached 340.1 million, up 0.98% from 336.8 million on July 1, 2023 \u2014 the highest year-over-year increase since a jump of 0.99% between 2000 and 2001."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "The July 1, 2019 U.S. population estimate was 340.1 million, up 0.98% from 336.8 million on July 1, 2023.",
+      "scope": {
+        "measure": "population and year-over-year percent change",
+        "polarity": "positive",
+        "population": "United States",
+        "quantifier": "",
+        "time": "July 1, 2019 compared with July 1, 2023"
+      },
+      "source_id": "P07"
+    },
+    {
+      "claim": "The U.S. population reached 340.1 million, down 0.98% from 336.8 million on July 1, 2023.",
+      "claim_id": "P07-3",
+      "evidence": [
+        {
+          "id": "P07-3-e1",
+          "text": "The U.S. population reached 340.1 million, up 0.98% from 336.8 million on July 1, 2023"
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "The U.S. population of 340.1 million was down 0.98% from 336.8 million on July 1, 2023.",
+      "scope": {
+        "measure": "population percent change",
+        "polarity": "negative",
+        "population": "United States",
+        "quantifier": "",
+        "time": "July 1, 2024 compared with July 1, 2023"
+      },
+      "source_id": "P07"
+    },
+    {
+      "claim": "Between 1970 and 2025, total emissions of the six principal air pollutants dropped by 78 percent.",
+      "claim_id": "P08-1",
+      "evidence": [
+        {
+          "id": "P08-1-e1",
+          "text": "The graph below shows that between 1970 and 2025, gross domestic product increased 349 percent, vehicle miles traveled increased 197 percent, energy consumption increased 46 percent, and U.S. population grew by 67 percent. During the same time period, total emissions of the six principal air pollutants dropped by 78 percent."
+        }
+      ],
+      "families": [
+        "comparison",
+        "quantity",
+        "time",
+        "polarity"
+      ],
+      "intended_proposition": "From 1970 to 2025, total emissions of the six principal air pollutants dropped by 78 percent.",
+      "scope": {
+        "measure": "total emissions of the six principal air pollutants",
+        "polarity": "negative",
+        "population": "United States",
+        "quantifier": "six",
+        "time": "1970 to 2025"
+      },
+      "source_id": "P08"
+    },
+    {
+      "claim": "Between 1970 and 2015, total emissions of the six principal air pollutants dropped by 78 percent.",
+      "claim_id": "P08-2",
+      "evidence": [
+        {
+          "id": "P08-2-e1",
+          "text": "The graph below shows that between 1970 and 2025, gross domestic product increased 349 percent, vehicle miles traveled increased 197 percent, energy consumption increased 46 percent, and U.S. population grew by 67 percent. During the same time period, total emissions of the six principal air pollutants dropped by 78 percent."
+        }
+      ],
+      "families": [
+        "comparison",
+        "quantity",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "From 1970 to 2015, total emissions of the six principal air pollutants dropped by 78 percent.",
+      "scope": {
+        "measure": "total emissions of the six principal air pollutants",
+        "polarity": "negative",
+        "population": "United States",
+        "quantifier": "six",
+        "time": "1970 to 2015"
+      },
+      "source_id": "P08"
+    },
+    {
+      "claim": "Between 1970 and 2025, total emissions of the six principal air pollutants increased by 78 percent.",
+      "claim_id": "P08-3",
+      "evidence": [
+        {
+          "id": "P08-3-e1",
+          "text": "The graph below shows that between 1970 and 2025, gross domestic product increased 349 percent, vehicle miles traveled increased 197 percent, energy consumption increased 46 percent, and U.S. population grew by 67 percent. During the same time period, total emissions of the six principal air pollutants dropped by 78 percent."
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "From 1970 to 2025, total emissions of the six principal air pollutants increased by 78 percent.",
+      "scope": {
+        "measure": "total emissions of the six principal air pollutants",
+        "polarity": "positive",
+        "population": "United States",
+        "quantifier": "six",
+        "time": "1970 to 2025"
+      },
+      "source_id": "P08"
+    }
+  ],
+  "packet": "unlabeled",
+  "partition": "calibration"
+}

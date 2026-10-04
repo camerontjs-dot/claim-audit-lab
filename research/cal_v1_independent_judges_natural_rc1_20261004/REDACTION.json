@@ -1,0 +1,8 @@
+{
+  "executed_head_before_publication_rewrite": "195821ba8646869a2df7b150a3ea3a32a17a50a9",
+  "reason": "GitHub push protection detected a Mapbox token in the downloaded CMS HTML.",
+  "scope": "sources/raw/P03.bin only. The text window and every claim evidence span are unchanged.",
+  "text_window_sha256": "12c73b118689dc3154192fc141b9cf76af9b7fcda33a36e6287624167b5f2a16",
+  "raw_sha256_published": "f3ab8843fcfa4b13a7e8cab72197a5f9e19db9ba977039183414a6dbb0ff669e",
+  "raw_sha256_before_publication_redaction": "bb3751214c513d6ed2bc7bdea0fe95fdac8e0cce636dd9e483f8729337da3106"
+}

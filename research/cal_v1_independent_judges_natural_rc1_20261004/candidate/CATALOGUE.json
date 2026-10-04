@@ -1,0 +1,105 @@
+{
+  "schema": "cal-independent-judges-natural-rc1-catalogue",
+  "status": "BOUNDED_RESEARCH_CATALOGUE_NOT_EXHAUSTIVE",
+  "same_judge_set": [
+    "quantity_relation",
+    "event_order",
+    "scope_guard",
+    "attribution_guard"
+  ],
+  "processes": [
+    {
+      "process_id": "quantity_relation",
+      "role": "relation",
+      "module": "judges.py",
+      "dependence_group": "quantity-text",
+      "model": null,
+      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "production_status": "research"
+    },
+    {
+      "process_id": "event_order",
+      "role": "relation",
+      "module": "judges.py",
+      "dependence_group": "event-order-text",
+      "model": null,
+      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "production_status": "research"
+    },
+    {
+      "process_id": "scope_guard",
+      "role": "guard",
+      "module": "judges.py",
+      "dependence_group": "scope-guard",
+      "weight": "0",
+      "required": true,
+      "model": null,
+      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "production_status": "research"
+    },
+    {
+      "process_id": "attribution_guard",
+      "role": "guard",
+      "module": "judges.py",
+      "dependence_group": "attribution-guard",
+      "weight": "0",
+      "required": true,
+      "model": null,
+      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "production_status": "research"
+    }
+  ],
+  "reference_only": {
+    "process_id": "kernel_legacy",
+    "module": "kernel_worker.py",
+    "authority": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+    "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+    "use": "Arm K historical reference. Not a successor judge and not used for topology attribution."
+  },
+  "grammar": {
+    "direction_binding": "A direction cue binds only an adjacent quantity. One clause's direction does not apply to every number in the passage.",
+    "year_tokens": "Four-digit year tokens are scope, not quantities.",
+    "union_scope": "Claim years and quantifiers are checked against the union of authorized evidence passages.",
+    "level_statements": "A quantity with no direction cue is a level. It supports only when the matching evidence quantity is also a level.",
+    "unchanged": "Unchanged versus a directional cue stays unresolved.",
+    "lexicon_additions_from_calibration": [
+      "dropped",
+      "dropping",
+      "drop",
+      "up before a digit",
+      "down before a digit"
+    ]
+  },
+  "router": {
+    "module": "router.py",
+    "guards": "scope_guard and attribution_guard always run",
+    "relations": "event cue without a quantity cue selects event_order; a quantity cue without an event cue selects quantity_relation; both or neither select both relation lanes"
+  },
+  "lossy_control": {
+    "module": "lossy.py",
+    "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge",
+    "arm": "B",
+    "operations": [
+      "strip_four_digit_years",
+      "strip_quantifier_words",
+      "strip_hedge_words"
+    ]
+  },
+  "synthesis": {
+    "module": "synthesize.py",
+    "dependence": "One dependence group contributes its maximum weight once, not the sum.",
+    "ignored_self_scores": [
+      "claimed_weight",
+      "claimed_confidence",
+      "claimed_relevance"
+    ],
+    "hard_blockers": [
+      "required_unknown",
+      "required_not_run",
+      "material_loss",
+      "material_conflict",
+      "guard_violation"
+    ]
+  },
+  "production_status": "research"
+}

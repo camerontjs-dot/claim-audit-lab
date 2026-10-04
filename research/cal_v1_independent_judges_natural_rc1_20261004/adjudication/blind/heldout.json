@@ -1,0 +1,303 @@
+{
+  "claims": [
+    {
+      "claim": "In 2023, at yearend, a total of 26 states and the Federal Bureau of Prisons (FBOP) held 2,192 prisoners under sentence of death, which was 73 (3%) fewer than at yearend 2022.",
+      "claim_id": "P01-1",
+      "evidence": [
+        {
+          "id": "P01-1-e1",
+          "text": "In 2023:\nAt yearend, a total of 26 states and the Federal Bureau of Prisons (FBOP) held 2,192 prisoners under sentence of death, which was 73 (3%) fewer than at yearend 2022."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "polarity"
+      ],
+      "intended_proposition": "At yearend 2023, 26 states and the Federal Bureau of Prisons held 2,192 prisoners under sentence of death, 73 (3%) fewer than at yearend 2022.",
+      "scope": {
+        "measure": "prisoners under sentence of death",
+        "polarity": "negative",
+        "population": "26 states and the Federal Bureau of Prisons",
+        "quantifier": "a total of",
+        "time": "yearend 2023 compared with yearend 2022"
+      },
+      "source_id": "P01"
+    },
+    {
+      "claim": "In 2023, at yearend, a total of 26 states and the Federal Bureau of Prisons (FBOP) held 2,192 prisoners under sentence of death, which was 73 (3%) fewer than at yearend 2019.",
+      "claim_id": "P01-2",
+      "evidence": [
+        {
+          "id": "P01-2-e1",
+          "text": "In 2023:\nAt yearend, a total of 26 states and the Federal Bureau of Prisons (FBOP) held 2,192 prisoners under sentence of death, which was 73 (3%) fewer than at yearend 2022."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "The yearend 2023 death-sentence count of 2,192 was 73 (3%) fewer than at yearend 2019.",
+      "scope": {
+        "measure": "prisoners under sentence of death",
+        "polarity": "negative",
+        "population": "26 states and the Federal Bureau of Prisons",
+        "quantifier": "a total of",
+        "time": "yearend 2023 compared with yearend 2019"
+      },
+      "source_id": "P01"
+    },
+    {
+      "claim": "In 2023, at yearend, a total of 26 states and the Federal Bureau of Prisons (FBOP) held 2,192 prisoners under sentence of death, which was 73 (3%) more than at yearend 2022.",
+      "claim_id": "P01-3",
+      "evidence": [
+        {
+          "id": "P01-3-e1",
+          "text": "In 2023:\nAt yearend, a total of 26 states and the Federal Bureau of Prisons (FBOP) held 2,192 prisoners under sentence of death, which was 73 (3%) fewer than at yearend 2022."
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "The yearend 2023 death-sentence count of 2,192 was 73 (3%) more than at yearend 2022.",
+      "scope": {
+        "measure": "prisoners under sentence of death",
+        "polarity": "positive",
+        "population": "26 states and the Federal Bureau of Prisons",
+        "quantifier": "a total of",
+        "time": "yearend 2023 compared with yearend 2022"
+      },
+      "source_id": "P01"
+    },
+    {
+      "claim": "NHE grew 7.2% to $5.3 trillion in 2024, or $15,474 per person, and accounted for 18.0% of Gross Domestic Product (GDP).",
+      "claim_id": "P03-1",
+      "evidence": [
+        {
+          "id": "P03-1-e1",
+          "text": "NHE grew 7.2% to $5.3 trillion in 2024, or $15,474 per person, and accounted for 18.0% of Gross Domestic Product (GDP)."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time"
+      ],
+      "intended_proposition": "National health expenditures grew 7.2% to $5.3 trillion in 2024, or $15,474 per person, and were 18.0% of GDP.",
+      "scope": {
+        "measure": "national health expenditures, per person, and share of GDP",
+        "polarity": "positive",
+        "population": "United States",
+        "quantifier": "",
+        "time": "2024"
+      },
+      "source_id": "P03"
+    },
+    {
+      "claim": "NHE grew 7.2% to $5.3 trillion in 1997, or $15,474 per person, and accounted for 18.0% of Gross Domestic Product (GDP).",
+      "claim_id": "P03-2",
+      "evidence": [
+        {
+          "id": "P03-2-e1",
+          "text": "NHE grew 7.2% to $5.3 trillion in 2024, or $15,474 per person, and accounted for 18.0% of Gross Domestic Product (GDP)."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "National health expenditures grew 7.2% to $5.3 trillion in 1997, or $15,474 per person, and were 18.0% of GDP.",
+      "scope": {
+        "measure": "national health expenditures, per person, and share of GDP",
+        "polarity": "positive",
+        "population": "United States",
+        "quantifier": "",
+        "time": "1997"
+      },
+      "source_id": "P03"
+    },
+    {
+      "claim": "Hospital expenditures grew 8.9% to $1,634.7 billion in 2024, faster than the 10.6% growth in 2023.",
+      "claim_id": "P03-3",
+      "evidence": [
+        {
+          "id": "P03-3-e1",
+          "text": "Hospital expenditures grew 8.9% to $1,634.7 billion in 2024, slower than the 10.6% growth in 2023."
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "Hospital expenditure growth of 8.9% in 2024 was faster than the 10.6% growth in 2023.",
+      "scope": {
+        "measure": "hospital expenditure growth",
+        "polarity": "positive",
+        "population": "United States hospital expenditures",
+        "quantifier": "",
+        "time": "2024 compared with 2023"
+      },
+      "source_id": "P03"
+    },
+    {
+      "claim": "In 2025, domestic gold mine production was estimated to be 160 tons; the value was estimated to be $17 billion, a 32% increase from the value in 2024.",
+      "claim_id": "P04-1",
+      "evidence": [
+        {
+          "id": "P04-1-e1",
+          "text": "In 2025, domestic gold mine production was estimated to be 160 tons; the value\nwas estimated to be $17 billion, a 32% increase from the value in 2024."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time"
+      ],
+      "intended_proposition": "Estimated 2025 domestic gold mine production was 160 tons, and its value was $17 billion, up 32% from 2024.",
+      "scope": {
+        "measure": "domestic gold mine production and production value",
+        "polarity": "positive",
+        "population": "United States gold mines",
+        "quantifier": "",
+        "time": "2025 compared with 2024"
+      },
+      "source_id": "P04"
+    },
+    {
+      "claim": "In 2018, domestic gold mine production was estimated to be 160 tons; the value was estimated to be $17 billion, a 32% increase from the value in 2024.",
+      "claim_id": "P04-2",
+      "evidence": [
+        {
+          "id": "P04-2-e1",
+          "text": "In 2025, domestic gold mine production was estimated to be 160 tons; the value\nwas estimated to be $17 billion, a 32% increase from the value in 2024."
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "Estimated 2018 domestic gold mine production was 160 tons, and its value was $17 billion, up 32% from 2024.",
+      "scope": {
+        "measure": "domestic gold mine production and production value",
+        "polarity": "positive",
+        "population": "United States gold mines",
+        "quantifier": "",
+        "time": "2018 compared with 2024"
+      },
+      "source_id": "P04"
+    },
+    {
+      "claim": "In 2025, domestic gold mine production was estimated to be 160 tons; the value was estimated to be $17 billion, a 32% decrease from the value in 2024.",
+      "claim_id": "P04-3",
+      "evidence": [
+        {
+          "id": "P04-3-e1",
+          "text": "In 2025, domestic gold mine production was estimated to be 160 tons; the value\nwas estimated to be $17 billion, a 32% increase from the value in 2024."
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "Estimated 2025 domestic gold mine production was 160 tons, and its value was $17 billion, down 32% from 2024.",
+      "scope": {
+        "measure": "domestic gold production value",
+        "polarity": "negative",
+        "population": "United States gold mines",
+        "quantifier": "",
+        "time": "2025 compared with 2024"
+      },
+      "source_id": "P04"
+    },
+    {
+      "claim": "In the September 2025 corn estimates, United States production was 16,814,371 thousand bushels, and the percent change from the previous season was \u2191 13.1.",
+      "claim_id": "P05-1",
+      "evidence": [
+        {
+          "id": "P05-1-e1",
+          "text": "September 2025 Corn\n                                 Acreage, Yield, and Production\n\n                            Planted                      Harvested                           Yield                       Production\n                            (1,000 Acres)                  (1,000 Acres)                  (Bushels/Acre)                   (1,000 Bushels)\nUnited States                           98,728                         90,047                              186.7                 16,814,371\n    % Change from\n Previous Estimate\n                                     \u2191       1.5                    \u2191       1.5                     \u2193        1.1                     \u2191        0.4\n   % Change from\n  Previous Season\n                                     \u2191       9.0                    \u2191       8.6                     \u2191        4.1                     \u2191 13.1"
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time"
+      ],
+      "intended_proposition": "September 2025 United States corn production was 16,814,371 thousand bushels, up 13.1 percent from the previous season.",
+      "scope": {
+        "measure": "corn production in thousand bushels",
+        "polarity": "positive",
+        "population": "United States corn",
+        "quantifier": "",
+        "time": "September 2025 compared with the previous season"
+      },
+      "source_id": "P05"
+    },
+    {
+      "claim": "In the September 1997 corn estimates, United States production was 16,814,371 thousand bushels, and the percent change from the previous season was \u2191 13.1.",
+      "claim_id": "P05-2",
+      "evidence": [
+        {
+          "id": "P05-2-e1",
+          "text": "September 2025 Corn\n                                 Acreage, Yield, and Production\n\n                            Planted                      Harvested                           Yield                       Production\n                            (1,000 Acres)                  (1,000 Acres)                  (Bushels/Acre)                   (1,000 Bushels)\nUnited States                           98,728                         90,047                              186.7                 16,814,371\n    % Change from\n Previous Estimate\n                                     \u2191       1.5                    \u2191       1.5                     \u2193        1.1                     \u2191        0.4\n   % Change from\n  Previous Season\n                                     \u2191       9.0                    \u2191       8.6                     \u2191        4.1                     \u2191 13.1"
+        }
+      ],
+      "families": [
+        "quantity",
+        "comparison",
+        "time",
+        "missing_scope"
+      ],
+      "intended_proposition": "September 1997 United States corn production was 16,814,371 thousand bushels, up 13.1 percent from the previous season.",
+      "scope": {
+        "measure": "corn production in thousand bushels",
+        "polarity": "positive",
+        "population": "United States corn",
+        "quantifier": "",
+        "time": "September 1997 compared with the previous season"
+      },
+      "source_id": "P05"
+    },
+    {
+      "claim": "In the September 2025 corn estimates, United States production was 16,814,371 thousand bushels, and the percent change from the previous season was \u2193 13.1.",
+      "claim_id": "P05-3",
+      "evidence": [
+        {
+          "id": "P05-3-e1",
+          "text": "September 2025 Corn\n                                 Acreage, Yield, and Production\n\n                            Planted                      Harvested                           Yield                       Production\n                            (1,000 Acres)                  (1,000 Acres)                  (Bushels/Acre)                   (1,000 Bushels)\nUnited States                           98,728                         90,047                              186.7                 16,814,371\n    % Change from\n Previous Estimate\n                                     \u2191       1.5                    \u2191       1.5                     \u2193        1.1                     \u2191        0.4\n   % Change from\n  Previous Season\n                                     \u2191       9.0                    \u2191       8.6                     \u2191        4.1                     \u2191 13.1"
+        }
+      ],
+      "families": [
+        "comparison",
+        "polarity",
+        "quantity",
+        "time"
+      ],
+      "intended_proposition": "September 2025 United States corn production was 16,814,371 thousand bushels, down 13.1 percent from the previous season.",
+      "scope": {
+        "measure": "corn production in thousand bushels",
+        "polarity": "negative",
+        "population": "United States corn",
+        "quantifier": "",
+        "time": "September 2025 compared with the previous season"
+      },
+      "source_id": "P05"
+    }
+  ],
+  "packet": "unlabeled",
+  "partition": "heldout"
+}
