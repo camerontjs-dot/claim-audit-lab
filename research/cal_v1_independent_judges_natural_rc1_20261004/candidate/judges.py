@@ -41,120 +41,23 @@ def _base(process_id: str, role: str, raw: bytes) -> dict[str, Any]:
     }
 
 
-def _is_year_token(item: dict[str, Any]) -> bool:
-    return item["unit"] == "" and item["number"] not in {"19", "20"} and bool(
-        re.fullmatch(r"(?:19|20)\d{2}", item["number"])
-    )
-
-
-def _quantities(view: dict[str, Any]) -> list[dict[str, Any]]:
-    return [
-        item
-        for item in view["numbers"]
-        if item["number"] not in {"19", "20"} and not _is_year_token(item)
-    ]
-
-
-def _key(item: dict[str, Any]) -> tuple[str, str, str]:
-    return (str(item["sign"]), str(item["number"]), str(item["unit"]))
-
-
-def _pair(claim_number: dict[str, Any], evidence_number: dict[str, Any]) -> str:
-    claim_direction = claim_number.get("direction")
-    evidence_direction = evidence_number.get("direction")
-    if claim_direction == "unchanged" or evidence_direction == "unchanged":
-        return "supports" if claim_direction == evidence_direction else "unresolved"
-    if claim_direction is None and evidence_direction is None:
-        return "supports"
-    if claim_direction is None or evidence_direction is None:
-        return "unresolved"
-    same_direction = claim_direction == evidence_direction
-    same_polarity = claim_number.get("polarity") == evidence_number.get("polarity")
-    opposite = {claim_direction, evidence_direction} == {"increase", "decrease"}
-    if same_direction and same_polarity:
-        return "supports"
-    if same_direction and not same_polarity:
-        return "refutes"
-    if opposite and claim_number.get("polarity") == "positive" and evidence_number.get("polarity") == "positive":
-        return "refutes"
-    return "unresolved"
-
-
-def _passage_opinion(claim_numbers: list[dict[str, Any]], evidence_numbers: list[dict[str, Any]]) -> str | None:
-    labels: list[str] = []
-    for claim_number in claim_numbers:
-        matches = [item for item in evidence_numbers if _key(item) == _key(claim_number)]
-        if not matches:
-            return None
-        local = [_pair(claim_number, item) for item in matches]
-        if "supports" in local and "refutes" in local:
-            return "conflict"
-        if "refutes" in local:
-            labels.append("refutes")
-        elif "supports" in local:
-            labels.append("supports")
-        else:
-            labels.append("unresolved")
-    if "refutes" in labels:
-        return "refutes"
-    if "unresolved" in labels:
-        return "unresolved"
-    return "supports"
-
-
-def _union_scope(claim: dict[str, Any], passages: list[dict[str, Any]]) -> str | None:
-    years: set[str] = set()
-    quantifiers: set[str] = set()
-    for passage in passages:
-        view = parse_view(str(passage["text"]))
-        years.update(view["years"])
-        quantifiers.update(view["quantifiers"])
-    if claim["years"] and not set(claim["years"]).issubset(years):
-        return "time_mismatch"
-    if claim["quantifiers"] and not set(claim["quantifiers"]).issubset(quantifiers):
-        return "quantifier_mismatch"
-    return None
-
-
 def quantity_relation(raw: bytes) -> dict[str, Any]:
+    """RC2 binder. The other lanes in this module stay on their RC1 bytes."""
     receipt = _base("quantity_relation", "relation", raw)
     envelope = parse_envelope(raw)
-    claim = parse_view(envelope["claim"])
-    receipt["claim_interpretation"] = claim
-    claim_numbers = _quantities(claim)
-    if not claim_numbers:
-        receipt["abstention_cause"] = "unparsed_comparison"
-        return receipt
-    receipt["applicability"] = "applicable"
-    if not envelope["evidence"]:
-        receipt["conclusion"] = "unresolved"
-        receipt["abstention_cause"] = "missing_evidence"
-        return receipt
-    mismatch = _union_scope(claim, envelope["evidence"])
-    if mismatch is not None:
-        receipt["conclusion"] = "unresolved"
-        receipt["abstention_cause"] = mismatch
-        return receipt
-    opinions: list[str] = []
-    for passage in envelope["evidence"]:
-        opinion = _passage_opinion(claim_numbers, _quantities(parse_view(str(passage["text"]))))
-        if opinion is not None:
-            opinions.append(opinion)
-    if "conflict" in opinions or ("supports" in opinions and "refutes" in opinions):
-        receipt["conclusion"] = "unresolved"
-        receipt["abstention_cause"] = "material_conflict"
-        receipt["local_material_conflict"] = True
-        return receipt
-    if "supports" in opinions:
-        receipt["conclusion"] = "supports"
-        receipt["abstention_cause"] = None
-        return receipt
-    if "refutes" in opinions:
-        receipt["conclusion"] = "refutes"
-        receipt["abstention_cause"] = None
-        return receipt
-    receipt["conclusion"] = "unresolved"
-    receipt["abstention_cause"] = "no_matching_passage"
+    import sys
+    from pathlib import Path
+
+    binding_dir = (
+        Path(__file__).resolve().parents[2]
+        / "cal_v1_quantity_comparator_binding_rc2_20261004"
+        / "candidate"
+    )
+    if str(binding_dir) not in sys.path:
+        sys.path.insert(0, str(binding_dir))
+    from quantity_binding import apply_quantity_receipt
+
+    apply_quantity_receipt(receipt, envelope)
     return receipt
 
 

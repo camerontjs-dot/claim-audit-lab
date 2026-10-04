@@ -1,0 +1,102 @@
+{
+  "controls": [
+    {
+      "caught": true,
+      "control": "CueNoRole",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "runTest",
+        "test_comparator_bound_to_requested_measure",
+        "test_multiple_cues_fail_closed"
+      ],
+      "intended_test": "test_multiple_cues_fail_closed"
+    },
+    {
+      "caught": true,
+      "control": "FirstWins",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "runTest",
+        "test_comparator_bound_to_requested_measure",
+        "test_multiple_cues_fail_closed"
+      ],
+      "intended_test": "test_multiple_cues_fail_closed"
+    },
+    {
+      "caught": true,
+      "control": "LastWins",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "runTest",
+        "test_comparator_bound_to_requested_measure",
+        "test_multiple_cues_fail_closed"
+      ],
+      "intended_test": "test_multiple_cues_fail_closed"
+    },
+    {
+      "caught": true,
+      "control": "MeasureBlind",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "test_measure_mismatch_unresolved"
+      ],
+      "intended_test": "test_measure_mismatch_unresolved"
+    },
+    {
+      "caught": true,
+      "control": "NegationCollapse",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "test_not_more_does_not_become_less"
+      ],
+      "intended_test": "test_not_more_does_not_become_less"
+    },
+    {
+      "caught": true,
+      "control": "ParentheticalLoss",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "test_parenthetical_comparator_bound"
+      ],
+      "intended_test": "test_parenthetical_comparator_bound"
+    },
+    {
+      "caught": true,
+      "control": "QuantityOnly",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "runTest",
+        "runTest",
+        "runTest",
+        "runTest",
+        "runTest",
+        "test_faster_slower_bound",
+        "test_higher_lower_and_greater_less",
+        "test_increase_decrease_refutes",
+        "test_parenthetical_comparator_bound",
+        "test_unit_dimension_mismatch_unresolved",
+        "test_year_mismatch_unresolved_and_preserved"
+      ],
+      "intended_test": "test_parenthetical_comparator_bound"
+    },
+    {
+      "caught": true,
+      "control": "SharedVerb",
+      "errors": [],
+      "failures": [
+        "runTest",
+        "test_faster_slower_bound"
+      ],
+      "intended_test": "test_faster_slower_bound"
+    }
+  ],
+  "evidence_class": "EVALUATOR_SELFTEST_ONLY",
+  "passed": true
+}

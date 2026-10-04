@@ -1,0 +1,11 @@
+{
+  "evidence_class": "EXPOSED_DEVELOPMENT_CONFORMANCE_ONLY",
+  "fresh_generalization": "NOT_ESTABLISHED",
+  "passed": true,
+  "result": {
+    "errors": [],
+    "failures": [],
+    "skips": 0,
+    "tests": 16
+  }
+}

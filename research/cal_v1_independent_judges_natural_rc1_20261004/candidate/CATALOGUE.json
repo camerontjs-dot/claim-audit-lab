@@ -12,9 +12,10 @@
       "process_id": "quantity_relation",
       "role": "relation",
       "module": "judges.py",
+      "implementation": "research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/quantity_binding.py",
       "dependence_group": "quantity-text",
       "model": null,
-      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "qualification": "UNQUALIFIED_DEVELOPMENT_CONTRACT_ONLY",
       "production_status": "research"
     },
     {
@@ -57,18 +58,13 @@
     "use": "Arm K historical reference. Not a successor judge and not used for topology attribution."
   },
   "grammar": {
-    "direction_binding": "A direction cue binds only an adjacent quantity. One clause's direction does not apply to every number in the passage.",
-    "year_tokens": "Four-digit year tokens are scope, not quantities.",
-    "union_scope": "Claim years and quantifiers are checked against the union of authorized evidence passages.",
-    "level_statements": "A quantity with no direction cue is a level. It supports only when the matching evidence quantity is also a level.",
-    "unchanged": "Unchanged versus a directional cue stays unresolved.",
-    "lexicon_additions_from_calibration": [
-      "dropped",
-      "dropping",
-      "drop",
-      "up before a digit",
-      "down before a digit"
-    ]
+    "direction_binding": "The quantity lane binds comparator, orientation, roles, measure, quantity, unit, and year scope. A shared verb or a matching number is not a relation. Multiple comparators in one clause stay unresolved.",
+    "year_tokens": "Four-digit year tokens are scope, not quantities. A claim year set must be present in the evidence year set.",
+    "union_scope": "Claim years are checked against the union of authorized evidence passages before a quantity decision.",
+    "measure_binding": "The evidence comparator must attach to the claim's measure. A different measure stays unresolved even when the operator and the number match.",
+    "negation": "not-more is NOT_GT. It does not collapse to less.",
+    "unchanged": "Equality or unchanged against a directional comparator refutes that direction. It is not directional support.",
+    "weights": "RC1 synthesis weights and the minimum are unchanged. They were not retuned for the exposed false supports."
   },
   "router": {
     "module": "router.py",
