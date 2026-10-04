@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	
+<META NAME="keywords" content="Frequently asked questions, education statistics questions and answers, statistics, data, education data sets, data access tools, surveys, working papers, Early Childhood Education, education information, education indicators, elementary and secondary">
+<META NAME="description" content="The NCES Fast Facts Tool provides quick answers to many education questions (National Center for Education Statistics).  Get answers on Early Childhood Education, Elementary and Secondary Education and Higher Education here.">
+<META NAME="rating" CONTENT="General">
+<META NAME="ROBOTS" CONTENT="ALL">
+<META NAME="DC.Title" CONTENT="The NCES Fast Facts Tool provides quick answers to many education questions (National Center for Education Statistics)">
+<META NAME="DC.Description" CONTENT="The NCES Fast Facts Tool provides quick answers to many education questions (National Center for Education Statistics).  Get answers on Early Childhood Education, Elementary and Secondary Education and Higher Education here.">
+<META NAME="DC.Publisher" CONTENT="National Center for Education Statistics">
+<META NAME="DC.Language" SCHEME="RFC1766" CONTENT="EN">
+
+	<title>Fast Facts: International comparisons of achievement (1)</title>	
+	<link href="/fastfacts/css/fastFacts.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/fastfacts.js"></script>
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function(){
+			var emailShare = document.getElementsByClassName("emailSharer")[0];
+			emailShare.setAttribute("href", "mailto:?subject=" + document.getElementsByTagName("h2")[0].innerHTML + "&body=" + window.location.href);
+		});
+	
+	</script>
+	</div>
+</head>
+<body>
+<!-- Start Header -->
+
+<div class="headContents">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/IESfavicon_32px.png">
+	<link rel="icon" type="image/png" sizes="128x128" href="/images/favicons/IESfavicon_128px.png">
+	<link rel="icon" type="image/png" sizes="152x152" href="/images/favicons/IESfavicon_152px.png">
+	<link rel="icon" type="image/png" sizes="167x167" href="/images/favicons/IESfavicon_167px.png">
+	<link rel="icon" type="image/png" sizes="180x180" href="/images/favicons/IESfavicon_180px.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="/images/favicons/IESfavicon_192px.png">
+	<link rel="icon" type="image/png" sizes="196x196" href="/images/favicons/IESfavicon_196px.png">
+	<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href="/css/main.css" rel="stylesheet" type="text/css" />
+	<link href="/css/IES_Core_0004.css" rel="stylesheet" type="text/css" />
+	<link href="/css/IES_Mobile_0004.css" rel="stylesheet" type="text/css" />
+</div>
+
+	<!-- Google Tag Manager (GTM, the new way to manage tags and analytics) -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-KLQ8LQNJ');
+	</script>
+</div>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLQ8LQNJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<script type="text/javascript" src="/js/customevents.js"></script>
+
+<script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	//<![CDATA[
+	var $$i = jQuery.noConflict(true);
+	//]]>
+</script>
+<script type="text/javascript" src="/js/hfsNav.js?v=02"></script>
+<script type="text/javascript" src="/js/nav_0005.js"></script>
+<script type="text/javascript" src="/js/importBlogPosts.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+<link href="https://ies.ed.gov/sites/default/files/assets/legacy-override-nces.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="https://ies.ed.gov/sites/default/files/assets/ies-header-footer-elements.js"></script>
+
+<div class="nces">
+
+<ies-header></ies-header>
+
+<!-- End Header -->
+
+<!-- Start Body -->
+
+
+
+<!-- Content of Page Starts Here -->
+
+
+<div class="MainContent Style1c">
+<style type="text/css">
+.upperHead {
+font-family: Arial, sans-serif;
+font-weight: bold;
+text-transform: uppercase;
+font-size: 1.5em;
+vertical-align: middle;
+text-decoration: none !important;
+}
+
+.liner {
+border-bottom: 1px solid #b7ca5a;
+cursor: pointer;
+padding-bottom: 4px;
+}
+
+.liner a {
+text-decoration: none;
+}
+</style>
+
+<div class="liner"><a href="/FastFacts/" class="upperHead"><img src="/fastfacts/images/fastfacts_icon.gif" style="margin: 0; padding: 0; vertical-align: middle;" width="30" height="30" alt="Fast Facts" border="0" />&nbsp;&nbsp;Fast Facts</a>
+    
+</div>
+<br />
+
+            <h2>International comparisons of achievement</h2>
+			
+			
+		
+			<p><span class='newheads'>Question:</span><br>
+			How does the achievement of American students compare to that of students in other countries?
+			</p>
+
+			<p><span class='newheads'>Response:</span><br>
+			<p><strong>Reading, Mathematics, and Science Literacy of 15-Year-Old Students</strong></p>
+<p>The Program for International Student Assessment (PISA), coordinated by the Organization for Economic Cooperation and Development (OECD), has measured the performance of 15-year-old students in reading, mathematics, and science literacy every 3 years since 2000, except for a 1-year delay in the current cycle (from 2021 to 2022) due to the coronavirus pandemic. In 2022, PISA was administered in 81 countries and education systems,<sup><a href="#fn7" name="fr7">1</a></sup> including 37 member countries of the OECD.</p>
+
+<p>PISA 2022 results in this indicator are reported by average scale scores, which range from 0 to 1,000.<sup><a href="#fn8" name="fr8">2</a></sup> In addition to reporting overall scores, this indicator also presents international comparisons of achievement scores by student gender.<sup><a href="#fn9" name="fr9">3</a></sup></p>
+
+<p>In 2022, there were 5 education systems with higher average reading literacy scores for 15-year-olds than the United States, 25 with higher mathematics literacy scores, and 9 with higher science literacy scores. On average in the United States, female students scored 22 points higher than male students on the reading literacy scale and male students scored 13 points higher than female students on the mathematics literacy scale. The male–female average score gaps in reading and mathematics in the United States were not measurably different from the OECD average score gaps. There was no measurable difference between the average science scores of male and female students in the United States or on average across the participating OECD education systems.</p>
+
+<p style="margin-bottom: 0px;">In reading literacy, average scores in 2022 ranged from 329 in Cambodia to 543 in Singapore. The U.S. average reading literacy score (504) was higher than the OECD average score (476). Compared with the 80 other education systems in PISA 2022, the U.S. average reading literacy score was</p>
+<ul style="margin-top: 5px;">
+<li style="margin-bottom: 0px;">higher than the average in 68 education systems;</li> 
+<li style="margin-bottom: 0px;">lower than the average in 5 education systems; and</li>
+<li style="margin-bottom: 0px;">not measurably different from the average in 7 education systems.</li> 
+</ul>
+
+
+<hr size="1" />
+<p><em>Average scores and differences from U.S. average score of 15-year-old students on the Program for International Student Assessment (PISA) mathematics literacy scale, by education system: 2022</em></p>
+<p><img src="/fastfacts/images/2024/cnu_tab2.svg" border="0" alt="The data in this figure is described in the surrounding text."></p>
+<p><img src="/fastfacts/images/2024/cnu_up_arrow.png"/> Average score is higher than U.S. average score at the .05 level of statistical significance.<br />
+<img src="/fastfacts/images/2024/cnu_down_arrow.png"/> Average score is lower than U.S. average score at the .05 level of statistical significance.<br />
+<img src="/fastfacts/images/2024/cnu_diamond.png"/> Average score is not measurably different from U.S. average score at the .05 level of statistical significance.<br />
+<sup>!</sup> Interpret data with caution. Estimate is unstable because the standard error is between 30 and 50 percent of the estimate.<br />
+<sup>!!</sup> Interpret data with caution. Estimate is unstable because the standard error represents more than 50 percent of the estimate.<br />
+<sup>1</sup> At least 50 percent but less than 75 percent of the 15-year-old population is covered by the PISA sample.<br />
+<sup>2</sup> Less than 50 percent of the 15-year-old population is covered by the PISA sample.</p>
+<p><strong>NOTE:</strong> Scores are reported on a scale from 0 to 1,000. Differences were computed using unrounded numbers. Education systems are ordered by their average scores in 2022. Italics indicate non-OECD countries and education systems. Education systems are marked as OECD countries if they were OECD members in 2022. All OECD members except for Luxembourg participated in the PISA 2022 cycle. The OECD average is the average of the national averages of the participating OECD member countries, with each country weighted equally. One or more PISA sampling standards were not met in the following countries: Australia, Canada, Denmark, Hong Kong (China), Ireland, Jamaica, Latvia, Netherlands, New Zealand, Panama, United Kingdom, and United States. Some apparent differences between estimates may not be statistically significant.</p>
+<hr size="1" />
+
+<p style="margin-bottom: 0px;">In mathematics literacy, average scores in 2022 ranged from 336 in Cambodia to 575 in Singapore. The U.S. average mathematics literacy score (465) was not measurably different from the OECD average score. Compared with the 80 other education systems in PISA 2022, the U.S. average mathematics literacy score was</p>
+<ul style="margin-top: 5px;">
+<li style="margin-bottom: 0px;">higher than the average in 43 education systems;</li> 
+<li style="margin-bottom: 0px;">lower than the average in 25 education systems; and</li>
+<li style="margin-bottom: 0px;">not measurably different from the average in 12 education systems.</li> 
+</ul>
+
+<p style="margin-bottom: 0px;">In science literacy, average scores in 2022 ranged from 347 in Cambodia to 561 in Singapore. The U.S. average science literacy score (499) was higher than the OECD average score (485). Compared with the 80 other education systems in PISA 2022, the U.S. average science literacy score was</p>
+<ul style="margin-top: 5px;">
+<li style="margin-bottom: 0px;">higher than the average in 56 education systems;</li> 
+<li style="margin-bottom: 0px;">lower than the average in 9 education systems; and</li>
+<li style="margin-bottom: 0px;">not measurably different from the average in 15 education systems.</li> 
+</ul>
+
+<p><sup><a href="#fr7" name="fn7">1</a></sup> In this Fast Fact, “education systems” refer to all entities participating in PISA, including countries as well as subnational entities (e.g., cities or provinces).<br />
+<sup><a href="#fr8" name="fn8">2</a></sup> PISA results are also reported by the percentage of students reaching particular proficiency levels. For more information, see <a href="/surveys/pisa/pisa2022/index.asp">Highlights of PISA 2022 U.S. Results</a>.<br />
+<sup><a href="#fr9" name="fn9">3</a></sup> For general technical notes related to data analysis, data interpretation, rounding, and other considerations, please refer to the <a href="/programs/coe/guide">Condition of Education Reader’s Guide</a>.</p>
+<p style="background-color:#DFE6EB ; padding: 1em;"><strong>SOURCE:</strong> National Center for Education Statistics. (2024). International Comparisons: Reading, Mathematics, and Science Literacy of 15-Year-Old Students. <em>The Condition of Education</em>. U.S. Department of Education, Institute of Education Sciences. Retrieved May 30, 2024, from <a href="/programs/coe/indicator/cnu">https://nces.ed.gov/programs/coe/indicator/cnu</a>.</p>
+			</p>
+
+			
+					<p><p><strong>Reading Literacy at Grade 4</strong></p>
+<p>The Progress in International Reading Literacy Study (PIRLS) is an international assessment and research project designed to measure reading achievement at the fourth-grade level, as well as school and teacher practices related to instruction. PIRLS has been administered every 5 years since 2001. A total of 65 education systems participated in the 2021 PIRLS assessment.</p>
+
+<p>PIRLS was scheduled to be administered in the fall of 2020 in Southern Hemisphere education systems and in the spring of 2021 in the United States and other Northern Hemisphere education systems. Due to the COVID-19 pandemic and its impact on school districts and schools, the United States administered PIRLS to 5th-graders in the fall of 2021. PIRLS administration occurred in three waves:</p>
+
+<p style="margin-left: 15px;"><strong>Wave 1:</strong> Forty-one education systems administered the assessment to 4th-graders at the end of the 2020–21 school year, during the originally scheduled assessment window.</p>
+<p style="margin-left: 15px;"><strong>Wave 2:</strong> Seventeen education systems, including the United States, administered the assessment to 5th-graders at the beginning of the 2021–22 school year, 6 months after the originally scheduled assessment window. This delay means that Wave 2 students are older and have had more formal education, on average, than the 4th-graders in Wave 1 and Wave 3. Caution should be taken when comparing Wave 2 results with 4th-grade results, including results from prior PIRLS assessments. Throughout this Fast Fact, these education systems that assessed 5th-graders are designated with a “(5).”</p>
+<p style="margin-left: 15px;"><strong>Wave 3:</strong> Seven education systems administered the assessment to 4th-graders at the end of the 2021–22 school year, 1 year after the originally scheduled assessment window.</p>
+
+<p>PIRLS 2021 was the first year in which education systems had the option to administer PIRLS in a digital format. Prior PIRLS assessments between 2001 and 2016 were administered in a paper-and-pencil format. The United States was one of 33 education systems that opted to administer the digital assessment. Thirty-two education systems administered the assessment on paper.</p>
+<p>The United States is the only education system reporting results from a paper-bridge study. Education systems administering the digital assessment also administered a paper-based bridge assessment to a smaller sample of students to examine if there was a mode effect—that is, whether the shift from a paper format to a digital format affected student performance. The United States opted to report the paper-bridge scores due to psychometric concerns over the linking of paper and digital achievement scores. For more details on the bridge study and the linking methods, please see the <a href="https://nces.ed.gov/transfer.asp?location=pirls2021.org/methods/">PIRLS 2021 International Methods and Procedures</a>.</p>
+
+<p style="margin-bottom: 0px;">Among the 32 education systems reporting paper results in 2021, U.S. 5th-graders’ average score on the PIRLS 2021 reading scale (548) was higher than the average scores of their peers in 24 education systems and lower than the scores of their peers in 3 education systems.</p>
+<ul style="margin-top: 5px;">
+<li style="margin-bottom: 0px;">U.S. 5th-graders’ average PIRLS 2021 reading score was 548. Average scores on the paper assessment ranged from 288 in South Africa to 577 in Ireland (5), on a scale of 0 to 1,000.</li>
+<li style="margin-bottom: 0px;">Only Ireland (5) (577), Hong Kong-CHN (573), and Northern Ireland-GBR (5) (566) scored higher on average than 5th-graders in the United States.</li>
+<li style="margin-bottom: 0px;">The U.S. average score was higher than that of 5th-graders in Latvia (5), Georgia (5), Bahrain (5), and Morocco (5), who scored 528, 494, 458, and 372, respectively. The U.S. average score was also higher than the average score in South Africa (6) and 19 countries assessing 4th-graders.</li>
+<li>The U.S. average score was not significantly different from the average scores of 4th-graders in England-GBR, Poland, Australia, Bulgaria, and Macao-CHN.</li>
+</ul>
+
+<hr size="1" />
+<p><em>Average PIRLS reading scale scores and difference in average scores of students on the paper assessment, by education system: 2021</em></p>
+<div style="text-align:center;">
+<p><img src="https://nces.ed.gov/fastfacts/images/2024/pirls_figure_3.png" width="100%" border="0" alt="The data in this figure is described in the surrounding text."></p>
+</div>
+
+<p><sup>1</sup> Education system had coverage, sampling, or reliability issues, including issues with the national defined population coverage, issues with satisfying sampling guidelines, and/or concerns about estimation because the percentage of students whose performance is too low to estimate exceeds certain thresholds. Details can be found <a href="https://nces.ed.gov/surveys/pirls/pirls2021/issue-details.asp">here</a>.</p>
+<p><strong>NOTE:</strong> Education systems are ordered by overall average reading score. The PIRLS scale centerpoint is set at 500 and represents the mean of the overall achievement distribution in 2001. The standard deviation was set to 100 in 2001. The PIRLS scale is the same in each administration (0 to 1,000 points); thus, a value of 500 in 2021 equals 500 in 2001. This figure includes the 32 education systems that administered the paper-based PIRLS 2021 assessment and the United States, which administered the PIRLS 2021 digital assessment and the PIRLS 2021 paper-bridge assessment. The United States administered PIRLS 2021 digitally but opted to report the paper-bridge scores due to psychometric concerns over the linking of paper and digital achievement scores. For more details on the bridge study and the linking methods, please see the <a href="https://nces.ed.gov/transfer.asp?location=pirls2021.org/methods/">PIRLS 2021 International Methods and Procedures</a>. Education systems administered PIRLS 2021 in one of three waves: Wave 1 occurred as originally planned with 4th-grade students at the end of the 2020–21 school year; Wave 2 occurred 6 months after the original plan with 5th-grade students at the beginning of the 2021–22 school year; and Wave 3 occurred 1 year after the original plan with 4th-grade students at the end of the 2021–22 school year. The Wave 2 education systems are shown with a “(5)” notation. Australia, Brazil, England-GBR, the Islamic Republic of Iran, Israel, and South Africa administered PIRLS in Wave 3, with South Africa administering the assessment to a sample of 6th-graders, indicated by a “(6),” as well as 4th-graders. Issues identified in Albania’s data quality led to reduced comparability and framework coverage. Education systems that are not countries are designated by the appended three-letter international abbreviation for their country. Benchmarking participants are indicated with italics. Although rounded numbers are displayed, the data shown are based on unrounded estimates.</p>
+<hr size="1" />
+<p style="background-color:#DFE6EB ; padding: 1em;"><strong>SOURCE:</strong> National Center for Education Statistics. (2023). <em>PIRLS 2021 U.S. Highlights</em>. U.S. Department of Education, Institute of Education Sciences. Retrieved May 23, 2024, from <a href="https://nces.ed.gov/surveys/pirls/pirls2021/index.asp">https://nces.ed.gov/surveys/pirls/pirls2021/index.asp</a>.
+</p>
+
+<p> <strong>Mathematics and Science Achievement at Grades 4 and 8</strong> </p>
+<p>The Trends in International Mathematics and Science Study (TIMSS) is an international comparative study that has measured trends in mathematics and science achievement at the 4th and 8th grade every 4 years since 1995. In 2019, TIMSS assessed the mathematics and science skills of 4th-graders in 64 education systems and of 8th-graders in 46 education systems. Education systems include member countries of the IEA (countries that are complete, independent, political entities, as well as subnational entities) and benchmarking participants (subnational entities that are not IEA member countries).<sup><a href="#fn5" name="fr5">1</a></sup> This Fast Fact compares the U.S. average scores in both subjects with those of other education systems. It also looks at “score gaps” between the high- and low-performers in mathematics and science. Score gaps are the differences between the scores of students in the 90th and 10th percentiles of the distribution in a given subject. These gaps can be seen as an indicator of equity within an education system.</p>
+<p>At grade 4, the U.S. average mathematics score (535) in 2019 was higher than the TIMSS scale “centerpoint” (500).<sup><a href="#fn6" name="fr6">2</a></sup> Fourteen education systems had higher average mathematics scores than the United States, 7 had scores that were not measurably different, and 42 education systems had lower average scores. The 14 education systems with average mathematics scores above the U.S. score were Singapore, Hong Kong (China), the Republic of Korea, Chinese Taipei, Japan, Moscow City (Russia), Russian Federation, Northern Ireland (United Kingdom), England (United Kingdom), Ireland, Latvia, Dubai (United Arab Emirates), Norway, and Lithuania.</p>
+
+<hr size="1" />
+<p><em>Average scores and 10th and 90th percentile scores of 4th-grade students on the TIMSS mathematics scale and percentile score gaps, by education system: 2019</em></p>
+<p><img src="https://nces.ed.gov/programs/coe/figures/CNT/CNT_Figure_1-flat3.svg" border="0" alt="The data in this figure is described in the surrounding text."></p>
+<p><img src='https://nces.ed.gov/programs/coe/figures/shared/symbol-1.svg' height="12" width="12"/> 90th to 10th percentile score gap is higher than the U.S. score gap.</p>
+<p><img src='https://nces.ed.gov/programs/coe/figures/shared/symbol-2.svg' height="12" width="12"/> 90th to 10th percentile score gap is lower than the U.S. score gap. </p>
+<p><sup>1</sup> National Defined Population covers less than 90 percent of the National Target Population (but at least 77 percent), as defined by TIMSS. <br />
+<sup>2</sup> Met guidelines for sample participation rates only after replacement schools were included.<br />
+<sup>3</sup> National Defined Population covers 90 to 95 percent of the National Target Population, as defined by TIMSS.<br />
+<sup>4</sup> Did not satisfy guidelines for sample participation rates.<br />
+<sup>5</sup> National Target Population does not include all of the International Target Population, as defined by TIMSS.<br />
+<sup>6</sup> Reservations about reliability because the percentage of students with achievement too low for estimation exceeds 15 percent but does not exceed 25 percent. </p>
+<p><strong>NOTE:</strong> In addition to average scores, this figure shows the scores for the (a) 10th percentile—the bottom 10 percent of students; and (b) 90th percentile—the top 10 percent of students. The percentile ranges are specific to each education system’s distribution of scores, enabling users to compare scores across education systems. Education systems are ordered by average score. Education systems that are not countries are designated by their country in parentheses. Benchmarking participants are indicated with italics. For education systems with a “(5)” after their name, 5 indicates the years of formal schooling; these education systems chose to administer TIMSS at a different grade than other education systems (4 years of formal schooling). The TIMSS scale centerpoint is set at 500 and represents the mean of the overall achievement distribution in 1995. The standard deviation is set to 100. The TIMSS scale is the same in each administration (0 to 1,000 points); thus, a value of 500 in 2019 equals 500 in 1995. Although rounded numbers are displayed, data shown are based on unrounded estimates.</p>
+<hr size="1" />
+
+<p>In the United States, the mathematics cut score for high-performing 4th-graders (i.e., those at the 90th percentile) was 639 points, and the cut score for low-performing 4th-graders (i.e., those at the 10th percentile) was 421 points. The difference between these two cut scores (219 points) is the mathematics score gap between the high- and low-performing U.S. 4th-graders. The U.S. score gap was larger than the corresponding score gaps in 37 education systems and smaller than the gaps in 14 education systems. Score gaps ranged from 157 points (the smallest) in Moscow City (Russia) to 293 points (the largest) in Kuwait.</p>
+<p>At grade 4, the U.S. average science score (539) in 2019 was also higher than the TIMSS scale “centerpoint” of 500. Seven education systems had higher average science scores than the United States, 9 had scores that were not measurably different, and 47 education systems had lower average scores. The 7 education systems with average science scores above the U.S. score were Moscow City (Russia), Singapore, the Republic of Korea, the Russian Federation, Japan, Chinese Taipei, and Finland.</p>
+<p>In the United States, the science cut score for high-performing 4th-graders was 641 points, and the cut score for low-performing 4th-graders was 426 points. The difference between these two cut scores (214 points) is the science score gap between the high- and low-performing U.S. 4th-graders. The U.S. score gap was larger than the corresponding score gaps in 37 education systems and smaller than the gaps in 15 education systems. Score gaps ranged from 151 points (the smallest) in Croatia to 347 points (the largest) in South Africa.</p>
+<p>At grade 8, the U.S. average mathematics score (515) in 2019 was higher than the TIMSS scale “centerpoint” of 500. Ten education systems had higher average mathematics scores than the United States, 7 had scores that were not measurably different, and 28 education systems had lower average scores. The 10 education systems with average mathematics scores above the U.S. score were Singapore, Chinese Taipei, the Republic of Korea, Japan, Hong Kong (China), Moscow City (Russia), the Russian Federation, Quebec (Canada), Dubai (United Arab Emirates), and Ontario (Canada).</p>
+<p>In the United States, the mathematics cut score for high-performing 8th-graders was 642 points, and the cut score for low-performing 8th-graders was 385 points. The difference between these two cut scores (256 points) is the mathematics score gap between the high- and low-performing U.S. 8th-graders. The U.S. score gap was larger than the corresponding score gaps in 31 education systems and smaller than the gap in 1 education system. Score gaps ranged from 170 points (the smallest) in Quebec (Canada) to 282 points (the largest) in Turkey.</p>
+<p>At grade 8, the U.S. average science score (522) in 2019 was higher than the TIMSS scale “centerpoint” of 500. Ten education systems had higher average science scores than the United States, 9 had scores that were not measurably different, and 26 education systems had lower average scores. The 10 education systems with average science scores above the U.S. score were Singapore, Chinese Taipei, Japan, Moscow City (Russia), the Republic of Korea, Dubai (United Arab Emirates), the Russian Federation, Finland, Quebec (Canada), and Lithuania.</p>
+<p>In the United States, the science cut score for high-performing 8th-graders on the 2019 TIMSS science scale was 642 points, and the cut score for low-performing 8th-graders was 388 points. The difference between these two cut scores (254 points) is the science score gap between the high- and low-performing U.S. 8th-graders. The U.S. score gap was larger than the corresponding score gaps in 24 education systems and smaller than the gaps in 4 education systems. Score gaps ranged from 175 points (the lowest) in Moscow City (Russia) to 359 points (the largest) in Abu Dhabi (United Arab Emirates).</p>
+<p><sup><a href="#fr5" name="fn5">1</a></sup> Benchmarking systems are able to participate in TIMSS even though they may not be members of the IEA. Participating allows them the opportunity to assess their students’ achievement and to evaluate their curricula in an international context.<br />
+<sup><a href="#fr6" name="fn6">2</a></sup> TIMSS scores are reported on a scale from 0 to 1,000, with a scale centerpoint set at 500 and the standard deviation set at 100. The TIMSS scale centerpoint represents the mean of the overall achievement distribution in 1995. The TIMSS scale is the same in each administration; thus, a value of 500 in 2019 equals 500 in 1995 when that was the international average.</p>
+<p style="background-color:#DFE6EB ; padding: 1em;"><strong>SOURCE:</strong> National Center for Education Statistics. (2021). International Comparisons: Mathematics and Science Achievement at Grades 4 and 8. <em>The Condition of Education</em>. U.S. Department of Education, Institute of Education Sciences. Retrieved from <a href="/programs/coe/indicator/cnt">https://nces.ed.gov/programs/coe/indicator/cnt</a>.</p></p>
+			
+		<p><span class="newheads">Related Tables and Figures:</span>&nbsp;&nbsp;<strong>(Listed by Release Date)</strong></p>
+		<ul>
+
+		<li><a href="/programs/digest/d22/tables/dt22_602.50.asp">2023, Digest of Education Statistics 2022, Table 602.50. Average reading literacy scores of 15-year-old students and percentage attaining reading literacy proficiency levels, by country or other education system: 2018</a><br /></li>
+		<li><a href="https://nces.ed.gov/surveys/pisa/pisa2022/mathematics/international-comparisons/">2022, PISA 2022 First Look Report, Table M1. Average scores of 15-year-old students on the PISA mathematics literacy scale, by education system: 2022</a><br /></li>
+		<li><a href="https://nces.ed.gov/surveys/pisa/pisa2022/reading/international-comparisons/">2022, PISA 2022 First Look Report, Table R1. Average scores of 15-year-old students on the PISA reading literacy scale, by education system: 2022</a><br /></li>
+		<li><a href="https://nces.ed.gov/surveys/pisa/pisa2022/science/international-comparisons/">2022, PISA 2022 First Look Report, Table S1. Average scores of 15-year-old students on the PISA science literacy scale, by education system: 2022</a><br /></li>
+		<li><a href="/programs/digest/d19/tables/dt19_602.60.asp">2021, Digest of Education Statistics 2019, Table 602.60. Average mathematics literacy scores of 15-year-old students and percentage attaining mathematics literacy proficiency levels, by country or other education system: 2018</a><br /></li>
+		<li><a href="/programs/digest/d19/tables/dt19_602.70.asp">2021, Digest of Education Statistics 2019, Table 602.70. Average science literacy scores of 15-year-old students and percentage attaining science literacy proficiency levels, by country or other education system: 2018</a><br /></li>
+		<li><a href="/timss/results19/table/FMI/timss2019_math_m2a.xlsx">2019, TIMSS 2019 U.S. Highlights Web Report, Table M2a. Average scores and 10th and 90th percentile scores of 4th-grade students on the TIMSS mathematics scale and percentile score gaps, by education system: 2019</a><br /></li>
+		<li><a href="https://nces.ed.gov/timss/results19/table/FMI/timss2019_math_m2b.xlsx">2019, TIMSS 2019 U.S. Highlights Web Report, Table M2b. Average scores and 10th and 90th percentile scores of 8th-grade students on the TIMSS mathematics scale and percentile score gaps, by education system: 2019</a><br /></li>
+		<li><a href="https://nces.ed.gov/timss/results19/table/FMI/timss2019_science_s2a.xlsx">2019, TIMSS 2019 U.S. Highlights Web Report, Table S2a. Average scores and 10th and 90th percentile scores of 4th-grade students on the TIMSS science scale and percentile score gaps, by education system: 2019</a><br /></li>
+		<li><a href="https://nces.ed.gov/timss/results19/table/FMI/timss2019_science_s2b.xlsx">2019, TIMSS 2019 U.S. Highlights Web Report, Table S2b. Average scores and 10th and 90th percentile scores of 8th-grade students on the TIMSS science scale and percentile score gaps, by education system: 2019</a><br /></li>
+</ul>
+
+
+
+
+
+
+
+		<p><span class="newheads">Other Resources:</span>&nbsp;&nbsp;<strong>(Listed by Release Date)</strong></p>
+		<ul>
+
+
+
+<li><a href="/surveys/international/">2024, International Activities Program (IAP): This page provides a compilation of indicators from a multitude of data sources with a rich array of information on the current state of education internationally.</a><br /></li>
+
+<li><a href="/surveys/pisa/">2024, Program for International Student Assessment (PISA): This site provides access to publications and data that focus on 15-year-olds' capabilities in reading literacy, mathematics literacy, and science literacy.</a><br /></li>
+
+<li><a href="/surveys/pirls/">2024, Progress in International Reading Literacy Study (PIRLS): This site features publications and data on the comparative study of the reading literacy of 4th grade students.</a><br /></li>
+
+<li><a href="/timss">2024, Trends in International Mathematics and Science Study (TIMSS): This site provides access to publications and data on the mathematics and science achievement of U.S. 4th- and 8th-grade students.</a><br /></li>
+
+<li><a href="/pubsearch/pubsinfo.asp?pubid=2023115">2023, Highlights of PISA 2022 U.S. Results: This web report provides key comparative information on the reading, mathematics, and science literacy performance of 15-year-old students in the United States.</a><br /></li>
+
+<li><a href="/transfer.asp?sec=true&location=www.oecd.org/education/education-at-a-glance/">2023, Organization for Economic Cooperation and Development, Education at a Glance 2023: This report contains information from the OECD on the state of education around the world.</a><br /></li>
+
+<li><a href="/surveys/pirls/pirls2021/index.asp">2023, PIRLS 2021 U.S. Highlights: Explore selected findings from U.S. participation in PIRLS 2021.</a><br /></li>
+
+<li><a href="/blogs/nces/post/new-international-data-show-large-and-widening-gaps-between-high-and-low-performing-u-s-4th-and-8th-graders-in-mathematics-and-science">2021, NCES Blog, New International Data Show Large and Widening Gaps Between High- and Low-Performing U.S. 4th- and 8th-Graders in Mathematics and Science</a><br /></li>
+
+<li><a href="/timss/results19/index.asp#/math/intlcompare">2021, TIMSS 2019 U.S. Results: Explore how U.S. 4th- and 8th-grade students' mathematics and science performance compared internationally in 2019.</a><br /></li>
+
+<li><a href="https://nces.ed.gov/blogs/nces/post/new-data-from-the-trends-in-international-mathematics-and-science-study">2017, NCES Blog, New Data From the Trends in International Mathematics and Science Study</a><br /></li>
+
+<li><a href="http://nces.ed.gov/pubsearch/pubsinfo.asp?pubid=2016100">2015, Comparative Indicators of Education in the United States and Other G-20 Countries: 2015</a><br /></li>
+</ul>
+
+<br />
+
+		
+			
+
+</div>
+
+
+<!-- Content of Page Ends Here -->	
+
+
+
+
+	<script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+<!-- End Body -->
+
+
+</div>
+
+
+<ies-footer></ies-footer>
+</body>
+</html><script id="f5_cspm">(function(){var f5_cspm={f5_p:'CPHPNJKOEAMBAFAMBANDBKJGDEIENLFFOANANNNMBENNDDNHAIDLBMIINOPMNNLGCKKBHJOEAAODEHMAKHKAILJOAAJMCKJJPJAANOLGMHABOIAJLPJPIOCKNOKNGFIC',setCharAt:function(str,index,chr){if(index>str.length-1)return str;return str.substr(0,index)+chr+str.substr(index+1);},get_byte:function(str,i){var s=(i/16)|0;i=(i&15);s=s*32;return((str.charCodeAt(i+16+s)-65)<<4)|(str.charCodeAt(i+s)-65);},set_byte:function(str,i,b){var s=(i/16)|0;i=(i&15);s=s*32;str=f5_cspm.setCharAt(str,(i+16+s),String.fromCharCode((b>>4)+65));str=f5_cspm.setCharAt(str,(i+s),String.fromCharCode((b&15)+65));return str;},set_latency:function(str,latency){latency=latency&0xffff;str=f5_cspm.set_byte(str,40,(latency>>8));str=f5_cspm.set_byte(str,41,(latency&0xff));str=f5_cspm.set_byte(str,35,2);return str;},wait_perf_data:function(){try{var wp=window.performance.timing;if(wp.loadEventEnd>0){var res=wp.loadEventEnd-wp.navigationStart;if(res<60001){var cookie_val=f5_cspm.set_latency(f5_cspm.f5_p,res);window.document.cookie='f5avr0382277293aaaaaaaaaaaaaaaa_cspm_='+encodeURIComponent(cookie_val)+';path=/;'+'';}
+return;}}
+catch(err){return;}
+setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
+{var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;'+';';setTimeout(f5_cspm.wait_perf_data,100);}}}}
+f5_cspm.go();}());</script>
