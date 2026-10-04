@@ -1,0 +1,295 @@
+{
+  "evidence_class": "CALIBRATION_FIRST_RUN_BURNED",
+  "candidate": "9f5d884b73e627e4c79cc442e0b129db673308e3",
+  "adjudicator": "single_research_lead",
+  "source_note": "QRC2-C03 remained an HTTP 403 failure and supplied no calibration text.",
+  "rows": [
+    {
+      "claim_id": "CAL-01",
+      "source_id": "QRC2-C01",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "missed_decision",
+      "families": [
+        "decrease",
+        "parenthetical"
+      ],
+      "claim": "Personal income decreased $109.6 billion (0.4 percent at a monthly rate) in May.",
+      "evidence": "Personal income decreased $109.6 billion (0.4 percent at a monthly rate) in May, according to estimates released today by the U.S. Bureau of Economic Analysis."
+    },
+    {
+      "claim_id": "CAL-02",
+      "source_id": "QRC2-C01",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "missed_decision",
+      "families": [
+        "direction"
+      ],
+      "claim": "Personal income increased $109.6 billion (0.4 percent at a monthly rate) in May.",
+      "evidence": "Personal income decreased $109.6 billion (0.4 percent at a monthly rate) in May, according to estimates released today by the U.S. Bureau of Economic Analysis."
+    },
+    {
+      "claim_id": "CAL-03",
+      "source_id": "QRC2-C01",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "kind": "missed_decision",
+      "families": [
+        "increase"
+      ],
+      "claim": "From the preceding month, the PCE price index for May increased 0.1 percent.",
+      "evidence": "From the preceding month, the PCE price index for May increased 0.1 percent."
+    },
+    {
+      "claim_id": "CAL-04",
+      "source_id": "QRC2-C01",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "evidence_not_a_quantity_relation",
+      "kind": "match",
+      "families": [
+        "measure"
+      ],
+      "claim": "From the preceding month, the PCE price index for May increased 0.1 percent.",
+      "evidence": "Excluding food and energy, the PCE price index increased 2.7 percent from one year ago."
+    },
+    {
+      "claim_id": "CAL-05",
+      "source_id": "QRC2-C01",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "kind": "match",
+      "families": [
+        "measure"
+      ],
+      "claim": "Wages and salaries in services-producing industries increased $35.9 billion.",
+      "evidence": "Wages and salaries in goods‑producing industries increased $7.5 billion."
+    },
+    {
+      "claim_id": "CAL-06",
+      "source_id": "QRC2-C02",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "missed_decision",
+      "families": [
+        "lower"
+      ],
+      "claim": "Those average price points are about 20 cents per gallon higher than in 2025.",
+      "evidence": "Both of those average price points are about 20 cents per gallon lower than in 2025. Uncertainties: All short-term forecasts are uncertain, but EIA’s petroleum forecasts are subject to heightened uncertainty related to supply-related risks. A break in the Israel-Iran ceasefire and elevated tensions or additional sanctions related to the Russia-Ukraine conflict could affect supply and could offset the supply growth from non-OPEC countries. The evolution of ongoing trade negotiations between the United States and its trading partners could affect economic and oil demand growth, which would affect oil prices. Lastly, the potential for OPEC+ to revisit production plans given the expectations of significant oversupply beginning later this year could affect future production and limit the downward pressure on oil prices. Natural gas prices: EIA continues to expect increases in U.S. natural gas prices as production remains relatively flat and exports of liquefied natural gas increase. EIA expects the Henry Hub natural gas spot price will rise from an average $3.20 per million British thermal units (MMBtu) in July to almost $3.60 per MMBtu in the second half of 2025 and $4.30 per MMBtu in 2026."
+    },
+    {
+      "claim_id": "CAL-07",
+      "source_id": "QRC2-C02",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "missed_decision",
+      "families": [
+        "higher",
+        "percent"
+      ],
+      "claim": "Coal production in 2025 is about 2% higher than last year.",
+      "evidence": "EIA expects coal production to reach 520 million short tons (MMst) in 2025, about 2% higher than last year."
+    },
+    {
+      "claim_id": "CAL-08",
+      "source_id": "QRC2-C02",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "missed_decision",
+      "families": [
+        "higher"
+      ],
+      "claim": "Coal production in 2025 is about 2% lower than last year.",
+      "evidence": "EIA expects coal production to reach 520 million short tons (MMst) in 2025, about 2% higher than last year."
+    },
+    {
+      "claim_id": "CAL-09",
+      "source_id": "QRC2-C02",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "missed_decision",
+      "families": [
+        "less_than_threshold"
+      ],
+      "claim": "The Brent crude oil spot price averages less than $60 per barrel in the fourth quarter of 2025.",
+      "evidence": "EIA expects the Brent crude oil spot price to average less than $60 per barrel in the fourth quarter of 2025—the first quarter with average prices that low since 2020. OPEC+ announced last week that it will unwind its oil production cuts by September 2025, which is a year ahead of its previous schedule. For the first time since EIA began publishing an OPEC+ production forecast in 2023, EIA expects most global oil production growth to come from OPEC+ countries. EIA forecasts the supply growth will outpace demand, leading to quickly growing inventories. “There’s a lot of uncertainty in the petroleum market. In the past, we have seen significant drops in oil price when inventories grow as quickly as we are expecting in the coming months,” said EIA Acting Administrator Steve Nalley"
+    },
+    {
+      "claim_id": "CAL-10",
+      "source_id": "QRC2-C02",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "missed_decision",
+      "families": [
+        "less_than_threshold"
+      ],
+      "claim": "The Brent crude oil spot price averages more than $60 per barrel in the fourth quarter of 2025.",
+      "evidence": "EIA expects the Brent crude oil spot price to average less than $60 per barrel in the fourth quarter of 2025—the first quarter with average prices that low since 2020. OPEC+ announced last week that it will unwind its oil production cuts by September 2025, which is a year ahead of its previous schedule. For the first time since EIA began publishing an OPEC+ production forecast in 2023, EIA expects most global oil production growth to come from OPEC+ countries. EIA forecasts the supply growth will outpace demand, leading to quickly growing inventories. “There’s a lot of uncertainty in the petroleum market. In the past, we have seen significant drops in oil price when inventories grow as quickly as we are expecting in the coming months,” said EIA Acting Administrator Steve Nalley"
+    },
+    {
+      "claim_id": "CAL-11",
+      "source_id": "QRC2-C04",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "acceptable_abstention",
+      "families": [
+        "higher",
+        "other_clause"
+      ],
+      "claim": "Female students scored 22 points higher than male students on the reading literacy scale.",
+      "evidence": "female students scored 22 points higher than male students on the reading literacy scale and male students scored 13 points higher than female students on the mathematics literacy scale."
+    },
+    {
+      "claim_id": "CAL-12",
+      "source_id": "QRC2-C04",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "match",
+      "families": [
+        "year"
+      ],
+      "claim": "In 2019, there were 5 education systems with higher average reading literacy scores for 15-year-olds than the United States.",
+      "evidence": "In 2022, there were 5 education systems with higher average reading literacy scores for 15-year-olds than the United States, 25 with higher mathematics literacy scores, and 9 with higher science literacy scores"
+    },
+    {
+      "claim_id": "CAL-13",
+      "source_id": "QRC2-C04",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "match",
+      "families": [
+        "non_quantity"
+      ],
+      "claim": "One or more PISA sampling standards were not met.",
+      "evidence": "One or more PISA sampling standards were not met in the following countries: Australia, Canada, Denmark, Hong Kong (China), Ireland, Jamaica, Latvia, Netherlands, New Zealand, Panama, United Kingdom, and United States"
+    },
+    {
+      "claim_id": "CAL-14",
+      "source_id": "QRC2-C04",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "kind": "acceptable_abstention",
+      "families": [
+        "higher",
+        "competing_cues"
+      ],
+      "claim": "Fourteen education systems had higher average mathematics scores than the United States.",
+      "evidence": "Fourteen education systems had higher average mathematics scores than the United States, 7 had scores that were not measurably different, and 42 education systems had lower average scores."
+    }
+  ],
+  "defect": "The frozen binder missed ordinary natural forms: a parenthetical percent with words inside the parentheses, a copula-free higher/lower/less-than, and an increase whose subject is not a possessive. It recorded zero false deciding results. This cohort is burned and is not a confirmation set.",
+  "false_decisions": 0,
+  "missed_decisions": 8
+}
