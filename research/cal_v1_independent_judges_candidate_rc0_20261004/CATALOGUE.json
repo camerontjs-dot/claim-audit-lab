@@ -1,0 +1,50 @@
+{
+  "schema": "cal-independent-judges-rc0-catalogue",
+  "status": "BOUNDED_RESEARCH_CATALOGUE_NOT_EXHAUSTIVE",
+  "processes": [
+    {
+      "process_id": "kernel_legacy",
+      "role": "relation",
+      "module": "kernel_lane.py",
+      "authority": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+      "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+      "qualification": "REUSE_OF_FROZEN_KERNEL_LANE_NOT_A_NEW_QUALIFICATION",
+      "production_status": "research-wrapper-around-unchanged-kernel"
+    },
+    {
+      "process_id": "original_relation",
+      "role": "relation",
+      "module": "comparison_relation.py",
+      "authority": "this-candidate",
+      "qualification": "UNQUALIFIED_SYNTHETIC_DISCRIMINATOR",
+      "production_status": "research"
+    },
+    {
+      "process_id": "scope_guard",
+      "role": "guard",
+      "module": "constraint_guard.py",
+      "authority": "this-candidate",
+      "qualification": "UNQUALIFIED_SYNTHETIC_DISCRIMINATOR",
+      "production_status": "research"
+    },
+    {
+      "process_id": "event_order",
+      "role": "relation",
+      "module": "event_order.py",
+      "authority": "this-candidate",
+      "qualification": "UNQUALIFIED_SYNTHETIC_DISCRIMINATOR",
+      "production_status": "research"
+    }
+  ],
+  "unimplemented_families": [
+    "deontic_norm",
+    "population_membership",
+    "scalar_value",
+    "event_occurrence",
+    "attribute_state",
+    "typed_binary_relation",
+    "causal_relation"
+  ],
+  "unimplemented_status": "UNIMPLEMENTED",
+  "dependence_note": "original_relation and scope_guard do not import each other. Both are same-author deterministic text checks exposed to the same seeds, so agreement between them is not an independent replication. scope_guard weight is zero. No model is shared because no model is called."
+}

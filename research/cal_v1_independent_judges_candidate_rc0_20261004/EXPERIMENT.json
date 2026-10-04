@@ -1,0 +1,16 @@
+{
+  "schema": "cal-research-experiment-rc0",
+  "experiment_id": "cal-v1-independent-judges-rc0-20261004",
+  "state": "designed",
+  "candidate_id": "cal-v1-independent-judges-candidate-rc0-20261004",
+  "study_type": "architecture_discriminator",
+  "evidence_layer": "exposed_synthetic_seeds_plus_process_isolation",
+  "question": "Do original-input isolated lanes decide scoped synthetic comparisons the frozen authoring grammar refuses, without turning mismatch, conflict, attribution, or missing evidence into decisions?",
+  "protocol": "research/cal_v1_independent_judges_rc0_20261004/RC0_PROTOCOL.md",
+  "expectations": "EXPECTATIONS.json",
+  "policy": "POLICY.json",
+  "primary_factor": "input_isolation_and_lane_catalogue",
+  "metric": "deciding_outcome_against_preregistered_seed_labels",
+  "unit_of_analysis": "synthetic_seed_case",
+  "arms": ["routed_kernel", "shared_lossy", "original_input"]
+}
