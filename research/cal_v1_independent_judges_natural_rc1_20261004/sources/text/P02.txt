@@ -1,0 +1,138 @@
+Visitor Use Data - Social Science (U.S. National Park Service)
+An official website of the United States government
+Here's how you know
+Here's how you know
+Official websites use .gov
+A
+.gov website belongs to an official government
+organization in the United States.
+Secure .gov websites use HTTPS
+A
+lock (
+Lock
+Locked padlock icon
+) or https:// means you've safely connected to
+the .gov website. Share sensitive information only on official,
+secure websites.
+Skip to global NPS navigation
+Skip to the main content
+Skip to the footer section
+National Park Service
+Search
+Search
+This Site
+All NPS
+Open
+Menu
+Close
+Menu
+Explore This Park
+Explore the National Park Service
+Exiting nps.gov
+Cancel
+Social Science
+Contact Us
+Visitor Use Data
+Need to Know
+Program Overview
+History & Policy
+Visitor Use Definitions
+FAQs
+Annual Visitation Statistics Release
+Annual visitor use statistics are released during the first quarter of the following calendar year. On this page you will find
+A quick highlight of the most recent published data
+An overview of the three main options for accessing visitor use data
+Dashboard (quick visuals to see trends at national or park levels)
+Data Portal (also known as IRMA, comprehensive tables and reports - this is the best option for exporting data)
+Abstract (PDF document available for each calendar year of reporting - useful for references and citations)
+An overview of data limiations and considerations
+For questions or assistance, please reach out the Visitor Use Statistics Staff.
+On This Page Navigation
+2025 Visitation At-A-Glance
+The National Park Service reported 323 million recreation visits in calendar year 2025.
+This is a decrease of 8.85 million recreation visits, or 2.7%, from the record year in 2024.
+406 of the 433 National Park System units report visitor use.
+Two new parks began reporting in 2024.
+Recreation visitor hours were 1.39 billion; a decrease of 0.7% from 2024.
+There was a 2.4% decrease from 2024 for overnight stays. 26 parks, 6% of reporting parks, set a record for annual recreation visits.
+Park Unit Type
+Percent of Total Visits
+Miscellaneous
+5%
+National Historic Site
+2%
+National Historical Park
+9%
+National Memorial
+11%
+National Monument
+6%
+National Park
+29%
+National Parkway
+10%
+National Preserve
+2%
+National Recreation Area
+15%
+National Seashore
+7%
+National Scenic Trail
+2%
+Park (Other)
+2%
+Note: Miscellaneous includes those designations under the National Park System but not broken out in this figure: international historic site, national battlefield, national battlefield park, national lakeshore, national military park, national reserve, national river, and national wild & scenic river.
+Visitor Use Statistics Dashboard
+This dashboard includes simple line chart visualizations for the 11 official visitor use statistics. Visuals can be viewed at the monthly or annual level, and filters can be applied to see data for a specific park or designation. The data span from the most recently reported year back to 1979, the year in which every park unit began reporting monthly data for all 11 statistics. Prior to that time, only annual recreation visits are consistently available.
+Visitor Use Statistics Data Portal
+The NPS Visitor Use Statistics Program maintains a large data set with annual recreation visit estimates from 1904-1978 and monthly visitation estimates from 1979 to present. Electronic database records for all inputs and outputs have been kept since the early 1990s.
+All Visitor Use Statistics data are housed within the Integrated Resource Management Applications (IRMA) Portal. Users can chose from a set of standard reports to view aggregated national level data, or park specific data.
+Custom Query Builders
+For a quicker more custom approach, try the Query Builder Tool, which is also available on the National Reports page in IRMA. This tool will allow users to select the years, statistics, and parks of interest, and offers the option to include some additional fields such as legacy region and unit designation.
+As noted in the data limitations there was a shift in what data were collected in 1979 so there are separate query builders based on that delineation point.
+Query Builder for Historic Annual Recreation Visits (1904 - 1979)
+Query Builder for Visitor Use Statistics (1979 - Last Calendar Year)
+Statistical Abstract
+The Statistics Abstract is a PDF document containing a series of tables and figures that display visitor use data for the most recently reported year. By documenting these visits across the National Park System, the National Park Service (NPS) Statistical Abstract offers a historical record of visitor use in parks and provides NPS staff and partners with a useful tool for effective management and planning. This is also a useful tool for academics and researchers in need of references and citations for publications.
+The abstract is typically published mid calendar year, so there is a delay of several months between the publishing of a year's numbers and the release of the respective year's Statistical Abstract.
+Download the 2024 Statistical Abstract.
+Data Limitations and Considerations
+There are several ways to access Visitor Use Statistics data. Regardless of how you choose to access the data, it does have its limitations. Please read through the following list prior to using data ensure appropriate usage and interpretation.
+Current Year Data Warning!
+Current year data are preliminary and must be thoroughly reviewed by the Social Science Program prior to being considered final. For that reason, most data are available only through last calendar year. If electing to use current year data, please use caution as it may not be complete or controlled for quality.
+Reporting Changes
+The way visitor use statistics have been tracked and reported has changed over time. More information related to these shifts is available on the History and Policy page, but here is a quick guide to what data is available for different time periods:
+1904-1979 | Annual recreation visits
+1979-1992 | Annual and monthly values for the 11 official statistics
+1992-Present | Same as previous with addition of park level data inputs used to calculate official statistics.
+Count Procedure Changes
+Parks change their methods for tracking and calculating visitor use stats from time to time. This can result in trend shift in the years following a change.
+Varying degrees of data quality
+Park operations and usage by visitors changes over time for most parks. Updating counting methods can take a great deal of time and financial resources for the park, making it challenging to keep measurement systems completely current and accurate.
+Parks also must sometimes rely on estimated data due to equipment failures, staffing limitations, and unforeseeable circumstances such as the COVID-19 pandemic and natural disasters.
+Rounding Difference
+Depending on the data source, data users may notice slight rounding discrepancies across different reports.
+Potential Errors
+Once the calendar year is over and data for a given year is finalized, no changes to the underlying values can be made. Some parks' data may contain permanent errors. Errors are noted in the Endnotes of the Annual Statistical Abstracts.
+Need Help?
+If you're still not able to find what you are looking for in the Visitor Use Statistics Data Portal, reach out to the Visitor Use Statistics Staff to inquire.
+Last updated: March 26, 2026
+Tools
+Site Index
+This Site
+All NPS
+Experience Your America.
+Download the NPS app to navigate the parks on the go.
+Accessibility
+Privacy Policy
+FOIA
+Notices
+Contact The National Park Service
+NPS FAQ
+No Fear Act
+Disclaimer
+Vulnerability Disclosure Policy
+USA.gov
+Office of Civil Rights
+Looking for U.S. government information and services?
+Visit USA.gov

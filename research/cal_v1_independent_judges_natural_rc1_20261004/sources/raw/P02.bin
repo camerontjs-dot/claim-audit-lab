@@ -1,0 +1,1294 @@
+<!doctype html> <html lang="en" class="no-js"> <!-- Content Copyright National Park Service -->
+<!-- JavaScript & DHTML Code Copyright &copy; 1998-2025, PaperThin, Inc. All Rights Reserved. --> <head> <meta content="IE=edge" http-equiv="X-UA-Compatible"> <title>Visitor Use Data - Social Science (U.S. National Park Service)</title> <script>
+var jsDlgLoader = '/subjects/socialscience/loader.cfm';
+var jsSiteResourceLoader = '/cs-resources.cfm?r=';
+var jsSiteResourceSettings = {canCombine: false, canMinify: false};
+</script>
+<!-- beg (1) PrimaryResources -->
+<script src="/ADF/thirdParty/jquery/jquery-3.6.js"></script><script src="/ADF/thirdParty/jquery/migrate/jquery-migrate-3.4.js"></script><script src="/commonspot/javascript/browser-all.js"></script>
+<!-- end (1) PrimaryResources -->
+<!-- beg (2) SecondaryResources -->
+<!-- end (2) SecondaryResources -->
+<!-- beg (3) StyleTags -->
+<link rel="stylesheet" href="/common/commonspot/templates/assets/css/commonspotRTE.css" type="text/css" />
+<!-- end (3) StyleTags -->
+<!-- beg (4) JavaScript -->
+<script>
+<!--
+var gMenuControlID = 0;
+var menus_included = 0;
+var jsSiteID = 1;
+var jsSubSiteID = 30417;
+var js_gvPageID = 7478940;
+var jsPageID = 7478940;
+var jsPageSetID = 0;
+var jsPageType = 0;
+var jsSiteSecurityCreateControls = 0;
+var jsShowRejectForApprover = 1;
+// -->
+</script><script>
+var jsDlgLoader = '/subjects/socialscience/loader.cfm';
+var jsSiteResourceLoader = '/cs-resources.cfm?r=';
+var jsSiteResourceSettings = {canCombine: false, canMinify: false};
+</script>
+<!-- end (4) JavaScript -->
+<!-- beg (5) CustomHead -->
+<!-- override SubjectSite from Subject Generic Page-->
+<meta charset="utf-8">
+<link href="/common/commonspot/templates/images/icons/favicon.ico" rel="shortcut icon">
+<meta name="description" content="Visitor Use Data">
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if gt IE 8]>
+<script src="/common/commonspot/templates/assets/js/app.early.min.js?v=20230112"></script>
+<link href="/common/commonspot/templates/assets/css/split-css/main.min.css?v=2rpz-n03cpj" media="screen, print" rel="stylesheet">
+<link href="/common/commonspot/templates/assets/css/split-css/main-min-blessed1.css" media="screen, print" rel="stylesheet">
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="/common/commonspot/templates/assets/js/app.early.min.js?v=20230112"></script>
+<link href="/common/commonspot/templates/assets/css/split-css/main.min.css?v=2rpz-n03cpj" media="screen, print" rel="stylesheet">
+<link href="/common/commonspot/templates/assets/css/split-css/main-min-blessed1.css" media="screen, print" rel="stylesheet">
+<![endif]-->
+<!--[if !IE]> -->
+<script src="/common/commonspot/templates/assets/js/app.early.min.js?v=20230112"></script>
+<link href="/common/commonspot/templates/assets/css/main.min.css?v=20230112" media="screen, print" rel="stylesheet">
+<!-- <![endif]-->
+<link href='//fonts.googleapis.com/css?family=Open+Sans:700,600,400|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+<link rel="manifest" href="/manifest.json" crossorigin="use-credentials" />
+<meta name="apple-itunes-app" content="app-id=1549226484, app-argument=https://apps.apple.com/us/app/national-park-service/id1549226484">
+<style>
+table#cs_idLayout2,
+table#cs_idLayout2 > tbody,
+table#cs_idLayout2 > tbody > tr,
+table#cs_idLayout2 > tbody > tr >  td
+{
+display: block;
+border-collapse:separate;
+}
+</style>
+<script src='/common/commonspot/templates/js/federated-analytics-uav1.js?ver=true&agency=DOI&subagency=NPS&exts=rtf,odt,ods,odp,brf&dclink=true&enhlink=true' id='_fed_an_ua_tag'></script>
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Visitor Use Data - Social Science (U.S. National Park Service)" />
+<meta property="og:url" content="https://www.nps.gov/subjects/socialscience/visitor-use-statistics-dashboard.htm" />
+<meta property="og:description" content="Visitor Use Data" />
+<!-- end (5) CustomHead -->
+<!-- beg (6) TertiaryResources -->
+<meta property="og:image" content="https://www.nps.gov/subjects/socialscience/images/Figure-1-from-2025-Abstract.jpg" /><meta property="og:image:height" content="1850" /><meta property="og:image:width" content="2183" /><meta property="og:image:alt" content="a colorful donut chart with segments sized to reflect percent totals" />
+<!-- end (6) TertiaryResources -->
+<!-- beg (7) authormode_inlinestyles -->
+<link rel="stylesheet" type="text/css" href="/commonspot/commonspot.css" id="cs_maincss">
+<!-- end (7) authormode_inlinestyles -->
+</head><body class="SubjectSite"><span role="navigation" aria-label="Top of page" id="__topdoc__"></span>
+<section
+class="usa-banner"
+aria-label="Official website of the United States government"
+>
+<div class="usa-accordion">
+<header class="usa-banner__header">
+<div class="usa-banner__inner">
+<div class="grid-col-auto">
+<img
+aria-hidden="true"
+class="usa-banner__header-flag"
+src="/common/commonspot/templates/assets/icon/us_flag_small.png"
+alt=""
+/>
+</div>
+<div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+<p class="usa-banner__header-text">
+An official website of the United States government
+</p>
+<p class="usa-banner__header-action">Here's how you know</p>
+</div>
+<button
+type="button"
+class="usa-accordion__button usa-banner__button"
+aria-expanded="false"
+aria-controls="gov-banner-default"
+>
+<span class="usa-banner__button-text">Here's how you know</span>
+</button>
+</div>
+</header>
+<div
+class="usa-banner__content usa-accordion__content"
+id="gov-banner-default"
+>
+<div class="grid-row grid-gap-lg">
+<div class="usa-banner__guidance tablet:grid-col-6">
+<img
+class="usa-banner__icon usa-media-block__img"
+src="/common/commonspot/templates/assets/icon/icon-dot-gov.svg"
+role="img"
+alt=""
+aria-hidden="true"
+/>
+<div class="usa-media-block__body">
+<p>
+<strong>Official websites use .gov</strong><br />A
+<strong>.gov</strong> website belongs to an official government
+organization in the United States.
+</p>
+</div>
+</div>
+<div class="usa-banner__guidance tablet:grid-col-6">
+<img
+class="usa-banner__icon usa-media-block__img"
+src="/common/commonspot/templates/assets/icon/icon-https.svg"
+role="img"
+alt=""
+aria-hidden="true"
+/>
+<div class="usa-media-block__body">
+<p>
+<strong>Secure .gov websites use HTTPS</strong><br />A
+<strong>lock</strong> (
+<span class="icon-lock"
+><svg
+xmlns="http://www.w3.org/2000/svg"
+width="52"
+height="64"
+viewBox="0 0 52 64"
+class="usa-banner__lock-image"
+role="img"
+aria-labelledby="banner-lock-description-default"
+focusable="false"
+>
+<title id="banner-lock-title-default">Lock</title>
+<desc id="banner-lock-description-default">Locked padlock icon</desc>
+<path
+fill="#000000"
+fill-rule="evenodd"
+d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
+/>
+</svg> </span
+>) or <strong>https://</strong> means you've safely connected to
+the .gov website. Share sensitive information only on official,
+secure websites.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!--googleoff: index-->
+<div tabindex="-1" id="beforeSkipLinks" ></div>
+<div class="skip-links" aria-label="short-cut links" role="navigation">
+<ul>
+<li><a href="#GlobalNav-toggle" aria-label="Skip to global NPS navigation">Skip to global NPS navigation</a></li>
+<li><a href="#main" aria-label="Skip to the main content">Skip to the main content</a></li>
+<li><a href="#GlobalFooter" aria-label="Skip to the footer section">Skip to the footer section</a></li>
+</ul>
+</div>
+<!--googleon: index-->
+<!--googleoff: index-->
+<div class="AnniversaryBanner" id="anniversary_banner" data-sitecode="socialscience" data-sitetype="subject"></div>
+<div class="PromoBanner"></div>
+<!--googleon: index-->
+<!--googleoff: index-->
+<div class="GlobalHeader usaGlobalHeader" role="banner">
+<div class="GlobalHeader__Navbar container ">
+<a class="GlobalHeader__Branding link-white" href="/">
+<img src="/theme/assets/dist/images/branding/logo.png"
+alt=""
+width="80"
+height="106"
+class="GlobalHeader__Branding__Arrowhead img-fluid">
+<span class="GlobalHeader__Branding__Text">
+National Park Service
+</span>
+</a>
+<a href="#GlobalFooterSearchInput"
+class="GlobalHeader__FooterSearchLink js-scrollTo link-white">
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#search" />
+</svg>
+<span class="visually-hidden">Search</span>
+</a>
+<form id="GlobalHeaderSearch"
+class="GlobalHeader__Search"
+action="/search/"
+method="GET"
+role="search">
+<button type="button"
+data-bs-toggle="collapse"
+data-bs-target="#GlobalHeaderSearchCollapse"
+aria-expanded="false"
+aria-controls="GlobalHeaderSearchCollapse">
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#search" />
+</svg>
+Search
+</button>
+<div id="GlobalHeaderSearchCollapse"
+class="collapse collapse-horizontal"
+role="presentation">
+<div>
+<input class="form-control me-2"
+type="text"
+autocomplete="off"
+name="query"
+placeholder="Keyword Search"
+required
+aria-label="Search text">
+<div class="GlobalSearch-suggestions"></div>
+<button class="usa-button usa-button--outline usa-button--inverse me-2" data-scope="site" type="submit">
+This Site
+</button>
+<button class="usa-button usa-button--outline usa-button--inverse" data-scope="all" type="submit">
+All NPS
+</button>
+</div>
+</div>
+<input type="hidden"
+name="sitelimit"
+value="www.nps.gov/subjects/socialscience">
+<input type="hidden" name="affiliate" value="nps">
+</form>
+</div>
+<nav id="GlobalNav" class="GlobalNav usaGlobalNav">
+<div id="GlobalNavButtonContainer" class="usaGlobalNavButtonContainer">
+<button type="button"
+id="GlobalNav-toggle"
+class="usa-button usa-button--inverse-fill"
+data-bs-toggle="collapse"
+data-bs-target="#GlobalNavCollapse"
+aria-controls="GlobalNavCollapse"
+aria-expanded="false"
+aria-label="Open Menu">
+<span class="GlobalNav__Toggle__Text GlobalNav__Toggle__Text--closed">
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#menu" />
+</svg>
+<span class="visually-hidden">Open</span>
+Menu
+</span>
+<span class="GlobalNav__Toggle__Text GlobalNav__Toggle__Text--open">
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#close" />
+</svg>
+Close
+<span class="visually-hidden">Menu</span>
+</span>
+</button>
+</div>
+<div id="GlobalNavCollapse" class="collapse">
+<div class="container">
+<p class="GlobalNav__LanguageInfo">
+</p>
+<h2 class="GlobalNav__SectionHeading GlobalNav__SectionHeading--green" hidden>
+Explore This Park
+</h2>
+<ul id="GlobalNavListLocal" class="GlobalNav__List" hidden></ul>
+<h2 class="GlobalNav__SectionHeading GlobalNav__SectionHeading--blue">
+Explore the National Park Service
+</h2>
+<ul id="GlobalNavList" class="GlobalNav__List"></ul>
+</div>
+</div>
+</nav>
+</div>
+<!--googleon: index-->
+<div id="myModal" class="modal refreshableModal" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h2 class="modal-title visually-hidden" id="exitModalLabel">Exiting nps.gov</h2>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body"></div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+<div id="cs_control_481716" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_BannerContainer"><div id="gridRow_1_1_481716" class="cs_GridRow"><div id="gridCol_1_1_1_1_481716" class="cs_GridColumn"><div id="cs_control_828672" class="cs_control CS_Element_CustomCF"><div id="CS_CCF_7478940_828672">
+<script>
+window.addEventListener('load', (event) => {
+NPS.utility.updateBannerImageFromJSON( "socialscience" );
+});
+</script>
+<header id="HERO" class="Hero Hero--Ribbon -secondary">
+<div id="HeroBanner" class="HeroBanner ">
+<div class="HeroBanner__TitleContainer">
+<div class="container">
+<a href="&#x2f;subjects&#x2f;socialscience&#x2f;"
+class="HeroBanner__Title"
+>Social Science</a>
+</div>
+</div>
+<div class="picturefill-background"
+role="img"
+style="background-image: url('/common/uploads/banner_image/nri/secondary/45AB0E20-1DD8-B71B-0BB513F95889FD16.jpg?mode=crop&quality=90&width=1024&height=200');background-position 50% 0%;" aria-label="A campsite enjoys the sunset at Great Sand Dunes National Park in Colorado.">
+<span data-src="/common/uploads/banner_image/nri/secondary/45AB0E20-1DD8-B71B-0BB513F95889FD16.jpg?mode=crop&quality=90&width=1200&height=200"
+data-media="(min-width: 1024px)"></span>
+<span data-src="/common/uploads/banner_image/nri/secondary/45AB0E20-1DD8-B71B-0BB513F95889FD16.jpg?mode=crop&quality=90&width=2400&height=400"
+data-media="(min-width: 1024px) and (min-resolution: 144dppx)"></span>
+<span data-src="/common/uploads/banner_image/nri/secondary/45AB0E20-1DD8-B71B-0BB513F95889FD16.jpg?mode=crop&quality=90&width=2400&height=400"
+data-media="(min-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5)"></span>
+<span data-src="/common/uploads/banner_image/nri/secondary/45AB0E20-1DD8-B71B-0BB513F95889FD16.jpg?mode=crop&quality=90&width=2400&height=400"
+data-media="(min-width: 1440px)"></span>
+</div>
+</div>
+</header>
+</div></div><div id="cs_control_481828" class="cs_control CS_Element_CustomCF"><div id="CS_CCF_7478940_481828"> </div></div></div></div></div></div>
+<div id="Subject-header">
+<div class="container">
+<div class="pull-left">
+<!--googleoff: index-->
+<nav id="LocalNav-desktop-nav" role="navigation">
+<div id="cs_control_699042" class="cs_control CS_Element_CustomCF"><div id="CS_CCF_7478940_699042"><div id="cs_control_481717" class="cs_control CS_Element_Custom"><!-- _CSDPFID=7478940|7478940=_CSDPFID -->
+<style type="text/css">
+div.ColumnMain #npsNav h2 { display:none }
+</style>
+<!-- nav -->
+<!--googleoff: index-->
+<div id="npsNav" class="DCA33DCB-BC3B-97BA-C5F91A761A5E7F53">
+<ul id="LocalNav" class="sm sm-nps"></ul>
+</div>
+<!--googleon: index-->
+<script>
+jQuery(document).ready(function() {
+NPS.display.outputNav('/subjects/socialscience','/subjects/socialscience/visitor-use-statistics-dashboard.htm','read');
+});
+</script>
+</div></div></div>
+</nav>
+<!--googleon: index-->
+<script>
+(function ($) {
+// Hide park home
+$("#LocalNav-desktop-nav ul li a:contains('Park Home')")
+.parent()
+.hide();
+// Hide park home
+$("li#LocalNav-mobile ul li a:contains('Park Home')")
+.parent()
+.hide();
+$("ul#LocalNav > li > a")
+.wrap("<div class='top-lvl-item-container'>")
+.wrap("<div class='top-lvl-item'>");
+})(jQuery);
+</script>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+setTimeout( function() {
+NPS.display.showAdminTools( 0 );
+} ,10);
+});
+</script>
+<div id="main" role="main" class="MainContent">
+<style>
+#modal-contact-us .modal-body { padding-top: 0px; }
+.modal-header { border:none; }
+</style>
+<div class="modal fade" id="modal-contact-us" tabindex="-1" aria-labelledby="modal-contact-us-label">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title visually-hidden" id="modal-contact-us-label">Contact Us</h4>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+<iframe frameborder="0" id="modal-contact-us-iframe" width="100%" height="100%" title="Contact Us"></iframe>
+</div>
+</div>
+</div>
+</div>
+<div id="adminTools"></div>
+<div class="container">
+<div class="ColumnGrid row">
+<!--googleoff: index-->
+<div class="container">
+<nav class="usa-breadcrumb" aria-label="Breadcrumbs" style="display: none;">
+<ol id="breadcrumbs" class="usa-breadcrumb__list"></ol>
+</nav>
+</div>
+<!--googleon: index-->
+<div class="ColumnMain col-sm-12">
+<div class="ContentHeader text-content-size">
+<h1 class="page-title">Visitor Use Data</h1>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="cs_control_536382" class="cs_control CS_Element_Schedule"><div  title="" id="CS_Element_contentcontainer"><div id="gridRow_1_1_536382" class="cs_GridRow"><div id="gridCol_1_1_1_1_536382" class="cs_GridColumn"><div id="cs_control_7478946" class="cs_control CS_Element_Custom">
+<div class="ImportantLinks">
+<div class="row mb-5">
+<div class="col-sm-6 col-md-4 col-lg-3 order-sm-last">
+<div class="Component FourthLevelNav">
+<h3 class="FourthLevelNav-title">Need to Know</h3>
+<ul>
+<li>
+<a href="/subjects/socialscience/visitor-use-statistics.htm" class="FourthLevelNav-link">
+<span>Program Overview</span>
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#navigate_next" />
+</svg>
+</a>
+</li>
+<li>
+<a href="/subjects/socialscience/statistics-history.htm" class="FourthLevelNav-link">
+<span>History & Policy</span>
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#navigate_next" />
+</svg>
+</a>
+</li>
+<li>
+<a href="/subjects/socialscience/nps-visitor-use-statistics-definitions.htm" class="FourthLevelNav-link">
+<span>Visitor Use Definitions</span>
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#navigate_next" />
+</svg>
+</a>
+</li>
+<li>
+<a href="/subjects/socialscience/statistics-faq.htm" class="FourthLevelNav-link">
+<span>FAQs</span>
+<svg class="usa-icon"
+role="presentation"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#navigate_next" />
+</svg>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="col-sm-6 col-md-8 col-lg-9">
+<h2><h2>Annual Visitation Statistics Release</h2></h2>
+<p>Annual visitor use statistics are released during the first quarter of the following calendar year. On this page you will find</p>
+<ul>
+<li>A quick highlight of the most recent published data</li>
+<li>An overview of the three main options for accessing visitor use data
+<ul>
+<li><strong>Dashboard </strong>(quick visuals to see trends at national or park levels)</li>
+<li><strong>Data Portal </strong>(also known as IRMA, comprehensive tables and reports - this is the best option for exporting data)</li>
+<li><strong>Abstract </strong>(PDF document available for each calendar year of reporting - useful for references and citations)</li>
+</ul>
+</li>
+<li>An overview of data limiations and considerations</li>
+</ul>
+<p>For questions or assistance, please reach out the <a href="/common/utilities/sendmail/sendemail.cfm?o=6A96D095ADE08FB284A85DA8F601&r=/subjects/socialscience/visitor-use-statistics-dashboard.htm" id="/common/utilities/sendmail/sendemail.cfm?o=6A96D095ADE08FB284A85DA8F601&r=/subjects/socialscience/visitor-use-statistics-dashboard.htm|">Visitor Use Statistics Staff</a>.</p>
+</div>
+</div>
+</div>
+</div><div id="cs_control_7711774" class="cs_control CS_Element_Custom">
+<div class="Component InPageNav" id="69CDE69A-AB31-FC67-6B8B248B2A5DC131-InPageNav">
+<nav class="dropdown" aria-labelledby="69CDE69A-AB31-FC67-6B8B248B2A5DC131-InPageNav-Title">
+<button class="btn btn-light dropdown-toggle"
+id="69CDE69A-AB31-FC67-6B8B248B2A5DC131-InPageNav-Title"
+type="button"
+data-bs-toggle="dropdown"
+data-tracking='{"type":"event","category":"PYV Component","action1":"Open","action2":"Close","label":"Navigation In Page"}'
+aria-expanded="false">
+On This Page <span class="visuallyhidden">Navigation</span>
+</button>
+<ul class="dropdown-menu"></ul>
+</nav>
+</div>
+</div><div id="cs_control_7711533" class="cs_control CS_Element_Custom"><style>blockquote {border-left: 5px solid #fff;}</style>
+<div class="Component ArticleTextGroup TextWrapped clearfix">
+<h2>2025 Visitation At-A-Glance</h2>
+<ul>
+<li>The National Park Service reported 323 million recreation visits in calendar year 2025. 
+<ul>
+<li>This is a decrease of 8.85 million recreation visits, or 2.7%, from the record year in 2024. </li>
+</ul>
+</li>
+<li>406 of the 433 National Park System units report visitor use. </li>
+<li>Two new parks began reporting in 2024. </li>
+<li>Recreation visitor hours were 1.39 billion; a decrease of 0.7% from 2024. </li>
+<li>There was a 2.4% decrease from 2024 for overnight stays.  26 parks, 6% of reporting parks, set a record for annual recreation visits. </li>
+</ul>
+</div></div><div id="cs_control_7711590" class="cs_control CS_Element_Custom"><style>blockquote {border-left: 5px solid #fff;}</style>
+<div class="Component ArticleTextGroup TextWrapped clearfix">
+<figure class="-right">
+<picture>
+<source type="image/webp" srcset="/subjects/socialscience/images/Figure-1-from-2025-Abstract.jpg?maxwidth=650&autorotate=false&quality=78&format=webp">
+<img alt="a colorful donut chart with segments sized to reflect percent totals" src="/subjects/socialscience/images/Figure-1-from-2025-Abstract.jpg?maxwidth=650&autorotate=false" title="2025 Visitation"  >
+</picture>
+</figure><!-- floating-image alignment  -->
+<div class='table-wrapper'><table border="1" cellpadding="1" cellspacing="1" style="width:500px;">
+<thead>
+<tr>
+<th scope="col">Park Unit Type</th>
+<th scope="col">Percent of Total Visits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Miscellaneous </td>
+<td>5%</td>
+</tr>
+<tr>
+<td>National Historic Site </td>
+<td>2%</td>
+</tr>
+<tr>
+<td>National Historical Park </td>
+<td>9%</td>
+</tr>
+<tr>
+<td>National Memorial </td>
+<td>11%</td>
+</tr>
+<tr>
+<td>National Monument</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>National Park</td>
+<td>29%</td>
+</tr>
+<tr>
+<td>National Parkway</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>National Preserve</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>National Recreation Area</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>National Seashore</td>
+<td>7%</td>
+</tr>
+<tr>
+<td>National Scenic Trail</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>Park (Other)</td>
+<td>2%</td>
+</tr>
+</tbody>
+</table></div>
+</div></div><div id="cs_control_7711538" class="cs_control CS_Element_Custom"><style>blockquote {border-left: 5px solid #fff;}</style>
+<div class="Component ArticleTextGroup TextWrapped clearfix">
+<p>Note: Miscellaneous includes those designations under the National Park System but not broken out in this figure: international historic site, national battlefield, national battlefield park, national lakeshore, national military park, national reserve, national river, and national wild & scenic river.</p>
+<h2>Visitor Use Statistics Dashboard</h2>
+<p>This dashboard includes simple line chart visualizations for the 11 official visitor use statistics. Visuals can be viewed at the monthly or annual level, and filters can be applied to see data for a specific park or designation. The data span from the most recently reported year back to 1979, the year in which every park unit began reporting monthly data for all 11 statistics. Prior to that time, only annual recreation visits are consistently available.</p>
+</div></div><div id="cs_control_7479631" class="cs_control CS_Element_CustomCF"><div id="CS_CCF_7478940_7479631">
+<iframe title="Annual Visitation Highlights" width="100%" height="1060" src="https://app.powerbigov.us/view?r=eyJrIjoiNzY3MzEwMmQtMzQxMC00YjQ1LWJlNjItNjU5NDQ4ZWUyZGU2IiwidCI6IjA2OTNiNWJhLTRiMTgtNGQ3Yi05MzQxLWYzMmY0MDBhNTQ5NCJ9" frameborder="0" allowFullScreen="true"></iframe>
+</div></div><div id="cs_control_7711771" class="cs_control CS_Element_Custom"><style>blockquote {border-left: 5px solid #fff;}</style>
+<div class="Component ArticleTextGroup TextWrapped clearfix">
+<h2>Visitor Use Statistics Data Portal </h2>
+<p>The NPS Visitor Use Statistics Program maintains a large data set with annual recreation visit estimates from 1904-1978 and monthly visitation estimates from 1979 to present. Electronic database records for all inputs and outputs have been kept since the early 1990s.  </p>
+<p>All Visitor Use Statistics data are housed within the <a href="https://irma.nps.gov/Stats/" rel="noreferrer noopener" target="_blank">Integrated Resource Management Applications (IRMA) Portal</a>. Users can chose from a set of standard reports to view aggregated <a href="https://irma.nps.gov/Stats/Reports/National" rel="noreferrer noopener" target="_blank">national level data</a>, or <a href="https://irma.nps.gov/Stats/Reports/Park" rel="noreferrer noopener" target="_blank">park specific data</a>. </p>
+</div></div><div id="cs_control_7711789" class="cs_control CS_Element_Custom"><aside class="fact-check">
+<h4>Custom Query Builders</h4>
+<p><p>For a quicker more custom approach, try the Query Builder Tool, which is also available on the <a data-interception="on" href="https://irma.nps.gov/Stats/Reports/National" title="https://irma.nps.gov/Stats/Reports/National">National Reports</a> page in IRMA. This tool will allow users to select the years, statistics, and parks of interest, and offers the option to include some additional fields such as legacy region and unit designation.</p>
+<p><em>As noted in the data limitations there was a shift in what data were collected in 1979 so there are separate query builders based on that delineation point. </em><br />
+<br />
+<a href="https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Historic%20Annual%20Recreation%20Visits%20(1904%20-%201979)" target="_blank"><strong>Query Builder for Historic Annual Recreation Visits (1904 - 1979)</strong></a><br />
+<a href="https://irma.nps.gov/Stats/SSRSReports/National%20Reports/Query%20Builder%20for%20Public%20Use%20Statistics%20(1979%20-%20Last%20Calendar%20Year)" target="_blank"><strong>Query Builder for Visitor Use Statistics (1979 - Last Calendar Year)</strong></a></p></p>
+</aside></div><div id="cs_control_7780269" class="cs_control CS_Element_Custom"><style>blockquote {border-left: 5px solid #fff;}</style>
+<div class="Component ArticleTextGroup TextWrapped clearfix">
+<h2>Statistical Abstract</h2>
+The Statistics Abstract is a PDF document containing a series of tables and figures that display visitor use data for the most recently reported year. By documenting these visits across the National Park System, the National Park Service (NPS) Statistical Abstract offers a historical record of visitor use in parks and provides NPS staff and partners with a useful tool for effective management and planning. This is also a useful tool for academics and researchers in need of references and citations for publications.<br />
+<br />
+The abstract is typically published mid calendar year, so there is a delay of several months between the publishing of a year's numbers and the release of the respective year's Statistical Abstract.<br />
+<br />
+Download the <a href="https://irma.nps.gov/DataStore/DownloadFile/722329" id="https://irma.nps.gov/DataStore/DownloadFile/722329|">2024 Statistical Abstract</a>.<br />
+<br />
+</div></div><div id="cs_control_7780265" class="cs_control CS_Element_Custom"><style>blockquote {border-left: 5px solid #fff;}</style>
+<div class="Component ArticleTextGroup TextWrapped clearfix">
+<h2>Data Limitations and Considerations<a name="onthisPage-4"></a></h2>
+<p>There are several ways to access Visitor Use Statistics data. Regardless of how you choose to access the data, it does have its limitations. Please read through the following list prior to using data ensure appropriate usage and interpretation.</p>
+</div></div><div id="cs_control_7711778" class="cs_control CS_Element_BulletedList"><div class="Component accordion-list-component">
+<div id="accordion7711778" class="usa-accordion usa-accordion--bordered">
+<h4 class="usa-accordion__heading" id="heading_7711781_2">
+<button class="usa-accordion__button"
+type="button"
+aria-expanded="false"
+aria-controls="body_7711781_2">
+Current Year Data Warning!
+</button>
+</h4>
+<div id="body_7711781_2"
+class="usa-accordion__content usa-prose"
+hidden="until-found"
+aria-labelledby="heading_7711781_2">
+<p>Current year data are preliminary and must be thoroughly reviewed by the Social Science Program prior to being considered final. For that reason, most data are available only through last calendar year. <strong>If electing to use current year data, please use caution as it may not be complete or controlled for quality.</strong></p>
+</div>
+<h4 class="usa-accordion__heading" id="heading_7711782_3">
+<button class="usa-accordion__button"
+type="button"
+aria-expanded="false"
+aria-controls="body_7711782_3">
+Reporting Changes
+</button>
+</h4>
+<div id="body_7711782_3"
+class="usa-accordion__content usa-prose"
+hidden="until-found"
+aria-labelledby="heading_7711782_3">
+<p id="reporting-changes">The way visitor use statistics have been tracked and reported has changed over time. More information related to these shifts is available on the <a href="/subjects/socialscience/statistics-history.htm" id="CP___PAGEID=7303175,statistics-history.htm,30417|">History and Policy</a> page, but here is a quick guide to what data is available for different time periods:</p>
+<ul>
+<li><strong>1904-1979</strong> | Annual recreation visits</li>
+<li><strong>1979-1992</strong> | Annual and monthly values for the 11 official statistics</li>
+<li><strong>1992-Present</strong> | Same as previous with addition of park level data inputs used to calculate official statistics.</li>
+</ul>
+</div>
+<h4 class="usa-accordion__heading" id="heading_7711783_4">
+<button class="usa-accordion__button"
+type="button"
+aria-expanded="false"
+aria-controls="body_7711783_4">
+Count Procedure Changes
+</button>
+</h4>
+<div id="body_7711783_4"
+class="usa-accordion__content usa-prose"
+hidden="until-found"
+aria-labelledby="heading_7711783_4">
+<p>Parks change their methods for tracking and calculating visitor use stats from time to time. This can result in trend shift in the years following a change.</p>
+</div>
+<h4 class="usa-accordion__heading" id="heading_7711784_5">
+<button class="usa-accordion__button"
+type="button"
+aria-expanded="false"
+aria-controls="body_7711784_5">
+Varying degrees of data quality
+</button>
+</h4>
+<div id="body_7711784_5"
+class="usa-accordion__content usa-prose"
+hidden="until-found"
+aria-labelledby="heading_7711784_5">
+<p id="varying-degrees-of-data-quality">Park operations and usage by visitors changes over time for most parks. <strong>Updating counting methods can take a great deal of time and financial resources</strong> for the park, making it challenging to keep measurement systems completely current and accurate.</p>
+<p><strong>Parks also must sometimes rely on estimated data</strong> due to equipment failures, staffing limitations, and unforeseeable circumstances such as the COVID-19 pandemic and natural disasters.</p>
+</div>
+<h4 class="usa-accordion__heading" id="heading_7711785_6">
+<button class="usa-accordion__button"
+type="button"
+aria-expanded="false"
+aria-controls="body_7711785_6">
+Rounding Difference
+</button>
+</h4>
+<div id="body_7711785_6"
+class="usa-accordion__content usa-prose"
+hidden="until-found"
+aria-labelledby="heading_7711785_6">
+<p>Depending on the data source, data users may notice slight rounding discrepancies across different reports.</p>
+</div>
+<h4 class="usa-accordion__heading" id="heading_7711787_7">
+<button class="usa-accordion__button"
+type="button"
+aria-expanded="false"
+aria-controls="body_7711787_7">
+Potential Errors
+</button>
+</h4>
+<div id="body_7711787_7"
+class="usa-accordion__content usa-prose"
+hidden="until-found"
+aria-labelledby="heading_7711787_7">
+<p>Once the calendar year is over and data for a given year is finalized, no changes to the underlying values can be made. Some parks' data may contain permanent errors. Errors are noted in the Endnotes of the <a href="https://irma.nps.gov/Stats/Reports/AbstractsAndForecasts" id="CPNEWWIN:_blank^@https://irma.nps.gov/Stats/Reports/AbstractsAndForecasts|" onmouseout=" return window.status=''; " onmouseover=" return window.status='https://irma.nps.gov/Stats/Reports/AbstractsAndForecasts'; ">Annual Statistical Abstracts</a>.</p>
+</div>
+</div>
+</div>
+<style>
+/* Keep your spacing for the component wrapper */
+.Component.accordion-list-component { margin-bottom: 2rem; }
+/* Progressive enhancement for browsers that support content-visibility */
+@supports (content-visibility: hidden) {
+/* Closed but searchable state */
+.usa-accordion__content[hidden="until-found"] {
+/* Must be "in layout" so Ctrl+F can match text */
+display: block !important;
+/* Don't paint and don't occupy space */
+content-visibility: hidden;
+height: 0 !important;
+overflow: clip !important;
+/* Kill the gap from defaults */
+padding: 0 !important;
+margin: 0 !important;
+border: 0 !important;
+/* Optional: avoid reserving intrinsic size */
+contain-intrinsic-size: 0 0;
+}
+/* When opened, the [hidden] attribute is removed, so USWDS defaults return.
+No extra "is-open" class is required. */
+}
+</style>
+<script>
+(function () {
+// Enhance USWDS accordions with hidden="until-found" + beforematch support
+function enhanceUSWDSUntilFound(root = document) {
+// Panels we want to be searchable even when collapsed
+const panels = root.querySelectorAll('.usa-accordion__content[hidden="until-found"]');
+panels.forEach((panel) => {
+const id = panel.id;
+if (!id) return;
+// Find the controlling button via aria-controls
+const btn = root.querySelector('.usa-accordion__button[aria-controls="' + id + '"]');
+if (!btn) return;
+// Keep the DOM state in sync with the button's aria-expanded
+const sync = () => {
+const expanded = btn.getAttribute('aria-expanded') === 'true';
+if (expanded) {
+panel.removeAttribute('hidden');     // let USWDS show it
+panel.classList.add('is-open');
+} else {
+// Re-apply our special attribute so Ctrl+F can still find text
+panel.setAttribute('hidden', 'until-found');
+panel.classList.remove('is-open');
+}
+};
+// 1) When a Find-in-Page match hits hidden content, open its panel
+if ('onbeforematch' in document.body) {
+panel.addEventListener('beforematch', () => {
+// USWDS toggles on click; only click if currently collapsed
+if (btn.getAttribute('aria-expanded') === 'false') {
+btn.click();
+}
+});
+}
+// 2) Observe USWDS state changes (it toggles aria-expanded on the button)
+const mo = new MutationObserver(sync);
+mo.observe(btn, { attributes: true, attributeFilter: ['aria-expanded'] });
+// 3) Initial sync (after USWDS init)
+queueMicrotask(sync);
+// 4) Also resync on click in case MutationObserver misses anything
+btn.addEventListener('click', () => setTimeout(sync, 0));
+});
+}
+if (document.readyState === 'loading') {
+document.addEventListener('DOMContentLoaded', () => enhanceUSWDSUntilFound());
+} else {
+enhanceUSWDSUntilFound();
+}
+})();
+</script></div><div id="cs_control_7711790" class="cs_control CS_Element_Custom"><style>blockquote {border-left: 5px solid #fff;}</style>
+<div class="Component ArticleTextGroup TextWrapped clearfix">
+<h2>Need Help?</h2>
+<p>If you're still not able to find what you are looking for in the Visitor Use Statistics Data Portal, reach out to the <a href="https://www.nps.gov/common/utilities/sendmail/sendemail.cfm?o=4597C8A8A2C0A0BF9DBA1F90EA14A2A8489E43B04FA28D8B4C3FA0970D9881B0D8&amp;r=/subjects/socialscience/statistics-data-access.htm" rel="noreferrer noopener" target="_blank">Visitor Use Statistics Staff </a>to inquire. </p>
+</div></div></div></div></div></div>
+</div><!-- col-sm-12 -->
+</div><!-- row -->
+</div><!-- ColumnMain col-sm-9 -->
+</div><!-- ColumnGrid row -->
+</div><!-- end container -->
+<div class="container">
+<div class="ColumnGrid row">
+<div class="ColumnMain col-sm-12">
+<div class="row">
+<div class="col-sm-12 text-content-size text-content-style">
+<p style="text-align:right;">Last updated: March 26, 2026</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="ParkFooter" class="ParkFooter">
+<div class="container">
+<!--googleoff: index-->
+<script type="text/javascript">
+jQuery(document).ready(function() {
+var subsiteURL = "/subjects/socialscience/";
+var jsonSrc = "";
+var related_orgs = [];
+var max_display = 3;
+jsonSrc = subsiteURL+"experience_more_socialscience.json?v="+Date.now();
+jQuery.getJSON( jsonSrc, function( data ) {
+var has_related_content = 0;
+var output_related_content = '<div class="ExperienceMoreFooter"><h2 class="ExperienceMoreTitle">Experience More</h2><div class="row">';
+if ( data.RELATED_SUBS.length ) {
+// Subjects
+output_related_content += '<div class="col-sm-4 col-md-4"><div class="ExperienceMoreCategory"><h3>Subjects</h3><ul>';
+var display_total = data.RELATED_SUBS.length;
+if ( display_total > max_display ) {
+display_total = max_display;
+}
+for ( var i = 0; i < display_total; i++ ) {
+output_related_content += `<li class="ExperienceMore item"><a class="more" href="/subjects/${data.RELATED_SUBS[i].site_code}" onclick="gas('send', 'event', 'Experience More', '${document.location.href}', '/subjects/${data.RELATED_SUBS[i].site_code}', 1, true)">${data.RELATED_SUBS[i].name}</a></li>`;
+has_related_content = 1;
+}
+if ( data.RELATED_SUBS.length > max_display ) {
+output_related_content += '<div class="ExperienceMore item"><div>';
+output_related_content += '<a class="all more" href="/experiencemore/related-content.htm?subjectID=98ECC37C-CC34-4616-8F44-92A2FF79DFF7#subject" id="anch_21">';
+output_related_content += '<svg class="icon" focusable="false" role="img"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#plus-sign"></use></svg>';
+output_related_content += 'View All Related Subjects</a></div></div>';
+}
+output_related_content += '</ul></div></div>';
+}
+if ( data.RELATED_PARKS.length ) {
+// Parks
+output_related_content += '<div class="col-sm-4 col-md-4"><div class="ExperienceMoreCategory"><h3>Parks</h3><ul>';
+var display_total = data.RELATED_PARKS.length;
+if ( display_total > max_display ) {
+display_total = max_display;
+}
+for ( var i = 0; i < display_total; i++ ) {
+output_related_content += `<li class="ExperienceMore item"><a class="more" href="/${data.RELATED_PARKS[i].site_code}" onclick="gas('send', 'event', 'Experience More', '${document.location.href}', '/${data.RELATED_PARKS[i].site_code}', 1, true)">${data.RELATED_PARKS[i].name}</a></li>`;
+has_related_content = 1;
+}
+if ( data.RELATED_PARKS.length > max_display ) {
+output_related_content += '<div class="ExperienceMore item"><div>';
+output_related_content += '<a class="all more" href="/experiencemore/related-content.htm?subjectID=98ECC37C-CC34-4616-8F44-92A2FF79DFF7#park" id="anch_21">';
+output_related_content += '<svg class="icon" focusable="false" role="img"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#plus-sign"></use></svg>';
+output_related_content += 'View All Related Parks</a></div></div>';
+}
+output_related_content += '</ul></div></div>';
+}
+if ( data.RELATED_ORGS.length ) {
+// Organizations
+output_related_content += '<div class="col-sm-4 col-md-4"><div class="ExperienceMoreCategory"><h3>Organizations</h3><ul>';
+var display_total = data.RELATED_ORGS.length;
+if ( display_total > max_display ) {
+display_total = max_display;
+}
+for (var i = 0; i < display_total; i++ ) {
+if ( data.RELATED_ORGS[i].site_code.toString().length ) {
+output_related_content += `<li class="ExperienceMore item"><a class="more" href="/orgs/${data.RELATED_ORGS[i].site_code}" onclick="gas('send', 'event', 'Experience More', '${document.location.href}', '/orgs/${data.RELATED_ORGS[i].site_code}', 1, true)">${data.RELATED_ORGS[i].name}</a></li>`;
+}
+else {
+output_related_content += '<li class="item">'+data.RELATED_ORGS[i].name+'</li>';
+}
+has_related_content = 1;
+}
+if ( data.RELATED_ORGS.length > max_display ) {
+output_related_content += '<div class="ExperienceMore item"><div>';
+output_related_content += '<a class="all more" href="/experiencemore/related-content.htm?subjectID=98ECC37C-CC34-4616-8F44-92A2FF79DFF7#org" id="anch_21">';
+output_related_content += '<svg class="icon" focusable="false" role="img"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#plus-sign"></use></svg>';
+output_related_content += 'View All Related Organizations</a></div></div>';
+}
+output_related_content += '</ul></div></div>';
+}
+output_related_content += '</div></div>';
+if(has_related_content == 1) {
+jQuery("#related_content_position").replaceWith(output_related_content);
+}
+});
+});
+</script>
+<div id="related_content_position"></div>
+<!--googleon: index-->
+<script type="text/javascript">
+jQuery(document).ready(function() {
+var subsiteURL  = "";
+var jsonSrc     = "";
+var siteCode    = "";
+subsiteURL  = "/subjects/socialscience/";
+siteCode = subsiteURL.split("/");
+siteCode = siteCode[2];
+if ( subsiteURL.includes("orgs") | subsiteURL.includes("im") | subsiteURL.includes("rlc") ) {
+jsonSrc = subsiteURL+"structured_data_orgs_"+siteCode+".json?v="+Date.now();
+}
+if ( subsiteURL.includes("locations") ) {
+jsonSrc = subsiteURL+"structured_data_locations_"+siteCode+".json?v="+Date.now();
+}
+if ( subsiteURL.includes("subjects") ) {
+jsonSrc = subsiteURL+"structured_data_subjects_"+siteCode+".json?v="+Date.now();
+}
+// Location Site Check //
+urlCheck = window.location.href;
+if (urlCheck.includes("locations")) {
+fileURL = '/locations/socialscience/structured_data_socialscience.json';
+}
+jQuery.getJSON(jsonSrc, function( data ) {
+var hasSocialMedia = 0;
+var outputSocialMedia = '<div class="col-sm-6 col-md-4 "><div class="ParkFooter-socialLinks"><h3>Stay Connected</h3><ul class="ParkFooter-socialLinks row">';
+if (data.facebookURL) {
+outputSocialMedia += '<li class="col-2 col-sm-4 col-md-2"><a href="'+data.facebookURL+'"><svg class="icon" focusable="false" role="img" aria-label="Facebook for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#facebook"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+if (data.twitterURL) {
+data.twitterURL = data.twitterURL.replace('twitter.com', 'x.com')	// convert old Twitter links into equivalent X links
+outputSocialMedia += '<li class="col-2 col-sm-4 col-md-2"><a href="'+data.twitterURL+'"><svg class="icon" focusable="false" role="img" aria-label="X for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#x-black"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+if (data.instagramURL) {
+outputSocialMedia += '<li class="col-2 col-sm-4 col-md-2"><a href="'+data.instagramURL+'"><svg class="icon" focusable="false" role="img" aria-label="Instagram for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#instagram-dark"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+if (data.youtubeURL) {
+outputSocialMedia += '<li class="col-2 col-sm-4 col-md-2"><a href="'+data.youtubeURL+'"><svg class="icon" focusable="false" role="img" aria-label="YouTube for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#youtube"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+if (data.flickrURL) {
+outputSocialMedia += '<li class="col-2 col-sm-4 col-md-4"><a href="'+data.flickrURL+'"><svg class="icon" focusable="false" role="img" aria-label="Flickr for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#flickr"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+if (data.tumblrURL) {
+outputSocialMedia += '<li class="col-2 col-sm-4 col-md-2"><a href="'+data.tumblrURL+'"><svg class="icon" focusable="false" role="img" aria-label="Tumblr for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#tumblr"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+if (data.foursquareURL) {
+outputSocialMedia += '<li class="col-2 col-sm-12 col-md-6"><a href="'+data.foursquareURL+'"><svg class="icon" focusable="false" role="img" aria-label="FourSquare for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#foursquare"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+if (data.pinterestURL) {
+outputSocialMedia += '<li class="col-2 col-sm-4 col-md-2"><a href="'+data.pinterestURL+'"><svg class="icon" focusable="false" role="img" aria-label="Pinterest for this org or subject"><use xlink:href="/common/commonspot/templates/assets/sprite.symbol.svg#pinterest"></use></svg></a></li>';
+hasSocialMedia = 1;
+}
+outputSocialMedia += '</ul></div></div>';
+if(hasSocialMedia == 1) {
+jQuery("#sml_position").replaceWith(outputSocialMedia);
+}
+});
+});
+</script>
+<!--googleoff: index-->
+<div class="row">
+<div class="col-sm-6 col-md-4">
+<div class="ParkFooter-tools">
+<h3>Tools</h3>
+<ul class="row">
+<li class=" col-6  "><a href="/subjects/socialscience/siteindex.htm"> Site Index</a></li>
+<style>
+#sub-nav .subject-tools-2 li.timeline {
+border-bottom: none;
+margin-bottom: 0;
+padding-bottom: 8px;
+}
+</style>
+</ul>
+</div>
+</div>
+<div id="sml_position"></div>
+</div>
+<!--googleon: index-->
+</div> <!-- container -->
+</div> <!-- ParkFooter -->
+</div><!-- end of <div main> -->
+<!--googleoff: index-->
+<footer id="GlobalFooter" class="usa-footer">
+<div class="usa-footer__primary-section">
+<picture class="usa-footer__primary-section-bg" aria-hidden="true">
+<source
+media="(max-width: 599px)"
+srcset="/common/commonspot/templates/assets/images/app-promo/app-promo-background-square.png?format=webp"
+type="image/webp">
+<img
+class="usa-footer__primary-section-bg__image"
+src="/common/commonspot/templates/assets/images/app-promo/app-promo-background-large.png?format=webp"
+alt=""
+loading="lazy"
+decoding="async">
+</picture>
+<div class="container">
+<form id="GlobalFooterSearch"
+class="GlobalFooter__Search usa-form usa-form--large"
+action="/search/"
+method="GET"
+role="search">
+<div class="position-relative">
+<input class="usa-input"
+id="GlobalFooterSearchInput"
+type="text"
+autocomplete="off"
+name="query"
+placeholder="Keyword Search"
+required
+aria-label="Search">
+<div class="GlobalSearch-suggestions"></div>
+</div>
+<ul class="usa-button-group">
+<li class="usa-button-group__item">
+<button class="usa-button usa-button--outline usa-button--inverse" data-scope="site" type="submit">
+This Site
+</button>
+</li>
+<li class="usa-button-group__item">
+<button class="usa-button usa-button--outline usa-button--inverse" data-scope="all" type="submit">
+All NPS
+</button>
+</li>
+</ul>
+<input type="hidden"
+name="sitelimit"
+value="www.nps.gov/subjects/socialscience">
+<input type="hidden" name="affiliate" value="nps">
+</form>
+<div class="GlobalFooter-AppPromo">
+<div class="GlobalFooter-AppPromo__Text">
+<div class="GlobalFooter-AppPromo__Heading">Experience Your America.</div>
+<div class="GlobalFooter-AppPromo__Subheading GlobalFooter-AppPromo__BottomGroup">
+<p>Download the NPS app to navigate the parks on the go.</p>
+<p class="GlobalFooter-AppPromo__BadgeLinks">
+<a href="https://apps.apple.com/us/app/national-park-service/id1549226484"
+class="GlobalFooter-AppPromo__BadgeLink" onclick="gas('send', 'event', 'App Promo Footer', 'Apple', document.location.pathname, 1, true);">
+<img alt="Download on the App Store"
+src="/common/commonspot/templates/assets/images/app-promo/app-store-badge.svg"
+width="132"
+height="44">
+</a>
+<a href="https://play.google.com/store/apps/details?id=gov.nps.mobileapp"
+class="GlobalFooter-AppPromo__BadgeLink" onclick="gas('send', 'event', 'App Promo Footer', 'Android', document.location.pathname, 1, true);">
+<img alt="Get it on Google Play"
+src="/common/commonspot/templates/assets/images/app-promo/google-play-badge.svg"
+width="148.5"
+height="44">
+</a>
+</p>
+</div>
+</div>
+<div class="GlobalFooter-AppPromo__ImageContainer">
+<img class="GlobalFooter-AppPromo__Image"
+loading="lazy"
+src="/common/commonspot/templates/assets/images/app-promo/app-promo-phones.png"
+srcset="/common/commonspot/templates/assets/images/app-promo/app-promo-phones.png?format=webp 1x, /common/commonspot/templates/assets/images/app-promo/app-promo-phones@2x.png?format=webp 2x"
+alt="Three smartphones showing different screens within the NPS app."
+width="628"
+height="463">
+</div>
+</div>
+</div>
+</div>
+<div class="usa-footer__secondary-section">
+<div class="container">
+<div class="usa-footer__logo-container">
+<a class="usa-footer__logo" href="https://www.nps.gov/">
+<img class="usa-footer__logo-img print-only"
+src="/common/commonspot/templates/assets/images/branding/lockup-horizontal.svg"
+alt="">
+<img alt="National Park Service U.S. Department of the Interior" width="193" height="124" class="usa-footer__logo-img" src="/common/commonspot/templates/assets/images/branding/lockup-reverse-vertical.svg">
+<img alt="National Park Service U.S. Department of the Interior" width="268" height="80" class="usa-footer__logo-img usa-footer__logo-img--lg" src="/common/commonspot/templates/assets/images/branding/lockup-reverse-horizontal.svg">
+</a>
+</div>
+<div class="usa-footer__contact-links">
+<div class="usa-footer__social-links grid-row grid-gap-1">
+<div class="grid-col-auto">
+<a href="https://www.facebook.com/nationalparkservice" class="usa-social-link">
+<svg class="usa-social-link__icon&#x20;usa-icon"
+aria-label="Facebook"
+role="img"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#facebook" />
+</svg>
+</a>
+</div>
+<div class="grid-col-auto">
+<a href="https://www.youtube.com/nationalparkservice" class="usa-social-link">
+<svg class="usa-social-link__icon&#x20;usa-icon"
+aria-label="Youtube"
+role="img"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#youtube" />
+</svg>
+</a>
+</div>
+<div class="grid-col-auto">
+<a href="https://www.x.com/natlparkservice" class="usa-social-link">
+<svg class="usa-social-link__icon&#x20;usa-icon"
+aria-label="X"
+role="img"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#x" />
+</svg>
+</a>
+</div>
+<div class="grid-col-auto">
+<a href="https://www.instagram.com/nationalparkservice" class="usa-social-link">
+<svg class="usa-social-link__icon&#x20;usa-icon"
+aria-label="Instagram"
+role="img"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#instagram" />
+</svg>
+</a>
+</div>
+<div class="grid-col-auto">
+<a href="https://www.flickr.com/nationalparkservice" class="usa-social-link">
+<svg class="usa-social-link__icon&#x20;usa-icon"
+aria-label="Flickr"
+role="img"
+focusable="false">
+<use href="/theme/assets/vendor/npsds/packages/icons/dist/sprite.svg#flickr" />
+</svg>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="usa-identifier">
+<nav class="usa-identifier__section usa-identifier__section--required-links">
+<div class="container">
+<ul class="usa-identifier__required-links-list">
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/accessibility.htm"
+class="usa-identifier__required-link usa-link"
+>
+Accessibility
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/privacy.htm"
+class="usa-identifier__required-link usa-link"
+>
+Privacy Policy
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/foia/index.htm"
+class="usa-identifier__required-link usa-link"
+>
+FOIA
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/notices.htm"
+class="usa-identifier__required-link usa-link"
+>
+Notices
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/contacts.htm"
+class="usa-identifier__required-link usa-link"
+>
+Contact The National Park Service
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/faqs.htm"
+class="usa-identifier__required-link usa-link"
+title="National Park Service frequently asked questions"
+>
+NPS FAQ
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.doi.gov/pmb/eeo/no-fear-act"
+class="usa-identifier__required-link usa-link"
+>
+No Fear Act
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/disclaimer.htm"
+class="usa-identifier__required-link usa-link"
+>
+Disclaimer
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.nps.gov/aboutus/vulnerability-disclosure-policy.htm"
+class="usa-identifier__required-link usa-link"
+>
+Vulnerability Disclosure Policy
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.usa.gov"
+class="usa-identifier__required-link usa-link"
+>
+USA.gov
+</a>
+</li>
+<li class="usa-identifier__required-links-item">
+<a href="//www.doi.gov/pmb/eeo"
+class="usa-identifier__required-link usa-link"
+>
+Office of Civil Rights
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<section class="usa-identifier__section usa-identifier__section--usagov" aria-label="U.S. government information and services,">
+<div class="container">
+<div class="usa-identifier__usagov-description">
+Looking for U.S. government information and services?
+</div>
+<a href="https://www.usa.gov/" class="usa-link">Visit USA.gov</a>
+</div>
+</section>
+</div>
+</footer>
+<!--googleon: index-->
+<!-- the rest of the scripts are leftovers from before the centennial down and should be pared down where possible -->
+<script src="/common/commonspot/templates/js/global.js?v=20230112"></script>
+<script src="/common/commonspot/templates/assets/libs/jquery.magnific-popup/jquery.magnific-popup.js"></script>
+<script src="/common/commonspot/templates/assets/js/redesign.js?v=20230112"></script>
+<link href="/common/commonspot/templates/assets/libs/colorbox/colorbox.css" rel="stylesheet">
+<script type="text/javascript" src="/common/commonspot/templates/js/libs/jquery.colorbox-min.js"></script>
+<script src="/common/commonspot/templates/js/intercept-include.js?v=20230112"></script>
+<script src="/common/commonspot/templates/assets/libs/image-map-resizer/imageMapResizer.min.js"></script>
+<script src="/common/commonspot/templates/assets/js/app.late.min.js?v=20230112"></script>
+<script src="/common/commonspot/templates/js/uswds/uswds.js"></script>
+<div class="modal fade" id="outdated-browser" tabindex="-1" role="dialog">
+</div>
+</body>
+</html>
+<!-- beg (1) PrimaryResources -->
+<script src="/commonspot/javascript/lightbox/overrides.js"></script><script src="/commonspot/javascript/lightbox/window_ref.js"></script><script src="/commonspot/pagemode/always-include-common.js"></script>
+<!-- end (1) PrimaryResources -->
+<!-- beg (2) SecondaryResources -->
+<script src="/ADF/thirdParty/jquery/cookie/jquery.cookie.js"></script>
+<!-- end (2) SecondaryResources -->
+<!-- beg (3) CustomFoot -->
+<!-- end (3) CustomFoot -->
+<!-- beg (4) TertiaryResources -->
+<!-- end (4) TertiaryResources --><script>
+<!--
+var jsPageContributeMode = 'read';
+var jsPageSessionContributeMode = 'read';
+
+var jsPageAuthorMode = 0;
+var jsPageEditMode = 0;
+
+
+if(!commonspot)
+var commonspot = {};
+commonspot.csPage = {};
+
+
+commonspot.csPage.url = '/subjects/socialscience/visitor-use-statistics-dashboard.htm';
+
+
+commonspot.csPage.id = 7478940;
+
+commonspot.csPage.siteRoot = '/';
+commonspot.csPage.subsiteRoot = '/subjects/socialscience/';
+
+
+// -->
+</script>
+
+<script>
+<!--
+	if (typeof parent.commonspot == 'undefined' || typeof parent.commonspot.lview == 'undefined' || typeof parent.commonspot.lightbox == 'undefined')
+		loadNonDashboardFiles();
+	else if (parent.commonspot && typeof newWindow == 'undefined')
+	{
+		var arrFiles = [
+					{fileName: '/commonspot/javascript/lightbox/overrides.js', fileType: 'script', fileID: 'cs_overrides'},
+					{fileName: '/commonspot/javascript/lightbox/window_ref.js', fileType: 'script', fileID: 'cs_windowref'}
+					];
+		
+		loadDashboardFiles(arrFiles);
+	}
+//-->
+</script>
+</body></html>

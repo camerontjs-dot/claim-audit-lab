@@ -1,0 +1,896 @@
+    September Crop Production
+
+
+
+
+Agricultural Statistics Board Briefing
+
+    Anthony Prillaman, Acting Chief
+            Crops Branch
+                                         September 12, 2025
+                                 Data Sources
+
+Operator Reported
+                             Ag Yield              Sample Size = 7,600       August 30 - September 9
+     Survey
+
+      Field              Objective Yield
+                                                   Sample Size = 3,090       August 25 - September 1
+     Survey              Corn, Soybeans
+
+Remotely Sensed       Time Series 375 Meter             Focus Area               Imagery Through
+   (Satellite)         VIIRS Satellite Data             Corn Belt                    August 28
+
+       FSA          Farm Service Agency policy requires that producers participating in several programs
+ Certified Acres             submit an annual report regarding all cropland use on their farms.
+
+
+
+
+                                                                                        September 12, 2025
+September 2025 Ag Yield Survey
+          Sample Sizes
+
+
+
+
+                                 September 12, 2025
+                              Special Note
+
+Each September, NASS has the opportunity to revise planted and harvested acreage
+estimates for chickpeas, corn, cotton, dry edible peas, lentils, peanuts, rice,
+sorghum, soybeans, and sugarbeets. Revisions are based on all available data,
+including the latest certified acreage data from the Farm Service Agency (FSA). All
+States in the estimating program for these crops were subject to review and
+updating.
+
+
+
+
+                                                                       September 12, 2025
+                        United States Corn Condition
+                               Percent Rated Good to Excellent
+Percent
+80
+
+75
+
+70
+
+65
+
+60
+
+55
+
+50
+
+45   5/25   6/1   6/8   6/15 6/22 6/29   7/6   7/13 7/20 7/27   8/3   8/10 8/17 8/24 8/31   9/7   9/14 9/21 9/28 10/5 10/12 10/19 10/26 11/2
+
+
+                  2020                   2021              2022                2023                 2024               2025
+
+                                                                                                                       September 12, 2025
+                  United States Corn Progress
+                               Percent Dented
+ Percent
+100
+ 90
+ 80
+ 70
+ 60
+ 50
+ 40
+ 30
+ 20
+ 10
+  0
+       7/2 7     8/3   8/1 0   8/1 7     8/2 4   8/3 1   9/7     9/1 4   9/2 1   9/2 8
+
+               2020     2021           2022       2023         2024       2025
+
+                                                                         September 12, 2025
+                                     September 2025 Corn
+                                 Acreage, Yield, and Production
+
+                            Planted                      Harvested                           Yield                       Production
+                            (1,000 Acres)                  (1,000 Acres)                  (Bushels/Acre)                   (1,000 Bushels)
+United States                           98,728                         90,047                              186.7                 16,814,371
+    % Change from
+ Previous Estimate
+                                     ↑       1.5                    ↑       1.5                     ↓        1.1                     ↑        0.4
+   % Change from
+  Previous Season
+                                     ↑       9.0                    ↑       8.6                     ↑        4.1                     ↑ 13.1
+
+
+                                                          Top 5 States - By Production
+                            Planted                      Harvested              Yield                                    Production
+                     (1,000 Acres)       % ∆ PY     (1,000 Acres)       % ∆ PY     (Bushels/Acre)     % ∆ PY       (1,000 Bushels)       % ∆ PY
+          Iowa         13,550        ↑        5.0     13,000        ↑        4.4           219      ↑        3.8   2,847,000         ↑        8.4
+        Illinois       11,200        ↑        3.7     11,000        ↑        3.3           219      ↑        0.9   2,409,000         ↑        4.2
+      Nebraska         10,750        ↑        7.0     10,300        ↑        7.4           191      ↑        1.6   1,967,300         ↑        9.1
+     Minnesota          8,900        ↑        8.5      8,380        ↑        8.4           199      ↑       14.4   1,667,620         ↑       24.0
+       Indiana          5,400        ↑        3.8      5,250        ↑        4.0           205      ↑        3.5   1,076,250         ↑        7.6
+
+
+
+
+                                                                                                                           September 12, 2025
+                              Corn Acres
+                               United States
+
+Million Acres
+100.0                                                                    98.7
+
+
+        94.0                                              94.6
+ 95.0                                       92.9
+
+                90.2                 90.4                        90.6
+                       88.8   89.4
+ 90.0                                              88.2
+                                                                         90.0
+
+ 85.0   86.7
+                                                          86.5
+                                            85.0
+                82.7                                             82.9
+ 80.0                                82.2
+                       81.2   81.0
+                                                   78.7
+ 75.0
+        2016    2017   2018   2019 2020     2021 2022     2023   2024   2025
+                               Planted       Harvested
+
+                                                                   September 12, 2025
+                                                            Corn Yield
+                                                            United States
+
+Bushels per Acre
+200
+                                                                                                                                                 186.7
+190
+                                                                                                                                             179.3
+                                                                                                            176.6 176.4         176.7
+180                                                                                                     174.6                        173.4
+                                                                                            171.0
+                                                                                                    168.4
+                                                                                                                                         177.3
+170                                                                     164.4
+                                              160.3                                                                         171.4
+                                                                                                                    167.5
+160                                                                 153.3   152.6           158.1
+                                                                 150.7
+                                                      147.9 149.1               146.8
+150
+                         136.9138.2
+140         134.4133.8                        142.2
+
+        126.7
+130
+                                      129.3
+          127.1
+120                                                                                 123.1
+
+
+110
+100
+      1996 1998 2000 2002 2004 2006 2008 2010 2012 2014 2016 2018 2020 2022 2024
+
+
+                                                                                                                                    September 12, 2025
+      September 2025 Corn Yield
+Bushels and Percent Change from Previous Month
+
+
+
+
+                                           September 12, 2025
+     September 2025 Corn Yield
+Bushels and Percent Change from Previous Year
+
+
+
+
+                                           September 12, 2025
+    September 2025 Corn
+NOAA Suomi NPP VIIRS Modeled Yield
+
+
+
+
+                                     September 12, 2025
+           September 2025 Corn Objective Yield
+                Ears per Acre and Yield for 10 State Region
+Ears per Acre                                                                     Bushels per Acre
+
+
+  30,000                                                                                        200
+
+                                                                                                195
+  29,500
+                                                                                                190
+
+  29,000                                                                                        185
+
+                                                                                                180
+  28,500
+                                                                                                175
+
+  28,000                                                                                        170
+
+                                                                                                165
+  27,500
+                                                                                                160
+
+  27,000                                                                                        155
+            September    September    September         September    September    September
+              October      October      October           October      October      October
+            November     November     November          November     November     November
+                 Final        Final        Final             Final        Final        Final
+                2020        2021         2022               2023        2024         2025
+
+                                        Ears per Acre   Yield
+
+
+
+                                                                                     September 12, 2025
+                             Corn Production
+                                United States
+
+ Billion Bushels
+
+18.0                                                                      16.8
+
+16.0   15.1                                 15.0          15.3
+               14.6                                              14.9
+                      14.3           14.1
+                              13.6                 13.7
+14.0
+
+12.0
+
+10.0
+
+ 8.0
+
+ 6.0
+
+ 4.0
+
+ 2.0
+
+ 0.0
+       2016    2017   2018    2019   2020   2021   2022   2023   2024     2025
+
+
+
+                                                                 September 12, 2025
+                     2025 U.S. Corn Production
+                      Industry Expectations vs NASS
+
+
+Billion Bushels
+16.9
+16.8
+16.7
+16.6
+16.5
+16.4
+16.3
+16.2
+16.1
+16.0
+15.9
+15.8
+            August       September             October        November      Final
+                       Individual Industry Expectation   NASS Estimate
+
+
+                                                                         September 12, 2025
+                 United States Soybean Condition
+                             Percent Rated Good to Excellent
+Percent
+80
+
+75
+
+70
+
+65
+
+60
+
+55
+
+50
+
+45
+     6/1   6/8   6/1 5 6/2 2 6/2 9   7/6   7/1 3 7/2 0 7/2 7   8/3   8/1 0 8/1 7 8/2 4 8/3 1   9/7   9/1 4 9/2 1 9/2 8 10/5 10/12 10/19
+
+                 2020                2021               2022                2023                2024               2025
+
+                                                                                                                   September 12, 2025
+               United States Soybean Progress
+                            Percent Dropping Leaves
+ Percent
+100
+ 90
+ 80
+ 70
+ 60
+ 50
+ 40
+ 30
+ 20
+ 10
+  0
+       8/1 7     8/2 4   8/3 1   9/7     9/1 4   9/2 1   9/2 8     10/5   10/12   10/19
+
+               2020       2021         2022       2023           2024      2025
+
+                                                                          September 12, 2025
+                           September 2025 Soybeans
+                                 Acreage, Yield, and Production
+
+                            Planted                      Harvested                           Yield                      Production
+                            (1,000 Acres)                  (1,000 Acres)                  (Bushels/Acre)                  (1,000 Bushels)
+United States                           81,135                         80,313                              53.5                     4,300,670
+    % Change from
+ Previous Estimate
+                                     ↑       0.3                    ↑       0.3                     ↓       0.2                      ↑        0.2
+   % Change from
+  Previous Season
+                                     ↓       6.8                    ↓       6.7                     ↑       5.5                      ↓        1.5
+
+
+                                                          Top 5 States - By Production
+                            Planted                      Harvested              Yield                                   Production
+                     (1,000 Acres)       % ∆ PY     (1,000 Acres)       % ∆ PY     (Bushels/Acre)       % ∆ PY    (1,000 Bushels)        % ∆ PY
+        Illinois       10,250        ↓        5.1     10,200        ↓        5.1           65.0     ↑       1.6      663,000         ↓        3.6
+          Iowa          9,450        ↓        6.0      9,380        ↓        5.8           65.0     ↑       8.3      609,700         ↑        2.0
+     Minnesota          7,150        ↓        3.4      7,080        ↓        3.3           53.0     ↑      17.8      375,240         ↑       13.9
+       Indiana          5,450        ↓        6.0      5,430        ↓        6.1           61.0     ↑       3.4      331,230         ↓        2.9
+      Nebraska          4,850        ↓        8.5      4,800        ↓        8.4           61.0     ↑       6.1      292,800         ↓        2.8
+
+
+
+
+                                                                                                                          September 12, 2025
+                              Soybean Acres
+                                United States
+
+Million Acres
+95.0
+                90.2
+                       89.2
+90.0                                                87.5
+                                             87.2                 87.1
+                89.5
+        83.5           87.6                                83.6
+85.0                                  83.4
+                                             86.3   86.2          86.1
+                                                                         81.1
+        82.7                          82.6                 82.3
+80.0                           76.1
+                                                                         80.3
+
+75.0
+                               74.9
+
+70.0
+        2016    2017   2018    2019 2020     2021 2022     2023   2024   2025
+                                Planted       Harvested
+
+                                                                    September 12, 2025
+                                                            Soybean Yield
+                                                                  United States
+
+Bushels per Acre
+ 55                                                                                                                                                                          53.5
+
+                                                                                                                          51.9                           51.7
+                                                                                                                                        50.6      51.0
+                                                                                                                                 49.3
+ 50                                                                                                                                                                50.6
+                                                                                                                                                                          50.7
+                                                                                                                   48.0                                     49.6
+                                                                                                            47.5
+
+                                                                                                                                               47.4
+
+ 45                                                         43.1 42.9
+                                                                                  44.0 43.5
+                                                                                                              44.0
+                                                                        41.7                  42.0
+                                                     42.2
+
+                                                                               39.7                  40.0
+                                       39.6
+             38.9 38.9
+ 40                             38.1          38.0
+      37.6
+                         36.6
+
+
+
+ 35
+                                                     33.9
+
+
+
+ 30
+      1996 1998 2000 2002 2004 2006 2008 2010 2012 2014 2016 2018 2020 2022 2024
+
+
+                                                                                                                                                          September 12, 2025
+   September 2025 Soybean Yield
+Bushels and Percent Change from Previous Month
+
+
+
+
+                                           September 12, 2025
+  September 2025 Soybean Yield
+Bushels and Percent Change from Previous Year
+
+
+
+
+                                           September 12, 2025
+ September 2025 Soybeans
+NOAA Suomi NPP VIIRS Modeled Yield
+
+
+
+
+                                     September 12, 2025
+   September 2025 Soybean Objective Yield
+        Pods per 18 Square Feet and Yield for 11 State Region
+Pods per 18 Square Feet                                                                                                                                                                                                     Bushels per Acre
+2,000                                                                                                                                                                                                                                                           60
+
+
+1,900
+                                                                                                                                                                                                                                                                55
+
+1,800
+
+
+                                                                                                                                                                                                                                                                50
+1,700
+
+
+1,600
+                                                                                                                                                                                                                                                                45
+
+
+1,500
+
+                                                                                                                                                                                                                                                                40
+1,400
+
+
+1,300                                                                                                                                                                                                                                                           35
+
+
+          September                                September                                September                                September                                September                                September
+                                           Final                                    Final                                    Final                                    Final                                    Final                                    Final
+                      October                                  October                                  October                                  October                                  October                                  October
+                                November                                 November                                 November                                 November                                 November                                 November
+
+                       2020                                     2021                                     2022                                     2023                                     2024                                     2025
+
+                                                                                              Pods per 18 Square Feet                                      Yield
+
+
+
+                                                                                                                                                                                                                                      September 12, 2025
+                       Soybean Production
+                               United States
+
+ Billion Bushels
+
+5.0
+              4.41   4.43                 4.46                 4.37
+4.5   4.30                         4.22          4.27                   4.30
+                                                        4.16
+4.0
+                            3.55
+3.5
+
+3.0
+
+2.5
+
+2.0
+
+1.5
+
+1.0
+
+0.5
+
+0.0
+      2016    2017   2018   2019   2020   2021   2022   2023   2024     2025
+
+
+
+                                                               September 12, 2025
+                  2025 U.S. Soybean Production
+                     Industry Expectations vs NASS
+
+
+Billion Bushels
+
+4.44
+
+
+4.39
+
+
+4.34
+
+
+4.29
+
+
+4.24
+
+
+4.19
+            August      September             October        November      Final
+
+                      Individual Industry Expectation   NASS Estimate
+
+
+                                                                        September 12, 2025
+                   United States Cotton Condition
+                              Percent Rated Good to Excellent
+Percent
+75
+70
+65
+60
+55
+50
+45
+40
+35
+30
+25
+     5/2 5 6/1   6/8   6/1 5 6/2 2 6/2 9 7/6   7/1 3 7/2 0 7/2 7 8/3   8/1 0 8/1 7 8/2 4 8/3 1 9/7   9/1 4 9/2 1 9/2 8 10/5 10/12 10/19 10/26
+
+                 2020                2021                 2022                 2023                  2024              2025
+
+                                                                                                                       September 12, 2025
+                 United States Cotton Progress
+                                 Percent Bolls Opening
+ Percent
+100
+ 90
+ 80
+ 70
+ 60
+ 50
+ 40
+ 30
+ 20
+ 10
+  0
+       8/3   8/1 0   8/1 7   8/2 4   8/3 1    9/7   9/1 4    9/2 1   9/2 8    10/5   10/12     10/19   10/26
+
+             2020            2021            2022           2023             2024            2025
+
+                                                                                             September 12, 2025
+                                September 2025 Cotton
+                                 Acreage, Yield, and Production
+
+                            Planted                      Harvested                           Yield                  Production
+                            (1,000 Acres)                  (1,000 Acres)                  (Pounds/Acre)                (1,000 Bales)
+United States                               9,296                          7,369                          861                       13,224
+    % Change from
+ Previous Estimate
+                                     ↑        0.2                   ↑        0.2                   ↓      0.1                   ↑        0.1
+   % Change from
+  Previous Season
+                                     ↓ 16.9                         ↓        5.6                   ↓      2.8                   ↓        8.2
+
+
+                                                          Top 5 States - By Production
+                            Planted                      Harvested              Yield                               Production
+                     (1,000 Acres)       % ∆ PY     (1,000 Acres)       % ∆ PY     (Pounds/Acre)     % ∆ PY     (1,000 Bales)       % ∆ PY
+          Texas          5,322       ↓       11.0       3,620       ↑       21.5        693.0      ↑      5.5       5,230       ↑       28.2
+        Georgia            840       ↓       23.6         830       ↓       23.1        896.0      ↑      4.4       1,550       ↓       19.7
+      Arkansas             520       ↓       20.0         515       ↓       19.5      1,258.0      ↓      6.2       1,350       ↓       24.5
+      Missouri             355       ↓       11.2         340       ↓       10.5      1,405.0      ↑      6.4         995       ↓        4.8
+     Mississippi           330       ↓       36.5         325       ↓       36.9      1,108.0      ↓      4.2         750       ↓       39.6
+
+
+
+
+                                                                                                                      September 12, 2025
+                              Cotton Acres
+                               United States
+Million Acres
+15.0                   14.1
+                               13.7                    13.7
+14.0
+                12.7
+13.0                                    12.1
+12.0                                           11.2                   11.2
+11.0                                                           10.2
+       10.1
+                11.1           11.5
+10.0                                                                          9.30
+                       9.98                     10.3
+ 9.0    9.51
+ 8.0
+                                        8.21
+ 7.0                                                                  7.81
+                                                       7.29                   7.37
+ 6.0                                                          6.44
+       2016     2017   2018    2019     2020   2021    2022   2023    2024    2025
+                              Planted          Harvested
+
+                                                                      September 12, 2025
+                                                     Cotton Yield
+                                                          United States
+
+Pounds per Acre
+980                                                                                                                                              953
+
+930                                                                                      892
+                                                                                                                   905                                 900
+                                                                                                                                                             886
+                                                               879                                                       884
+                                                                                                                                                                   861
+880                                          855                                                             867
+                                                                                                                                     854
+                                                   831                                               838
+                                                         814         813     812
+830                                                                                                                            832
+                                                                                               822
+                                                                                                                                           820
+780                                                                                790
+                                                                       776                                 766
+730                              705         730
+         705
+               673                     665
+680
+               625         632
+                     607
+630
+580
+530
+480
+      1996 1998 2000 2002 2004 2006 2008 2010 2012 2014 2016 2018 2020 2022 2024
+
+
+                                                                                                                                           September 12, 2025
+    September 2025 Cotton Yield
+Pounds and Percent Change from Previous Month
+
+
+
+
+                                          September 12, 2025
+   September 2025 Cotton Yield
+Pounds and Percent Change from Previous Year
+
+
+
+
+                                          September 12, 2025
+                          Cotton Production
+                                United States
+Million Bales
+25.0
+
+                20.9
+                              19.9
+20.0                   18.4
+       17.2                                 17.5
+
+                                     14.6          14.5          14.4
+15.0
+                                                                          13.2
+                                                          12.1
+
+
+10.0
+
+
+
+ 5.0
+
+
+
+ 0.0
+       2016     2017   2018   2019   2020   2021   2022   2023   2024     2025
+
+
+                                                                 September 12, 2025
+                  2025 U.S. Cotton Production
+                     Industry Expectations vs NASS
+Million Bales
+
+15.4
+
+
+14.9
+
+
+14.4
+
+
+13.9
+
+
+13.4
+
+
+12.9
+         August     September      October      November   December     Final
+
+                   Individual Industry Expectation   NASS Estimate
+
+
+                                                                      September 12, 2025
+                      September 2025 Field Crops
+                             Acreage, Yield, and Production
+
+                                  Planted         Harvested           Yield           Unit Production Unit
+                                  (1,000 Acres)    (1,000 Acres)   (Units per Acre)         (1,000 Units)
+                  Chickpeas             541              524             1,418         Lb        7,430      Cwt
+% Change from Previous Estimate      ↑ 0.2            ↑ 0.2                N/A                     N/A
+ % Change from Previous Season       ↑ 7.8            ↑ 6.4             ↑ 24.0                ↑ 31.9
+           Dry Edible Peas            1,179            1,134             1,814         Lb       20,576      Cwt
+% Change from Previous Estimate      ↑ 10.2           ↑ 10.7               N/A                     N/A
+ % Change from Previous Season       ↑ 20.8           ↑ 20.7            ↑ 2.2                 ↑ 23.4
+                      Lentils         1,073            1,051             1,055         Lb       11,083      Cwt
+% Change from Previous Estimate      ↑ 6.2            ↑ 9.0                N/A                     N/A
+ % Change from Previous Season       ↑ 14.6           ↑ 16.4            ↑ 5.3                 ↑ 22.5
+                     Peanuts          1,954            1,901             3,890         Lb    7,395,000      Lb
+% Change from Previous Estimate      ↑ 0.7            ↑ 0.7             ↑ 1.4                 ↑ 2.1
+ % Change from Previous Season       ↑ 8.5            ↑ 8.1             ↑ 6.1                 ↑ 14.7
+                         Rice         2,823            2,762             7,559         Lb      208,777      Cwt
+% Change from Previous Estimate      ↑ 1.2            ↑ 1.2             ↓ 1.0                 ↑ 0.2
+ % Change from Previous Season       ↓ 3.0            ↓ 3.7             ↓ 2.4                 ↓ 6.0
+
+
+
+                                                                                                  September 12, 2025
+                      September 2025 Field Crops
+                             Acreage, Yield, and Production
+
+                                  Planted         Harvested           Yield           Unit Production Unit
+                                  (1,000 Acres)    (1,000 Acres)   (Units per Acre)         (1,000 Units)
+                   Sorghum            6,645            5,715              70.4 Bu              402,235 Bu
+% Change from Previous Estimate      ↑ 0.6            ↑ 0.7             ↑ 2.0                  ↑ 2.7
+ % Change from Previous Season       ↑ 5.5            ↑ 2.0             ↑ 14.8                 ↑ 17.0
+                 Sugarbeets           1,080            1,069              33.0 Ton              35,308 Ton
+% Change from Previous Estimate      ↑ 0.1            ↑ 0.4             ↑ 0.3                  ↑ 0.8
+ % Change from Previous Season       ↓ 2.2            ↓ 1.5             ↑ 1.5                  ↑ 0.1
+                  Sugarcane            N/A               937              36.7 Ton              34,366 Ton
+% Change from Previous Estimate         N/A           ↑ 0.9             ↑ 0.5                  ↑ 1.3
+ % Change from Previous Season          N/A           ↑ 1.8             ↓ 1.9                  ↓ <0.1
+                    Tobacco            N/A               171             2,209 Lb              376,830 Lb
+% Change from Previous Estimate         N/A           ↑ 0.5             ↑ 2.3                  ↑ 2.8
+ % Change from Previous Season          N/A           ↑ 1.9             ↑ 13.7                 ↑ 15.9
+
+
+
+
+                                                                                                  September 12, 2025
+              September 2025 Fruits and Nuts
+                                                   Production
+                                                                                              Navel Orange Production
+                                  Production Unit                                                    California
+                                                                Million Tons
+                                   (1,000 Units)
+                                                                 2.0            1.89
+      Navel Oranges (CA)              1,600 Ton                  1.8
+                                                                                       1.57
+                                                                                                        1.68   1.73
+                                                                                                                      1.65                 1.60
+                                                                        1.56
+                                                                 1.6                             1.46
+% Change from Previous Estimate         N/A                      1.4                                                         1.26
+                                                                                                                                    1.44
+
+
+ % Change from Previous Season      ↑    5.5                     1.2
+                                                                 1.0
+              Walnuts (CA)              710 Ton                  0.8
+                                                                 0.6
+% Change from Previous Estimate         N/A                      0.4
+
+ % Change from Previous Season      ↑ 17.7                       0.2
+                                                                 0.0
+                                                                        2015    2016   2017     2018    2019   2020   2021   2022   2023   2024
+
+
+
+
+                                                                                                 Walnut Production
+                                                                                                   United States
+                                                                Thousand Tons
+
+                                                                 900
+                                                                                                                             828
+                                                                                                        789
+                                                                 800                                           735    756
+                                                                         689                                                               710
+                                                                                       683
+                                                                 700                             657
+                                                                                630
+                                                                                                                                    603
+                                                                 600
+
+                                                                 500
+
+                                                                 400
+
+                                                                 300
+
+                                                                 200
+
+                                                                 100
+
+                                                                   0
+                                                                        2016    2017   2018     2019    2020   2021   2022   2023   2024   2025
+
+
+
+
+                                                                                                                  September 12, 2025
+        Selected Upcoming Reports
+
+September 19                             Cattle on Feed
+
+September 25                             Hogs and Pigs
+
+                                    Agricultural Prices
+September 30                           Grain Stocks
+                                   Small Grains Summary
+
+                                        Cotton System
+ October 1                                Fats & Oils
+                                        Grain Crushings
+
+                                       Cotton Ginnings
+ October 9
+                                       Crop Production
+
+
+               https://www.nass.usda.gov/Publications/index.php
+
+                                                                  September 12, 2025
+       Data Users’ Meeting
+
+
+
+
+   USDA Fall Data Users’ Meeting
+Join Us Online or in West Des Moines
+         October 21, 2025
+
+                                   September 12, 2025
+#StatChat
+
+
+
+
+            September 12, 2025
+All Reports Available At
+
+   www.nass.usda.gov
+
+    For Questions
+
+     (202) 720-2127
+     (800) 727-9540
+     nass@usda.gov
+

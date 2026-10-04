@@ -1,0 +1,55 @@
+{
+  "schema": "cal-v1-independent-judges-natural-rc1-source-pool",
+  "fixed_before_retrieval": true,
+  "fixed_before_claim_selection": true,
+  "split_rule": "Sort sources that have a non-empty extraction window by SHA-256 of the raw response body. Lower half is calibration. Upper half is held-out. An odd middle source is calibration. Retrieval and extraction failures stay unpartitioned and are not replaced.",
+  "window_rule": "Full extraction at or under 80000 characters; otherwise the first 80000 characters.",
+  "excluded_surfaces": [
+    "CAL #193 and the #189 cohort SHA-256 3c6da6d24d0ddbaba817687f42ddd8e027840ed45173bb36c77ed1e1160e3339",
+    "CAL #203 source pool S01-S16",
+    "RC0 semantic seeds S01-S14",
+    "RC0 candidate implementation claims, which are those same synthetic seeds"
+  ],
+  "sources": [
+    {
+      "source_id": "P01",
+      "title": "BJS Capital Punishment, 2023 – Statistical Tables",
+      "url": "https://bjs.ojp.gov/library/publications/capital-punishment-2023-statistical-tables"
+    },
+    {
+      "source_id": "P02",
+      "title": "NPS visitor use statistics, 2024 at-a-glance",
+      "url": "https://www.nps.gov/subjects/socialscience/visitor-use-statistics-dashboard.htm"
+    },
+    {
+      "source_id": "P03",
+      "title": "CMS National Health Expenditure fact sheet",
+      "url": "https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/nhe-fact-sheet"
+    },
+    {
+      "source_id": "P04",
+      "title": "USGS Mineral Commodity Summaries 2026, gold",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-gold.pdf"
+    },
+    {
+      "source_id": "P05",
+      "title": "USDA NASS September 12 2025 crop production briefing",
+      "url": "https://www.nass.usda.gov/Newsroom/Executive_Briefings/2025/09-12-2025.pdf"
+    },
+    {
+      "source_id": "P06",
+      "title": "Federal Reserve G.17 release of August 15 2025",
+      "url": "https://www.federalreserve.gov/releases/g17/20250815/default.htm"
+    },
+    {
+      "source_id": "P07",
+      "title": "Census Bureau Vintage 2024 population estimates story",
+      "url": "https://www.census.gov/library/stories/2024/12/population-estimates.html"
+    },
+    {
+      "source_id": "P08",
+      "title": "EPA air quality national summary",
+      "url": "https://www.epa.gov/air-trends/air-quality-national-summary"
+    }
+  ]
+}

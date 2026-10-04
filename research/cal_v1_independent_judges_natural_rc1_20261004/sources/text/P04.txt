@@ -1,0 +1,145 @@
+                                                        GOLD
+                            (Data in metric tons,1 gold content, unless otherwise specified)
+
+Domestic Production and Use: In 2025, domestic gold mine production was estimated to be 160 tons; the value
+was estimated to be $17 billion, a 32% increase from the value in 2024. Gold was produced at more than 40 lode
+mines in 12 States, at several large placer mines in Alaska, and at numerous smaller placer mines (mostly in Alaska
+and in the Western States). Nevada was the leading gold-producing State, accounting for about 64% of total domestic
+production, followed by Alaska, which produced about 22% of domestic gold. About 7% of domestic gold was
+recovered as a byproduct of processing domestic base-metal ores, chiefly copper ores. The top 25 operations yielded
+about 94% of the mined gold produced in the United States. Commercial-grade gold was produced at approximately
+16 refineries. A few dozen companies, out of several thousand companies and artisans, dominated the fabrication of
+gold into commercial products. U.S. jewelry manufacturing was heavily concentrated in the New York, NY, and
+Providence, RI, areas, with lesser concentrations in California, Florida, and Texas.
+
+Salient Statistics—United States:                                            2021     2022      2023      2024     2025e
+Production:
+  Mine                                                                        187       173      170       163        160
+  Refinery:
+    Primary                                                                   181      181        177      180       170
+    Secondary (new and old scrap)                                              92       93         96       89        90
+Imports for consumption2                                                      192      138        215      190       320
+Exports2                                                                      386      420        252      289       260
+Consumption, reported3                                                        265      252        253      210       150
+Stocks, Treasury, yearend4                                                  8,130    8,130      8,130    8,130     8,130
+Price, dollars per troy ounce5                                              1,801    1,802      1,945    2,388     3,300
+Employment, mine and mill, number6                                         11,700   11,500     12,200   13,200    13,000
+Net import reliance7 as a percentage of reported consumption                    E        E          E        E        (8)
+
+Recycling: In 2025, an estimated 90 tons of new and old scrap was recycled, equivalent to about 60% of reported
+consumption. The domestic supply of gold from recycling was slightly higher compared with that in 2024.
+
+Import Sources (2021–24): Ores and concentrates: Canada, 99%; and other, 1%. Dore: Mexico, 37%; Colombia,
+22%; Argentina, 14%; Nicaragua, 8%; and other, 19%. Bullion: Canada, 46%; Switzerland, 16%; South Africa,10%;
+Colombia, 7%; and other, 21%. Total: Canada, 27%; Mexico, 20%; Colombia, 14%; Switzerland, 9%; and other, 30%.
+
+Tariff:   Item                                                   Number                   Normal Trade Relations
+                                                                                                12–31–25
+Precious metal ore and concentrates:
+ Gold content of silver ores                                  2616.10.0080                0.8 ¢/kg on lead content.
+ Gold content of other ores                                   2616.90.0040                1.7 ¢/kg on lead content.
+Gold bullion                                                  7108.12.1013                          Free.
+Gold dore                                                     7108.12.1020                          Free.
+Gold scrap                                                    7112.91.0100                          Free.
+
+Depletion Allowance: 15% (domestic), 14% (foreign).
+
+Government Stockpile: The U.S. Department of the Treasury maintains stocks of gold (see salient statistics above)
+and the U.S. Department of War administers a Governmentwide secondary precious-metals recovery program.
+
+Events, Trends, and Issues: The estimated gold price in 2025 increased by 38% and reached a new record-high
+annual price compared with the previous record-high annual price in 2024. The Engelhard daily price for gold in 2025
+fluctuated, increasing in the first and second quarters, decreasing at the beginning of the third quarter, and increasing
+into the beginning of the fourth quarter.
+
+In 2025, worldwide gold mine production was an estimated 3,300 tons compared with 3,280 tons in 2024. China,
+Russia, Australia, Canada, and the United States were the leading gold producers, in descending order of production,
+and together accounted for 41% of estimated global production in 2025.
+
+
+
+
+Prepared by Kristin N. Sheaffer [(703) 648–4954, ksheaffer@usgs.gov]
+                                                                      GOLD
+Estimated global gold consumption, excluding exchange-traded funds and other similar investments, was in jewelry,
+40%; physical bars, 24%; central banks and other institutions, 21%; official coins and medals and imitation coins, 7%;
+electrical and electronics, 7%; and other, 1%. In the first 9 months of 2025, global consumption of gold in physical
+bars increased by 18%, electronics were unchanged, other industrial applications decreased by 4%, dentistry
+decreased by 8%, coins and medals decreased by 11%, and jewelry decreased by 20% compared with those in the
+first 9 months of 2024. During the first 9 months of 2025, gold holdings in central banks decreased by 13%, and
+global investments in gold-based exchange-traded funds and similar investments were 619 tons in the first 9 months
+of 2025, an increase by more than 25 times compared with the first 9 months of 2024. Total global consumption in the
+first 9 months of 2025 increased by 10% compared with that in the first 9 months of 2024.9
+
+World Mine Production and Reserves: Reserves for Australia, Brazil, China, Peru, and “Other countries” were
+revised based on company and Government reports.
+
+                                                            Mine production                                       Reserves10
+                                                             2024     2025e
+United States                                                 163       160                                              3,000
+Australia                                                     284       280                                           11
+                                                                                                                        13,000
+Brazil                                                         e
+                                                                82       80                                              2,500
+Canada                                                       e
+                                                              200       200                                              3,200
+China                                                         377       380                                              3,200
+Ghana                                                         149       150                                              1,000
+Indonesia                                                      e
+                                                                94       90                                              3,600
+Kazakhstan                                                   e
+                                                              130       130                                              2,300
+Mexico                                                        140       140                                              1,400
+Peru                                                          108       110                                              2,200
+Russia                                                       e
+                                                              310       310                                             12,000
+South Africa                                                     90      90                                              5,000
+Uzbekistan                                                    129       130                                              2,200
+Other countries                                             1,020     1,000                                             11,000
+  World total (rounded)                                     3,280     3,300                                             66,000
+
+World Resources:10 An assessment of U.S. gold resources indicated 33,000 tons of gold—15,000 tons in identified
+and 18,000 tons in undiscovered resources.12 Nearly one-quarter of the gold in undiscovered resources was
+estimated to be contained in porphyry copper deposits. The gold resources in the United States, however, are only a
+small portion of global gold resources.
+
+Substitutes: Base metals clad with gold alloys are widely used to economize on gold in electrical and electronic
+products and in jewelry; many of these products are continually redesigned to maintain high-utility standards with
+lower gold content. Generally, palladium, platinum, and silver may substitute for gold.
+
+
+
+
+e
+ Estimated. E Net exporter.
+1
+ One metric ton (1,000 kilograms) = 32,150.7 troy ounces.
+2
+ Includes refined bullion, dore, ores, concentrates, and precipitates. Excludes waste and scrap, official monetary gold, gold in fabricated items, gold
+in coins, and net bullion flow (in tons) to market from foreign stocks at the New York Federal Reserve Bank.
+3
+ Includes gold used in the production of consumer purchased bars, coins, and jewelry. Excludes gold as an investment (except consumer
+purchased bars and coins). Source: World Gold Council.
+4
+ Stocks were valued at the official price of $42.22 per troy ounce.
+5
+ Engelhard’s average gold price quotation for the year. In 2025, the price was estimated by the U.S. Geological Survey based on data from
+January through November.
+6
+ Data from the Mine Safety and Health Administration.
+7
+ Defined as imports – exports.
+8
+ Large unreported investor stock purchases preclude calculation of a meaningful net import reliance.
+9
+ Source: World Gold Council.
+10
+  See Appendix C for resource and reserve definitions and information concerning data sources.
+11
+  For Australia, Joint Ore Reserves Committee-compliant or equivalent reserves were 4,500 tons.
+12
+  Source: U.S. Geological Survey National Mineral Resource Assessment Team, 2000, 1998 assessment of undiscovered deposits of gold, silver,
+copper, lead, and zinc in the United States: U.S. Geological Survey Circular 1178, 21 p.
+
+                                                     U.S. Geological Survey, Mineral Commodity Summaries, February 2026
+
