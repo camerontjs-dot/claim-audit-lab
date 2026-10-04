@@ -1,0 +1,20 @@
+{
+  "schema": "cal-independent-judges-preparation-freeze-rc0",
+  "evidence_class": "APPARATUS_PREPARATION_ONLY",
+  "product_issue": 205,
+  "execution_issue": 206,
+  "control_commit": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+  "control_tree": "62c32ab15489e6c3b20e63efb500c0fa26d0084d",
+  "candidate_executed": false,
+  "files": {
+    "INVENTORY.md": "5cf5683d2028434388f1360369b948a9c3658c4f2aae46bcf8c937ec619ace6d",
+    "LOCAL_HANDOFF.md": "8cbdf6c694184b5f6bf89f4e5779b749811c31b2157566935273328d4b212257",
+    "PLAN.md": "841407c733fee0d176eb12baedd9136ec2cc513cfc5d1fd947da3ca8805e6a79",
+    "RC0_PROTOCOL.md": "5210fa59f524f5b423d763b9c9edc4d4f5d9879bf74aad9202933ed72a576f13",
+    "SELFTEST_RESULT.json": "b83a185b61f878bf16fd99cf472fee0f6f0eda4857890a50aa0bce68009446e6",
+    "SEMANTIC_CASES.json": "065abd151e2cc017406636765b800520043141c8773ce0db97d8cc8ab651147c",
+    "contract_tests.py": "7e3f8631a7f4fdafc9ff139896e5a0d785628e12190eefe8bd68acd9901b99a1",
+    "verify_kit.py": "4115e5ebb9082d126125fa972149479c304d36fbe9cc15a160262fd05e14ac89"
+  },
+  "freeze_note": "This manifest excludes itself. Pin the containing Git commit and this manifest blob externally on issue #206. Self-consistent hashes alone do not authenticate a kit."
+}

@@ -1,0 +1,52 @@
+name: CAL V1 independent judges apparatus self-test
+
+on:
+  push:
+    branches:
+      - research/cal-v1-independent-judges-plan-rc0-20261004
+  pull_request:
+    branches:
+      - research/cal-v1-polarity-contract-c-authority-binding-rc0-20261003
+    paths:
+      - research/cal_v1_independent_judges_rc0_20261004/**
+      - .github/workflows/cal-v1-independent-judges-apparatus.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  apparatus-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify exact kit and unchanged control product
+        shell: bash
+        run: |
+          set -euo pipefail
+          KIT=research/cal_v1_independent_judges_rc0_20261004
+          test "$(git rev-parse HEAD:$KIT/FREEZE.json)" = bfb2ea0e25f7d167d4f7a180bed0e2ea834d7fb5
+          git diff --exit-code 64b6c7702696c851057c1cf0b2c105b1c81db543 HEAD -- src tests scripts pyproject.toml uv.lock MANIFEST.in
+          python "$KIT/verify_kit.py"
+      - name: Self-test mechanical evaluator only
+        shell: bash
+        run: |
+          set -euo pipefail
+          KIT=research/cal_v1_independent_judges_rc0_20261004
+          mkdir -p artifacts
+          python "$KIT/contract_tests.py" --selftest > artifacts/apparatus-selftest.json
+          cmp "$KIT/SELFTEST_RESULT.json" artifacts/apparatus-selftest.json
+          cat artifacts/apparatus-selftest.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-independent-judges-apparatus-only-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/apparatus-selftest.json
+          if-no-files-found: warn
