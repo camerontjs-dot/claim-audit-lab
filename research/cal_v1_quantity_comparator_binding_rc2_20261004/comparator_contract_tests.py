@@ -178,4 +178,98 @@ class SharedVerb(Oracle):
             out["relation"] = "supports"; out["evidence_comparator"] = out["claim_comparator"]
         return out
 
-class CueNoRole
+class CueNoRole(Oracle):
+    @staticmethod
+    def analyze(claim, evidence):
+        out = Oracle.analyze(claim, evidence)
+        if "score" in evidence and "rate" in evidence:
+            out["ambiguity"] = False; out["relation"] = "supports"; out["evidence_comparator"] = "GT"
+        return out
+
+class FirstWins(CueNoRole):
+    pass
+
+class LastWins(Oracle):
+    @staticmethod
+    def analyze(claim, evidence):
+        out = Oracle.analyze(claim, evidence)
+        if "score" in evidence and "rate" in evidence:
+            out["ambiguity"] = False; out["relation"] = "supports"; out["evidence_comparator"] = "LT"
+        return out
+
+class ParentheticalLoss(Oracle):
+    @staticmethod
+    def analyze(claim, evidence):
+        out = Oracle.analyze(claim, evidence)
+        if "(3%)" in evidence:
+            out["evidence_comparator"] = out["claim_comparator"]; out["relation"] = "supports"
+        return out
+
+class NegationCollapse(Oracle):
+    @staticmethod
+    def analyze(claim, evidence):
+        out = Oracle.analyze(claim, evidence)
+        if "did not have more" in evidence:
+            out["evidence_comparator"] = "LT"; out["relation"] = "supports"
+        return out
+
+class MeasureBlind(Oracle):
+    @staticmethod
+    def analyze(claim, evidence):
+        out = Oracle.analyze(claim, evidence)
+        if "asthma" in claim and "COPD" in evidence:
+            out["evidence_measure"] = out["claim_measure"]; out["relation"] = "supports"
+        return out
+
+
+def run(adapter: Any) -> dict[str, Any]:
+    global ADAPTER
+    ADAPTER = adapter
+    stream = io.StringIO()
+    result = unittest.TextTestRunner(stream=stream, verbosity=0).run(unittest.defaultTestLoader.loadTestsFromTestCase(Contract))
+    return {
+        "tests": result.testsRun,
+        "failures": [t._testMethodName for t, _ in result.failures],
+        "errors": [t._testMethodName for t, _ in result.errors],
+        "skips": len(result.skipped),
+    }
+
+
+def main() -> int:
+    p = argparse.ArgumentParser()
+    g = p.add_mutually_exclusive_group(required=True)
+    g.add_argument("--selftest", action="store_true")
+    g.add_argument("--adapter", type=Path)
+    args = p.parse_args()
+    if args.selftest:
+        good = run(Oracle)
+        expected = {
+            "QuantityOnly": "test_parenthetical_comparator_bound",
+            "SharedVerb": "test_faster_slower_bound",
+            "CueNoRole": "test_multiple_cues_fail_closed",
+            "FirstWins": "test_multiple_cues_fail_closed",
+            "LastWins": "test_multiple_cues_fail_closed",
+            "ParentheticalLoss": "test_parenthetical_comparator_bound",
+            "NegationCollapse": "test_not_more_does_not_become_less",
+            "MeasureBlind": "test_measure_mismatch_unresolved",
+        }
+        mutants = [QuantityOnly, SharedVerb, CueNoRole, FirstWins, LastWins, ParentheticalLoss, NegationCollapse, MeasureBlind]
+        controls = {}
+        for mutant in mutants:
+            r = run(mutant)
+            controls[mutant.__name__] = {"intended_test": expected[mutant.__name__], "caught": expected[mutant.__name__] in r["failures"] or expected[mutant.__name__] in r["errors"], "result": r}
+        ok = not good["failures"] and not good["errors"] and all(v["caught"] for v in controls.values())
+        report = {"evidence_class":"EVALUATOR_SELFTEST_ONLY","candidate_executed":False,"oracle":good,"weak_controls":controls,"passed":ok}
+    else:
+        spec = importlib.util.spec_from_file_location("candidate_adapter", args.adapter.resolve())
+        if spec is None or spec.loader is None:
+            raise RuntimeError("cannot load adapter")
+        module = importlib.util.module_from_spec(spec); sys.modules[spec.name] = module; spec.loader.exec_module(module)
+        r = run(module)
+        ok = not r["failures"] and not r["errors"] and not r["skips"]
+        report = {"evidence_class":"EXPOSED_DEVELOPMENT_CONFORMANCE_ONLY","result":r,"passed":ok,"fresh_generalization":"NOT_ESTABLISHED"}
+    print(json.dumps(report, sort_keys=True))
+    return 0 if ok else 1
+
+if __name__ == "__main__":
+    raise SystemExit(main())

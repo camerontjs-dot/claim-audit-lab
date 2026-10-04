@@ -44,7 +44,7 @@ The development discriminator includes:
 - `more/fewer`, `higher/lower`, `greater/less`;
 - `faster/slower` with a shared growth verb;
 - `increase/decrease`;
-- equality/unchanged/tied`;
+- equality/unchanged/tied;
 - side swap plus direction inversion;
 - parenthetical rates/percentages between value and comparator;
 - non-equivalence of `not more` and `less`;
@@ -92,4 +92,25 @@ The preselected source set is deliberately different from the exact source ident
 
 After raw-byte freeze:
 
--ˆØ[Xœ˜][ÛˆX^H™H™XY[™YYXØ]YÂ‹H[[İ]]\ËØÛZ[\È™[XZ[ˆÙX[Yœ›ÛH[\[Y[][ÛÂ‹H]X\İÛ™H[[İ]Ûİ\˜ÙH]\İ›ÙXÙH[ˆ]™[Û›Û‹\]X[]HØ\ÙHÛÈX\›H›İ][™È\ÈØœÙ\˜X›NÂ‹H]X[]HØ\Ù\ÈÚİ[[˜ÛYH]™\œÙHÛÛ\\˜]ÜˆŞ[^›İÛ›HH^ÜÙY˜Z[\™H›Ü›\ÎÂ‹H›ÈÛİ\˜ÙH™\XÙ[Y[Y\ˆØœÙ\š[™ÈØ[™Y]H™Z]š[Ü‹‚‚•H[[İ]\œ›Üˆ[H™[XZ[œÈ˜Z[Y˜\İÛˆ[HÜš]XØ[˜[ÙHXÚY[™È™\İ[‚‚ˆÈÈ›ÙXİ™YÜ™\ÜÚ[Û‚‚”[ˆHXZ[Z[™YİZ]H[ˆHXÛ\™YİŒWX[š\›Û›Y[ˆ™\Ù\™HˆÌŒIÜÈØØ[›™\ˆÛÛ\Ú[ÛˆÛˆœ›Ş™[ˆTH]\È\ÈHÙ\\˜]HYÚY[™Kİ\İXÛ\ÜÚYšXØ][Ûˆ\ÜİYKˆÈ›İY]Ûœ›Ş™[ˆ]šY[˜ÙHÈXZÙHHØØ[›™\ˆÜ™Y[‹‚‚ˆÈÈ›Û‹XÛZ[\Â‚HÛÛ\\˜]Ü‹Xš[™[™È\ÜÈÛİ[›İ\İX›\Ú‚‹HÙ[™\˜[˜]\˜[[[™İXYÙH\ÙY[™\ÜÎÂ‹HÛÜœ™XİÙZYÚ[™ÈXÜ›ÜÜÈ[ÛZ[H\\ÎÂ‹H[š]™\œØ[Ù[X[XËY˜[Z[HÛİ™\˜YÙNÂ‹HÛÛ˜XİÈİZ]Xš[]NÂ‹H™[X\ÙH™XY[™\ÜË‚‚’]Ûİ[]]Üš^™HÛ›HHœ™\ÚÛİ\˜ÙKY\Ú›Ú[˜]\˜[XÛZ[H]X[YšY\ˆYš[™YHÌŒL‚
+- calibration may be read and adjudicated;
+- held-out bytes/claims remain sealed from implementation;
+- at least one held-out source must produce an event/non-quantity case so early routing is observable;
+- quantity cases should include diverse comparator syntax, not only the exposed failure forms;
+- no source replacement after observing candidate behavior.
+
+The held-out error rule remains fail-fast on any critical false deciding result.
+
+## Product regression
+
+Run the maintained suite in the declared `[v1]` environment. Preserve PR #209's scanner collision on frozen EPA bytes as a separate hygiene/test-classification issue. Do not edit old frozen evidence to make the scanner green.
+
+## Non-claims
+
+A comparator-binding pass would not establish:
+- general natural-language usefulness;
+- correct weighting across all claim types;
+- universal semantic-family coverage;
+- Contract C suitability;
+- release readiness.
+
+It would authorize only the fresh source-disjoint natural-claim qualifier defined by #210.
