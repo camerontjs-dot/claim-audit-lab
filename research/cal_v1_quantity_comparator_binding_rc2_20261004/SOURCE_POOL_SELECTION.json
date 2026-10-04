@@ -1,0 +1,80 @@
+{
+  "schema": "cal-v1-quantity-comparator-rc2-source-selection-v1",
+  "status": "SELECTED_NOT_BYTES_FROZEN",
+  "selected_at": "2026-10-04",
+  "selection_rule": "Selected before comparator candidate modification; exact raw bytes, final URLs, media types and hashes must be frozen locally before implementation. No replacement after candidate exposure.",
+  "disjointness_note": "Different exact source URLs/identities from the known #193, #203 and #209 source sets. Publisher reuse is permitted; exact source identity/bytes may not repeat.",
+  "calibration": [
+    {
+      "source_id": "QRC2-C01",
+      "publisher": "U.S. Bureau of Economic Analysis",
+      "title": "Personal Income and Outlays, May 2025",
+      "url": "https://www.bea.gov/news/2025/personal-income-and-outlays-may-2025",
+      "selection_reason": "Multiple increase/decrease quantities and percent changes; dated authoritative release."
+    },
+    {
+      "source_id": "QRC2-C02",
+      "publisher": "U.S. Energy Information Administration",
+      "title": "EIA expects the price of crude oil to fall to below $60 per barrel...",
+      "url": "https://www.eia.gov/pressroom/releases/press573.php",
+      "selection_reason": "Contains less-than, lower-than and multi-period forecast comparisons with units."
+    },
+    {
+      "source_id": "QRC2-C03",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "title": "Labor underutilization measures ranged from 1.5 percent to 7.8 percent in May 2025",
+      "url": "https://www.bls.gov/opub/ted/2025/labor-underutilization-measures-ranged-from-1-5-percent-to-7-8-percent-in-may-2025.htm",
+      "selection_reason": "Higher/lower-than comparisons among related measures."
+    },
+    {
+      "source_id": "QRC2-C04",
+      "publisher": "National Center for Education Statistics",
+      "title": "International comparisons of achievement",
+      "url": "https://nces.ed.gov/fastfacts/display.asp?id=1",
+      "selection_reason": "Higher/lower/not-measurably-different comparison language with population scope."
+    }
+  ],
+  "held_out": [
+    {
+      "source_id": "QRC2-H01",
+      "publisher": "NOAA",
+      "title": "Arctic Report Card 2025 — Terrestrial Snow Cover",
+      "url": "https://arctic.noaa.gov/report-card/report-card-2025/terrestrial-snow-cover-2025/",
+      "selection_reason": "Higher-than/below-normal comparisons with time and geographic scope."
+    },
+    {
+      "source_id": "QRC2-H02",
+      "publisher": "Internal Revenue Service",
+      "title": "Instructions for Form 1116 (2025)",
+      "url": "https://www.irs.gov/instructions/i1116",
+      "selection_reason": "Greater-than/less-than threshold relations and conditions; tests comparator binding under rule context."
+    },
+    {
+      "source_id": "QRC2-H03",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "title": "For World Logic Day: Jobs for critical and analytical thinkers",
+      "url": "https://www.bls.gov/opub/ted/2025/for-world-logic-day-jobs-for-critical-and-analytical-thinkers.htm",
+      "selection_reason": "Faster/slower/as-fast/much-faster categorical growth comparisons."
+    },
+    {
+      "source_id": "QRC2-H04",
+      "publisher": "NASA",
+      "title": "NASA Astronaut Don Pettit, Crewmates Complete Space Station Expedition",
+      "url": "https://www.nasa.gov/news-release/nasa-astronaut-don-pettit-crewmates-complete-space-station-expedition/",
+      "selection_reason": "Non-quantity event chronology source reserved so early routing can be exercised on an event-only claim."
+    }
+  ],
+  "forbidden_replacements": "Do not replace failed/difficult sources after observing retrieval or candidate behavior. Retrieval failure is a result unless a predeclared transport-only fallback retrieves the same canonical source identity.",
+  "raw_freeze_required_fields": [
+    "requested_url",
+    "final_url",
+    "retrieved_at_utc",
+    "http_status",
+    "media_type",
+    "raw_sha256",
+    "raw_bytes",
+    "transport_tool",
+    "leak_scan",
+    "partition"
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "evidence_class": "HELD_OUT_FIRST_RUN",
+  "candidate_commit": "ce7348ae9a9e9b0fd03290e044516f3c302e06b0",
+  "label_commit": "e95978508ba4717c51decfe099974152483ba902",
+  "instrument_id": "quantity-comparator-binding-rc2-s2",
+  "adjudicator": "single_research_lead",
+  "false_decisions": 1,
+  "missed_decisions": 11,
+  "matches": 6,
+  "rows": [
+    {
+      "claim_id": "HOL-01",
+      "source_id": "QRC2-H01",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "quantity_only",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "higher"
+      ]
+    },
+    {
+      "claim_id": "HOL-02",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "quantity_only",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "lower"
+      ]
+    },
+    {
+      "claim_id": "HOL-03",
+      "source_id": "QRC2-H01",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "quantity_only",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "measure"
+      ]
+    },
+    {
+      "claim_id": "HOL-04",
+      "source_id": "QRC2-H01",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "router_profile": "quantity_only",
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "decrease",
+        "percent"
+      ]
+    },
+    {
+      "claim_id": "HOL-05",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "quantity_only",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "decrease",
+        "measure"
+      ]
+    },
+    {
+      "claim_id": "HOL-06",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [
+        "guard_violation"
+      ],
+      "kind": "missed_decision",
+      "families": [
+        "year"
+      ]
+    },
+    {
+      "claim_id": "HOL-07",
+      "source_id": "QRC2-H01",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "earlier",
+        "region"
+      ]
+    },
+    {
+      "claim_id": "HOL-08",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "later",
+        "region"
+      ]
+    },
+    {
+      "claim_id": "HOL-09",
+      "source_id": "QRC2-H02",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "not_more",
+        "threshold"
+      ]
+    },
+    {
+      "claim_id": "HOL-10",
+      "source_id": "QRC2-H02",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "not_more",
+        "threshold"
+      ]
+    },
+    {
+      "claim_id": "HOL-11",
+      "source_id": "QRC2-H02",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "not_more",
+        "less"
+      ]
+    },
+    {
+      "claim_id": "HOL-12",
+      "source_id": "QRC2-H02",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "router_profile": "quantity_only",
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "greater"
+      ]
+    },
+    {
+      "claim_id": "HOL-13",
+      "source_id": "QRC2-H02",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "greater",
+        "less"
+      ]
+    },
+    {
+      "claim_id": "HOL-14",
+      "source_id": "QRC2-H02",
+      "expected": "not_checkable",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "false_support",
+      "families": [
+        "percent",
+        "percentage_point"
+      ]
+    },
+    {
+      "claim_id": "HOL-15",
+      "source_id": "QRC2-H02",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "quantity_only",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "greater"
+      ]
+    },
+    {
+      "claim_id": "HOL-16",
+      "source_id": "QRC2-H02",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "no_cue_all_relations",
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "event_conclusion": "not_applicable",
+      "event_cause": "unparsed_event_order",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "less"
+      ]
+    },
+    {
+      "claim_id": "HOL-17",
+      "source_id": "QRC2-H04",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "router_profile": "event_only",
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "event_conclusion": "supports",
+      "event_cause": null,
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "event",
+        "before"
+      ]
+    },
+    {
+      "claim_id": "HOL-18",
+      "source_id": "QRC2-H04",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "router_profile": "event_only",
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "event_conclusion": "unresolved",
+      "event_cause": "event_order_not_in_evidence",
+      "blockers": [],
+      "kind": "missed_decision",
+      "families": [
+        "event",
+        "before"
+      ]
+    }
+  ],
+  "disposition": "FALSIFIED_NEW_CRITICAL_FALSE_DECISION",
+  "false_deciding_results": [
+    {
+      "claim_id": "HOL-14",
+      "arm": "C",
+      "expected": "not_checkable",
+      "actual": "supported",
+      "also_on_arms": [
+        "R",
+        "B"
+      ],
+      "mechanism": "The threshold unit pattern accepts the letter sequence percent inside percentage points. Both sides bound as less-than 10 percent, so a percentage-point claim supported a percent sentence."
+    }
+  ],
+  "abstention_causes": {
+    "measure_unbound": "HOL-01, HOL-02, and HOL-15/HOL-16 parse a direction but leave both measures empty. Empty measures do not match, so the pair abstains.",
+    "magnitude_or_clause_measure": "HOL-05 binds the May 15 percent clause and does not transfer it onto the June claim. It abstains instead of refuting the false June magnitude.",
+    "year_scope_guard": "HOL-06 is unparsed as a quantity and the required scope guard blocks 2024 against a 2025 sentence.",
+    "earlier_later_unparsed": "HOL-07 and HOL-08 use earlier/later, which this binder does not treat as comparators.",
+    "negation_not_bound": "HOL-09 reads aren't-more-than as more-than. The identical sentence supports itself. HOL-10 changes the subject wording and then abstains on measure mismatch instead of refuting.",
+    "inner_threshold_not_the_greater_relation": "HOL-12 supports because both copies share more-than 366 days. HOL-13 changes greater to less and abstains because that wording changes the subject, not because less refutes greater.",
+    "event_string_mismatch": "HOL-18 reverses the order, but the period stays on one event phrase. The frozen event lane requires exact phrases and abstains."
+  },
+  "routing": "HOL-17 selected event_only. Quantity was not applicable and event_order supported the quoted departure-before-landing sentence.",
+  "note": "One held-out reveal. Labels were committed in e959785 before this score. The successor bytes were not changed after the reveal. QRC2-H03 stayed a failed retrieval and supplied no claim."
+}

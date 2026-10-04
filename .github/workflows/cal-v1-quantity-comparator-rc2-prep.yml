@@ -1,0 +1,53 @@
+name: CAL V1 quantity comparator RC2 preparation self-test
+
+on:
+  push:
+    branches:
+      - research/cal-v1-quantity-comparator-binding-rc2-20261004
+  pull_request:
+    paths:
+      - research/cal_v1_quantity_comparator_binding_rc2_20261004/**
+      - .github/workflows/cal-v1-quantity-comparator-rc2-prep.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preparation-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify frozen preparation kit
+        shell: bash
+        run: |
+          set -euo pipefail
+          KIT=research/cal_v1_quantity_comparator_binding_rc2_20261004
+          python "$KIT/verify_kit.py"
+      - name: Self-test comparator evaluator only
+        shell: bash
+        run: |
+          set -euo pipefail
+          KIT=research/cal_v1_quantity_comparator_binding_rc2_20261004
+          mkdir -p artifacts
+          python "$KIT/comparator_contract_tests.py" --selftest > artifacts/comparator-evaluator-selftest.json
+          cmp "$KIT/SELFTEST_RESULT.json" artifacts/comparator-evaluator-selftest.json
+          cat artifacts/comparator-evaluator-selftest.json
+      - name: Verify no product-code delta from falsified predecessor
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code 2117846df444feddb294ded496e033fa7420183c HEAD -- src tests scripts pyproject.toml uv.lock MANIFEST.in
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-quantity-comparator-rc2-preparation-${{ github.event.pull_request.head.sha || github.sha }}
+          path: artifacts/comparator-evaluator-selftest.json
+          if-no-files-found: warn

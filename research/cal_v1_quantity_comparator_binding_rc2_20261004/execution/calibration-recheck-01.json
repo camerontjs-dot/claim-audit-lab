@@ -1,0 +1,352 @@
+{
+  "evidence_class": "BURNED_RECHECK_NOT_CONFIRMATION",
+  "candidate": "ce7348ae9a9e9b0fd03290e044516f3c302e06b0",
+  "instrument_id": "quantity-comparator-binding-rc2-s2",
+  "adjudicator": "single_research_lead",
+  "false_decisions": 0,
+  "rows": [
+    {
+      "claim_id": "CAL-01",
+      "source_id": "QRC2-C01",
+      "expected": "supported",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "supported",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [
+        "guard_violation"
+      ],
+      "kind": "missed_decision",
+      "families": [
+        "decrease",
+        "parenthetical"
+      ],
+      "first_run_kind": "missed_decision",
+      "guards": [
+        {
+          "process_id": "scope_guard",
+          "conclusion": "not_applicable",
+          "abstention_cause": "no_scope_constraint"
+        },
+        {
+          "process_id": "attribution_guard",
+          "conclusion": "violated",
+          "abstention_cause": "attribution_mismatch"
+        }
+      ]
+    },
+    {
+      "claim_id": "CAL-02",
+      "source_id": "QRC2-C01",
+      "expected": "contradicted",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "contradicted",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "refutes",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [
+        "guard_violation"
+      ],
+      "kind": "missed_decision",
+      "families": [
+        "direction"
+      ],
+      "first_run_kind": "missed_decision",
+      "guards": [
+        {
+          "process_id": "scope_guard",
+          "conclusion": "not_applicable",
+          "abstention_cause": "no_scope_constraint"
+        },
+        {
+          "process_id": "attribution_guard",
+          "conclusion": "violated",
+          "abstention_cause": "attribution_mismatch"
+        }
+      ]
+    },
+    {
+      "claim_id": "CAL-03",
+      "source_id": "QRC2-C01",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "increase"
+      ],
+      "first_run_kind": "missed_decision"
+    },
+    {
+      "claim_id": "CAL-04",
+      "source_id": "QRC2-C01",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "measure"
+      ],
+      "first_run_kind": "match"
+    },
+    {
+      "claim_id": "CAL-05",
+      "source_id": "QRC2-C01",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "unresolved",
+      "quantity_cause": "measure_mismatch",
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "measure"
+      ],
+      "first_run_kind": "match"
+    },
+    {
+      "claim_id": "CAL-06",
+      "source_id": "QRC2-C02",
+      "expected": "contradicted",
+      "arm_c": "contradicted",
+      "arms": {
+        "K": "not_checkable",
+        "R": "contradicted",
+        "B": "not_checkable",
+        "C": "contradicted"
+      },
+      "quantity_conclusion": "refutes",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "lower"
+      ],
+      "first_run_kind": "missed_decision"
+    },
+    {
+      "claim_id": "CAL-07",
+      "source_id": "QRC2-C02",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "not_checkable",
+        "C": "supported"
+      },
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "higher",
+        "percent"
+      ],
+      "first_run_kind": "missed_decision"
+    },
+    {
+      "claim_id": "CAL-08",
+      "source_id": "QRC2-C02",
+      "expected": "contradicted",
+      "arm_c": "contradicted",
+      "arms": {
+        "K": "not_checkable",
+        "R": "contradicted",
+        "B": "not_checkable",
+        "C": "contradicted"
+      },
+      "quantity_conclusion": "refutes",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "higher"
+      ],
+      "first_run_kind": "missed_decision"
+    },
+    {
+      "claim_id": "CAL-09",
+      "source_id": "QRC2-C02",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "less_than_threshold"
+      ],
+      "first_run_kind": "missed_decision"
+    },
+    {
+      "claim_id": "CAL-10",
+      "source_id": "QRC2-C02",
+      "expected": "contradicted",
+      "arm_c": "contradicted",
+      "arms": {
+        "K": "not_checkable",
+        "R": "contradicted",
+        "B": "contradicted",
+        "C": "contradicted"
+      },
+      "quantity_conclusion": "refutes",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "less_than_threshold"
+      ],
+      "first_run_kind": "missed_decision"
+    },
+    {
+      "claim_id": "CAL-11",
+      "source_id": "QRC2-C04",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "higher",
+        "other_clause"
+      ],
+      "first_run_kind": "acceptable_abstention"
+    },
+    {
+      "claim_id": "CAL-12",
+      "source_id": "QRC2-C04",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [
+        "guard_violation"
+      ],
+      "kind": "match",
+      "families": [
+        "year"
+      ],
+      "first_run_kind": "match",
+      "guards": [
+        {
+          "process_id": "scope_guard",
+          "conclusion": "violated",
+          "abstention_cause": "time_mismatch"
+        },
+        {
+          "process_id": "attribution_guard",
+          "conclusion": "not_applicable",
+          "abstention_cause": "no_attribution_constraint"
+        }
+      ]
+    },
+    {
+      "claim_id": "CAL-13",
+      "source_id": "QRC2-C04",
+      "expected": "not_checkable",
+      "arm_c": "not_checkable",
+      "arms": {
+        "K": "not_checkable",
+        "R": "not_checkable",
+        "B": "not_checkable",
+        "C": "not_checkable"
+      },
+      "quantity_conclusion": "not_applicable",
+      "quantity_cause": "unparsed_comparison",
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "non_quantity"
+      ],
+      "first_run_kind": "match"
+    },
+    {
+      "claim_id": "CAL-14",
+      "source_id": "QRC2-C04",
+      "expected": "supported",
+      "arm_c": "supported",
+      "arms": {
+        "K": "not_checkable",
+        "R": "supported",
+        "B": "supported",
+        "C": "supported"
+      },
+      "quantity_conclusion": "supports",
+      "quantity_cause": null,
+      "quantity_instrument": "quantity-comparator-binding-rc2-s2",
+      "blockers": [],
+      "kind": "match",
+      "families": [
+        "higher",
+        "competing_cues"
+      ],
+      "first_run_kind": "acceptable_abstention"
+    }
+  ],
+  "note": "Not a confirmation. The same burned calibration strings were scored once against successor ce7348ae. CAL-01 and CAL-02 quantity decisions match the labels, and the required attribution guard blocks arm C because the evidence sentence adds an attribution hedge the claim does not carry. Arm B strips that hedge and then decides. No synthesis weight was changed.",
+  "missed_decisions": 2,
+  "matches": 12
+}

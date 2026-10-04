@@ -1,0 +1,151 @@
+{
+  "schema": "cal-v1-quantity-comparator-development-cases-v1",
+  "evidence_class": "EXPOSED_DEVELOPMENT_ONLY_NOT_HELD_OUT",
+  "note": "These cases may be used to implement the successor. They cannot support fresh generalization.",
+  "cases": [
+    {
+      "id": "D01_PARENTHESES_OPPOSITE",
+      "claim": "Alpha's 2025 count was 73 (3%) more than Beta's.",
+      "evidence": "Alpha's 2025 count was 73 (3%) fewer than Beta's.",
+      "expected_relation": "refutes",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "LT",
+      "measure": "count"
+    },
+    {
+      "id": "D02_PARENTHESES_SAME",
+      "claim": "Alpha's 2025 count was 73 (3%) fewer than Beta's.",
+      "evidence": "Alpha's 2025 count was 73 (3%) fewer than Beta's.",
+      "expected_relation": "supports",
+      "required_claim_comparator": "LT",
+      "required_evidence_comparator": "LT",
+      "measure": "count"
+    },
+    {
+      "id": "D03_GROWTH_FASTER_SLOWER",
+      "claim": "Alpha's spending grew faster in 2025 than in 2024.",
+      "evidence": "Alpha's spending grew slower in 2025 than in 2024.",
+      "expected_relation": "refutes",
+      "required_claim_comparator": "GT_RATE",
+      "required_evidence_comparator": "LT_RATE",
+      "measure": "spending growth"
+    },
+    {
+      "id": "D04_GROWTH_FASTER_SAME",
+      "claim": "Alpha's spending grew faster in 2025 than in 2024.",
+      "evidence": "Alpha's spending grew faster in 2025 than in 2024.",
+      "expected_relation": "supports",
+      "required_claim_comparator": "GT_RATE",
+      "required_evidence_comparator": "GT_RATE",
+      "measure": "spending growth"
+    },
+    {
+      "id": "D05_HIGHER_LOWER",
+      "claim": "Alpha's rate was higher than Beta's in 2025.",
+      "evidence": "Alpha's rate was lower than Beta's in 2025.",
+      "expected_relation": "refutes",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "LT",
+      "measure": "rate"
+    },
+    {
+      "id": "D06_GREATER_LESS",
+      "claim": "Alpha's output was greater than Beta's.",
+      "evidence": "Alpha's output was less than Beta's.",
+      "expected_relation": "refutes",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "LT",
+      "measure": "output"
+    },
+    {
+      "id": "D07_EQUALITY",
+      "claim": "Alpha's rate was higher than Beta's.",
+      "evidence": "Alpha's rate was equal to Beta's.",
+      "expected_relation": "refutes",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "EQ",
+      "measure": "rate"
+    },
+    {
+      "id": "D08_NOT_MORE_NOT_LESS",
+      "claim": "Alpha had less output than Beta.",
+      "evidence": "Alpha did not have more output than Beta.",
+      "expected_relation": "unresolved",
+      "required_claim_comparator": "LT",
+      "required_evidence_comparator": "NOT_GT",
+      "measure": "output"
+    },
+    {
+      "id": "D09_SIDE_SWAP",
+      "claim": "Beta had less output than Alpha.",
+      "evidence": "Alpha had more output than Beta.",
+      "expected_relation": "supports",
+      "required_claim_comparator": "LT",
+      "required_evidence_comparator": "GT",
+      "measure": "output"
+    },
+    {
+      "id": "D10_MULTIPLE_CUES",
+      "claim": "Alpha's rate was higher than Beta's.",
+      "evidence": "Alpha was higher than Beta on score but lower than Beta on rate.",
+      "expected_relation": "unresolved",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "AMBIGUOUS",
+      "measure": "rate"
+    },
+    {
+      "id": "D11_OTHER_CLAUSE",
+      "claim": "Alpha's rate was higher than Beta's.",
+      "evidence": "Alpha's score was higher than Beta's, while their rates were equal.",
+      "expected_relation": "refutes",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "EQ",
+      "measure": "rate"
+    },
+    {
+      "id": "D12_MEASURE_MISMATCH",
+      "claim": "Alpha's asthma reporting rate was higher than Beta's.",
+      "evidence": "Alpha's COPD reporting rate was higher than Beta's.",
+      "expected_relation": "unresolved",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "GT",
+      "measure": "asthma reporting rate"
+    },
+    {
+      "id": "D13_PERCENT_POINTS",
+      "claim": "Alpha's share increased by 5 percentage points.",
+      "evidence": "Alpha's share increased by 5 percent.",
+      "expected_relation": "unresolved",
+      "required_claim_comparator": "INCREASE",
+      "required_evidence_comparator": "INCREASE",
+      "measure": "share change"
+    },
+    {
+      "id": "D14_YEAR_MISMATCH",
+      "claim": "In 2025, Alpha's rate was higher than Beta's.",
+      "evidence": "In 2024, Alpha's rate was higher than Beta's.",
+      "expected_relation": "unresolved",
+      "required_claim_comparator": "GT",
+      "required_evidence_comparator": "GT",
+      "measure": "rate"
+    },
+    {
+      "id": "D15_INCREASE_DECREASE",
+      "claim": "Alpha's output increased by 32%.",
+      "evidence": "Alpha's output decreased by 32%.",
+      "expected_relation": "refutes",
+      "required_claim_comparator": "INCREASE",
+      "required_evidence_comparator": "DECREASE",
+      "measure": "output change"
+    },
+    {
+      "id": "D16_EVENT_ONLY",
+      "claim": "Alpha departed before Beta arrived.",
+      "evidence": "Alpha departed before Beta arrived.",
+      "expected_relation": "not_applicable",
+      "required_claim_comparator": "NA",
+      "required_evidence_comparator": "NA",
+      "measure": null
+    }
+  ]
+}

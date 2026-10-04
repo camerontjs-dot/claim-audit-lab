@@ -1,0 +1,201 @@
+{
+  "evidence_class": "HELD_OUT_LABELS_BEFORE_SCORE",
+  "adjudicator": "single_research_lead",
+  "candidate_commit": "ce7348ae9a9e9b0fd03290e044516f3c302e06b0",
+  "pre_reveal_commit": "3f238becb4541f3bd524725c59751be0ffe1f1e4",
+  "failed_source": "QRC2-H03 remained HTTP 403. Its body is an access denial, and it supplied no held-out claim.",
+  "label_rule": "Labels record whether the proposition is established by the quoted span. They were written before the held-out score.",
+  "rows": [
+    {
+      "claim_id": "HOL-01",
+      "source_id": "QRC2-H01",
+      "expected": "supported",
+      "families": [
+        "higher"
+      ],
+      "claim": "Snowpack at the peak of the 2024/25 snow season was higher than normal.",
+      "evidence": "Snowpack at the peak of the 2024/25 snow season was higher than normal over much of the Arctic and remained high through May."
+    },
+    {
+      "claim_id": "HOL-02",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "families": [
+        "lower"
+      ],
+      "claim": "Snowpack at the peak of the 2024/25 snow season was lower than normal.",
+      "evidence": "Snowpack at the peak of the 2024/25 snow season was higher than normal over much of the Arctic and remained high through May."
+    },
+    {
+      "claim_id": "HOL-03",
+      "source_id": "QRC2-H01",
+      "expected": "not_checkable",
+      "families": [
+        "measure"
+      ],
+      "claim": "June snow cover extent was higher than normal.",
+      "evidence": "Snowpack at the peak of the 2024/25 snow season was higher than normal over much of the Arctic and remained high through May."
+    },
+    {
+      "claim_id": "HOL-04",
+      "source_id": "QRC2-H01",
+      "expected": "supported",
+      "families": [
+        "decrease",
+        "percent"
+      ],
+      "claim": "For the Arctic as a whole, May SCE has declined 15% since 1967.",
+      "evidence": "For the Arctic as a whole, May SCE has declined 15% since 1967 (-2.5 %/dec) while June SCE has declined 50% since 1967 (-8.7 %/dec)."
+    },
+    {
+      "claim_id": "HOL-05",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "families": [
+        "decrease",
+        "measure"
+      ],
+      "claim": "For the Arctic as a whole, June SCE has declined 15% since 1967.",
+      "evidence": "For the Arctic as a whole, May SCE has declined 15% since 1967 (-2.5 %/dec) while June SCE has declined 50% since 1967 (-8.7 %/dec)."
+    },
+    {
+      "claim_id": "HOL-06",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "families": [
+        "year"
+      ],
+      "claim": "In 2024, Arctic SCE was close to normal across both the Eurasian and North American sectors during May.",
+      "evidence": "In 2025, Arctic SCE was close to normal across both the Eurasian and North American sectors during May but by June had dropped below normal (baseline periods listed in figure captions)."
+    },
+    {
+      "claim_id": "HOL-07",
+      "source_id": "QRC2-H01",
+      "expected": "supported",
+      "families": [
+        "earlier",
+        "region"
+      ],
+      "claim": "Snow melt at the end of the 2024/25 snow season was earlier than normal over northern Europe and eastern Siberia.",
+      "evidence": "Snow melt at the end of the 2024/25 snow season was earlier than normal over northern Europe and eastern Siberia, but later than normal over the central portion of the continent"
+    },
+    {
+      "claim_id": "HOL-08",
+      "source_id": "QRC2-H01",
+      "expected": "contradicted",
+      "families": [
+        "later",
+        "region"
+      ],
+      "claim": "Snow melt at the end of the 2024/25 snow season was later than normal over northern Europe and eastern Siberia.",
+      "evidence": "Snow melt at the end of the 2024/25 snow season was earlier than normal over northern Europe and eastern Siberia, but later than normal over the central portion of the continent"
+    },
+    {
+      "claim_id": "HOL-09",
+      "source_id": "QRC2-H02",
+      "expected": "supported",
+      "families": [
+        "not_more",
+        "threshold"
+      ],
+      "claim": "Your total creditable foreign taxes aren\u2019t more than $300 ($600 if married filing a joint return).",
+      "evidence": "Your total creditable foreign taxes aren\u2019t more than $300 ($600 if married filing a joint return)."
+    },
+    {
+      "claim_id": "HOL-10",
+      "source_id": "QRC2-H02",
+      "expected": "contradicted",
+      "families": [
+        "not_more",
+        "threshold"
+      ],
+      "claim": "Your total creditable foreign taxes are more than $300 ($600 if married filing a joint return).",
+      "evidence": "Your total creditable foreign taxes aren\u2019t more than $300 ($600 if married filing a joint return)."
+    },
+    {
+      "claim_id": "HOL-11",
+      "source_id": "QRC2-H02",
+      "expected": "not_checkable",
+      "families": [
+        "not_more",
+        "less"
+      ],
+      "claim": "Your total creditable foreign taxes are less than $300 ($600 if married filing a joint return).",
+      "evidence": "Your total creditable foreign taxes aren\u2019t more than $300 ($600 if married filing a joint return)."
+    },
+    {
+      "claim_id": "HOL-12",
+      "source_id": "QRC2-H02",
+      "expected": "supported",
+      "families": [
+        "greater"
+      ],
+      "claim": "This required holding period is greater for preferred-stock dividends attributable to periods totaling more than 366 days.",
+      "evidence": "This required holding period is greater for preferred-stock dividends attributable to periods totaling more than 366 days."
+    },
+    {
+      "claim_id": "HOL-13",
+      "source_id": "QRC2-H02",
+      "expected": "contradicted",
+      "families": [
+        "greater",
+        "less"
+      ],
+      "claim": "This required holding period is less for preferred-stock dividends attributable to periods totaling more than 366 days.",
+      "evidence": "This required holding period is greater for preferred-stock dividends attributable to periods totaling more than 366 days."
+    },
+    {
+      "claim_id": "HOL-14",
+      "source_id": "QRC2-H02",
+      "expected": "not_checkable",
+      "families": [
+        "percent",
+        "percentage_point"
+      ],
+      "claim": "if you were a limited partner and your interest in the partnership was less than 10 percentage points",
+      "evidence": "if you were a limited partner and your interest in the partnership was less than 10%"
+    },
+    {
+      "claim_id": "HOL-15",
+      "source_id": "QRC2-H02",
+      "expected": "supported",
+      "families": [
+        "greater"
+      ],
+      "claim": "Line 5 of the Qualified Dividends and Capital Gain Tax Worksheet is greater than zero.",
+      "evidence": "Line 5 of the Qualified Dividends and Capital Gain Tax Worksheet is greater than zero."
+    },
+    {
+      "claim_id": "HOL-16",
+      "source_id": "QRC2-H02",
+      "expected": "contradicted",
+      "families": [
+        "less"
+      ],
+      "claim": "Line 5 of the Qualified Dividends and Capital Gain Tax Worksheet is less than zero.",
+      "evidence": "Line 5 of the Qualified Dividends and Capital Gain Tax Worksheet is greater than zero."
+    },
+    {
+      "claim_id": "HOL-17",
+      "source_id": "QRC2-H04",
+      "expected": "supported",
+      "families": [
+        "event",
+        "before"
+      ],
+      "claim": "The trio departed the space station at 5:57 p.m. EDT aboard the Soyuz MS-26 spacecraft before making a safe, parachute-assisted landing at 9:20 p.m.",
+      "evidence": "The trio departed the space station at 5:57 p.m. EDT aboard the Soyuz MS-26 spacecraft before making a safe, parachute-assisted landing at 9:20 p.m."
+    },
+    {
+      "claim_id": "HOL-18",
+      "source_id": "QRC2-H04",
+      "expected": "contradicted",
+      "families": [
+        "event",
+        "before"
+      ],
+      "claim": "making a safe, parachute-assisted landing at 9:20 p.m. before the trio departed the space station at 5:57 p.m. EDT aboard the Soyuz MS-26 spacecraft",
+      "evidence": "The trio departed the space station at 5:57 p.m. EDT aboard the Soyuz MS-26 spacecraft before making a safe, parachute-assisted landing at 9:20 p.m."
+    }
+  ]
+}
