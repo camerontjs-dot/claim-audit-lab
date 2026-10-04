@@ -1,0 +1,16 @@
+{
+  "arm_a": "not_checkable",
+  "arm_b": "not_checkable",
+  "arm_c": "not_checkable",
+  "arm_c_cause": "missing_evidence",
+  "attribution": "no_conclusion_difference",
+  "dimension": "missing_evidence",
+  "expected_seed": "not_checkable",
+  "failures": [],
+  "id": "S11",
+  "loss_contrast": "no_conclusion_difference",
+  "lossy_bytes_differ": false,
+  "lossy_transform": "shared-lossy-rc0-strip-time-property-quantifier-attribution",
+  "passed": true,
+  "scope_preserved_against_original": true
+}

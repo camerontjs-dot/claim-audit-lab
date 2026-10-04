@@ -1,0 +1,28 @@
+{
+  "abstention_cause": "unsupported_form",
+  "applicability": "not_applicable",
+  "available_passage_ids": [
+    "S01-p1"
+  ],
+  "claim_interpretation": null,
+  "conclusion": "not_applicable",
+  "consumed_passage_ids": [],
+  "dependence_group": "event-order-text",
+  "evidence_interpretations": [],
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "ce9e933535d9d145b192c2c7cbf9e5351ade5a240672fb0a247a0f142d85cb23",
+  "instrument_id": "event-order-rc0",
+  "instrument_version": "deterministic-text-rc0",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "event_order",
+  "role": "relation",
+  "warrant": "qualified",
+  "worker_pid": 73886
+}

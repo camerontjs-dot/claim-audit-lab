@@ -1,0 +1,18 @@
+{
+  "boundary": "first_preserved_decisive_run",
+  "candidate_commit": "83f4afda3328c7ccd9be3fbcd670083fc38f68a6",
+  "decisive_run": "execution/decisive-01",
+  "disposition": "MECHANICS_AND_ARM_C_EXPOSED_SEED_LABELS_SUPPORTED_PREREGISTERED_ARM_A_EVENT_PREDICTION_FAILED_NATURAL_USEFULNESS_UNESTABLISHED",
+  "first_failure": {
+    "id": "S09",
+    "observation": "arm A conclusion not_checkable != supported"
+  },
+  "interpretation": "The original-input candidate matched every preregistered arm C label, including S04 and S08 scope-preserving decisions outside frozen authoring, and it kept the preregistered abstentions. The three-arm table did not pass. On S09 and S10 the frozen kernel authored the event claim and then returned SOURCE_COMPLETION_FAILED because source completion refuses the object token Report as a reporting surface. Arm C still decided those two seeds through the independent event lane. A versus C remains confounded. Toy weights are not calibrated. Natural-claim usefulness is not established.",
+  "isolation_run": "execution/isolation-01",
+  "mechanical_run": "execution/mechanical-01",
+  "mechanics": "ESTABLISHED",
+  "natural_usefulness": "NOT_ESTABLISHED",
+  "overwritten": false,
+  "preregistered_table": "FAILED",
+  "weights": "UNCALIBRATED_TOY_RATIONALS_NOT_PRODUCTION_WEIGHTS"
+}

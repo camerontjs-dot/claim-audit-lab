@@ -1,0 +1,22 @@
+{
+  "schema": "cal-research-experiment-rc0",
+  "experiment_id": "cal-v1-independent-judges-rc0-20261004",
+  "state": "completed",
+  "freeze_commit": "83f4afda3328c7ccd9be3fbcd670083fc38f68a6",
+  "freeze_tree": "af42c04bdb0b94e4ac6cb9c1b6bb22da327a7f0a",
+  "decisive_run": "execution/decisive-01",
+  "isolation_run": "execution/isolation-01",
+  "disposition": "MECHANICS_AND_ARM_C_EXPOSED_SEED_LABELS_SUPPORTED_PREREGISTERED_ARM_A_EVENT_PREDICTION_FAILED_NATURAL_USEFULNESS_UNESTABLISHED",
+  "first_failure": "S09 arm A not_checkable; kernel SOURCE_COMPLETION_FAILED on the object token Report",
+  "candidate_id": "cal-v1-independent-judges-candidate-rc0-20261004",
+  "study_type": "architecture_discriminator",
+  "evidence_layer": "exposed_synthetic_seeds_plus_process_isolation",
+  "question": "Do original-input isolated lanes decide scoped synthetic comparisons the frozen authoring grammar refuses, without turning mismatch, conflict, attribution, or missing evidence into decisions?",
+  "protocol": "research/cal_v1_independent_judges_rc0_20261004/RC0_PROTOCOL.md",
+  "expectations": "EXPECTATIONS.json",
+  "policy": "POLICY.json",
+  "primary_factor": "input_isolation_and_lane_catalogue",
+  "metric": "deciding_outcome_against_preregistered_seed_labels",
+  "unit_of_analysis": "synthetic_seed_case",
+  "arms": ["routed_kernel", "shared_lossy", "original_input"]
+}

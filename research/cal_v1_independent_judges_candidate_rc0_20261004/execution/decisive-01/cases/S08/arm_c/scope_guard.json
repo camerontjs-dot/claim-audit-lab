@@ -1,0 +1,61 @@
+{
+  "abstention_cause": null,
+  "applicability": "applicable",
+  "available_passage_ids": [
+    "S08-p1"
+  ],
+  "claim_constraints": {
+    "allegation": false,
+    "measure": "rate",
+    "pair": [
+      "alpha had",
+      "beta in"
+    ],
+    "property": "",
+    "quantifiers": [
+      "all"
+    ],
+    "years": []
+  },
+  "conclusion": "satisfied",
+  "consumed_claim": "Alpha had a higher rate than Beta in all age groups.",
+  "consumed_passage_ids": [
+    "S08-p1"
+  ],
+  "dependence_group": "same-author-comparison-text",
+  "evidence_constraints": [
+    {
+      "compared": true,
+      "constraints": {
+        "allegation": false,
+        "measure": "rate",
+        "pair": [
+          "alpha had",
+          "beta in"
+        ],
+        "property": "",
+        "quantifiers": [
+          "all"
+        ],
+        "years": []
+      },
+      "passage_id": "S08-p1"
+    }
+  ],
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "d563eaea2a0e37f03d7fcd43dd897af67ff5d0289babe80837238c590276efa8",
+  "instrument_id": "constraint-guard-rc0",
+  "instrument_version": "deterministic-text-rc0",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "scope_guard",
+  "role": "guard",
+  "warrant": "qualified",
+  "worker_pid": 73967
+}

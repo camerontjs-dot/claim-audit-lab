@@ -1,0 +1,61 @@
+{
+  "abstention_cause": null,
+  "applicability": "applicable",
+  "available_passage_ids": [
+    "S04-p1"
+  ],
+  "claim_constraints": {
+    "allegation": false,
+    "measure": "rate",
+    "pair": [
+      "alpha had",
+      "beta"
+    ],
+    "property": "",
+    "quantifiers": [],
+    "years": [
+      "2025"
+    ]
+  },
+  "conclusion": "satisfied",
+  "consumed_claim": "In 2025, Alpha had a higher rate than Beta.",
+  "consumed_passage_ids": [
+    "S04-p1"
+  ],
+  "dependence_group": "same-author-comparison-text",
+  "evidence_constraints": [
+    {
+      "compared": true,
+      "constraints": {
+        "allegation": false,
+        "measure": "rate",
+        "pair": [
+          "alpha had",
+          "beta"
+        ],
+        "property": "",
+        "quantifiers": [],
+        "years": [
+          "2025"
+        ]
+      },
+      "passage_id": "S04-p1"
+    }
+  ],
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "d6abc7d95c8f37be690f2cbc937b511142c2bb264eadced14199b3542d302575",
+  "instrument_id": "constraint-guard-rc0",
+  "instrument_version": "deterministic-text-rc0",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "scope_guard",
+  "role": "guard",
+  "warrant": "qualified",
+  "worker_pid": 73931
+}

@@ -1,0 +1,14 @@
+{
+  "candidate_commit": "83f4afda3328c7ccd9be3fbcd670083fc38f68a6",
+  "candidate_tree": "af42c04bdb0b94e4ac6cb9c1b6bb22da327a7f0a",
+  "commands": [
+    "python research/cal_v1_independent_judges_rc0_20261004/contract_tests.py --adapter research/cal_v1_independent_judges_candidate_rc0_20261004/adapter.py",
+    "python research/cal_v1_independent_judges_candidate_rc0_20261004/isolation_probe.py",
+    "python research/cal_v1_independent_judges_candidate_rc0_20261004/semantic_runner.py"
+  ],
+  "models_used": false,
+  "product_version": "0.6.0",
+  "python": "3.11.15",
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "v1_extra_installed": false
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "cal-research-candidate-rc0",
+  "candidate_id": "cal-v1-independent-judges-candidate-rc0-20261004",
+  "lifecycle_state": "DECISIVE_RUN_PRESERVED",
+  "source_commit": "83f4afda3328c7ccd9be3fbcd670083fc38f68a6",
+  "source_tree": "af42c04bdb0b94e4ac6cb9c1b6bb22da327a7f0a",
+  "decisive_run": "execution/decisive-01",
+  "decisive_passed": false,
+  "preparation_commit": "4f3eaadf39e2f8f9229298ce2e39dbeee8eea102",
+  "preparation_tree": "1275b941f7161c3165ddc2752c92ec2ce57b2f3e",
+  "control_commit": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+  "control_tree": "62c32ab15489e6c3b20e63efb500c0fa26d0084d",
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "included_scope": ["research/cal_v1_independent_judges_candidate_rc0_20261004"],
+  "excluded_scope": ["src", "tests", "scripts", "pyproject.toml", "uv.lock", "MANIFEST.in", "research/cal_v1_independent_judges_rc0_20261004"],
+  "instruments": {
+    "models": "NONE",
+    "prompts": "NONE",
+    "providers": "NONE"
+  },
+  "advancement_readiness": "NOT_READY",
+  "non_claims": [
+    "natural-claim usefulness",
+    "calibrated weights",
+    "blind evaluation",
+    "Contract C change",
+    "release or promotion"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "cal-independent-judges-rc0-preregistered-expectations",
+  "frozen_before_seed_execution": true,
+  "seeds": "research/cal_v1_independent_judges_rc0_20261004/SEMANTIC_CASES.json",
+  "seeds_sha256": "065abd151e2cc017406636765b800520043141c8773ce0db97d8cc8ab651147c",
+  "evidence_class": "SYNTHETIC_EXPOSED_DEVELOPMENT_SEEDS_NOT_BLIND_GOLD",
+  "arm_c_rule": "Zero wrong deciding outcomes. Preserve every not_checkable seed. At least one supported decision must be outside the frozen authoring grammar and must retain its material scope against the original claim.",
+  "cases": [
+    {"id": "S01", "arm_a": "supported", "arm_b": "supported", "arm_c": "supported", "arm_c_cause": null, "scope_gain": false},
+    {"id": "S02", "arm_a": "contradicted", "arm_b": "contradicted", "arm_c": "contradicted", "arm_c_cause": null, "scope_gain": false},
+    {"id": "S03", "arm_a": "not_checkable", "arm_b": "not_checkable", "arm_c": "not_checkable", "arm_c_cause": "polarity_non_establishing", "scope_gain": false},
+    {"id": "S04", "arm_a": "not_checkable", "arm_a_cause": "authoring_refusal", "arm_b": "supported", "arm_b_scope_preserved": false, "arm_c": "supported", "arm_c_cause": null, "scope_gain": true, "required_scope": {"time": "2025"}},
+    {"id": "S05", "arm_a": "not_checkable", "arm_a_cause": "authoring_refusal", "arm_b": "supported", "arm_c": "not_checkable", "arm_c_cause": "scope_mismatch", "scope_gain": false},
+    {"id": "S06", "arm_a": "not_checkable", "arm_a_cause": "authoring_refusal", "arm_b": "supported", "arm_c": "not_checkable", "arm_c_cause": "scope_mismatch", "scope_gain": false},
+    {"id": "S07", "arm_a": "not_checkable", "arm_a_cause": "authoring_refusal", "arm_b": "supported", "arm_c": "not_checkable", "arm_c_cause": "scope_mismatch", "scope_gain": false},
+    {"id": "S08", "arm_a": "not_checkable", "arm_a_cause": "authoring_refusal", "arm_b": "supported", "arm_b_scope_preserved": false, "arm_c": "supported", "arm_c_cause": null, "scope_gain": true, "required_scope": {"quantifier": "all"}},
+    {"id": "S09", "arm_a": "supported", "arm_b": "supported", "arm_c": "supported", "arm_c_cause": null, "scope_gain": false},
+    {"id": "S10", "arm_a": "contradicted", "arm_b": "contradicted", "arm_c": "contradicted", "arm_c_cause": null, "scope_gain": false},
+    {"id": "S11", "arm_a": "not_checkable", "arm_b": "not_checkable", "arm_c": "not_checkable", "arm_c_cause": "missing_evidence", "scope_gain": false},
+    {"id": "S12", "arm_a": "not_checkable", "arm_b": "not_checkable", "arm_c": "not_checkable", "arm_c_cause": "material_conflict", "scope_gain": false},
+    {"id": "S13", "arm_a": "not_checkable", "arm_b": "supported", "arm_c": "not_checkable", "arm_c_cause": "attribution", "scope_gain": false},
+    {"id": "S14", "arm_a": "supported", "arm_b": "supported", "arm_c": "supported", "arm_c_cause": null, "scope_gain": false}
+  ]
+}

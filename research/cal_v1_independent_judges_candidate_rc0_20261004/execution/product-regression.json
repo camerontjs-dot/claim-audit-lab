@@ -1,0 +1,30 @@
+{
+  "candidate_commit": "83f4afda3328c7ccd9be3fbcd670083fc38f68a6",
+  "commands": [
+    {
+      "command": "python -m pytest -q --tb=line",
+      "exit_code": 2,
+      "note": "Collection stopped. 40 modules under tests/v1 failed to import because spaCy is not installed. 4 tests were deselected. This is not v1 coverage."
+    },
+    {
+      "command": "python -m pytest -q --tb=line --ignore=tests/v1",
+      "exit_code": 1,
+      "passed": 235,
+      "failed": 7,
+      "failed_nodeids": [
+        "tests/test_cli.py::test_audit_missing_draft_file_exits_nonzero",
+        "tests/test_cli.py::test_audit_missing_evidence_file_exits_nonzero",
+        "tests/test_cli.py::test_audit_unsupported_draft_type_exits_nonzero",
+        "tests/test_cli.py::test_audit_malformed_yaml_evidence_exits_nonzero",
+        "tests/test_cli.py::test_audit_invalid_evidence_schema_exits_nonzero",
+        "tests/test_cli.py::test_audit_default_engine_is_v1_retrieve_entail",
+        "tests/test_cli.py::test_demo_default_engine_is_v1_retrieve_entail"
+      ],
+      "failure_class": "DEPENDENCY_BLOCKED_V1_EXTRA_ABSENT",
+      "failure_observation": "Each failure exited because v1-retrieve-entail requires the [v1] extra and spaCy. Product bytes were not changed by this candidate."
+    }
+  ],
+  "product_version": "0.6.0",
+  "python": "3.11.15",
+  "v1_extra_installed": false
+}

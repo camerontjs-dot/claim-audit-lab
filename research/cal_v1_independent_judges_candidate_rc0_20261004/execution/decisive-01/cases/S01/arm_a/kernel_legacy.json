@@ -1,0 +1,42 @@
+{
+  "abstention_cause": null,
+  "applicability": "applicable",
+  "authored_fields": {
+    "comparison_direction": "MORE_THAN",
+    "lhs_entity": "Alpha",
+    "rhs_entity": "Beta"
+  },
+  "authoring_status": "accepted",
+  "available_passage_ids": [
+    "S01-p1"
+  ],
+  "conclusion": "supports",
+  "consumed_claim": "Alpha had a higher rate than Beta.",
+  "consumed_passage_ids": [
+    "S01-p1"
+  ],
+  "dependence_group": "frozen-kernel",
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "ce9e933535d9d145b192c2c7cbf9e5351ade5a240672fb0a247a0f142d85cb23",
+  "instrument_id": "frozen-kernel",
+  "instrument_version": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "kernel_conclusion": "supported",
+  "kernel_failure": null,
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "cal_product_package",
+    "candidate_module",
+    "installed_dependency",
+    "platform_runtime",
+    "python_stdlib"
+  ],
+  "process_id": "kernel_legacy",
+  "role": "relation",
+  "semantic_family": "strict_comparison",
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "warrant": "qualified",
+  "worker_pid": 73874
+}

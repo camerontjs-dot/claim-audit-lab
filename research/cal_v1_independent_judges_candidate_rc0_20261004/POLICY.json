@@ -1,0 +1,33 @@
+{
+  "schema": "cal-independent-judges-rc0-toy-policy",
+  "profile": "rc0-toy-uniform-catalogue",
+  "minimum": "2",
+  "calibration_status": "UNCALIBRATED_TOY_RATIONALS_NOT_PRODUCTION_WEIGHTS",
+  "note": "These rationals exist to exercise threshold, dependence capping, guard blocking, and conflict behavior on the exposed seeds. They are not estimated reliabilities.",
+  "lanes": {
+    "kernel_legacy": {
+      "role": "relation",
+      "weight": "1",
+      "group": "frozen-kernel",
+      "required": false
+    },
+    "original_relation": {
+      "role": "relation",
+      "weight": "3",
+      "group": "comparison-text",
+      "required": false
+    },
+    "scope_guard": {
+      "role": "guard",
+      "weight": "0",
+      "group": "constraint-guard",
+      "required": true
+    },
+    "event_order": {
+      "role": "relation",
+      "weight": "3",
+      "group": "event-order-text",
+      "required": false
+    }
+  }
+}

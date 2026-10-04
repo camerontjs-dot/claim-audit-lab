@@ -1,0 +1,16 @@
+{
+  "arm_a": "supported",
+  "arm_b": "supported",
+  "arm_c": "supported",
+  "arm_c_cause": null,
+  "attribution": "no_conclusion_difference",
+  "dimension": "role_inversion",
+  "expected_seed": "supported",
+  "failures": [],
+  "id": "S14",
+  "loss_contrast": "no_conclusion_difference",
+  "lossy_bytes_differ": false,
+  "lossy_transform": "shared-lossy-rc0-strip-time-property-quantifier-attribution",
+  "passed": true,
+  "scope_preserved_against_original": true
+}

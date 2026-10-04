@@ -1,0 +1,13 @@
+{
+  "binding_ok": true,
+  "forbidden_read": false,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "original_relation",
+  "returncode": 0,
+  "state": "completed",
+  "stderr": "",
+  "supplied_sha256": "d5f422622bc472e575dc931f64dd6ff59ecd643c305173d1e0e7da1f47663150"
+}

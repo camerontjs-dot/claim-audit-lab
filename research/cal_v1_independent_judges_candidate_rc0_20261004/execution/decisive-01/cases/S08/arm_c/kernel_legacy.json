@@ -1,0 +1,28 @@
+{
+  "abstention_cause": "authoring_refusal",
+  "applicability": "not_applicable",
+  "authoring_detail": "unsupported claim form",
+  "authoring_status": "refused",
+  "conclusion": "not_applicable",
+  "dependence_group": "frozen-kernel",
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "d563eaea2a0e37f03d7fcd43dd897af67ff5d0289babe80837238c590276efa8",
+  "instrument_id": "frozen-kernel",
+  "instrument_version": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "cal_product_package",
+    "candidate_module",
+    "installed_dependency",
+    "platform_runtime",
+    "python_stdlib"
+  ],
+  "process_id": "kernel_legacy",
+  "role": "relation",
+  "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+  "warrant": "qualified",
+  "worker_pid": 73965
+}

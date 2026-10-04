@@ -1,0 +1,65 @@
+{
+  "abstention_cause": null,
+  "applicability": "applicable",
+  "available_passage_ids": [
+    "S09-p1"
+  ],
+  "claim_interpretation": {
+    "left": {
+      "object": "report",
+      "polarity": "positive",
+      "predicate": "review",
+      "subject": "alpha"
+    },
+    "relation": "BEFORE",
+    "right": {
+      "object": "file",
+      "polarity": "positive",
+      "predicate": "approve",
+      "subject": "beta"
+    }
+  },
+  "conclusion": "supports",
+  "consumed_claim": "Alpha reviewed Report before Beta approved File.",
+  "consumed_passage_ids": [
+    "S09-p1"
+  ],
+  "dependence_group": "event-order-text",
+  "evidence_interpretations": [
+    {
+      "interpretation": {
+        "left": {
+          "object": "report",
+          "polarity": "positive",
+          "predicate": "review",
+          "subject": "alpha"
+        },
+        "relation": "BEFORE",
+        "right": {
+          "object": "file",
+          "polarity": "positive",
+          "predicate": "approve",
+          "subject": "beta"
+        }
+      },
+      "passage_id": "S09-p1",
+      "relation": "supports"
+    }
+  ],
+  "execution": "completed",
+  "forbidden_read": false,
+  "input_sha256": "d53aadf544ac787638e1d78e575dceca914d9085684776c19d4ada3405c60f71",
+  "instrument_id": "event-order-rc0",
+  "instrument_version": "deterministic-text-rc0",
+  "local_material_conflict": false,
+  "material_loss": false,
+  "model": null,
+  "open_classes": [
+    "candidate_module",
+    "python_stdlib"
+  ],
+  "process_id": "event_order",
+  "role": "relation",
+  "warrant": "qualified",
+  "worker_pid": 73977
+}
