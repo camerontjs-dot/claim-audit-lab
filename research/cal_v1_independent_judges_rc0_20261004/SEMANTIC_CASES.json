@@ -1,0 +1,188 @@
+{
+  "schema": "cal-independent-judges-rc0-semantic-seeds",
+  "evidence_class": "SYNTHETIC_EXPOSED_DEVELOPMENT_SEEDS_NOT_BLIND_GOLD",
+  "note": "Expected outcomes are proposed fixture obligations; freeze any preregistration corrections before candidate exposure. Reruns do not create new independent evidence.",
+  "cases": [
+    {
+      "id": "S01",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        {
+          "id": "S01-p1",
+          "text": "Alpha had a higher rate than Beta."
+        }
+      ],
+      "expected": "supported",
+      "dimension": "comparison",
+      "rationale": "Canonical deciding control."
+    },
+    {
+      "id": "S02",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        {
+          "id": "S02-p1",
+          "text": "Alpha did not have a higher rate than Beta."
+        }
+      ],
+      "expected": "contradicted",
+      "dimension": "polarity",
+      "rationale": "Negative MORE_THAN refutes that oriented strict comparison."
+    },
+    {
+      "id": "S03",
+      "claim": "Alpha had a lower rate than Beta.",
+      "evidence": [
+        {
+          "id": "S03-p1",
+          "text": "Alpha did not have a higher rate than Beta."
+        }
+      ],
+      "expected": "not_checkable",
+      "dimension": "polarity",
+      "rationale": "Not higher permits equality; it does not establish lower."
+    },
+    {
+      "id": "S04",
+      "claim": "In 2025, Alpha had a higher rate than Beta.",
+      "evidence": [
+        {
+          "id": "S04-p1",
+          "text": "In 2025, Alpha had a higher rate than Beta."
+        }
+      ],
+      "expected": "supported",
+      "dimension": "time",
+      "rationale": "Required scoped deciding gain beyond old authoring grammar; preserve 2025."
+    },
+    {
+      "id": "S05",
+      "claim": "In 2025, Alpha had a higher rate than Beta.",
+      "evidence": [
+        {
+          "id": "S05-p1",
+          "text": "In 2024, Alpha had a higher rate than Beta."
+        }
+      ],
+      "expected": "not_checkable",
+      "dimension": "time",
+      "rationale": "Same comparison in another period does not decide the requested period."
+    },
+    {
+      "id": "S06",
+      "claim": "Alpha had a higher COPD reporting rate than Beta.",
+      "evidence": [
+        {
+          "id": "S06-p1",
+          "text": "Alpha had a higher asthma reporting rate than Beta."
+        }
+      ],
+      "expected": "not_checkable",
+      "dimension": "measure",
+      "rationale": "Different measured property must not collapse to pair plus direction."
+    },
+    {
+      "id": "S07",
+      "claim": "Alpha had a higher rate than Beta in all age groups.",
+      "evidence": [
+        {
+          "id": "S07-p1",
+          "text": "Alpha had a higher rate than Beta in some age groups."
+        }
+      ],
+      "expected": "not_checkable",
+      "dimension": "quantifier",
+      "rationale": "Existential support is not universal support or its refutation."
+    },
+    {
+      "id": "S08",
+      "claim": "Alpha had a higher rate than Beta in all age groups.",
+      "evidence": [
+        {
+          "id": "S08-p1",
+          "text": "Alpha had a higher rate than Beta in all age groups."
+        }
+      ],
+      "expected": "supported",
+      "dimension": "quantifier",
+      "rationale": "Preserve full universal scope on both sides, not just a positive cue."
+    },
+    {
+      "id": "S09",
+      "claim": "Alpha reviewed Report before Beta approved File.",
+      "evidence": [
+        {
+          "id": "S09-p1",
+          "text": "Alpha reviewed Report before Beta approved File."
+        }
+      ],
+      "expected": "supported",
+      "dimension": "event_order",
+      "rationale": "Every comparison process still receives this input and evaluates applicability."
+    },
+    {
+      "id": "S10",
+      "claim": "Alpha reviewed Report before Beta approved File.",
+      "evidence": [
+        {
+          "id": "S10-p1",
+          "text": "Beta approved File before Alpha reviewed Report."
+        }
+      ],
+      "expected": "contradicted",
+      "dimension": "event_order",
+      "rationale": "Same events, inverse order."
+    },
+    {
+      "id": "S11",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [],
+      "expected": "not_checkable",
+      "dimension": "missing_evidence",
+      "rationale": "No evidence does not refute."
+    },
+    {
+      "id": "S12",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        {
+          "id": "S12-p1",
+          "text": "Alpha had a higher rate than Beta."
+        },
+        {
+          "id": "S12-p2",
+          "text": "Alpha had a lower rate than Beta."
+        }
+      ],
+      "expected": "not_checkable",
+      "dimension": "material_conflict",
+      "rationale": "Preserve warranted conflict rather than vote by source order or count."
+    },
+    {
+      "id": "S13",
+      "claim": "Alpha had a higher rate than Beta.",
+      "evidence": [
+        {
+          "id": "S13-p1",
+          "text": "A report alleged that Alpha had a higher rate than Beta."
+        }
+      ],
+      "expected": "not_checkable",
+      "dimension": "attribution",
+      "rationale": "An allegation is not automatically an unqualified assertion of the proposition."
+    },
+    {
+      "id": "S14",
+      "claim": "Beta had a lower rate than Alpha.",
+      "evidence": [
+        {
+          "id": "S14-p1",
+          "text": "Alpha had a higher rate than Beta."
+        }
+      ],
+      "expected": "supported",
+      "dimension": "role_inversion",
+      "rationale": "Same exact comparison under side swap and direction inversion."
+    }
+  ]
+}
