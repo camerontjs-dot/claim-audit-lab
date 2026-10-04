@@ -1,0 +1,184 @@
+{
+  "cases": [
+    {
+      "arm_c": "supported",
+      "claim_id": "P02-1",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "supports",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P02"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "P02-2",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "unresolved",
+        "scope_guard": "violated"
+      },
+      "source_id": "P02"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "P02-3",
+      "expected": "contradicted",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "refutes",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P02"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "P02-4",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "not_applicable",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P02"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "P06-1",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "supports",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P06"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "P06-2",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "unresolved",
+        "scope_guard": "violated"
+      },
+      "source_id": "P06"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "P06-3",
+      "expected": "contradicted",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "refutes",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P06"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "P07-1",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "supports",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P07"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "P07-2",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "unresolved",
+        "scope_guard": "violated"
+      },
+      "source_id": "P07"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "P07-3",
+      "expected": "contradicted",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "refutes",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P07"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "P08-1",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "supports",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P08"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "P08-2",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "unresolved",
+        "scope_guard": "violated"
+      },
+      "source_id": "P08"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "P08-3",
+      "expected": "contradicted",
+      "kind": "correct_deciding",
+      "local": {
+        "attribution_guard": "not_applicable",
+        "event_order": "not_applicable",
+        "quantity_relation": "refutes",
+        "scope_guard": "satisfied"
+      },
+      "source_id": "P08"
+    }
+  ],
+  "eligible_calibration_claims": 13,
+  "matrix": {
+    "correct_deciding": 8,
+    "safe_abstention": 5
+  },
+  "minimum": "1",
+  "uncertain_excluded": [],
+  "weights": {
+    "event_order": "1",
+    "quantity_relation": "1"
+  }
+}

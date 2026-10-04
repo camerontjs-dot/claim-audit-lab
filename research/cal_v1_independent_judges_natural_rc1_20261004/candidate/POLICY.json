@@ -1,0 +1,31 @@
+{
+  "calibration_status": "CALIBRATED_ON_CALIBRATION_PARTITION_ONLY",
+  "lanes": {
+    "attribution_guard": {
+      "group": "attribution-guard",
+      "required": true,
+      "role": "guard",
+      "weight": "0"
+    },
+    "event_order": {
+      "group": "event-order-text",
+      "required": false,
+      "role": "relation",
+      "weight": "1"
+    },
+    "quantity_relation": {
+      "group": "quantity-text",
+      "required": false,
+      "role": "relation",
+      "weight": "1"
+    },
+    "scope_guard": {
+      "group": "scope-guard",
+      "required": true,
+      "role": "guard",
+      "weight": "0"
+    }
+  },
+  "minimum": "1",
+  "schema": "cal-independent-judges-natural-rc1-policy"
+}

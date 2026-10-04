@@ -1,0 +1,24 @@
+{
+  "files": {
+    "HELD_OUT_SEAL.json": "2624eaf7896436aaf1dfd1b5169c3a9bf088e1c9ade176acd2c832b0fbda13ff",
+    "PROTOCOL.md": "8b7be304dbfbb1c8cbe3970e7f7fcb63da6aadf34309ccbaf634e97371e423ad",
+    "candidate/CATALOGUE.json": "2c679192bac0b30464cd2531d607c5baee448be71aea6e98cc9cef0233360d3d",
+    "candidate/POLICY.json": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3",
+    "candidate/calibrate.py": "2ef64f87e099c837b1bc30d2956e92d39ab7288ee44a53388f0117430436807a",
+    "candidate/codec.py": "ce4f2564c0457ba869ad5b35d31b9115c2c730d03c2ceae92dca16d6c65f11ba",
+    "candidate/decisive.py": "6f0a8e360a22c888d92af599c2dfe1c2f10ea0054469f0e519ed638ab20c6511",
+    "candidate/dispatch.py": "4a8ad911d657eef3ce3dc3921c6984ef2997732b68c34fe6ce4fd0a761c28cfa",
+    "candidate/evaluate.py": "b804ba6085209e1fe79f531b3ce2bcabf613b1599a5d68a6306225abb7321a1c",
+    "candidate/judges.py": "224358fa09d6934eb804118431a27153701834b658a006db680cca5b39330ed6",
+    "candidate/kernel_worker.py": "6a3b4afe3f2cda92f88e8f4f2c9ca46ff5801e76eea5ea82682eb32e048f0a78",
+    "candidate/lossy.py": "838dedb23b344ad2f0af9f2bc4ced6adca2dd262b2a6e90d59b1c1fa846e13ef",
+    "candidate/mechanical_checks.py": "23ad9ce3faacc09476c978750bb9691668557247fcd260f5b7f0103d58cf4925",
+    "candidate/router.py": "3264fa93f762d5aada3a0c221034a156e8512a8b2c878e40a30a267828e5a9ce",
+    "candidate/synthesize.py": "5c9d534703dfbffaf8a37fcc9dd2dfef60581fd50a578e01a4312c2c6f105eab",
+    "candidate/views.py": "a908072b69cc3bebae6c4542ca69dd09e2e0e4e6a92cf90962e16cc5d5ce22ea",
+    "candidate/worker.py": "7d2b34b2e5be3b550c3ef23448202e513e1e7589d28615c3da3f68f3fae51d73",
+    "score_disposition.py": "276c284b10b3295d76671c8e440c96cee33cd2fc4982ed01b26aa16e5fc65c11"
+  },
+  "held_out_tuning": false,
+  "schema": "cal-independent-judges-natural-rc1-freeze"
+}
