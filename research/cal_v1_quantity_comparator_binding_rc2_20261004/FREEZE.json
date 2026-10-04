@@ -1,0 +1,20 @@
+{
+  "schema": "cal-v1-quantity-comparator-rc2-preparation-freeze-v1",
+  "evidence_class": "RESEARCH_PREPARATION_ONLY",
+  "issue": 210,
+  "base_commit": "2117846df444feddb294ded496e033fa7420183c",
+  "base_tree": "54ce5285088367399c8a30ce2b080d1c6648f192",
+  "candidate_executed": false,
+  "source_bytes_frozen": false,
+  "files": {
+    "README.md": "80413749c0c60c744e06d7f6a1b25f58fea3af6ad2c45072bd8dc9fe4bcf68a3",
+    "PLAN.md": "466aab069795196d9deda26d64553adb188f33d3cb7487c22a5934c08f9fc0d1",
+    "SOURCE_POOL_SELECTION.json": "376f973da9b32b348af7b09c4b070abc46eab7f0912fe6a43a702875fdfbcf6d",
+    "DEVELOPMENT_CASES.json": "57ebb74e455ae733bf7ecaff0b483cb4e07d072cd5754feebb3c7b8403389041",
+    "LOCAL_HANDOFF.md": "74b945fa25acc5db9269181cd0698493d71e9703f1c368cbae96a1c47419fd7d",
+    "comparator_contract_tests.py": "08e7e421a985191f6420401ef8ebfb2a613049ae5a2b307c4071c01f7915dd75",
+    "SELFTEST_RESULT.json": "7ad824c8cb08a2922695aa717e8a5f9da2ff15c18e8cee553276f7c7119537f2",
+    "verify_kit.py": "9a12a818f1d42c1e8806520d1f41eb47d437afc1a3f8911ebd766604647f55b6"
+  },
+  "note": "This manifest excludes itself. Source identities are selected but raw source bytes are not frozen here. Local source custody must freeze SOURCE_FREEZE.json before semantic implementation."
+}
