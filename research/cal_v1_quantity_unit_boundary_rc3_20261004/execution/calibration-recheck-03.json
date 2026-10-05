@@ -1,0 +1,120 @@
+{
+  "evidence_class": "BURNED_RECHECK_NOT_CONFIRMATION",
+  "iteration": "s3",
+  "matrix": {
+    "match": 11,
+    "miss": 1
+  },
+  "policy_sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3",
+  "rows": [
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-01",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "unit_dimension_mismatch",
+      "claim_id": "CAL-02",
+      "expected": "not_checkable",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-03",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-04",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-05",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-06",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_or_subject_mismatch",
+      "claim_id": "CAL-07",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-08",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-09",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-10",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-11",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "contradicted",
+      "cause": null,
+      "claim_id": "CAL-12",
+      "expected": "contradicted",
+      "instrument_id": "quantity-unit-boundary-rc3-s3",
+      "kind": "match",
+      "quantity_conclusion": "refutes"
+    }
+  ],
+  "unit_binding_sha256": "9ad002bfe4469ef5efdd7f76acd6c55f28cf98edc449dda2edc1d1df5f6aa2a9"
+}

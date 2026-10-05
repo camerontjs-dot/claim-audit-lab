@@ -1,0 +1,40 @@
+{
+  "calibration_status": "BURNED_FOR_TUNING_NOT_CONFIRMATION",
+  "candidate_executed_on_heldout": false,
+  "files": {
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/DEVELOPMENT_CASES.json": {
+      "bytes": 6814,
+      "sha256": "152ee444ae3894b809e0f674993552694809c2f63b4250b58bbc7ee484f93261"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/SOURCE_FREEZE.json": {
+      "bytes": 10622,
+      "sha256": "e112e12439e390900022754228adc71b2a3b022a77a5bf33eae37cf50bb8aeab"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/adjudication/reconciled/calibration.json": {
+      "bytes": 7239,
+      "sha256": "b4c42523a24367369c7edfb3bda5e614998f12c52033d27d1cd797d65cc4a73b"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/CATALOGUE.json": {
+      "bytes": 4471,
+      "sha256": "f4430e416f8b414d41e674c4a1d3bb682d04fd43f8b75b3c6f5e3c39286fd59c"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/POLICY.json": {
+      "bytes": 696,
+      "sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/judges.py": {
+      "bytes": 5911,
+      "sha256": "277de710accbd7e29858962bd1d1a59462272e13c3389498188a7ed7f84deaaf"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/unit_binding.py": {
+      "bytes": 19503,
+      "sha256": "18517f8afd0a162fe84e903633bbb31418082457b42e68ebe62c5d438bef6f66"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py": {
+      "bytes": 8656,
+      "sha256": "22a1a2aa5ef763b3bd4d1000fe0b4047a8b73fd517f4454f35414fc26134ecd4"
+    }
+  },
+  "policy_changed": false,
+  "schema": "cal-v1-quantity-unit-rc3-s5-candidate-freeze-v1"
+}

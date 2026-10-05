@@ -1,0 +1,121 @@
+{
+  "candidate_worktree_head": "e35271d372f0f9302b5c211427375645ed20bfd9",
+  "evidence_class": "BURNED_RECHECK_NOT_CONFIRMATION",
+  "matrix": {
+    "match": 9,
+    "miss": 3
+  },
+  "policy_sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3",
+  "predecessor_calibration_run": "execution/calibration-run-01.json",
+  "rows": [
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-01",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "unit_dimension_mismatch",
+      "claim_id": "CAL-02",
+      "expected": "not_checkable",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "time_mismatch",
+      "claim_id": "CAL-03",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-04",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-05",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-06",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_or_subject_mismatch",
+      "claim_id": "CAL-07",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-08",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_or_subject_mismatch",
+      "claim_id": "CAL-09",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-10",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-11",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "contradicted",
+      "cause": null,
+      "claim_id": "CAL-12",
+      "expected": "contradicted",
+      "instrument_id": "quantity-unit-boundary-rc3-s2",
+      "kind": "match",
+      "quantity_conclusion": "refutes"
+    }
+  ],
+  "unit_binding_sha256": "b0a9f866cc97247aa5507f7c1d3f5fbb8287e843d2a836f707d4bb4424ce69b9"
+}

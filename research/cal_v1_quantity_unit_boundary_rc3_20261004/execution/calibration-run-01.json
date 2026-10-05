@@ -1,0 +1,120 @@
+{
+  "candidate_commit": "d3db8dad5bf3b357535339e891413001ef971238",
+  "evidence_class": "CALIBRATION_FIRST_RUN",
+  "label_commit": "e35271d372f0f9302b5c211427375645ed20bfd9",
+  "matrix": {
+    "match": 2,
+    "miss": 10
+  },
+  "policy_sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3",
+  "rows": [
+    {
+      "actual": "not_checkable",
+      "cause": "measure_mismatch",
+      "claim_id": "CAL-01",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_mismatch",
+      "claim_id": "CAL-02",
+      "expected": "not_checkable",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "match",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "ambiguous_unit_binding",
+      "claim_id": "CAL-03",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_mismatch",
+      "claim_id": "CAL-04",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_mismatch",
+      "claim_id": "CAL-05",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "comparator_unbound",
+      "claim_id": "CAL-06",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_mismatch",
+      "claim_id": "CAL-07",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "supported",
+      "cause": null,
+      "claim_id": "CAL-08",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "match",
+      "quantity_conclusion": "supports"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "measure_mismatch",
+      "claim_id": "CAL-09",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "ambiguous_unit_binding",
+      "claim_id": "CAL-10",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "ambiguous_unit_binding",
+      "claim_id": "CAL-11",
+      "expected": "supported",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    },
+    {
+      "actual": "not_checkable",
+      "cause": "ambiguous_unit_binding",
+      "claim_id": "CAL-12",
+      "expected": "contradicted",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "kind": "miss",
+      "quantity_conclusion": "unresolved"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "evidence_class": "EXPOSED_MECHANICAL_FAILURE",
+  "instrument_id": "quantity-unit-boundary-rc3-s4",
+  "failure": "live passage conflict abstains",
+  "mechanism": "change direction token was retained in the subject/measure: output decreased and output increased were treated as different measures, so the opposite-direction evidence became unresolved instead of refuting",
+  "held_out_exposed": false
+}

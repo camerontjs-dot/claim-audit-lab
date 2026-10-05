@@ -23,7 +23,7 @@
     {
       "dependence_group": "quantity-text",
       "implementation": "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/unit_binding.py",
-      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "instrument_id": "quantity-unit-boundary-rc3-s5",
       "model": null,
       "module": "judges.py",
       "process_id": "quantity_relation",
