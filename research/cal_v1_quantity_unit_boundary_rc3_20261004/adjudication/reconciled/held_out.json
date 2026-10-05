@@ -1,0 +1,331 @@
+{
+  "schema": "cal-v1-quantity-unit-rc3-heldout-v1",
+  "partition": "held_out",
+  "adjudicator": "single_research_lead",
+  "adjudicator_count": 1,
+  "candidate_frozen_before_authoring": "e9778d3e412e228ce57e410652b670a5cb08668e",
+  "source_dispositions": [
+    {
+      "source_id": "QURC3-H01",
+      "status": "no_eligible_claim",
+      "reason": "Frozen fetch resolved to the BIS Annual Economic Report landing page; no suitable unit-bound quantitative proposition was forced from the landing-page synopsis."
+    },
+    {
+      "source_id": "QURC3-H02",
+      "status": "claims_authored"
+    },
+    {
+      "source_id": "QURC3-H03",
+      "status": "claims_authored"
+    },
+    {
+      "source_id": "QURC3-H04",
+      "status": "event_control_authored"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "HOL3-01",
+      "source_id": "QURC3-H02",
+      "claim": "Privately held firms account for roughly 60 percent of the total outstanding debt of U.S. nonfinancial firms.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Privately held firms account for roughly 60 percent of the total outstanding debt of U.S. nonfinancial firms. Riskier debt owed by privately held firms—primarily leveraged loans and private credit—has continued to grow at a solid pace, albeit slower than in previous years, and currently makes up about 10 percent of total outstanding nonfinancial business debt."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "subject_binding"
+      ]
+    },
+    {
+      "claim_id": "HOL3-02",
+      "source_id": "QURC3-H02",
+      "claim": "Privately held firms account for roughly 10 percent of the total outstanding debt of U.S. nonfinancial firms.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Privately held firms account for roughly 60 percent of the total outstanding debt of U.S. nonfinancial firms. Riskier debt owed by privately held firms—primarily leveraged loans and private credit—has continued to grow at a solid pace, albeit slower than in previous years, and currently makes up about 10 percent of total outstanding nonfinancial business debt."
+        }
+      ],
+      "expected": "contradicted",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "subject_binding",
+        "adjacent_value"
+      ]
+    },
+    {
+      "claim_id": "HOL3-03",
+      "source_id": "QURC3-H02",
+      "claim": "Riskier debt owed by privately held firms makes up about 10 percent of total outstanding nonfinancial business debt.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Privately held firms account for roughly 60 percent of the total outstanding debt of U.S. nonfinancial firms. Riskier debt owed by privately held firms—primarily leveraged loans and private credit—has continued to grow at a solid pace, albeit slower than in previous years, and currently makes up about 10 percent of total outstanding nonfinancial business debt."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "subject_binding"
+      ]
+    },
+    {
+      "claim_id": "HOL3-04",
+      "source_id": "QURC3-H02",
+      "claim": "Riskier debt owed by privately held firms makes up about 60 percent of total outstanding nonfinancial business debt.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Privately held firms account for roughly 60 percent of the total outstanding debt of U.S. nonfinancial firms. Riskier debt owed by privately held firms—primarily leveraged loans and private credit—has continued to grow at a solid pace, albeit slower than in previous years, and currently makes up about 10 percent of total outstanding nonfinancial business debt."
+        }
+      ],
+      "expected": "contradicted",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "subject_binding",
+        "adjacent_value"
+      ]
+    },
+    {
+      "claim_id": "HOL3-05",
+      "source_id": "QURC3-H02",
+      "claim": "Investment-grade borrowers account for nearly 70 percent of all outstanding debt among publicly traded nonfinancial firms.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "In contrast, ICRs for investment-grade borrowers, which account for nearly 70 percent of all outstanding debt among publicly traded nonfinancial firms, remained robust."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level"
+      ]
+    },
+    {
+      "claim_id": "HOL3-06",
+      "source_id": "QURC3-H02",
+      "claim": "Investment-grade borrowers account for nearly 70 percentage points of all outstanding debt among publicly traded nonfinancial firms.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "In contrast, ICRs for investment-grade borrowers, which account for nearly 70 percent of all outstanding debt among publicly traded nonfinancial firms, remained robust."
+        }
+      ],
+      "expected": "not_checkable",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "unit_mismatch",
+        "percent_vs_percentage_point"
+      ]
+    },
+    {
+      "claim_id": "HOL3-07",
+      "source_id": "QURC3-H02",
+      "claim": "Geopolitical risks were cited by 75 percent of contacts surveyed in Spring 2026.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Geopolitical risks Spring 2026 Fall 2025 75% of contacts surveyed 48% of contacts surveyed Oil shock 70% of contacts surveyed 0% of contacts surveyed Artificial intelligence 50% of contacts surveyed 30% of contacts surveyed"
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "time",
+        "table"
+      ]
+    },
+    {
+      "claim_id": "HOL3-08",
+      "source_id": "QURC3-H02",
+      "claim": "Geopolitical risks were cited by 48 percent of contacts surveyed in Spring 2026.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Geopolitical risks Spring 2026 Fall 2025 75% of contacts surveyed 48% of contacts surveyed Oil shock 70% of contacts surveyed 0% of contacts surveyed Artificial intelligence 50% of contacts surveyed 30% of contacts surveyed"
+        }
+      ],
+      "expected": "contradicted",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "time",
+        "table",
+        "adjacent_value"
+      ]
+    },
+    {
+      "claim_id": "HOL3-09",
+      "source_id": "QURC3-H02",
+      "claim": "Geopolitical risks were cited by 75 percentage points of contacts surveyed in Spring 2026.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Geopolitical risks Spring 2026 Fall 2025 75% of contacts surveyed 48% of contacts surveyed Oil shock 70% of contacts surveyed 0% of contacts surveyed Artificial intelligence 50% of contacts surveyed 30% of contacts surveyed"
+        }
+      ],
+      "expected": "not_checkable",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "unit_mismatch",
+        "percent_vs_percentage_point",
+        "time",
+        "table"
+      ]
+    },
+    {
+      "claim_id": "HOL3-10",
+      "source_id": "QURC3-H03",
+      "claim": "Food industry variation from the third quarter to the fourth quarter of 2025 was 1.9 percentage points.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025 percentage points Manufacturing -0 .3 Food 1.9 Beverage and tobacco products 3.8 Textile mills -0 .5 Textile product mills 20.5 Clothing -0 .4 Leather and allied products -5 .5 Wood products -1 .4 Paper 2.4 Printing and related support activities -1 .7 Petroleum and coal products 1.0 Chemical products -1 .4 Plastic and rubber products -1 .9 Non-metallic mineral products -3 .6 Primary metal -0 .8 Fabricated metal products -6 .6 Machinery -0 .9 Computer and electronic products 2.4 Electrical equipment, appliances and components 3.6 Transportation equipment 0.5 Furniture and related products 1.7 Miscellaneous 0.0"
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percentage_point",
+        "table",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "HOL3-11",
+      "source_id": "QURC3-H03",
+      "claim": "Food industry variation from the third quarter to the fourth quarter of 2025 was 1.9 percent.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025 percentage points Manufacturing -0 .3 Food 1.9 Beverage and tobacco products 3.8 Textile mills -0 .5 Textile product mills 20.5 Clothing -0 .4 Leather and allied products -5 .5 Wood products -1 .4 Paper 2.4 Printing and related support activities -1 .7 Petroleum and coal products 1.0 Chemical products -1 .4 Plastic and rubber products -1 .9 Non-metallic mineral products -3 .6 Primary metal -0 .8 Fabricated metal products -6 .6 Machinery -0 .9 Computer and electronic products 2.4 Electrical equipment, appliances and components 3.6 Transportation equipment 0.5 Furniture and related products 1.7 Miscellaneous 0.0"
+        }
+      ],
+      "expected": "not_checkable",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "unit_mismatch",
+        "percent_vs_percentage_point",
+        "table",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "HOL3-12",
+      "source_id": "QURC3-H03",
+      "claim": "Food industry variation from the third quarter to the fourth quarter of 2025 was 3.8 percentage points.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025 percentage points Manufacturing -0 .3 Food 1.9 Beverage and tobacco products 3.8 Textile mills -0 .5 Textile product mills 20.5 Clothing -0 .4 Leather and allied products -5 .5 Wood products -1 .4 Paper 2.4 Printing and related support activities -1 .7 Petroleum and coal products 1.0 Chemical products -1 .4 Plastic and rubber products -1 .9 Non-metallic mineral products -3 .6 Primary metal -0 .8 Fabricated metal products -6 .6 Machinery -0 .9 Computer and electronic products 2.4 Electrical equipment, appliances and components 3.6 Transportation equipment 0.5 Furniture and related products 1.7 Miscellaneous 0.0"
+        }
+      ],
+      "expected": "contradicted",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percentage_point",
+        "table",
+        "adjacent_value",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "HOL3-13",
+      "source_id": "QURC3-H03",
+      "claim": "Textile product mills variation from the third quarter to the fourth quarter of 2025 was 20.5 percentage points.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025 percentage points Manufacturing -0 .3 Food 1.9 Beverage and tobacco products 3.8 Textile mills -0 .5 Textile product mills 20.5 Clothing -0 .4 Leather and allied products -5 .5 Wood products -1 .4 Paper 2.4 Printing and related support activities -1 .7 Petroleum and coal products 1.0 Chemical products -1 .4 Plastic and rubber products -1 .9 Non-metallic mineral products -3 .6 Primary metal -0 .8 Fabricated metal products -6 .6 Machinery -0 .9 Computer and electronic products 2.4 Electrical equipment, appliances and components 3.6 Transportation equipment 0.5 Furniture and related products 1.7 Miscellaneous 0.0"
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percentage_point",
+        "table",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "HOL3-14",
+      "source_id": "QURC3-H03",
+      "claim": "Textile product mills variation from the third quarter to the fourth quarter of 2025 was 1.9 percentage points.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025 percentage points Manufacturing -0 .3 Food 1.9 Beverage and tobacco products 3.8 Textile mills -0 .5 Textile product mills 20.5 Clothing -0 .4 Leather and allied products -5 .5 Wood products -1 .4 Paper 2.4 Printing and related support activities -1 .7 Petroleum and coal products 1.0 Chemical products -1 .4 Plastic and rubber products -1 .9 Non-metallic mineral products -3 .6 Primary metal -0 .8 Fabricated metal products -6 .6 Machinery -0 .9 Computer and electronic products 2.4 Electrical equipment, appliances and components 3.6 Transportation equipment 0.5 Furniture and related products 1.7 Miscellaneous 0.0"
+        }
+      ],
+      "expected": "contradicted",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percentage_point",
+        "table",
+        "adjacent_value",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "HOL3-15",
+      "source_id": "QURC3-H04",
+      "claim": "The crew made its safe, parachute-assisted landing at 5:27 a.m. CDT (3:27 p.m., Kazakhstan time), southeast of Dzhezkazgan, after departing the space station at 2:03 a.m., aboard the Soyuz MS-28 spacecraft.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "The crew made its safe, parachute-assisted landing at 5:27 a.m. CDT (3:27 p.m., Kazakhstan time), southeast of Dzhezkazgan, after departing the space station at 2:03 a.m., aboard the Soyuz MS-28 spacecraft."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "event",
+        "after",
+        "routing"
+      ]
+    },
+    {
+      "claim_id": "HOL3-16",
+      "source_id": "QURC3-H04",
+      "claim": "The crew departed the space station at 2:03 a.m. after making its safe, parachute-assisted landing at 5:27 a.m. CDT.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "The crew made its safe, parachute-assisted landing at 5:27 a.m. CDT (3:27 p.m., Kazakhstan time), southeast of Dzhezkazgan, after departing the space station at 2:03 a.m., aboard the Soyuz MS-28 spacecraft."
+        }
+      ],
+      "expected": "contradicted",
+      "adjudication_status": "agreed",
+      "families": [
+        "event",
+        "after",
+        "routing",
+        "reversal"
+      ]
+    }
+  ]
+}

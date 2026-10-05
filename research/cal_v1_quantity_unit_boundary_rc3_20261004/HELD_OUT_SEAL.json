@@ -1,0 +1,9 @@
+{
+  "adjudicator_count": 1,
+  "bytes": 14998,
+  "candidate_pre_reveal_commit": "e9778d3e412e228ce57e410652b670a5cb08668e",
+  "relative_path": "adjudication/reconciled/held_out.json",
+  "schema": "cal-v1-quantity-unit-rc3-heldout-seal-v1",
+  "score_executed": false,
+  "sha256": "5e7ae7318b60a5974f0b05fe823adcccd312abbe5bd2a131fd01ce9e942a1ded"
+}
