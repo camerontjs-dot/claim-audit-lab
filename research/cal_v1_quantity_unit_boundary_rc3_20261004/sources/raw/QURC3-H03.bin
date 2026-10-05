@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]--><!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" dir="ltr">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<!-- Web Experience Toolkit (WET) / Bo&#238;te &#224; outils de l'exp&#233;rience Web (BOEW)
+     wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+<title>Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025</title>
+<meta name="dcterms.title" content="Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025"/>
+<meta name="dcterms.description" content="none"/>
+<meta name="description" content="none"/>
+<meta name="STCkeywords" content="none"/>
+<meta name="dcterms.creator" content="Government Of Canada, Statistics Canada"/>
+<meta name="dcterms.issued" title="W3CDTF" content="2026-03-13"/>
+<meta name="dcterms.modified" title="W3CDTF" content="2026-03-13"/>
+<meta name="dcterms.subject" title="gcstc" content="none"/>
+<meta name="dcterms.language" title="ISO639-2" content="eng"/>
+<meta name="STCtopic" content="none"/>
+<meta name="STCtopicID" content="none"/>
+<meta name="STCsubtopic" content="none"/>
+<meta name="STCsubtopicID" content="none"/>
+<meta name="STCtype" content="none"/>
+<meta name="STCsource" content="none"/>
+<meta name="STCstatus" content="none"/>
+<meta name="STClist" content="none"/>
+<meta content="width=device-width,initial-scale=1" name="viewport" />
+<meta property="dcterms:service" content="StatCan"/> 
+<meta property="dcterms:accessRights" content="2"/>
+
+<link href="/wet-boew4b/assets/favicon.ico" rel="icon" type="image/x-icon">
+<link rel="stylesheet" href="/wet-boew4b/css/wet-boew.min.css">
+<script src="/wet-boew4b/js/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/wet-boew4b/css/theme.min.css">
+<link rel="stylesheet" href="/wet-boew4b/css/statcan.css">
+<link rel="stylesheet" href="/wet-boew4b/invitation-manager/Overlay.css"> 
+
+<noscript><link rel="stylesheet" href="/wet-boew4b/css/noscript.min.css" /></noscript>
+<!-- Adobe Analytics v5 production version --><!--script src="//assets.adobedtm.com/be5dfd287373/8cdb3d539c44/launch-6df9e9b447f9.min.js"></script-->
+<!-- Adobe Analytics v5 staging version --><!--script src="//assets.adobedtm.com/be5dfd287373/8cdb3d539c44/launch-dfa8abb35555-staging.min.js"></script-->
+<!-- Adobe Analytics v10 production version --><script src="//assets.adobedtm.com/be5dfd287373/8f0ead8a37e7/launch-09394abc039d.min.js"></script>
+
+<script>dataLayer1 = [];</script>
+
+<link rel="stylesheet" href="/DailyWet4b/css/daily-wet4b-min.css" /><!-- CustomScriptsCSSEnd -->
+<script src="/wet-boew4b/js/jquery.min.js"></script>
+<script src="/DailyWet4b/js/jquery-ui.widget.min.js"></script>
+<script src="/DailyWet4b/js/dailyWet4b-min.js"></script>
+<link rel="canonical" href="https://www150.statcan.gc.ca/n1/daily-quotidien/260313/cg-e002-eng.htm" />
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+<ul id="wb-tphp">
+<li class="wb-slc">
+<a class="wb-sl" href="#wb-cont">Skip to main content</a>
+</li>
+<li class="wb-slc visible-sm visible-md visible-lg">
+<a class="wb-sl" href="#wb-info">Skip to "About this site"</a>
+</li>
+</ul>
+<header role="banner">
+<div id="wb-bnr" class="container">
+<section id="wb-lng" class="visible-md visible-lg text-right">
+<h2 class="wb-inv">Language selection</h2>
+<div class="row">
+<div class="col-md-12">
+<ul class="list-inline margin-bottom-none">
+<li><a lang="fr" href="/cgi-bin/change.cgi">Fran&#231;ais</a></li>
+</ul>
+</div>
+</div>
+</section>
+<div class="row">
+<div class="brand col-xs-9 col-sm-5 col-md-4">
+<a href="https://www.canada.ca/en.html"><img src="/wet-boew4b/assets/sig-blk-gov-en.svg" alt="Government of Canada"><span class="wb-inv"> / <span lang="fr">Gouvernement du Canada</span></span></a>
+</div>
+<section class="wb-mb-links col-sm-offset-4 col-xs-4 col-sm-3 visible-sm visible-xs" id="wb-glb-mn">
+<h2>Search and menus</h2>
+<ul class="list-inline text-right chvrn">
+<li><a href="#mb-pnl" title="Search and menus" aria-controls="mb-pnl" class="overlay-lnk" role="button"><span class="glyphicon glyphicon-search"><span class="glyphicon glyphicon-th-list"><span class="wb-inv">Search and menus</span></span></span></a></li>
+</ul>
+<div id="mb-pnl"></div>
+</section>
+
+<section id="wb-srch" class="col-lg-offset-2 col-md-offset-2 col-xs-6 text-right visible-md visible-lg">
+<h2 class="wb-inv">Search</h2>
+<form action="https://www.statcan.gc.ca/search/results/site-search" method="get" name="cse-search-box" role="search" class="form-inline">
+<div class="form-group wb-srch-qry">
+<label for="wb-srch-q" class="wb-inv">Search Statistics Canada</label>
+<input type="hidden" name="fq" value="stclac:2" />
+<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="27" maxlength="150" placeholder="Search Statistics Canada">
+<datalist id="wb-srch-q-ac">
+</datalist>
+</div>
+<div class="form-group submit">
+<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+</div>
+</form>
+</section>
+</div>
+</div>
+
+<nav role="navigation" id="wb-sm" class="wb-menu visible-md visible-lg" data-trgt="mb-pnl" data-ajax-replace="/wet-boew4b/ajax/sitemenu-en.html" typeof="SiteNavigationElement">
+	<div class="container nvbar">
+		<h2 class="wb-inv">Topics menu</h2>
+		<div class="row">
+			<ul class="list-inline menu">
+				<li><a href="https://www150.statcan.gc.ca/n1/en/subjects?MM=1">Subjects</a></li>
+				<li><a href="https://www150.statcan.gc.ca/n1/en/type/data?MM=1">Data</a></li>
+				<li><a href="https://www150.statcan.gc.ca/n1/en/type/analysis?MM=1">Analysis</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/reference?MM=1">Reference</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/geography?MM=1">Geography</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/census?MM=1">Census</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/surveys?MM=1">Surveys and statistical programs</a></li>
+				<li><a href="https://www.statcan.gc.ca/en/about/statcan?MM=1">About StatCan</a></li>
+				<li><a href="https://www.canada.ca/en.html">Canada.ca</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<nav role="navigation" id="wb-bc" class="" property="breadcrumb">
+	<div class="container">
+		<div class="row">
+<!-- Breadcrumb trail -->
+<ol class="breadcrumb">
+<li><a href="/start-debut-eng.html">Home</a></li>
+<li><em>The Daily</em></li>
+</ol>
+</div>
+</div>
+</nav>
+</header>
+
+<main role="main" property="mainContentOfPage" class="container">
+
+
+<h1 property="name" id="wb-cont">Chart&#160;2<br />Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025</h1>
+<section>
+<div class="release_nav">
+   <div class="btn-group sd-chart-back" role="group">
+   <a class="btn btn-default btn-sm" href="dq260313e-eng.htm">
+   <span class="glyphicon glyphicon-chevron-left"></span>&#160;Back to main article</a>
+   </div>
+   <p class="wb-inv">
+     <a href="#adb-cg002">Skip interactive chart, go to accessible chart description</a>
+   </p>
+   <div class="btn-group sd-chart-btn-group" role="group">
+   <a class="btn btn-default btn-primary btn-sm" href="cg-e002-eng.htm">Interactive<span class="wb-inv">&#160;- Selected</span></a>
+   <a class="btn btn-default btn-sm" href="cg-e002-png-eng.htm">Image</a>
+   <a class="btn btn-default btn-sm" href="cg260313e002-eng.csv">CSV (1 KB)</a>
+   </div>
+</div>
+
+<div class="SVGChart">
+<script>var d1 = ["-0.3", "1.9", "3.8", "-0.5", "20.5", "-0.4", "-5.5", "-1.4", "2.4", "-1.7", "1.0", "-1.4", "-1.9", "-3.6", "-0.8", "-6.6", "-0.9", "2.4", "3.6", "0.5", "1.7", "0.0"]; var myChartId = 'c003'; chartIds.push(myChartId); var ds = new Array(); ds.push(d1); charts.push(ds); var refpers = ["Manufacturing", "Food", "Beverage and tobacco products", "Textile mills", "Textile product mills", "Clothing", "Leather and allied products", "Wood products", "Paper", "Printing and related support activities", "Petroleum and coal products", "Chemical products", "Plastic and rubber products", "Non-metallic mineral products", "Primary metal", "Fabricated metal products", "Machinery", "Computer and electronic products", "Electrical equipment, appliances and components", "Transportation equipment", "Furniture and related products", "Miscellaneous"]; refperArray.push(refpers);</script>
+<svg style="padding-top: 0; font-family: verdana" id="c003" version="1.1"
+     baseProfile="full"
+     width="580" height="485"
+     xmlns="http://www.w3.org/2000/svg">
+ <g     id="c003layer1">
+    <rect
+       x="277"  y="20"
+       width="273"
+       height="425"
+       id="plotarea"
+       fill="white" stroke="black"
+       onmouseout="hideCircle('c003')"
+       />
+<g id="c003yaxis">
+<text font-weight="bold" text-anchor="end" x="267" y="38.4782608695652" font-size="8pt">Manufacturing</text>
+<text text-anchor="end" x="267" y="56.9565217391304" font-size="8pt">Food</text>
+<text text-anchor="end" x="267" y="75.4347826086956" font-size="8pt">Beverage and tobacco products</text>
+<text text-anchor="end" x="267" y="93.9130434782608" font-size="8pt">Textile mills</text>
+<text text-anchor="end" x="267" y="112.3913043478260" font-size="8pt">Textile product mills</text>
+<text text-anchor="end" x="267" y="130.8695652173912" font-size="8pt">Clothing</text>
+<text text-anchor="end" x="267" y="149.3478260869564" font-size="8pt">Leather and allied products</text>
+<text text-anchor="end" x="267" y="167.8260869565216" font-size="8pt">Wood products</text>
+<text text-anchor="end" x="267" y="186.3043478260868" font-size="8pt">Paper</text>
+<text text-anchor="end" x="267" y="204.7826086956520" font-size="8pt">Printing and related support activities</text>
+<text text-anchor="end" x="267" y="223.2608695652172" font-size="8pt">Petroleum and coal products</text>
+<text text-anchor="end" x="267" y="241.7391304347824" font-size="8pt">Chemical products</text>
+<text text-anchor="end" x="267" y="260.2173913043476" font-size="8pt">Plastic and rubber products</text>
+<text text-anchor="end" x="267" y="278.6956521739128" font-size="8pt">Non-metallic mineral products</text>
+<text text-anchor="end" x="267" y="297.1739130434780" font-size="8pt">Primary metal</text>
+<text text-anchor="end" x="267" y="315.6521739130432" font-size="8pt">Fabricated metal products</text>
+<text text-anchor="end" x="267" y="334.1304347826084" font-size="8pt">Machinery</text>
+<text text-anchor="end" x="267" y="352.6086956521736" font-size="8pt">Computer and electronic products</text>
+<text text-anchor="end" x="267" y="371.0869565217388" font-size="8pt">Electrical equipment, appliances and components</text>
+<text text-anchor="end" x="267" y="389.5652173913040" font-size="8pt">Transportation equipment</text>
+<text text-anchor="end" x="267" y="408.0434782608692" font-size="8pt">Furniture and related products</text>
+<text text-anchor="end" x="267" y="426.5217391304344" font-size="8pt">Miscellaneous</text>
+</g>
+
+<g id="c003xaxis">
+<path d="M345.25 20 L345.25 445" fill="none" stroke="#000000" stroke-width="1" />
+<path d="M277 445 L277 440" fill="none" stroke="#000000" stroke-width="1" />
+<text text-anchor="middle" x="277" y="460" font-size="8pt">-10</text>
+<path d="M345.25 445 L345.25 440" fill="none" stroke="#000000" stroke-width="1" />
+<text text-anchor="middle" x="345.25" y="460" font-size="8pt">0</text>
+<path d="M413.5 445 L413.5 440" fill="none" stroke="#000000" stroke-width="1" />
+<text text-anchor="middle" x="413.5" y="460" font-size="8pt">10</text>
+<path d="M481.75 445 L481.75 440" fill="none" stroke="#000000" stroke-width="1" />
+<text text-anchor="middle" x="481.75" y="460" font-size="8pt">20</text>
+<path d="M550 445 L550 440" fill="none" stroke="#000000" stroke-width="1" />
+<text text-anchor="middle" x="550" y="460" font-size="8pt">30</text>
+</g>
+
+<g id="c003chartdrawing">
+    <rect 
+       x="343.2025"  y="29.2391304347826"
+       width="2.0475"
+       height="11.08695652173912"
+       fill="#000080" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="47.7173913043478"
+       width="12.9675"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="66.1956521739130"
+       width="25.935"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="341.8375"  y="84.6739130434782"
+       width="3.4125"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="103.1521739130434"
+       width="139.9125"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="342.52"  y="121.6304347826086"
+       width="2.73"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="307.7125"  y="140.1086956521738"
+       width="37.5375"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="335.695"  y="158.5869565217390"
+       width="9.555"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="177.0652173913042"
+       width="16.38"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="333.6475"  y="195.5434782608694"
+       width="11.6025"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="214.0217391304346"
+       width="6.825"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="335.695"  y="232.4999999999998"
+       width="9.555"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="332.2825"  y="250.9782608695650"
+       width="12.9675"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="320.68"  y="269.4565217391302"
+       width="24.57"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="339.79"  y="287.9347826086954"
+       width="5.46"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="300.205"  y="306.4130434782606"
+       width="45.045"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="339.1075"  y="324.8913043478258"
+       width="6.1425"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="343.3695652173910"
+       width="16.38"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="361.8478260869562"
+       width="24.57"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="380.3260869565214"
+       width="3.4125"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="398.8043478260866"
+       width="11.6025"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+    <rect 
+       x="345.25"  y="417.2826086956518"
+       width="0.00"
+       height="11.08695652173912"
+       fill="#99ccff" stroke="black"
+       />
+</g>
+
+<g id="c003hotpoints">
+<text text-anchor="middle" x="413.5" y="480" font-size="8pt">percentage points</text>
+    <rect id="c003bar0" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar0', '0', '0')" onmouseout="hideBar('c003', 'bar0')"
+       x="343.2025"  y="29.2391304347826"
+       width="2.0475"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar1" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar1', '0', '1')" onmouseout="hideBar('c003', 'bar1')"
+       x="345.25"  y="47.7173913043478"
+       width="12.9675"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar2" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar2', '0', '2')" onmouseout="hideBar('c003', 'bar2')"
+       x="345.25"  y="66.1956521739130"
+       width="25.935"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar3" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar3', '0', '3')" onmouseout="hideBar('c003', 'bar3')"
+       x="341.8375"  y="84.6739130434782"
+       width="3.4125"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar4" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar4', '0', '4')" onmouseout="hideBar('c003', 'bar4')"
+       x="345.25"  y="103.1521739130434"
+       width="139.9125"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar5" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar5', '0', '5')" onmouseout="hideBar('c003', 'bar5')"
+       x="342.52"  y="121.6304347826086"
+       width="2.73"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar6" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar6', '0', '6')" onmouseout="hideBar('c003', 'bar6')"
+       x="307.7125"  y="140.1086956521738"
+       width="37.5375"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar7" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar7', '0', '7')" onmouseout="hideBar('c003', 'bar7')"
+       x="335.695"  y="158.5869565217390"
+       width="9.555"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar8" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar8', '0', '8')" onmouseout="hideBar('c003', 'bar8')"
+       x="345.25"  y="177.0652173913042"
+       width="16.38"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar9" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar9', '0', '9')" onmouseout="hideBar('c003', 'bar9')"
+       x="333.6475"  y="195.5434782608694"
+       width="11.6025"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar10" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar10', '0', '10')" onmouseout="hideBar('c003', 'bar10')"
+       x="345.25"  y="214.0217391304346"
+       width="6.825"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar11" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar11', '0', '11')" onmouseout="hideBar('c003', 'bar11')"
+       x="335.695"  y="232.4999999999998"
+       width="9.555"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar12" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar12', '0', '12')" onmouseout="hideBar('c003', 'bar12')"
+       x="332.2825"  y="250.9782608695650"
+       width="12.9675"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar13" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar13', '0', '13')" onmouseout="hideBar('c003', 'bar13')"
+       x="320.68"  y="269.4565217391302"
+       width="24.57"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar14" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar14', '0', '14')" onmouseout="hideBar('c003', 'bar14')"
+       x="339.79"  y="287.9347826086954"
+       width="5.46"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar15" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar15', '0', '15')" onmouseout="hideBar('c003', 'bar15')"
+       x="300.205"  y="306.4130434782606"
+       width="45.045"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar16" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar16', '0', '16')" onmouseout="hideBar('c003', 'bar16')"
+       x="339.1075"  y="324.8913043478258"
+       width="6.1425"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar17" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar17', '0', '17')" onmouseout="hideBar('c003', 'bar17')"
+       x="345.25"  y="343.3695652173910"
+       width="16.38"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar18" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar18', '0', '18')" onmouseout="hideBar('c003', 'bar18')"
+       x="345.25"  y="361.8478260869562"
+       width="24.57"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar19" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar19', '0', '19')" onmouseout="hideBar('c003', 'bar19')"
+       x="345.25"  y="380.3260869565214"
+       width="3.4125"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar20" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar20', '0', '20')" onmouseout="hideBar('c003', 'bar20')"
+       x="345.25"  y="398.8043478260866"
+       width="11.6025"
+       height="11.08695652173912"
+       />
+    <rect id="c003bar21" fill="white" fill-opacity="0.01"
+       onmouseover="showBar('c003', 'bar21', '0', '21')" onmouseout="hideBar('c003', 'bar21')"
+       x="345.25"  y="417.2826086956518"
+       width="0.00"
+       height="11.08695652173912"
+       />
+</g>
+
+<g id="c003tooltipCirlce">
+  <circle id="c003mousepoint" onmouseout="hideCircle('c003')"   cx="542.131147540984" cy="50" r="0" fill="green" fill-opacity="0.6" visibility="hidden" />
+  <rect x="0" y="0" width="0" height="40" id="c003toolTipRect" fill="yellow" stroke="black" fill-opacity="0.9" visibility="hidden" />
+  <text id="c003toolTipValue"  class="tooltipText" x="150" y="125" font-size="90%" text-anchor="middle" visibility="hidden"></text>
+  <text id="c003toolTipRefper" x="150" y="140" font-size="80%" text-anchor="middle" visibility="hidden"></text>
+</g>
+
+ </g>
+
+</svg><div class="chartft-end">
+  <div class="chartft-item">
+    <div class="chartft-hdr-note">
+      <strong>Source(s):</strong>
+    </div>
+    <div class="chartft-note">Table <a href="/t1/tbl1/en/tv.action?pid=1610010901">16-10-0109-01</a>.</div>
+  </div>
+</div></div>
+<h2 class="wb-inv" id="adb-cg002">Chart description</h2><br />
+
+
+<script type="text/javascript">
+   var language=0;
+</script>
+
+<p class="wb-invisible">This is a bar clustered chart.</p>
+<table class="02_CELLS46_ROWS23">
+<caption>Variation by industry, in percentage points, fourth quarter of&#160;2025&#160;compared with third quarter of&#160;2025</caption>
+<thead><tr>
+<th id="hdt1r1c1" class="stub1">&nbsp;</th>
+<th id="hdt1r1c2" class="non_merging_cell">percentage points</th>
+</tr>
+</thead><tbody>
+<tr>
+<th id="t1stub1" class="stub1 RGBShade">Manufacturing</th>
+<td headers="t1stub1 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-0</span></span>.3</td>
+</tr>
+<tr>
+<th id="t1stub2" class="stub1 RGBShade">Food</th>
+<td headers="t1stub2 hdt1r1c2" class="data">1.9</td>
+</tr>
+<tr>
+<th id="t1stub3" class="stub1 RGBShade">Beverage and tobacco products</th>
+<td headers="t1stub3 hdt1r1c2" class="data">3.8</td>
+</tr>
+<tr>
+<th id="t1stub4" class="stub1 RGBShade">Textile mills</th>
+<td headers="t1stub4 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-0</span></span>.5</td>
+</tr>
+<tr>
+<th id="t1stub5" class="stub1 RGBShade">Textile product mills</th>
+<td headers="t1stub5 hdt1r1c2" class="data">20.5</td>
+</tr>
+<tr>
+<th id="t1stub6" class="stub1 RGBShade">Clothing</th>
+<td headers="t1stub6 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-0</span></span>.4</td>
+</tr>
+<tr>
+<th id="t1stub7" class="stub1 RGBShade">Leather and allied products</th>
+<td headers="t1stub7 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-5</span></span>.5</td>
+</tr>
+<tr>
+<th id="t1stub8" class="stub1 RGBShade">Wood products</th>
+<td headers="t1stub8 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-1</span></span>.4</td>
+</tr>
+<tr>
+<th id="t1stub9" class="stub1 RGBShade">Paper</th>
+<td headers="t1stub9 hdt1r1c2" class="data">2.4</td>
+</tr>
+<tr>
+<th id="t1stub10" class="stub1 RGBShade">Printing and related support activities</th>
+<td headers="t1stub10 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-1</span></span>.7</td>
+</tr>
+<tr>
+<th id="t1stub11" class="stub1 RGBShade">Petroleum and coal products</th>
+<td headers="t1stub11 hdt1r1c2" class="data">1.0</td>
+</tr>
+<tr>
+<th id="t1stub12" class="stub1 RGBShade">Chemical products</th>
+<td headers="t1stub12 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-1</span></span>.4</td>
+</tr>
+<tr>
+<th id="t1stub13" class="stub1 RGBShade">Plastic and rubber products</th>
+<td headers="t1stub13 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-1</span></span>.9</td>
+</tr>
+<tr>
+<th id="t1stub14" class="stub1 RGBShade">Non-metallic mineral products</th>
+<td headers="t1stub14 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-3</span></span>.6</td>
+</tr>
+<tr>
+<th id="t1stub15" class="stub1 RGBShade">Primary metal</th>
+<td headers="t1stub15 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-0</span></span>.8</td>
+</tr>
+<tr>
+<th id="t1stub16" class="stub1 RGBShade">Fabricated metal products</th>
+<td headers="t1stub16 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-6</span></span>.6</td>
+</tr>
+<tr>
+<th id="t1stub17" class="stub1 RGBShade">Machinery</th>
+<td headers="t1stub17 hdt1r1c2" class="data"><span class="nowrap"><span class="nowrap">-0</span></span>.9</td>
+</tr>
+<tr>
+<th id="t1stub18" class="stub1 RGBShade">Computer and electronic products</th>
+<td headers="t1stub18 hdt1r1c2" class="data">2.4</td>
+</tr>
+<tr>
+<th id="t1stub19" class="stub1 RGBShade">Electrical equipment, appliances and components</th>
+<td headers="t1stub19 hdt1r1c2" class="data">3.6</td>
+</tr>
+<tr>
+<th id="t1stub20" class="stub1 RGBShade">Transportation equipment</th>
+<td headers="t1stub20 hdt1r1c2" class="data">0.5</td>
+</tr>
+<tr>
+<th id="t1stub21" class="stub1 RGBShade">Furniture and related products</th>
+<td headers="t1stub21 hdt1r1c2" class="data">1.7</td>
+</tr>
+<tr>
+<th id="t1stub22" class="stub1 RGBShade">Miscellaneous</th>
+<td headers="t1stub22 hdt1r1c2" class="data">0.0</td>
+</tr>
+</table>
+<div class="tableft-end wb-inv">
+  <div class="tableft-item">
+    <div class="tableft-hdr-note"><strong><strong>Source(s):</strong></strong></div>
+    <div class="tableft-note">Table <a href="/t1/tbl1/en/tv.action?pid=1610010901">16-10-0109-01</a>.</div>
+  </div>
+  <div class="clearbo"></div>
+</div>
+
+
+</section>
+<div class="pagedetails">
+	<dl id="wb-dtmd">
+		<dt>Date modified:&#32;</dt>
+		<dd><time property="dateModified">
+  2026-03-13
+</time></dd>
+	</dl>
+</div>
+</main>
+<footer id="wb-info">
+	<h2 class="wb-inv">About this site</h2>
+	<div class="gc-contextual">
+		<div class="container">
+			<nav>
+				<h3>Statistics Canada</h3>
+				<ul class="list-unstyled colcount-sm-2 colcount-md-3">
+					<li><a href="https://www.statcan.gc.ca/en/reference/refcentre/index">Contact StatCan</a></li>
+					<li><a href="https://www.statcan.gc.ca/en/trust">Trust Centre</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="gc-main-footer">
+		<div class="container">
+			<nav>
+				<h3>Government of Canada</h3>
+				<ul class="list-unstyled colcount-sm-2 colcount-md-3">
+					<li><a href="https://www.canada.ca/en/contact.html">All contacts</a></li>
+					<li><a href="https://www.canada.ca/en/government/dept.html">Departments and agencies</a></li>
+					<li><a href="https://www.canada.ca/en/government/system.html">About government</a></li>
+				</ul>
+				<h4><span class="wb-inv">Themes and topics</span></h4>
+				<ul class="list-unstyled colcount-sm-2 colcount-md-3">
+					<li><a href="https://www.canada.ca/en/services/jobs.html">Jobs</a></li>
+					<li><a href="https://www.canada.ca/en/services/immigration-citizenship.html">Immigration and citizenship</a></li>
+					<li><a href="https://travel.gc.ca/">Travel and tourism</a></li>
+					<li><a href="https://www.canada.ca/en/services/business.html">Business</a></li>
+					<li><a href="https://www.canada.ca/en/services/benefits.html">Benefits</a></li>
+					<li><a href="https://www.canada.ca/en/services/health.html">Health</a></li>
+					<li><a href="https://www.canada.ca/en/services/taxes.html">Taxes</a></li>
+					<li><a href="https://www.canada.ca/en/services/environment.html">Environment and natural resources</a></li>
+					<li><a href="https://www.canada.ca/en/services/defence.html">National security and defence</a></li>
+					<li><a href="https://www.canada.ca/en/services/culture.html">Culture, history and sport</a></li>
+					<li><a href="https://www.canada.ca/en/services/policing.html">Policing, justice and emergencies</a></li>
+					<li><a href="https://www.canada.ca/en/services/transport.html">Transport and infrastructure</a></li>
+					<li><a href="https://international.gc.ca/world-monde/index.aspx?lang=eng">Canada and the world</a></li>
+					<li><a href="https://www.canada.ca/en/services/finance.html">Money and finance</a></li>
+					<li><a href="https://www.canada.ca/en/services/science.html">Science and innovation</a></li>
+					<li><a href="https://www.canada.ca/en/services/indigenous-peoples.html">Indigenous peoples</a></li>
+					<li><a href="https://www.canada.ca/en/services/veterans.html">Veterans and military</a></li>
+					<li><a href="https://www.canada.ca/en/services/youth.html">Youth</a></li>
+					<li><a href="https://www.canada.ca/en/services/life-events.html">Manage life events</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="gc-sub-footer">
+		<div class="container d-flex align-items-center">
+			<nav>
+				<h3 class="wb-inv">Government of Canada Corporate</h3>
+				<ul>
+					<li><a href="https://www.canada.ca/en/social.html">Social media</a></li>
+					<li><a href="https://www.canada.ca/en/mobile.html">Mobile applications</a></li>
+					<li><a href="https://www.canada.ca/en/government/about-canada-ca.html">About Canada.ca</a></li>
+					<li><a href="https://www.statcan.gc.ca/en/terms-conditions">Terms and conditions</a></li>
+					<li><a href="https://www.statcan.gc.ca/en/about/transparency/privacy">Privacy</a></li>
+				</ul>
+			</nav>
+			<div class="wtrmrk align-self-end">
+				<img src="/wet-boew4b/assets/wmms-blk.svg" alt="Symbol of the Government of Canada">
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script>
+
+    modifyBreadCrum();
+    
+
+    function modifyBreadCrum(){
+        
+    let dailyEn = "n1/dai-quo/index-eng.htm";
+    let dailyFr = "n1/dai-quo/index-fra.htm";
+ 
+    let breadcrumb = document.querySelector("#wb-bc ol.breadcrumb");
+        
+    if(breadcrumb === undefined || breadcrumb === null || breadcrumb.children.length == 0){
+        return;
+    } 
+        
+    let lastListNode = breadcrumb.children[breadcrumb.children.length -1];
+    
+    if(window.location.href.indexOf("daily-quotidien") != -1 || window.location.href.indexOf("dai-quo") != -1){
+        let href = window.location.href;
+        let env = href.split("n1")[0];
+        href = href.indexOf("eng") != -1 ? env + dailyEn : env + dailyFr;
+
+        createBreadcrumAnchor(href);
+    }
+    else{
+        removeBreadcrumNotAnchor();
+    }
+
+    return;
+
+    function createBreadcrumAnchor(href){
+
+        let anchor = document.createElement("a");
+    
+        if(lastListNode.lastChild !== undefined && lastListNode.lastChild !== null){
+            if(lastListNode.lastChild.nodeName === anchor.nodeName){
+                return;
+            } 
+
+            anchor.innerHTML = lastListNode.innerHTML;
+            anchor.href = href;
+            lastListNode.innerHTML = anchor.outerHTML; 
+        }
+    }
+
+    function removeBreadcrumNotAnchor(){
+
+        let anchor = document.createElement("a");
+
+        if(lastListNode.lastChild !== undefined && lastListNode.lastChild !== null){
+            if(lastListNode.lastChild.nodeName === anchor.nodeName){
+                return;
+            } 
+        
+            breadcrumb.removeChild(lastListNode);
+        }
+
+    }
+
+    }
+
+</script>
+
+<!--[if gte IE 9 | !IE ]><!-->
+<script src="/wet-boew4b/js/wet-boew.min.js"></script>
+<script src="/wet-boew4b/js/theme.min.js"></script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+<script src="/wet-boew4b/js/ie8-wet-boew2.min.js"></script>
+<![endif]-->
+<!-- InvitationManager -->
+<script src="/wet-boew4b/invitation-manager/Overlay.js"></script>
+<script src="/wet-boew4b/invitation-manager/InvitationManager.js"></script>
+<!-- End InvitationManager -->
+<script type="text/javascript">_satellite.pageBottom();</script>
+<!-- CustomScriptsJSStart -->
+<script>
+  CurrentLang=0;
+</script>	
+<!-- CustomScriptsJSEnd -->
+</body>
+</html>

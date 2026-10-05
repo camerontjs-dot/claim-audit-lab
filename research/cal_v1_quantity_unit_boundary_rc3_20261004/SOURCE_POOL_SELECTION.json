@@ -1,0 +1,74 @@
+{
+  "schema": "cal-v1-quantity-unit-rc3-source-selection-v1",
+  "status": "SELECTED_NOT_BYTES_FROZEN",
+  "selected_before_candidate_change": true,
+  "selection_date": "2026-10-04",
+  "predecessor_head": "cd957e3ffe16c069bf74b84e88fa4b888d81239c",
+  "rule": "Exact source identity and partition are fixed before quantity-unit implementation. No replacement after observed retrieval or candidate behavior.",
+  "calibration": [
+    {
+      "id": "QURC3-C01",
+      "publisher": "Bank of Canada",
+      "title": "MPR projections, 2026-04-29",
+      "url": "https://www.bankofcanada.ca/publications/mpr/mpr-2026-04-29/projections/"
+    },
+    {
+      "id": "QURC3-C02",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "title": "Bankers’ Banks and their Role in the Federal Funds Market",
+      "url": "https://www.federalreserve.gov/econres/notes/feds-notes/bankers-banks-and-their-role-in-the-federal-funds-market-20260130.html"
+    },
+    {
+      "id": "QURC3-C03",
+      "publisher": "Statistics Canada",
+      "title": "Business conditions in Canada, fourth quarter of 2025",
+      "url": "https://www150.statcan.gc.ca/n1/pub/11-627-m/11-627-m2025057-eng.htm"
+    },
+    {
+      "id": "QURC3-C04",
+      "publisher": "European Central Bank",
+      "title": "The February 2026 ECB monetary policy decision",
+      "url": "https://www.ecb.europa.eu/press/key/date/2026/html/ecb.sp260209~d8c520c2ff.en.pdf"
+    }
+  ],
+  "held_out": [
+    {
+      "id": "QURC3-H01",
+      "publisher": "Bank for International Settlements",
+      "title": "BIS Annual Economic Report 2026",
+      "url": "https://www.bis.org/publ/arpdf/ar2026e.pdf"
+    },
+    {
+      "id": "QURC3-H02",
+      "publisher": "Board of Governors of the Federal Reserve System",
+      "title": "Financial Stability Report, May 2026",
+      "url": "https://www.federalreserve.gov/publications/files/financial-stability-report-20260508.pdf"
+    },
+    {
+      "id": "QURC3-H03",
+      "publisher": "Statistics Canada",
+      "title": "Variation by industry, in percentage points, fourth quarter of 2025 compared with third quarter of 2025",
+      "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260313/cg-e002-eng.htm"
+    },
+    {
+      "id": "QURC3-H04",
+      "publisher": "NASA",
+      "title": "NASA Astronaut Chris Williams, Crewmates Return from Space Station",
+      "url": "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station/",
+      "role_hint": "non_quantity_event_source"
+    }
+  ],
+  "required_freeze_fields": [
+    "requested_url",
+    "final_url",
+    "retrieved_at_utc",
+    "http_status",
+    "media_type",
+    "raw_sha256",
+    "raw_bytes",
+    "transport_tool",
+    "leak_scan",
+    "partition"
+  ],
+  "held_out_isolation": "Bodies and labels unavailable to candidate implementer until candidate/evaluator/policy freeze."
+}

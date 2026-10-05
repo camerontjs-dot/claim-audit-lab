@@ -1,0 +1,3978 @@
+
+<!DOCTYPE html>
+<html  lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+  <head>
+          
+        <meta charset="utf-8" />
+<script>var _paq = _paq || [];(function(){var u=(("https:" == document.location.protocol) ? "https://bis.matomo.cloud/" : "http://bis.matomo.cloud/");_paq.push(["setSiteId", "11"]);_paq.push(["setTrackerUrl", u+"matomo.php"]);_paq.push(["setDoNotTrack", 1]);_paq.push(["setCookieDomain", ".www.bis.org"]);if (!window.matomo_search_results_active) {_paq.push(["trackPageView"]);}_paq.push(["setIgnoreClasses", ["no-tracking","colorbox"]]);_paq.push(["enableLinkTracking"]);var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.type="text/javascript";g.defer=true;g.async=true;g.src=u+"matomo.js";s.parentNode.insertBefore(g,s);})();</script>
+<meta name="description" content="The past year saw investment in artificial intelligence (AI) ecosystems help global growth to withstand the blow from major tariff hikes. Yet geopolitical headwinds and rising fiscal and financial fragilities remain." />
+<meta name="abstract" content="The past year saw investment in artificial intelligence (AI) ecosystems help global growth to withstand the blow from major tariff hikes. Yet geopolitical headwinds and rising fiscal and financial fragilities remain." />
+<link rel="canonical" href="https://www.bis.org/publications/aer-2026" />
+<meta name="citation_title" content="BIS Annual Economic Report 2026" />
+<meta name="citation_publication_date" content="2026-06-28" />
+<meta property="og:site_name" content="Bank for International Settlements" />
+<meta property="og:url" content="https://www.bis.org/publications/aer-2026" />
+<meta property="og:title" content="BIS Annual Economic Report 2026 | Bank for International Settlements" />
+<meta property="og:description" content="The past year saw investment in artificial intelligence (AI) ecosystems help global growth to withstand the blow from major tariff hikes. Yet geopolitical headwinds and rising fiscal and financial fragilities remain." />
+<meta property="og:image" content="https://www.bis.org/themes/custom/bis/src/assets/images/meta-default.jpg" />
+<meta property="og:image:secure_url" content="https://www.bis.org/themes/custom/bis/src/assets/images/meta-default.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="627" />
+<meta property="article:published_time" content="2026-06-28T14:00:00+0200" />
+<meta name="dcterms.title" content="BIS Annual Economic Report 2026" />
+<meta name="dcterms.description" content="The past year saw investment in artificial intelligence (AI) ecosystems help global growth to withstand the blow from major tariff hikes. Yet geopolitical headwinds and rising fiscal and financial fragilities remain." />
+<meta name="dcterms.publisher" content="Bank for International Settlements" />
+<meta name="dcterms.language" content="en" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@BIS_org" />
+<meta name="twitter:description" content="The past year saw investment in artificial intelligence (AI) ecosystems help global growth to withstand the blow from major tariff hikes. Yet geopolitical headwinds and rising fiscal and financial fragilities remain." />
+<meta name="twitter:title" content="BIS Annual Economic Report 2026" />
+<meta name="twitter:site:id" content="158289900" />
+<meta name="twitter:image" content="https://www.bis.org/themes/custom/bis/src/assets/images/meta-default.jpg" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://challenges.cloudflare.com" />
+<link rel="icon" href="/themes/custom/bis/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://www.bis.org/publications/aer-2026" />
+
+    <title>BIS Annual Economic Report 2026</title>
+    <link rel="stylesheet" media="all" href="/css/css_RD5ZkGW1FUqn_R6h868uH4k6VOW6Dp0EpmdmEjJiCiI.css?delta=0&amp;language=en&amp;theme=bis&amp;include=eJx1zjsOwzAMA9AL-XMmOVYcoYpkWHLQ3L5Liy7OSL6BLGS5sRbgaH4zSQubDsybnl0FxS0VshgL1IYPNN1V1rbBqGvZVR3H2uiEpzHWpmsRuKiB09OViypqwLczySvXMTtw-sbQYUAb0A_7yb9JU_osTHZgDXab45kLGH4AoJh4Jw" />
+<link rel="stylesheet" media="all" href="/css/css_fKhyk4qO605uDu4D-eFxkosN-VaeOUHyr5hR-EZ3FFA.css?delta=1&amp;language=en&amp;theme=bis&amp;include=eJx1zjsOwzAMA9AL-XMmOVYcoYpkWHLQ3L5Liy7OSL6BLGS5sRbgaH4zSQubDsybnl0FxS0VshgL1IYPNN1V1rbBqGvZVR3H2uiEpzHWpmsRuKiB09OViypqwLczySvXMTtw-sbQYUAb0A_7yb9JU_osTHZgDXab45kLGH4AoJh4Jw" />
+
+    
+          
+      </head>
+  <body  class="node-58134 node-type--publication path-node language--en" data-component-id="radix:html">
+          
+            <a href="#main-content" class="visually-hidden focusable">
+      Skip to main content
+    </a>
+
+    
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div>
+  <div class="container">
+  <div class="row">
+          
+
+
+<div  data-component-id="radix:block" class="block block-system block-system-menu-blockmain block--bis-mainnavigation block--system-menu">
+
+  
+          
+
+            <div class="block__content">
+        
+<nav class="navbar navbar-expand-lg">
+  <div class="navbar-wrapper">
+    <a href="/">
+      <div class="logo">
+    
+  <div
+    class="
+      image
+                            "
+  >
+        <img
+      loading="lazy"
+      src="/themes/custom/bis/logo.svg"
+      class=""
+      alt="Bank for International Settlements logo, go to homepage"
+    >
+      </div>
+
+  
+</div>
+
+    </a>
+    <div class="navbar-mobile d-lg-none">
+            <a
+        class="navbar-mobile-wrapper navbar-mobile-search navbar-search-toggle"
+        data-search-scope="mobile"
+        href="/search"
+        aria-controls="search-flyout-mobile"
+        aria-expanded="false"
+      >
+        <i class="bx icon-bx-search navbar-search-toggle__icon-open" aria-hidden="true"></i>
+        <i class="bx icon-bx-x navbar-search-toggle__icon-close" aria-hidden="true"></i>
+        <span class="visually-hidden navbar-search-toggle__label-open">Search</span>
+        <span class="visually-hidden navbar-search-toggle__label-close">Close search</span>
+      </a>
+      <button
+        class="navbar-toggler ms-auto d-lg-none navbar-mobile-wrapper navbar-mobile-burger"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="bx icon-bx-menu-alt-right"></i>
+      </button>
+      <button
+        class="navbar-toggler ms-auto d-lg-none navbar-mobile-wrapper navbar-mobile-close"
+        type="button"
+        aria-label="Toggle navigation close"
+      >
+        <i class="bx icon-bx-x"></i>
+      </button>
+    </div>
+
+    <div class="justify-content-center d-none d-lg-flex flyout-nav-wrapper">
+      <ul class="navbar-menu level-0">
+                  
+
+
+<li class="flyout-menu-item level-0 has-children ">
+            <button class="flyout-next-desktop has-submenu" data-target="column-submenu-1" data-id="1">
+      <span class="flyout-menu-label">About</span>
+          </button>
+  </li>
+
+                  
+
+
+<li class="flyout-menu-item level-0 has-children ">
+            <button class="flyout-next-desktop has-submenu" data-target="column-submenu-2" data-id="2">
+      <span class="flyout-menu-label">Research &amp; publications</span>
+          </button>
+  </li>
+
+                  
+
+
+<li class="flyout-menu-item level-0 has-children ">
+            <button class="flyout-next-desktop has-submenu" data-target="column-submenu-3" data-id="3">
+      <span class="flyout-menu-label">Committees</span>
+          </button>
+  </li>
+
+                  
+
+
+<li class="flyout-menu-item level-0 has-children ">
+            <button class="flyout-next-desktop has-submenu" data-target="column-submenu-4" data-id="4">
+      <span class="flyout-menu-label">Speeches</span>
+          </button>
+  </li>
+
+                  
+
+
+<li class="flyout-menu-item level-0 has-children ">
+            <button class="flyout-next-desktop has-submenu" data-target="column-submenu-5" data-id="5">
+      <span class="flyout-menu-label">Statistics</span>
+          </button>
+  </li>
+
+                  
+
+
+<li class="flyout-menu-item level-0 has-children ">
+            <button class="flyout-next-desktop has-submenu" data-target="column-submenu-6" data-id="6">
+      <span class="flyout-menu-label">Media &amp; events</span>
+          </button>
+  </li>
+
+              </ul>
+
+      <div class="flyout-overlay">
+        <div class="flyout-overlay-wrapper">
+                                    <div class="flyout-panel" data-parent="1">
+                <div class="flyout-columns">
+                  <div class="flyout-column column-1">
+                                            <a href="/about" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background flyout-card-desktop ">
+  <h4 class="flyout-card-title flyout-card-text-light flyout-card-title-desktop">
+    About the BIS
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    The BIS supports central banks&#039; pursuit of monetary and financial stability through international cooperation.
+  </p>
+</div>
+  </a>
+
+                                                                                                                <a href="/about/careers/overview" class="flyout-card-link">
+<div class="flyout-card   flyout-card-no-mb">
+  <h4 class="flyout-card-title  ">
+    Careers at the BIS
+  </h4>
+  <p class="flyout-card-description ">
+    
+  </p>
+</div>
+  </a>
+
+                                                            </div>
+
+                  <div class="flyout-column-divider"></div>
+
+                  <div class="flyout-column column-2">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-1"
+  data-level="1"
+  data-parent="1"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/organisation/overview" class="">Governance &amp; organisation</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/banking/overview" class="">Banking services</a>
+  </li>
+
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="/about/annual-report" class="">Annual Report</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/annual-general-meeting" class="">Annual General Meeting</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/basel-process" class="">The Basel Process</a>
+  </li>
+
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="/about/history/overview" class="">History</a>
+  </li>
+
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="/about/campus" class="">Campus development project</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/legal/overview" class="">Legal information</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+
+                  <div class="flyout-column-divider flyout-column-baffer"></div>
+
+                  <div class="flyout-column column-3">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-1"
+  data-level="1"
+  data-parent="1"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/fsi/overview" class="">Financial Stability Institute</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/innovation-hub/overview" class="">Innovation Hub</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/crcc" class="">Cyber Resilience Coordination Centre</a>
+  </li>
+
+              
+    
+
+<li class="flyout-main-title pt-7 level-1  ">
+              <span class="flyout-menu-label">Representative offices</span>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/americas/overview" class="">Office for the Americas</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/about/asia/overview" class="">Office for Asia and the Pacific</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+                </div>
+              </div>
+                                                <div class="flyout-panel" data-parent="2">
+                <div class="flyout-columns">
+                  <div class="flyout-column column-1">
+                                            <a href="/publications/research" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background flyout-card-desktop ">
+  <h4 class="flyout-card-title flyout-card-text-light flyout-card-title-desktop">
+    Research &amp; publications
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    BIS research focuses on policy issues of core interest to the central bank and financial supervisory community.
+  </p>
+</div>
+  </a>
+
+                                                                                                                <a href="/publications/authors" class="flyout-card-link">
+<div class="flyout-card   flyout-card-no-mb">
+  <h4 class="flyout-card-title  ">
+    BIS authors
+  </h4>
+  <p class="flyout-card-description ">
+    Our authors publish economic analysis and research on monetary and financial stability issues.
+  </p>
+</div>
+  </a>
+
+                                                            </div>
+
+                  <div class="flyout-column-divider"></div>
+
+                  <div class="flyout-column column-2">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-2"
+  data-level="1"
+  data-parent="2"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/publications" class="">All publications</a>
+  </li>
+
+              
+    
+
+<li class="flyout-main-title pt-7 level-1  ">
+              <span class="flyout-menu-label">Key reports</span>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/publications/aer" class="">Annual Economic Report</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/publications/qr" class="">Quarterly Review</a>
+  </li>
+
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="https://www.bis.org/about/fsi/publications" class="">FSI publications</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+
+                  <div class="flyout-column-divider flyout-column-baffer"></div>
+
+                  <div class="flyout-column column-3">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-2"
+  data-level="1"
+  data-parent="2"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/publications/bulletin" class="">BIS Bulletins</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/publications/bis-paper" class="">BIS Papers</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/publications/working-paper" class="">BIS Working Papers</a>
+  </li>
+
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="/publications/research/open-tech" class="">BIS Open Tech</a>
+  </li>
+
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="/publications/central-bank" class="">Central Bank research hub</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+                </div>
+              </div>
+                                                <div class="flyout-panel" data-parent="3">
+                <div class="flyout-columns">
+                  <div class="flyout-column column-1">
+                                            <a href="/committees/overview" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background flyout-card-desktop ">
+  <h4 class="flyout-card-title flyout-card-text-light flyout-card-title-desktop">
+    About the Committees
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    The BIS hosts committees engaged in standard setting &amp; the pursuit of financial stability through the Basel Process.
+  </p>
+</div>
+  </a>
+
+                                                          </div>
+
+                  <div class="flyout-column-divider"></div>
+
+                  <div class="flyout-column column-2">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-3"
+  data-level="1"
+  data-parent="3"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/committees/bcbs/overview" class="">Basel Committee on Banking Supervision</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/committees/cgfs/overview" class="">Committee on the Global Financial System</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/committees/cpmi/overview" class="">Committee on Payments and Market Infrastructures</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/committees/mc/overview" class="">Markets Committee</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/committees/cbgg/overview" class="">Central Bank Governance Group</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/committees/ifc/overview" class="">Irving Fisher Committee</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+
+                  <div class="flyout-column-divider flyout-column-baffer"></div>
+
+                  <div class="flyout-column column-3">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-3"
+  data-level="1"
+  data-parent="3"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+                </div>
+              </div>
+                                                <div class="flyout-panel" data-parent="4">
+                <div class="flyout-columns">
+                  <div class="flyout-column column-1">
+                                            <a href="/speeches" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background flyout-card-desktop ">
+  <h4 class="flyout-card-title flyout-card-text-light flyout-card-title-desktop">
+    Speeches
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    The BIS publishes select speeches delivered by its senior management, focusing on topics that align with the organisation&#039;s mission.
+  </p>
+</div>
+  </a>
+
+                                                          </div>
+
+                  <div class="flyout-column-divider"></div>
+
+                  <div class="flyout-column column-2">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-4"
+  data-level="1"
+  data-parent="4"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches" class="">All speeches</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches/management" class="">Management speeches</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches/central-bank" class="">Central bankers&#039; speeches</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+
+                  <div class="flyout-column-divider flyout-column-baffer"></div>
+
+                  <div class="flyout-column column-3">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-4"
+  data-level="1"
+  data-parent="4"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+    
+
+<li class="flyout-main-title pt-7 level-1  ">
+              <span class="flyout-menu-label">Speeches by speaker</span>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches?person%5B0%5D=36649" class="">Pablo Hernández de Cos</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches?person%5B0%5D=36438" class="">Andréa M Maechler</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches?person%5B0%5D=36122" class="">Fernando Restoy</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches?person%5B0%5D=36848" class="">Tao Zhang</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/speeches?person%5B0%5D=36077" class="">Alexandre Tombini</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+                </div>
+              </div>
+                                                <div class="flyout-panel" data-parent="5">
+                <div class="flyout-columns">
+                  <div class="flyout-column column-1">
+                                            <a href="https://data.bis.org" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background flyout-card-desktop ">
+  <h4 class="flyout-card-title flyout-card-text-light flyout-card-title-desktop">
+    Data Portal
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    Access our statistics in the BIS Data Portal
+  </p>
+</div>
+  </a>
+
+                                                          </div>
+
+                  <div class="flyout-column-divider"></div>
+
+                  <div class="flyout-column column-2">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-5"
+  data-level="1"
+  data-parent="5"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="/statistics" class="">Overview</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/statistics/frame" class="">Effects of financial regulations</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+
+                  <div class="flyout-column-divider flyout-column-baffer"></div>
+
+                  <div class="flyout-column column-3">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-5"
+  data-level="1"
+  data-parent="5"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+                </div>
+              </div>
+                                                <div class="flyout-panel" data-parent="6">
+                <div class="flyout-columns">
+                  <div class="flyout-column column-1">
+                                            <a href="/media" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background flyout-card-desktop ">
+  <h4 class="flyout-card-title flyout-card-text-light flyout-card-title-desktop">
+    Media centre
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    Contact the Media team
+  </p>
+</div>
+  </a>
+
+                                                          </div>
+
+                  <div class="flyout-column-divider"></div>
+
+                  <div class="flyout-column column-2">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-6"
+  data-level="1"
+  data-parent="6"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+    
+
+<li class="flyout-main-title pt-7 level-1  ">
+              <span class="flyout-menu-label">Media releases</span>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/media/news" class="">All media releases</a>
+  </li>
+
+              
+
+    
+<li class="flyout-menu-item level-1  pt-7">
+            <a href="/media/videos" class="">Videos</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/media" class="">Media centre</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/media/gallery" class="">Photo gallery</a>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/media/podcasts" class="">Podcasts</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+
+                  <div class="flyout-column-divider flyout-column-baffer"></div>
+
+                  <div class="flyout-column column-3">
+                                          <div
+  class="flyout-column-submenu "
+  id="column-submenu-6"
+  data-level="1"
+  data-parent="6"
+>
+  
+  <div class="flyout-links flyout-links-no-margin ">
+    <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+              
+    
+
+<li class="flyout-main-title pt-7 level-1  ">
+              <span class="flyout-menu-label">Events</span>
+  </li>
+
+              
+
+
+<li class="flyout-menu-item level-1  ">
+            <a href="/media/events" class="">All events</a>
+  </li>
+
+          </ul>
+  </div>
+
+  </div>
+
+                                      </div>
+                </div>
+              </div>
+                      
+                    <div class="flyout-panel" data-parent="search" id="search-flyout-desktop">
+            
+<div class="search-flyout search-flyout--desktop">
+  <form
+    class="search-flyout__form"
+    role="search"
+    method="get"
+    action="/search"
+  >
+    <label class="search-flyout__label" for="search-flyout-input-desktop">
+      Search
+    </label>
+
+    <div class="search-flyout__field">
+            <input
+        type="search"
+        class="search-flyout__input form-control form-control--large"
+        id="search-flyout-input-desktop"
+        name="keywords"
+        value=""
+        placeholder="Enter keywords"
+        autocomplete="off"
+        enterkeyhint="search"
+      >
+      <button type="submit" class="search-flyout__submit">
+        <i class="bx icon-bx-search" aria-hidden="true"></i>
+        <span class="visually-hidden">Submit search</span>
+      </button>
+    </div>
+  </form>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-none d-lg-block">
+            <a
+        class="nav-link navbar-search-toggle"
+        data-search-scope="desktop"
+        href="/search"
+        aria-controls="search-flyout-desktop"
+        aria-expanded="false"
+      >
+        <i class="bx icon-bx-search navbar-search-toggle__icon-open" aria-hidden="true"></i>
+        <i class="bx icon-bx-x navbar-search-toggle__icon-close" aria-hidden="true"></i>
+        <span class="visually-hidden navbar-search-toggle__label-open">Search</span>
+        <span class="visually-hidden navbar-search-toggle__label-close">Close search</span>
+      </a>
+    </div>
+    <div class="flyout-menu d-lg-none collapse" id="mainNav">
+      <ul class="flyout-menu-ul">
+                  <li class="flyout-menu-item level-0 has-children">
+      <button class="flyout-next" data-target="submenu-1">
+      <span class="flyout-menu-label">About</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-0 has-children">
+      <button class="flyout-next" data-target="submenu-2">
+      <span class="flyout-menu-label">Research &amp; publications</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-0 has-children">
+      <button class="flyout-next" data-target="submenu-3">
+      <span class="flyout-menu-label">Committees</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-0 has-children">
+      <button class="flyout-next" data-target="submenu-4">
+      <span class="flyout-menu-label">Speeches</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-0 has-children">
+      <button class="flyout-next" data-target="submenu-5">
+      <span class="flyout-menu-label">Statistics</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-0 has-children">
+      <button class="flyout-next" data-target="submenu-6">
+      <span class="flyout-menu-label">Media &amp; events</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+                        <div class="flyout-submenu" id="submenu-1" data-level="1">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+            <a href="/about" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background  ">
+  <h4 class="flyout-card-title flyout-card-text-light ">
+    About the BIS
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    The BIS supports central banks&#039; pursuit of monetary and financial stability through international cooperation.
+  </p>
+</div>
+  </a>
+
+        
+    <div class="flyout-links ">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-1">
+      <span class="flyout-menu-label">Governance &amp; organisation</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-2">
+      <span class="flyout-menu-label">Banking services</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/about/annual-report" class="">Annual Report</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/about/annual-general-meeting" class="">Annual General Meeting</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/about/basel-process" class="">The Basel Process</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-6">
+      <span class="flyout-menu-label">History</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-7">
+      <span class="flyout-menu-label">Campus development project</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-8">
+      <span class="flyout-menu-label">Legal information</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-9">
+      <span class="flyout-menu-label">Financial Stability Institute</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-10">
+      <span class="flyout-menu-label">Innovation Hub</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/about/crcc" class="">Cyber Resilience Coordination Centre</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="" class="">Representative offices</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-13">
+      <span class="flyout-menu-label">Office for the Americas</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-1-14">
+      <span class="flyout-menu-label">Office for Asia and the Pacific</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+                              <a href="/about/careers/overview" class="flyout-card-link">
+<div class="flyout-card   ">
+  <h4 class="flyout-card-title  ">
+    Careers at the BIS
+  </h4>
+  <p class="flyout-card-description ">
+    
+  </p>
+</div>
+  </a>
+
+                  
+      </div>
+</div>
+
+                                <div class="flyout-submenu" id="submenu-2" data-level="1">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-2">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+            <a href="/publications/research" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background  ">
+  <h4 class="flyout-card-title flyout-card-text-light ">
+    Research &amp; publications
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    BIS research focuses on policy issues of core interest to the central bank and financial supervisory community.
+  </p>
+</div>
+  </a>
+
+        
+    <div class="flyout-links ">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications" class="">All publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="" class="">Key reports</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications/aer" class="">Annual Economic Report</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications/qr" class="">Quarterly Review</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications/bulletin" class="">BIS Bulletins</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications/bis-paper" class="">BIS Papers</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications/working-paper" class="">BIS Working Papers</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="https://www.bis.org/about/fsi/publications" class="">FSI publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications/research/open-tech" class="">BIS Open Tech</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/publications/central-bank" class="">Central Bank research hub</a>
+  </li>
+
+              </ul>
+    </div>
+
+                              <a href="/publications/authors" class="flyout-card-link">
+<div class="flyout-card   ">
+  <h4 class="flyout-card-title  ">
+    BIS authors
+  </h4>
+  <p class="flyout-card-description ">
+    Our authors publish economic analysis and research on monetary and financial stability issues.
+  </p>
+</div>
+  </a>
+
+                  
+      </div>
+</div>
+
+                                <div class="flyout-submenu" id="submenu-3" data-level="1">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+            <a href="/committees/overview" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background  ">
+  <h4 class="flyout-card-title flyout-card-text-light ">
+    About the Committees
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    The BIS hosts committees engaged in standard setting &amp; the pursuit of financial stability through the Basel Process.
+  </p>
+</div>
+  </a>
+
+        
+    <div class="flyout-links ">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-3-1">
+      <span class="flyout-menu-label">Basel Committee on Banking Supervision</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-3-2">
+      <span class="flyout-menu-label">Committee on the Global Financial System</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-3-3">
+      <span class="flyout-menu-label">Committee on Payments and Market Infrastructures</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-3-4">
+      <span class="flyout-menu-label">Markets Committee</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-3-5">
+      <span class="flyout-menu-label">Central Bank Governance Group</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-3-6">
+      <span class="flyout-menu-label">Irving Fisher Committee</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+              
+      </div>
+</div>
+
+                                <div class="flyout-submenu" id="submenu-4" data-level="1">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-4">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+            <a href="/speeches" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background  ">
+  <h4 class="flyout-card-title flyout-card-text-light ">
+    Speeches
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    The BIS publishes select speeches delivered by its senior management, focusing on topics that align with the organisation&#039;s mission.
+  </p>
+</div>
+  </a>
+
+        
+    <div class="flyout-links ">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/speeches" class="">All speeches</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="" class="">Speeches by speaker</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/speeches?person%5B0%5D=36649" class="">Pablo Hernández de Cos</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/speeches?person%5B0%5D=36438" class="">Andréa M Maechler</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/speeches?person%5B0%5D=36122" class="">Fernando Restoy</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/speeches?person%5B0%5D=36848" class="">Tao Zhang</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/speeches?person%5B0%5D=36077" class="">Alexandre Tombini</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/speeches/management" class="">Management speeches</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-4-9">
+      <span class="flyout-menu-label">Central bankers&#039; speeches</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+              
+      </div>
+</div>
+
+                                <div class="flyout-submenu" id="submenu-5" data-level="1">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-5">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+            <a href="https://data.bis.org" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background  ">
+  <h4 class="flyout-card-title flyout-card-text-light ">
+    Data Portal
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    Access our statistics in the BIS Data Portal
+  </p>
+</div>
+  </a>
+
+        
+    <div class="flyout-links ">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/statistics" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 has-children">
+      <button class="flyout-next" data-target="submenu-5-2">
+      <span class="flyout-menu-label">Effects of financial regulations</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+              
+      </div>
+</div>
+
+                                <div class="flyout-submenu" id="submenu-6" data-level="1">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-6">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+            <a href="/media" class="flyout-card-link">
+<div class="flyout-card flyout-card-has-background  ">
+  <h4 class="flyout-card-title flyout-card-text-light ">
+    Media centre
+  </h4>
+  <p class="flyout-card-description flyout-card-text-light">
+    Contact the Media team
+  </p>
+</div>
+  </a>
+
+        
+    <div class="flyout-links ">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding ">
+                  <li class="flyout-menu-item level-2 ">
+      <a href="" class="">Media releases</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/media/news" class="">All media releases</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/media/videos" class="">Videos</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/media" class="">Media centre</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/media/gallery" class="">Photo gallery</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/media/podcasts" class="">Podcasts</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="" class="">Events</a>
+  </li>
+
+                  <li class="flyout-menu-item level-2 ">
+      <a href="/media/events" class="">All events</a>
+  </li>
+
+              </ul>
+    </div>
+
+              
+      </div>
+</div>
+
+              
+                                                  <div class="flyout-submenu" id="submenu-1-1" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Governance &amp; organisation</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/organisation/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/organisation/members" class="">Members</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-1-1-3">
+      <span class="flyout-menu-label">Governance &amp; oversight</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-1-1-4">
+      <span class="flyout-menu-label">Values &amp; culture</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/organisation/ethics-risk-audit" class="">Ethics &amp; conduct, risk management &amp; internal audit</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/organisation/financial" class="">Financial information</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-1-2" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-2">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Banking services</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/banking/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/acout/banking/customers" class="">Our customers</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/banking/services" class="">Banking products &amp; services</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/banking/reports" class="">Key reports</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                  <div class="flyout-submenu" id="submenu-1-6" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-6">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">History</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/history/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/history/timelines" class="">Timelines</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/history/bis90" class="">BIS 90 Years exhibition</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/history/archive" class="">BIS Historical Archive</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-1-7" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-7">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Campus development project</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/campus" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/campus/competition" class="">Architectural competition</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/campus/exhibition" class="">Exhibition</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-1-8" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-8">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Legal information</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/legal/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/legal/atbis" class="">Administrative Tribunal</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fraudulent-schemes" class="">Fraudulent schemes</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/legal/tribunal" class="">Hague Arbitral Tribunal</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/legal/suppliers" class="">Information for suppliers</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/legal/shares-withdrawal" class="">Shares withdrawal</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-1-9" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-9">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Financial Stability Institute</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fsi/overview" class="">About the FSI</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fsi/policy-implementation" class="">Policy work</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fsi/capacity-development" class="">Capacity development</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fsi/outreach" class="">Outreach programme</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fsi/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fsi/speeches" class="">Speeches</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/fsi/events" class="">Events</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-1-10" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-10">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Innovation Hub</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/innovation-hub/overview" class="">About the Innovation Hub</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/innovation-hub/projects" class="">Projects</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/innovation-hub/collaboration" class="">Collaboration</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/innovation-hub/network" class="">Innovation Network</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/innovation-hub/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-1-10-6">
+      <span class="flyout-menu-label">News</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                            <div class="flyout-submenu" id="submenu-1-13" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-13">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Office for the Americas</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/americas/overview" class="">About the Americas Office</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/americas/consultative-council" class="">Consultative Council for the Americas</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-1-13-3">
+      <span class="flyout-menu-label">Activities</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/americas/visiting-economist-programme" class="">Visiting economists</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/americas/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-1-13-6">
+      <span class="flyout-menu-label">News</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-1-14" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-14">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Office for Asia and the Pacific</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/asia/overview" class="">About the Asia Office</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/asia/consultative-council" class="">Asian Consultative Council</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-1-14-3">
+      <span class="flyout-menu-label">Activities</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/asia/secondment-programme" class="">Secondment programme</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/about/asia/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-1-14-6">
+      <span class="flyout-menu-label">News</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                                                                                                                                                            <div class="flyout-submenu" id="submenu-3-1" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Basel Committee on Banking Supervision</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-1-1">
+      <span class="flyout-menu-label">About the BCBS</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-1-2">
+      <span class="flyout-menu-label">Standards &amp; guidelines</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-1-3">
+      <span class="flyout-menu-label">Implementation</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-1-4">
+      <span class="flyout-menu-label">Data &amp; analysis</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/bcbs/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-1-6">
+      <span class="flyout-menu-label">News</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-3-2" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-2">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Committee on the Global Financial System</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-2-1">
+      <span class="flyout-menu-label">About the CGFS</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/cgfs/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/cgfs/events" class="">Events</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/cgfs/news" class="">Media releases</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-3-3" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Committee on Payments and Market Infrastructures</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-3-1">
+      <span class="flyout-menu-label">About the CPMI</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-3-2">
+      <span class="flyout-menu-label">Principles for FMIs </span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-3-3">
+      <span class="flyout-menu-label">Cross-border payments</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/cpmi/digital-innovation" class="">Digital innovation</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-3-5">
+      <span class="flyout-menu-label">Statistics &amp; glossary</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/cpmi/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-3-7">
+      <span class="flyout-menu-label">News</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-3-4" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-4">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Markets Committee</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-4-1">
+      <span class="flyout-menu-label">About the MC</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-4-2">
+      <span class="flyout-menu-label">FX global code</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-4-3">
+      <span class="flyout-menu-label">Compendium</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/mc/publications" class="">Publications</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-3-5" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-5">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Central Bank Governance Group</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-5-1">
+      <span class="flyout-menu-label">About the CBGG</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/cbgg/publications" class="">Publications</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                <div class="flyout-submenu" id="submenu-3-6" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-6">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Irving Fisher Committee</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 has-children">
+      <button class="flyout-next" data-target="submenu-3-6-1">
+      <span class="flyout-menu-label">About the IFC</span>
+      <i class="bx icon-bx-chevron-right"></i>
+    </button>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/ifc/hmfs" class="">Historical monetary &amp; financial statistics</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/ifc/knowledge-centre" class="">Knowledge centre</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/ifc/publications" class="">Publications</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/committees/ifc/events" class="">Events</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                                                                                <div class="flyout-submenu" id="submenu-4-9" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-4-9">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Central bankers&#039; speeches</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/speeches/central-bank" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/speeches/central-bank/download" class="">Download speeches</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                      <div class="flyout-submenu" id="submenu-5-2" data-level="2">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-5-2">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Effects of financial regulations</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/statistics/frame" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/statistics/frame/capital-liquidity" class="">Capital and liquidity regulations</a>
+  </li>
+
+                  <li class="flyout-menu-item level-3 ">
+      <a href="/statistics/frame/too-big-to-fail" class="">Too-big-to-fail reforms</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                                                                    
+                                                                                                                                                <div class="flyout-submenu" id="submenu-1-1-3" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-1-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Governance &amp; oversight</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/organisation/board" class="">Board of directors</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/organisation/management" class="">Management</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-1-1-4" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-1-4">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Values &amp; culture</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/careers/values" class="">Our values</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/organisation/transparency" class="">Transparency</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="flyout-submenu" id="submenu-1-10-6" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-10-6">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">News</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/innovation-hub/speeches" class="">Speeches</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/innovation-hub/news" class="">Media releases</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/innovation-hub/events" class="">Events</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/innovation-hub/videos" class="">Videos</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/innovation-hub/podcasts" class="">Podcasts</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                                        <div class="flyout-submenu" id="submenu-1-13-3" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-13-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Activities</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/americas/banking" class="">Banking in the Americas</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/americas/research-networks" class="">Research for the Americas</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                            <div class="flyout-submenu" id="submenu-1-13-6" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-13-6">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">News</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/americas/events" class="">Events</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/americas/speeches" class="">Speeches</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                            <div class="flyout-submenu" id="submenu-1-14-3" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-14-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Activities</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/asia/outreach" class="">Outreach &amp; engagement</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/asia/banking-services" class="">Banking services &amp; risk management</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/asia/research" class="">Asia office research</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                            <div class="flyout-submenu" id="submenu-1-14-6" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-1-14-6">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">News</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/asia/speeches" class="">Speeches</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/asia/news" class="">Media releases</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/about/asia/events" class="">Events</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                            <div class="flyout-submenu" id="submenu-3-1-1" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-1-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">About the BCBS</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/governance" class="">Organisation &amp; governance</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/work-programme" class="">Work programme</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/policy-development" class="">Policy development</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/charter" class="">Charter</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/history" class="">History</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-3-1-2" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-1-2">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Standards &amp; guidelines</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/standards" class="">Background</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/basel-framework" class="">Basel Framework</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/basel-consolidated-guidelines" class="">Consolidated Guidelines</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-3-1-3" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-1-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Implementation</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/rcap" class="">Regulatory Consistency Assessment Programme (RCAP)</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/rcap-dashboard" class="">RCAP dashboard</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/evaluation" class="">Evaluation</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-3-1-4" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-1-4">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Data &amp; analysis</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/dashboards" class="">Dashboards</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/qis" class="">Basel III monitoring &amp; QIS</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/ccyb" class="">Countercyclical capital buffer (CCyB)</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/gsib" class="">Global systemically important banks (G-SIB)</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                              <div class="flyout-submenu" id="submenu-3-1-6" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-1-6">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">News</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/news" class="">Media releases</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/speeches" class="">Speeches</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/comments" class="">Comments</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/bcbs/events" class="">Events</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                <div class="flyout-submenu" id="submenu-3-2-1" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-2-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">About the CGFS</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cgfs/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cgfs/governance" class="">Organisation &amp; governance</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cgfs/mandate" class="">Mandate</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cgfs/history" class="">History</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                          <div class="flyout-submenu" id="submenu-3-3-1" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-3-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">About the CPMI</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/governance" class="">Organisation &amp; governance</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/work-programme" class="">Work programme</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/charter" class="">Charter</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/history" class="">History</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-3-3-2" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-3-2">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Principles for FMIs </h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/pfmi/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/pfmi/monitoring" class="">Monitoring PFMI implementation</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/pfmi/l1-tracker" class="">L1 assessments: online tracker</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/pfmi/l2-database" class="">L2 assessments: PFMI database</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-3-3-3" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-3-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Cross-border payments</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/cross-border-payments/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/cross-border-payments/monitoring" class="">Monitoring cross-border payments</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/cross-border-payments/engagement" class="">CPMI stakeholder engagement</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                              <div class="flyout-submenu" id="submenu-3-3-5" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-3-5">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Statistics &amp; glossary</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/payment" class="">Statistics</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/glossary" class="">Glossary</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                              <div class="flyout-submenu" id="submenu-3-3-7" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-3-7">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">News</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/speeches" class="">Speeches</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cpmi/news" class="">Media releases</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                <div class="flyout-submenu" id="submenu-3-4-1" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-4-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">About the MC</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/governance" class="">Organisation &amp; governance</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/history" class="">History</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-3-4-2" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-4-2">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">FX global code</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/fx-global-code" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/fx-global-code/cb-register" class="">Central Bank Register</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                <div class="flyout-submenu" id="submenu-3-4-3" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-4-3">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">Compendium</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/compendium/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/compendium/currencies" class="">Currency areas</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/compendium/elements" class="">Elements</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/mc/compendium/comparison" class="">Comparison</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                              <div class="flyout-submenu" id="submenu-3-5-1" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-5-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">About the CBGG</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cbgg/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cbgg/governance" class="">Organisation &amp; governance</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cbgg/charter" class="">Charter</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/cbgg/history" class="">History</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                              <div class="flyout-submenu" id="submenu-3-6-1" data-level="3">
+  <div class="flyout-header">
+    <div class="flyout-header-wrapper">
+      <button class="flyout-back" data-back-to="submenu-3-6-1">
+        <i class="bx icon-bx-arrow-back"></i>
+        <span>Back</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="flyout-main ">
+              <h6 class="flyout-main-title">About the IFC</h6>
+    
+    <div class="flyout-links flyout-links-no-margin">
+      <ul class="flyout-menu-ul flyout-menu-ul-no-padding flyout-menu-ul-no-margin">
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/ifc/overview" class="">Overview</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/ifc/governance" class="">Organisation &amp; governance</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/ifc/terms-of-reference" class="">Terms of Reference</a>
+  </li>
+
+                  <li class="flyout-menu-item level-4 ">
+      <a href="/committees/ifc/history" class="">History</a>
+  </li>
+
+              </ul>
+    </div>
+
+    
+                      </div>
+</div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </div>
+
+        <div class="flyout-search d-lg-none" id="search-flyout-mobile">
+      <div class="flyout-search__inner">
+        
+<div class="search-flyout search-flyout--mobile">
+  <form
+    class="search-flyout__form"
+    role="search"
+    method="get"
+    action="/search"
+  >
+    <label class="search-flyout__label" for="search-flyout-input-mobile">
+      Search
+    </label>
+
+    <div class="search-flyout__field">
+            <input
+        type="search"
+        class="search-flyout__input form-control form-control--large"
+        id="search-flyout-input-mobile"
+        name="keywords"
+        value=""
+        placeholder="Enter keywords"
+        autocomplete="off"
+        enterkeyhint="search"
+      >
+      <button type="submit" class="search-flyout__submit">
+        <i class="bx icon-bx-search" aria-hidden="true"></i>
+        <span class="visually-hidden">Submit search</span>
+      </button>
+    </div>
+  </form>
+</div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+      </div>
+      
+</div>
+
+    </div>
+</div>
+
+
+        <div data-drupal-messages-fallback class="hidden"></div>
+
+
+
+<div  data-component-id="radix:block" class="block block-system block-system-main-block block--bis-mainpagecontent block--system-main">
+
+  
+          
+
+            <div class="block__content">
+        
+<article about="/publications/aer-2026">
+  
+
+          
+      
+  
+      <div class="single-component mb-0">
+      
+<div class="hero-banner hero-banner-narrow   ">
+                    
+                                <nav class="breadcrumb-wrapper" aria-label="breadcrumb">
+                <div class="container-xxl">
+                    <ol  data-component-id="radix:breadcrumb" class="breadcrumb">
+                                                    <li class="breadcrumb-item">
+                                                                    <a href="/">
+                                                                                    <i class="bx icon-bx-home" aria-hidden="true"></i>
+                                            <span class="visually-hidden">Home</span>
+                                                                            </a>
+                                                            </li>
+                                                    <li class="breadcrumb-item">
+                                                                    <a href="/publications">
+                                                                                    <span>Research & publications</span>
+                                                                            </a>
+                                                            </li>
+                                            </ol>
+                </div>
+            </nav>
+            
+    
+  
+     <div
+    class="
+      hero-banner__hero py-15
+      bg-gradient-dark-light-diagonal-blue    "
+    >
+    <div class="hero__bg-pattern hero__bg-pattern--publication" data-bg-pattern="pattern-31"></div>
+
+    <div class="hero-quaterly container-xxl">
+      <div class="col-12 col-sm-10 hero-quaterly__topics">
+                  <div class="card-topic">
+                            <span
+    class="badge d-inline-flex align-items-center bg-white basic-white"
+  >
+        28 June 2026
+  </span>
+
+                      </div>
+              </div>
+      <h1 class="col-12 col-sm-8 hero-quaterly__heading display-6">
+<span>BIS Annual Economic Report 2026</span>
+</h1>
+        
+      <div class="col-12 col-sm-8 hero-quaterly__authors">
+              </div>
+
+      <div class="col-12 hero-quaterly__buttons">
+                    <div class="button ">
+          <a
+        class="btn btn--primary  btn--size-large  btn--inverted   "
+        href="https://www.bis.org/publications/aer-2026_0.pdf"
+        title="PDF (133 Pages)"
+         aria-label="PDF (133 Pages)"        
+                      >
+                  <i
+            class="
+              bx icon-bx-download pe-2  me-2                                          icon-bx-large            "
+          ></i>
+        
+        PDF (133 Pages)
+
+        
+              </a>
+      </div>
+
+                    <div class="button ">
+          <a
+        class="btn btn--outline  btn--size-large  btn--inverted   "
+        href="#"
+        title=""
+                
+                      >
+                  <i
+            class="
+              bx icon-bxl-x   me-2                                          icon-bx-large            "
+          ></i>
+        
+        
+
+        
+              </a>
+      </div>
+
+                    <div class="button ">
+          <a
+        class="btn btn--outline  btn--size-large  btn--inverted   "
+        href="#"
+        title=""
+                
+                      >
+                  <i
+            class="
+              bx icon-bxl-linkedin   me-2                                          icon-bx-large            "
+          ></i>
+        
+        
+
+        
+              </a>
+      </div>
+
+                    <div class="button ">
+          <a
+        class="btn btn--outline  btn--size-large  btn--inverted   "
+        href="#"
+        title=""
+                
+                      >
+                  <i
+            class="
+              bx icon-bx-envelope   me-2                                          icon-bx-large            "
+          ></i>
+        
+        
+
+        
+              </a>
+      </div>
+
+              </div>
+    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+        </div>
+
+    </div>
+  
+  
+          
+
+
+      <div  data-component-id="radix:field" class="field field--name-field-content field--type-entity-reference-revisions field--label-hidden field--items">
+              <div  class="field__item">
+    
+    
+
+
+
+
+
+<section
+        class="container-layout--grid-7-1-4 container-fluid spacing-top-bottom   container-layout  bg-secondary"
+        >
+    <div class="container-xxl">
+        <div class="row g-10">
+            <div class="col-12 col-md-7 ">
+                            <div class="col-12 single-component">
+                <div class="text__component">
+    <div class="toc-content"><h2>From resilience to robustness?</h2><p>The past year saw investment in artificial intelligence (AI) ecosystems help global growth to withstand the blow from major tariff hikes. Yet geopolitical headwinds and rising fiscal and financial fragilities remain. Reinforcing the foundations of effective macroeconomic and financial policies is increasingly critical. Such foundations include fiscal sustainability, an unambiguous commitment to price stability and congruent prudential policies across the financial system. Progress on each of these dimensions bolsters trust in the capacity of economic policies to deliver on their mandates. Building on the resilience of the past year, the challenge for authorities is to work towards greater robustness and thus to contribute to sustainable growth going forward.</p><h3 id="the-year-in-review">The year in review</h3><p>Growth held up well in 2025, despite significant headwinds from higher tariffs and geopolitical uncertainty. Three factors stand out. First, the drag from higher trade barriers was lessened by effective tariff rates that were lower than initially anticipated, trade diversion and firms' willingness to absorb costs through lower margins. Second, a wave of optimism about AI spurred a surge in capital expenditure on AI infrastructure, lifting investment in the United States with spillovers along global supply chains. Third, animal spirits about AI lifted stock valuations, sustaining favourable global financial conditions.</p></div>
+</div>
+<div class="component--buttons">
+        <div class="button ">
+          <a
+        class="btn btn--primary  btn--size-medium     "
+        href="/publications/aer-2026-0"
+        title="Read more"
+         aria-label="Read more"        
+                      >
+        
+        Read more
+
+        
+              </a>
+      </div>
+
+  </div>
+
+            </div>
+                    </div>
+
+            <div class="col-12 offset-md-1 col-md-4 ">
+                            <div class="col-12 single-component">
+                <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                            <div class="card            ">
+                                                                          <div class="video gallery position-relative d-inline-block" data-video="true">
+    <span class="video-duration">00:02:06</span>
+    <a
+      href="https://youtube.com/watch?v=4LwjAxu_BDs"
+      class="gallery-item video-item"
+      data-sub-html='<h6 class="fs-sm text-light">Global economic pressure points call for policy discipline</h6>'
+    >
+        
+  <div
+    class="
+      image
+                         ratio-16x9 ratio    "
+  >
+        <img
+      loading="lazy"
+      src="/styles/card_16_9_landscape_480x270/public/on/images/agm-2026-gm.jpg?itok=HkZeXnRW"
+      class="card-img-vertical"
+      alt="Global economic pressure points call for policy discipline"
+    >
+      </div>
+
+  
+      <div class="gallery-item-caption fs-sm fw-medium">Global economic pressure points call for policy discipline</div>
+    </a>
+  </div>
+
+                                            
+                                            <div class="card-body d-flex flex-column h-100">
+                                                            <div class="card-header isVertical ">
+                                                                                                                                                                          <span
+    class="badge d-inline-flex align-items-center bg-secondary basic-secondary"
+  >
+        Video
+  </span>
+
+                                                                                    
+                                        
+                                                                                    <span class="card-date fs-sm">28 Jun 2026</span>
+                                                                                                            </div>
+                                                                                        <div class="card-heading-wrapper">
+                                    <h5 class="card-heading">Global economic pressure points call for policy discipline</h5>
+                                                                    </div>
+                            
+                                                            <div class="card-description"><p>Pablo Hernández de Cos says economic pressure points pose risks to global growth stemming from vulnerabilities in the financial system, strained public finances and major supply shocks which are still playing out.</p></div>
+                            
+                                                            <div class="card-author">
+                                    <span class="card-author__prefix">By</span>
+                                                                                                                  <div class="button ">
+          <a
+        class="btn btn--link  btn--size-medium     "
+        href="/author/pablo-hernandez-de-cos"
+        title="Pablo Hernández de Cos"
+         aria-label="Pablo Hernández de Cos"        
+                      >
+        
+        Pablo Hernández de Cos
+
+        
+              </a>
+      </div>
+
+
+                                                                                                            </div>
+                                                                                    
+                            
+                            
+                                                    </div>
+                                    </div>
+                        </div>
+    </div>
+
+
+            </div>
+                    </div>
+        </div>
+    </div>
+</section>
+</div>
+              <div  class="field__item">
+
+    
+
+<section
+  class="layout-grid-4-4-4  spacing-top    "
+  >
+        
+  <div class="container-xxl no-inline-padding">
+    <div class="row  g-10">
+                  <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/publications/aer-2026/progress-peril" class="card-link">
+                                <div class="card            ">
+                                                                        <div class="card-img">
+                                  
+  <div
+    class="
+      image
+                         ratio-16x9 ratio    "
+  >
+        <img
+      loading="lazy"
+      src="/styles/card_16_9_landscape_480x270/public/on/images/aer-ch-1-2026-37984.jpg?itok=Jnr3Xgbt"
+      class="card-img-vertical"
+      alt="Port and microchip"
+    >
+      </div>
+
+  
+                            </div>
+                                            
+                                            <div class="card-body d-flex flex-column h-100">
+                                                            <div class="card-header isVertical ">
+                                                                                                                                                                          <span
+    class="badge d-inline-flex align-items-center bg-secondary basic-secondary"
+  >
+        Publication
+  </span>
+
+                                                                                    
+                                        
+                                                                                    <span class="card-date fs-sm">28 Jun 2026</span>
+                                                                                                            </div>
+                                                                                        <div class="card-heading-wrapper">
+                                    <h5 class="card-heading">I. Progress and peril</h5>
+                                                                    </div>
+                            
+                                                            <div class="card-description">Driven by progress in AI, the global economy weathered shocks, but mounting risks call for prioritising price and financial stability, as well as fiscal sustainability.</div>
+                            
+                                                                                                                    <div class="card-button">
+                                                                              <div class="button ">
+          <a
+        class="btn btn--primary      me-6 "
+        href="/publications/aer-2026/progress-peril"
+        title="Read More"
+         aria-label="Read More"        
+                      >
+        
+        Read More
+
+        
+              </a>
+      </div>
+
+                                                                                                        </div>
+                            
+                            
+                            
+                                                    </div>
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/publications/aer-2026/high-public-debt-shifting-financial-markets" class="card-link">
+                                <div class="card            ">
+                                                                        <div class="card-img">
+                                  
+  <div
+    class="
+      image
+                         ratio-16x9 ratio    "
+  >
+        <img
+      loading="lazy"
+      src="/styles/card_16_9_landscape_480x270/public/on/images/gettyimages-21626395221-37995.jpg?itok=jTqbgial"
+      class="card-img-vertical"
+      alt="Financial chart"
+    >
+      </div>
+
+  
+                            </div>
+                                            
+                                            <div class="card-body d-flex flex-column h-100">
+                                                            <div class="card-header isVertical ">
+                                                                                                                                                                          <span
+    class="badge d-inline-flex align-items-center bg-secondary basic-secondary"
+  >
+        Publication
+  </span>
+
+                                                                                    
+                                        
+                                                                                    <span class="card-date fs-sm">28 Jun 2026</span>
+                                                                                                            </div>
+                                                                                        <div class="card-heading-wrapper">
+                                    <h5 class="card-heading">II. High public debt and shifting financial markets: challenges for central banks</h5>
+                                                                    </div>
+                            
+                                                            <div class="card-description">Central banks face mounting challenges from the interplay of near record-high public debt with the growing role of non-banks in sovereign debt markets. This new fiscal-financial stability nexus amplifies and accelerates the transmission of market stress.</div>
+                            
+                                                                                                                    <div class="card-button">
+                                                                              <div class="button ">
+          <a
+        class="btn btn--primary      me-6 "
+        href="/publications/aer-2026/high-public-debt-shifting-financial-markets"
+        title="Read More"
+         aria-label="Read More"        
+                      >
+        
+        Read More
+
+        
+              </a>
+      </div>
+
+                                                                                                        </div>
+                            
+                            
+                            
+                                                    </div>
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/publications/aer-2026/anchoring-trust-money" class="card-link">
+                                <div class="card            ">
+                                                                        <div class="card-img">
+                                  
+  <div
+    class="
+      image
+                         ratio-16x9 ratio    "
+  >
+        <img
+      loading="lazy"
+      src="/styles/card_16_9_landscape_480x270/public/on/images/gettyimages-1345491010-37824.jpg?itok=CtEv3GXY"
+      class="card-img-vertical"
+      alt="Numbers and globe concept"
+    >
+      </div>
+
+  
+                            </div>
+                                            
+                                            <div class="card-body d-flex flex-column h-100">
+                                                            <div class="card-header isVertical ">
+                                                                                                                                                                          <span
+    class="badge d-inline-flex align-items-center bg-secondary basic-secondary"
+  >
+        Publication
+  </span>
+
+                                                                                    
+                                        
+                                                                                    <span class="card-date fs-sm">23 Jun 2026</span>
+                                                                                                            </div>
+                                                                                        <div class="card-heading-wrapper">
+                                    <h5 class="card-heading">III. Anchoring trust in money: innovation beyond stablecoins</h5>
+                                                                    </div>
+                            
+                                                            <div class="card-description">Digital innovation is transforming finance. It creates opportunities, but also poses challenges and raises the question on how to preserve trust in money.</div>
+                            
+                                                                                                                    <div class="card-button">
+                                                                              <div class="button ">
+          <a
+        class="btn btn--primary      me-6 "
+        href="/publications/aer-2026/anchoring-trust-money"
+        title="Read More"
+         aria-label="Read More"        
+                      >
+        
+        Read More
+
+        
+              </a>
+      </div>
+
+                                                                                                        </div>
+                            
+                            
+                            
+                                                    </div>
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+
+            </div>
+            </div>
+  </div>
+</section>
+</div>
+              <div  class="field__item">
+
+    
+
+
+
+
+
+<section
+        class="container-layout--grid-7-1-4 container-fluid spacing-top-bottom__half   container-layout  "
+        >
+    <div class="container-xxl">
+        <div class="row g-10">
+            <div class="col-12 col-md-7 ">
+                            <div class="col-12 single-component">
+                <div class="text__component">
+    <p class="alert alert-info alert-secondary">The views expressed here do not necessarily reflect the views of the BIS member central banks.</p>
+</div>
+
+            </div>
+                    </div>
+
+            <div class="col-12 offset-md-1 col-md-4 ">
+                            <div class="col-12 single-component">
+                
+            </div>
+                    </div>
+        </div>
+    </div>
+</section>
+</div>
+          </div>
+  
+    
+    
+    
+          <section class="container-layout layout-grid-4-4-4 bg-gradient-dark-light-diagonal-blue overflow-hidden">
+
+                  
+
+<section
+  class="container-layout--grid-4-1-7 container-fluid spacing-top-bottom     "
+  >
+  <div class="container-xxl">
+    <div class="row g-10">
+      <div class="col-12 col-md-4 ">
+                      <div class="col-12 single-component">
+                <h2 class="container-fluid__heading">Related information</h2>
+              </div>
+                  </div>
+
+      <div class="col-12 offset-md-1 col-md-7 ">
+                                      <div class="col-12 single-component">
+                  <div class="single-component">
+                    <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/media-releases/20260628-global-economic-pressure-points-call-policy-discipline-bis" class="card-link">
+                                <div class="card card-isTranslucent            ">
+                                                                
+                                            <div class="card-body d-flex flex-column h-100">
+                                                                                        <div class="card-heading-wrapper">
+                                    <h5 class="card-heading">Global economic pressure points call for policy discipline: BIS</h5>
+                                                                    </div>
+                            
+                            
+                                                                                    
+                            
+                            
+                                                    </div>
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+                  </div>
+                </div>
+                              <div class="col-12 single-component">
+                  <div class="single-component">
+                    <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/media-releases/20260623-path-next-generation-monetary-and-financial-system-lies-safeguarding-trust-money-bis" class="card-link">
+                                <div class="card card-isTranslucent            ">
+                                                                
+                                            <div class="card-body d-flex flex-column h-100">
+                                                                                        <div class="card-heading-wrapper">
+                                    <h5 class="card-heading">The path to the next-generation monetary and financial system lies in safeguarding trust in money: BIS (23 June 2026)</h5>
+                                                                    </div>
+                            
+                            
+                                                                                    
+                            
+                            
+                                                    </div>
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+                  </div>
+                </div>
+                              <div class="col-12 single-component">
+                  <div class="single-component">
+                    <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/speeches/20260628-anchoring-trust-money-innovation-beyond-stablecoins" class="card-link">
+                                <div class="card card-isTranslucent            ">
+                                                                
+                                            <div class="card-body d-flex flex-column h-100">
+                                                                                        <div class="card-heading-wrapper">
+                                    <h5 class="card-heading">Anchoring trust in money: innovation beyond stablecoins</h5>
+                                                                    </div>
+                            
+                            
+                                                                                    
+                            
+                            
+                                                    </div>
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+                  </div>
+                </div>
+                                </div>
+    </div>
+  </div>
+</section>
+        
+                  
+
+<section
+  class="layout-grid-4-4-4 spacing-top-bottom  spacing-bottom   "
+  >
+            <div class="container-xxl single-component">
+        <div class="row g-10">
+          <h2 class="container-fluid__heading">You might also be interested in</h2>
+        </div>
+      </div>
+      
+  <div class="container-xxl">
+    <div class="row  g-10">
+                                    <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/publications" class="card-link">
+                                <div class="card card-isPattern            ">
+                                                                
+                                            <a href="/publications" class="pattern-link">
+  <div class="card-body">
+    <h6 class="card-label">DISCOVER</h6>
+    <h5 class="card-heading">All publications</h5>
+    <div class="card-pattern-bg pattern-type-2"></div>
+    <div class="card-icon">
+      <i class="icon-bx-large bx icon-bx-right-arrow-alt"></i>
+    </div>
+      </div>
+</a>
+
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+                </div>
+                              <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/publications/annual-report-2026" class="card-link">
+                                <div class="card card-isPattern            ">
+                                                                
+                                            <a href="/publications/annual-report-2026" class="pattern-link">
+  <div class="card-body">
+    <h6 class="card-label">LEARN MORE</h6>
+    <h5 class="card-heading">BIS Annual Report 2025/26</h5>
+    <div class="card-pattern-bg pattern-type-2"></div>
+    <div class="card-icon">
+      <i class="icon-bx-large bx icon-bx-right-arrow-alt"></i>
+    </div>
+      </div>
+</a>
+
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+                </div>
+                              <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="card-wrapper single-component">
+            <div class="card-isVertical ">
+                        <a href="/events/20260628-96th-annual-general-meeting" class="card-link">
+                                <div class="card card-isPattern            ">
+                                                                
+                                            <a href="/events/20260628-96th-annual-general-meeting" class="pattern-link">
+  <div class="card-body">
+    <h6 class="card-label">DISCOVER</h6>
+    <h5 class="card-heading">96th Annual General Meeting</h5>
+    <div class="card-pattern-bg pattern-type-2"></div>
+    <div class="card-icon">
+      <i class="icon-bx-large bx icon-bx-right-arrow-alt"></i>
+    </div>
+      </div>
+</a>
+
+                                    </div>
+                            </a>
+                    </div>
+    </div>
+
+                </div>
+                              </div>
+  </div>
+</section>
+              </section>
+      </article>
+
+      </div>
+      
+</div>
+
+  
+
+
+  <div class="button">
+  <button id="backToTop" class="btn btn--primary position-fixed bottom-0 end-0 m-3 btn-icon btn-xl rounded-circle d-none" aria-label="Back to top" type="button">
+    <i class="bx icon-bx-chevron-up"></i>
+  </button>
+</div>
+
+
+<section
+  class="container-fluid container-layout container-layout--fullwidth spacing-top-bottom   container-xxl"
+  >
+        
+      <div class="container-lg no-inline-padding">
+  
+  <div class="row g-10">
+    <div class="col-12  ">
+          <footer class="footer">
+  <div class="container-fluid no-inline-padding">
+    <div class="row">
+      <div class="footer-list col-12 col-sm-6 col-lg-4">
+        <h5 class="footer-heading mb-6">About</h5>
+        <ul class="nav flex-column">
+                  <li class="nav-item">
+            <a href="/about/careers/overview" class="nav-link p-0 text-body-secondary">Careers</a>
+          </li>
+                  <li class="nav-item">
+            <a href="/about/contact" class="nav-link p-0 text-body-secondary">Contact</a>
+          </li>
+                  <li class="nav-item">
+            <a href="/about/faqs" class="nav-link p-0 text-body-secondary">FAQ</a>
+          </li>
+                </ul>
+      </div>
+
+      <div class="footer-list col-12 col-sm-6 col-lg-4">
+        <h5 class="footer-heading mb-6">Legal information</h5>
+        <ul class="nav flex-column">
+                  <li class="nav-item"><a href="/about/cookies-notice" class="nav-link p-0 text-body-secondary">Cookies notice</a></li>
+                  <li class="nav-item"><a href="/about/terms-conditions#copyright-and-permissions" class="nav-link p-0 text-body-secondary">Copyright and permissions</a></li>
+                  <li class="nav-item"><a href="/about/privacy-notice" class="nav-link p-0 text-body-secondary">Privacy notice</a></li>
+                  <li class="nav-item"><a href="/about/terms-conditions" class="nav-link p-0 text-body-secondary">Terms and conditions</a></li>
+                  <li class="nav-item"><a href="/about/fraudulent-schemes" class="nav-link p-0 text-body-secondary">Warning on fraudulent schemes</a></li>
+                </ul>
+      </div>
+
+      <div class="col-12 col-sm-12 col-lg-4">
+        <h5 class="footer-heading mb-6">Stay connected</h5>
+        <ul class="nav social-icons mb-12">
+                                <div class="button ">
+          <a
+        class="btn btn--secondary  btn--size-large   btn--onlyIcon  "
+        href="https://x.com/BIS_org"
+        title=""
+                
+                      >
+        
+        
+
+        
+                  <i
+            class="
+              bx icon-bxl-x btn--isOnlyIcon
+                                          icon-bx-large            "
+          ></i>
+              </a>
+      </div>
+
+                                          <div class="button ">
+          <a
+        class="btn btn--secondary  btn--size-large   btn--onlyIcon  "
+        href="https://www.linkedin.com/company/bis"
+        title=""
+                
+                      >
+        
+        
+
+        
+                  <i
+            class="
+              bx icon-bxl-linkedin btn--isOnlyIcon
+                                          icon-bx-large            "
+          ></i>
+              </a>
+      </div>
+
+                                          <div class="button ">
+          <a
+        class="btn btn--secondary  btn--size-large   btn--onlyIcon  "
+        href="https://www.youtube.com/user/bisbribiz"
+        title=""
+                
+                      >
+        
+        
+
+        
+                  <i
+            class="
+              bx icon-bxl-youtube btn--isOnlyIcon
+                                          icon-bx-large            "
+          ></i>
+              </a>
+      </div>
+
+                                          <div class="button ">
+          <a
+        class="btn btn--secondary  btn--size-large   btn--onlyIcon  "
+        href="/media/podcasts"
+        title=""
+                
+                      >
+        
+        
+
+        
+                  <i
+            class="
+              bx icon-bx-headphone btn--isOnlyIcon
+                                          icon-bx-large            "
+          ></i>
+              </a>
+      </div>
+
+                                          <div class="button ">
+          <a
+        class="btn btn--secondary  btn--size-large   btn--onlyIcon  "
+        href="https://www.instagram.com/bankforintlsettlements/?hl=en"
+        title=""
+                
+                      >
+        
+        
+
+        
+                  <i
+            class="
+              bx icon-bxl-instagram btn--isOnlyIcon
+                                          icon-bx-large            "
+          ></i>
+              </a>
+      </div>
+
+                          </ul>
+
+        <div class="footer-newsletter">
+          <h5 class="footer-heading mb-6">Sign up to receive email alerts</h5>
+                        <div class="button ">
+          <a
+        class="btn btn--primary  btn--size-medium     "
+        href="/email-alerts"
+        title="BIS alerts"
+         aria-label="BIS alerts"        
+                      >
+                  <i
+            class="
+              bx icon-bx-envelope pe-2  me-2                            icon-bx-medium                          "
+          ></i>
+        
+        BIS alerts
+
+        
+              </a>
+      </div>
+
+                    </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</footer>
+
+      </div>
+  </div>
+
+      </div>
+  </section>
+
+</div>
+
+  </div>
+
+    
+
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/58134","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","themeUrl":"themes\/custom\/bis"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"matomo":{"disableCookies":false,"trackColorbox":false,"trackMailto":true},"data":{"extlink":{"extTarget":false,"extTargetAppendNewWindowDisplay":true,"extTargetAppendNewWindowLabel":"(opens in a new window)","extTargetNoOverride":false,"extNofollow":false,"extTitleNoOverride":false,"extNoreferrer":true,"extFollowNoOverride":false,"extClass":"ext","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"www\\.bis\\.org","extInclude":"","extCssExclude":".nav a, .card-wrapper a","extCssInclude":"","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","extHideIcons":false,"mailtoClass":"mailto","telClass":"tel","mailtoLabel":"(link sends email)","telLabel":"(link is a phone number)","extUseFontAwesome":true,"extIconPlacement":"append","extPreventOrphan":true,"extFaLinkClasses":"icon-bx-link-external","extFaMailtoClasses":"icon-bx-envelope","extAdditionalLinkClasses":"","extAdditionalMailtoClasses":"","extAdditionalTelClasses":"","extFaTelClasses":"icon-bx-phone","allowedDomains":[],"extExcludeNoreferrer":""}},"user":{"uid":0,"permissionsHash":"4bb0ab6b14023982340e46deaa002226834b3b03c4d64a01a12147ff89351a1e"}}</script>
+<script src="/core/assets/vendor/jquery/jquery.min.js?v=4.0.0"></script>
+<script src="/js/js_M9t4OUDsuCd0KTM_FnMxHAxyyh4SGv-OBfZYMNKM7b4.js?scope=footer&amp;delta=1&amp;language=en&amp;theme=bis&amp;include=eJxVyEEOgzAMBdELJfhI1TdEYOE4UWykcntEy4bV6A2LE5dAZpiVkVicVm0MzT4P6eG_JRbrQN9ybQv0Xh8Y9AyZnV5K5RsqttMyjg6dHqaKaLXRPxd97y3F"></script>
+
+          
+      </body>
+</html>

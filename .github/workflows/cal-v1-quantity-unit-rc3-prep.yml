@@ -1,0 +1,45 @@
+name: CAL V1 quantity unit RC3 preparation self-test
+
+on:
+  push:
+    branches:
+      - research/cal-v1-quantity-unit-boundary-rc3-20261004
+  pull_request:
+    paths:
+      - research/cal_v1_quantity_unit_boundary_rc3_20261004/**
+      - .github/workflows/cal-v1-quantity-unit-rc3-prep.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preparation-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Self-test frozen unit evaluator
+        shell: bash
+        run: |
+          set -euo pipefail
+          KIT=research/cal_v1_quantity_unit_boundary_rc3_20261004
+          python "$KIT/unit_contract_tests.py" --selftest > unit-selftest.json
+          cat unit-selftest.json
+      - name: Verify no product-code delta from falsified predecessor
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --exit-code cd957e3ffe16c069bf74b84e88fa4b888d81239c HEAD -- src tests scripts pyproject.toml uv.lock MANIFEST.in
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-quantity-unit-rc3-preparation-${{ github.event.pull_request.head.sha || github.sha }}
+          path: unit-selftest.json
+          if-no-files-found: warn
