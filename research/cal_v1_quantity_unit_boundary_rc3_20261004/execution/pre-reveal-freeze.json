@@ -1,0 +1,140 @@
+{
+  "calibration_status": "BURNED_FOR_TUNING_NOT_CONFIRMATION",
+  "candidate_commit": "f44d94789748eef93579c3cab9bc4b26aba1bdd4",
+  "candidate_tree": "29cd37e0b4698c3b0c51b7460436a5dee93355cf",
+  "development_evidence": {
+    "burned_calibration_recheck_s5": {
+      "false_deciding": 0,
+      "match": 12,
+      "status": "NOT_CONFIRMATION"
+    },
+    "frozen_contract": "PASS",
+    "mechanical_s5": "PASS"
+  },
+  "files": {
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/DEVELOPMENT_CASES.json": {
+      "bytes": 6814,
+      "sha256": "152ee444ae3894b809e0f674993552694809c2f63b4250b58bbc7ee484f93261"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/SOURCE_FREEZE.json": {
+      "bytes": 10622,
+      "sha256": "e112e12439e390900022754228adc71b2a3b022a77a5bf33eae37cf50bb8aeab"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/adjudication/reconciled/calibration.json": {
+      "bytes": 7239,
+      "sha256": "b4c42523a24367369c7edfb3bda5e614998f12c52033d27d1cd797d65cc4a73b"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/CATALOGUE.json": {
+      "bytes": 4471,
+      "sha256": "f4430e416f8b414d41e674c4a1d3bb682d04fd43f8b75b3c6f5e3c39286fd59c"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/POLICY.json": {
+      "bytes": 696,
+      "sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/codec.py": {
+      "bytes": 1499,
+      "sha256": "ce4f2564c0457ba869ad5b35d31b9115c2c730d03c2ceae92dca16d6c65f11ba"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/dispatch.py": {
+      "bytes": 3874,
+      "sha256": "4a8ad911d657eef3ce3dc3921c6984ef2997732b68c34fe6ce4fd0a761c28cfa"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/evaluate.py": {
+      "bytes": 3387,
+      "sha256": "b804ba6085209e1fe79f531b3ce2bcabf613b1599a5d68a6306225abb7321a1c"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/judges.py": {
+      "bytes": 5911,
+      "sha256": "277de710accbd7e29858962bd1d1a59462272e13c3389498188a7ed7f84deaaf"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/kernel_worker.py": {
+      "bytes": 586,
+      "sha256": "6a3b4afe3f2cda92f88e8f4f2c9ca46ff5801e76eea5ea82682eb32e048f0a78"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/lossy.py": {
+      "bytes": 1426,
+      "sha256": "838dedb23b344ad2f0af9f2bc4ced6adca2dd262b2a6e90d59b1c1fa846e13ef"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/router.py": {
+      "bytes": 1222,
+      "sha256": "3264fa93f762d5aada3a0c221034a156e8512a8b2c878e40a30a267828e5a9ce"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/synthesize.py": {
+      "bytes": 4527,
+      "sha256": "5c9d534703dfbffaf8a37fcc9dd2dfef60581fd50a578e01a4312c2c6f105eab"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/unit_binding.py": {
+      "bytes": 19503,
+      "sha256": "18517f8afd0a162fe84e903633bbb31418082457b42e68ebe62c5d438bef6f66"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/views.py": {
+      "bytes": 4893,
+      "sha256": "a908072b69cc3bebae6c4542ca69dd09e2e0e4e6a92cf90962e16cc5d5ce22ea"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/worker.py": {
+      "bytes": 1085,
+      "sha256": "7d2b34b2e5be3b550c3ef23448202e513e1e7589d28615c3da3f68f3fae51d73"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py": {
+      "bytes": 8656,
+      "sha256": "22a1a2aa5ef763b3bd4d1000fe0b4047a8b73fd517f4454f35414fc26134ecd4"
+    }
+  },
+  "held_out_exposed": false,
+  "held_out_manifest": [
+    {
+      "body_opened_for_semantic_authoring": false,
+      "body_visible_in_candidate_worktree": false,
+      "credential_scan_passed": true,
+      "final_url": "https://www.bis.org/publications/aer-2026",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "raw_bytes": 139978,
+      "raw_sha256": "c025d43c921f9402050b20fc052ab434177d552e33883223ce8c2081b23bdcdd",
+      "requested_url": "https://www.bis.org/publ/arpdf/ar2026e.pdf",
+      "source_id": "QURC3-H01"
+    },
+    {
+      "body_opened_for_semantic_authoring": false,
+      "body_visible_in_candidate_worktree": false,
+      "credential_scan_passed": true,
+      "final_url": "https://www.federalreserve.gov/publications/files/financial-stability-report-20260508.pdf",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "raw_bytes": 5058504,
+      "raw_sha256": "1aabf0182706b17f9ff46b14853fa06d863fe1327e1402aa66e73294572a53da",
+      "requested_url": "https://www.federalreserve.gov/publications/files/financial-stability-report-20260508.pdf",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "body_opened_for_semantic_authoring": false,
+      "body_visible_in_candidate_worktree": false,
+      "credential_scan_passed": true,
+      "final_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260313/cg-e002-eng.htm",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_bytes": 33298,
+      "raw_sha256": "ede3284d40077793b26569ff38bee53a558a4c277023bc7e6670d6a3650e7bb4",
+      "requested_url": "https://www150.statcan.gc.ca/n1/daily-quotidien/260313/cg-e002-eng.htm",
+      "source_id": "QURC3-H03"
+    },
+    {
+      "body_opened_for_semantic_authoring": false,
+      "body_visible_in_candidate_worktree": false,
+      "credential_scan_passed": true,
+      "final_url": "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station/",
+      "http_status": 200,
+      "media_type": "text/html; charset=UTF-8",
+      "raw_bytes": 281569,
+      "raw_sha256": "75e6d8aaf30e4e8eefc7ad9cbf45b73b0dea4929032b38ab5617bc8908fa5a08",
+      "requested_url": "https://www.nasa.gov/news-release/nasa-astronaut-chris-williams-crewmates-return-from-space-station/",
+      "source_id": "QURC3-H04"
+    }
+  ],
+  "instrument_id": "quantity-unit-boundary-rc3-s5",
+  "isolation": "Procedural sparse checkout: QURC3-H01..H04 raw bodies are absent from the candidate worktree. The same research lead performed custody hashing but did not inspect held-out semantic content before this seal. Git objects remain technically accessible; this is not cryptographic isolation.",
+  "policy_changed": false,
+  "python_version": "3.14.4",
+  "schema": "cal-v1-quantity-unit-rc3-pre-reveal-v1"
+}
