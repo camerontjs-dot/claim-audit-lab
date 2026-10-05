@@ -1,0 +1,193 @@
+{
+  "schema": "cal-v1-quantity-unit-rc3-development-v1",
+  "evidence_class": "EXPOSED_DEVELOPMENT_NOT_HELD_OUT",
+  "cases": [
+    {
+      "id": "U01_SYMBOL_WORD",
+      "claim": "The rate was 10%.",
+      "evidence": "The rate was 10 percent.",
+      "expected_relation": "supports",
+      "claim_unit": "percent_level",
+      "evidence_unit": "percent_level",
+      "measure": "rate"
+    },
+    {
+      "id": "U02_PP_VS_PERCENT",
+      "claim": "The margin was less than 10 percentage points.",
+      "evidence": "The margin was less than 10 percent.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "percent_level",
+      "measure": "margin"
+    },
+    {
+      "id": "U03_PERCENT_VS_PP",
+      "claim": "The margin was less than 10 percent.",
+      "evidence": "The margin was less than 10 percentage points.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percent_level",
+      "evidence_unit": "percentage_point_change",
+      "measure": "margin"
+    },
+    {
+      "id": "U04_PP_BP",
+      "claim": "The rate increased by 1 percentage point.",
+      "evidence": "The rate increased by 100 basis points.",
+      "expected_relation": "supports",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "basis_point_change",
+      "measure": "rate change",
+      "conversion": "100bp=1pp"
+    },
+    {
+      "id": "U05_BP_PP_HALF",
+      "claim": "The rate increased by 50 basis points.",
+      "evidence": "The rate increased by 0.5 percentage points.",
+      "expected_relation": "supports",
+      "claim_unit": "basis_point_change",
+      "evidence_unit": "percentage_point_change",
+      "measure": "rate change",
+      "conversion": "100bp=1pp"
+    },
+    {
+      "id": "U06_PERCENT_CHANGE_VS_PP",
+      "claim": "The share increased by 2 percent.",
+      "evidence": "The share increased by 2 percentage points.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percent_relative_change",
+      "evidence_unit": "percentage_point_change",
+      "measure": "share change"
+    },
+    {
+      "id": "U07_LEVEL_VS_CHANGE",
+      "claim": "The rate was 5 percent.",
+      "evidence": "The rate increased by 5 percent.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percent_level",
+      "evidence_unit": "percent_relative_change",
+      "measure": "rate"
+    },
+    {
+      "id": "U08_ENDPOINT_PP",
+      "claim": "The share increased by 2 percentage points.",
+      "evidence": "The share rose from 10 percent to 12 percent.",
+      "expected_relation": "supports",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "percentage_point_change",
+      "measure": "share change",
+      "conversion": "endpoints_to_pp"
+    },
+    {
+      "id": "U09_ENDPOINT_RELATIVE",
+      "claim": "The share increased by 20 percent.",
+      "evidence": "The share rose from 10 percent to 12 percent.",
+      "expected_relation": "supports",
+      "claim_unit": "percent_relative_change",
+      "evidence_unit": "percent_relative_change",
+      "measure": "share change",
+      "conversion": "endpoints_to_relative_percent"
+    },
+    {
+      "id": "U10_PREFIX_BOUNDARY",
+      "claim": "The change was 10 percentage points.",
+      "evidence": "The change was 10 percent.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "percent_relative_change",
+      "measure": "change"
+    },
+    {
+      "id": "U11_PP_ABBREV",
+      "claim": "The rate rose by 2 pp.",
+      "evidence": "The rate rose by 2 percentage points.",
+      "expected_relation": "unresolved",
+      "claim_unit": "unknown",
+      "evidence_unit": "percentage_point_change",
+      "measure": "rate change"
+    },
+    {
+      "id": "U12_BP_ABBREV",
+      "claim": "The rate rose by 50 bp.",
+      "evidence": "The rate rose by 50 basis points.",
+      "expected_relation": "supports",
+      "claim_unit": "basis_point_change",
+      "evidence_unit": "basis_point_change",
+      "measure": "rate change",
+      "conversion": "bp_lexical_variant"
+    },
+    {
+      "id": "U13_RATE_COUNT",
+      "claim": "The rate increased by 10 percent.",
+      "evidence": "The count increased by 10 percent.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percent_relative_change",
+      "evidence_unit": "percent_relative_change",
+      "measure": "rate change",
+      "evidence_measure": "count change"
+    },
+    {
+      "id": "U14_MEASURE_MISMATCH",
+      "claim": "The unemployment rate rose by 1 percentage point.",
+      "evidence": "The inflation rate rose by 100 basis points.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "basis_point_change",
+      "measure": "unemployment rate change",
+      "evidence_measure": "inflation rate change",
+      "conversion": "100bp=1pp"
+    },
+    {
+      "id": "U15_YEAR_MISMATCH",
+      "claim": "In 2025, the rate rose by 1 percentage point.",
+      "evidence": "In 2024, the rate rose by 100 basis points.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "basis_point_change",
+      "measure": "rate change",
+      "conversion": "100bp=1pp",
+      "claim_years": [
+        "2025"
+      ],
+      "evidence_years": [
+        "2024"
+      ]
+    },
+    {
+      "id": "U16_MULTIPLE_UNITS",
+      "claim": "The margin rose by 2 percentage points.",
+      "evidence": "The score rose by 2 percent while the margin rose by 1 percentage point.",
+      "expected_relation": "refutes",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "percentage_point_change",
+      "measure": "margin change"
+    },
+    {
+      "id": "U17_NEGATED_COMPARATOR",
+      "claim": "The change was less than 10 percentage points.",
+      "evidence": "The change was not less than 10 percentage points.",
+      "expected_relation": "refutes",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "percentage_point_change",
+      "measure": "change"
+    },
+    {
+      "id": "U18_EVENT_ONLY",
+      "claim": "The spacecraft departed before it landed.",
+      "evidence": "The spacecraft departed at 2:03 a.m. and landed at 5:27 a.m.",
+      "expected_relation": "not_applicable",
+      "claim_unit": "not_applicable",
+      "evidence_unit": "not_applicable",
+      "measure": null
+    },
+    {
+      "id": "U19_EXPOSED_HOL14_SHAPE",
+      "claim": "The interest was less than 10 percentage points.",
+      "evidence": "The interest was less than 10%.",
+      "expected_relation": "unresolved",
+      "claim_unit": "percentage_point_change",
+      "evidence_unit": "percent_level",
+      "measure": "interest",
+      "evidence_class": "EXPOSED_REGRESSION_ONLY"
+    }
+  ]
+}
