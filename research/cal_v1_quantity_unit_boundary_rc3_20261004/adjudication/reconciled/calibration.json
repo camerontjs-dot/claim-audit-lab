@@ -1,0 +1,229 @@
+{
+  "schema": "cal-v1-quantity-unit-rc3-calibration-v1",
+  "partition": "calibration",
+  "adjudicator": "single_research_lead",
+  "status": "FROZEN_BEFORE_CALIBRATION_RUN",
+  "claims": [
+    {
+      "claim_id": "CAL-01",
+      "source_id": "QURC3-C01",
+      "claim": "Consumer price index inflation is projected to be about 0.3 percentage points higher in 2026 than anticipated in the January Report.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Consumer price index (CPI) inflation is projected to be about 0.3 percentage points higher in 2026 than anticipated in the January Report."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percentage_point",
+        "comparison",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "CAL-02",
+      "source_id": "QURC3-C01",
+      "claim": "Consumer price index inflation is projected to be about 0.3 percent higher in 2026 than anticipated in the January Report.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Consumer price index (CPI) inflation is projected to be about 0.3 percentage points higher in 2026 than anticipated in the January Report."
+        }
+      ],
+      "expected": "not_checkable",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "unit_mismatch",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "CAL-03",
+      "source_id": "QURC3-C01",
+      "claim": "The global average US tariff rate was revised down by 3.2 percentage points since the January Report.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "The global average US tariff rate has been revised down by 3.2 percentage points since the January Report but remains 9.3 percentage points higher than in the January 2025 Report."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percentage_point",
+        "change"
+      ]
+    },
+    {
+      "claim_id": "CAL-04",
+      "source_id": "QURC3-C02",
+      "claim": "In March 2023, the EFFR was about 7 basis points below the IORB rate.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "By contrast, in March 2023, the EFFR traded about 7 basis points below the Interest on Reserve Balances (IORB) rate, while the BFFR reached historic highs after having risen for several months with a corresponding decline in reserves held at bankers' banks."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "basis_point",
+        "comparison",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "CAL-05",
+      "source_id": "QURC3-C02",
+      "claim": "In March 2023, the EFFR was about 0.07 percentage points below the IORB rate.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "By contrast, in March 2023, the EFFR traded about 7 basis points below the Interest on Reserve Balances (IORB) rate, while the BFFR reached historic highs after having risen for several months with a corresponding decline in reserves held at bankers' banks."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "basis_point",
+        "percentage_point",
+        "conversion",
+        "time"
+      ]
+    },
+    {
+      "claim_id": "CAL-06",
+      "source_id": "QURC3-C02",
+      "claim": "Non-bank lenders account for over 90 percent of federal funds lending.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Today, non-bank lenders—especially Federal Home Loan Banks (FHLBs)—account for over 90 percent of lending."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "threshold"
+      ]
+    },
+    {
+      "claim_id": "CAL-07",
+      "source_id": "QURC3-C02",
+      "claim": "Bankers' bank federal funds volume after 11 a.m. ET was 78 percent.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Indeed, we find that 78 percent of bankers' bank federal funds volume occurs after 11 a.m. ET."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level"
+      ]
+    },
+    {
+      "claim_id": "CAL-08",
+      "source_id": "QURC3-C02",
+      "claim": "Requests made after 10 a.m. CT are subject to an additional 0.05 percentage points.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "FHLB Dallas notes in its Advance Products Guide that requests made after 10 a.m. CT are subject to an additional 5 basis points."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "basis_point",
+        "percentage_point",
+        "conversion"
+      ]
+    },
+    {
+      "claim_id": "CAL-09",
+      "source_id": "QURC3-C03",
+      "claim": "The corrected data revisions ranged from 0.1 to 0.6 percentage points.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Data points were revised in all sections, with revisions ranging from 0.1 to 0.6 percentage points."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percentage_point",
+        "range"
+      ]
+    },
+    {
+      "claim_id": "CAL-10",
+      "source_id": "QURC3-C03",
+      "claim": "Inflation was cited as an obstacle by 41.3 percent of businesses.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "Percent Inflation 41.3% Cost of insurance 26.4% Cost of inputs 26.1% Recruiting skilled employees 26.1% Fluctuations in consumer demand 23.4%."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "table"
+      ]
+    },
+    {
+      "claim_id": "CAL-11",
+      "source_id": "QURC3-C04",
+      "claim": "The Asia-Pacific region accounts for 55 percent of global semiconductor revenues.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "The Asia-Pacific region accounts for 55% of global revenues, followed by the Americas (32%), Europe (7%) and Japan (6%)."
+        }
+      ],
+      "expected": "supported",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "list"
+      ]
+    },
+    {
+      "claim_id": "CAL-12",
+      "source_id": "QURC3-C04",
+      "claim": "The Americas account for 55 percent of global semiconductor revenues.",
+      "evidence": [
+        {
+          "id": "p1",
+          "text": "The Asia-Pacific region accounts for 55% of global revenues, followed by the Americas (32%), Europe (7%) and Japan (6%)."
+        }
+      ],
+      "expected": "contradicted",
+      "adjudication_status": "agreed",
+      "families": [
+        "quantity",
+        "percent_level",
+        "list",
+        "role_binding"
+      ]
+    }
+  ]
+}
