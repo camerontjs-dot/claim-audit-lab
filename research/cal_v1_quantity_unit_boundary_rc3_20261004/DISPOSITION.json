@@ -1,0 +1,24 @@
+{
+  "arm_c_matrix": {
+    "abstained": 3,
+    "correct_deciding": 6,
+    "false_refutation": 2,
+    "false_support": 2,
+    "safe_abstention": 3
+  },
+  "candidate_instrument": "quantity-unit-boundary-rc3-s5",
+  "candidate_modification_after_reveal": false,
+  "critical_false_refutation": [
+    "HOL3-10",
+    "HOL3-13"
+  ],
+  "critical_false_support": [
+    "HOL3-02",
+    "HOL3-04"
+  ],
+  "disposition": "FALSIFIED_NEW_CRITICAL_FALSE_DECISION",
+  "fresh_natural_claim_qualification_authorized": false,
+  "policy_sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3",
+  "unit_binding_sha256": "18517f8afd0a162fe84e903633bbb31418082457b42e68ebe62c5d438bef6f66",
+  "v1_release_authorized": false
+}

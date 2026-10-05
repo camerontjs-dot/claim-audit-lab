@@ -1,0 +1,392 @@
+{
+  "arm_c_matrix": {
+    "abstained": 3,
+    "correct_deciding": 6,
+    "false_refutation": 2,
+    "false_support": 2,
+    "safe_abstention": 3
+  },
+  "candidate_pre_reveal_commit": "e9778d3e412e228ce57e410652b670a5cb08668e",
+  "case_summary": [
+    {
+      "arm_c": "supported",
+      "claim_id": "HOL3-01",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "HOL3-02",
+      "expected": "contradicted",
+      "kind": "false_support",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "HOL3-03",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "HOL3-04",
+      "expected": "contradicted",
+      "kind": "false_support",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "HOL3-05",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "HOL3-06",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "HOL3-07",
+      "expected": "supported",
+      "kind": "abstained",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "HOL3-08",
+      "expected": "contradicted",
+      "kind": "abstained",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "HOL3-09",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "source_id": "QURC3-H02"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "HOL3-10",
+      "expected": "supported",
+      "kind": "false_refutation",
+      "source_id": "QURC3-H03"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "HOL3-11",
+      "expected": "not_checkable",
+      "kind": "safe_abstention",
+      "source_id": "QURC3-H03"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "HOL3-12",
+      "expected": "contradicted",
+      "kind": "correct_deciding",
+      "source_id": "QURC3-H03"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "HOL3-13",
+      "expected": "supported",
+      "kind": "false_refutation",
+      "source_id": "QURC3-H03"
+    },
+    {
+      "arm_c": "contradicted",
+      "claim_id": "HOL3-14",
+      "expected": "contradicted",
+      "kind": "correct_deciding",
+      "source_id": "QURC3-H03"
+    },
+    {
+      "arm_c": "supported",
+      "claim_id": "HOL3-15",
+      "expected": "supported",
+      "kind": "correct_deciding",
+      "source_id": "QURC3-H04"
+    },
+    {
+      "arm_c": "not_checkable",
+      "claim_id": "HOL3-16",
+      "expected": "contradicted",
+      "kind": "abstained",
+      "source_id": "QURC3-H04"
+    }
+  ],
+  "critical_false_decisions": [
+    {
+      "abstention_cause": null,
+      "actual": "supported",
+      "claim_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            109
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percent",
+          "measure": "total outstanding debt of u",
+          "subject": "total outstanding debt of u",
+          "unit": "percent_level",
+          "unit_span": [
+            41,
+            51
+          ],
+          "value": "10",
+          "years": []
+        }
+      ],
+      "claim_id": "HOL3-02",
+      "evidence_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            109
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percent",
+          "measure": "total outstanding debt of u",
+          "subject": "total outstanding debt of u",
+          "unit": "percent_level",
+          "unit_span": [
+            41,
+            51
+          ],
+          "value": "60",
+          "years": []
+        },
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            110,
+            362
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percent",
+          "measure": "total outstanding nonfinancial business debt",
+          "subject": "total outstanding nonfinancial business debt",
+          "unit": "percent_level",
+          "unit_span": [
+            303,
+            313
+          ],
+          "value": "10",
+          "years": []
+        }
+      ],
+      "expected": "contradicted",
+      "relation": "supports"
+    },
+    {
+      "abstention_cause": null,
+      "actual": "supported",
+      "claim_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            116
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percent",
+          "measure": "total outstanding nonfinancial business debt",
+          "subject": "total outstanding nonfinancial business debt",
+          "unit": "percent_level",
+          "unit_span": [
+            57,
+            67
+          ],
+          "value": "60",
+          "years": []
+        }
+      ],
+      "claim_id": "HOL3-04",
+      "evidence_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            109
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percent",
+          "measure": "total outstanding debt of u",
+          "subject": "total outstanding debt of u",
+          "unit": "percent_level",
+          "unit_span": [
+            41,
+            51
+          ],
+          "value": "60",
+          "years": []
+        },
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            110,
+            362
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percent",
+          "measure": "total outstanding nonfinancial business debt",
+          "subject": "total outstanding nonfinancial business debt",
+          "unit": "percent_level",
+          "unit_span": [
+            303,
+            313
+          ],
+          "value": "10",
+          "years": []
+        }
+      ],
+      "expected": "contradicted",
+      "relation": "supports"
+    },
+    {
+      "abstention_cause": "exact_magnitude_mismatch",
+      "actual": "contradicted",
+      "claim_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            103
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percentage points",
+          "measure": "food industry variation from the third quarter to the fourth quarter of 2025",
+          "subject": "food industry variation from the third quarter to the fourth quarter of 2025",
+          "unit": "percentage_point_change",
+          "unit_span": [
+            81,
+            102
+          ],
+          "value": "1.9",
+          "years": [
+            "2025"
+          ]
+        }
+      ],
+      "claim_id": "HOL3-10",
+      "evidence_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            721
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percentage points",
+          "measure": null,
+          "subject": null,
+          "unit": "percentage_point_change",
+          "unit_span": [
+            99,
+            121
+          ],
+          "value": "2025",
+          "years": [
+            "2025",
+            "2025"
+          ]
+        }
+      ],
+      "expected": "supported",
+      "relation": "refutes"
+    },
+    {
+      "abstention_cause": "exact_magnitude_mismatch",
+      "actual": "contradicted",
+      "claim_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            112
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percentage points",
+          "measure": "textile product mills variation from the third quarter to the fourth quarter of 2025",
+          "subject": "textile product mills variation from the third quarter to the fourth quarter of 2025",
+          "unit": "percentage_point_change",
+          "unit_span": [
+            89,
+            111
+          ],
+          "value": "20.5",
+          "years": [
+            "2025"
+          ]
+        }
+      ],
+      "claim_id": "HOL3-13",
+      "evidence_facts": [
+        {
+          "comparator": "EQ",
+          "consumed_span": [
+            0,
+            721
+          ],
+          "conversion": null,
+          "derived": false,
+          "lexical_unit": "percentage points",
+          "measure": null,
+          "subject": null,
+          "unit": "percentage_point_change",
+          "unit_span": [
+            99,
+            121
+          ],
+          "value": "2025",
+          "years": [
+            "2025",
+            "2025"
+          ]
+        }
+      ],
+      "expected": "supported",
+      "relation": "refutes"
+    }
+  ],
+  "decisive_execution_head": "ddf86712027ab04c4cb6eac3c6eb7f142a82bd79",
+  "evidence_class": "POST_FALSIFIER_READ_ONLY_DIAGNOSTIC",
+  "held_out_label_commit": "ddf86712027ab04c4cb6eac3c6eb7f142a82bd79",
+  "mechanisms": [
+    {
+      "claim_ids": [
+        "HOL3-02",
+        "HOL3-04"
+      ],
+      "description": "Percent facts retained the denominator/measure but lost the numerator/entity role. Nearby 60% and 10% statements then became compatible enough for same-value selection across different propositions.",
+      "name": "subject_role_loss_cross_statement_value_capture"
+    },
+    {
+      "claim_ids": [
+        "HOL3-10",
+        "HOL3-13"
+      ],
+      "description": "The chart title ends in a four-digit year followed by the words percentage points. The unit regex consumed that year as the measured value, while table row values carry the unit only in the shared header. Exact-magnitude logic then falsely refuted correct row claims.",
+      "name": "table_header_year_as_quantity"
+    }
+  ],
+  "unit_boundary_observation": "Held-out percent-versus-percentage-point mismatch cases did not produce a critical false deciding result. That bounded observation does not rescue the overall candidate."
+}
