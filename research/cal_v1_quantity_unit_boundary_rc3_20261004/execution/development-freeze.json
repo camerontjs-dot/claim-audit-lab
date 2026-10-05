@@ -1,0 +1,30 @@
+{
+  "files": {
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/DEVELOPMENT_CASES.json": {
+      "bytes": 6814,
+      "sha256": "152ee444ae3894b809e0f674993552694809c2f63b4250b58bbc7ee484f93261"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/CATALOGUE.json": {
+      "bytes": 4471,
+      "sha256": "cb8bbfdbda2c5b4c2d33ef9feccc149689f081c282ccbdb8037e046ec0e83586"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/POLICY.json": {
+      "bytes": 696,
+      "sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/judges.py": {
+      "bytes": 5911,
+      "sha256": "277de710accbd7e29858962bd1d1a59462272e13c3389498188a7ed7f84deaaf"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/unit_binding.py": {
+      "bytes": 16561,
+      "sha256": "0ac1a1165c1211ab1d173a8059e70fa5584101dc5cab3828595db0106ab19324"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py": {
+      "bytes": 8656,
+      "sha256": "22a1a2aa5ef763b3bd4d1000fe0b4047a8b73fd517f4454f35414fc26134ecd4"
+    }
+  },
+  "held_out_exposed": false,
+  "schema": "cal-v1-quantity-unit-rc3-development-freeze-v1"
+}

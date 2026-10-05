@@ -1,0 +1,20 @@
+[
+  {
+    "id": "canary_pp_vs_percent",
+    "R": "not_checkable",
+    "B": "not_checkable",
+    "C": "not_checkable"
+  },
+  {
+    "id": "canary_bp_pp",
+    "R": "supported",
+    "B": "supported",
+    "C": "supported"
+  },
+  {
+    "id": "canary_event",
+    "R": "supported",
+    "B": "supported",
+    "C": "supported"
+  }
+]

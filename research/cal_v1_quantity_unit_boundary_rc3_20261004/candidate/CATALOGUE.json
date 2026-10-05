@@ -1,0 +1,103 @@
+{
+  "grammar": {
+    "direction_binding": "Successor s2 binds a copula comparative, a quantity before the comparator, a numeric threshold, a change verb with a non-possessive subject, and the object of a reporting frame. A time scene is not part of the measure. A qualified measure does not match a shorter name inside it. Clauses split on a sentence boundary, ', while', ';', and 'and' only when both sides carry a comparator. A second comparator in one clause stays unresolved. A shared verb or a matching number is not a relation.",
+    "measure_binding": "The evidence comparator must attach to the claim's measure. A different measure stays unresolved even when the operator and the number match.",
+    "negation": "not-more is NOT_GT. It does not collapse to less.",
+    "unchanged": "Equality or unchanged against a directional comparator refutes that direction. It is not directional support.",
+    "union_scope": "Claim years are checked against the union of authorized evidence passages before a quantity decision.",
+    "unit_boundary": "RC3 binds lexical unit identity and semantic dimension before allowing a quantity relation; percent is not a prefix-authority for percentage points; exact basis-point/percentage-point conversion requires compatible measure and role.",
+    "weights": "RC1 synthesis weights and the minimum are unchanged. They were not retuned for the exposed false supports.",
+    "year_tokens": "Four-digit year tokens are scope, not quantities. A claim year set must be present in the evidence year set."
+  },
+  "lossy_control": {
+    "arm": "B",
+    "module": "lossy.py",
+    "operations": [
+      "strip_four_digit_years",
+      "strip_quantifier_words",
+      "strip_hedge_words"
+    ],
+    "transform_id": "shared-lossy-rc1-strip-year-quantifier-hedge"
+  },
+  "processes": [
+    {
+      "dependence_group": "quantity-text",
+      "implementation": "research/cal_v1_quantity_unit_boundary_rc3_20261004/candidate/unit_binding.py",
+      "instrument_id": "quantity-unit-boundary-rc3-s1",
+      "model": null,
+      "module": "judges.py",
+      "process_id": "quantity_relation",
+      "production_status": "research",
+      "qualification": "UNQUALIFIED_EXPOSED_DEVELOPMENT_CONTRACT_ONLY",
+      "role": "relation"
+    },
+    {
+      "dependence_group": "event-order-text",
+      "model": null,
+      "module": "judges.py",
+      "process_id": "event_order",
+      "production_status": "research",
+      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "role": "relation"
+    },
+    {
+      "dependence_group": "scope-guard",
+      "model": null,
+      "module": "judges.py",
+      "process_id": "scope_guard",
+      "production_status": "research",
+      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "required": true,
+      "role": "guard",
+      "weight": "0"
+    },
+    {
+      "dependence_group": "attribution-guard",
+      "model": null,
+      "module": "judges.py",
+      "process_id": "attribution_guard",
+      "production_status": "research",
+      "qualification": "UNQUALIFIED_NATURAL_CLAIM_DISCRIMINATOR",
+      "required": true,
+      "role": "guard",
+      "weight": "0"
+    }
+  ],
+  "production_status": "research",
+  "reference_only": {
+    "authority": "64b6c7702696c851057c1cf0b2c105b1c81db543",
+    "module": "kernel_worker.py",
+    "process_id": "kernel_legacy",
+    "semantic_implementation": "caa0048f8f511ec3c4aa1ce713766f2219a04bc1",
+    "use": "Arm K historical reference. Not a successor judge and not used for topology attribution."
+  },
+  "router": {
+    "guards": "scope_guard and attribution_guard always run",
+    "module": "router.py",
+    "relations": "event cue without a quantity cue selects event_order; a quantity cue without an event cue selects quantity_relation; both or neither select both relation lanes"
+  },
+  "same_judge_set": [
+    "quantity_relation",
+    "event_order",
+    "scope_guard",
+    "attribution_guard"
+  ],
+  "schema": "cal-independent-judges-natural-rc1-catalogue",
+  "status": "BOUNDED_RESEARCH_CATALOGUE_NOT_EXHAUSTIVE",
+  "synthesis": {
+    "dependence": "One dependence group contributes its maximum weight once, not the sum.",
+    "hard_blockers": [
+      "required_unknown",
+      "required_not_run",
+      "material_loss",
+      "material_conflict",
+      "guard_violation"
+    ],
+    "ignored_self_scores": [
+      "claimed_weight",
+      "claimed_confidence",
+      "claimed_relevance"
+    ],
+    "module": "synthesize.py"
+  }
+}

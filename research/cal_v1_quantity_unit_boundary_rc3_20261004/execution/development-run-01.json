@@ -1,0 +1,20 @@
+{
+  "evidence_class": "EXPOSED_DEVELOPMENT_FIRST_RUN",
+  "passed": false,
+  "frozen_evaluator": "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py",
+  "observed_failures": [
+    {
+      "case_id": "U09_ENDPOINT_RELATIVE",
+      "cause": "endpoint percentages were emitted both as level tokens and as a derived relative change, producing an ambiguous binding"
+    },
+    {
+      "case_id": "U11_PP_ABBREV",
+      "cause": "unknown pp claim unit failed before the evidence percentage-point unit was retained"
+    },
+    {
+      "case_id": "U16_MULTIPLE_UNITS",
+      "cause": "while without a comma was not split, so the margin percentage-point fact inherited the score measure"
+    }
+  ],
+  "held_out_exposed": false
+}
