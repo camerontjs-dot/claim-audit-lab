@@ -1,0 +1,104 @@
+{
+  "schema": "cal-v1-quantity-unit-rc3-source-successor-s1-selection-v1",
+  "owner_issue": "camerontjs-dot/claim-audit-lab#212",
+  "predecessor_frozen_subject": "49d31eb428233e0233b931fe303dc58d5857836a",
+  "selection_status": "SELECTED_URLS_NOT_COMPLETE_RAW_FREEZE",
+  "scientific_execution_status": "NOT_AUTHORIZED_NOT_RUN",
+  "selection_date": "2026-10-13",
+  "purpose": "Replace only the unfit PDF representation QURC3-H01 in an explicitly distinct source cohort, before any RC3 semantic candidate execution. Preserve all original #213 bytes and partitions. No claim labels generated here.",
+  "why_successor_required": {
+    "old_id": "QURC3-H01",
+    "old_requested_url": "https://www.bis.org/publ/arpdf/ar2026e.pdf",
+    "old_final_url": "https://www.bis.org/publications/aer-2026",
+    "old_git_blob": "5c8af24c23426de5221db56c4c6e35cb46eff757",
+    "old_frozen_sha256": "c025d43c921f9402050b20fc052ab434177d552e33883223ce8c2081b23bdcdd",
+    "old_observed_media_type": "text/html; charset=utf-8",
+    "mismatch": "Original selected report PDF was an HTML landing page. This is unsuitable for report-PDF claim qualification."
+  },
+  "new_held_out_candidate": {
+    "id": "QURC3S1-H01",
+    "partition": "held_out",
+    "publisher": "Bank for International Settlements",
+    "title": "BIS Annual Economic Report 2026",
+    "selected_url": "https://www.bis.org/publications/aer-2026_0.pdf",
+    "url_discovery_basis": "An href in the original frozen H01 landing HTML, not a new HTTP retrieval",
+    "url_discovery_git_blob": "5c8af24c23426de5221db56c4c6e35cb46eff757",
+    "expected_representation": "application/pdf",
+    "http_status": null,
+    "final_url": null,
+    "raw_bytes": null,
+    "raw_sha256": null,
+    "raw_git_blob": null,
+    "parse_and_source_fitness": "UNVERIFIED",
+    "custody_policy": "ONE_CONTROLLED_RETRIEVAL_ONLY_IN_SEPARATE_S1; do not refetch or edit original #213 bytes; stop and preserve mismatch/failure if retrieved representation is not the selected report PDF"
+  },
+  "carry_forward_existing_frozen_bytes": [
+    {
+      "source_id": "QURC3-C01",
+      "partition": "calibration",
+      "git_blob": "edcf44f41b9d0350f63ef7924158341c87d38c03",
+      "sha256": "1f16e4b468564c2eb368c3c34d8959b0f6ba9d74279de0637255fb7c5388b512",
+      "representation": "HTML"
+    },
+    {
+      "source_id": "QURC3-C02",
+      "partition": "calibration",
+      "git_blob": "0a5b8cd02b2320bd03de2d14a903c353ff087ed5",
+      "sha256": "4c14b1047eef96a7f2f31b5b272a3177baa79fe5a9bf1908511271af35eafe9b",
+      "representation": "HTML"
+    },
+    {
+      "source_id": "QURC3-C03",
+      "partition": "calibration",
+      "git_blob": "c320b38b48ad9cdce5cd67e839a50c4ca3a74351",
+      "sha256": "82f2595bea03f49a04fe513586648c5bbde479fb0bf3d0673cf6166d025244c6",
+      "representation": "HTML"
+    },
+    {
+      "source_id": "QURC3-C04",
+      "partition": "calibration",
+      "git_blob": "6d46235ee343a6612d687cf0dae2cda2d53ba3d9",
+      "sha256": "cde9fabc3d35f615ceb79b0e44a21110996f6e5e8117af9d41a7717b4a1d3dec",
+      "representation": "PDF"
+    },
+    {
+      "source_id": "QURC3-H02",
+      "partition": "held_out",
+      "git_blob": "0d063ebbe649b4b9280a6a964f9e03860df253b2",
+      "sha256": "1aabf0182706b17f9ff46b14853fa06d863fe1327e1402aa66e73294572a53da",
+      "representation": "PDF"
+    },
+    {
+      "source_id": "QURC3-H03",
+      "partition": "held_out",
+      "git_blob": "eb900151e987cca57e0b01530c831360e700786d",
+      "sha256": "ede3284d40077793b26569ff38bee53a558a4c277023bc7e6670d6a3650e7bb4",
+      "representation": "HTML"
+    },
+    {
+      "source_id": "QURC3-H04",
+      "partition": "held_out",
+      "git_blob": "b3dd084c642a455e1b0e5c762b9b7193928f76dc",
+      "sha256": "75e6d8aaf30e4e8eefc7ad9cbf45b73b0dea4929032b38ab5617bc8908fa5a08",
+      "representation": "HTML"
+    }
+  ],
+  "selection_rules": [
+    "No source replacement triggered by candidate behavior; there has been no RC3 candidate.",
+    "New H01 URL is selected before its controlled retrieval; if it fails, preserve failure, no fallback in this S1 cohort.",
+    "Do not treat unchanged #213 H01 as qualified PDF, and do not overwrite/relabel its source bytes.",
+    "All held-out source bodies, labels, extraction contexts and PR narratives remain prohibited to builder before freeze.",
+    "Reuse of other seven frozen response bytes does not prove complete quantitative representation; verify material PDF/chart/table extraction in custodian.",
+    "No semantic candidate execution or changed cohort scoring until an exact successor source freeze and authority/manifests are reconciled.",
+    "Source identity change means S1 is not the same frozen #213 scientific subject."
+  ],
+  "remaining_missing_receipts": [
+    "S1 controlled H01 retrieval and exact raw SHA256",
+    "S1 H01 final-media/PDF-content fitness",
+    "seven retained representations' task-relevant extraction fitness",
+    "V2 evaluation acceptance and exact blob pin",
+    "effective blinded builder snapshot/deny and read log",
+    "locked candidate/evaluator/catalogue/policy/dependency freeze",
+    "custodian first one-time heldout reveal/scoring"
+  ]
+}
