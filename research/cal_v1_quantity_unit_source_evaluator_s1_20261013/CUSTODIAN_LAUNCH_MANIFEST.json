@@ -1,0 +1,223 @@
+{
+  "schema": "cal-v1-quantity-unit-rc3-source-evaluator-s1-custodian-launch-manifest-v1",
+  "created_date": "2026-10-13",
+  "authority": {
+    "owner_issue": "camerontjs-dot/claim-audit-lab#212",
+    "product_decision": "camerontjs-dot/claim-audit-lab#205",
+    "routing": "camerontjs-dot/apparatus-contracts#137",
+    "predecessor_false_result": "cd957e3ffe16c069bf74b84e88fa4b888d81239c",
+    "historical_rc3_preparation_head": "49d31eb428233e0233b931fe303dc58d5857836a",
+    "baseline_candidate_commit": "ce7348ae9a9e9b0fd03290e044516f3c302e06b0"
+  },
+  "classification": "CUSTODIAN_ONLY_NOT_BUILDER_INPUT",
+  "state": "NOT_LAUNCHABLE",
+  "current_readiness_disposition_for_original_213_cohort": "BLOCKED_SOURCE_OR_INSTRUMENT_UNAVAILABLE",
+  "new_successor_scientific_result": "NOT_SCORED",
+  "blocking_prerequisites": [
+    "selected_H01_requested_PDF_is_frozen_as_HTML_landing_page; original_213_heldout_cohort_not_fit",
+    "separately_selected_source_successor_cohort_not_authorized_for_execution_or_byte_frozen",
+    "V2_evaluator_is_added_and_requires_independent_hosted_selftest_and_custodian_acceptance",
+    "controlled_local_execution_route_unavailable; remote_Mac_offline",
+    "local_environment_project_rules_and_full_v1_dependency_set_unverified",
+    "builder_snapshot_not_materialized_or_denial_tested",
+    "candidate_catalogue_policy_dependency_freeze_and_read_log_not_prepared",
+    "custodian_specific_identity_and_attested_reveal_enforcement_unbound"
+  ],
+  "source_fitness": {
+    "manifest_blob": "d39a22e6fb9c4249fd47454c94794efa8c1bc1de",
+    "selection_blob": "7356ac6d5637af759e8dd703f22e4a3b6f3d3e0a",
+    "deviations_blob": "126837b132498626ee8783b101b9564c37ec9c84",
+    "unfit_source_id": "QURC3-H01",
+    "requested_media": "application/pdf",
+    "observed_media": "text/html; charset=utf-8",
+    "observed_git_blob": "5c8af24c23426de5221db56c4c6e35cb46eff757",
+    "observed_sha256": "c025d43c921f9402050b20fc052ab434177d552e33883223ce8c2081b23bdcdd",
+    "original_cohort_replacement": "PROHIBITED",
+    "successor": "separate_selection_and_source_freeze_before_candidate_or_scoring"
+  },
+  "code_input_allowlist_dev": [
+    {
+      "mount": "input/baseline/quantity_binding.py",
+      "repo_path": "research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/quantity_binding.py",
+      "git_blob": "05b1e7616cac8401656c8e777a6395f88d705a8c",
+      "ref": "ce7348ae9a9e9b0fd03290e044516f3c302e06b0"
+    },
+    {
+      "mount": "input/baseline/candidate_adapter.py",
+      "repo_path": "research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/candidate_adapter.py",
+      "git_blob": "559306c69b56ad1f9725193a6188f2e986cf3a3b",
+      "ref": "ce7348ae9a9e9b0fd03290e044516f3c302e06b0"
+    },
+    {
+      "mount": "input/development/DEVELOPMENT_CASES.json",
+      "repo_path": "research/cal_v1_quantity_unit_boundary_rc3_20261004/DEVELOPMENT_CASES.json",
+      "git_blob": "ac467ee96b879612ad686caa741afcfdcc4f7c00",
+      "ref": "49d31eb428233e0233b931fe303dc58d5857836a"
+    },
+    {
+      "mount": "input/development/unit_contract_tests_v1.py",
+      "repo_path": "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py",
+      "git_blob": "3cd87c389af76fd46225324050ce132279a83800",
+      "ref": "49d31eb428233e0233b931fe303dc58d5857836a",
+      "caveat": "historical_relation_only"
+    },
+    {
+      "mount": "input/development/receipt_contract_tests_v2.py",
+      "repo_path": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py",
+      "git_blob": "f21233c61da352f4a0db8f4b9bbda3a06f514642",
+      "ref": "research/cal-v1-quantity-unit-source-evaluator-s1-20261013",
+      "caveat": "evaluator_needs_qualified_freeze"
+    },
+    {
+      "mount": "input/BUILDER_ONLY_PACKET.md",
+      "repo_path": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/BUILDER_ONLY_PACKET.md",
+      "git_blob": "98211f522d3758641657863f327bf1d72e4512d1",
+      "ref": "research/cal-v1-quantity-unit-source-evaluator-s1-20261013"
+    }
+  ],
+  "calibration_release_once_authorized": [
+    {
+      "mount": "input/calibration/C01.bin",
+      "source_id": "QURC3-C01",
+      "git_blob": "edcf44f41b9d0350f63ef7924158341c87d38c03",
+      "sha256": "1f16e4b468564c2eb368c3c34d8959b0f6ba9d74279de0637255fb7c5388b512"
+    },
+    {
+      "mount": "input/calibration/C02.bin",
+      "source_id": "QURC3-C02",
+      "git_blob": "0a5b8cd02b2320bd03de2d14a903c353ff087ed5",
+      "sha256": "4c14b1047eef96a7f2f31b5b272a3177baa79fe5a9bf1908511271af35eafe9b"
+    },
+    {
+      "mount": "input/calibration/C03.bin",
+      "source_id": "QURC3-C03",
+      "git_blob": "c320b38b48ad9cdce5cd67e839a50c4ca3a74351",
+      "sha256": "82f2595bea03f49a04fe513586648c5bbde479fb0bf3d0673cf6166d025244c6"
+    },
+    {
+      "mount": "input/calibration/C04.bin",
+      "source_id": "QURC3-C04",
+      "git_blob": "6d46235ee343a6612d687cf0dae2cda2d53ba3d9",
+      "sha256": "cde9fabc3d35f615ceb79b0e44a21110996f6e5e8117af9d41a7717b4a1d3dec",
+      "caveat": "exact_PDF_parser_fitness_unverified"
+    }
+  ],
+  "prohibited_heldout_sources_original_213": [
+    {
+      "source_id": "QURC3-H01",
+      "git_blob": "5c8af24c23426de5221db56c4c6e35cb46eff757"
+    },
+    {
+      "source_id": "QURC3-H02",
+      "git_blob": "0d063ebbe649b4b9280a6a964f9e03860df253b2"
+    },
+    {
+      "source_id": "QURC3-H03",
+      "git_blob": "eb900151e987cca57e0b01530c831360e700786d"
+    },
+    {
+      "source_id": "QURC3-H04",
+      "git_blob": "b3dd084c642a455e1b0e5c762b9b7193928f76dc"
+    }
+  ],
+  "prohibited_pre_freeze_surfaces": [
+    "all held_out source bodies and labels from old or successor cohorts",
+    "all answer-bearing source selection and source freeze manifests",
+    "all historical PR/issue/commit narratives other than the permitted detached baseline files",
+    "this custodian manifest and SOURCE_AND_EVALUATOR_READINESS.md",
+    ".git directory/objects/pack; repository clone and broad sparse checkout",
+    "read access to user home, sibling projects, previous output logs, private evidence",
+    "GitHub/web/network, filesystem search outside mounted allowlist",
+    "shared helper/actor-launcher infrastructure under apparatus-contracts #173"
+  ],
+  "allowed_paths_policy": "Trusted controller creates byte-verified copy-only mounts of enumerated allowlist with no .git metadata; not by making forbidden files absent in a mutable checkout.",
+  "builder_effective_tools": {
+    "read": "allowlisted input tree only plus own scratch",
+    "write": "new candidate scratch and logs only",
+    "process": "declared interpreter and test commands only",
+    "network": "disabled incl DNS/localhost unless separately justified",
+    "credentials": "none",
+    "filesystem": "no home/sibling/host paths",
+    "observation": "controller-enforced file and tool read logs required"
+  },
+  "custodian": {
+    "role": "separate custodian; must be named/attested before launch",
+    "access": "original source freeze and future successor held_out materials outside builder workspace",
+    "labels": "independently adjudicated and committed before first scored reveal; source competence noted",
+    "builder_reveal": "none before freeze; no full PR branch",
+    "custodian_receipts": "custody/hash/attestation and raw deterministic run files kept separately; private material local"
+  },
+  "freeze": {
+    "time": "before any successor held_out reveal",
+    "must_pin": [
+      "candidate_commit_and_tree_and_module_blobs",
+      "V2_evaluator_blob_and_version_and_selftest_receipt",
+      "process_catalogue_blob",
+      "locked_policy_sha256_and_file_blob",
+      "all judge and R/B/C comparison arm code identities",
+      "complete Python/dependency/model/runtime versions and distribution hashes",
+      "source selection and raw representation sha256s",
+      "development and calibration exposure log and burn state",
+      "pre_freeze_read_log",
+      "tool/controller/network and filesystem boundary attestation"
+    ],
+    "catalogue_baseline_git_blob": "fcd7b7964dea5a4e8bdd5cd3bd8c86f40bd97be1",
+    "locked_policy_git_blob": "bf131991814a6a897f292eebac1d0ef765de10ce",
+    "locked_policy_sha256": "93c0ce49f0df91afda34c9513cca44345fda78f5297a5f48c55118277dad61d3",
+    "weights_and_independent_judge_mechanics": "UNALTERED"
+  },
+  "reveal_and_attempts": {
+    "order": [
+      "verify all frozen identities, cohort and evaluator",
+      "verify externally enforced builder deny boundary and file read logs",
+      "seal builder writes and stop builder access",
+      "custodian reveal only new authorized successor held_out",
+      "score each frozen R/B/C arm with identical successor judge bytes",
+      "preserve first decisive result and raw receipts",
+      "halt on first critical false decision"
+    ],
+    "held_out_attempt_budget": 1,
+    "calibration": "if material candidate change, burn calibration and freeze a new successor; never recast calibration as confirmation",
+    "contamination": "stop immediately if forbidden information exposed pre_freeze; preserve read log; do not claim independent",
+    "failed_decisive": "no patch-and-rescore",
+    "weak_control": "semantic valid-shape discriminator; not incidental parser error"
+  },
+  "environment": {
+    "local_device": "admins-MacBook-Air.local",
+    "device_status_at_review": "OFFLINE",
+    "mandatory_local_files": [
+      "/Users/admin/.mainframe-dev/START-HERE.md",
+      "/Users/admin/Desktop/MainFrame/.context/workflows/project-environments.md"
+    ],
+    "verified_locally": false,
+    "python_version": "REQUIRED_EXACT",
+    "v1_extra": "REQUIRED_FULL_RESOLUTION",
+    "spacy_en_core_web_sm": "REQUIRED_IF_TESTS_USE",
+    "container_image_digest": "REQUIRED_IF_CONTAINER",
+    "controller_identity": "REQUIRED",
+    "qualification_profile": "NOT_ESTABLISHED"
+  },
+  "required_receipts": [
+    "SOURCE_SUCCESSOR_SELECTION_AND_FREEZE",
+    "SOURCE_FITNESS_PER_REPRESENTATION",
+    "V2_EVALUATOR_SELFTEST_WITH_VALID_SHAPE_MUTANTS",
+    "CONTROLLER_ALLOWLIST_DENY_OBSERVATIONS",
+    "BUILDER_PRE_FREEZE_READ_LOG",
+    "CANDIDATE_AND_POLICY_AND_CATALOGUE_FREEZE",
+    "CALIBRATION_BURN_LOG",
+    "CUSTODIAN_REVEAL_ORDER",
+    "FIRST_DECISIVE_RAW_RUN",
+    "R_B_C_SAME_JUDGE_BYTES",
+    "SOURCE_AND_CASE_COVERAGE_AND_FALSE_SUPPORT_REFUTE_ABSTAIN_AND_MISSES",
+    "FULL_V1_REGRESSION_AND_KNOWN_HYGIENE_FAILURE",
+    "PUBLIC_SAFE_PR_AND_OWNER_ISSUE_RECONCILIATION"
+  ],
+  "success_criteria": "only per claim-audit-lab #212; zero critical false deciding held_out results and useful/coverage/abstention denominators, not automatic product authorization",
+  "non_claims": [
+    "no heldout qualification performed",
+    "no source substitution",
+    "no actor admission or integration",
+    "no V1 product or release",
+    "no independent consumption proof from spans alone"
+  ]
+}
