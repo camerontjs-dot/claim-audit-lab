@@ -1,0 +1,138 @@
+{
+  "schema": "cal-v1-quantity-unit-rc3-source-successor-s1-freeze-v1",
+  "authority": "camerontjs-dot/claim-audit-lab#212",
+  "evidence_class": "SOURCE_CUSTODY_AND_REPRESENTATION_READINESS_ONLY",
+  "scientific_execution": "NOT_RUN",
+  "selection_commit": "7420085f02dbed3f5f32b3afa681b6187c26cb82",
+  "selection_blob": "041a225903a690d11e22f8d2f31c77ea03268dbf",
+  "predecessor_frozen_commit": "49d31eb428233e0233b931fe303dc58d5857836a",
+  "predecessor_source_freeze_blob": "d39a22e6fb9c4249fd47454c94794efa8c1bc1de",
+  "source_replacement_policy": "A new source identity only in the separate S1 cohort; do not edit, refetch, relabel or rescore the original frozen #213 source.",
+  "acquisition": {
+    "source_id": "QURC3S1-H01",
+    "requested_url": "https://www.bis.org/publications/aer-2026_0.pdf",
+    "final_url": "https://www.bis.org/publications/aer-2026_0.pdf",
+    "http_status": 200,
+    "media_type": "application/pdf",
+    "transport": "curl 8.7.1 (x86_64-apple-darwin26.0), one GET, zero retries, HTTPS only, no fallback",
+    "transport_user_agent": "cal-quantity-unit-s1-source-custody/1.0",
+    "retrieved_at_utc": "2026-10-14T02:40:37.274841+00:00",
+    "return_code": 0,
+    "raw_bytes": 5361365,
+    "raw_sha256": "c930831fbf7804dceb46e5311ebaefe24b6e8f709b09f1c739a1a9e1c4438966",
+    "raw_storage": "custodian-local, read-only file; not republished in builder-visible repo",
+    "media_signature": "%PDF-",
+    "pdf_eof_marker": true,
+    "pdfinfo_exit": 0,
+    "pages": 133,
+    "pdftotext_exit": 0,
+    "extracted_unicode_characters": 497314,
+    "numeric_token_count": 3672,
+    "percentage_point_occurrences": 8,
+    "first_three_pages_report_title_present": true,
+    "first_three_pages_year_2026_present": true,
+    "response_headers_and_curl_receipts": "retained local only; headers may carry ephemeral values"
+  },
+  "retained_original_frozen_sources": [
+    {
+      "source_id": "QURC3-C01",
+      "partition": "calibration",
+      "git_blob": "edcf44f41b9d0350f63ef7924158341c87d38c03",
+      "sha256": "1f16e4b468564c2eb368c3c34d8959b0f6ba9d74279de0637255fb7c5388b512",
+      "media": "text/html",
+      "source_fitness": "HTML_STRUCTURE_AND_QUANTITATIVE_TABLE_TEXT_PRESENT"
+    },
+    {
+      "source_id": "QURC3-C02",
+      "partition": "calibration",
+      "git_blob": "0a5b8cd02b2320bd03de2d14a903c353ff087ed5",
+      "sha256": "4c14b1047eef96a7f2f31b5b272a3177baa79fe5a9bf1908511271af35eafe9b",
+      "media": "text/html",
+      "source_fitness": "HTML_STRUCTURE_WITH_QUANTITATIVE_NARRATIVE_TEXT"
+    },
+    {
+      "source_id": "QURC3-C03",
+      "partition": "calibration",
+      "git_blob": "c320b38b48ad9cdce5cd67e839a50c4ca3a74351",
+      "sha256": "82f2595bea03f49a04fe513586648c5bbde479fb0bf3d0673cf6166d025244c6",
+      "media": "text/html",
+      "source_fitness": "HTML_STRUCTURE_AND_QUANTITATIVE_TABLE_TEXT_PRESENT"
+    },
+    {
+      "source_id": "QURC3-C04",
+      "partition": "calibration",
+      "git_blob": "6d46235ee343a6612d687cf0dae2cda2d53ba3d9",
+      "sha256": "cde9fabc3d35f615ceb79b0e44a21110996f6e5e8117af9d41a7717b4a1d3dec",
+      "media": "application/pdf",
+      "source_fitness": "PDF_PAGE_AND_TEXT_EXTRACTION",
+      "page_count": 30,
+      "extracted_unicode_characters": 121872
+    },
+    {
+      "source_id": "QURC3-H02",
+      "partition": "held_out",
+      "git_blob": "0d063ebbe649b4b9280a6a964f9e03860df253b2",
+      "sha256": "1aabf0182706b17f9ff46b14853fa06d863fe1327e1402aa66e73294572a53da",
+      "media": "application/pdf",
+      "source_fitness": "PDF_PAGE_AND_TEXT_EXTRACTION",
+      "page_count": 71,
+      "extracted_unicode_characters": 248051
+    },
+    {
+      "source_id": "QURC3-H03",
+      "partition": "held_out",
+      "git_blob": "eb900151e987cca57e0b01530c831360e700786d",
+      "sha256": "ede3284d40077793b26569ff38bee53a558a4c277023bc7e6670d6a3650e7bb4",
+      "media": "text/html",
+      "source_fitness": "HTML_STRUCTURE_AND_QUANTITATIVE_TABLE_TEXT_PRESENT"
+    },
+    {
+      "source_id": "QURC3-H04",
+      "partition": "held_out",
+      "git_blob": "b3dd084c642a455e1b0e5c762b9b7193928f76dc",
+      "sha256": "75e6d8aaf30e4e8eefc7ad9cbf45b73b0dea4929032b38ab5617bc8908fa5a08",
+      "media": "text/html",
+      "source_fitness": "HTML_STRUCTURE_EVENT_TEXT"
+    }
+  ],
+  "local_verification": {
+    "supervisor_worktree_ref_at_source_selection": "7420085f02dbed3f5f32b3afa681b6187c26cb82",
+    "all_8_original_sha256_and_lengths_match": true,
+    "new_pdf_post_readonly_sha256_matches": true,
+    "new_pdf_readonly_mode": true,
+    "parsed_pdf_total": 3,
+    "html_structural_total": 5,
+    "local_v2_evaluator_selftest": true,
+    "separate_exposed_lexical_regex_crosscheck": {
+      "cases": 19,
+      "agree": 19
+    },
+    "pdf_and_html_content_fitness_limitation": "Mechanical extraction only, no quantitative semantic adequacy adjudication or all-chart/table completeness check."
+  },
+  "held_out_custody": {
+    "new_pdf_raw_body": "LOCAL_ONLY_WITH_CUSTODIAN",
+    "old_213_h01_body": "PRESERVED_UNCHANGED",
+    "H02_to_H04_original_git_blobs": "PRESERVED_UNCHANGED",
+    "held_out_claims_or_labels": "NOT_CREATED_OR_REVEALED",
+    "builder_material": "NOT_EXPOSED",
+    "isolation_attested": "NO",
+    "custodian_independent_actor": "NOT_ASSIGNED",
+    "no_blindness_inference": "Having raw bytes in custodian storage or a GitHub object proves neither that the builder accessed them nor that their access was denied."
+  },
+  "required_before_builder_or_qualifier": [
+    "verify exact S1 allowed source snapshot/hidden excluded and effective filesystem+network deny",
+    "V2 evaluator/policy/catalogue freeze and independent bounded evaluator acceptance; preparation selftest alone is insufficient",
+    "hold calibration separate and log any calibration burn/successor",
+    "actual task-specific restricted worker isolated from custodian and earlier PR histories; #173 shared actor/tool programme unchanged",
+    "complete dependency environment and exact pinned runtime",
+    "candidate and read-log freeze before single heldout reveal",
+    "custodian labels independently adjudicated from frozen representations without post-result rewriting"
+  ],
+  "disposition": "SOURCE_REPRESENTATION_PREFLIGHT_SATISFIED_FOR_S1_WITH_LIMITS; SCIENTIFIC_QUALIFICATION_NOT_RUN",
+  "non_claims": [
+    "no V1 product purpose pass",
+    "no zero-critical-false-error score",
+    "no completed isolation/admission",
+    "no production or contract changes"
+  ]
+}
