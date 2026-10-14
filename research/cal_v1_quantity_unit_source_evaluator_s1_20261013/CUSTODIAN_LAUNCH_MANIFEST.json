@@ -64,14 +64,14 @@
     {
       "mount": "input/development/receipt_contract_tests_v2.py",
       "repo_path": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py",
-      "git_blob": "f21233c61da352f4a0db8f4b9bbda3a06f514642",
+      "git_blob": "85ddcabfa24d371d9905ed98c8eba7f6dd84aa6e",
       "ref": "research/cal-v1-quantity-unit-source-evaluator-s1-20261013",
-      "caveat": "evaluator_needs_qualified_freeze"
+      "caveat": "V2 evaluator under independent CI selftest; must freeze exact blob before any candidate launch"
     },
     {
       "mount": "input/BUILDER_ONLY_PACKET.md",
       "repo_path": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/BUILDER_ONLY_PACKET.md",
-      "git_blob": "98211f522d3758641657863f327bf1d72e4512d1",
+      "git_blob": "0ed1f0d610192f5a9a0d72dcc8e56180986f900e",
       "ref": "research/cal-v1-quantity-unit-source-evaluator-s1-20261013"
     }
   ],
@@ -219,5 +219,12 @@
     "no actor admission or integration",
     "no V1 product or release",
     "no independent consumption proof from spans alone"
-  ]
+  ],
+  "evaluator_v2_declared": {
+    "version": "cal-rc3-quantity-unit-receipt-evaluator-v2-prep1",
+    "blob": "85ddcabfa24d371d9905ed98c8eba7f6dd84aa6e",
+    "schema_scope": "exposed_development_only",
+    "selftest_result": "NOT_YET_VERIFIED",
+    "claim": "no_heldout_and_no_actual_consumption_proof"
+  }
 }
