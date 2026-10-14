@@ -1,0 +1,42 @@
+name: CAL quantity unit S1 V2 evaluator self-test
+
+on:
+  push:
+    branches:
+      - research/cal-v1-quantity-unit-source-evaluator-s1-20261013
+  pull_request:
+    paths:
+      - research/cal_v1_quantity_unit_source_evaluator_s1_20261013/**
+      - .github/workflows/cal-v1-quantity-unit-s1-evaluator.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exposed-development-evaluator:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            research/cal_v1_quantity_unit_source_evaluator_s1_20261013/
+            research/cal_v1_quantity_unit_boundary_rc3_20261004/DEVELOPMENT_CASES.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Self-test separate V2 receipt evaluator on exposed development only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py --selftest > receipt-v2-selftest.json
+          cat receipt-v2-selftest.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-quantity-unit-s1-v2-exposed-selftest
+          path: receipt-v2-selftest.json
+          if-no-files-found: warn
