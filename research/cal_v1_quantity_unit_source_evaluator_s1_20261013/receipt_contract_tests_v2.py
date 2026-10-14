@@ -138,7 +138,6 @@ def expected_side(c: dict, side: str) -> dict:
     text = c[side]
     words = LEX[cid][idx]
     nums = NUM[cid][idx]
-    available = [c["conversion"]] if c.get("conversion") else []
     return {
         "unit_tokens": [
             {"span": span, "normalized_identity": IDENTITY[word]}
@@ -155,8 +154,6 @@ def expected_side(c: dict, side: str) -> dict:
         # This is a syntactically legitimate but intentionally weak self-test
         # consumption reference. It is not proof of actual causal consumption.
         "consumed_spans": [] if cid == "U18_EVENT_ONLY" else [[0, len(text)]],
-        "conversion_available": available,
-        "conversion_applied": APPLIED.get(cid),
         "ambiguity_reason": "unregistered_pp" if cid == "U11_PP_ABBREV" and side == "claim" else None,
     }
 
@@ -181,6 +178,15 @@ def reference(c: dict) -> dict:
                 "evidence": expected_side(c, "evidence"),
             },
             "unresolved_reason": UNRESOLVED.get(c["id"]),
+            "conversion_rule": {
+                "available": [c["conversion"]] if c.get("conversion") else [],
+                "applied": APPLIED.get(c["id"]),
+                "rejected_reason": (
+                    "measure_mismatch" if c["id"] == "U14_MEASURE_MISMATCH"
+                    else "year_scope_mismatch" if c["id"] == "U15_YEAR_MISMATCH"
+                    else None
+                ),
+            },
         },
     }
 
@@ -217,6 +223,8 @@ def validate(receipt: object, c: dict) -> list[str]:
         issues.append("input_scope_identity")
     if v.get("unresolved_reason") != ref["receipt_v2"]["unresolved_reason"]:
         issues.append("refusal_reason")
+    if v.get("conversion_rule") != ref["receipt_v2"]["conversion_rule"]:
+        issues.append("conversion_application")
     qs = v.get("quantities")
     if not isinstance(qs, dict):
         return issues + ["quantities_missing"]
@@ -234,8 +242,6 @@ def validate(receipt: object, c: dict) -> list[str]:
             ("measure", "measure_binding"),
             ("comparator", "comparator_negation"),
             ("time_scope", "time_scope"),
-            ("conversion_available", "conversion_registration"),
-            ("conversion_applied", "conversion_application"),
             ("ambiguity_reason", "local_ambiguity"),
         ):
             if got.get(field) != exp[field]:
@@ -274,7 +280,8 @@ def mutate(reference_receipt: dict, name: str) -> dict:
     if name == "whole_sentence_unit":
         q["claim"]["unit_tokens"][0]["span"] = [0, 17]
     elif name == "percent_prefix_inside_percentage":
-        q["claim"]["unit_tokens"][0]["span"] = [0, 7]
+        start = "The margin was less than 10 percentage points.".index("percentage points")
+        q["claim"]["unit_tokens"][0]["span"] = [start, start + len("percent")]
         q["claim"]["unit_tokens"][0]["normalized_identity"] = "percent"
     elif name == "missing_consumed_span":
         q["claim"]["consumed_spans"] = []
@@ -287,7 +294,7 @@ def mutate(reference_receipt: dict, name: str) -> dict:
     elif name == "negation_loss":
         q["evidence"]["comparator"] = "less_than"
     elif name == "conversion_without_measure":
-        q["evidence"]["conversion_applied"] = "100bp=1pp"
+        x["receipt_v2"]["conversion_rule"]["applied"] = "100bp=1pp"
     elif name == "year_scope_loss":
         q["evidence"]["time_scope"] = ["2025"]
     elif name == "one_endpoint_not_consumed":
@@ -306,7 +313,7 @@ CONTROLS = {
     "role_loss": ("U04_PP_BP", "claim_quantity_role"),
     "measure_loss": ("U14_MEASURE_MISMATCH", "evidence_measure_binding"),
     "negation_loss": ("U17_NEGATED_COMPARATOR", "evidence_comparator_negation"),
-    "conversion_without_measure": ("U14_MEASURE_MISMATCH", "evidence_conversion_application"),
+    "conversion_without_measure": ("U14_MEASURE_MISMATCH", "conversion_application"),
     "year_scope_loss": ("U15_YEAR_MISMATCH", "evidence_time_scope"),
     "one_endpoint_not_consumed": ("U08_ENDPOINT_PP", "evidence_consumed_anchor_missing"),
 }
