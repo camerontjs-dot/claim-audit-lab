@@ -34,9 +34,17 @@ jobs:
           set -euo pipefail
           python research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py --selftest > receipt-v2-selftest.json
           cat receipt-v2-selftest.json
+      - name: Self-test separate V3 declared deciding-basis evaluator on exposed development only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_basis_tests_v3.py --selftest > receipt-v3-selftest.json
+          cat receipt-v3-selftest.json
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cal-quantity-unit-s1-v2-exposed-selftest
-          path: receipt-v2-selftest.json
+          path: |
+            receipt-v2-selftest.json
+            receipt-v3-selftest.json
           if-no-files-found: warn

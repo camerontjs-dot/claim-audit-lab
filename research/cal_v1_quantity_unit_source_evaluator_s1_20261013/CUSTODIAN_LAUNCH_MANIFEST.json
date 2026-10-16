@@ -14,14 +14,14 @@
   "current_readiness_disposition_for_original_213_cohort": "BLOCKED_SOURCE_OR_INSTRUMENT_UNAVAILABLE",
   "new_successor_scientific_result": "NOT_SCORED",
   "blocking_prerequisites": [
-    "selected_H01_requested_PDF_is_frozen_as_HTML_landing_page; original_213_heldout_cohort_not_fit",
-    "separately_selected_source_successor_cohort_not_authorized_for_execution_or_byte_frozen",
-    "V2_evaluator_is_added_and_requires_independent_hosted_selftest_and_custodian_acceptance",
-    "controlled_local_execution_route_unavailable; remote_Mac_offline",
-    "local_environment_project_rules_and_full_v1_dependency_set_unverified",
-    "builder_snapshot_not_materialized_or_denial_tested",
-    "candidate_catalogue_policy_dependency_freeze_and_read_log_not_prepared",
-    "custodian_specific_identity_and_attested_reveal_enforcement_unbound"
+    "original_213_selected_BIS_PDF_remains_HTML_landing_page; original_frozen_cohort_unfit",
+    "S1_PDF_source_frozen_separately_under_SOURCE_FREEZE_S1_not_amendment_to_213",
+    "V2_evaluator_selftest_hosted_valid_but_weak_consumer_basis_coverage_requires_versioned_successor_and_independent_acceptance",
+    "admitted_Q13_model_actor_and_effective_tool_boundary_NOT_ESTABLISHED_under_apparatus_contracts_173",
+    "full_v1_dependency_environment_for_actual_candidate_regression_not_yet_qualified_at_selected_local_identity",
+    "development_snapshot_copied_and_hash_verified; runtime_out_of_world_denial_not_yet_attested",
+    "candidate_catalogue_policy_dependency_read_log_and_held_out_reveal_still_NOT_FROZEN",
+    "separate_custodian_actor_and_independent_held_out_labels_NOT_ESTABLISHED"
   ],
   "source_fitness": {
     "manifest_blob": "d39a22e6fb9c4249fd47454c94794efa8c1bc1de",
@@ -71,8 +71,15 @@
     {
       "mount": "input/BUILDER_ONLY_PACKET.md",
       "repo_path": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/BUILDER_ONLY_PACKET.md",
-      "git_blob": "0ed1f0d610192f5a9a0d72dcc8e56180986f900e",
+      "git_blob": "5a615493a343b6ae4f8849f72ad00bc3e8bcd74d",
       "ref": "research/cal-v1-quantity-unit-source-evaluator-s1-20261013"
+    },
+    {
+      "mount": "input/development/receipt_basis_tests_v3.py",
+      "repo_path": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_basis_tests_v3.py",
+      "git_blob": "6ff72d0576e3366ed94efa9a1113ad2c681d0d78",
+      "ref": "research/cal-v1-quantity-unit-source-evaluator-s1-20261013",
+      "caveat": "new exposed development-only declared-basis evaluator; imports pinned V2; not independently confirmed"
     }
   ],
   "calibration_release_once_authorized": [
@@ -151,7 +158,7 @@
     "time": "before any successor held_out reveal",
     "must_pin": [
       "candidate_commit_and_tree_and_module_blobs",
-      "V2_evaluator_blob_and_version_and_selftest_receipt",
+      "V2 and V3 evaluator blobs/versions and self-test receipts; V3 declared deciding-basis is not a causal consumption trace",
       "process_catalogue_blob",
       "locked_policy_sha256_and_file_blob",
       "all judge and R/B/C comparison arm code identities",
@@ -183,19 +190,20 @@
     "weak_control": "semantic valid-shape discriminator; not incidental parser error"
   },
   "environment": {
-    "local_device": "admins-MacBook-Air.local",
-    "device_status_at_review": "OFFLINE",
+    "local_device": "authorized host device; machine identifier retained in private local receipts",
+    "device_status_at_review": "historical: offline on initial October 13 review; online during October 14 local custody checks",
     "mandatory_local_files": [
-      "/Users/admin/.mainframe-dev/START-HERE.md",
-      "/Users/admin/Desktop/MainFrame/.context/workflows/project-environments.md"
+      "home-relative:.mainframe-dev/START-HERE.md",
+      "MainFrame-root-relative:.context/workflows/project-environments.md"
     ],
-    "verified_locally": false,
+    "verified_locally": true,
     "python_version": "REQUIRED_EXACT",
     "v1_extra": "REQUIRED_FULL_RESOLUTION",
     "spacy_en_core_web_sm": "REQUIRED_IF_TESTS_USE",
     "container_image_digest": "REQUIRED_IF_CONTAINER",
     "controller_identity": "REQUIRED",
-    "qualification_profile": "NOT_ESTABLISHED"
+    "qualification_profile": "NOT_ESTABLISHED",
+    "verification_scope": "local conventions read; development lane Docker now available for fresh bounded tests; not a blinded scientific qualification environment"
   },
   "required_receipts": [
     "SOURCE_SUCCESSOR_SELECTION_AND_FREEZE",
@@ -210,7 +218,8 @@
     "R_B_C_SAME_JUDGE_BYTES",
     "SOURCE_AND_CASE_COVERAGE_AND_FALSE_SUPPORT_REFUTE_ABSTAIN_AND_MISSES",
     "FULL_V1_REGRESSION_AND_KNOWN_HYGIENE_FAILURE",
-    "PUBLIC_SAFE_PR_AND_OWNER_ISSUE_RECONCILIATION"
+    "PUBLIC_SAFE_PR_AND_OWNER_ISSUE_RECONCILIATION",
+    "V3_DECLARED_DECIDING_BASIS_MUTANT_SELFTEST_AND_SEPARATE_EXPOSED_ORACLE_CHECK"
   ],
   "success_criteria": "only per claim-audit-lab #212; zero critical false deciding held_out results and useful/coverage/abstention denominators, not automatic product authorization",
   "non_claims": [
@@ -224,7 +233,22 @@
     "version": "cal-rc3-quantity-unit-receipt-evaluator-v2-prep1",
     "blob": "85ddcabfa24d371d9905ed98c8eba7f6dd84aa6e",
     "schema_scope": "exposed_development_only",
-    "selftest_result": "NOT_YET_VERIFIED",
+    "selftest_result": "HOSTED_PASS_EXPOSED_ONLY_38502596463",
     "claim": "no_heldout_and_no_actual_consumption_proof"
+  },
+  "source_successor_s1": {
+    "selection_blob": "041a225903a690d11e22f8d2f31c77ea03268dbf",
+    "source_freeze_identity": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/SOURCE_FREEZE_S1.json",
+    "BIS_PDF_sha256": "c930831fbf7804dceb46e5311ebaefe24b6e8f709b09f1c739a1a9e1c4438966",
+    "custodian_private_body": "not copied to builder",
+    "raw_custody": "only local external custodian"
+  },
+  "evaluator_v3_declared": {
+    "version": "cal-rc3-quantity-basis-evaluator-v3-prep1",
+    "git_blob": "6ff72d0576e3366ed94efa9a1113ad2c681d0d78",
+    "evidence_class": "EXPOSED_DEV_EVALUATOR_SELFTEST_ONLY",
+    "local_selftest": "19/19_positive; 10/10_valid_shape_semantic_mutants_caught_with_exact_failure",
+    "hosted_ci": "PENDING",
+    "limit": "Declared deciding bases, not independently verified actual internal consumption"
   }
 }
