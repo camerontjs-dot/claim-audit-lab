@@ -1,0 +1,159 @@
+{
+  "adapter_blob": "559306c69b56ad1f9725193a6188f2e986cf3a3b",
+  "candidate_rc3_executed": false,
+  "cases": [
+    {
+      "case_id": "U01_SYMBOL_WORD",
+      "expected_relation": "supports",
+      "observed_relation": "not_applicable",
+      "observed_status": "not_applicable"
+    },
+    {
+      "case_id": "U02_PP_VS_PERCENT",
+      "expected_relation": "unresolved",
+      "observed_relation": "supports",
+      "observed_status": "claimed"
+    },
+    {
+      "case_id": "U03_PERCENT_VS_PP",
+      "expected_relation": "unresolved",
+      "observed_relation": "supports",
+      "observed_status": "claimed"
+    },
+    {
+      "case_id": "U04_PP_BP",
+      "expected_relation": "supports",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U05_BP_PP_HALF",
+      "expected_relation": "supports",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U06_PERCENT_CHANGE_VS_PP",
+      "expected_relation": "unresolved",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U07_LEVEL_VS_CHANGE",
+      "expected_relation": "unresolved",
+      "observed_relation": "not_applicable",
+      "observed_status": "not_applicable"
+    },
+    {
+      "case_id": "U08_ENDPOINT_PP",
+      "expected_relation": "supports",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U09_ENDPOINT_RELATIVE",
+      "expected_relation": "supports",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U10_PREFIX_BOUNDARY",
+      "expected_relation": "unresolved",
+      "observed_relation": "not_applicable",
+      "observed_status": "not_applicable"
+    },
+    {
+      "case_id": "U11_PP_ABBREV",
+      "expected_relation": "unresolved",
+      "observed_relation": "supports",
+      "observed_status": "claimed"
+    },
+    {
+      "case_id": "U12_BP_ABBREV",
+      "expected_relation": "supports",
+      "observed_relation": "supports",
+      "observed_status": "claimed"
+    },
+    {
+      "case_id": "U13_RATE_COUNT",
+      "expected_relation": "unresolved",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U14_MEASURE_MISMATCH",
+      "expected_relation": "unresolved",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U15_YEAR_MISMATCH",
+      "expected_relation": "unresolved",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U16_MULTIPLE_UNITS",
+      "expected_relation": "refutes",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U17_NEGATED_COMPARATOR",
+      "expected_relation": "refutes",
+      "observed_relation": "unresolved",
+      "observed_status": "unresolved"
+    },
+    {
+      "case_id": "U18_EVENT_ONLY",
+      "expected_relation": "not_applicable",
+      "observed_relation": "not_applicable",
+      "observed_status": "not_applicable"
+    },
+    {
+      "case_id": "U19_EXPOSED_HOL14_SHAPE",
+      "expected_relation": "unresolved",
+      "observed_relation": "supports",
+      "observed_status": "claimed"
+    }
+  ],
+  "comparator_blob": "05b1e7616cac8401656c8e777a6395f88d705a8c",
+  "count": 19,
+  "development_blob": "ac467ee96b879612ad686caa741afcfdcc4f7c00",
+  "evidence_class": "EXPOSED_DEVELOPMENT_ONLY_NOT_HELD_OUT",
+  "exact_relation_match": 6,
+  "false_refutation_cases": [],
+  "false_refutation_count": 0,
+  "false_support_cases": [
+    "U02_PP_VS_PERCENT",
+    "U03_PERCENT_VS_PP",
+    "U11_PP_ABBREV",
+    "U19_EXPOSED_HOL14_SHAPE"
+  ],
+  "false_support_count": 4,
+  "method": "import frozen RC2 candidate adapter and compare its returned relation with the 19 already-exposed RC3 DEVELOPMENT_CASES labels; no V2/V3 receipt schema conflated with relation quality",
+  "missed_warranted_decision_cases": [
+    "U01_SYMBOL_WORD",
+    "U04_PP_BP",
+    "U05_BP_PP_HALF",
+    "U08_ENDPOINT_PP",
+    "U09_ENDPOINT_RELATIVE",
+    "U16_MULTIPLE_UNITS",
+    "U17_NEGATED_COMPARATOR"
+  ],
+  "missed_warranted_decisions": 7,
+  "new_heldout_cases_observed": 0,
+  "no_claims": [
+    "unmodified RC2 baseline is not a successor",
+    "no independent hidden qualification",
+    "no RC3 source scoring",
+    "old output schema lacks V2/V3 receipts"
+  ],
+  "schema": "cal-v1-quantity-unit-s1-exposed-rc2-comparator-baseline-v1",
+  "subject_commit": "ce7348ae9a9e9b0fd03290e044516f3c302e06b0",
+  "wrong_not_applicable_for_in_scope_cases": [
+    "U01_SYMBOL_WORD",
+    "U07_LEVEL_VS_CHANGE",
+    "U10_PREFIX_BOUNDARY"
+  ]
+}
