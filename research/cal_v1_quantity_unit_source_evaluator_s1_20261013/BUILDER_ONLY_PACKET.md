@@ -1,6 +1,6 @@
 # CAL quantity/unit S1 — builder-only constrained task
 
-**Not a runnable launch by itself.** The custodian must first freeze an exact executable V2 evaluator, valid successor source cohort and environment, and deliver this file in a mechanically allowlisted **copy-only** snapshot. Do not use this GitHub repository, PR, surrounding conversation or its checkout as the builder workspace. Do not paste any owner or custodian report into the builder.
+**Not a runnable launch by itself.** The separate S1 source cohort is frozen and V2/V3 exposed-development evaluator self-tests passed. A custodian must still establish an admitted task-fit actor profile, an enforced read-only packet mount, permitted scratch/test runner, and freeze/reveal authority before this can launch. This file is a builder-only input, not actor admission or independent qualification. Do not use this GitHub repository, PR, surrounding conversation or its checkout as the builder workspace. Do not paste any owner or custodian report into the builder.
 
 ## Objective
 
@@ -14,8 +14,8 @@ Before calibration, the staging authority may provide **only** these pinned file
 - `input/baseline/candidate_adapter.py`: Git blob `559306c69b56ad1f9725193a6188f2e986cf3a3b` from that same baseline.
 - `input/development/DEVELOPMENT_CASES.json`: Git blob `ac467ee96b879612ad686caa741afcfdcc4f7c00`; all 19 cases are **exposed development evidence**.
 - `input/development/unit_contract_tests_v1.py`: Git blob `3cd87c389af76fd46225324050ce132279a83800`. Historical relation-oriented evaluator only; does **not** qualify lexical/consumed receipt offsets.
-- `input/development/receipt_contract_tests_v2.py`: historical exposed-development V2 semantic/lexical evaluator, exact Git blob `85ddcabfa24d371d9905ed98c8eba7f6dd84aa6e`, hosted self-test `38502596463` PASS; do not rewrite it.
-- `input/development/receipt_basis_tests_v3.py`: separate, versioned exposed-development deciding-basis evaluator successor; Git blob `6ff72d0576e3366ed94efa9a1113ad2c681d0d78`; local exposed self-test 19 reference cases and 10 semantic mutants PASS; hosted CI **PENDING**. Imports V2; no implementation may claim conformity before both run.
+- `input/development/receipt_contract_tests_v2.py`: historical exposed-development V2 semantic/lexical evaluator, exact Git blob `85ddcabfa24d371d9905ed98c8eba7f6dd84aa6e`, exact-head hosted self-test `38914612943` PASS; do not rewrite it.
+- `input/development/receipt_basis_tests_v3.py`: separate, versioned exposed-development deciding-basis evaluator successor; Git blob `6ff72d0576e3366ed94efa9a1113ad2c681d0d78`; local and exact-head hosted self-test 38914612943 PASS (19 exposed references, 10 semantic mutants). Imports V2; no implementation may claim conformity before both run.
 - `input/BUILDER_ONLY_PACKET.md`: this exact file, blob to be pinned by the custodian on its release.
 - Any smallest required non-answer-bearing standard-library/runtime dependency must be approved as an exact blob/installed distribution and declared before launch.
 

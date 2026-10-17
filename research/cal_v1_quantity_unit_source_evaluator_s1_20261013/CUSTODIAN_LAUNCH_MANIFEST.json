@@ -14,14 +14,14 @@
   "current_readiness_disposition_for_original_213_cohort": "BLOCKED_SOURCE_OR_INSTRUMENT_UNAVAILABLE",
   "new_successor_scientific_result": "NOT_SCORED",
   "blocking_prerequisites": [
-    "original_213_selected_BIS_PDF_remains_HTML_landing_page; original_frozen_cohort_unfit",
-    "S1_PDF_source_frozen_separately_under_SOURCE_FREEZE_S1_not_amendment_to_213",
-    "V2_evaluator_selftest_hosted_valid_but_weak_consumer_basis_coverage_requires_versioned_successor_and_independent_acceptance",
-    "admitted_Q13_model_actor_and_effective_tool_boundary_NOT_ESTABLISHED_under_apparatus_contracts_173",
-    "full_v1_dependency_environment_for_actual_candidate_regression_not_yet_qualified_at_selected_local_identity",
-    "development_snapshot_copied_and_hash_verified; runtime_out_of_world_denial_not_yet_attested",
-    "candidate_catalogue_policy_dependency_read_log_and_held_out_reveal_still_NOT_FROZEN",
-    "separate_custodian_actor_and_independent_held_out_labels_NOT_ESTABLISHED"
+    "Original #213 PDF representation mismatch remains preserved; S1 separately froze correct PDF and seven original identities",
+    "Task-fit model actor, actual model tool inventory, containment and Q13 admission are not established under apparatus-contracts #173",
+    "Exact RC4 two-function synthetic marker/answer profile cannot operate a seven-file Python coding/testing task without separately qualified tool changes",
+    "Effective out-of-world file/tool/network denials and fresh model-session isolation unobserved for the S1 task",
+    "Host ordinary Docker development command was denied by tool safety check and not reattempted",
+    "Full maintained [v1] inference/dependency regression for candidate not executed in exact environment",
+    "Builder candidate, catalogue/policy/dependencies/read logs have not been frozen or reviewed",
+    "Independent custodian label creation and held-out reveal/one-attempt receipts not yet established"
   ],
   "source_fitness": {
     "manifest_blob": "d39a22e6fb9c4249fd47454c94794efa8c1bc1de",
@@ -71,7 +71,7 @@
     {
       "mount": "input/BUILDER_ONLY_PACKET.md",
       "repo_path": "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/BUILDER_ONLY_PACKET.md",
-      "git_blob": "5a615493a343b6ae4f8849f72ad00bc3e8bcd74d",
+      "git_blob": "4e1ccfc47bb5891aec911ae443b512e530956af8",
       "ref": "research/cal-v1-quantity-unit-source-evaluator-s1-20261013"
     },
     {
@@ -233,7 +233,7 @@
     "version": "cal-rc3-quantity-unit-receipt-evaluator-v2-prep1",
     "blob": "85ddcabfa24d371d9905ed98c8eba7f6dd84aa6e",
     "schema_scope": "exposed_development_only",
-    "selftest_result": "HOSTED_PASS_EXPOSED_ONLY_38502596463",
+    "selftest_result": "PASS_EXPOSED_38914612943; no scientific candidate",
     "claim": "no_heldout_and_no_actual_consumption_proof"
   },
   "source_successor_s1": {
@@ -248,7 +248,24 @@
     "git_blob": "6ff72d0576e3366ed94efa9a1113ad2c681d0d78",
     "evidence_class": "EXPOSED_DEV_EVALUATOR_SELFTEST_ONLY",
     "local_selftest": "19/19_positive; 10/10_valid_shape_semantic_mutants_caught_with_exact_failure",
-    "hosted_ci": "PENDING",
+    "hosted_ci": "PASS_EXPOSED_38914612943; 19/19 references and 10/10 targeted mutants; no scientific candidate",
     "limit": "Declared deciding bases, not independently verified actual internal consumption"
+  },
+  "actor_profile_fit": {
+    "baseline_authority": "apparatus-contracts#173; RC4 Draft #181; RC5/RC6 failed Draft #182",
+    "rc4_tool_profile_blob": "9c8fdc261d6ec87c955662097460aabf5e76741b",
+    "rc4_existing_model_tools": "read_packet_file enum data/marker.txt and instructions/request.txt; write_result exact answer.txt up to 4096 UTF8 bytes; no model-side command execution",
+    "fit_for_s1_python_adapter_development": "NOT_ESTABLISHED",
+    "missing_task_capabilities": [
+      "controlled read of seven permitted Python/text files",
+      "controller-enforced candidate scratch write with receipt",
+      "bounded execution of exposed Python development tests and feedback",
+      "complete observed model-visible tool inventory with out-of-world refusals",
+      "independent read logs and full candidate freeze"
+    ],
+    "no_new_architecture_authorized": true,
+    "owned_by": "camerontjs-dot/apparatus-contracts#173",
+    "status": "BLOCKED_Q13_NOT_ADMITTED",
+    "do_not": "treat RC4 zero-model success as actor admission; rerun failed RC5/RC6; normalize newline; reuse old two-file enum silently; stage owner/custodian manifests into model context"
   }
 }
