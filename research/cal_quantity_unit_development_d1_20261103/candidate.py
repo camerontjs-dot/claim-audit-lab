@@ -392,8 +392,7 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
             "input_scope": {"claim": [0, len(claim)], "evidence": [0, len(evidence)]},
             "quantities": {"claim": cs, "evidence": es},
             "unresolved_reason": reason,
-            "conversion_rule": {"available": available, "applied": conversion_applied,
-                                "applied_rules": applied_rules, "rejected_reason": conversion_rejected},
+            "conversion_rule": {"available": available, "applied": conversion_applied, "rejected_reason": conversion_rejected},
         },
         "receipt_v3": {
             "version": V3_VERSION,
@@ -413,6 +412,7 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
              "observations": [row.public() for row in group]}
             for group in conflicts
         ],
+        "conversion_summary": {"available_rules": available, "applied_rules": applied_rules},
         "conversion_provenance": conversion_provenance,
         "unparsed_spans": {"claim": [list(s) for s in cdoc.unparsed], "evidence": [list(s) for s in edoc.unparsed]},
         "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
