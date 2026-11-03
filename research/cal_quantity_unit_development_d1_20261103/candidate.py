@@ -258,15 +258,16 @@ def source_conflicts(doc: Document) -> tuple[tuple[Observation, ...], ...]:
 
 
 def _conversions(claim: Observation, evidence: Observation, cdoc: Document, edoc: Document) -> list[str]:
+    rules = []
     if evidence.derivation:
-        return [evidence.derivation]
+        rules.append(evidence.derivation)
     if {claim.role, evidence.role} == ABSOLUTE:
-        return ["100bp=1pp"]
+        rules.append("100bp=1pp")
     if claim.unit == evidence.unit == "basis_point":
         tokens = [d.text[t["span"][0]:t["span"][1]].casefold() for d in (cdoc, edoc) for t in d.units]
         if any(t in {"bp", "bps"} for t in tokens):
-            return ["bp_lexical_variant"]
-    return []
+            rules.append("bp_lexical_variant")
+    return rules
 
 
 def _compatibility(claim: Observation, evidence: Observation) -> str | None:

@@ -61,6 +61,40 @@ def main() -> int:
     relation("consistent_endpoint_and_relative", "The share increased by 2 percentage points.",
              endpoint + "; the share increased by 20 percent.", "supports")
 
+    # The conflict inventory is independently computed from the complete source.
+    conflict_evidence = endpoint + "; " + contradictory + "."
+    original_conflicts = analyze("The share increased by 2 percentage points.", conflict_evidence)["source_conflicts"]
+    serialized_conflicts = json.dumps(original_conflicts, ensure_ascii=False, separators=(",", ":"))
+    for claim in ("The share increased by 20 percent.", "The share was 12 percent.",
+                  "The rate increased by 2 percentage points.",
+                  "In 2025, the share increased by 2 percentage points.", "The release came before launch."):
+        actual = analyze(claim, conflict_evidence)["source_conflicts"]
+        check("source_conflicts_conserved_across_claims", bool(original_conflicts)
+              and json.dumps(actual, ensure_ascii=False, separators=(",", ":")) == serialized_conflicts,
+              {"claim": claim, "expected": original_conflicts, "actual": actual})
+    result = relation("unrelated_conflict_does_not_change_binding", "The rate increased by 1 percentage point.",
+                      endpoint + "; " + contradictory + "; the rate increased by 100 basis points.", "supports")
+    check("unrelated_conflict_remains_visible", result["source_conflicts"] == original_conflicts,
+          {"expected": original_conflicts, "actual": result["source_conflicts"]})
+
+    # Multiple evidence rules, and a composed derivation/conversion on one row,
+    # must remain visible beyond the legacy single-rule projection.
+    mixed_rules = (endpoint, "the share increased by 200 basis points")
+    required_rules = {"endpoints_to_pp", "100bp=1pp"}
+    for clauses in (mixed_rules, mixed_rules[::-1]):
+        evidence = "; ".join(clauses) + "."
+        result = relation("multiple_conversion_rules_support", "The share increased by 2 percentage points.", evidence, "supports")
+        summary = result["conversion_summary"]
+        check("multiple_conversion_rules_recorded", set(summary["available_rules"]) == required_rules
+              and set(summary["applied_rules"]) == required_rules,
+              {"evidence": evidence, "actual": summary})
+    claim = "The share increased by 200 basis points."
+    result = relation("composed_endpoint_to_basis_points_support", claim, endpoint + ".", "supports")
+    summary = result["conversion_summary"]
+    check("composed_endpoint_to_basis_points_provenance", set(summary["available_rules"]) == required_rules
+          and set(summary["applied_rules"]) == required_rules,
+          {"claim": claim, "evidence": endpoint + ".", "expected_rules": sorted(required_rules), "actual": summary})
+
     # A stronger converted bound is decisive even when it is the second clause.
     claim = "The margin was more than 2 percentage points."
     constraints = ("The margin was more than 1 percentage point", "the margin was more than 200 basis points")

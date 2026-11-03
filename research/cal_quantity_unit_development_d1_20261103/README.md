@@ -122,9 +122,35 @@ and read-only repository permissions. Its artifacts are development evidence.
 later evidence directories never replace it. Development iteration is allowed
 here and must not be represented as a fresh scientific qualification attempt.
 
+## Recorded development result
+
+Final local evidence: `evidence/development_04/RESULT.json` and
+`evidence/development_04/CANDIDATE_RECEIPTS.json`, CPython 3.12.14.
+
+| Check | Result |
+| --- | --- |
+| Exact reused input Git blobs | 6/6 match |
+| Unchanged V1/V2/V3 evaluator self-tests | All pass |
+| V1 candidate contract methods | 15/15 pass |
+| Exposed relation cases | 19/19 match |
+| V2 and V3 receipt checks | Zero errors on all 19 cases |
+| Direct arithmetic controls | 392/392 pass |
+| Informed adversarial review probes | 50/50 pass |
+| Pinned predecessor on the same 19 exposed cases | 6/19 match; 4 false supports |
+
+These are known development cases and authored probes. They are not an accuracy
+estimate or independent generalization result. `REVIEW.md` states the review
+context and limits. All failed development subjects and outputs remain in the
+commit history and evidence directories; the exact input/evaluator files were
+not changed to force passing results.
+
+The repository-wide Public suite has a separately documented inherited failure
+on historical preserved-source path scanning; see `DEVELOPMENT_LOG.md` and the
+PR's current CI status. The focused development result does not replace it.
+
 ## Current disposition
 
-The candidate is implemented as a Draft research PR. Development results and
-review are recorded with their exact subject identities. Scientific and runtime
-qualification remain `NOT_RUN`; blind implementation and fresh generalization
-remain unestablished. A future D1 evaluation needs its own reviewed protocol.
+`DEVELOPMENT_CHECKS_PASS`, retained as a Draft research PR. Scientific and
+runtime qualification remain `NOT_RUN`; blind implementation and fresh
+generalization remain unestablished. A future D1 evaluation needs its own
+reviewed protocol. This PR is not authorized for promotion by a development pass.
