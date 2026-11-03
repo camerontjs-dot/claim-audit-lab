@@ -1,0 +1,6 @@
+{
+  "candidate_sha256": "d1c8ce22986aa21f8947669e2f1d502799ab5699bb18e615dd0a165b97169eab",
+  "returncode": 1,
+  "stdout": "{\n  \"evidence_class\": \"INFORMED_REVIEW_DEVELOPMENT_CONTROLS_NOT_QUALIFICATION\",\n  \"probes\": 50,\n  \"failures\": [\n    {\n      \"name\": \"composed_endpoint_to_basis_points_provenance\",\n      \"claim\": \"The share increased by 200 basis points.\",\n      \"evidence\": \"The share rose from 10 percent to 12 percent.\",\n      \"expected_rules\": [\n        \"100bp=1pp\",\n        \"endpoints_to_pp\"\n      ],\n      \"actual\": {\n        \"available_rules\": [\n          \"endpoints_to_pp\"\n        ],\n        \"applied_rules\": [\n          \"endpoints_to_pp\"\n        ]\n      }\n    }\n  ],\n  \"passed\": false\n}\n",
+  "stderr": ""
+}

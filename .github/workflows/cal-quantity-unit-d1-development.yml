@@ -1,0 +1,47 @@
+name: CAL quantity unit D1 exposed development
+
+on:
+  push:
+    branches:
+      - research/cal-quantity-unit-development-d1-20261103
+    paths:
+      - research/cal_quantity_unit_development_d1_20261103/**
+      - .github/workflows/cal-quantity-unit-d1-development.yml
+  pull_request:
+    paths:
+      - research/cal_quantity_unit_development_d1_20261103/**
+      - .github/workflows/cal-quantity-unit-d1-development.yml
+
+permissions:
+  contents: read
+
+jobs:
+  exposed-development:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            research/cal_quantity_unit_development_d1_20261103/
+            research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/quantity_binding.py
+            research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/candidate_adapter.py
+            research/cal_v1_quantity_unit_boundary_rc3_20261004/DEVELOPMENT_CASES.json
+            research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py
+            research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py
+            research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_basis_tests_v3.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact exposed inputs, candidate receipts, and development controls
+        run: >-
+          python research/cal_quantity_unit_development_d1_20261103/run_development.py
+          --out "${{ runner.temp }}/cal-quantity-unit-d1-result"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cal-quantity-unit-d1-exposed-${{ github.sha }}
+          path: ${{ runner.temp }}/cal-quantity-unit-d1-result/
+          if-no-files-found: warn

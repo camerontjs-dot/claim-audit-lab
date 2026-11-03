@@ -1,0 +1,835 @@
+{
+  "all_development_checks_passed": false,
+  "blind_implementation": false,
+  "candidate_file_sha256": {
+    "candidate.py": "1203e90e1def27d295173abce800f5bb55bcf7220842691a7c5cae0d92f5056d",
+    "candidate_adapter.py": "91ac00c9fd6172e442eb8a61e4aa832126cca5755a9d24e3fd3091fd82abce1a",
+    "run_development.py": "db2ccefac8324617158896db65ae02d303aec124141d601b452aa582b5d459de"
+  },
+  "commands": {
+    "v1_candidate": {
+      "command": [
+        "python3",
+        "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py",
+        "--adapter",
+        "research/cal_quantity_unit_development_d1_20261103/candidate_adapter.py"
+      ],
+      "exit_code": 0,
+      "public_path_normalization": "checkout prefix only; raw stream hashes retained",
+      "result": {
+        "evidence_class": "EXPOSED_DEVELOPMENT_CONFORMANCE_ONLY",
+        "fresh_generalization": "NOT_ESTABLISHED",
+        "passed": true,
+        "result": {
+          "errors": [],
+          "failures": [],
+          "skips": 0,
+          "tests": 15
+        }
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"evidence_class\": \"EXPOSED_DEVELOPMENT_CONFORMANCE_ONLY\", \"fresh_generalization\": \"NOT_ESTABLISHED\", \"passed\": true, \"result\": {\"errors\": [], \"failures\": [], \"skips\": 0, \"tests\": 15}}\n",
+      "stdout_sha256": "b326e33aa6b2f1c8c2417997ffad54705063ca2cd2c92a203a22a7782e0f2912"
+    },
+    "v1_selftest": {
+      "command": [
+        "python3",
+        "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py",
+        "--selftest"
+      ],
+      "exit_code": 0,
+      "public_path_normalization": "checkout prefix only; raw stream hashes retained",
+      "result": {
+        "candidate_executed": false,
+        "evidence_class": "EVALUATOR_SELFTEST_ONLY",
+        "oracle": {
+          "errors": [],
+          "failures": [],
+          "skips": 0,
+          "tests": 15
+        },
+        "passed": true,
+        "weak_controls": {
+          "BasisCollapse": {
+            "caught": true,
+            "intended_test": "test_basis_point_registered_conversions",
+            "result": {
+              "errors": [],
+              "failures": [
+                "test_basis_point_registered_conversions"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "ConversionNoMeasure": {
+            "caught": true,
+            "intended_test": "test_conversion_preserves_measure",
+            "result": {
+              "errors": [],
+              "failures": [
+                "test_conversion_preserves_measure",
+                "runTest"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "FirstUnitWins": {
+            "caught": true,
+            "intended_test": "test_multiple_units_bind_measure",
+            "result": {
+              "errors": [],
+              "failures": [
+                "runTest",
+                "test_multiple_units_bind_measure"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "LastUnitWins": {
+            "caught": true,
+            "intended_test": "test_multiple_units_bind_measure",
+            "result": {
+              "errors": [],
+              "failures": [
+                "runTest",
+                "test_multiple_units_bind_measure"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "NumericOnly": {
+            "caught": true,
+            "intended_test": "test_percentage_points_not_percent",
+            "result": {
+              "errors": [],
+              "failures": [
+                "test_conversion_preserves_measure",
+                "test_conversion_preserves_year",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "test_level_not_change",
+                "test_multiple_units_bind_measure",
+                "test_negated_comparator",
+                "test_percentage_points_not_percent",
+                "test_rate_count_mismatch",
+                "test_relative_percent_not_pp",
+                "test_unknown_pp_fails_closed"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "PointsCollapse": {
+            "caught": true,
+            "intended_test": "test_percentage_points_not_percent",
+            "result": {
+              "errors": [],
+              "failures": [
+                "test_basis_point_registered_conversions",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "test_level_not_change",
+                "test_multiple_units_bind_measure",
+                "test_negated_comparator",
+                "test_percentage_points_not_percent",
+                "test_rate_count_mismatch",
+                "test_relative_percent_not_pp"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "PrefixPercent": {
+            "caught": true,
+            "intended_test": "test_percentage_points_not_percent",
+            "result": {
+              "errors": [],
+              "failures": [
+                "test_basis_point_registered_conversions",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "test_level_not_change",
+                "test_multiple_units_bind_measure",
+                "test_negated_comparator",
+                "test_percentage_points_not_percent",
+                "test_rate_count_mismatch",
+                "test_relative_percent_not_pp"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "RateCountCollapse": {
+            "caught": true,
+            "intended_test": "test_rate_count_mismatch",
+            "result": {
+              "errors": [],
+              "failures": [
+                "runTest",
+                "test_rate_count_mismatch"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          },
+          "StripUnits": {
+            "caught": true,
+            "intended_test": "test_percentage_points_not_percent",
+            "result": {
+              "errors": [],
+              "failures": [
+                "test_conversion_preserves_measure",
+                "test_conversion_preserves_year",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "runTest",
+                "test_level_not_change",
+                "test_multiple_units_bind_measure",
+                "test_negated_comparator",
+                "test_percentage_points_not_percent",
+                "test_rate_count_mismatch",
+                "test_relative_percent_not_pp",
+                "test_unknown_pp_fails_closed"
+              ],
+              "skips": 0,
+              "tests": 15
+            }
+          }
+        }
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"candidate_executed\": false, \"evidence_class\": \"EVALUATOR_SELFTEST_ONLY\", \"oracle\": {\"errors\": [], \"failures\": [], \"skips\": 0, \"tests\": 15}, \"passed\": true, \"weak_controls\": {\"BasisCollapse\": {\"caught\": true, \"intended_test\": \"test_basis_point_registered_conversions\", \"result\": {\"errors\": [], \"failures\": [\"test_basis_point_registered_conversions\"], \"skips\": 0, \"tests\": 15}}, \"ConversionNoMeasure\": {\"caught\": true, \"intended_test\": \"test_conversion_preserves_measure\", \"result\": {\"errors\": [], \"failures\": [\"test_conversion_preserves_measure\", \"runTest\"], \"skips\": 0, \"tests\": 15}}, \"FirstUnitWins\": {\"caught\": true, \"intended_test\": \"test_multiple_units_bind_measure\", \"result\": {\"errors\": [], \"failures\": [\"runTest\", \"test_multiple_units_bind_measure\"], \"skips\": 0, \"tests\": 15}}, \"LastUnitWins\": {\"caught\": true, \"intended_test\": \"test_multiple_units_bind_measure\", \"result\": {\"errors\": [], \"failures\": [\"runTest\", \"test_multiple_units_bind_measure\"], \"skips\": 0, \"tests\": 15}}, \"NumericOnly\": {\"caught\": true, \"intended_test\": \"test_percentage_points_not_percent\", \"result\": {\"errors\": [], \"failures\": [\"test_conversion_preserves_measure\", \"test_conversion_preserves_year\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"test_level_not_change\", \"test_multiple_units_bind_measure\", \"test_negated_comparator\", \"test_percentage_points_not_percent\", \"test_rate_count_mismatch\", \"test_relative_percent_not_pp\", \"test_unknown_pp_fails_closed\"], \"skips\": 0, \"tests\": 15}}, \"PointsCollapse\": {\"caught\": true, \"intended_test\": \"test_percentage_points_not_percent\", \"result\": {\"errors\": [], \"failures\": [\"test_basis_point_registered_conversions\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"test_level_not_change\", \"test_multiple_units_bind_measure\", \"test_negated_comparator\", \"test_percentage_points_not_percent\", \"test_rate_count_mismatch\", \"test_relative_percent_not_pp\"], \"skips\": 0, \"tests\": 15}}, \"PrefixPercent\": {\"caught\": true, \"intended_test\": \"test_percentage_points_not_percent\", \"result\": {\"errors\": [], \"failures\": [\"test_basis_point_registered_conversions\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"test_level_not_change\", \"test_multiple_units_bind_measure\", \"test_negated_comparator\", \"test_percentage_points_not_percent\", \"test_rate_count_mismatch\", \"test_relative_percent_not_pp\"], \"skips\": 0, \"tests\": 15}}, \"RateCountCollapse\": {\"caught\": true, \"intended_test\": \"test_rate_count_mismatch\", \"result\": {\"errors\": [], \"failures\": [\"runTest\", \"test_rate_count_mismatch\"], \"skips\": 0, \"tests\": 15}}, \"StripUnits\": {\"caught\": true, \"intended_test\": \"test_percentage_points_not_percent\", \"result\": {\"errors\": [], \"failures\": [\"test_conversion_preserves_measure\", \"test_conversion_preserves_year\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"runTest\", \"test_level_not_change\", \"test_multiple_units_bind_measure\", \"test_negated_comparator\", \"test_percentage_points_not_percent\", \"test_rate_count_mismatch\", \"test_relative_percent_not_pp\", \"test_unknown_pp_fails_closed\"], \"skips\": 0, \"tests\": 15}}}}\n",
+      "stdout_sha256": "d564df2ff2e7b2b4d0056f3f78aa4c4c0ce48224717ff21f53d42dbc5d464360"
+    },
+    "v2_candidate": {
+      "command": [
+        "python3",
+        "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py",
+        "--adapter",
+        "research/cal_quantity_unit_development_d1_20261103/candidate_adapter.py"
+      ],
+      "exit_code": 1,
+      "public_path_normalization": "checkout prefix only; raw stream hashes retained",
+      "result": {
+        "cases": {
+          "U01_SYMBOL_WORD": [],
+          "U02_PP_VS_PERCENT": [],
+          "U03_PERCENT_VS_PP": [],
+          "U04_PP_BP": [],
+          "U05_BP_PP_HALF": [],
+          "U06_PERCENT_CHANGE_VS_PP": [],
+          "U07_LEVEL_VS_CHANGE": [
+            "evidence_measure_binding",
+            "evidence_measure_semantics",
+            "refusal_reason"
+          ],
+          "U08_ENDPOINT_PP": [],
+          "U09_ENDPOINT_RELATIVE": [],
+          "U10_PREFIX_BOUNDARY": [],
+          "U11_PP_ABBREV": [],
+          "U12_BP_ABBREV": [],
+          "U13_RATE_COUNT": [],
+          "U14_MEASURE_MISMATCH": [],
+          "U15_YEAR_MISMATCH": [],
+          "U16_MULTIPLE_UNITS": [],
+          "U17_NEGATED_COMPARATOR": [],
+          "U18_EVENT_ONLY": [],
+          "U19_EXPOSED_HOL14_SHAPE": []
+        },
+        "evidence_class": "EXPOSED_DEVELOPMENT_CONFORMANCE_ONLY",
+        "fresh_generalization": "NOT_ESTABLISHED",
+        "passed": false,
+        "version": "cal-rc3-quantity-unit-receipt-evaluator-v2-prep1"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"cases\": {\"U01_SYMBOL_WORD\": [], \"U02_PP_VS_PERCENT\": [], \"U03_PERCENT_VS_PP\": [], \"U04_PP_BP\": [], \"U05_BP_PP_HALF\": [], \"U06_PERCENT_CHANGE_VS_PP\": [], \"U07_LEVEL_VS_CHANGE\": [\"evidence_measure_binding\", \"evidence_measure_semantics\", \"refusal_reason\"], \"U08_ENDPOINT_PP\": [], \"U09_ENDPOINT_RELATIVE\": [], \"U10_PREFIX_BOUNDARY\": [], \"U11_PP_ABBREV\": [], \"U12_BP_ABBREV\": [], \"U13_RATE_COUNT\": [], \"U14_MEASURE_MISMATCH\": [], \"U15_YEAR_MISMATCH\": [], \"U16_MULTIPLE_UNITS\": [], \"U17_NEGATED_COMPARATOR\": [], \"U18_EVENT_ONLY\": [], \"U19_EXPOSED_HOL14_SHAPE\": []}, \"evidence_class\": \"EXPOSED_DEVELOPMENT_CONFORMANCE_ONLY\", \"fresh_generalization\": \"NOT_ESTABLISHED\", \"passed\": false, \"version\": \"cal-rc3-quantity-unit-receipt-evaluator-v2-prep1\"}\n",
+      "stdout_sha256": "3a7de60a678c0b6a11fc40f5696b273dac422202f3d39a18f98d3c003aa58b9a"
+    },
+    "v2_selftest": {
+      "command": [
+        "python3",
+        "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py",
+        "--selftest"
+      ],
+      "exit_code": 0,
+      "public_path_normalization": "checkout prefix only; raw stream hashes retained",
+      "result": {
+        "candidate_executed": false,
+        "development_count": 19,
+        "evidence_class": "EXPOSED_EVALUATOR_SELFTEST_ONLY",
+        "non_claims": [
+          "no actual-consumption proof",
+          "no held-out qualification"
+        ],
+        "passed": true,
+        "positive_errors": {
+          "U01_SYMBOL_WORD": [],
+          "U02_PP_VS_PERCENT": [],
+          "U03_PERCENT_VS_PP": [],
+          "U04_PP_BP": [],
+          "U05_BP_PP_HALF": [],
+          "U06_PERCENT_CHANGE_VS_PP": [],
+          "U07_LEVEL_VS_CHANGE": [],
+          "U08_ENDPOINT_PP": [],
+          "U09_ENDPOINT_RELATIVE": [],
+          "U10_PREFIX_BOUNDARY": [],
+          "U11_PP_ABBREV": [],
+          "U12_BP_ABBREV": [],
+          "U13_RATE_COUNT": [],
+          "U14_MEASURE_MISMATCH": [],
+          "U15_YEAR_MISMATCH": [],
+          "U16_MULTIPLE_UNITS": [],
+          "U17_NEGATED_COMPARATOR": [],
+          "U18_EVENT_ONLY": [],
+          "U19_EXPOSED_HOL14_SHAPE": []
+        },
+        "version": "cal-rc3-quantity-unit-receipt-evaluator-v2-prep1",
+        "weak_controls": {
+          "conversion_without_measure": {
+            "case": "U14_MEASURE_MISMATCH",
+            "caught_for_intended_reason": true,
+            "intended": "conversion_application",
+            "problems": [
+              "conversion_application"
+            ]
+          },
+          "measure_loss": {
+            "case": "U14_MEASURE_MISMATCH",
+            "caught_for_intended_reason": true,
+            "intended": "evidence_measure_binding",
+            "problems": [
+              "evidence_measure_binding"
+            ]
+          },
+          "missing_consumed_span": {
+            "case": "U01_SYMBOL_WORD",
+            "caught_for_intended_reason": true,
+            "intended": "claim_consumed_missing",
+            "problems": [
+              "claim_consumed_missing"
+            ]
+          },
+          "negation_loss": {
+            "case": "U17_NEGATED_COMPARATOR",
+            "caught_for_intended_reason": true,
+            "intended": "evidence_comparator_negation",
+            "problems": [
+              "evidence_comparator_negation"
+            ]
+          },
+          "one_endpoint_not_consumed": {
+            "case": "U08_ENDPOINT_PP",
+            "caught_for_intended_reason": true,
+            "intended": "evidence_consumed_anchor_missing",
+            "problems": [
+              "evidence_consumed_anchor_missing"
+            ]
+          },
+          "percent_prefix_inside_percentage": {
+            "case": "U02_PP_VS_PERCENT",
+            "caught_for_intended_reason": true,
+            "intended": "claim_lexical_unit_span_or_identity",
+            "problems": [
+              "claim_lexical_unit_span_or_identity"
+            ]
+          },
+          "role_loss": {
+            "case": "U04_PP_BP",
+            "caught_for_intended_reason": true,
+            "intended": "claim_quantity_role",
+            "problems": [
+              "claim_quantity_role"
+            ]
+          },
+          "whole_sentence_unit": {
+            "case": "U01_SYMBOL_WORD",
+            "caught_for_intended_reason": true,
+            "intended": "claim_lexical_unit_span_or_identity",
+            "problems": [
+              "claim_lexical_unit_span_or_identity"
+            ]
+          },
+          "wrong_quantity_value": {
+            "case": "U16_MULTIPLE_UNITS",
+            "caught_for_intended_reason": true,
+            "intended": "evidence_numeric_binding",
+            "problems": [
+              "evidence_numeric_binding"
+            ]
+          },
+          "year_scope_loss": {
+            "case": "U15_YEAR_MISMATCH",
+            "caught_for_intended_reason": true,
+            "intended": "evidence_time_scope",
+            "problems": [
+              "evidence_time_scope"
+            ]
+          }
+        }
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"candidate_executed\": false, \"development_count\": 19, \"evidence_class\": \"EXPOSED_EVALUATOR_SELFTEST_ONLY\", \"non_claims\": [\"no actual-consumption proof\", \"no held-out qualification\"], \"passed\": true, \"positive_errors\": {\"U01_SYMBOL_WORD\": [], \"U02_PP_VS_PERCENT\": [], \"U03_PERCENT_VS_PP\": [], \"U04_PP_BP\": [], \"U05_BP_PP_HALF\": [], \"U06_PERCENT_CHANGE_VS_PP\": [], \"U07_LEVEL_VS_CHANGE\": [], \"U08_ENDPOINT_PP\": [], \"U09_ENDPOINT_RELATIVE\": [], \"U10_PREFIX_BOUNDARY\": [], \"U11_PP_ABBREV\": [], \"U12_BP_ABBREV\": [], \"U13_RATE_COUNT\": [], \"U14_MEASURE_MISMATCH\": [], \"U15_YEAR_MISMATCH\": [], \"U16_MULTIPLE_UNITS\": [], \"U17_NEGATED_COMPARATOR\": [], \"U18_EVENT_ONLY\": [], \"U19_EXPOSED_HOL14_SHAPE\": []}, \"version\": \"cal-rc3-quantity-unit-receipt-evaluator-v2-prep1\", \"weak_controls\": {\"conversion_without_measure\": {\"case\": \"U14_MEASURE_MISMATCH\", \"caught_for_intended_reason\": true, \"intended\": \"conversion_application\", \"problems\": [\"conversion_application\"]}, \"measure_loss\": {\"case\": \"U14_MEASURE_MISMATCH\", \"caught_for_intended_reason\": true, \"intended\": \"evidence_measure_binding\", \"problems\": [\"evidence_measure_binding\"]}, \"missing_consumed_span\": {\"case\": \"U01_SYMBOL_WORD\", \"caught_for_intended_reason\": true, \"intended\": \"claim_consumed_missing\", \"problems\": [\"claim_consumed_missing\"]}, \"negation_loss\": {\"case\": \"U17_NEGATED_COMPARATOR\", \"caught_for_intended_reason\": true, \"intended\": \"evidence_comparator_negation\", \"problems\": [\"evidence_comparator_negation\"]}, \"one_endpoint_not_consumed\": {\"case\": \"U08_ENDPOINT_PP\", \"caught_for_intended_reason\": true, \"intended\": \"evidence_consumed_anchor_missing\", \"problems\": [\"evidence_consumed_anchor_missing\"]}, \"percent_prefix_inside_percentage\": {\"case\": \"U02_PP_VS_PERCENT\", \"caught_for_intended_reason\": true, \"intended\": \"claim_lexical_unit_span_or_identity\", \"problems\": [\"claim_lexical_unit_span_or_identity\"]}, \"role_loss\": {\"case\": \"U04_PP_BP\", \"caught_for_intended_reason\": true, \"intended\": \"claim_quantity_role\", \"problems\": [\"claim_quantity_role\"]}, \"whole_sentence_unit\": {\"case\": \"U01_SYMBOL_WORD\", \"caught_for_intended_reason\": true, \"intended\": \"claim_lexical_unit_span_or_identity\", \"problems\": [\"claim_lexical_unit_span_or_identity\"]}, \"wrong_quantity_value\": {\"case\": \"U16_MULTIPLE_UNITS\", \"caught_for_intended_reason\": true, \"intended\": \"evidence_numeric_binding\", \"problems\": [\"evidence_numeric_binding\"]}, \"year_scope_loss\": {\"case\": \"U15_YEAR_MISMATCH\", \"caught_for_intended_reason\": true, \"intended\": \"evidence_time_scope\", \"problems\": [\"evidence_time_scope\"]}}}\n",
+      "stdout_sha256": "79f97b72290719c0b9e7f420a1a3b5c6111cbd14e41cb88216f1a10627d88e4e"
+    },
+    "v3_candidate": {
+      "command": [
+        "python3",
+        "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_basis_tests_v3.py",
+        "--adapter",
+        "research/cal_quantity_unit_development_d1_20261103/candidate_adapter.py"
+      ],
+      "exit_code": 1,
+      "public_path_normalization": "checkout prefix only; raw stream hashes retained",
+      "result": {
+        "candidate_executed": true,
+        "errors": {
+          "U01_SYMBOL_WORD": [],
+          "U02_PP_VS_PERCENT": [],
+          "U03_PERCENT_VS_PP": [],
+          "U04_PP_BP": [],
+          "U05_BP_PP_HALF": [],
+          "U06_PERCENT_CHANGE_VS_PP": [],
+          "U07_LEVEL_VS_CHANGE": [
+            "evidence_measure_binding",
+            "evidence_measure_semantics",
+            "refusal_reason"
+          ],
+          "U08_ENDPOINT_PP": [],
+          "U09_ENDPOINT_RELATIVE": [],
+          "U10_PREFIX_BOUNDARY": [],
+          "U11_PP_ABBREV": [],
+          "U12_BP_ABBREV": [],
+          "U13_RATE_COUNT": [],
+          "U14_MEASURE_MISMATCH": [],
+          "U15_YEAR_MISMATCH": [],
+          "U16_MULTIPLE_UNITS": [],
+          "U17_NEGATED_COMPARATOR": [],
+          "U18_EVENT_ONLY": [],
+          "U19_EXPOSED_HOL14_SHAPE": []
+        },
+        "evidence_class": "EXPOSED_DEVELOPMENT_ONLY",
+        "fresh_generalization": "NOT_ESTABLISHED",
+        "passed": false,
+        "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"candidate_executed\": true, \"errors\": {\"U01_SYMBOL_WORD\": [], \"U02_PP_VS_PERCENT\": [], \"U03_PERCENT_VS_PP\": [], \"U04_PP_BP\": [], \"U05_BP_PP_HALF\": [], \"U06_PERCENT_CHANGE_VS_PP\": [], \"U07_LEVEL_VS_CHANGE\": [\"evidence_measure_binding\", \"evidence_measure_semantics\", \"refusal_reason\"], \"U08_ENDPOINT_PP\": [], \"U09_ENDPOINT_RELATIVE\": [], \"U10_PREFIX_BOUNDARY\": [], \"U11_PP_ABBREV\": [], \"U12_BP_ABBREV\": [], \"U13_RATE_COUNT\": [], \"U14_MEASURE_MISMATCH\": [], \"U15_YEAR_MISMATCH\": [], \"U16_MULTIPLE_UNITS\": [], \"U17_NEGATED_COMPARATOR\": [], \"U18_EVENT_ONLY\": [], \"U19_EXPOSED_HOL14_SHAPE\": []}, \"evidence_class\": \"EXPOSED_DEVELOPMENT_ONLY\", \"fresh_generalization\": \"NOT_ESTABLISHED\", \"passed\": false, \"version\": \"cal-rc3-quantity-basis-evaluator-v3-prep1\"}\n",
+      "stdout_sha256": "8676d6471310ac36701e40f046e55760004c27adcdfb63947b5139560feceb18"
+    },
+    "v3_selftest": {
+      "command": [
+        "python3",
+        "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_basis_tests_v3.py",
+        "--selftest"
+      ],
+      "exit_code": 0,
+      "public_path_normalization": "checkout prefix only; raw stream hashes retained",
+      "result": {
+        "candidate_executed": false,
+        "evidence_class": "EXPOSED_DEV_EVALUATOR_SELFTEST_ONLY",
+        "limits": [
+          "declared basis is not observed causal consumption",
+          "exact synthetic basis is not universal natural-language gold",
+          "no heldout labels, sources or candidate observed"
+        ],
+        "mutant_count": 10,
+        "mutants": {
+          "basis_claim_evidence_swap": {
+            "case_id": "U02_PP_VS_PERCENT",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "evidence_deciding_basis_identity"
+            ],
+            "intended": "evidence_deciding_basis_identity"
+          },
+          "decisive_basis_outside_consumed": {
+            "case_id": "U16_MULTIPLE_UNITS",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "evidence_basis_not_within_declared_consumption"
+            ],
+            "intended": "evidence_basis_not_within_declared_consumption"
+          },
+          "empty_basis": {
+            "case_id": "U04_PP_BP",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "claim_deciding_basis_identity"
+            ],
+            "intended": "claim_deciding_basis_identity"
+          },
+          "false_consumption_certainty": {
+            "case_id": "U01_SYMBOL_WORD",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "consumption_independence_overclaim"
+            ],
+            "intended": "consumption_independence_overclaim"
+          },
+          "missing_negation": {
+            "case_id": "U17_NEGATED_COMPARATOR",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "evidence_deciding_basis_identity"
+            ],
+            "intended": "evidence_deciding_basis_identity"
+          },
+          "missing_year_qualifier": {
+            "case_id": "U15_YEAR_MISMATCH",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "claim_deciding_basis_identity"
+            ],
+            "intended": "claim_deciding_basis_identity"
+          },
+          "numeric_only_basis": {
+            "case_id": "U01_SYMBOL_WORD",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "claim_deciding_basis_identity"
+            ],
+            "intended": "claim_deciding_basis_identity"
+          },
+          "one_endpoint_omitted": {
+            "case_id": "U08_ENDPOINT_PP",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "evidence_deciding_basis_identity"
+            ],
+            "intended": "evidence_deciding_basis_identity"
+          },
+          "whole_sentence_basis": {
+            "case_id": "U01_SYMBOL_WORD",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "claim_deciding_basis_identity"
+            ],
+            "intended": "claim_deciding_basis_identity"
+          },
+          "wrong_measure_clause": {
+            "case_id": "U16_MULTIPLE_UNITS",
+            "caught_for_intended_reason": true,
+            "failures": [
+              "evidence_deciding_basis_identity"
+            ],
+            "intended": "evidence_deciding_basis_identity"
+          }
+        },
+        "passed": true,
+        "positive_cases": 19,
+        "positive_failures": {
+          "U01_SYMBOL_WORD": [],
+          "U02_PP_VS_PERCENT": [],
+          "U03_PERCENT_VS_PP": [],
+          "U04_PP_BP": [],
+          "U05_BP_PP_HALF": [],
+          "U06_PERCENT_CHANGE_VS_PP": [],
+          "U07_LEVEL_VS_CHANGE": [],
+          "U08_ENDPOINT_PP": [],
+          "U09_ENDPOINT_RELATIVE": [],
+          "U10_PREFIX_BOUNDARY": [],
+          "U11_PP_ABBREV": [],
+          "U12_BP_ABBREV": [],
+          "U13_RATE_COUNT": [],
+          "U14_MEASURE_MISMATCH": [],
+          "U15_YEAR_MISMATCH": [],
+          "U16_MULTIPLE_UNITS": [],
+          "U17_NEGATED_COMPARATOR": [],
+          "U18_EVENT_ONLY": [],
+          "U19_EXPOSED_HOL14_SHAPE": []
+        },
+        "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+      },
+      "stderr": "",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "{\"candidate_executed\": false, \"evidence_class\": \"EXPOSED_DEV_EVALUATOR_SELFTEST_ONLY\", \"limits\": [\"declared basis is not observed causal consumption\", \"exact synthetic basis is not universal natural-language gold\", \"no heldout labels, sources or candidate observed\"], \"mutant_count\": 10, \"mutants\": {\"basis_claim_evidence_swap\": {\"case_id\": \"U02_PP_VS_PERCENT\", \"caught_for_intended_reason\": true, \"failures\": [\"evidence_deciding_basis_identity\"], \"intended\": \"evidence_deciding_basis_identity\"}, \"decisive_basis_outside_consumed\": {\"case_id\": \"U16_MULTIPLE_UNITS\", \"caught_for_intended_reason\": true, \"failures\": [\"evidence_basis_not_within_declared_consumption\"], \"intended\": \"evidence_basis_not_within_declared_consumption\"}, \"empty_basis\": {\"case_id\": \"U04_PP_BP\", \"caught_for_intended_reason\": true, \"failures\": [\"claim_deciding_basis_identity\"], \"intended\": \"claim_deciding_basis_identity\"}, \"false_consumption_certainty\": {\"case_id\": \"U01_SYMBOL_WORD\", \"caught_for_intended_reason\": true, \"failures\": [\"consumption_independence_overclaim\"], \"intended\": \"consumption_independence_overclaim\"}, \"missing_negation\": {\"case_id\": \"U17_NEGATED_COMPARATOR\", \"caught_for_intended_reason\": true, \"failures\": [\"evidence_deciding_basis_identity\"], \"intended\": \"evidence_deciding_basis_identity\"}, \"missing_year_qualifier\": {\"case_id\": \"U15_YEAR_MISMATCH\", \"caught_for_intended_reason\": true, \"failures\": [\"claim_deciding_basis_identity\"], \"intended\": \"claim_deciding_basis_identity\"}, \"numeric_only_basis\": {\"case_id\": \"U01_SYMBOL_WORD\", \"caught_for_intended_reason\": true, \"failures\": [\"claim_deciding_basis_identity\"], \"intended\": \"claim_deciding_basis_identity\"}, \"one_endpoint_omitted\": {\"case_id\": \"U08_ENDPOINT_PP\", \"caught_for_intended_reason\": true, \"failures\": [\"evidence_deciding_basis_identity\"], \"intended\": \"evidence_deciding_basis_identity\"}, \"whole_sentence_basis\": {\"case_id\": \"U01_SYMBOL_WORD\", \"caught_for_intended_reason\": true, \"failures\": [\"claim_deciding_basis_identity\"], \"intended\": \"claim_deciding_basis_identity\"}, \"wrong_measure_clause\": {\"case_id\": \"U16_MULTIPLE_UNITS\", \"caught_for_intended_reason\": true, \"failures\": [\"evidence_deciding_basis_identity\"], \"intended\": \"evidence_deciding_basis_identity\"}}, \"passed\": true, \"positive_cases\": 19, \"positive_failures\": {\"U01_SYMBOL_WORD\": [], \"U02_PP_VS_PERCENT\": [], \"U03_PERCENT_VS_PP\": [], \"U04_PP_BP\": [], \"U05_BP_PP_HALF\": [], \"U06_PERCENT_CHANGE_VS_PP\": [], \"U07_LEVEL_VS_CHANGE\": [], \"U08_ENDPOINT_PP\": [], \"U09_ENDPOINT_RELATIVE\": [], \"U10_PREFIX_BOUNDARY\": [], \"U11_PP_ABBREV\": [], \"U12_BP_ABBREV\": [], \"U13_RATE_COUNT\": [], \"U14_MEASURE_MISMATCH\": [], \"U15_YEAR_MISMATCH\": [], \"U16_MULTIPLE_UNITS\": [], \"U17_NEGATED_COMPARATOR\": [], \"U18_EVENT_ONLY\": [], \"U19_EXPOSED_HOL14_SHAPE\": []}, \"version\": \"cal-rc3-quantity-basis-evaluator-v3-prep1\"}\n",
+      "stdout_sha256": "4d602101f6a1fcacc0cc9c87ba090f95a4f8355945a89ac5e7cf9826ff3ed0f2"
+    }
+  },
+  "evidence_class": "INFORMED_EXPOSED_DEVELOPMENT_ONLY",
+  "fresh_generalization": "NOT_ESTABLISHED",
+  "implementation": "CPython",
+  "pinned_inputs": {
+    "research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/candidate_adapter.py": {
+      "git_blob": "559306c69b56ad1f9725193a6188f2e986cf3a3b",
+      "sha256": "931d8f23b5921ee51d90f3f44234f6ad793c07383647da56ea7901956066d362"
+    },
+    "research/cal_v1_quantity_comparator_binding_rc2_20261004/candidate/quantity_binding.py": {
+      "git_blob": "05b1e7616cac8401656c8e777a6395f88d705a8c",
+      "sha256": "ca127d9bf65219c658a16f42f92a2d4c413cca545a3866d626802fa13df70841"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/DEVELOPMENT_CASES.json": {
+      "git_blob": "ac467ee96b879612ad686caa741afcfdcc4f7c00",
+      "sha256": "152ee444ae3894b809e0f674993552694809c2f63b4250b58bbc7ee484f93261"
+    },
+    "research/cal_v1_quantity_unit_boundary_rc3_20261004/unit_contract_tests.py": {
+      "git_blob": "3cd87c389af76fd46225324050ce132279a83800",
+      "sha256": "22a1a2aa5ef763b3bd4d1000fe0b4047a8b73fd517f4454f35414fc26134ecd4"
+    },
+    "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_basis_tests_v3.py": {
+      "git_blob": "6ff72d0576e3366ed94efa9a1113ad2c681d0d78",
+      "sha256": "4714c6a28de3b23c73c6d3ff96a61922e1b017a17d2ec516bbe2df77efec22f1"
+    },
+    "research/cal_v1_quantity_unit_source_evaluator_s1_20261013/receipt_contract_tests_v2.py": {
+      "git_blob": "85ddcabfa24d371d9905ed98c8eba7f6dd84aa6e",
+      "sha256": "c46c7ef7d67f058a77fc265eb19a863c26b4ae0e2d2fd6e58fca03018845aeb3"
+    }
+  },
+  "python": "3.12.14",
+  "relation_comparison": {
+    "baseline": {
+      "cases": 19,
+      "exact_relation_match": 6,
+      "false_refutation": 0,
+      "false_support": 4,
+      "missed_warranted_decisions": 7,
+      "rows": [
+        {
+          "actual_relation": "not_applicable",
+          "expected_relation": "supports",
+          "id": "U01_SYMBOL_WORD"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "unresolved",
+          "id": "U02_PP_VS_PERCENT"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "unresolved",
+          "id": "U03_PERCENT_VS_PP"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "supports",
+          "id": "U04_PP_BP"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "supports",
+          "id": "U05_BP_PP_HALF"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U06_PERCENT_CHANGE_VS_PP"
+        },
+        {
+          "actual_relation": "not_applicable",
+          "expected_relation": "unresolved",
+          "id": "U07_LEVEL_VS_CHANGE"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "supports",
+          "id": "U08_ENDPOINT_PP"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "supports",
+          "id": "U09_ENDPOINT_RELATIVE"
+        },
+        {
+          "actual_relation": "not_applicable",
+          "expected_relation": "unresolved",
+          "id": "U10_PREFIX_BOUNDARY"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "unresolved",
+          "id": "U11_PP_ABBREV"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "supports",
+          "id": "U12_BP_ABBREV"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U13_RATE_COUNT"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U14_MEASURE_MISMATCH"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U15_YEAR_MISMATCH"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "refutes",
+          "id": "U16_MULTIPLE_UNITS"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "refutes",
+          "id": "U17_NEGATED_COMPARATOR"
+        },
+        {
+          "actual_relation": "not_applicable",
+          "expected_relation": "not_applicable",
+          "id": "U18_EVENT_ONLY"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "unresolved",
+          "id": "U19_EXPOSED_HOL14_SHAPE"
+        }
+      ]
+    },
+    "candidate": {
+      "cases": 19,
+      "exact_relation_match": 19,
+      "false_refutation": 0,
+      "false_support": 0,
+      "missed_warranted_decisions": 0,
+      "rows": [
+        {
+          "actual_relation": "supports",
+          "expected_relation": "supports",
+          "id": "U01_SYMBOL_WORD"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U02_PP_VS_PERCENT"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U03_PERCENT_VS_PP"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "supports",
+          "id": "U04_PP_BP"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "supports",
+          "id": "U05_BP_PP_HALF"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U06_PERCENT_CHANGE_VS_PP"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U07_LEVEL_VS_CHANGE"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "supports",
+          "id": "U08_ENDPOINT_PP"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "supports",
+          "id": "U09_ENDPOINT_RELATIVE"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U10_PREFIX_BOUNDARY"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U11_PP_ABBREV"
+        },
+        {
+          "actual_relation": "supports",
+          "expected_relation": "supports",
+          "id": "U12_BP_ABBREV"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U13_RATE_COUNT"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U14_MEASURE_MISMATCH"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U15_YEAR_MISMATCH"
+        },
+        {
+          "actual_relation": "refutes",
+          "expected_relation": "refutes",
+          "id": "U16_MULTIPLE_UNITS"
+        },
+        {
+          "actual_relation": "refutes",
+          "expected_relation": "refutes",
+          "id": "U17_NEGATED_COMPARATOR"
+        },
+        {
+          "actual_relation": "not_applicable",
+          "expected_relation": "not_applicable",
+          "id": "U18_EVENT_ONLY"
+        },
+        {
+          "actual_relation": "unresolved",
+          "expected_relation": "unresolved",
+          "id": "U19_EXPOSED_HOL14_SHAPE"
+        }
+      ]
+    }
+  },
+  "review_controls_present": false,
+  "runtime_qualification": "NOT_RUN",
+  "schema": "cal-quantity-unit-d1-exposed-development-v1",
+  "scientific_qualification": "NOT_RUN"
+}
