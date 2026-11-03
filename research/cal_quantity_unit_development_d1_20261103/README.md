@@ -35,15 +35,42 @@ selection among measures, contrary evidence, and truthful spans. Development
 checks may iterate; every observed failed check is retained in the development
 log. No fresh-source or held-out success is claimed.
 
-## Implementation boundary
+## Implementation and boundary
 
-The candidate will parse claim and evidence independently. It will keep all
-parsed source observations before selecting compatible comparisons. Exact
-percentage-point/basis-point conversions and endpoint-derived absolute and
-relative changes retain their identities. Unsupported syntax and ambiguity
-remain explicit. Candidate runtime must not import evaluators or labels.
+`candidate_adapter.py` exports `analyze(claim, evidence)`. The candidate is a
+standard-library-only, deterministic instrument with no runtime file, network,
+model, evaluator, or label access. It independently parses each original input
+before comparing the resulting observations. This is a bounded grammar, not a
+general natural-language parser.
 
-Changes are confined to this new research directory and a dedicated optional
+It distinguishes percent levels, relative percent change, percentage points,
+and basis points; `pp` remains an unregistered ambiguous abbreviation. Values
+use exact fractions constructed from decimal strings. A change from one percent
+level to another derives absolute and, for a positive starting level, relative
+change separately. The registered absolute conversion is 100 bp = 1 percentage
+point. Units, property, measurement aspect, time scope, comparator, negation,
+original text spans, and input hashes remain in the receipts.
+
+Evidence entails a claim only when its compatible numeric constraints are a
+subset of the claim's constraints. Disjoint constraints refute; overlap remains
+unresolved. Contradictory observations for the same property, scope and aspect
+produce `material_conflict`. Selection uses those declared properties before
+numeric values, and retains the complete independent source observations.
+
+The grammar recognizes simple level/bound clauses, increases/decreases, and
+percent endpoints, with a single explicit year and limited clause separators.
+Unparsed clauses block a decisive result. Conditional or modal claims, tables,
+anaphora, general numeric counts, compound claims, and richer temporal or
+linguistic scope are not qualified. Missing scope and explicit scope do not
+silently match. Abstention is an intended result for unsupported inputs.
+
+The older V2 pair format has an explicitly labeled property/aspect projection
+for level-versus-change comparisons. The source-local observations never change
+to satisfy that view. V3 spans declare the deciding text; neither those spans
+nor the full-input `consumed_spans` establish observed causal consumption.
+See `DEVELOPMENT_LOG.md` for the original U07 discrepancy and its correction.
+
+Changes are confined to this new research directory and a dedicated
 development workflow. Production `src/`, contracts, synthesis weights,
 Decision Engine, package versions, historical candidates and frozen cohorts
 remain unchanged. No calibration or held-out bodies/labels are opened.
@@ -67,7 +94,31 @@ this informed candidate or its results into the frozen S1 builder aperture.
 Any later evaluation of D1 needs its own explicit admission/protocol decision;
 it cannot inherit a blind-implementation claim from #214.
 
-## Initial state
+## Reproduction
 
-`DEVELOPMENT_IN_PROGRESS`; candidate and development results will be added to
-this same Draft PR. Scientific qualification remains `NOT_RUN`.
+From the repository root with Python 3.12:
+
+```sh
+python3 research/cal_quantity_unit_development_d1_20261103/run_development.py \
+  --out /tmp/cal-quantity-unit-d1-new-result
+```
+
+Use a previously nonexistent output directory. The runner refuses overwrites,
+verifies all six reused input Git blobs, runs the unchanged V1/V2/V3 self-tests
+and candidate checks, compares the predecessor, and executes development
+controls. It records code/input hashes, interpreter version, exit statuses,
+stream hashes, candidate receipts, and the bounded result. Public stdout/stderr
+replace only the local checkout prefix; raw stream hashes remain recorded.
+
+The dedicated workflow performs the same bounded check with a sparse checkout
+and read-only repository permissions. Its artifacts are development evidence.
+`evidence/development_01/` preserves the initial exact-input V2/V3 failure;
+later evidence directories never replace it. Development iteration is allowed
+here and must not be represented as a fresh scientific qualification attempt.
+
+## Current disposition
+
+The candidate is implemented as a Draft research PR. Development results and
+review are recorded with their exact subject identities. Scientific and runtime
+qualification remain `NOT_RUN`; blind implementation and fresh generalization
+remain unestablished. A future D1 evaluation needs its own reviewed protocol.

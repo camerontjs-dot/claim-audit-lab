@@ -119,6 +119,11 @@ class Observation:
     span: tuple[int, int]
     derivation: str | None = None
     ambiguity: str | None = None
+    property_name: str = ""
+
+    @property
+    def is_change(self) -> bool:
+        return self.comparator.startswith(("increase", "decrease"))
 
     def canonical(self) -> tuple[Interval, ...]:
         value = self.value / 100 if self.role == "basis_point_change" else self.value
@@ -126,7 +131,9 @@ class Observation:
 
     def public(self) -> dict[str, Any]:
         return {
-            "measure": self.measure, "time_scope": list(self.years),
+            "measure": self.measure, "property_name": self.property_name,
+            "measurement_aspect": "change" if self.is_change else "level_or_bound",
+            "time_scope": list(self.years),
             "lexical_unit": self.unit, "quantity_role": self.role,
             "comparator": self.comparator, "exact_value": str(self.value),
             "basis_span": list(self.span), "derivation": self.derivation,
@@ -180,13 +187,13 @@ def _parse_clause(text: str, offset: int) -> list[Observation]:
             cmp = {"": "level_eq", "equal to": "level_eq", "less than": "less_than", "more than": "more_than", "greater than": "more_than", "at least": "not_less_than", "at most": "not_more_than"}[cmp_text]
             if m.group("neg"):
                 cmp = {"level_eq": "not_equal", "less_than": "not_less_than", "more_than": "not_more_than", "not_less_than": "less_than", "not_more_than": "more_than"}[cmp]
-            return [Observation(measure, years, unit, role, cmp, value, span, ambiguity=ambiguity)]
+            return [Observation(measure, years, unit, role, cmp, value, span, ambiguity=ambiguity, property_name=subject)]
         up = m.group("verb").casefold() in INCREASE
         cmp = "increase" if up else "decrease"
         if kind == "change":
             if value <= 0:
                 return []
-            return [Observation(measure, years, unit, role, cmp, value if up else -value, span, ambiguity=ambiguity)]
+            return [Observation(measure, years, unit, role, cmp, value if up else -value, span, ambiguity=ambiguity, property_name=subject)]
         unit2 = unit_identity(m.group("u2"))
         end = number(m.group("n2"))
         if unit != "percent" or unit2 != "percent":
@@ -195,10 +202,10 @@ def _parse_clause(text: str, offset: int) -> list[Observation]:
         if (up and delta <= 0) or (not up and delta >= 0):
             return []
         cmp += "_from_to"
-        result = [Observation(measure, years, "percent", "percentage_point_change", cmp, delta, span, "endpoints_to_pp")]
+        result = [Observation(measure, years, "percent", "percentage_point_change", cmp, delta, span, "endpoints_to_pp", property_name=subject)]
         # Relative change at zero/negative baseline is deliberately unsupported.
         if value > 0:
-            result.append(Observation(measure, years, "percent", "percent_relative_change", cmp, delta / value * 100, span, "endpoints_to_relative_percent"))
+            result.append(Observation(measure, years, "percent", "percent_relative_change", cmp, delta / value * 100, span, "endpoints_to_relative_percent", property_name=subject))
         return result
     return []
 
@@ -247,22 +254,25 @@ def _conversions(claim: Observation, evidence: Observation, cdoc: Document, edoc
 def _compatibility(claim: Observation, evidence: Observation) -> str | None:
     if claim.ambiguity or evidence.ambiguity:
         return "unknown_abbreviation"
-    if claim.measure != evidence.measure:
+    if claim.property_name != evidence.property_name:
         return "measure_mismatch"
     if claim.years != evidence.years:
         return "year_scope_mismatch"
+    if claim.is_change != evidence.is_change:
+        return "unit_role_mismatch"
     if _family(claim.role) != _family(evidence.role):
         is_explicit_change = claim.comparator.startswith(("increase", "decrease")) or evidence.comparator.startswith(("increase", "decrease"))
         return "unit_role_mismatch" if is_explicit_change or claim.unit == evidence.unit else "unit_mismatch"
     return None
 
 
-def _side(doc: Document, row: Observation | None, not_applicable: bool) -> dict[str, Any]:
+def _side(doc: Document, row: Observation | None, not_applicable: bool,
+          property_projection: bool = False) -> dict[str, Any]:
     return {
         "unit_tokens": [] if not_applicable else list(doc.units),
         "numeric_tokens": [] if not_applicable else list(doc.numbers),
         "quantity_role": "not_applicable" if not_applicable else (row.role if row else "unknown"),
-        "measure": row.measure if row and not not_applicable else None,
+        "measure": (row.property_name if property_projection else row.measure) if row and not not_applicable else None,
         "comparator": "not_applicable" if not_applicable else (row.comparator if row else "unknown"),
         "time_scope": list(row.years) if row and not not_applicable else [],
         "consumed_spans": [] if not_applicable or not doc.text else [[0, len(doc.text)]],
@@ -287,9 +297,9 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
         reason = "unsupported_or_missing_evidence"
     else:
         assert c is not None
-        same_measure = [r for r in edoc.observations if r.measure == c.measure]
+        same_measure = [r for r in edoc.observations if r.property_name == c.property_name]
         same_scope = [r for r in same_measure if r.years == c.years]
-        comparable = [r for r in same_scope if _family(r.role) == _family(c.role)]
+        comparable = [r for r in same_scope if _family(r.role) == _family(c.role) and r.is_change == c.is_change]
         # Select by declared measure/scope/role, never by desired label/value.
         candidates = comparable or same_scope or same_measure or list(edoc.observations)
         e = candidates[0]
@@ -313,7 +323,12 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
     na = relation == "not_applicable"
     if na:
         c = e = None
-    cs, es = _side(cdoc, c, na), _side(edoc, e, na)
+    # V2's pair receipt names the common property when level and change differ.
+    # This is an explicit presentation projection AFTER independent parsing.
+    # The source-local property, measure and measurement aspect remain intact
+    # in source_observations; a projection never changes the decision inputs.
+    property_projection = bool(c and e and c.property_name == e.property_name and c.is_change != e.is_change)
+    cs, es = _side(cdoc, c, na, property_projection), _side(edoc, e, na, property_projection)
     conversion = available[0] if len(available) == 1 else None
     conversion_applied = conversion if relation in {"supports", "refutes"} and conversion != "bp_lexical_variant" else None
     conversion_rejected = reason if available and reason in {"measure_mismatch", "year_scope_mismatch", "unit_role_mismatch", "unit_mismatch", "unknown_abbreviation"} else None
@@ -352,6 +367,10 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
         },
         "unparsed_spans": {"claim": [list(s) for s in cdoc.unparsed], "evidence": [list(s) for s in edoc.unparsed]},
         "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+        "receipt_projection": {
+            "measure_style": "common_property_with_distinct_aspects" if property_projection else "source_measure",
+            "source_observations_unchanged": True,
+        },
     }
 
 

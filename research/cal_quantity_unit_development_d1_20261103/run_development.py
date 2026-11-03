@@ -80,6 +80,7 @@ def main() -> int:
     reviewer = HERE / "test_review_controls.py"
     if reviewer.exists():
         commands["review_controls"] = run([f"{REL}/test_review_controls.py"])
+    commands["interval_controls"] = run([f"{REL}/test_interval_controls.py"])
     baseline = load(REPO / RC2 / "candidate_adapter.py", "d1_exposed_rc2_baseline")
     candidate = load(HERE / "candidate_adapter.py", "d1_candidate_comparison")
     cases = json.loads((REPO / RC3 / "DEVELOPMENT_CASES.json").read_text())["cases"]
