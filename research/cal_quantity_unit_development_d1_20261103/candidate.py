@@ -239,6 +239,24 @@ def _family(role: str) -> str:
     return "absolute_percentage_change" if role in ABSOLUTE else role
 
 
+def source_conflicts(doc: Document) -> tuple[tuple[Observation, ...], ...]:
+    """Find inconsistent source frames without consulting a claim or its unit."""
+    groups: dict[tuple, list[Observation]] = {}
+    for row in doc.observations:
+        if row.ambiguity:
+            continue
+        key = (row.property_name, row.years, row.is_change, _family(row.role))
+        groups.setdefault(key, []).append(row)
+    conflicts = []
+    for rows in groups.values():
+        common = rows[0].canonical()
+        for row in rows[1:]:
+            common = intersect(common, row.canonical())
+        if not common:
+            conflicts.append(tuple(rows))
+    return tuple(conflicts)
+
+
 def _conversions(claim: Observation, evidence: Observation, cdoc: Document, edoc: Document) -> list[str]:
     if evidence.derivation:
         return [evidence.derivation]
@@ -283,10 +301,14 @@ def _side(doc: Document, row: Observation | None, not_applicable: bool,
 def analyze(claim: str, evidence: str) -> dict[str, Any]:
     """Assess one original pair. Unsupported or conflicting inputs abstain."""
     cdoc, edoc = parse_document(claim), parse_document(evidence)
+    # Check the complete evidence in every parsed quantity family first. An
+    # endpoint supplies absolute and relative changes independently; choosing
+    # one claim family must not hide a contradiction in the other family.
+    conflicts = source_conflicts(edoc)
     c = cdoc.observations[0] if cdoc.observations else None
     e = edoc.observations[0] if edoc.observations else None
     selected: list[Observation] = []
-    available: list[str] = []
+    conflict_basis: list[Observation] = []
     reason: str | None = None
     relation = "unresolved"
     if not cdoc.quantitative and not cdoc.observations:
@@ -303,16 +325,21 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
         # Select by declared measure/scope/role, never by desired label/value.
         candidates = comparable or same_scope or same_measure or list(edoc.observations)
         e = candidates[0]
-        available = _conversions(c, e, cdoc, edoc)
         reason = _compatibility(c, e)
         if any(r.ambiguity for r in same_scope):
             reason = "unknown_abbreviation"
         if reason is None:
             selected = comparable
+            conflict_basis = [
+                row for group in conflicts
+                if group[0].property_name == c.property_name
+                and group[0].years == c.years and group[0].is_change == c.is_change
+                for row in group
+            ]
             common = selected[0].canonical()
             for row in selected[1:]:
                 common = intersect(common, row.canonical())
-            if not common:
+            if conflict_basis or not common:
                 reason = "material_conflict"
             elif entails(common, c.canonical()):
                 relation = "supports"
@@ -329,10 +356,23 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
     # in source_observations; a projection never changes the decision inputs.
     property_projection = bool(c and e and c.property_name == e.property_name and c.is_change != e.is_change)
     cs, es = _side(cdoc, c, na, property_projection), _side(edoc, e, na, property_projection)
+    conversion_rows = selected or ([e] if e else [])
+    conversion_provenance = [
+        {"evidence_basis_span": list(row.span),
+         "available_rules": _conversions(c, row, cdoc, edoc)}
+        for row in conversion_rows if c is not None
+    ]
+    available = list(dict.fromkeys(rule for item in conversion_provenance for rule in item["available_rules"]))
+    decisive = relation in {"supports", "refutes"}
+    for item in conversion_provenance:
+        item["applied_rules"] = [rule for rule in item["available_rules"] if decisive and rule != "bp_lexical_variant"]
+    applied_rules = list(dict.fromkeys(rule for item in conversion_provenance for rule in item["applied_rules"]))
     conversion = available[0] if len(available) == 1 else None
-    conversion_applied = conversion if relation in {"supports", "refutes"} and conversion != "bp_lexical_variant" else None
-    conversion_rejected = reason if available and reason in {"measure_mismatch", "year_scope_mismatch", "unit_role_mismatch", "unit_mismatch", "unknown_abbreviation"} else None
-    evidence_basis = selected or ([e] if e else [])
+    # V2's legacy scalar represents exactly one rule. The explicit array and
+    # per-observation provenance retain every rule when there is more than one.
+    conversion_applied = applied_rules[0] if len(applied_rules) == 1 else None
+    conversion_rejected = reason if available and not decisive else None
+    evidence_basis = (selected + conflict_basis) or ([e] if e else [])
     basis = {
         "claim": [list(c.span)] if c else [],
         "evidence": [list(s) for s in dict.fromkeys(r.span for r in evidence_basis)],
@@ -352,7 +392,8 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
             "input_scope": {"claim": [0, len(claim)], "evidence": [0, len(evidence)]},
             "quantities": {"claim": cs, "evidence": es},
             "unresolved_reason": reason,
-            "conversion_rule": {"available": available, "applied": conversion_applied, "rejected_reason": conversion_rejected},
+            "conversion_rule": {"available": available, "applied": conversion_applied,
+                                "applied_rules": applied_rules, "rejected_reason": conversion_rejected},
         },
         "receipt_v3": {
             "version": V3_VERSION,
@@ -365,13 +406,22 @@ def analyze(claim: str, evidence: str) -> dict[str, Any]:
             "claim": [r.public() for r in cdoc.observations],
             "evidence": [r.public() for r in edoc.observations],
         },
+        "source_conflicts": [
+            {"property_name": group[0].property_name, "time_scope": list(group[0].years),
+             "measurement_aspect": "change" if group[0].is_change else "level_or_bound",
+             "quantity_family": _family(group[0].role),
+             "observations": [row.public() for row in group]}
+            for group in conflicts
+        ],
+        "conversion_provenance": conversion_provenance,
         "unparsed_spans": {"claim": [list(s) for s in cdoc.unparsed], "evidence": [list(s) for s in edoc.unparsed]},
         "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
         "receipt_projection": {
             "measure_style": "common_property_with_distinct_aspects" if property_projection else "source_measure",
+            "conversion_style": "multiple_rules_in_provenance" if len(applied_rules) > 1 else "single_or_no_applied_rule",
             "source_observations_unchanged": True,
         },
     }
 
 
-__all__ = ["analyze", "parse_document", "INSTRUMENT_ID"]
+__all__ = ["analyze", "parse_document", "source_conflicts", "INSTRUMENT_ID"]

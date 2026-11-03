@@ -53,9 +53,15 @@ original text spans, and input hashes remain in the receipts.
 
 Evidence entails a claim only when its compatible numeric constraints are a
 subset of the claim's constraints. Disjoint constraints refute; overlap remains
-unresolved. Contradictory observations for the same property, scope and aspect
-produce `material_conflict`. Selection uses those declared properties before
-numeric values, and retains the complete independent source observations.
+unresolved. Before claim selection, source-only consistency checks cover every
+parsed quantity family. A contradiction in any family for the claim's property,
+scope and aspect produces `material_conflict`, including relative contradictions
+when the claim asks about absolute change. Conflicts about other properties are
+retained in `source_conflicts`. Selection uses declared properties before numeric
+values and retains the complete independent source observations. Conversion
+provenance covers every selected observation; the legacy scalar is populated
+only for a single applied rule, while `applied_rules` and per-observation
+provenance retain all rules when multiple conversions contribute.
 
 The grammar recognizes simple level/bound clauses, increases/decreases, and
 percent endpoints, with a single explicit year and limited clause separators.
