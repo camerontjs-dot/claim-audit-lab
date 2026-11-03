@@ -1,0 +1,3276 @@
+{
+  "U01_SYMBOL_WORD": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "rate",
+    "claim_unit": "percent_level",
+    "claim_unit_spans": [
+      [
+        15,
+        16
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "rate",
+    "evidence_unit": "percent_level",
+    "evidence_unit_spans": [
+      [
+        16,
+        23
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "5d5c41256f94c90cfe534b7a1bf785ab7ec9945573f9b6b36435227b22ad4ef9",
+      "evidence": "1f3ad7cc01cc3943777d50666e899c4ef0d33e929001b061c01fe061f1a97d98"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          17
+        ],
+        "evidence": [
+          0,
+          24
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "level_eq",
+          "consumed_spans": [
+            [
+              0,
+              17
+            ]
+          ],
+          "measure": "rate",
+          "numeric_tokens": [
+            {
+              "span": [
+                13,
+                15
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_level",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                15,
+                16
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "level_eq",
+          "consumed_spans": [
+            [
+              0,
+              24
+            ]
+          ],
+          "measure": "rate",
+          "numeric_tokens": [
+            {
+              "span": [
+                13,
+                15
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_level",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                16,
+                23
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            16
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            23
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "supports",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            16
+          ],
+          "comparator": "level_eq",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "rate",
+          "quantity_role": "percent_level",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            23
+          ],
+          "comparator": "level_eq",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "rate",
+          "quantity_role": "percent_level",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U02_PP_VS_PERCENT": {
+    "abstention_cause": "unit_mismatch",
+    "ambiguity": true,
+    "claim_measure": "margin",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        28,
+        45
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "margin",
+    "evidence_unit": "percent_level",
+    "evidence_unit_spans": [
+      [
+        28,
+        35
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "ef6ac98caf49c85eccf9259fa78bff6bd5f01cf184f5684a4c98159410760813",
+      "evidence": "55e46bf9152cd5071e174f53578a21abca37a98b214128ca2a359a2ebe9969ca"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          46
+        ],
+        "evidence": [
+          0,
+          36
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "less_than",
+          "consumed_spans": [
+            [
+              0,
+              46
+            ]
+          ],
+          "measure": "margin",
+          "numeric_tokens": [
+            {
+              "span": [
+                25,
+                27
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                28,
+                45
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "less_than",
+          "consumed_spans": [
+            [
+              0,
+              36
+            ]
+          ],
+          "measure": "margin",
+          "numeric_tokens": [
+            {
+              "span": [
+                25,
+                27
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_level",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                28,
+                35
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "unit_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            45
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            35
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            45
+          ],
+          "comparator": "less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percentage_point",
+          "measure": "margin",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            35
+          ],
+          "comparator": "less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "margin",
+          "quantity_role": "percent_level",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U03_PERCENT_VS_PP": {
+    "abstention_cause": "unit_mismatch",
+    "ambiguity": true,
+    "claim_measure": "margin",
+    "claim_unit": "percent_level",
+    "claim_unit_spans": [
+      [
+        28,
+        35
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "margin",
+    "evidence_unit": "percentage_point_change",
+    "evidence_unit_spans": [
+      [
+        28,
+        45
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "55e46bf9152cd5071e174f53578a21abca37a98b214128ca2a359a2ebe9969ca",
+      "evidence": "ef6ac98caf49c85eccf9259fa78bff6bd5f01cf184f5684a4c98159410760813"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          36
+        ],
+        "evidence": [
+          0,
+          46
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "less_than",
+          "consumed_spans": [
+            [
+              0,
+              36
+            ]
+          ],
+          "measure": "margin",
+          "numeric_tokens": [
+            {
+              "span": [
+                25,
+                27
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_level",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                28,
+                35
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "less_than",
+          "consumed_spans": [
+            [
+              0,
+              46
+            ]
+          ],
+          "measure": "margin",
+          "numeric_tokens": [
+            {
+              "span": [
+                25,
+                27
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                28,
+                45
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "unit_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            35
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            45
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            35
+          ],
+          "comparator": "less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "margin",
+          "quantity_role": "percent_level",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            45
+          ],
+          "comparator": "less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percentage_point",
+          "measure": "margin",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U04_PP_BP": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "rate change",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        24,
+        40
+      ]
+    ],
+    "claim_years": [],
+    "conversion": "100bp=1pp",
+    "evidence_measure": "rate change",
+    "evidence_unit": "basis_point_change",
+    "evidence_unit_spans": [
+      [
+        26,
+        38
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "5ed3031935b8d23acdd0d872d3f886b74a0c4b43c63fa18d7c0be236ea38837a",
+      "evidence": "43f9a9f53ad21c4d520933543685d394897b599f1030a5ca4b3de73211a3370f"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": "100bp=1pp",
+        "available": [
+          "100bp=1pp"
+        ],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          41
+        ],
+        "evidence": [
+          0,
+          39
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              41
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                22,
+                23
+              ],
+              "value": "1"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                24,
+                40
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              39
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                22,
+                25
+              ],
+              "value": "100"
+            }
+          ],
+          "quantity_role": "basis_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "basis_point",
+              "span": [
+                26,
+                38
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            40
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            38
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "supports",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            40
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "1",
+          "lexical_unit": "percentage_point",
+          "measure": "rate change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            38
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "100",
+          "lexical_unit": "basis_point",
+          "measure": "rate change",
+          "quantity_role": "basis_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U05_BP_PP_HALF": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "rate change",
+    "claim_unit": "basis_point_change",
+    "claim_unit_spans": [
+      [
+        25,
+        37
+      ]
+    ],
+    "claim_years": [],
+    "conversion": "100bp=1pp",
+    "evidence_measure": "rate change",
+    "evidence_unit": "percentage_point_change",
+    "evidence_unit_spans": [
+      [
+        26,
+        43
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "42f79210d624c25a7862734e7efa1bf6fcd72ea48d9c5dc1db4b59d5051f2ea3",
+      "evidence": "033f852f046422cd2dbc3dca8cef1ea2b83512e0afe4825ac1aaf2a216340779"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": "100bp=1pp",
+        "available": [
+          "100bp=1pp"
+        ],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          38
+        ],
+        "evidence": [
+          0,
+          44
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              38
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                22,
+                24
+              ],
+              "value": "50"
+            }
+          ],
+          "quantity_role": "basis_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "basis_point",
+              "span": [
+                25,
+                37
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              44
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                22,
+                25
+              ],
+              "value": "0.5"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                26,
+                43
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            37
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            43
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "supports",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            37
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "50",
+          "lexical_unit": "basis_point",
+          "measure": "rate change",
+          "quantity_role": "basis_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            43
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "1/2",
+          "lexical_unit": "percentage_point",
+          "measure": "rate change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U06_PERCENT_CHANGE_VS_PP": {
+    "abstention_cause": "unit_role_mismatch",
+    "ambiguity": true,
+    "claim_measure": "share change",
+    "claim_unit": "percent_relative_change",
+    "claim_unit_spans": [
+      [
+        25,
+        32
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "share change",
+    "evidence_unit": "percentage_point_change",
+    "evidence_unit_spans": [
+      [
+        25,
+        42
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "ed83a44603b563ed39ee5898c54c8d8e54e422e4d7b4e40b890c90dc2dbd9e4d",
+      "evidence": "d1780529a642587a76e64ba326dcfbd96b6ef6ba94a055668b6568436abb58d2"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          33
+        ],
+        "evidence": [
+          0,
+          43
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              33
+            ]
+          ],
+          "measure": "share change",
+          "numeric_tokens": [
+            {
+              "span": [
+                23,
+                24
+              ],
+              "value": "2"
+            }
+          ],
+          "quantity_role": "percent_relative_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                25,
+                32
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              43
+            ]
+          ],
+          "measure": "share change",
+          "numeric_tokens": [
+            {
+              "span": [
+                23,
+                24
+              ],
+              "value": "2"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                25,
+                42
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "unit_role_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            32
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            42
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            32
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "2",
+          "lexical_unit": "percent",
+          "measure": "share change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            42
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "2",
+          "lexical_unit": "percentage_point",
+          "measure": "share change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U07_LEVEL_VS_CHANGE": {
+    "abstention_cause": "measure_mismatch",
+    "ambiguity": true,
+    "claim_measure": "rate",
+    "claim_unit": "percent_level",
+    "claim_unit_spans": [
+      [
+        15,
+        22
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "rate change",
+    "evidence_unit": "percent_relative_change",
+    "evidence_unit_spans": [
+      [
+        24,
+        31
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "853c15d6014ac3a69a4853d9ec04ccfdd0c04356a6fbdabcbdc3be6cdfa4b169",
+      "evidence": "60844dd09a08ec9e26d7a65db2b2e4be4215c318f8246454dd6ca6acfc7393e2"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          23
+        ],
+        "evidence": [
+          0,
+          32
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "level_eq",
+          "consumed_spans": [
+            [
+              0,
+              23
+            ]
+          ],
+          "measure": "rate",
+          "numeric_tokens": [
+            {
+              "span": [
+                13,
+                14
+              ],
+              "value": "5"
+            }
+          ],
+          "quantity_role": "percent_level",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                15,
+                22
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              32
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                22,
+                23
+              ],
+              "value": "5"
+            }
+          ],
+          "quantity_role": "percent_relative_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                24,
+                31
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "measure_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            22
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            31
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            22
+          ],
+          "comparator": "level_eq",
+          "derivation": null,
+          "exact_value": "5",
+          "lexical_unit": "percent",
+          "measure": "rate",
+          "quantity_role": "percent_level",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            31
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "5",
+          "lexical_unit": "percent",
+          "measure": "rate change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U08_ENDPOINT_PP": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "share change",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        25,
+        42
+      ]
+    ],
+    "claim_years": [],
+    "conversion": "endpoints_to_pp",
+    "evidence_measure": "share change",
+    "evidence_unit": "percentage_point_change",
+    "evidence_unit_spans": [
+      [
+        23,
+        30
+      ],
+      [
+        37,
+        44
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "d1780529a642587a76e64ba326dcfbd96b6ef6ba94a055668b6568436abb58d2",
+      "evidence": "0889ea69d13276928ca9833debb80b588b50004a007d626d301b4afca280599c"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": "endpoints_to_pp",
+        "available": [
+          "endpoints_to_pp"
+        ],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          43
+        ],
+        "evidence": [
+          0,
+          45
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              43
+            ]
+          ],
+          "measure": "share change",
+          "numeric_tokens": [
+            {
+              "span": [
+                23,
+                24
+              ],
+              "value": "2"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                25,
+                42
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase_from_to",
+          "consumed_spans": [
+            [
+              0,
+              45
+            ]
+          ],
+          "measure": "share change",
+          "numeric_tokens": [
+            {
+              "span": [
+                20,
+                22
+              ],
+              "value": "10"
+            },
+            {
+              "span": [
+                34,
+                36
+              ],
+              "value": "12"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                23,
+                30
+              ]
+            },
+            {
+              "normalized_identity": "percent",
+              "span": [
+                37,
+                44
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            42
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            44
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "supports",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            42
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "2",
+          "lexical_unit": "percentage_point",
+          "measure": "share change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            44
+          ],
+          "comparator": "increase_from_to",
+          "derivation": "endpoints_to_pp",
+          "exact_value": "2",
+          "lexical_unit": "percent",
+          "measure": "share change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        },
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            44
+          ],
+          "comparator": "increase_from_to",
+          "derivation": "endpoints_to_relative_percent",
+          "exact_value": "20",
+          "lexical_unit": "percent",
+          "measure": "share change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U09_ENDPOINT_RELATIVE": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "share change",
+    "claim_unit": "percent_relative_change",
+    "claim_unit_spans": [
+      [
+        26,
+        33
+      ]
+    ],
+    "claim_years": [],
+    "conversion": "endpoints_to_relative_percent",
+    "evidence_measure": "share change",
+    "evidence_unit": "percent_relative_change",
+    "evidence_unit_spans": [
+      [
+        23,
+        30
+      ],
+      [
+        37,
+        44
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "b04731c6281c43355995c3c5d1756c1d0d98c2d735d5d0ef2bb5ed7859bcb132",
+      "evidence": "0889ea69d13276928ca9833debb80b588b50004a007d626d301b4afca280599c"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": "endpoints_to_relative_percent",
+        "available": [
+          "endpoints_to_relative_percent"
+        ],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          34
+        ],
+        "evidence": [
+          0,
+          45
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              34
+            ]
+          ],
+          "measure": "share change",
+          "numeric_tokens": [
+            {
+              "span": [
+                23,
+                25
+              ],
+              "value": "20"
+            }
+          ],
+          "quantity_role": "percent_relative_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                26,
+                33
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase_from_to",
+          "consumed_spans": [
+            [
+              0,
+              45
+            ]
+          ],
+          "measure": "share change",
+          "numeric_tokens": [
+            {
+              "span": [
+                20,
+                22
+              ],
+              "value": "10"
+            },
+            {
+              "span": [
+                34,
+                36
+              ],
+              "value": "12"
+            }
+          ],
+          "quantity_role": "percent_relative_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                23,
+                30
+              ]
+            },
+            {
+              "normalized_identity": "percent",
+              "span": [
+                37,
+                44
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            33
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            44
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "supports",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            33
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "20",
+          "lexical_unit": "percent",
+          "measure": "share change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            44
+          ],
+          "comparator": "increase_from_to",
+          "derivation": "endpoints_to_pp",
+          "exact_value": "2",
+          "lexical_unit": "percent",
+          "measure": "share change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        },
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            44
+          ],
+          "comparator": "increase_from_to",
+          "derivation": "endpoints_to_relative_percent",
+          "exact_value": "20",
+          "lexical_unit": "percent",
+          "measure": "share change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U10_PREFIX_BOUNDARY": {
+    "abstention_cause": "unit_mismatch",
+    "ambiguity": true,
+    "claim_measure": "change",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        18,
+        35
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "change",
+    "evidence_unit": "percent_relative_change",
+    "evidence_unit_spans": [
+      [
+        18,
+        25
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "6f5383ddcc8fca31e491f28574b4d465e122ce6772dfa40cf889bcdc35068915",
+      "evidence": "375714ba25dd77232fee07a131b2aa8934773d53c085fa4a6da6462558662201"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          36
+        ],
+        "evidence": [
+          0,
+          26
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "level_eq",
+          "consumed_spans": [
+            [
+              0,
+              36
+            ]
+          ],
+          "measure": "change",
+          "numeric_tokens": [
+            {
+              "span": [
+                15,
+                17
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                18,
+                35
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "level_eq",
+          "consumed_spans": [
+            [
+              0,
+              26
+            ]
+          ],
+          "measure": "change",
+          "numeric_tokens": [
+            {
+              "span": [
+                15,
+                17
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_relative_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                18,
+                25
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "unit_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            35
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            25
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            35
+          ],
+          "comparator": "level_eq",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percentage_point",
+          "measure": "change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            25
+          ],
+          "comparator": "level_eq",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U11_PP_ABBREV": {
+    "abstention_cause": "unknown_abbreviation",
+    "ambiguity": true,
+    "claim_measure": "rate change",
+    "claim_unit": "unknown",
+    "claim_unit_spans": [
+      [
+        19,
+        21
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "rate change",
+    "evidence_unit": "percentage_point_change",
+    "evidence_unit_spans": [
+      [
+        19,
+        36
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "4672b8c65890d6cdf468061aae03134c48fa4469ea1336ed33aad5aa61c6062e",
+      "evidence": "33a7ebdcc5b32e1ea500a1d788144bce661e4764c38fbf892fd1324b66857213"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          22
+        ],
+        "evidence": [
+          0,
+          37
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": "unregistered_pp",
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              22
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                17,
+                18
+              ],
+              "value": "2"
+            }
+          ],
+          "quantity_role": "unknown",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "unknown",
+              "span": [
+                19,
+                21
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              37
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                17,
+                18
+              ],
+              "value": "2"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                19,
+                36
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "unknown_abbreviation"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            21
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            36
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": "unregistered_pp",
+          "basis_span": [
+            4,
+            21
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "2",
+          "lexical_unit": "unknown",
+          "measure": "rate change",
+          "quantity_role": "unknown",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            36
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "2",
+          "lexical_unit": "percentage_point",
+          "measure": "rate change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U12_BP_ABBREV": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "rate change",
+    "claim_unit": "basis_point_change",
+    "claim_unit_spans": [
+      [
+        20,
+        22
+      ]
+    ],
+    "claim_years": [],
+    "conversion": "bp_lexical_variant",
+    "evidence_measure": "rate change",
+    "evidence_unit": "basis_point_change",
+    "evidence_unit_spans": [
+      [
+        20,
+        32
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "7c0a178a0c1a26fb6dfdb010c487ec1d737f6f18c1a09d2505ea9fcced335dc9",
+      "evidence": "eadd62cd1181c570e427f39d4f66be5cbbacbf6da7ab3e9e4f6ee983d93dc042"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [
+          "bp_lexical_variant"
+        ],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          23
+        ],
+        "evidence": [
+          0,
+          33
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              23
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                17,
+                19
+              ],
+              "value": "50"
+            }
+          ],
+          "quantity_role": "basis_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "basis_point",
+              "span": [
+                20,
+                22
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              33
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                17,
+                19
+              ],
+              "value": "50"
+            }
+          ],
+          "quantity_role": "basis_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "basis_point",
+              "span": [
+                20,
+                32
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            22
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            32
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "supports",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            22
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "50",
+          "lexical_unit": "basis_point",
+          "measure": "rate change",
+          "quantity_role": "basis_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            32
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "50",
+          "lexical_unit": "basis_point",
+          "measure": "rate change",
+          "quantity_role": "basis_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U13_RATE_COUNT": {
+    "abstention_cause": "measure_mismatch",
+    "ambiguity": true,
+    "claim_measure": "rate change",
+    "claim_unit": "percent_relative_change",
+    "claim_unit_spans": [
+      [
+        25,
+        32
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "count change",
+    "evidence_unit": "percent_relative_change",
+    "evidence_unit_spans": [
+      [
+        26,
+        33
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "a4987137ae510104d3299aba9ac56426655e2222f45d32860391876980f124b8",
+      "evidence": "ac7b7f1bee1de18a28c0445efbda5350ca1fa2babfa3e4215acbd116891b0ffa"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          33
+        ],
+        "evidence": [
+          0,
+          34
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              33
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                22,
+                24
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_relative_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                25,
+                32
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              34
+            ]
+          ],
+          "measure": "count change",
+          "numeric_tokens": [
+            {
+              "span": [
+                23,
+                25
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_relative_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                26,
+                33
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "measure_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            32
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            33
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            32
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "rate change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            33
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "count change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U14_MEASURE_MISMATCH": {
+    "abstention_cause": "measure_mismatch",
+    "ambiguity": true,
+    "claim_measure": "unemployment rate change",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        32,
+        48
+      ]
+    ],
+    "claim_years": [],
+    "conversion": "100bp=1pp",
+    "evidence_measure": "inflation rate change",
+    "evidence_unit": "basis_point_change",
+    "evidence_unit_spans": [
+      [
+        31,
+        43
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "24d2d5c7cc3dafbd04c7acede72238e0c4833656b0551c3eefa7cea3ffbd0f83",
+      "evidence": "3d936202bc4e29b61aeffcaaa09d11d06d46a4c2d6946600e6b687ce2f542319"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [
+          "100bp=1pp"
+        ],
+        "rejected_reason": "measure_mismatch"
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          49
+        ],
+        "evidence": [
+          0,
+          44
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              49
+            ]
+          ],
+          "measure": "unemployment rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                30,
+                31
+              ],
+              "value": "1"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                32,
+                48
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              44
+            ]
+          ],
+          "measure": "inflation rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                27,
+                30
+              ],
+              "value": "100"
+            }
+          ],
+          "quantity_role": "basis_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "basis_point",
+              "span": [
+                31,
+                43
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "measure_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            48
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            43
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            48
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "1",
+          "lexical_unit": "percentage_point",
+          "measure": "unemployment rate change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            43
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "100",
+          "lexical_unit": "basis_point",
+          "measure": "inflation rate change",
+          "quantity_role": "basis_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U15_YEAR_MISMATCH": {
+    "abstention_cause": "year_scope_mismatch",
+    "ambiguity": true,
+    "claim_measure": "rate change",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        28,
+        44
+      ]
+    ],
+    "claim_years": [
+      "2025"
+    ],
+    "conversion": "100bp=1pp",
+    "evidence_measure": "rate change",
+    "evidence_unit": "basis_point_change",
+    "evidence_unit_spans": [
+      [
+        30,
+        42
+      ]
+    ],
+    "evidence_years": [
+      "2024"
+    ],
+    "input_identity": {
+      "claim": "004639e304fa31e9e26680e12301c63903960c993894b7450ae00080f2818df1",
+      "evidence": "a42a826093dd5d2fbc21707b201e9a6a7a43fb653d7c0e56846452f67b97e023"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [
+          "100bp=1pp"
+        ],
+        "rejected_reason": "year_scope_mismatch"
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          45
+        ],
+        "evidence": [
+          0,
+          43
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              45
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                26,
+                27
+              ],
+              "value": "1"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [
+            "2025"
+          ],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                28,
+                44
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              43
+            ]
+          ],
+          "measure": "rate change",
+          "numeric_tokens": [
+            {
+              "span": [
+                26,
+                29
+              ],
+              "value": "100"
+            }
+          ],
+          "quantity_role": "basis_point_change",
+          "time_scope": [
+            "2024"
+          ],
+          "unit_tokens": [
+            {
+              "normalized_identity": "basis_point",
+              "span": [
+                30,
+                42
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "year_scope_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            0,
+            44
+          ]
+        ],
+        "evidence": [
+          [
+            0,
+            42
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            0,
+            44
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "1",
+          "lexical_unit": "percentage_point",
+          "measure": "rate change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": [
+            "2025"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            0,
+            42
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "100",
+          "lexical_unit": "basis_point",
+          "measure": "rate change",
+          "quantity_role": "basis_point_change",
+          "time_scope": [
+            "2024"
+          ]
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U16_MULTIPLE_UNITS": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "margin change",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        21,
+        38
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "margin change",
+    "evidence_unit": "percentage_point_change",
+    "evidence_unit_spans": [
+      [
+        20,
+        27
+      ],
+      [
+        55,
+        71
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "e9e39d5ee4ae4ad976fe91ee3bfab3d938c7b748f2259b11f65fc2d6defde63d",
+      "evidence": "d1ca5592e67723f9d6d4a793b3437a6d79c220d67938ac7147798a3d664fc151"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          39
+        ],
+        "evidence": [
+          0,
+          72
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              39
+            ]
+          ],
+          "measure": "margin change",
+          "numeric_tokens": [
+            {
+              "span": [
+                19,
+                20
+              ],
+              "value": "2"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                21,
+                38
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "increase",
+          "consumed_spans": [
+            [
+              0,
+              72
+            ]
+          ],
+          "measure": "margin change",
+          "numeric_tokens": [
+            {
+              "span": [
+                18,
+                19
+              ],
+              "value": "2"
+            },
+            {
+              "span": [
+                53,
+                54
+              ],
+              "value": "1"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                20,
+                27
+              ]
+            },
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                55,
+                71
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            38
+          ]
+        ],
+        "evidence": [
+          [
+            38,
+            71
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "refutes",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            38
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "2",
+          "lexical_unit": "percentage_point",
+          "measure": "margin change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            27
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "2",
+          "lexical_unit": "percent",
+          "measure": "score change",
+          "quantity_role": "percent_relative_change",
+          "time_scope": []
+        },
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            38,
+            71
+          ],
+          "comparator": "increase",
+          "derivation": null,
+          "exact_value": "1",
+          "lexical_unit": "percentage_point",
+          "measure": "margin change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U17_NEGATED_COMPARATOR": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": "change",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        28,
+        45
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "change",
+    "evidence_unit": "percentage_point_change",
+    "evidence_unit_spans": [
+      [
+        32,
+        49
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "fce96a4305b1deea63a5b53cfaec8bf2c535bd40b53ae0acbe296f30a6a08c8b",
+      "evidence": "98a4b7f19bf8aed15ec9b3984b64d8f0e50c1690b979b80b8a127fec2fbb1e51"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          46
+        ],
+        "evidence": [
+          0,
+          50
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "less_than",
+          "consumed_spans": [
+            [
+              0,
+              46
+            ]
+          ],
+          "measure": "change",
+          "numeric_tokens": [
+            {
+              "span": [
+                25,
+                27
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                28,
+                45
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "not_less_than",
+          "consumed_spans": [
+            [
+              0,
+              50
+            ]
+          ],
+          "measure": "change",
+          "numeric_tokens": [
+            {
+              "span": [
+                29,
+                31
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                32,
+                49
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            45
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            49
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "refutes",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            45
+          ],
+          "comparator": "less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percentage_point",
+          "measure": "change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            49
+          ],
+          "comparator": "not_less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percentage_point",
+          "measure": "change",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "claimed",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  },
+  "U18_EVENT_ONLY": {
+    "abstention_cause": null,
+    "ambiguity": false,
+    "claim_measure": null,
+    "claim_unit": "not_applicable",
+    "claim_unit_spans": [],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": null,
+    "evidence_unit": "not_applicable",
+    "evidence_unit_spans": [],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "fb9c9d47b50b8c2b429f86fd7da8b65da45d25c1841ede38b50863c16f6c06fe",
+      "evidence": "fadd0126dd1fc4dd23b891eea506ad30ffc5d5f522b89e64d30bad5249d86d5f"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          41
+        ],
+        "evidence": [
+          0,
+          60
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "not_applicable",
+          "consumed_spans": [],
+          "measure": null,
+          "numeric_tokens": [],
+          "quantity_role": "not_applicable",
+          "time_scope": [],
+          "unit_tokens": []
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "not_applicable",
+          "consumed_spans": [],
+          "measure": null,
+          "numeric_tokens": [],
+          "quantity_role": "not_applicable",
+          "time_scope": [],
+          "unit_tokens": []
+        }
+      },
+      "unresolved_reason": null
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [],
+        "evidence": []
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "not_applicable",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [],
+      "evidence": []
+    },
+    "status": "not_applicable",
+    "unparsed_spans": {
+      "claim": [
+        [
+          0,
+          40
+        ]
+      ],
+      "evidence": [
+        [
+          0,
+          35
+        ],
+        [
+          37,
+          59
+        ]
+      ]
+    }
+  },
+  "U19_EXPOSED_HOL14_SHAPE": {
+    "abstention_cause": "unit_mismatch",
+    "ambiguity": true,
+    "claim_measure": "interest",
+    "claim_unit": "percentage_point_change",
+    "claim_unit_spans": [
+      [
+        30,
+        47
+      ]
+    ],
+    "claim_years": [],
+    "conversion": null,
+    "evidence_measure": "interest",
+    "evidence_unit": "percent_level",
+    "evidence_unit_spans": [
+      [
+        29,
+        30
+      ]
+    ],
+    "evidence_years": [],
+    "input_identity": {
+      "claim": "87ab5d89f81b450f099e596a8ca8e30875a2e0d4049e2affdd8d8ab5a55e9c4d",
+      "evidence": "dc22b98f22ae65a28b7ba115934024d0c75a7e892ac80b976d4c4dd6cb00b2f4"
+    },
+    "instrument_id": "cal-quantity-unit-informed-development-d1",
+    "receipt_v2": {
+      "conversion_rule": {
+        "applied": null,
+        "available": [],
+        "rejected_reason": null
+      },
+      "input_scope": {
+        "claim": [
+          0,
+          48
+        ],
+        "evidence": [
+          0,
+          31
+        ]
+      },
+      "quantities": {
+        "claim": {
+          "ambiguity_reason": null,
+          "comparator": "less_than",
+          "consumed_spans": [
+            [
+              0,
+              48
+            ]
+          ],
+          "measure": "interest",
+          "numeric_tokens": [
+            {
+              "span": [
+                27,
+                29
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percentage_point_change",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percentage_point",
+              "span": [
+                30,
+                47
+              ]
+            }
+          ]
+        },
+        "evidence": {
+          "ambiguity_reason": null,
+          "comparator": "less_than",
+          "consumed_spans": [
+            [
+              0,
+              31
+            ]
+          ],
+          "measure": "interest",
+          "numeric_tokens": [
+            {
+              "span": [
+                27,
+                29
+              ],
+              "value": "10"
+            }
+          ],
+          "quantity_role": "percent_level",
+          "time_scope": [],
+          "unit_tokens": [
+            {
+              "normalized_identity": "percent",
+              "span": [
+                29,
+                30
+              ]
+            }
+          ]
+        }
+      },
+      "unresolved_reason": "unit_mismatch"
+    },
+    "receipt_v3": {
+      "basis_kind": "DECLARED_DECISIVE_TEXT_NOT_OBSERVED_CAUSAL_CONSUMPTION",
+      "consumption_independence": "NOT_ESTABLISHED",
+      "deciding_basis_spans": {
+        "claim": [
+          [
+            4,
+            47
+          ]
+        ],
+        "evidence": [
+          [
+            4,
+            30
+          ]
+        ]
+      },
+      "version": "cal-rc3-quantity-basis-evaluator-v3-prep1"
+    },
+    "relation": "unresolved",
+    "scope": "EXPOSED_DEVELOPMENT_ONLY_NOT_A_QUALIFIED_CAL_PROCESS",
+    "source_observations": {
+      "claim": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            47
+          ],
+          "comparator": "less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percentage_point",
+          "measure": "interest",
+          "quantity_role": "percentage_point_change",
+          "time_scope": []
+        }
+      ],
+      "evidence": [
+        {
+          "ambiguity_reason": null,
+          "basis_span": [
+            4,
+            30
+          ],
+          "comparator": "less_than",
+          "derivation": null,
+          "exact_value": "10",
+          "lexical_unit": "percent",
+          "measure": "interest",
+          "quantity_role": "percent_level",
+          "time_scope": []
+        }
+      ]
+    },
+    "status": "unresolved",
+    "unparsed_spans": {
+      "claim": [],
+      "evidence": []
+    }
+  }
+}
